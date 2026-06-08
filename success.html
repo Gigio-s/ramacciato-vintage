@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Ordine confermato — Ramacciato Vintage">
+<link rel="icon" type="image/png" href="logo no sfondo.png">
+<title>Ordine Confermato | Ramacciato Vintage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,800;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f0ebe3;--paper:#faf6f0;--ink:#0e0c0a;--dark:#1e1b17;
+  --muted:#7a7168;--line:rgba(14,12,10,.11);
+  --accent:#8b3e10;--accent2:#c07030;
+  --max:720px;--ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;
+  background:var(--bg);color:var(--ink);font-family:'Archivo',Arial,sans-serif;line-height:1.6}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.022;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-size:180px}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+.wrap{width:min(var(--max),calc(100% - 48px));margin:auto;position:relative;z-index:2}
+.serif{font-family:'Cormorant Garamond',Georgia,serif}
+
+.ambient{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.blob{position:absolute;border-radius:50%}
+.blob.a{width:600px;height:600px;right:-220px;top:-200px;background:radial-gradient(circle,rgba(192,112,48,.18) 0%,transparent 65%)}
+.blob.b{width:500px;height:500px;left:-200px;bottom:-120px;background:radial-gradient(circle,rgba(212,205,195,.5) 0%,transparent 65%)}
+
+/* Nav minimal */
+.top{position:fixed;inset:16px 0 auto;z-index:20;pointer-events:none}
+.nav{min-height:62px;display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:10px 20px;border:1px solid rgba(255,255,255,.75);border-radius:999px;
+  background:rgba(240,235,227,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 14px 44px rgba(14,12,10,.09),0 1px 0 rgba(255,255,255,.6) inset;pointer-events:auto}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;text-transform:uppercase;letter-spacing:.01em;font-size:13.5px}
+.brand img{width:32px;height:32px;object-fit:contain;mix-blend-mode:multiply;filter:contrast(1.1) brightness(.9)}
+
+/* Main */
+main{flex:1;display:flex;align-items:center;justify-content:center;
+  padding:120px 0 80px;position:relative;z-index:1}
+
+.success-card{background:rgba(250,246,240,.92);border:1px solid rgba(255,255,255,.9);
+  border-radius:28px;padding:56px 48px;box-shadow:0 24px 80px rgba(14,12,10,.1);
+  text-align:center;animation:card-in .5s var(--ease)}
+@keyframes card-in{from{transform:translateY(24px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+
+.success-icon{width:80px;height:80px;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent2),var(--accent));
+  display:flex;align-items:center;justify-content:center;
+  font-size:36px;margin:0 auto 28px;
+  box-shadow:0 12px 36px rgba(192,112,48,.35);
+  animation:icon-bounce .6s var(--ease) .1s both}
+@keyframes icon-bounce{
+  from{transform:scale(0) rotate(-20deg);opacity:0}
+  70%{transform:scale(1.12) rotate(4deg)}
+  to{transform:scale(1) rotate(0deg);opacity:1}
+}
+
+.success-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(32px,6vw,48px);
+  font-weight:600;letter-spacing:-.04em;margin:0 0 10px;line-height:1.05}
+.success-sub{font-size:14px;color:rgba(30,27,23,.6);margin:0 0 32px;line-height:1.6;max-width:420px}
+
+.order-box{background:rgba(14,12,10,.03);border:1px solid var(--line);border-radius:16px;
+  padding:20px 24px;margin:0 0 32px;text-align:left}
+.order-row{display:flex;justify-content:space-between;align-items:baseline;
+  font-size:13px;margin-bottom:8px}
+.order-row:last-child{margin-bottom:0}
+.order-row .label{color:var(--muted);font-weight:700}
+.order-row .value{font-weight:800;color:var(--ink)}
+.order-row .order-id{font-size:11px;letter-spacing:.04em;font-family:monospace;
+  background:rgba(14,12,10,.06);padding:3px 8px;border-radius:6px}
+
+.invoice-notice{display:none;background:rgba(139,62,16,.07);border:1px solid rgba(139,62,16,.2);
+  border-radius:12px;padding:14px 18px;margin:0 0 32px;text-align:left;font-size:12.5px;
+  color:rgba(30,27,23,.75);line-height:1.6}
+.invoice-notice.visible{display:block}
+.invoice-notice strong{display:block;margin-bottom:4px;color:var(--accent);font-size:10.5px;
+  letter-spacing:.14em;text-transform:uppercase}
+
+.success-actions{display:flex;flex-direction:column;gap:10px}
+.btn-primary{display:flex;align-items:center;justify-content:center;gap:8px;min-height:50px;
+  border-radius:999px;background:var(--ink);color:var(--bg);border:none;font-family:inherit;
+  font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
+  transition:background .2s,transform .22s var(--ease);text-decoration:none}
+.btn-primary:hover{background:var(--accent);transform:translateY(-2px)}
+.btn-secondary{display:flex;align-items:center;justify-content:center;gap:8px;min-height:50px;
+  border-radius:999px;border:1.5px solid var(--line);background:transparent;font-family:inherit;
+  font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(30,27,23,.6);
+  cursor:pointer;transition:border-color .2s,color .2s;text-decoration:none}
+.btn-secondary:hover{border-color:var(--accent2);color:var(--accent)}
+
+/* confetti */
+.confetti-wrap{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}
+.cft{position:absolute;top:-10px;width:8px;height:8px;border-radius:2px;
+  animation:cft-fall linear both}
+@keyframes cft-fall{
+  0%{transform:translateY(-10px) rotate(0deg);opacity:1}
+  100%{transform:translateY(110vh) rotate(720deg);opacity:0}
+}
+
+/* Footer */
+footer{background:var(--dark);color:rgba(250,246,240,.75);position:relative;z-index:1}
+.foot-bottom{border-top:1px solid rgba(250,246,240,.08);padding:18px 0;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.foot-copy{font-size:11px;color:rgba(250,246,240,.32)}
+.foot-legal-links{display:flex;gap:20px}
+.foot-legal-links a{font-size:11px;color:rgba(250,246,240,.32);transition:color .18s}
+.foot-legal-links a:hover{color:rgba(250,246,240,.7)}
+</style>
+</head>
+<body>
+
+<div class="ambient"><div class="blob a"></div><div class="blob b"></div></div>
+<div class="confetti-wrap" id="confetti"></div>
+
+<!-- NAV -->
+<header class="top">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <img src="logo no sfondo.png" alt="Ramacciato Vintage">
+      <span>Ramacciato <span style="color:var(--accent)">Vintage</span></span>
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="success-card">
+
+      <div class="success-icon">✓</div>
+
+      <h1 class="success-title serif">Ordine confermato!</h1>
+      <p class="success-sub" id="success-sub">
+        Grazie per il tuo acquisto. Riceverai una conferma via email da PayPal.
+        Provvederemo alla spedizione nel più breve tempo possibile.
+      </p>
+
+      <div class="order-box" id="order-box">
+        <div class="order-row">
+          <span class="label">Numero ordine</span>
+          <span class="value order-id" id="order-id">—</span>
+        </div>
+        <div class="order-row">
+          <span class="label">Intestatario</span>
+          <span class="value" id="order-nome">—</span>
+        </div>
+        <div class="order-row">
+          <span class="label">Email</span>
+          <span class="value" id="order-email">—</span>
+        </div>
+        <div class="order-row">
+          <span class="label">Totale pagato</span>
+          <span class="value" id="order-tot">—</span>
+        </div>
+      </div>
+
+      <div class="invoice-notice" id="invoice-notice">
+        <strong>🧾 Fattura richiesta</strong>
+        La fattura verrà emessa entro 12 giorni lavorativi dalla spedizione e inviata via email.
+        Se hai domande scrivici a <a href="mailto:ramacciatoluca@gmail.com" style="color:var(--accent)">ramacciatoluca@gmail.com</a>
+      </div>
+
+      <div class="success-actions">
+        <a class="btn-primary" href="shop.html">Torna allo shop</a>
+        <a class="btn-secondary" href="index.html">Vai alla Home</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-bottom">
+      <span class="foot-copy">© 2025 Ramacciato Vintage · P.IVA IT04400570240 · Luca Ramacciato · Vicenza</span>
+      <div class="foot-legal-links">
+        <a href="privacy-policy.html">Privacy</a>
+        <a href="termini-di-servizio.html">Termini</a>
+        <a href="cookie-policy.html">Cookie</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Legge i dati ordine da sessionStorage */
+(function(){
+  var raw = sessionStorage.getItem('rv_order');
+  if(raw){
+    try{
+      var d = JSON.parse(raw);
+      var fmt = function(s){ return s||'—'; };
+      document.getElementById('order-id').textContent    = fmt(d.orderId);
+      document.getElementById('order-nome').textContent  = fmt(d.nome);
+      document.getElementById('order-email').textContent = fmt(d.email);
+      document.getElementById('order-tot').textContent   = d.tot ? '€'+d.tot : '—';
+      if(d.fattura) document.getElementById('invoice-notice').classList.add('visible');
+      if(d.email){
+        document.getElementById('success-sub').innerHTML =
+          'Grazie per il tuo acquisto, <strong>'+fmt(d.nome)+'</strong>.<br>'
+          +'Riceverai una conferma da PayPal a <strong>'+fmt(d.email)+'</strong>.<br>'
+          +'Spediamo nel più breve tempo possibile.';
+      }
+      // Pulizia sicura dopo lettura
+      sessionStorage.removeItem('rv_order');
+    } catch(e){}
+  }
+
+  /* Confetti */
+  var wrap = document.getElementById('confetti');
+  var colors = ['#c07030','#8b3e10','#e8aa60','#d4cdc3','#1e1b17','#f0ebe3'];
+  for(var i=0; i<60; i++){
+    (function(i){
+      setTimeout(function(){
+        var el = document.createElement('div');
+        el.className = 'cft';
+        var dur  = 1.8 + Math.random()*2.2;
+        var del  = Math.random()*1.2;
+        el.style.cssText = [
+          'left:'+(Math.random()*100)+'vw',
+          'background:'+colors[Math.floor(Math.random()*colors.length)],
+          'width:'+(6+Math.random()*8)+'px',
+          'height:'+(6+Math.random()*8)+'px',
+          'border-radius:'+(Math.random()>0.5?'50%':'2px'),
+          'animation-duration:'+dur.toFixed(2)+'s',
+          'animation-delay:'+del.toFixed(2)+'s'
+        ].join(';');
+        wrap.appendChild(el);
+        setTimeout(function(){ if(el.parentNode) el.parentNode.removeChild(el); }, (dur+del+0.2)*1000);
+      }, i*30);
+    })(i);
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Svuotacantine Ramacciato — Sgombero cantine, garage e depositi in Veneto. Vicenza, Padova, Verona, Venezia e province. Valuto e ritiro oggetti di valore.">
+<link rel="icon" type="image/png" href="logo no sfondo.png">
+<title>Svuotacantine | Ramacciato Vintage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,800;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f0ebe3;--paper:#faf6f0;--ink:#0e0c0a;--dark:#1e1b17;--muted:#7a7168;--line:rgba(14,12,10,.11);--accent:#8b3e10;--accent2:#c07030;--max:1180px;--ease:cubic-bezier(.22,1,.36,1)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;overflow-x:hidden;background:var(--bg);color:var(--ink);font-family:'Archivo',Arial,sans-serif;line-height:1.6}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");background-size:180px}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+.wrap{width:min(var(--max),calc(100% - 48px));margin:auto;position:relative;z-index:2}
+.serif{font-family:'Cormorant Garamond',Georgia,serif}
+.caramel{background:linear-gradient(138deg,var(--accent),var(--accent2) 40%,#e8aa60 65%,var(--accent2) 85%,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+.ambient{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.blob{position:absolute;border-radius:50%}
+.blob.a{width:600px;height:600px;right:-220px;top:-200px;background:radial-gradient(circle,rgba(192,112,48,.18) 0%,transparent 65%)}
+.blob.b{width:500px;height:500px;left:-200px;bottom:-120px;background:radial-gradient(circle,rgba(212,205,195,.5) 0%,transparent 65%)}
+.blob.c{width:360px;height:360px;left:38%;top:28%;background:radial-gradient(circle,rgba(192,112,48,.07) 0%,transparent 60%)}
+.top{position:fixed;inset:16px 0 auto;z-index:20;pointer-events:none}
+.nav{min-height:62px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:10px 14px 10px 20px;border:1px solid rgba(255,255,255,.75);border-radius:999px;background:rgba(240,235,227,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 14px 44px rgba(14,12,10,.09),0 1px 0 rgba(255,255,255,.6) inset;pointer-events:auto}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;text-transform:uppercase;letter-spacing:.01em;font-size:13.5px}
+.brand img{width:32px;height:32px;object-fit:contain;mix-blend-mode:multiply;filter:contrast(1.1) brightness(.9)}
+.brand-text{display:inline-flex}
+.brand-text .lw{display:inline-block;transition:transform .3s ease,color .2s ease}
+.brand-text .lw.accent{color:var(--accent)}
+.brand-text .lw.up{transform:translateY(-8px);color:var(--accent2)}
+.links,.social{list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:24px}
+.links a{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(30,27,23,.55);transition:color .2s}
+.links a:hover,.links a.active{color:var(--accent)}
+.social a{width:30px;height:30px;display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.3);border:1px solid rgba(255,255,255,.5);font-size:10.5px;font-weight:800;letter-spacing:.06em;color:rgba(30,27,23,.55);transition:background .2s,color .2s}
+.social a:hover{background:rgba(255,255,255,.7);color:var(--ink)}
+.cart-btn{display:flex;align-items:center;gap:6px;min-height:36px;padding:0 14px;border-radius:999px;background:var(--ink);color:var(--bg);border:none;font-family:inherit;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+.cart-btn:hover{background:var(--accent)}
+.cart-count{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:var(--accent2);color:#fff;font-size:9px;font-weight:900;line-height:1}
+.cart-count.zero{background:rgba(255,255,255,.2)}
+.menu-btn{display:none;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:9px 16px;font-weight:800;font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;font-family:inherit;cursor:pointer}
+.mobile{display:none;position:fixed;inset:0;z-index:18;background:rgba(240,235,227,.97);padding:120px 32px 48px;flex-direction:column;gap:10px}
+.mobile.open{display:flex}
+.mobile a{font-size:clamp(38px,10vw,80px);font-weight:900;text-transform:uppercase;letter-spacing:-.06em;line-height:.96;color:var(--ink);transition:color .18s}
+.mobile a:hover{color:var(--accent)}
+.mob-close{position:absolute;top:20px;right:20px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--paper);display:grid;place-items:center;font-size:20px;cursor:pointer;font-family:inherit}
+/* PAGE HERO */
+.page-hero{padding:140px 0 72px;position:relative;z-index:1;border-bottom:1px solid var(--line)}
+.page-hero .wrap{display:flex;align-items:center;justify-content:space-between;gap:40px}
+.hero-content{flex:1;min-width:0}
+.hero-logo-wrap{flex-shrink:0;width:clamp(220px,28vw,400px);position:relative;display:flex;align-items:center;justify-content:center}
+.hero-logo-wrap a{display:block;width:100%}
+.hero-logo-wrap img{width:100%;height:auto;display:block;-webkit-mask-image:radial-gradient(ellipse 75% 75% at 50% 50%,black 30%,transparent 100%);mask-image:radial-gradient(ellipse 75% 75% at 50% 50%,black 30%,transparent 100%);opacity:.72;mix-blend-mode:multiply;transition:-webkit-mask-image .4s var(--ease),mask-image .4s var(--ease),opacity .4s var(--ease),transform .4s var(--ease)}
+.hero-logo-wrap a:hover img{-webkit-mask-image:none;mask-image:none;opacity:1;mix-blend-mode:normal;transform:scale(1.04)}
+@media(max-width:760px){.page-hero .wrap{flex-direction:column}.hero-logo-wrap{width:clamp(140px,50vw,220px);align-self:flex-start;order:-1}}
+.sec-label{display:inline-flex;align-items:center;gap:10px;font-size:10px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+.sec-label::before{content:"";width:22px;height:1px;background:var(--accent2)}
+.h2{margin:0 0 18px;font-size:clamp(36px,4vw,72px);line-height:.92;letter-spacing:-.06em;text-transform:uppercase;font-weight:900}
+.body-copy{max-width:600px;color:rgba(30,27,23,.62);font-size:14.5px;line-height:1.72}
+.divider-line{width:48px;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;margin:24px 0}
+section{position:relative;z-index:1;padding:56px 0}
+section+section{border-top:1px solid var(--line)}
+/* STEPS */
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
+.step-card{background:rgba(250,246,240,.88);border:1px solid rgba(255,255,255,.8);border-radius:18px;padding:28px 22px;box-shadow:0 8px 24px rgba(14,12,10,.06);position:relative;overflow:hidden;transition:transform .26s var(--ease),box-shadow .26s}
+.step-card:hover{transform:translateY(-4px);box-shadow:0 20px 52px rgba(14,12,10,.1)}
+.step-card::before{content:"";position:absolute;inset:0;border-radius:18px;background:linear-gradient(135deg,rgba(255,255,255,.18),rgba(255,255,255,0));pointer-events:none}
+.step-num{font-family:'Cormorant Garamond',Georgia,serif;font-size:48px;font-weight:600;line-height:1;color:var(--accent2);opacity:.3;margin-bottom:16px}
+.step-icon{font-size:28px;margin-bottom:12px}
+.step-title{font-size:15px;font-weight:900;letter-spacing:-.02em;margin:0 0 8px}
+.step-desc{font-size:13px;color:rgba(30,27,23,.62);line-height:1.65;margin:0}
+/* ZONE */
+.zone-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
+.zone-card{background:rgba(250,246,240,.88);border:1px solid rgba(255,255,255,.8);border-radius:18px;padding:28px 22px;box-shadow:0 8px 24px rgba(14,12,10,.06);transition:transform .26s var(--ease),box-shadow .26s;text-align:center}
+.zone-card:hover{transform:translateY(-4px);box-shadow:0 20px 52px rgba(14,12,10,.1)}
+.zone-icon{font-size:32px;margin-bottom:12px}
+.zone-city{font-size:20px;font-weight:900;letter-spacing:-.04em;margin:0 0 4px}
+.zone-prov{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2)}
+.zone-note{font-size:12.5px;color:var(--muted);margin-top:10px;line-height:1.5}
+/* COSA RITIRIAMO */
+.cosa-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:40px}
+.cosa-item{background:rgba(250,246,240,.88);border:1px solid rgba(255,255,255,.8);border-radius:14px;padding:18px 20px;display:flex;align-items:center;gap:14px;box-shadow:0 4px 14px rgba(14,12,10,.05);transition:transform .22s var(--ease)}
+.cosa-item:hover{transform:translateY(-3px)}
+.cosa-icon{font-size:26px;min-width:36px;text-align:center}
+.cosa-label{font-size:13.5px;font-weight:800;letter-spacing:-.01em;margin-bottom:2px}
+.cosa-sub{font-size:11.5px;color:var(--muted);line-height:1.4}
+/* L2 CARD */
+.l2-card{background:#1b3a5c;border-radius:22px;padding:48px 44px;display:flex;align-items:center;justify-content:space-between;gap:40px;margin-top:40px;box-shadow:0 24px 64px rgba(27,58,92,.35);position:relative;overflow:hidden;transition:transform .26s var(--ease),box-shadow .26s}
+.l2-card:hover{transform:translateY(-3px);box-shadow:0 32px 80px rgba(27,58,92,.45)}
+.l2-card::before{content:"L2";position:absolute;right:-20px;bottom:-40px;font-size:240px;font-weight:900;color:rgba(255,255,255,.05);line-height:1;pointer-events:none;letter-spacing:-.06em}
+.l2-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:5px 14px;font-size:9.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:16px}
+.l2-title{font-size:clamp(28px,3.5vw,46px);font-weight:900;letter-spacing:-.05em;color:#fff;margin:0 0 12px;line-height:1}
+.l2-desc{font-size:14px;color:rgba(255,255,255,.65);line-height:1.7;max-width:480px;margin:0}
+.l2-btn{display:inline-flex;align-items:center;gap:8px;margin-top:24px;padding:14px 28px;background:#fff;border:1px solid #fff;border-radius:999px;font-family:inherit;font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#1b3a5c;transition:background .2s,border-color .2s,transform .2s var(--ease),color .2s}
+.l2-btn:hover{background:rgba(255,255,255,.85);transform:translateY(-2px)}
+.l2-visual{flex-shrink:0;display:flex;flex-direction:column;gap:10px}
+.l2-stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:18px 22px;text-align:center;min-width:130px}
+.l2-stat-num{font-family:'Cormorant Garamond',Georgia,serif;font-size:34px;font-weight:600;color:#fff;line-height:1}
+.l2-stat-label{font-size:8.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:4px}
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-form-wrap{background:rgba(250,246,240,.9);border:1px solid rgba(255,255,255,.85);border-radius:22px;padding:36px 32px;box-shadow:0 16px 48px rgba(14,12,10,.08)}
+.form-title{font-size:22px;font-weight:900;letter-spacing:-.04em;margin:0 0 6px}
+.form-sub{font-size:13.5px;color:var(--muted);margin:0 0 28px}
+.form-group{margin-bottom:16px}
+.form-label{display:block;font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.form-input,.form-textarea,.form-select{width:100%;padding:12px 16px;border:1.5px solid var(--line);border-radius:12px;background:rgba(255,255,255,.7);font-family:inherit;font-size:14px;color:var(--ink);outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none}
+.form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--accent2);box-shadow:0 0 0 3px rgba(192,112,48,.1)}
+.form-textarea{min-height:110px;resize:vertical}
+.form-submit{width:100%;min-height:52px;border-radius:999px;background:var(--ink);color:var(--bg);border:none;font-family:inherit;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:background .2s,transform .22s var(--ease),box-shadow .22s}
+.form-submit:hover{background:var(--accent);transform:translateY(-2px);box-shadow:0 14px 38px rgba(14,12,10,.18)}
+.contact-info-card{background:rgba(250,246,240,.88);border:1px solid rgba(255,255,255,.8);border-radius:16px;padding:22px;box-shadow:0 6px 18px rgba(14,12,10,.05);margin-bottom:12px;display:flex;align-items:flex-start;gap:14px}
+.ci-icon{font-size:22px;min-width:34px;text-align:center;margin-top:2px}
+.ci-label{font-size:9.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.ci-value{font-size:14px;font-weight:700;letter-spacing:-.01em}
+.ci-value a:hover{color:var(--accent)}
+.ci-note{font-size:12px;color:var(--muted);margin-top:3px}
+/* MARQUEE */
+.marquee-wrap{overflow:hidden;border-block:1px solid var(--line);background:linear-gradient(90deg,rgba(250,246,240,.5),rgba(240,235,227,.3));position:relative;z-index:2}
+.marquee-track{display:flex;width:max-content;animation:marquee 32s linear infinite}
+.marquee-track span{white-space:nowrap;padding:15px 20px;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(30,27,23,.38)}
+.marquee-track .dot{color:var(--accent2);padding:15px 4px}
+@keyframes marquee{to{transform:translateX(-50%)}}
+footer{position:relative;z-index:2;border-top:1px solid var(--line);background:linear-gradient(180deg,transparent,rgba(14,12,10,.02));padding:48px 0 24px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:32px;margin-bottom:24px}
+.foot-piva{font-size:12px;color:rgba(30,27,23,.4);margin:8px 0 0;line-height:1.5}.foot-piva strong{font-weight:700;color:rgba(30,27,23,.55)}
+.foot-bottom-left{display:flex;flex-direction:column;gap:3px}
+.foot-legal{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.foot-legal a{font-size:11.5px;color:var(--muted);transition:color .18s;text-decoration:underline;text-decoration-color:rgba(122,113,104,.3)}.foot-legal a:hover{color:var(--ink)}.foot-legal span{color:var(--muted);font-size:10px;opacity:.5}
+.foot-brand{font-size:22px;font-weight:900;letter-spacing:-.03em;text-transform:uppercase;margin:0 0 8px}
+.foot-brand em{color:var(--accent);font-style:normal}
+.foot-tagline{font-family:'Cormorant Garamond',Georgia,serif;font-size:20px;font-style:italic;color:var(--muted);margin:0 0 16px}
+.foot-contact{font-size:13.5px;color:rgba(30,27,23,.55)}
+.foot-contact a:hover{color:var(--accent)}
+.foot-col-title{font-size:9.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 16px}
+.foot-links{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.foot-links a{font-size:14px;color:rgba(30,27,23,.65);transition:color .18s,transform .18s}
+.foot-links a:hover{color:var(--ink);transform:translateX(3px)}
+.foot-bottom{padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:20px;font-size:12.5px;color:var(--muted)}
+.foot-bottom em{font-style:italic;font-family:'Cormorant Garamond',Georgia,serif;font-size:15px}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.visible{opacity:1;transform:none}
+.cursor{display:none}
+@media(hover:hover) and (pointer:fine){body,body *{cursor:none !important}.cursor{display:block;position:fixed;left:0;top:0;z-index:50;pointer-events:none;border-radius:50%;transform:translate(-50%,-50%);will-change:transform}.cursor.big{width:88px;height:88px;background:radial-gradient(circle,rgba(192,112,48,.22),transparent 68%);mix-blend-mode:multiply}.cursor.dot{width:5px;height:5px;background:var(--accent)}}
+@media(max-width:1000px){.links,.social{display:none}.menu-btn{display:block}.steps-grid{grid-template-columns:1fr 1fr}.zone-grid{grid-template-columns:1fr 1fr}.cosa-grid{grid-template-columns:1fr 1fr}.l2-card{flex-direction:column}.l2-visual{flex-direction:row;width:100%}.l2-stat{flex:1}.contact-grid{grid-template-columns:1fr}.foot-grid{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:660px){.wrap{width:calc(100% - 32px)}.steps-grid{grid-template-columns:1fr}.zone-grid{grid-template-columns:1fr 1fr}.cosa-grid{grid-template-columns:1fr}.foot-grid{grid-template-columns:1fr 1fr}.foot-bottom{flex-direction:column;align-items:flex-start;gap:10px}section{padding:44px 0}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="brand-wave" x="-12%" y="-60%" width="124%" height="220%">
+      <feTurbulence id="brandTurb" type="turbulence" baseFrequency="0.025 0.018" numOctaves="3" seed="7" result="noise"/>
+      <feDisplacementMap id="brandDisplace" in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+<div class="ambient" aria-hidden="true"><div class="blob a"></div><div class="blob b"></div><div class="blob c"></div></div>
+<div class="cursor big" id="cursorBig"></div>
+<div class="cursor dot" id="cursorDot"></div>
+
+<header class="top">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <img src="logo no sfondo.png" alt="Logo Ramacciato Vintage" width="32" height="32" decoding="async">
+      <span class="brand-text" aria-label="Ramacciato Vintage"><span class="lw">R</span><span class="lw">a</span><span class="lw">m</span><span class="lw">a</span><span class="lw">c</span><span class="lw">c</span><span class="lw">i</span><span class="lw">a</span><span class="lw">t</span><span class="lw">o</span><span class="lw">&nbsp;</span><span class="lw accent">V</span><span class="lw accent">i</span><span class="lw accent">n</span><span class="lw accent">t</span><span class="lw accent">a</span><span class="lw accent">g</span><span class="lw accent">e</span></span>
+    </a>
+    <nav aria-label="Menu principale">
+      <ul class="links">
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="mercatini.html">Mercatini</a></li>
+        <li><a href="svuotacantine.html" class="active">Svuotacantine</a></li>
+      </ul>
+    </nav>
+    <ul class="social">
+      <li><a href="#" aria-label="Instagram">IG</a></li>
+      <li><a href="#" aria-label="Facebook">FB</a></li>
+      <li><a href="https://www.linkedin.com/in/luca-ramacciato-3292681b1/" target="_blank" rel="noopener" aria-label="LinkedIn">IN</a></li>
+      <li><a href="https://www.youtube.com/@archivioilcustode" target="_blank" rel="noopener" aria-label="YouTube">YT</a></li>
+      <li><button class="cart-btn" id="cartOpenBtn" onclick="if(window.rvCart)rvCart.open()" aria-label="Carrello">&#x1F6D2; <span class="cart-count zero" id="cartCount">0</span></button></li>
+    </ul>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false">Menu</button>
+  </div>
+  <div class="mobile" id="mobileMenu" role="dialog" aria-modal="true">
+    <button class="mob-close" id="mobClose" aria-label="Chiudi menu">&#x2715;</button>
+    <a href="shop.html">Shop</a>
+    <a href="mercatini.html">Mercatini</a>
+    <a href="svuotacantine.html">Svuotacantine</a>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="hero-content">
+      <p class="sec-label reveal">Sgomberi &amp; Ritiro oggetti</p>
+      <h1 style="font-size:clamp(52px,7.5vw,110px);line-height:.9;letter-spacing:-.065em;text-transform:uppercase;font-weight:900;margin:0 0 16px" class="reveal">Svuota<br><span class="caramel">cantina</span></h1>
+      <p class="reveal" style="max-width:560px;font-size:14.5px;color:rgba(30,27,23,.62);line-height:1.72">Hai una cantina piena, un garage da liberare, un deposito che non usi? Invece di pagare per buttare via, contattami &mdash; valuto il contenuto, ritiro quello che ha valore e, se c&rsquo;&egrave; qualcosa di interessante, te lo pago.</p>
+      <div class="hero-actions reveal" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:32px">
+        <a href="#contatto" style="display:inline-flex;align-items:center;gap:8px;min-height:50px;padding:0 26px;border-radius:999px;background:var(--ink);color:var(--bg);font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;transition:background .2s,transform .22s var(--ease);text-decoration:none" onmouseover="this.style.background='var(--accent)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='var(--ink)';this.style.transform=''">Richiedi sopralluogo &rarr;</a>
+        <a href="#zone" style="display:inline-flex;align-items:center;gap:8px;min-height:50px;padding:0 26px;border-radius:999px;background:transparent;color:var(--ink);border:1.5px solid rgba(14,12,10,.2);font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;transition:background .2s;text-decoration:none" onmouseover="this.style.background='rgba(14,12,10,.05)'" onmouseout="this.style.background='transparent'">Zone coperte</a>
+      </div>
+    </div>
+    <div class="hero-logo-wrap reveal">
+      <a href="https://www.l2traslochi.it" target="_blank" rel="noopener" aria-label="Vai al sito L2 Traslochi">
+        <img src="logo l2 traslochi.png" alt="L2 Traslochi" width="400" height="400" decoding="async">
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Svuotacantine</span><span class="dot">&middot;</span><span>Sgombero garage</span><span class="dot">&middot;</span><span>Ritiro oggetti</span><span class="dot">&middot;</span><span>Valutazione gratuita</span><span class="dot">&middot;</span><span>Vicenza</span><span class="dot">&middot;</span><span>Padova</span><span class="dot">&middot;</span><span>Verona</span><span class="dot">&middot;</span><span>Venezia</span><span class="dot">&middot;</span><span>L2 Traslochi</span><span class="dot">&middot;</span>
+    <span>Svuotacantine</span><span class="dot">&middot;</span><span>Sgombero garage</span><span class="dot">&middot;</span><span>Ritiro oggetti</span><span class="dot">&middot;</span><span>Valutazione gratuita</span><span class="dot">&middot;</span><span>Vicenza</span><span class="dot">&middot;</span><span>Padova</span><span class="dot">&middot;</span><span>Verona</span><span class="dot">&middot;</span><span>Venezia</span><span class="dot">&middot;</span><span>L2 Traslochi</span><span class="dot">&middot;</span>
+  </div>
+</div>
+
+<!-- COME FUNZIONA -->
+<section id="come">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="sec-label">Il processo</p>
+      <h2 class="h2">Come<br>funziona</h2>
+      <div class="divider-line"></div>
+      <p class="body-copy">Quattro passi semplici. Nessuna spesa per te, nessun obbligo. Se c&rsquo;&egrave; qualcosa di valore lo ritiro e lo pago, il resto lo gestisco io.</p>
+    </div>
+    <div class="steps-grid reveal">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-icon">📸</div>
+        <h3 class="step-title">Mi contatti</h3>
+        <p class="step-desc">Mi scrivi o mi chiami. Descrivi la situazione: cantina, garage, appartamento. Allega qualche foto se puoi.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-icon">🔍</div>
+        <h3 class="step-title">Sopralluogo gratuito</h3>
+        <p class="step-desc">Vengo sul posto, valuto il contenuto senza impegno. Nessuna spesa per il sopralluogo.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-icon">🤝</div>
+        <h3 class="step-title">Accordo</h3>
+        <p class="step-desc">Ti faccio una proposta: ritiro quello che ha valore e lo pago, il resto lo sgombero con L2Traslochi.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">04</div>
+        <div class="step-icon">✅</div>
+        <h3 class="step-title">Spazio libero</h3>
+        <p class="step-desc">Cantina svuotata, pagamento effettuato per gli oggetti di valore, senza stress e senza costi nascosti.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ZONE -->
+<section id="zone">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="sec-label">Dove operiamo</p>
+      <h2 class="h2">Quasi tutto<br>il Veneto</h2>
+      <div class="divider-line"></div>
+      <p class="body-copy">Opero in quasi tutto il Veneto, con focus sulle principali province. Per localit&agrave; fuori zona scrivimi comunque &mdash; valutiamo insieme.</p>
+    </div>
+    <div class="zone-grid reveal">
+      <div class="zone-card">
+        <div class="zone-icon">🏛️</div>
+        <h3 class="zone-city">Vicenza</h3>
+        <p class="zone-prov">e provincia</p>
+        <p class="zone-note">Zona principale di operativit&agrave;. Risposta rapida.</p>
+      </div>
+      <div class="zone-card">
+        <div class="zone-icon">🌿</div>
+        <h3 class="zone-city">Padova</h3>
+        <p class="zone-prov">e provincia</p>
+        <p class="zone-note">Area coperta regolarmente. Disponibile.</p>
+      </div>
+      <div class="zone-card">
+        <div class="zone-icon">🏰</div>
+        <h3 class="zone-city">Verona</h3>
+        <p class="zone-prov">e provincia</p>
+        <p class="zone-note">Coperta su richiesta con preavviso.</p>
+      </div>
+      <div class="zone-card">
+        <div class="zone-icon">🚢</div>
+        <h3 class="zone-city">Venezia</h3>
+        <p class="zone-prov">e provincia (terra)</p>
+        <p class="zone-note">Mestre e hinterland. Da concordare.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- L2 TRASLOCHI -->
+<section id="l2">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="sec-label">In collaborazione con</p>
+      <h2 class="h2">Sgomberi<br>completi</h2>
+      <div class="divider-line"></div>
+      <p class="body-copy">Questo servizio è gestito direttamente da me attraverso <strong>L2 Traslochi</strong>, la mia azienda di sgomberi e traslochi. Un solo interlocutore, dall&rsquo;inizio alla fine.</p>
+    </div>
+    <div class="l2-card reveal">
+      <div>
+        <div class="l2-badge">🏢 La mia azienda</div>
+        <h3 class="l2-title">L2 Traslochi<br>&amp; Sgomberi</h3>
+        <p class="l2-desc">Sgomberi cantine, garage e appartamenti in tutto il Veneto. Sono io che gestisco direttamente ogni intervento: rapidità, serietà, nessuna sorpresa.</p>
+        <a href="https://l2traslochi.it/l2traslochi-it-sgombero-cantina-garage-vicenza/" target="_blank" rel="noopener" class="l2-btn">Richiedi preventivo sgombero &rarr;</a>
+      </div>
+      <div class="l2-visual">
+        <div class="l2-stat">
+          <div class="l2-stat-num caramel">100%</div>
+          <div class="l2-stat-label">Veneto coperto</div>
+        </div>
+        <div class="l2-stat">
+          <div class="l2-stat-num" style="color:#fff">1&nbsp;call</div>
+          <div class="l2-stat-label">Per tutto</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATTO -->
+<section id="contatto">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="sec-label">Scrivimi</p>
+      <h2 class="h2">Richiedi un<br>sopralluogo</h2>
+      <div class="divider-line"></div>
+    </div>
+    <div class="contact-grid reveal">
+      <div class="contact-form-wrap">
+        <h3 class="form-title">Raccontami la situazione</h3>
+        <p class="form-sub">Descrivi cosa c&rsquo;&egrave; da sgomberare e dove. Ti rispondo entro 24&ndash;48 ore.</p>
+        <form id="contactForm">
+          <div class="form-group">
+            <label class="form-label" for="fname">Nome</label>
+            <input class="form-input" type="text" id="fname" name="Nome" placeholder="Il tuo nome" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="femail">Email o telefono</label>
+            <input class="form-input" type="text" id="femail" name="Contatto" placeholder="Come ti ricontatto" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="fzone">Zona</label>
+            <select class="form-select" id="fzone" name="Zona">
+              <option value="">Seleziona provincia...</option>
+              <option>Vicenza e provincia</option>
+              <option>Padova e provincia</option>
+              <option>Verona e provincia</option>
+              <option>Venezia e provincia</option>
+              <option>Altra zona</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="fmsg">Cosa c&rsquo;&egrave; da sgomberare?</label>
+            <textarea class="form-textarea" id="fmsg" name="Messaggio" placeholder="Cantina, garage, appartamento... quanti anni di roba ci sono, se sai cos&rsquo;c&rsquo;&egrave; di interessante..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit">Invia richiesta &rarr;</button>
+        </form>
+      </div>
+      <div>
+        <p class="sec-label" style="margin-bottom:20px">Contatti diretti</p>
+        <div class="contact-info-card">
+          <span class="ci-icon">✉️</span>
+          <div>
+            <p class="ci-label">Email</p>
+            <p class="ci-value"><a href="mailto:lltraslochi@gmail.com">lltraslochi@gmail.com</a></p>
+            <p class="ci-note">Risposta entro 24&ndash;48 ore</p>
+          </div>
+        </div>
+        <div class="contact-info-card">
+          <span class="ci-icon">📍</span>
+          <div>
+            <p class="ci-label">Zona principale</p>
+            <p class="ci-value">Vicenza e provincia</p>
+            <p class="ci-note">Opero anche a Padova, Verona e Venezia</p>
+          </div>
+        </div>
+        <div class="contact-info-card">
+          <span class="ci-icon">🤝</span>
+          <div>
+            <p class="ci-label">Sgomberi completi</p>
+            <p class="ci-value">L2 Traslochi</p>
+            <p class="ci-note">Un solo contatto per tutto: valutazione + sgombero</p>
+          </div>
+        </div>
+        <div style="margin-top:24px;background:rgba(192,112,48,.08);border:1px solid rgba(192,112,48,.2);border-radius:16px;padding:18px">
+          <p style="font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 6px">Cosa succede dopo</p>
+          <p style="font-size:13px;color:rgba(30,27,23,.65);line-height:1.68;margin:0">Ricevuta la richiesta, fissiamo un sopralluogo gratuito. Valuto il contenuto e ti faccio una proposta concreta — senza obblighi.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <p class="foot-brand">Ramacciato <em>Vintage</em></p>
+        <p class="foot-tagline serif">&ldquo;Own what you buy.&rdquo;</p>
+        <p class="foot-contact"><a href="mailto:lltraslochi@gmail.com">lltraslochi@gmail.com</a></p>
+        <p class="foot-piva">Luca Ramacciato · Vicenza<br><strong>P.IVA</strong> IT04400570240</p>
+      </div>
+      <div>
+        <p class="foot-col-title">Esplora</p>
+        <ul class="foot-links">
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="mercatini.html">Mercatini</a></li>
+          <li><a href="index.html#collezioni">Categorie</a></li>
+          <li><a href="index.html#acquista">Come acquistare</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-col-title">Contatti</p>
+        <ul class="foot-links">
+          <li><a href="svuotacantine.html">Svuotacantine</a></li>
+          <li><a href="mailto:lltraslochi@gmail.com">Email</a></li>
+          <li><a href="#" aria-label="Instagram">Instagram</a></li>
+          <li><a href="https://www.youtube.com/@archivioilcustode" target="_blank" rel="noopener">YouTube</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-col-title">Legale</p>
+        <ul class="foot-links">
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="termini-di-servizio.html">Termini di Servizio</a></li>
+          <li><a href="cookie-policy.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div class="foot-bottom-left"><span>&copy; 2026 Ramacciato Vintage — Luca Ramacciato — P.IVA IT04400570240 — Vicenza</span></div>
+      <div class="foot-legal">
+        <a href="privacy-policy.html">Privacy Policy</a><span>·</span>
+        <a href="termini-di-servizio.html">Termini di Servizio</a><span>·</span>
+        <a href="cookie-policy.html">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+var menuBtn=document.getElementById('menuBtn'),mob=document.getElementById('mobileMenu'),mobClose=document.getElementById('mobClose');
+if(menuBtn&&mob)menuBtn.addEventListener('click',function(){mob.classList.add('open')});
+if(mobClose)mobClose.addEventListener('click',function(){mob.classList.remove('open')});
+var cB=document.getElementById('cursorBig'),cD=document.getElementById('cursorDot');
+if(cB&&cD)document.addEventListener('mousemove',function(e){var t='translate(calc(-50% + '+e.clientX+'px), calc(-50% + '+e.clientY+'px))';cB.style.transform=t;cD.style.transform=t});
+var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+(function(){
+  var brandText=document.querySelector('.brand-text');
+  if(!brandText) return;
+  var bTurb=document.getElementById('brandTurb');
+  var bDisplace=document.getElementById('brandDisplace');
+  if(!bTurb||!bDisplace) return;
+  var phase=0,scale=0,targetScale=0,rafId=null;
+  function animateBrand(){
+    scale+=(targetScale-scale)*0.08;
+    if(scale>0.3){phase+=0.04;bTurb.setAttribute('baseFrequency',(0.025+Math.sin(phase*1.1)*0.012)+' '+(0.018+Math.sin(phase*0.7)*0.008));bDisplace.setAttribute('scale',scale);}
+    else{bDisplace.setAttribute('scale',0);if(targetScale===0){cancelAnimationFrame(rafId);rafId=null;brandText.style.filter='';return;}}
+    rafId=requestAnimationFrame(animateBrand);
+  }
+  var brandEl=document.querySelector('.brand');
+  if(brandEl){
+    brandEl.addEventListener('mouseenter',function(){targetScale=18;brandText.style.filter='url(#brand-wave)';if(!rafId)rafId=requestAnimationFrame(animateBrand)});
+    brandEl.addEventListener('mouseleave',function(){targetScale=0;if(!rafId)rafId=requestAnimationFrame(animateBrand)});
+  }
+})();
+document.getElementById('contactForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  var name=document.getElementById('fname').value;
+  var contact=document.getElementById('femail').value;
+  var zone=document.getElementById('fzone').value;
+  var msg=document.getElementById('fmsg').value;
+  var body='Nome: '+name+'\nContatto: '+contact+'\nZona: '+zone+'\n\nDescrizione:\n'+msg;
+  window.location.href='mailto:lltraslochi@gmail.com?subject='+encodeURIComponent('Richiesta svuotacantine - '+zone)+'&body='+encodeURIComponent(body);
+});
+</script>
+<script src="cart-widget.js" defer></script>
+<script src="cart-widget.js" defer></script>
+</body>
+</html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        

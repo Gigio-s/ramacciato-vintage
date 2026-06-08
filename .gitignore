@@ -1,0 +1,15 @@
+# Backup e file temporanei
+backup sito/
+scartati/
+*.bak
+*.tmp
+webdesign/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+*.swp

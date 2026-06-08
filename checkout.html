@@ -1,0 +1,933 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Checkout — Ramacciato Vintage">
+<link rel="icon" type="image/png" href="logo no sfondo.png">
+<title>Checkout | Ramacciato Vintage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,800;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+/* ── Root ──────────────────────────────────────────────── */
+:root{
+  --bg:#f0ebe3;--paper:#faf6f0;--ink:#0e0c0a;--dark:#1e1b17;
+  --muted:#7a7168;--line:rgba(14,12,10,.11);
+  --accent:#8b3e10;--accent2:#c07030;
+  --max:1100px;--ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;overflow-x:hidden;background:var(--bg);
+  color:var(--ink);font-family:'Archivo',Arial,sans-serif;line-height:1.6}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.022;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-size:180px}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+.wrap{width:min(var(--max),calc(100% - 48px));margin:auto;position:relative;z-index:2}
+.serif{font-family:'Cormorant Garamond',Georgia,serif}
+
+/* ── Ambient ───────────────────────────────────────────── */
+.ambient{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.blob{position:absolute;border-radius:50%}
+.blob.a{width:600px;height:600px;right:-220px;top:-200px;background:radial-gradient(circle,rgba(192,112,48,.18) 0%,transparent 65%)}
+.blob.b{width:500px;height:500px;left:-200px;bottom:-120px;background:radial-gradient(circle,rgba(212,205,195,.5) 0%,transparent 65%)}
+
+/* ── Nav ───────────────────────────────────────────────── */
+.top{position:fixed;inset:16px 0 auto;z-index:20;pointer-events:none}
+.nav{min-height:62px;display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:10px 14px 10px 20px;border:1px solid rgba(255,255,255,.75);border-radius:999px;
+  background:rgba(240,235,227,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 14px 44px rgba(14,12,10,.09),0 1px 0 rgba(255,255,255,.6) inset;pointer-events:auto}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;text-transform:uppercase;letter-spacing:.01em;font-size:13.5px}
+.brand img{width:32px;height:32px;object-fit:contain;mix-blend-mode:multiply;filter:contrast(1.1) brightness(.9)}
+.nav-back{display:flex;align-items:center;gap:7px;font-size:10.5px;font-weight:800;letter-spacing:.12em;
+  text-transform:uppercase;color:rgba(30,27,23,.55);transition:color .2s}
+.nav-back:hover{color:var(--accent)}
+.nav-back svg{width:14px;height:14px}
+.nav-step{display:flex;align-items:center;gap:8px}
+.step-pill{display:flex;align-items:center;gap:6px;font-size:9.5px;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);padding:6px 14px;border-radius:999px;
+  border:1px solid var(--line);background:rgba(250,246,240,.7)}
+.step-pill.active{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.step-sep{font-size:10px;color:var(--muted)}
+
+/* ── Page layout ───────────────────────────────────────── */
+.ck-page{padding:108px 0 100px;position:relative;z-index:1}
+.ck-heading{margin-bottom:40px}
+.ck-heading .sec-label{display:inline-flex;align-items:center;gap:10px;font-size:10px;font-weight:800;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.ck-heading .sec-label::before{content:"";width:22px;height:1px;background:var(--accent2)}
+.ck-heading h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(32px,5vw,52px);
+  font-weight:600;letter-spacing:-.04em;margin:0;line-height:1.05}
+
+/* Two-column grid */
+.ck-grid{display:grid;grid-template-columns:1fr 380px;gap:32px;align-items:start}
+@media(max-width:860px){.ck-grid{grid-template-columns:1fr}}
+
+/* ── Sections ──────────────────────────────────────────── */
+.ck-section{background:rgba(250,246,240,.88);border:1px solid rgba(255,255,255,.85);
+  border-radius:20px;padding:28px;box-shadow:0 8px 28px rgba(14,12,10,.06);margin-bottom:16px}
+.ck-section:last-child{margin-bottom:0}
+.ck-section-title{font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 20px;display:flex;align-items:center;gap:10px}
+.ck-section-title::before{content:"";width:16px;height:1px;background:var(--accent2)}
+
+/* ── Cart items ────────────────────────────────────────── */
+.cart-item{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}
+.cart-item:last-child{border-bottom:none}
+.cart-item-emoji{font-size:28px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;
+  background:rgba(14,12,10,.04);border-radius:10px;flex-shrink:0}
+.cart-item-body{flex:1;min-width:0}
+.cart-item-name{font-size:14px;font-weight:800;letter-spacing:-.01em;margin-bottom:2px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cart-item-cat{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.cart-item-price{font-family:'Cormorant Garamond',Georgia,serif;font-size:20px;font-weight:600;
+  letter-spacing:-.02em;flex-shrink:0}
+.cart-empty{text-align:center;padding:40px 20px;color:var(--muted)}
+.cart-empty p{font-size:32px;margin:0 0 8px}
+.cart-empty span{font-size:13px;font-weight:600}
+
+/* ── Shipping ──────────────────────────────────────────── */
+.ship-options{display:flex;flex-direction:column;gap:10px}
+.ship-option{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:14px;
+  border:1.5px solid var(--line);background:rgba(250,246,240,.6);cursor:pointer;
+  transition:border-color .2s,background .2s;user-select:none}
+.ship-option:hover{background:rgba(250,246,240,.95)}
+.ship-option input[type=radio]{display:none}
+.ship-option.selected{border-color:var(--accent);background:rgba(139,62,16,.05)}
+.ship-radio{width:18px;height:18px;border-radius:50%;border:2px solid var(--line);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;transition:border-color .2s}
+.ship-option.selected .ship-radio{border-color:var(--accent)}
+.ship-radio::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);
+  opacity:0;transform:scale(0);transition:opacity .18s,transform .18s}
+.ship-option.selected .ship-radio::after{opacity:1;transform:scale(1)}
+.ship-label{flex:1}
+.ship-name{font-size:13px;font-weight:800;letter-spacing:-.01em}
+.ship-days{font-size:11px;color:var(--muted);font-weight:600;margin-top:1px}
+.ship-price{font-family:'Cormorant Garamond',Georgia,serif;font-size:20px;font-weight:600;color:var(--ink)}
+.ship-free{font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent);margin-top:10px;text-align:center}
+.ship-free.hidden{display:none}
+
+/* ── Invoice ───────────────────────────────────────────── */
+.invoice-toggle-row{display:flex;align-items:center;justify-content:space-between}
+.invoice-label{display:flex;align-items:center;gap:12px;cursor:pointer;user-select:none}
+.invoice-label span{font-size:13px;font-weight:700}
+.invoice-label small{font-size:11px;color:var(--muted);display:block;margin-top:1px}
+.toggle-switch{position:relative;width:44px;height:24px;flex-shrink:0}
+.toggle-switch input{display:none}
+.toggle-track{display:block;width:44px;height:24px;border-radius:999px;background:rgba(14,12,10,.12);
+  transition:background .22s;cursor:pointer}
+.toggle-switch input:checked+.toggle-track{background:var(--accent)}
+.toggle-thumb{position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;
+  background:#fff;box-shadow:0 1px 4px rgba(14,12,10,.18);transition:left .22s var(--ease);pointer-events:none}
+.toggle-switch input:checked~.toggle-thumb{left:23px}
+
+.invoice-form{margin-top:22px;display:none;flex-direction:column;gap:14px}
+.invoice-form.visible{display:flex}
+
+.tipo-tabs{display:flex;gap:8px;margin-bottom:4px}
+.tipo-tab{flex:1;padding:10px;border-radius:10px;border:1.5px solid var(--line);background:transparent;
+  font-family:inherit;font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted);cursor:pointer;transition:all .18s;text-align:center}
+.tipo-tab.active{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-row.full{grid-template-columns:1fr}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group label{font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.form-group input,.form-group select{font-family:inherit;font-size:13px;font-weight:600;color:var(--ink);
+  background:rgba(250,246,240,.95);border:1.5px solid rgba(14,12,10,.14);border-radius:10px;
+  padding:10px 14px;outline:none;transition:border-color .18s;width:100%}
+.form-group input:focus,.form-group select:focus{border-color:var(--accent2)}
+.form-group input.error{border-color:#c0392b}
+.form-note{font-size:11px;color:var(--muted);line-height:1.5;margin-top:4px}
+
+/* ── Right column ──────────────────────────────────────── */
+.ck-right{position:sticky;top:100px}
+.ck-summary{background:rgba(250,246,240,.92);border:1px solid rgba(255,255,255,.9);border-radius:20px;
+  padding:26px;box-shadow:0 12px 36px rgba(14,12,10,.08);margin-bottom:16px}
+.sum-row{display:flex;justify-content:space-between;align-items:baseline;
+  font-size:13px;color:rgba(30,27,23,.65);font-weight:600;margin-bottom:10px}
+.sum-row:last-of-type{margin-bottom:16px}
+.sum-row span:last-child{font-weight:800;color:var(--ink)}
+.sum-sep{height:1px;background:var(--line);margin:14px 0}
+.sum-total{display:flex;justify-content:space-between;align-items:baseline}
+.sum-total span:first-child{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.sum-total-amount{font-family:'Cormorant Garamond',Georgia,serif;font-size:36px;font-weight:600;
+  letter-spacing:-.03em;color:var(--ink)}
+
+/* ── Payment ───────────────────────────────────────────── */
+.ck-payment{background:rgba(250,246,240,.92);border:1px solid rgba(255,255,255,.9);border-radius:20px;
+  padding:26px;box-shadow:0 12px 36px rgba(14,12,10,.08)}
+.pay-title{font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 18px;display:flex;align-items:center;gap:10px}
+.pay-title::before{content:"";width:16px;height:1px;background:var(--accent2)}
+
+#paypal-button-container{min-height:50px;border-radius:14px;overflow:hidden}
+#paypal-button-container.loading{background:rgba(0,112,186,.08);display:flex;align-items:center;
+  justify-content:center;min-height:50px}
+
+.pay-or{display:flex;align-items:center;gap:12px;margin:14px 0;color:var(--muted);font-size:11px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase}
+.pay-or::before,.pay-or::after{content:"";flex:1;height:1px;background:var(--line)}
+
+.stripe-btn{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;min-height:50px;
+  border-radius:999px;background:rgba(14,12,10,.06);border:1.5px solid rgba(14,12,10,.14);
+  font-family:inherit;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(30,27,23,.6);cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.stripe-btn:hover{background:rgba(14,12,10,.1);border-color:rgba(14,12,10,.22);color:var(--ink)}
+.stripe-btn svg{width:16px;height:16px;flex-shrink:0}
+
+.stripe-coming{margin-top:10px;text-align:center;font-size:11px;color:var(--muted);
+  background:rgba(14,12,10,.04);border-radius:10px;padding:10px 14px;line-height:1.5;display:none}
+.stripe-coming.visible{display:block}
+
+.pay-secure{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:16px;
+  font-size:10.5px;color:var(--muted);font-weight:700;letter-spacing:.06em}
+.pay-secure svg{width:12px;height:12px;opacity:.55}
+
+/* ── Error toast ───────────────────────────────────────── */
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:#c0392b;color:#fff;font-size:12px;font-weight:800;letter-spacing:.06em;
+  padding:12px 22px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.18);
+  opacity:0;pointer-events:none;transition:opacity .22s,transform .22s;z-index:999;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ── Footer ────────────────────────────────────────────── */
+footer{background:var(--dark);color:rgba(250,246,240,.75);position:relative;z-index:1}
+.foot-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:32px;padding:52px 0 40px}
+.foot-brand-name{font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.04em;
+  color:rgba(250,246,240,.92);margin-bottom:10px}
+.foot-piva{font-size:11px;color:rgba(250,246,240,.45);line-height:1.6;margin-bottom:14px}
+.foot-col-title{font-size:9px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(250,246,240,.38);margin-bottom:14px}
+.foot-links{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+.foot-links a{font-size:12.5px;color:rgba(250,246,240,.6);transition:color .18s;font-weight:600}
+.foot-links a:hover{color:rgba(250,246,240,.95)}
+.foot-bottom{border-top:1px solid rgba(250,246,240,.08);padding:18px 0;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.foot-copy{font-size:11px;color:rgba(250,246,240,.32)}
+.foot-legal-links{display:flex;gap:20px}
+.foot-legal-links a{font-size:11px;color:rgba(250,246,240,.32);transition:color .18s}
+.foot-legal-links a:hover{color:rgba(250,246,240,.7)}
+@media(max-width:780px){
+  .foot-grid{grid-template-columns:1fr 1fr;gap:28px;padding:40px 0 28px}
+  .foot-bottom{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:480px){.foot-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="ambient"><div class="blob a"></div><div class="blob b"></div></div>
+
+<!-- NAV -->
+<header class="top">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <img src="logo no sfondo.png" alt="Ramacciato Vintage">
+      <span>Ramacciato <span style="color:var(--accent)">Vintage</span></span>
+    </a>
+    <div class="nav-step">
+      <div class="step-pill">Carrello</div>
+      <span class="step-sep">›</span>
+      <div class="step-pill active">Checkout</div>
+      <span class="step-sep">›</span>
+      <div class="step-pill">Conferma</div>
+    </div>
+    <a class="nav-back" href="shop.html">
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2L4 7l5 5"/></svg>
+      Torna allo shop
+    </a>
+  </div>
+</header>
+
+<!-- CHECKOUT -->
+<main class="ck-page">
+  <div class="wrap">
+
+    <div class="ck-heading">
+      <div class="sec-label">Pagamento sicuro</div>
+      <h1 class="serif">Il tuo ordine</h1>
+    </div>
+
+    <div class="ck-grid">
+      <!-- LEFT -->
+      <div class="ck-left">
+
+        <!-- 1. Riepilogo articoli -->
+        <div class="ck-section">
+          <div class="ck-section-title">Articoli nel carrello</div>
+          <div id="cart-items-list">
+            <div class="cart-empty"><p>🛒</p><span>Carrello vuoto</span></div>
+          </div>
+        </div>
+
+        <!-- 2. Spedizione -->
+        <div class="ck-section">
+          <div class="ck-section-title">Destinazione spedizione</div>
+          <div class="ship-options" id="ship-options">
+            <div class="ship-option selected" data-zone="italia">
+              <input type="radio" name="spedizione" value="italia" checked>
+              <div class="ship-radio"></div>
+              <div class="ship-label">
+                <div class="ship-name">Italia — Spedizione Standard</div>
+                <div class="ship-days">3–5 giorni lavorativi</div>
+              </div>
+              <div class="ship-price" id="ship-price-italia">€5,90</div>
+            </div>
+            <div class="ship-option" data-zone="europa">
+              <input type="radio" name="spedizione" value="europa">
+              <div class="ship-radio"></div>
+              <div class="ship-label">
+                <div class="ship-name">Europa — Spedizione Internazionale</div>
+                <div class="ship-days">7–14 giorni lavorativi</div>
+              </div>
+              <div class="ship-price" id="ship-price-europa">€12,90</div>
+            </div>
+          </div>
+          <div class="ship-free hidden" id="ship-free-notice">
+            🎉 Spedizione gratuita sopra €<span id="ship-free-threshold">50</span>!
+          </div>
+        </div>
+
+        <!-- 3. Dati destinatario -->
+        <div class="ck-section">
+          <div class="ck-section-title">Indirizzo di consegna</div>
+          <div class="invoice-form visible" id="address-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Nome *</label>
+                <input type="text" id="ship-nome" placeholder="Mario" autocomplete="given-name">
+              </div>
+              <div class="form-group">
+                <label>Cognome *</label>
+                <input type="text" id="ship-cognome" placeholder="Rossi" autocomplete="family-name">
+              </div>
+            </div>
+            <div class="form-row full">
+              <div class="form-group">
+                <label>Indirizzo *</label>
+                <input type="text" id="ship-indirizzo" placeholder="Via Roma 12" autocomplete="street-address">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>CAP *</label>
+                <input type="text" id="ship-cap" placeholder="00100" maxlength="10" autocomplete="postal-code">
+              </div>
+              <div class="form-group">
+                <label>Città *</label>
+                <input type="text" id="ship-citta" placeholder="Roma" autocomplete="address-level2">
+              </div>
+            </div>
+            <div class="form-row full">
+              <div class="form-group">
+                <label>Nazione *</label>
+                <select id="ship-nazione" autocomplete="country">
+                  <option value="IT" selected>🇮🇹 Italia</option>
+                  <option value="DE">🇩🇪 Germania</option>
+                  <option value="FR">🇫🇷 Francia</option>
+                  <option value="ES">🇪🇸 Spagna</option>
+                  <option value="AT">🇦🇹 Austria</option>
+                  <option value="CH">🇨🇭 Svizzera</option>
+                  <option value="BE">🇧🇪 Belgio</option>
+                  <option value="NL">🇳🇱 Paesi Bassi</option>
+                  <option value="PT">🇵🇹 Portogallo</option>
+                  <option value="PL">🇵🇱 Polonia</option>
+                  <option value="OTHER">Altro paese europeo</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row full">
+              <div class="form-group">
+                <label>Email (per conferma ordine) *</label>
+                <input type="email" id="ship-email" placeholder="mario@esempio.it" autocomplete="email">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Fattura (opzionale) -->
+        <div class="ck-section">
+          <div class="invoice-toggle-row">
+            <div class="invoice-label">
+              <div>
+                <span>Richiedo fattura</span>
+                <small>Necessario se acquisti come azienda o libero professionista</small>
+              </div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="invoice-toggle">
+              <div class="toggle-track"></div>
+              <div class="toggle-thumb"></div>
+            </label>
+          </div>
+
+          <div class="invoice-form" id="invoice-form">
+            <div class="tipo-tabs">
+              <button class="tipo-tab active" data-tipo="privato">Privato</button>
+              <button class="tipo-tab" data-tipo="azienda">Azienda / Professionista</button>
+            </div>
+
+            <!-- Privato -->
+            <div id="inv-privato">
+              <div class="form-row full">
+                <div class="form-group">
+                  <label>Codice Fiscale</label>
+                  <input type="text" id="inv-cf" placeholder="RSSMRA80A01H501Z" maxlength="16" autocomplete="off">
+                  <p class="form-note">Necessario per la fattura intestata a persona fisica.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Azienda -->
+            <div id="inv-azienda" style="display:none;flex-direction:column;gap:14px">
+              <div class="form-row full">
+                <div class="form-group">
+                  <label>Ragione Sociale *</label>
+                  <input type="text" id="inv-rs" placeholder="Acme S.r.l." autocomplete="organization">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Partita IVA *</label>
+                  <input type="text" id="inv-piva" placeholder="IT12345678901" maxlength="13" autocomplete="off">
+                </div>
+                <div class="form-group">
+                  <label>Codice SDI</label>
+                  <input type="text" id="inv-sdi" placeholder="XXXXXXX" maxlength="7" autocomplete="off">
+                </div>
+              </div>
+              <div class="form-row full">
+                <div class="form-group">
+                  <label>PEC (alternativa a SDI)</label>
+                  <input type="email" id="inv-pec" placeholder="fatture@pec.esempio.it" autocomplete="off">
+                </div>
+              </div>
+              <p class="form-note">La fattura elettronica verrà emessa entro 12 giorni dalla spedizione.</p>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /ck-left -->
+
+      <!-- RIGHT -->
+      <div class="ck-right">
+
+        <!-- Riepilogo costi -->
+        <div class="ck-summary">
+          <div class="sum-row">
+            <span>Subtotale</span>
+            <span id="sum-subtotal">€0,00</span>
+          </div>
+          <div class="sum-row">
+            <span>Spedizione (<span id="sum-zone-label">Italia</span>)</span>
+            <span id="sum-shipping">€5,90</span>
+          </div>
+          <div class="sum-sep"></div>
+          <div class="sum-total">
+            <span>Totale</span>
+            <div class="sum-total-amount serif" id="sum-total">€0,00</div>
+          </div>
+        </div>
+
+        <!-- Pagamento -->
+        <div class="ck-payment">
+          <div class="pay-title">Metodo di pagamento</div>
+
+          <!-- PayPal -->
+          <div id="paypal-button-container" class="loading">
+            <span style="font-size:12px;color:var(--muted);font-weight:700">Caricamento PayPal…</span>
+          </div>
+
+          <div class="pay-or">oppure</div>
+
+          <!-- Stripe / Carta -->
+          <button class="stripe-btn" id="stripe-btn" type="button">
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M1 6h14" stroke="currentColor" stroke-width="1.5"/>
+              <rect x="3" y="9" width="3" height="1.5" rx=".5" fill="currentColor"/>
+            </svg>
+            Paga con Carta di Credito
+          </button>
+          <div class="stripe-coming" id="stripe-coming">
+            ⚙️ Il pagamento con carta sarà disponibile a breve.<br>
+            Nel frattempo usa PayPal (accetta anche carte Visa/Mastercard).
+          </div>
+
+          <div class="pay-secure">
+            <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 1L2 2.5V6c0 2.2 1.7 4.2 4 4.9C9.3 10.2 11 8.2 11 6V2.5L6 1z" stroke="currentColor" stroke-width="1.2"/>
+            </svg>
+            Pagamento sicuro e crittografato
+          </div>
+        </div>
+
+      </div><!-- /ck-right -->
+    </div><!-- /ck-grid -->
+
+  </div>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand-name">Ramacciato Vintage</div>
+        <div class="foot-piva">P.IVA IT04400570240<br>Luca Ramacciato · Vicenza</div>
+        <div style="display:flex;gap:10px">
+          <a href="https://www.ebay.it" target="_blank" rel="noopener" style="font-size:11px;font-weight:800;color:rgba(250,246,240,.38);letter-spacing:.1em;text-transform:uppercase;transition:color .18s">eBay</a>
+          <a href="https://www.vinted.it" target="_blank" rel="noopener" style="font-size:11px;font-weight:800;color:rgba(250,246,240,.38);letter-spacing:.1em;text-transform:uppercase;transition:color .18s">Vinted</a>
+          <a href="https://www.catawiki.com" target="_blank" rel="noopener" style="font-size:11px;font-weight:800;color:rgba(250,246,240,.38);letter-spacing:.1em;text-transform:uppercase;transition:color .18s">Catawiki</a>
+        </div>
+      </div>
+      <div>
+        <div class="foot-col-title">Esplora</div>
+        <ul class="foot-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="mercatini.html">Mercatini</a></li>
+          <li><a href="vendi.html">Vendi con noi</a></li>
+          <li><a href="svuotacantine.html">Svuotacantine</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="foot-col-title">Contatti</div>
+        <ul class="foot-links">
+          <li><a href="mailto:ramacciatoluca@gmail.com">ramacciatoluca@gmail.com</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="foot-col-title">Legale</div>
+        <ul class="foot-links">
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="termini-di-servizio.html">Termini di Servizio</a></li>
+          <li><a href="cookie-policy.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="foot-copy">© 2025 Ramacciato Vintage · P.IVA IT04400570240 · Luca Ramacciato · Vicenza</span>
+      <div class="foot-legal-links">
+        <a href="privacy-policy.html">Privacy</a>
+        <a href="termini-di-servizio.html">Termini</a>
+        <a href="cookie-policy.html">Cookie</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════
+     PayPal JS SDK
+     ISTRUZIONE: sostituisci YOUR_PAYPAL_CLIENT_ID con il
+     Client ID che trovi in developer.paypal.com → Apps
+     Lascia currency=EUR e intent=capture
+════════════════════════════════════════════════════════ -->
+<script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=EUR&intent=capture&locale=it_IT" data-namespace="paypal_sdk"></script>
+
+<script>
+/* ═══════════════════════════════════════════════════════
+   CONFIGURAZIONE — modifica solo questi valori
+════════════════════════════════════════════════════════ */
+var CONFIG = {
+  paypal_client_id: 'YOUR_PAYPAL_CLIENT_ID', // ← sostituisci con il tuo
+  stripe_enabled: false,                      // ← metti true quando hai Stripe configurato
+  stripe_worker_url: '',                      // ← URL del Cloudflare Worker Stripe
+  spedizione: {
+    italia:  { costo: 5.90,  label: 'Italia',  giorni: '3–5 gg lavorativi' },
+    europa:  { costo: 12.90, label: 'Europa',  giorni: '7–14 gg lavorativi' }
+  },
+  gratuita_sopra: 50.00,  // spedizione gratuita sopra questa cifra
+  paypal_email:   'ramacciatoluca@gmail.com'
+};
+
+/* ═══════════════════════════════════════════════════════
+   STATO
+════════════════════════════════════════════════════════ */
+var state = {
+  cart:        [],
+  zona:        'italia',
+  wantsInvoice: false,
+  tipoFattura: 'privato'
+};
+
+/* ═══════════════════════════════════════════════════════
+   UTILITÀ
+════════════════════════════════════════════════════════ */
+function fmtPrice(n){ return '€' + n.toFixed(2).replace('.',','); }
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function getSubtotal(){
+  return state.cart.reduce(function(s,i){ return s + (i.price||0); }, 0);
+}
+function getShippingCost(){
+  var sub = getSubtotal();
+  if(sub >= CONFIG.gratuita_sopra) return 0;
+  return CONFIG.spedizione[state.zona].costo;
+}
+function getTotal(){
+  return getSubtotal() + getShippingCost();
+}
+
+function showToast(msg){
+  var t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 3200);
+}
+
+/* ═══════════════════════════════════════════════════════
+   CARRELLO — legge da localStorage
+════════════════════════════════════════════════════════ */
+function loadCart(){
+  try{ return JSON.parse(localStorage.getItem('rv_cart_v1')||'[]'); }
+  catch(e){ return []; }
+}
+
+function renderCartItems(){
+  state.cart = loadCart();
+  var el = document.getElementById('cart-items-list');
+  if(!state.cart.length){
+    el.innerHTML = '<div class="cart-empty"><p>🛒</p><span>Il carrello è vuoto — <a href="shop.html" style="color:var(--accent)">torna allo shop</a></span></div>';
+    return;
+  }
+  el.innerHTML = state.cart.map(function(item){
+    return '<div class="cart-item">'
+      +'<div class="cart-item-emoji">'+(item.emoji||'📦')+'</div>'
+      +'<div class="cart-item-body">'
+        +'<div class="cart-item-name">'+esc(item.name||'Articolo')+'</div>'
+        +'<div class="cart-item-cat">'+(item.cat||'')+'</div>'
+      +'</div>'
+      +'<div class="cart-item-price">'+fmtPrice(item.price||0)+'</div>'
+    +'</div>';
+  }).join('');
+}
+
+/* ═══════════════════════════════════════════════════════
+   SPEDIZIONE
+════════════════════════════════════════════════════════ */
+function initShipping(){
+  document.querySelectorAll('.ship-option').forEach(function(opt){
+    opt.addEventListener('click', function(){
+      state.zona = opt.dataset.zone;
+      document.querySelectorAll('.ship-option').forEach(function(o){ o.classList.remove('selected'); });
+      opt.classList.add('selected');
+      updateSummary();
+    });
+  });
+}
+
+/* ═══════════════════════════════════════════════════════
+   RIEPILOGO COSTI
+════════════════════════════════════════════════════════ */
+function updateSummary(){
+  var sub = getSubtotal();
+  var ship = getShippingCost();
+  var tot = sub + ship;
+  var conf = CONFIG.spedizione[state.zona];
+
+  document.getElementById('sum-subtotal').textContent = fmtPrice(sub);
+  document.getElementById('sum-zone-label').textContent = conf.label;
+  document.getElementById('sum-shipping').textContent = ship === 0 ? 'Gratuita 🎉' : fmtPrice(ship);
+  document.getElementById('sum-total').textContent = fmtPrice(tot);
+
+  var freeNotice = document.getElementById('ship-free-notice');
+  document.getElementById('ship-free-threshold').textContent = CONFIG.gratuita_sopra.toFixed(0);
+  if(sub < CONFIG.gratuita_sopra){
+    freeNotice.classList.remove('hidden');
+    freeNotice.innerHTML = '🛍️ Aggiungi '+fmtPrice(CONFIG.gratuita_sopra - sub)+' per la spedizione gratuita!';
+  } else {
+    freeNotice.innerHTML = '🎉 Hai la spedizione gratuita!';
+    freeNotice.classList.remove('hidden');
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   FATTURA TOGGLE
+════════════════════════════════════════════════════════ */
+function initInvoice(){
+  var toggle = document.getElementById('invoice-toggle');
+  var form   = document.getElementById('invoice-form');
+  toggle.addEventListener('change', function(){
+    state.wantsInvoice = toggle.checked;
+    form.classList.toggle('visible', toggle.checked);
+  });
+
+  document.querySelectorAll('.tipo-tab').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      state.tipoFattura = btn.dataset.tipo;
+      document.querySelectorAll('.tipo-tab').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('inv-privato').style.display = state.tipoFattura === 'privato' ? '' : 'none';
+      var az = document.getElementById('inv-azienda');
+      az.style.display = state.tipoFattura === 'azienda' ? 'flex' : 'none';
+    });
+  });
+}
+
+/* ═══════════════════════════════════════════════════════
+   VALIDAZIONE FORM
+════════════════════════════════════════════════════════ */
+function getRequired(id){ return document.getElementById(id); }
+function val(id){ return (document.getElementById(id)||{}).value||''; }
+
+function validateForm(){
+  var errors = [];
+  var fields = ['ship-nome','ship-cognome','ship-indirizzo','ship-cap','ship-citta','ship-email'];
+  fields.forEach(function(id){
+    var el = document.getElementById(id);
+    if(!el) return;
+    if(!el.value.trim()){
+      el.classList.add('error');
+      errors.push(id);
+    } else {
+      el.classList.remove('error');
+    }
+  });
+  if(val('ship-email') && !/\S+@\S+\.\S+/.test(val('ship-email'))){
+    document.getElementById('ship-email').classList.add('error');
+    errors.push('email-format');
+  }
+  if(state.wantsInvoice && state.tipoFattura === 'azienda'){
+    ['inv-rs','inv-piva'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el && !el.value.trim()){ el.classList.add('error'); errors.push(id); }
+    });
+  }
+  if(state.cart.length === 0) errors.push('empty-cart');
+  return errors;
+}
+
+/* ═══════════════════════════════════════════════════════
+   DATI FATTURA (da inserire nelle note ordine PayPal)
+════════════════════════════════════════════════════════ */
+function buildInvoiceNote(){
+  if(!state.wantsInvoice) return '';
+  var note = '[RICHIESTA FATTURA] ';
+  if(state.tipoFattura === 'privato'){
+    note += 'Privato - CF: '+(val('inv-cf')||'n.d.');
+  } else {
+    note += 'Azienda: '+(val('inv-rs')||'n.d.')
+      +' - P.IVA: '+(val('inv-piva')||'n.d.')
+      +' - SDI: '+(val('inv-sdi')||'n.d.')
+      +' - PEC: '+(val('inv-pec')||'n.d.');
+  }
+  return note;
+}
+
+function buildShippingAddress(){
+  return {
+    name:            val('ship-nome')+' '+val('ship-cognome'),
+    address_line_1:  val('ship-indirizzo'),
+    postal_code:     val('ship-cap'),
+    city:            val('ship-citta'),
+    country_code:    val('ship-nazione')||'IT'
+  };
+}
+
+/* ═══════════════════════════════════════════════════════
+   PAYPAL BUTTONS
+════════════════════════════════════════════════════════ */
+function initPayPal(){
+  var container = document.getElementById('paypal-button-container');
+
+  // Se client-id non configurato, mostra placeholder
+  if(CONFIG.paypal_client_id === 'YOUR_PAYPAL_CLIENT_ID'){
+    container.classList.remove('loading');
+    container.innerHTML =
+      '<div style="text-align:center;padding:14px;background:rgba(0,112,186,.06);border-radius:14px;">'
+      +'<p style="margin:0 0 6px;font-size:13px;font-weight:800;color:#0070ba;">PayPal non ancora configurato</p>'
+      +'<p style="margin:0;font-size:11px;color:var(--muted);">Sostituisci YOUR_PAYPAL_CLIENT_ID nel file checkout.html con il tuo Client ID da developer.paypal.com</p>'
+      +'</div>';
+    return;
+  }
+
+  // Controlla che il SDK sia caricato
+  if(typeof paypal_sdk === 'undefined'){
+    container.classList.remove('loading');
+    container.innerHTML =
+      '<div style="text-align:center;padding:14px;color:var(--muted);font-size:12px;">'
+      +'Impossibile caricare PayPal. Controlla la connessione.</div>';
+    return;
+  }
+
+  container.classList.remove('loading');
+
+  paypal_sdk.Buttons({
+    style: {
+      layout:  'vertical',
+      color:   'blue',
+      shape:   'pill',
+      label:   'pay',
+      height:  50
+    },
+
+    onClick: function(data, actions){
+      var errors = validateForm();
+      if(errors.length){
+        if(errors.includes('empty-cart')){
+          showToast('Il carrello è vuoto!');
+        } else {
+          showToast('Compila tutti i campi obbligatori prima di procedere');
+        }
+        return actions.reject();
+      }
+      return actions.resolve();
+    },
+
+    createOrder: function(data, actions){
+      var sub  = getSubtotal();
+      var ship = getShippingCost();
+      var tot  = sub + ship;
+      var items = state.cart.map(function(item){
+        return {
+          name: (item.name||'Articolo').substring(0,127),
+          quantity: '1',
+          unit_amount: { currency_code: 'EUR', value: (item.price||0).toFixed(2) },
+          category: 'PHYSICAL_GOODS'
+        };
+      });
+      var note = buildInvoiceNote();
+      var addr = buildShippingAddress();
+
+      return actions.order.create({
+        purchase_units: [{
+          description: (note || 'Ramacciato Vintage — Ordine').substring(0,127),
+          soft_descriptor: 'Ramacciato Vintage',
+          amount: {
+            currency_code: 'EUR',
+            value: tot.toFixed(2),
+            breakdown: {
+              item_total: { currency_code: 'EUR', value: sub.toFixed(2) },
+              shipping:   { currency_code: 'EUR', value: ship.toFixed(2) }
+            }
+          },
+          items: items,
+          shipping: {
+            name:    { full_name: addr.name },
+            address: {
+              address_line_1: addr.address_line_1,
+              postal_code:    addr.postal_code,
+              admin_area_2:   addr.city,
+              country_code:   addr.country_code
+            }
+          }
+        }],
+        application_context: {
+          brand_name: 'Ramacciato Vintage',
+          locale:     'it-IT',
+          shipping_preference: 'SET_PROVIDED_ADDRESS',
+          user_action: 'PAY_NOW',
+          return_url: window.location.origin + '/success.html',
+          cancel_url: window.location.href
+        }
+      });
+    },
+
+    onApprove: function(data, actions){
+      return actions.order.capture().then(function(orderData){
+        // Svuota carrello
+        localStorage.removeItem('rv_cart_v1');
+        // Salva dati ordine per success.html
+        var successData = {
+          orderId:   orderData.id,
+          payerId:   orderData.payer.payer_id,
+          email:     (orderData.payer.email_address || val('ship-email')),
+          nome:      val('ship-nome')+' '+val('ship-cognome'),
+          tot:       getTotal().toFixed(2),
+          fattura:   state.wantsInvoice,
+          ts:        Date.now()
+        };
+        sessionStorage.setItem('rv_order', JSON.stringify(successData));
+        window.location.href = 'success.html';
+      });
+    },
+
+    onError: function(err){
+      console.error('PayPal error:', err);
+      showToast('Errore nel pagamento PayPal. Riprova.');
+    },
+
+    onCancel: function(){
+      showToast('Pagamento annullato.');
+    }
+
+  }).render('#paypal-button-container');
+}
+
+/* ═══════════════════════════════════════════════════════
+   STRIPE (placeholder — attiva quando hai l'account)
+════════════════════════════════════════════════════════ */
+function initStripe(){
+  var btn     = document.getElementById('stripe-btn');
+  var note    = document.getElementById('stripe-coming');
+
+  if(CONFIG.stripe_enabled && CONFIG.stripe_worker_url){
+    // Stripe configurato: chiama il Cloudflare Worker
+    btn.addEventListener('click', async function(){
+      var errors = validateForm();
+      if(errors.length){ showToast('Compila tutti i campi prima di procedere'); return; }
+      btn.disabled = true;
+      btn.textContent = 'Reindirizzamento…';
+      try{
+        var resp = await fetch(CONFIG.stripe_worker_url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            items: state.cart,
+            shipping: state.zona,
+            customer_email: val('ship-email'),
+            invoice: state.wantsInvoice ? buildInvoiceNote() : null
+          })
+        });
+        var data = await resp.json();
+        if(data.url){ window.location.href = data.url; }
+        else { throw new Error('No URL'); }
+      } catch(e){
+        showToast('Errore con il pagamento via carta. Usa PayPal.');
+        btn.disabled = false;
+        btn.innerHTML = '💳 Paga con Carta di Credito';
+      }
+    });
+  } else {
+    // Non ancora configurato
+    btn.addEventListener('click', function(){
+      note.classList.toggle('visible');
+    });
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   INIT
+════════════════════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', function(){
+  renderCartItems();
+  initShipping();
+  updateSummary();
+  initInvoice();
+  initStripe();
+
+  // Aspetta il SDK PayPal prima di inizializzare i pulsanti
+  if(typeof paypal_sdk !== 'undefined'){
+    initPayPal();
+  } else {
+    window.addEventListener('load', function(){
+      setTimeout(initPayPal, 500);
+    });
+  }
+
+  // Rimuovi errore al cambio campo
+  document.querySelectorAll('input,select').forEach(function(el){
+    el.addEventListener('input', function(){ el.classList.remove('error'); });
+  });
+});
+</script>
+
+</body>
+</html>

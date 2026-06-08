@@ -1,0 +1,21 @@
+Shop — Griglia prodotti e scheda prodotto
+Struttura generale
+Layout a 2 colonne: sidebar filtri (220px, sticky) + griglia prodotti (3 colonne). Dati prodotti in array JS PRODUCTS[] — modificare lì per aggiungere/rimuovere articoli. Filtri per categoria e disponibilità; ordinamento per prezzo e novità.
+Prodotto standard
+Ogni prodotto ha: id, cat, name, desc, price, condition, sold, isNew, emoji, bg (gradiente CSS).
+Prodotto con modello 3D
+Aggiungere al prodotto: model: 'nomefile.glb', modelCredit (nome autore), modelCreditUrl (link Sketchfab o fonte), photos: []. Il file .glb va nella stessa cartella di shop.html. Script nel <head>: <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>. La card riceve automaticamente la classe product-card--3d (altezza ridotta 160px). Camera impostata con 120% del bounding box — sempre fuori dal modello.
+Attribuzione modello 3D (obbligatoria CC BY 4.0)
+Appare nel modal sotto i pulsanti PayPal e Carrello: testo visibile con link cliccabile all'autore su Sketchfab e link alla licenza CC BY 4.0. Attuale: "classic ps2" by jei3323 — https://skfb.ly/pysvK — CC BY 4.0. Si genera automaticamente dai campi modelCredit e modelCreditUrl del prodotto.
+Comportamento card
+Bordo e sfondo invisibili di default, appaiono solo all'hover. Prodotti 3D: auto-rotate nella card, nessun camera-controls per non bloccare lo scroll. Badge "Nuovo" arancione, badge "Venduto" scuro.
+Modal al click
+
+Prodotto standard: pannello sinistro = emoji su sfondo gradiente
+Prodotto 3D: pannello sinistro = model-viewer interattivo (camera-controls + auto-rotate); tab "Foto" appare automaticamente se photos[] contiene path di immagini reali
+Pannello destro: categoria, nome, prezzo, condizioni, descrizione, PayPal + carrello, attribuzione 3D (se presente)
+
+Carrello
+Drawer laterale da destra. Totale in tempo reale. Checkout via link PayPal con nome prodotti nel messaggio.
+Aggiungere foto reali a un prodotto 3D
+Popolare photos: ['foto1.jpg', 'foto2.jpg'] con path relativi — il tab Foto appare nel modal automaticamente.

@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Shop Ramacciato Vintage — Oggettistica vintage, modernariato, design e home decor selezionato.">
+<link rel="icon" type="image/png" href="logo no sfondo.png">
+<title>Shop | Ramacciato Vintage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,800;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+<script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+<style>
+:root{--bg:#f0ebe3;--paper:#faf6f0;--ink:#0e0c0a;--dark:#1e1b17;--muted:#7a7168;--line:rgba(14,12,10,.11);--accent:#8b3e10;--accent2:#c07030;--max:1180px;--ease:cubic-bezier(.22,1,.36,1)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;overflow-x:hidden;background:var(--bg);color:var(--ink);font-family:'Archivo',Arial,sans-serif;line-height:1.6}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");background-size:180px}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+.wrap{width:min(var(--max),calc(100% - 48px));margin:auto;position:relative;z-index:2}
+.serif{font-family:'Cormorant Garamond',Georgia,serif}
+.caramel{background:linear-gradient(138deg,var(--accent),var(--accent2) 40%,#e8aa60 65%,var(--accent2) 85%,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+.ambient{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.blob{position:absolute;border-radius:50%}
+.blob.a{width:600px;height:600px;right:-220px;top:-200px;background:radial-gradient(circle,rgba(192,112,48,.18) 0%,transparent 65%)}
+.blob.b{width:500px;height:500px;left:-200px;bottom:-120px;background:radial-gradient(circle,rgba(212,205,195,.5) 0%,transparent 65%)}
+.blob.c{width:360px;height:360px;left:38%;top:28%;background:radial-gradient(circle,rgba(192,112,48,.07) 0%,transparent 60%)}
+.top{position:fixed;inset:16px 0 auto;z-index:20;pointer-events:none}
+.nav{min-height:62px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:10px 14px 10px 20px;border:1px solid rgba(255,255,255,.75);border-radius:999px;background:rgba(240,235,227,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 14px 44px rgba(14,12,10,.09),0 1px 0 rgba(255,255,255,.6) inset;pointer-events:auto}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;text-transform:uppercase;letter-spacing:.01em;font-size:13.5px}
+.brand img{width:32px;height:32px;object-fit:contain;mix-blend-mode:multiply;filter:contrast(1.1) brightness(.9)}
+.brand-text{display:inline-flex}
+.brand-text .lw{display:inline-block;transition:transform .3s ease,color .2s ease}
+.brand-text .lw.accent{color:var(--accent)}
+.brand-text .lw.up{transform:translateY(-8px);color:var(--accent2)}
+.links,.social{list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:24px}
+.links a{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(30,27,23,.55);transition:color .2s}
+.links a:hover,.links a.active{color:var(--accent)}
+.social a{width:30px;height:30px;display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.3);border:1px solid rgba(255,255,255,.5);font-size:10.5px;font-weight:800;letter-spacing:.06em;color:rgba(30,27,23,.55);transition:background .2s,color .2s}
+.social a:hover{background:rgba(255,255,255,.7);color:var(--ink)}
+.cart-btn{display:flex;align-items:center;gap:6px;min-height:36px;padding:0 14px;border-radius:999px;background:var(--ink);color:var(--bg);border:none;font-family:inherit;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+.cart-btn:hover{background:var(--accent)}
+.cart-count{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:var(--accent2);color:#fff;font-size:9px;font-weight:900;line-height:1}
+.cart-count.zero{background:rgba(255,255,255,.2)}
+.menu-btn{display:none;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:9px 16px;font-weight:800;font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;font-family:inherit;cursor:pointer}
+.mobile{display:none;position:fixed;inset:0;z-index:18;background:rgba(240,235,227,.97);padding:120px 32px 48px;flex-direction:column;gap:10px}
+.mobile.open{display:flex}
+.mobile a{font-size:clamp(38px,10vw,80px);font-weight:900;text-transform:uppercase;letter-spacing:-.06em;line-height:.96;color:var(--ink);transition:color .18s}
+.mobile a:hover{color:var(--accent)}
+.mob-close{position:absolute;top:20px;right:20px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--paper);display:grid;place-items:center;font-size:20px;cursor:pointer;font-family:inherit}
+.page-hero{padding:110px 0 48px;position:relative;z-index:1;border-bottom:1px solid var(--line)}
+.page-hero-inner{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center}
+.sec-label{display:inline-flex;align-items:center;gap:10px;font-size:10px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.sec-label::before{content:"";width:22px;height:1px;background:var(--accent2)}
+/* hero stat pills */
+.hero-stats{display:flex;flex-direction:column;gap:10px;flex-shrink:0}
+.hstat{display:flex;align-items:center;gap:14px;background:rgba(250,246,240,.88);border:1px solid rgba(255,255,255,.8);border-radius:14px;padding:14px 18px;box-shadow:0 6px 18px rgba(14,12,10,.06);min-width:200px}
+.hstat-num{font-family:'Cormorant Garamond',Georgia,serif;font-size:28px;font-weight:600;letter-spacing:-.03em;line-height:1;flex-shrink:0}
+.hstat-num.caramel{background:linear-gradient(138deg,var(--accent),var(--accent2) 40%,#e8aa60 65%,var(--accent2) 85%,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hstat-label{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);line-height:1.3}
+@media(max-width:780px){.page-hero-inner{grid-template-columns:1fr}.hero-stats{flex-direction:row;flex-wrap:wrap}.hstat{min-width:0;flex:1 1 140px}}
+.shop-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;padding:60px 0 120px;position:relative;z-index:1}
+.sidebar{position:sticky;top:100px;align-self:start}
+.filter-title{font-size:9.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+.filter-group{margin-bottom:28px}
+.filter-btn{display:block;width:100%;text-align:left;padding:10px 14px;border-radius:10px;border:none;background:transparent;font-family:inherit;font-size:13px;font-weight:600;color:rgba(30,27,23,.6);cursor:pointer;transition:background .18s,color .18s}
+.filter-btn:hover{background:rgba(255,255,255,.7);color:var(--ink)}
+.filter-btn.active{background:var(--ink);color:var(--bg)}
+.filter-btn span.cnt{float:right;font-size:10px;opacity:.6;font-weight:700;margin-top:2px}
+.grid-header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px}
+.grid-count{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.sort-select{font-family:inherit;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:rgba(250,246,240,.9);border:1px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer;color:var(--ink);outline:none}
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.product-card{background:transparent;border:1px solid transparent;border-radius:18px;overflow:hidden;box-shadow:none;cursor:pointer;transition:transform .26s var(--ease),box-shadow .26s var(--ease),border-color .26s,background .26s;contain:content;will-change:transform}
+.product-card:hover{transform:translateY(-5px);background:rgba(250,246,240,.88);box-shadow:0 24px 60px rgba(14,12,10,.1);border-color:rgba(255,255,255,.9)}
+.product-img{width:100%;aspect-ratio:4/3;overflow:hidden;position:relative}
+/* 3D card: più compatta, model-viewer piccolo */
+.product-card--3d .product-img{aspect-ratio:unset;height:160px}
+.product-card--3d .product-img model-viewer{width:100%;height:100%}
+.product-img-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:52px;transition:transform .4s var(--ease)}
+.product-card:hover .product-img-inner{transform:scale(1.06)}
+.product-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s var(--ease)}
+.product-card:hover .product-img img{transform:scale(1.06)}
+.product-sold-badge{position:absolute;top:10px;right:10px;background:rgba(14,12,10,.7);color:var(--bg);font-size:8.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
+.product-new-badge{position:absolute;top:10px;left:10px;background:var(--accent2);color:#fff;font-size:8.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
+.product-body{padding:16px 18px 18px}
+.product-cat{font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2);margin-bottom:6px}
+.product-name{font-size:15px;font-weight:800;letter-spacing:-.02em;margin:0 0 6px;line-height:1.3}
+.product-desc{font-size:12.5px;color:rgba(30,27,23,.58);line-height:1.55;margin:0 0 14px}
+.product-footer{display:flex;align-items:center;justify-content:space-between}
+.product-price{font-family:'Cormorant Garamond',Georgia,serif;font-size:22px;font-weight:600;letter-spacing:-.02em;color:var(--ink)}
+.product-price.sold{text-decoration:line-through;color:var(--muted);font-size:16px}
+.product-buy-btn{width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-size:16px;border:none;cursor:pointer;transition:background .2s,transform .2s var(--ease)}
+.product-card:hover .product-buy-btn{background:var(--accent);transform:rotate(45deg)}
+.empty-state{grid-column:1/-1;text-align:center;padding:80px 20px;color:var(--muted)}
+.modal-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(14,12,10,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:24px}
+.modal-overlay.open{display:flex}
+.modal-box{background:var(--paper);border:1px solid rgba(255,255,255,.85);border-radius:24px;max-width:760px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 40px 100px rgba(14,12,10,.2);position:relative;animation:modal-in .28s var(--ease)}
+@keyframes modal-in{from{transform:translateY(20px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+.modal-close{position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:50%;background:rgba(14,12,10,.07);border:none;font-size:18px;cursor:pointer;display:grid;place-items:center;transition:background .18s;z-index:2}
+.modal-close:hover{background:rgba(14,12,10,.14)}
+.modal-inner{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.modal-img-wrap{border-radius:22px 0 0 22px;overflow:hidden;min-height:340px;display:flex;flex-direction:column;align-items:stretch;justify-content:stretch;font-size:80px;position:relative}
+/* 3D model-viewer in card */
+.product-img model-viewer{width:100%;height:100%;display:block;--progress-bar-color:transparent}
+/* 3D model-viewer in modal */
+.modal-model-viewer{width:100%;flex:1;min-height:300px;display:block;--progress-bar-color:rgba(192,112,48,.4);background:var(--bg)}
+/* Modal view toggle tabs */
+.modal-view-tabs{display:flex;gap:6px;padding:10px 12px;background:rgba(250,246,240,.9);border-top:1px solid var(--line);flex-shrink:0}
+.modal-view-tab{flex:1;padding:7px 10px;border-radius:8px;border:1px solid var(--line);background:transparent;font-family:inherit;font-size:9.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);cursor:pointer;transition:background .18s,color .18s,border-color .18s}
+.modal-view-tab.active{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.modal-view-tab:hover:not(.active){background:rgba(14,12,10,.06);color:var(--ink)}
+/* Modal photos panel */
+.modal-photos-wrap{width:100%;flex:1;display:none;flex-direction:column;gap:0;overflow:hidden}
+.modal-photos-wrap.visible{display:flex}
+.modal-photo-main{flex:1;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--bg)}
+.modal-photo-main img{width:100%;height:100%;object-fit:contain}
+.modal-photos-strip{display:flex;gap:6px;padding:8px 10px;background:rgba(250,246,240,.9);border-top:1px solid var(--line);overflow-x:auto;flex-shrink:0}
+.modal-photo-thumb{width:52px;height:52px;border-radius:8px;object-fit:cover;cursor:pointer;opacity:.6;border:2px solid transparent;transition:opacity .18s,border-color .18s;flex-shrink:0}
+.modal-photo-thumb.active,.modal-photo-thumb:hover{opacity:1;border-color:var(--accent2)}
+/* Attribution */
+.model-credit{position:absolute;bottom:8px;left:10px;font-size:9px;color:rgba(14,12,10,.35);letter-spacing:.04em;z-index:2;pointer-events:none}
+.model-credit a{pointer-events:all;color:rgba(14,12,10,.5);text-decoration:underline}
+.model-credit a:hover{color:var(--accent)}
+.modal-content{padding:36px 28px 32px 24px;display:flex;flex-direction:column}
+.modal-cat{font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--accent2);margin-bottom:8px}
+.modal-title{font-size:clamp(20px,3vw,28px);font-weight:900;letter-spacing:-.04em;margin:0 0 8px;line-height:1.1}
+.modal-price{font-family:'Cormorant Garamond',Georgia,serif;font-size:38px;font-weight:600;letter-spacing:-.03em;margin:0 0 10px;color:var(--ink)}
+.modal-desc{font-size:13.5px;color:rgba(30,27,23,.65);line-height:1.72;margin-bottom:16px;flex:1}
+.modal-condition{display:inline-flex;align-items:center;gap:6px;background:rgba(192,112,48,.08);border:1px solid rgba(192,112,48,.2);border-radius:999px;padding:5px 12px;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;align-self:flex-start}
+.modal-actions{display:flex;flex-direction:column;gap:10px;margin-top:auto}
+.modal-btn-paypal{display:flex;align-items:center;justify-content:center;gap:8px;min-height:50px;border-radius:999px;background:#0070ba;color:#fff;border:none;font-family:inherit;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s,transform .22s var(--ease)}
+.modal-btn-paypal:hover{background:#005c9e;transform:translateY(-2px)}
+.modal-btn-cart{display:flex;align-items:center;justify-content:center;gap:8px;min-height:50px;border-radius:999px;background:var(--ink);color:var(--bg);border:none;font-family:inherit;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s,transform .22s var(--ease)}
+.modal-btn-cart:hover{background:var(--accent);transform:translateY(-2px)}
+.modal-btn-cart.added{background:var(--accent2)}
+.modal-sold-notice{text-align:center;padding:14px;border-radius:12px;background:rgba(14,12,10,.05);font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.modal-ebay-link{display:flex;align-items:center;justify-content:center;gap:6px;min-height:44px;border-radius:999px;border:1.5px solid var(--line);background:transparent;font-family:inherit;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(30,27,23,.6);cursor:pointer;transition:border-color .2s,color .2s;text-decoration:none}
+.modal-ebay-link:hover{border-color:var(--accent2);color:var(--accent)}
+/* cart drawer removed — handled by cart-widget.js */
+.cat-carousel-wrap{position:relative;z-index:2;padding:20px 0;border-bottom:1px solid var(--line);background:rgba(250,246,240,.6);backdrop-filter:blur(8px)}
+.cat-carousel-inner{display:flex;gap:12px;overflow-x:auto;padding:4px 8px;scrollbar-width:none;-ms-overflow-style:none;align-items:stretch}
+.cat-carousel-inner::-webkit-scrollbar{display:none}
+.cat-item{display:flex;flex-direction:column;align-items:center;gap:8px;flex-shrink:0;cursor:pointer;padding:12px 16px;border-radius:16px;border:1px solid transparent;background:none;font-family:inherit;transition:background .22s var(--ease),border-color .22s,box-shadow .22s,transform .25s var(--ease);min-width:110px}
+.cat-item:hover{background:rgba(250,246,240,.95);border-color:rgba(255,255,255,.85);box-shadow:0 6px 20px rgba(14,12,10,.08)}
+.cat-item.active{background:var(--paper);border-color:rgba(255,255,255,.9);box-shadow:0 8px 28px rgba(14,12,10,.1);transform:scale(1.1)}
+.cat-item.active .cat-label{color:var(--accent)}
+.cat-model-wrap{width:88px;height:88px;border-radius:12px;overflow:hidden;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cat-model-wrap model-viewer{width:100%;height:100%;--progress-bar-color:transparent}
+.cat-all-icon{font-size:30px;color:var(--muted)}
+.cat-item.active .cat-all-icon{color:var(--accent)}
+.cat-label{font-size:9.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);text-align:center;transition:color .2s;line-height:1.3;white-space:nowrap}
+footer{position:relative;z-index:2;border-top:1px solid var(--line);background:linear-gradient(180deg,transparent,rgba(14,12,10,.02));padding:48px 0 24px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:32px;margin-bottom:24px}
+.foot-piva{font-size:12px;color:rgba(30,27,23,.4);margin:8px 0 0;line-height:1.5}.foot-piva strong{font-weight:700;color:rgba(30,27,23,.55)}
+.foot-bottom-left{display:flex;flex-direction:column;gap:3px}
+.foot-legal{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.foot-legal a{font-size:11.5px;color:var(--muted);transition:color .18s;text-decoration:underline;text-decoration-color:rgba(122,113,104,.3)}.foot-legal a:hover{color:var(--ink)}.foot-legal span{color:var(--muted);font-size:10px;opacity:.5}
+.foot-brand{font-size:22px;font-weight:900;letter-spacing:-.03em;text-transform:uppercase;margin:0 0 8px}
+.foot-brand em{color:var(--accent);font-style:normal}
+.foot-tagline{font-family:'Cormorant Garamond',Georgia,serif;font-size:20px;font-style:italic;color:var(--muted);margin:0 0 16px}
+.foot-contact{font-size:13.5px;color:rgba(30,27,23,.55)}
+.foot-contact a:hover{color:var(--accent)}
+.foot-col-title{font-size:9.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 16px}
+.foot-links{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.foot-links a{font-size:14px;color:rgba(30,27,23,.65);transition:color .18s,transform .18s}
+.foot-links a:hover{color:var(--ink);transform:translateX(3px)}
+.foot-bottom{padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:20px;font-size:12.5px;color:var(--muted)}
+.foot-bottom em{font-style:italic;font-family:'Cormorant Garamond',Georgia,serif;font-size:15px}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.visible{opacity:1;transform:none}
+.cursor{display:none}
+@media(hover:hover) and (pointer:fine){body,body *{cursor:none !important}.cursor{display:block;position:fixed;left:0;top:0;z-index:9999;pointer-events:none;border-radius:50%;transform:translate(-50%,-50%);will-change:transform}.cursor.big{width:88px;height:88px;background:radial-gradient(circle,rgba(192,112,48,.22),transparent 68%);mix-blend-mode:multiply}.cursor.dot{width:5px;height:5px;background:var(--accent)}}
+@media(max-width:1000px){.links,.social{display:none}.menu-btn{display:block}.shop-wrap{grid-template-columns:1fr}.sidebar{position:static;display:flex;gap:8px;flex-wrap:wrap}.filter-group:not(:first-child){display:none}.product-grid{grid-template-columns:1fr 1fr}.foot-grid{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:660px){.wrap{width:calc(100% - 32px)}.product-grid{grid-template-columns:1fr 1fr}.modal-inner{grid-template-columns:1fr}.modal-img-wrap{border-radius:22px 22px 0 0;min-height:220px}.foot-grid{grid-template-columns:1fr 1fr}.foot-bottom{flex-direction:column;align-items:flex-start;gap:10px}}
+@media(max-width:420px){.product-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="brand-wave" x="-12%" y="-60%" width="124%" height="220%">
+      <feTurbulence id="brandTurb" type="turbulence" baseFrequency="0.025 0.018" numOctaves="3" seed="7" result="noise"/>
+      <feDisplacementMap id="brandDisplace" in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+<div class="ambient" aria-hidden="true"><div class="blob a"></div><div class="blob b"></div><div class="blob c"></div></div>
+<div class="cursor big" id="cursorBig"></div>
+<div class="cursor dot" id="cursorDot"></div>
+<header class="top">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <img src="logo no sfondo.png" alt="Logo Ramacciato Vintage" width="32" height="32" decoding="async">
+      <span class="brand-text" aria-label="Ramacciato Vintage"><span class="lw">R</span><span class="lw">a</span><span class="lw">m</span><span class="lw">a</span><span class="lw">c</span><span class="lw">c</span><span class="lw">i</span><span class="lw">a</span><span class="lw">t</span><span class="lw">o</span><span class="lw">&nbsp;</span><span class="lw accent">V</span><span class="lw accent">i</span><span class="lw accent">n</span><span class="lw accent">t</span><span class="lw accent">a</span><span class="lw accent">g</span><span class="lw accent">e</span></span>
+    </a>
+    <nav aria-label="Menu principale">
+      <ul class="links">
+        <li><a href="shop.html" class="active">Shop</a></li>
+        <li><a href="mercatini.html">Mercatini</a></li>
+        <li><a href="svuotacantine.html">Svuotacantine</a></li>
+      </ul>
+    </nav>
+    <ul class="social">
+      <li><a href="#" aria-label="Instagram">IG</a></li>
+      <li><a href="#" aria-label="Facebook">FB</a></li>
+      <li><a href="https://www.linkedin.com/in/luca-ramacciato-3292681b1/" target="_blank" rel="noopener" aria-label="LinkedIn">IN</a></li>
+      <li><a href="https://www.youtube.com/@archivioilcustode" target="_blank" rel="noopener" aria-label="YouTube">YT</a></li>
+      <li><button class="cart-btn" id="cartOpenBtn" aria-label="Carrello">&#x1F6D2; <span class="cart-count zero" id="cartCount">0</span></button></li>
+    </ul>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false">Menu</button>
+  </div>
+  <div class="mobile" id="mobileMenu" role="dialog" aria-modal="true">
+    <button class="mob-close" id="mobClose" aria-label="Chiudi menu">&#x2715;</button>
+    <a href="shop.html">Shop</a>
+    <a href="mercatini.html">Mercatini</a>
+    <a href="svuotacantine.html">Svuotacantine</a>
+  </div>
+</header>
+<main>
+<section class="page-hero">
+  <div class="wrap">
+    <div class="page-hero-inner">
+      <div>
+        <p class="sec-label reveal">Selezione curata</p>
+        <h1 style="font-size:clamp(44px,6vw,90px);line-height:.9;letter-spacing:-.065em;text-transform:uppercase;font-weight:900;margin:0 0 14px" class="reveal">La<br><span class="caramel">Vetrina</span></h1>
+        <p class="reveal" style="max-width:420px;font-size:14px;color:rgba(30,27,23,.62);line-height:1.72">Oggettistica, design, arredo e collezionismo. Pochi pezzi scelti bene &mdash; ognuno con una storia da raccontare.</p>
+      </div>
+      <div class="hero-stats reveal">
+        <div class="hstat">
+          <span class="hstat-num caramel">6</span>
+          <span class="hstat-label">Categorie<br>disponibili</span>
+        </div>
+        <div class="hstat">
+          <span class="hstat-num" style="font-size:18px;font-weight:900;color:var(--ink)">Pay<br>Pal</span>
+          <span class="hstat-label">Pagamento<br>sicuro</span>
+        </div>
+        <div class="hstat">
+          <span class="hstat-num caramel">IT</span>
+          <span class="hstat-label">Spedizione<br>tutta Italia</span>
+        </div>
+        <div class="hstat">
+          <span class="hstat-num" style="color:var(--ink)">48h</span>
+          <span class="hstat-label">Risposta<br>media</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="cat-carousel-wrap" aria-label="Filtra per categoria">
+  <div class="wrap">
+    <div class="cat-carousel-inner" id="catCarousel">
+      <button class="cat-item active" data-cat="all">
+        <div class="cat-model-wrap"><span class="cat-all-icon">✦</span></div>
+        <span class="cat-label">Tutto</span>
+      </button>
+      <button class="cat-item" data-cat="videogiochi">
+        <div class="cat-model-wrap">
+          <model-viewer data-src="3d%20per%20interfaccia/psplaystation_logo.glb" auto-rotate rotation-per-second="22deg" reveal="auto" loading="lazy" interaction-prompt="none" orientation="90deg 180deg 90deg" camera-orbit="0deg 90deg 120%" field-of-view="40deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"></model-viewer>
+        </div>
+        <span class="cat-label">Videogiochi</span>
+      </button>
+      <button class="cat-item" data-cat="elettronica">
+        <div class="cat-model-wrap">
+          <model-viewer data-src="3d%20per%20interfaccia/boombox.glb" auto-rotate rotation-per-second="18deg" reveal="auto" loading="lazy" interaction-prompt="none" camera-orbit="30deg 80deg 130%" field-of-view="38deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"></model-viewer>
+        </div>
+        <span class="cat-label">Elettronica Vintage</span>
+      </button>
+      <button class="cat-item" data-cat="musica">
+        <div class="cat-model-wrap">
+          <model-viewer data-src="3d%20per%20interfaccia/vinyls_3.glb" auto-rotate rotation-per-second="20deg" reveal="auto" loading="lazy" interaction-prompt="none" camera-orbit="0deg 70deg 130%" field-of-view="38deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"></model-viewer>
+        </div>
+        <span class="cat-label">Vinili &amp; Musica</span>
+      </button>
+      <button class="cat-item" data-cat="libri">
+        <div class="cat-model-wrap">
+          <model-viewer data-src="3d%20per%20interfaccia/book_stack.glb" auto-rotate rotation-per-second="16deg" reveal="auto" loading="lazy" interaction-prompt="none" camera-orbit="20deg 78deg 130%" field-of-view="36deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"></model-viewer>
+        </div>
+        <span class="cat-label">Libri Curiosi</span>
+      </button>
+      <button class="cat-item" data-cat="oggetti">
+        <div class="cat-model-wrap">
+          <model-viewer data-src="3d%20per%20interfaccia/blue_desk_lamp_vintage_90s.glb" auto-rotate rotation-per-second="18deg" reveal="auto" loading="lazy" interaction-prompt="none" camera-orbit="0deg 80deg 130%" field-of-view="38deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"></model-viewer>
+        </div>
+        <span class="cat-label">Oggetti Vintage</span>
+      </button>
+      <button class="cat-item" data-cat="trading">
+        <div class="cat-model-wrap">
+          <model-viewer data-src="3d%20per%20interfaccia/trading_card_pack.glb" auto-rotate rotation-per-second="22deg" reveal="auto" loading="lazy" interaction-prompt="none" orientation="90deg 0deg 0deg" camera-orbit="15deg 75deg 130%" field-of-view="36deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"></model-viewer>
+        </div>
+        <span class="cat-label">Trading Cards</span>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="wrap shop-wrap">
+  <aside class="sidebar" aria-label="Filtri">
+    <div class="filter-group">
+      <p class="filter-title">Categoria</p>
+      <button class="filter-btn active" data-cat="all">Tutto <span class="cnt" id="cnt-all"></span></button>
+      <button class="filter-btn" data-cat="videogiochi">Videogiochi &amp; Console <span class="cnt" id="cnt-videogiochi"></span></button>
+      <button class="filter-btn" data-cat="elettronica">Elettronica Vintage <span class="cnt" id="cnt-elettronica"></span></button>
+      <button class="filter-btn" data-cat="musica">Vinili &amp; Musica <span class="cnt" id="cnt-musica"></span></button>
+      <button class="filter-btn" data-cat="libri">Libri Curiosi <span class="cnt" id="cnt-libri"></span></button>
+      <button class="filter-btn" data-cat="oggetti">Oggetti Vintage <span class="cnt" id="cnt-oggetti"></span></button>
+      <button class="filter-btn" data-cat="trading">Trading Cards <span class="cnt" id="cnt-trading"></span></button>
+    </div>
+    <div class="filter-group">
+      <p class="filter-title">Disponibilit&agrave;</p>
+      <button class="filter-btn active" data-avail="all">Tutti</button>
+      <button class="filter-btn" data-avail="available">Solo disponibili</button>
+    </div>
+  </aside>
+  <div>
+    <div class="grid-header">
+      <p class="grid-count" id="gridCount">&mdash; articoli</p>
+      <select class="sort-select" id="sortSelect">
+        <option value="default">Ordine predefinito</option>
+        <option value="price-asc">Prezzo &uarr;</option>
+        <option value="price-desc">Prezzo &darr;</option>
+        <option value="new">Novit&agrave; prima</option>
+      </select>
+    </div>
+    <div class="product-grid" id="productGrid"></div>
+  </div>
+</div>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <p class="foot-brand">Ramacciato <em>Vintage</em></p>
+        <p class="foot-tagline serif">&ldquo;Own what you buy.&rdquo;</p>
+        <p class="foot-contact"><a href="mailto:ramacciatoluca@gmail.com">ramacciatoluca@gmail.com</a></p>
+        <p class="foot-piva">Luca Ramacciato · Vicenza<br><strong>P.IVA</strong> IT04400570240</p>
+      </div>
+      <div>
+        <p class="foot-col-title">Esplora</p>
+        <ul class="foot-links">
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="mercatini.html">Mercatini</a></li>
+          <li><a href="index.html#collezioni">Categorie</a></li>
+          <li><a href="index.html#acquista">Come acquistare</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-col-title">Contatti</p>
+        <ul class="foot-links">
+          <li><a href="svuotacantine.html">Svuotacantine</a></li>
+          <li><a href="mailto:ramacciatoluca@gmail.com">Email</a></li>
+          <li><a href="#" aria-label="Instagram">Instagram</a></li>
+          <li><a href="https://www.youtube.com/@archivioilcustode" target="_blank" rel="noopener">YouTube</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-col-title">Legale</p>
+        <ul class="foot-links">
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="termini-di-servizio.html">Termini di Servizio</a></li>
+          <li><a href="cookie-policy.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div class="foot-bottom-left"><span>&copy; 2026 Ramacciato Vintage — Luca Ramacciato — P.IVA IT04400570240 — Vicenza</span></div>
+      <div class="foot-legal">
+        <a href="privacy-policy.html">Privacy Policy</a><span>·</span>
+        <a href="termini-di-servizio.html">Termini di Servizio</a><span>·</span>
+        <a href="cookie-policy.html">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-label="Dettaglio prodotto">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose" aria-label="Chiudi">&#x2715;</button>
+    <div class="modal-inner">
+      <div class="modal-img-wrap" id="modalImg"></div>
+      <div class="modal-content">
+        <p class="modal-cat" id="modalCat"></p>
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <p class="modal-price" id="modalPrice"></p>
+        <span class="modal-condition" id="modalCondition"></span>
+        <p class="modal-desc" id="modalDesc"></p>
+        <div class="modal-actions" id="modalActions"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- cart drawer replaced by cart-widget.js -->
+<script>
+// ── Prodotti caricati da catalogo.json ──
+// Per aggiungere/modificare prodotti: edita catalogo.json, NON questo file.
+var PRODUCTS=[];
+var CART_KEY='rv_cart_v1';
+function loadCart(){try{return JSON.parse(localStorage.getItem(CART_KEY)||'[]');}catch(e){return[];}}
+function saveCart(c){localStorage.setItem(CART_KEY,JSON.stringify(c));if(window.rvCart)window.rvCart.refresh();}
+var activeCat='all',activeAvail='all',activeSort='default';
+function catLabel(c){return{videogiochi:'Videogiochi & Console',elettronica:'Elettronica Vintage',musica:'Vinili & Musica',libri:'Libri Curiosi',oggetti:'Oggetti Vintage',trading:'Trading Cards'}[c]||c}
+function getFiltered(){var l=PRODUCTS.slice();if(activeCat!=='all')l=l.filter(function(p){return p.cat===activeCat});if(activeAvail==='available')l=l.filter(function(p){return!p.sold});if(activeSort==='price-asc')l.sort(function(a,b){return a.price-b.price});if(activeSort==='price-desc')l.sort(function(a,b){return b.price-a.price});if(activeSort==='new')l.sort(function(a,b){return(b.isNew?1:0)-(a.isNew?1:0)});return l}
+function renderGrid(){
+  var list=getFiltered(),grid=document.getElementById('productGrid');
+  document.getElementById('gridCount').textContent=list.length+' articol'+(list.length===1?'o':'i');
+  if(list.length===0){grid.innerHTML='<div class="empty-state"><p style="font-size:40px">&#x1F50D;</p><p>Nessun prodotto trovato.</p></div>';return}
+  grid.innerHTML=list.map(function(p){
+    var imgHtml=p.model
+      ? '<model-viewer src="'+p.model+'" auto-rotate rotation-per-second="0deg" reveal="auto" loading="eager" style="width:100%;height:100%;background:'+p.bg+'" camera-orbit="0deg 80deg 120%" field-of-view="35deg" min-camera-orbit="auto auto 80%" shadow-intensity="1"><div slot="poster" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:'+p.bg+';font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(14,12,10,.4)">Caricamento 3D&hellip;</div></model-viewer>'
+      : '<div class="product-img-inner" style="background:'+p.bg+'">'+p.emoji+'</div>';
+    return'<div class="product-card'+(p.model?' product-card--3d':'')+'" data-id="'+p.id+'" tabindex="0" role="button"><div class="product-img">'+imgHtml+(p.sold?'<span class="product-sold-badge">Venduto</span>':'')+(p.isNew&&!p.sold?'<span class="product-new-badge">Nuovo</span>':'')+'</div><div class="product-body"><p class="product-cat">'+catLabel(p.cat)+(p.model?' <span style="font-size:8px;opacity:.7;margin-left:4px">&#x2B55; 3D</span>':'')+'</p><p class="product-name">'+p.name+'</p><p class="product-desc">'+p.desc.substring(0,80)+'&hellip;</p><div class="product-footer"><span class="product-price'+(p.sold?' sold':'')+'">&#x20AC; '+p.price+'</span><button class="product-buy-btn">+</button></div></div></div>';
+  }).join('');
+  ['all','videogiochi','elettronica','musica','libri','oggetti','trading'].forEach(function(c){var el=document.getElementById('cnt-'+c);if(el)el.textContent=c==='all'?PRODUCTS.length:PRODUCTS.filter(function(p){return p.cat===c}).length});
+  grid.querySelectorAll('.product-card').forEach(function(card){var fn=function(){openModal(parseInt(card.dataset.id))};card.addEventListener('click',fn);card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')fn()});
+    var mv=card.querySelector('model-viewer');
+    if(mv){card.addEventListener('mouseenter',function(){mv.setAttribute('rotation-per-second','28deg');});card.addEventListener('mouseleave',function(){mv.setAttribute('rotation-per-second','0deg');});}
+  });
+}
+function openModal(id){
+  var p=PRODUCTS.filter(function(x){return x.id===id})[0];if(!p)return;
+  document.getElementById('modalCat').textContent=catLabel(p.cat);
+  document.getElementById('modalTitle').textContent=p.name;
+  document.getElementById('modalPrice').textContent='€ '+p.price;
+  document.getElementById('modalCondition').textContent='Condizioni: '+p.condition;
+  document.getElementById('modalDesc').textContent=p.desc;
+
+  /* ── Build left panel ── */
+  var imgEl=document.getElementById('modalImg');
+  imgEl.style.background=p.bg;
+  imgEl.innerHTML=''; // clear
+
+  if(p.model){
+    // 3D model + optional photo tabs
+    var hasPhotos=p.photos&&p.photos.length>0;
+    var creditHtml='<span class="model-credit"><a href="'+p.modelCreditUrl+'" target="_blank" rel="noopener">'+p.modelCredit+'</a> &mdash; CC BY 4.0</span>';
+
+    // Model viewer panel
+    var mv='<model-viewer class="modal-model-viewer" src="'+p.model+'" camera-controls auto-rotate rotation-per-second="20deg" reveal="auto" loading="eager" shadow-intensity="1.2" exposure="1.2" camera-orbit="45deg 80deg 120%" field-of-view="35deg" min-camera-orbit="auto 10deg 80%" max-camera-orbit="auto 160deg 200%" interpolation-decay="200" style="background:'+p.bg+'"><div slot="poster" style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:'+p.bg+'"><div style="font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(14,12,10,.45)">Caricamento modello 3D&hellip;</div><div style="font-size:11px;color:rgba(14,12,10,.3);font-style:italic">Il file potrebbe impiegare qualche secondo</div></div><div slot="progress-bar" style="position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(192,112,48,.2)"><div style="height:100%;background:var(--accent2);width:var(--progress-bar-width,0%);transition:width .4s"></div></div></model-viewer>';
+    var mvWrap='<div id="modalModelWrap" style="flex:1;display:flex;flex-direction:column;min-height:0">'+mv+creditHtml+'</div>';
+
+    // Photos panel (hidden by default)
+    var photosWrap='';
+    if(hasPhotos){
+      var thumbs=p.photos.map(function(src,i){return'<img class="modal-photo-thumb'+(i===0?' active':'')+'" src="'+src+'" data-idx="'+i+'" alt="Foto '+p.name+'">'}).join('');
+      photosWrap='<div id="modalPhotosWrap" class="modal-photos-wrap"><div class="modal-photo-main"><img id="modalPhotoMain" src="'+p.photos[0]+'" alt="'+p.name+'"></div><div class="modal-photos-strip">'+thumbs+'</div></div>';
+    }
+
+    // Tabs
+    var tabsHtml='<div class="modal-view-tabs"><button class="modal-view-tab active" data-view="3d">&#x2B55; Vista 3D</button>'+(hasPhotos?'<button class="modal-view-tab" data-view="foto">&#x1F4F7; Foto</button>':'')+'</div>';
+
+    imgEl.innerHTML=mvWrap+photosWrap+tabsHtml;
+    imgEl.style.background='';
+
+    // Tab switching
+    imgEl.querySelectorAll('.modal-view-tab').forEach(function(tab){
+      tab.addEventListener('click',function(){
+        imgEl.querySelectorAll('.modal-view-tab').forEach(function(t){t.classList.remove('active')});
+        tab.classList.add('active');
+        var view=tab.dataset.view;
+        var mvW=document.getElementById('modalModelWrap');
+        var phW=document.getElementById('modalPhotosWrap');
+        if(view==='3d'){mvW.style.display='flex';if(phW)phW.classList.remove('visible')}
+        else{mvW.style.display='none';if(phW)phW.classList.add('visible')}
+      });
+    });
+
+    // Photo thumbs
+    if(hasPhotos){
+      imgEl.querySelectorAll('.modal-photo-thumb').forEach(function(th){
+        th.addEventListener('click',function(){
+          imgEl.querySelectorAll('.modal-photo-thumb').forEach(function(t){t.classList.remove('active')});
+          th.classList.add('active');
+          document.getElementById('modalPhotoMain').src=p.photos[parseInt(th.dataset.idx)];
+        });
+      });
+    }
+  } else {
+    // Standard: emoji + background
+    imgEl.style.background=p.bg;
+    imgEl.style.alignItems='center';
+    imgEl.style.justifyContent='center';
+    imgEl.style.fontSize='80px';
+    imgEl.textContent=p.emoji;
+  }
+  var actions=document.getElementById('modalActions');
+  var creditHtmlActions=p.model
+    ? '<p style="font-size:10.5px;color:var(--muted);line-height:1.55;margin-top:4px;padding-top:12px;border-top:1px solid var(--line)">&#x1F3A8; Modello 3D: <a href="'+p.modelCreditUrl+'" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">'+p.modelCredit+'</a> — licenza <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">CC BY 4.0</a></p>'
+    : '';
+  if(p.sold){
+    actions.innerHTML='<div class="modal-sold-notice">Questo pezzo è già stato venduto &mdash; torna presto per nuovi arrivi</div>'+creditHtmlActions;
+  } else {
+    var inCart=loadCart().filter(function(x){return x.id===p.id}).length>0;
+    actions.innerHTML='<button class="modal-btn-paypal" id="modalPaypal">\u{1F4B3} Acquista con PayPal</button><button class="modal-btn-cart'+(inCart?' added':'')+'" id="modalCart">'+(inCart?'✓ Nel carrello':'\u{1F6D2} Aggiungi al carrello')+'</button>'+creditHtmlActions;
+    document.getElementById('modalPaypal').addEventListener('click',function(){paypalBuy(p)});
+    document.getElementById('modalCart').addEventListener('click',function(){toggleCart(p)});
+  }
+  document.getElementById('modalOverlay').classList.add('open');document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow=''}
+function paypalBuy(p){var c=loadCart();if(!c.find(function(x){return x.id===p.id})){c.push(JSON.parse(JSON.stringify(p)));saveCart(c);}window.location.href='checkout.html';}
+function toggleCart(p){var c=loadCart();var idx=-1;c.forEach(function(x,i){if(x.id===p.id)idx=i});if(idx===-1)c.push(JSON.parse(JSON.stringify(p)));else c.splice(idx,1);saveCart(c);updateCartUI();var btn=document.getElementById('modalCart');if(btn){var inCart=loadCart().filter(function(x){return x.id===p.id}).length>0;btn.textContent=inCart?'✓ Nel carrello':'\u{1F6D2} Aggiungi al carrello';btn.classList.toggle('added',inCart)}}
+function updateCartUI(){var count=loadCart().length,el=document.getElementById('cartCount');if(el){el.textContent=count;el.classList.toggle('zero',count===0);}}
+window.__rvShopCartUpdated=function(){updateCartUI();};
+
+/* carosello: scagliona i 6 WebGL dopo il primo frame → pagina interattiva subito */
+requestAnimationFrame(function(){
+  var mvs=document.querySelectorAll('#catCarousel model-viewer[data-src]');
+  mvs.forEach(function(mv,i){
+    setTimeout(function(){ mv.setAttribute('src', mv.dataset.src); }, i * 120);
+  });
+});
+fetch('catalogo.json')
+  .then(function(r){return r.json();})
+  .then(function(data){
+    PRODUCTS=data.prodotti||[];
+(function(){
+  renderGrid();
+  function selectCat(cat,scroll){activeCat=cat;document.querySelectorAll('[data-cat]').forEach(function(b){b.classList.remove('active')});document.querySelectorAll('[data-cat="'+cat+'"]').forEach(function(b){b.classList.add('active')});renderGrid();if(scroll)document.querySelector('.shop-wrap').scrollIntoView({behavior:'smooth',block:'start'})}
+  /* legge ?cat= dall'URL e pre-filtra */
+  var urlCat=new URLSearchParams(window.location.search).get('cat');
+  var validCats=['videogiochi','elettronica','musica','libri','oggetti','trading'];
+  if(urlCat && validCats.indexOf(urlCat)>=0) selectCat(urlCat, false);
+  document.querySelectorAll('.sidebar [data-cat]').forEach(function(btn){btn.addEventListener('click',function(){selectCat(btn.dataset.cat,false)})});
+  document.getElementById('catCarousel').querySelectorAll('.cat-item').forEach(function(item){item.addEventListener('click',function(){selectCat(item.dataset.cat,true)})});
+  document.querySelectorAll('[data-avail]').forEach(function(btn){btn.addEventListener('click',function(){activeAvail=btn.dataset.avail;document.querySelectorAll('[data-avail]').forEach(function(b){b.classList.remove('active')});btn.classList.add('active');renderGrid()})});
+  document.getElementById('sortSelect').addEventListener('change',function(e){activeSort=e.target.value;renderGrid()});
+  document.getElementById('modalClose').addEventListener('click',closeModal);
+  document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===document.getElementById('modalOverlay'))closeModal()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal()});
+  document.getElementById('cartOpenBtn').addEventListener('click',function(){if(window.rvCart)window.rvCart.open();});
+  var menuBtn=document.getElementById('menuBtn'),mob=document.getElementById('mobileMenu'),mobClose=document.getElementById('mobClose');
+  if(menuBtn&&mob)menuBtn.addEventListener('click',function(){mob.classList.add('open')});
+  if(mobClose)mobClose.addEventListener('click',function(){mob.classList.remove('open')});
+  var cB=document.getElementById('cursorBig'),cD=document.getElementById('cursorDot');
+  if(cB&&cD)document.addEventListener('mousemove',function(e){var t='translate(calc(-50% + '+e.clientX+'px), calc(-50% + '+e.clientY+'px))';cB.style.transform=t;cD.style.transform=t},{passive:true});
+  var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+  /* ── Liquid wave brand ── */
+  (function(){
+    var brandText = document.querySelector('.brand-text');
+    if(!brandText) return;
+    var bTurb     = document.getElementById('brandTurb');
+    var bDisplace = document.getElementById('brandDisplace');
+    if(!bTurb || !bDisplace) return;
+    var phase = 0, scale = 0, targetScale = 0, rafId = null;
+    function animateBrand(){
+      scale += (targetScale - scale) * 0.08;
+      if(scale > 0.3){
+        phase += 0.04;
+        bTurb.setAttribute('baseFrequency', (0.025 + Math.sin(phase * 1.1) * 0.012) + ' ' + (0.018 + Math.sin(phase * 0.7) * 0.008));
+        bDisplace.setAttribute('scale', scale);
+      } else {
+        bDisplace.setAttribute('scale', 0);
+        if(targetScale === 0){ cancelAnimationFrame(rafId); rafId = null; brandText.style.filter = ''; return; }
+      }
+      rafId = requestAnimationFrame(animateBrand);
+    }
+    var brandEl = document.querySelector('.brand');
+    if(brandEl){
+      brandEl.addEventListener('mouseenter', function(){ targetScale = 18; brandText.style.filter = 'url(#brand-wave)'; if(!rafId) rafId = requestAnimationFrame(animateBrand); });
+      brandEl.addEventListener('mouseleave', function(){ targetScale = 0; if(!rafId) rafId = requestAnimationFrame(animateBrand); });
+    }
+  })();
+})();
+}).catch(function(e){console.error('[catalogo.json] Errore caricamento:',e);});
+</script>
+<script src="cart-widget.js" defer></script>

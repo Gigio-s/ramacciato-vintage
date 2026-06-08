@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Mercatini Ramacciato Vintage — Date e luoghi dei mercatini dell'antiquariato a cui partecipo. Trova dove trovarmi.">
+<link rel="icon" type="image/png" href="logo no sfondo.png">
+<title>Mercatini | Ramacciato Vintage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,800;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+<style>
+:root{--bg:#f0ebe3;--paper:#faf6f0;--ink:#0e0c0a;--dark:#1e1b17;--muted:#7a7168;--line:rgba(14,12,10,.11);--accent:#8b3e10;--accent2:#c07030;--max:1180px;--ease:cubic-bezier(.22,1,.36,1)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;overflow-x:hidden;background:var(--bg);color:var(--ink);font-family:'Archivo',Arial,sans-serif;line-height:1.6}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");background-size:180px}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+.wrap{width:min(var(--max),calc(100% - 48px));margin:auto;position:relative;z-index:2}
+.serif{font-family:'Cormorant Garamond',Georgia,serif}
+.caramel{background:linear-gradient(138deg,var(--accent),var(--accent2) 40%,#e8aa60 65%,var(--accent2) 85%,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+.ambient{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.blob{position:absolute;border-radius:50%}
+.blob.a{width:600px;height:600px;right:-220px;top:-200px;background:radial-gradient(circle,rgba(192,112,48,.18) 0%,transparent 65%)}
+.blob.b{width:500px;height:500px;left:-200px;bottom:-120px;background:radial-gradient(circle,rgba(212,205,195,.5) 0%,transparent 65%)}
+.blob.c{width:360px;height:360px;left:38%;top:28%;background:radial-gradient(circle,rgba(192,112,48,.07) 0%,transparent 60%)}
+.top{position:fixed;inset:16px 0 auto;z-index:20;pointer-events:none}
+.nav{min-height:62px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:10px 14px 10px 20px;border:1px solid rgba(255,255,255,.75);border-radius:999px;background:rgba(240,235,227,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 14px 44px rgba(14,12,10,.09),0 1px 0 rgba(255,255,255,.6) inset;pointer-events:auto}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;text-transform:uppercase;letter-spacing:.01em;font-size:13.5px}
+.brand img{width:32px;height:32px;object-fit:contain;mix-blend-mode:multiply;filter:contrast(1.1) brightness(.9)}
+.brand-text{display:inline-flex}
+.brand-text .lw{display:inline-block;transition:transform .3s ease,color .2s ease}
+.brand-text .lw.accent{color:var(--accent)}
+.brand-text .lw.up{transform:translateY(-8px);color:var(--accent2)}
+.links,.social{list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:24px}
+.links a{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(30,27,23,.55);transition:color .2s}
+.links a:hover,.links a.active{color:var(--accent)}
+.social a{width:30px;height:30px;display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.3);border:1px solid rgba(255,255,255,.5);font-size:10.5px;font-weight:800;letter-spacing:.06em;color:rgba(30,27,23,.55);transition:background .2s,color .2s}
+.social a:hover{background:rgba(255,255,255,.7);color:var(--ink)}
+.cart-btn{display:flex;align-items:center;gap:6px;min-height:36px;padding:0 14px;border-radius:999px;background:var(--ink);color:var(--bg);border:none;font-family:inherit;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+.cart-btn:hover{background:var(--accent)}
+.cart-count{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:var(--accent2);color:#fff;font-size:9px;font-weight:900;line-height:1}
+.cart-count.zero{background:rgba(255,255,255,.2)}
+.menu-btn{display:none;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:9px 16px;font-weight:800;font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;font-family:inherit;cursor:pointer}
+.mobile{display:none;position:fixed;inset:0;z-index:18;background:rgba(240,235,227,.97);padding:120px 32px 48px;flex-direction:column;gap:10px}
+.mobile.open{display:flex}
+.mobile a{font-size:clamp(38px,10vw,80px);font-weight:900;text-transform:uppercase;letter-spacing:-.06em;line-height:.96;color:var(--ink);transition:color .18s}
+.mobile a:hover{color:var(--accent)}
+.mob-close{position:absolute;top:20px;right:20px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--paper);display:grid;place-items:center;font-size:20px;cursor:pointer;font-family:inherit}
+/* PAGE HERO */
+.page-hero{padding:140px 0 80px;position:relative;z-index:1;border-bottom:1px solid var(--line)}
+.sec-label{display:inline-flex;align-items:center;gap:10px;font-size:10px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+.sec-label::before{content:"";width:22px;height:1px;background:var(--accent2)}
+.h2{margin:0 0 18px;font-size:clamp(42px,5.8vw,82px);line-height:.92;letter-spacing:-.06em;text-transform:uppercase;font-weight:900}
+.body-copy{max-width:600px;color:rgba(30,27,23,.62);font-size:14.5px;line-height:1.72}
+.divider-line{width:40px;height:2px;background:var(--accent2);border-radius:1px;margin:24px 0}
+/* SECTIONS */
+section{position:relative;z-index:1;padding:56px 0}
+section+section{border-top:1px solid var(--line)}
+/* AGENDA */
+.agenda-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px}
+.agenda-card{background:rgba(250,246,240,.88);border:1px solid rgba(255,255,255,.8);border-radius:18px;padding:28px 24px;box-shadow:0 8px 24px rgba(14,12,10,.06);transition:transform .26s var(--ease),box-shadow .26s var(--ease)}
+.agenda-card:hover{transform:translateY(-4px);box-shadow:0 20px 52px rgba(14,12,10,.1)}
+.agenda-card-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px}
+.agenda-day{font-family:'Cormorant Garamond',Georgia,serif;font-size:52px;font-weight:600;line-height:1;letter-spacing:-.04em;color:var(--ink)}
+.agenda-day span{font-size:14px;font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-top:4px}
+.agenda-badge{font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);background:rgba(139,62,16,.08);border:1px solid rgba(139,62,16,.15);padding:5px 12px;border-radius:999px}
+.agenda-locations{display:flex;flex-direction:column;gap:10px}
+.agenda-loc{display:flex;align-items:baseline;gap:10px}
+.agenda-loc-num{font-family:'Cormorant Garamond',Georgia,serif;font-size:18px;color:var(--accent2);opacity:.7;min-width:20px}
+.agenda-loc-body{}
+.agenda-loc-name{font-size:14px;font-weight:800;letter-spacing:-.01em;color:var(--dark)}
+.agenda-loc-place{font-size:12.5px;color:var(--muted);margin-top:2px}
+.agenda-single-name{font-size:17px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+.agenda-single-place{font-size:14px;color:rgba(30,27,23,.6)}
+/* AGENDA TOGGLE */
+.agenda-toggle-btn{display:inline-flex;align-items:center;gap:10px;margin-top:24px;padding:12px 22px;border-radius:999px;border:1.5px solid var(--line);background:rgba(250,246,240,.8);font-family:inherit;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);cursor:pointer;transition:all .2s var(--ease)}
+.agenda-toggle-btn:hover{background:var(--paper);border-color:rgba(14,12,10,.2);box-shadow:0 4px 14px rgba(14,12,10,.07)}
+.agenda-toggle-btn.open{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+/* MAP SECTION */
+.map-container{
+  margin-top:32px;
+  border-radius:20px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.85);
+  box-shadow:0 20px 60px rgba(14,12,10,.1);
+}
+#map{height:420px;width:100%}
+.map-info-panel{
+  margin-top:12px;
+  background:rgba(250,246,240,.92);border:1px solid rgba(255,255,255,.85);
+  border-radius:16px;padding:20px 24px;
+  box-shadow:0 8px 28px rgba(14,12,10,.07);
+  display:none;
+  animation:mip-in .22s var(--ease);
+}
+@keyframes mip-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.map-info-panel.visible{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.map-info-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.map-info-body{flex:1;min-width:0}
+.map-info-name{font-size:15px;font-weight:800;letter-spacing:-.02em;color:var(--ink);display:block;margin-bottom:2px}
+.map-info-address{font-size:12.5px;color:var(--muted);display:block;margin-bottom:6px}
+.map-info-when{display:inline-flex;align-items:center;gap:6px;background:rgba(139,62,16,.08);border:1px solid rgba(139,62,16,.15);border-radius:999px;padding:4px 12px;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+/* MAP PHOTO TOOLTIP */
+.leaflet-tooltip.map-tip{background:var(--paper);border:1px solid rgba(255,255,255,.85);border-radius:12px;box-shadow:0 8px 28px rgba(14,12,10,.14);padding:0;overflow:hidden;pointer-events:none;max-width:180px}
+.leaflet-tooltip.map-tip::before{border-top-color:var(--paper)}
+.map-tip-img{width:180px;height:120px;object-fit:cover;display:block}
+.map-tip-label{padding:8px 12px;font-size:11px;font-weight:800;letter-spacing:.04em;color:var(--ink);line-height:1.3}
+.map-tip-place{font-size:10px;color:var(--muted);font-weight:400;margin-top:2px}
+/* MARQUEE */
+.marquee-wrap{overflow:hidden;border-block:1px solid var(--line);background:linear-gradient(90deg,rgba(250,246,240,.5),rgba(240,235,227,.3));position:relative;z-index:2}
+.marquee-track{display:flex;width:max-content;animation:marquee 32s linear infinite}
+.marquee-track span{white-space:nowrap;padding:15px 20px;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(30,27,23,.38)}
+.marquee-track .dot{color:var(--accent2);padding:15px 4px}
+@keyframes marquee{to{transform:translateX(-50%)}}
+/* FOOTER */
+footer{position:relative;z-index:2;border-top:1px solid var(--line);background:linear-gradient(180deg,transparent,rgba(14,12,10,.02));padding:48px 0 24px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:32px;margin-bottom:24px}
+.foot-piva{font-size:12px;color:rgba(30,27,23,.4);margin:8px 0 0;line-height:1.5}.foot-piva strong{font-weight:700;color:rgba(30,27,23,.55)}
+.foot-bottom-left{display:flex;flex-direction:column;gap:3px}
+.foot-legal{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.foot-legal a{font-size:11.5px;color:var(--muted);transition:color .18s;text-decoration:underline;text-decoration-color:rgba(122,113,104,.3)}.foot-legal a:hover{color:var(--ink)}.foot-legal span{color:var(--muted);font-size:10px;opacity:.5}
+.foot-brand{font-size:22px;font-weight:900;letter-spacing:-.03em;text-transform:uppercase;margin:0 0 8px}
+.foot-brand em{color:var(--accent);font-style:normal}
+.foot-tagline{font-family:'Cormorant Garamond',Georgia,serif;font-size:20px;font-style:italic;color:var(--muted);margin:0 0 16px}
+.foot-contact{font-size:13.5px;color:rgba(30,27,23,.55)}
+.foot-contact a:hover{color:var(--accent)}
+.foot-col-title{font-size:9.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 16px}
+.foot-links{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.foot-links a{font-size:14px;color:rgba(30,27,23,.65);transition:color .18s,transform .18s}
+.foot-links a:hover{color:var(--ink);transform:translateX(3px)}
+.foot-bottom{padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:20px;font-size:12.5px;color:var(--muted)}
+.foot-bottom em{font-style:italic;font-family:'Cormorant Garamond',Georgia,serif;font-size:15px}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.visible{opacity:1;transform:none}
+/* CURSOR */
+.cursor{display:none}
+@media(hover:hover) and (pointer:fine){body,body *{cursor:none !important}.cursor{display:block;position:fixed;left:0;top:0;z-index:50;pointer-events:none;border-radius:50%;transform:translate(-50%,-50%);will-change:transform}.cursor.big{width:88px;height:88px;background:radial-gradient(circle,rgba(192,112,48,.22),transparent 68%);mix-blend-mode:multiply}.cursor.dot{width:5px;height:5px;background:var(--accent)}}
+/* RESPONSIVE */
+@media(max-width:1000px){.links,.social{display:none}.menu-btn{display:block}.agenda-grid{grid-template-columns:1fr}.foot-grid{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:660px){.wrap{width:calc(100% - 32px)}.foot-grid{grid-template-columns:1fr 1fr}.foot-bottom{flex-direction:column;align-items:flex-start;gap:10px}section{padding:44px 0}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="brand-wave" x="-12%" y="-60%" width="124%" height="220%">
+      <feTurbulence id="brandTurb" type="turbulence" baseFrequency="0.025 0.018" numOctaves="3" seed="7" result="noise"/>
+      <feDisplacementMap id="brandDisplace" in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+<div class="ambient" aria-hidden="true"><div class="blob a"></div><div class="blob b"></div><div class="blob c"></div></div>
+<div class="cursor big" id="cursorBig"></div>
+<div class="cursor dot" id="cursorDot"></div>
+
+<header class="top">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <img src="logo no sfondo.png" alt="Logo Ramacciato Vintage" width="32" height="32" decoding="async">
+      <span class="brand-text" aria-label="Ramacciato Vintage"><span class="lw">R</span><span class="lw">a</span><span class="lw">m</span><span class="lw">a</span><span class="lw">c</span><span class="lw">c</span><span class="lw">i</span><span class="lw">a</span><span class="lw">t</span><span class="lw">o</span><span class="lw">&nbsp;</span><span class="lw accent">V</span><span class="lw accent">i</span><span class="lw accent">n</span><span class="lw accent">t</span><span class="lw accent">a</span><span class="lw accent">g</span><span class="lw accent">e</span></span>
+    </a>
+    <nav aria-label="Menu principale">
+      <ul class="links">
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="mercatini.html" class="active">Mercatini</a></li>
+        <li><a href="svuotacantine.html">Svuotacantine</a></li>
+      </ul>
+    </nav>
+    <ul class="social">
+      <li><a href="#" aria-label="Instagram">IG</a></li>
+      <li><a href="#" aria-label="Facebook">FB</a></li>
+      <li><a href="https://www.linkedin.com/in/luca-ramacciato-3292681b1/" target="_blank" rel="noopener" aria-label="LinkedIn">IN</a></li>
+      <li><a href="https://www.youtube.com/@archivioilcustode" target="_blank" rel="noopener" aria-label="YouTube">YT</a></li>
+      <li><button class="cart-btn" id="cartOpenBtn" onclick="if(window.rvCart)rvCart.open()" aria-label="Carrello">&#x1F6D2; <span class="cart-count zero" id="cartCount">0</span></button></li>
+    </ul>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false">Menu</button>
+  </div>
+  <div class="mobile" id="mobileMenu" role="dialog" aria-modal="true">
+    <button class="mob-close" id="mobClose" aria-label="Chiudi menu">&#x2715;</button>
+    <a href="shop.html">Shop</a>
+    <a href="mercatini.html">Mercatini</a>
+    <a href="svuotacantine.html">Svuotacantine</a>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="wrap">
+    <p class="sec-label reveal">Presenza sul territorio</p>
+    <h1 style="font-size:clamp(52px,7.5vw,110px);line-height:.9;letter-spacing:-.065em;text-transform:uppercase;font-weight:900;margin:0 0 16px" class="reveal">Mercatini<br><span class="caramel">Vintage</span></h1>
+    <p class="reveal" style="max-width:520px;font-size:14.5px;color:rgba(30,27,23,.62);line-height:1.72">Porta gli oggetti dove vive la gente. Mercatini dell'antiquariato, fiere del collezionismo, eventi locali &mdash; fisicamente presenti, sempre.</p>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Vicenza</span><span class="dot">&middot;</span><span>Padova</span><span class="dot">&middot;</span><span>Verona</span><span class="dot">&middot;</span><span>Mestre</span><span class="dot">&middot;</span><span>Piazzola sul Brenta</span><span class="dot">&middot;</span><span>Montecchio Maggiore</span><span class="dot">&middot;</span><span>Antiquariato</span><span class="dot">&middot;</span><span>Collezionismo</span><span class="dot">&middot;</span><span>Vintage</span><span class="dot">&middot;</span>
+    <span>Vicenza</span><span class="dot">&middot;</span><span>Padova</span><span class="dot">&middot;</span><span>Verona</span><span class="dot">&middot;</span><span>Mestre</span><span class="dot">&middot;</span><span>Piazzola sul Brenta</span><span class="dot">&middot;</span><span>Montecchio Maggiore</span><span class="dot">&middot;</span><span>Antiquariato</span><span class="dot">&middot;</span><span>Collezionismo</span><span class="dot">&middot;</span><span>Vintage</span><span class="dot">&middot;</span>
+  </div>
+</div>
+
+<!-- AGENDA -->
+<section id="agenda">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="sec-label">Agenda ricorrente</p>
+      <h2 class="h2">Dove trovarmi</h2>
+      <div class="divider-line"></div>
+      <p class="body-copy">Questi sono i principali mercatini a cui ho partecipato. Le presenze variano di mese in mese &mdash; aggiorno questa pagina per comunicare dove sarò. Seguimi sui social per aggiornamenti in tempo reale.</p>
+      <button class="agenda-toggle-btn" id="agendaToggle">&#128197; Vedi il calendario ricorrente <span id="agendaArrow">▼</span></button>
+    </div>
+
+    <!-- Calendario collassabile -->
+    <div id="agendaContent" style="overflow:hidden;max-height:0;transition:max-height .5s cubic-bezier(.22,1,.36,1)">
+      <p style="font-size:9.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:40px 0 16px">Domeniche</p>
+      <div class="agenda-grid">
+        <div class="agenda-card">
+          <div class="agenda-card-top">
+            <div class="agenda-day">1<sup style="font-size:.5em;vertical-align:super">a</sup><span>Domenica del mese</span></div>
+            <span class="agenda-badge">3 location</span>
+          </div>
+          <div class="agenda-locations">
+            <div class="agenda-loc"><span class="agenda-loc-num">1.</span><div class="agenda-loc-body"><p class="agenda-loc-name">Verona &mdash; San Zeno</p><p class="agenda-loc-place">Piazza San Zeno, Verona</p></div></div>
+            <div class="agenda-loc"><span class="agenda-loc-num">2.</span><div class="agenda-loc-body"><p class="agenda-loc-name">Mestre</p><p class="agenda-loc-place">Mestre, Venezia</p></div></div>
+            <div class="agenda-loc"><span class="agenda-loc-num">3.</span><div class="agenda-loc-body"><p class="agenda-loc-name">Alte Ceccato &mdash; Montecchio Maggiore</p><p class="agenda-loc-place">Piazza San Carlo, Alte Ceccato (VI)</p></div></div>
+          </div>
+        </div>
+        <div class="agenda-card">
+          <div class="agenda-card-top"><div class="agenda-day">2<sup style="font-size:.5em;vertical-align:super">a</sup><span>Domenica del mese</span></div><span class="agenda-badge">Vicenza</span></div>
+          <p class="agenda-single-name">Non ho l&rsquo;et&agrave;</p>
+          <p class="agenda-single-place">&#x1F4CD; Piazza dei Signori, Vicenza</p>
+        </div>
+        <div class="agenda-card">
+          <div class="agenda-card-top"><div class="agenda-day">3<sup style="font-size:.5em;vertical-align:super">a</sup><span>Domenica del mese</span></div><span class="agenda-badge">Padova</span></div>
+          <p class="agenda-single-name">Non ho l&rsquo;et&agrave;</p>
+          <p class="agenda-single-place">&#x1F4CD; Prato della Valle, Padova</p>
+        </div>
+        <div class="agenda-card">
+          <div class="agenda-card-top"><div class="agenda-day">4<sup style="font-size:.5em;vertical-align:super">a</sup><span>Domenica del mese</span></div><span class="agenda-badge">Padovano</span></div>
+          <p class="agenda-single-name">Mercatino Piazzola sul Brenta</p>
+          <p class="agenda-single-place">&#x1F4CD; Piazzola sul Brenta (PD)</p>
+        </div>
+      </div>
+      <p style="font-size:9.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:40px 0 16px">Sabati</p>
+      <div class="agenda-grid">
+        <div class="agenda-card">
+          <div class="agenda-card-top"><div class="agenda-day">2<sup style="font-size:.5em;vertical-align:super">o</sup><span>Sabato del mese</span></div><span class="agenda-badge">Mestre</span></div>
+          <p class="agenda-single-name">Mercatino Mestre</p>
+          <p class="agenda-single-place">&#x1F4CD; Corso del Popolo, Mestre (VE)</p>
+        </div>
+        <div class="agenda-card">
+          <div class="agenda-card-top"><div class="agenda-day">2<sup style="font-size:.5em;vertical-align:super">o</sup><span>Sabato del mese</span></div><span class="agenda-badge">Vicenza</span></div>
+          <p class="agenda-single-name">Sabato Vintage</p>
+          <p class="agenda-single-place">&#x1F4CD; Piazza Duomo, Vicenza</p>
+        </div>
+      </div>
+    </div><!-- /agendaContent -->
+
+    <div class="map-container reveal">
+      <div id="map"></div>
+    </div>
+    <div class="map-info-panel" id="mapInfoPanel"></div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <p class="foot-brand">Ramacciato <em>Vintage</em></p>
+        <p class="foot-tagline serif">&ldquo;Own what you buy.&rdquo;</p>
+        <p class="foot-contact"><a href="mailto:ramacciatoluca@gmail.com">ramacciatoluca@gmail.com</a></p>
+        <p class="foot-piva">Luca Ramacciato · Vicenza<br><strong>P.IVA</strong> IT04400570240</p>
+      </div>
+      <div>
+        <p class="foot-col-title">Esplora</p>
+        <ul class="foot-links">
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="mercatini.html">Mercatini</a></li>
+          <li><a href="index.html#collezioni">Categorie</a></li>
+          <li><a href="index.html#acquista">Come acquistare</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-col-title">Contatti</p>
+        <ul class="foot-links">
+          <li><a href="svuotacantine.html">Svuotacantine</a></li>
+          <li><a href="mailto:ramacciatoluca@gmail.com">Email</a></li>
+          <li><a href="#" aria-label="Instagram">Instagram</a></li>
+          <li><a href="https://www.youtube.com/@archivioilcustode" target="_blank" rel="noopener">YouTube</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-col-title">Legale</p>
+        <ul class="foot-links">
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="termini-di-servizio.html">Termini di Servizio</a></li>
+          <li><a href="cookie-policy.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div class="foot-bottom-left"><span>&copy; 2026 Ramacciato Vintage — Luca Ramacciato — P.IVA IT04400570240 — Vicenza</span></div>
+      <div class="foot-legal">
+        <a href="privacy-policy.html">Privacy Policy</a><span>·</span>
+        <a href="termini-di-servizio.html">Termini di Servizio</a><span>·</span>
+        <a href="cookie-policy.html">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+/* AGENDA TOGGLE */
+(function(){
+  var btn=document.getElementById('agendaToggle');
+  var content=document.getElementById('agendaContent');
+  var arrow=document.getElementById('agendaArrow');
+  var open=false;
+  btn.addEventListener('click',function(){
+    open=!open;
+    if(open){
+      content.style.maxHeight=content.scrollHeight+'px';
+      content.addEventListener('transitionend',function once(){content.style.maxHeight='none';content.removeEventListener('transitionend',once)});
+    } else {
+      content.style.maxHeight=content.scrollHeight+'px';
+      requestAnimationFrame(function(){requestAnimationFrame(function(){content.style.maxHeight='0'})});
+    }
+    btn.classList.toggle('open',open);
+    arrow.style.transform=open?'rotate(180deg)':'rotate(0deg)';
+    arrow.style.transition='transform .3s';
+  });
+})();
+
+/* MAP */
+var B='foto mercatini x sito';
+function encPath(p){return p.split('/').map(function(s){return s.replace(/ /g,'%20').replace(/\(/g,'%28').replace(/\)/g,'%29')}).join('/')}
+var LOCATIONS=[
+  {name:"Verona — San Zeno",address:"Piazza San Zeno, Verona",lat:45.4438,lng:10.9853,color:'#8b3e10',schedule:"1ª Domenica del mese",photo:null},
+  {name:"Alte Ceccato — Montecchio Maggiore",address:"Piazza San Carlo, Alte Ceccato (VI)",lat:45.4993,lng:11.3996,color:'#5858a0',schedule:"1ª Domenica del mese",photo:B+'/2026/Montecchio Maggiore gennaio 26/Montecchio Maggiore gennaio 26 (1).jpg'},
+  {name:"Non ho l'età — Vicenza",address:"Piazza dei Signori, Vicenza",lat:45.5465,lng:11.5469,color:'#8b3e10',schedule:"2ª Domenica del mese",photo:B+'/2026/Vicenza gennaio 26/Vicenza gennaio 26 (1).jpg'},
+  {name:"Non ho l'età — Padova",address:"Prato della Valle, Padova",lat:45.3977,lng:11.8762,color:'#4a8a4a',schedule:"3ª Domenica del mese",photo:B+'/2026/Padova aprile 26/Padova aprile 26 (1).jpg'},
+  {name:"Mercatino Piazzola sul Brenta",address:"Piazzola sul Brenta (PD)",lat:45.5353,lng:11.8383,color:'#c07030',schedule:"4ª Domenica del mese",photo:null},
+  {name:"Mercatino Mestre",address:"Corso del Popolo, Mestre (VE)",lat:45.4905,lng:12.2350,color:'#c07030',schedule:"2° Sabato del mese",photo:null},
+  {name:"Sabato Vintage — Vicenza",address:"Piazza Duomo, Vicenza",lat:45.5478,lng:11.5454,color:'#8b3e10',schedule:"2° Sabato del mese",photo:B+'/2026/Vicenza aprile 26 sabato/Vicenza aprile 26 sabato e domenica (1).jpg'}
+];
+
+(function initMap(){
+  var map=L.map('map',{zoomControl:true,scrollWheelZoom:false}).setView([45.48,11.70],9);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',maxZoom:19}).addTo(map);
+  var panel=document.getElementById('mapInfoPanel');
+  LOCATIONS.forEach(function(loc){
+    var icon=L.divIcon({className:'',html:'<div style="width:18px;height:18px;border-radius:50%;background:'+loc.color+';border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.3);cursor:pointer"></div>',iconSize:[18,18],iconAnchor:[9,9]});
+    var marker=L.marker([loc.lat,loc.lng],{icon:icon}).addTo(map);
+    var tipHtml=loc.photo
+      ? '<img class="map-tip-img" src="'+encPath(loc.photo)+'" alt="'+loc.name+'" loading="lazy"><div class="map-tip-label">'+loc.name+'<div class="map-tip-place">'+loc.address+'</div></div>'
+      : '<div class="map-tip-label" style="padding:12px">'+loc.name+'<div class="map-tip-place">'+loc.address+'</div></div>';
+    marker.bindTooltip(tipHtml,{className:'map-tip',direction:'top',offset:[0,-10],opacity:1});
+    marker.on('click',function(){
+      panel.className='map-info-panel visible';
+      panel.innerHTML=
+        '<div class="map-info-dot" style="background:'+loc.color+'"></div>'
+        +'<div class="map-info-body">'
+          +'<span class="map-info-name">'+loc.name+'</span>'
+          +'<span class="map-info-address">📍 '+loc.address+'</span>'
+          +'<span class="map-info-when">📅 '+loc.schedule+'</span>'
+        +'</div>';
+      panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+    });
+  });
+  map.on('click',function(e){if(!e.originalEvent.target.closest||!e.originalEvent.target.closest('.leaflet-marker-icon')){panel.className='map-info-panel';}});
+})();
+
+
+/* NAV + CURSOR + REVEAL + BRAND */
+var menuBtn=document.getElementById('menuBtn'),mob=document.getElementById('mobileMenu'),mobClose=document.getElementById('mobClose');
+if(menuBtn&&mob)menuBtn.addEventListener('click',function(){mob.classList.add('open')});
+if(mobClose)mobClose.addEventListener('click',function(){mob.classList.remove('open')});
+var cB=document.getElementById('cursorBig'),cD=document.getElementById('cursorDot');
+if(cB&&cD)document.addEventListener('mousemove',function(e){var t='translate(calc(-50% + '+e.clientX+'px), calc(-50% + '+e.clientY+'px))';cB.style.transform=t;cD.style.transform=t});
+var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+/* ── Liquid wave brand ── */
+(function(){
+  var brandText=document.querySelector('.brand-text');
+  if(!brandText) return;
+  var bTurb=document.getElementById('brandTurb');
+  var bDisplace=document.getElementById('brandDisplace');
+  if(!bTurb||!bDisplace) return;
+  var phase=0,scale=0,targetScale=0,rafId=null;
+  function animateBrand(){
+    scale+=(targetScale-scale)*0.08;
+    if(scale>0.3){
+      phase+=0.04;
+      bTurb.setAttribute('baseFrequency',(0.025+Math.sin(phase*1.1)*0.012)+' '+(0.018+Math.sin(phase*0.7)*0.008));
+      bDisplace.setAttribute('scale',scale);
+    } else {
+      bDisplace.setAttribute('scale',0);
+      if(targetScale===0){cancelAnimationFrame(rafId);rafId=null;brandText.style.filter='';return;}
+    }
+    rafId=requestAnimationFrame(animateBrand);
+  }
+  var brandEl=document.querySelector('.brand');
+  if(brandEl){
+    brandEl.addEventListener('mouseenter',function(){targetScale=18;brandText.style.filter='url(#brand-wave)';if(!rafId)rafId=requestAnimationFrame(animateBrand)});
+    brandEl.addEventListener('mouseleave',function(){targetScale=0;if(!rafId)rafId=requestAnimationFrame(animateBrand)});
+  }
+})();
+</script>
+<script src="cart-widget.js" defer></script>
+<script src="cart-widget.js" defer></script>
+</body>
+</html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         

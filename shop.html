@@ -139,11 +139,10 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 .modal-ebay-link:hover{border-color:var(--accent2);color:var(--accent)}
 /* cart drawer removed — handled by cart-widget.js */
 .cat-carousel-wrap{position:relative;z-index:2;padding:20px 0;border-bottom:1px solid var(--line);background:rgba(250,246,240,.6);backdrop-filter:blur(8px)}
-.cat-carousel-inner{display:flex;gap:12px;overflow-x:auto;padding:4px 8px;scrollbar-width:none;-ms-overflow-style:none;align-items:stretch}
-.cat-carousel-inner::-webkit-scrollbar{display:none}
+.cat-carousel-inner{display:flex;gap:8px;overflow:hidden;padding:8px 24px;align-items:center;justify-content:center;position:relative;flex:1;min-height:140px}
 .cat-item{display:flex;flex-direction:column;align-items:center;gap:8px;flex-shrink:0;cursor:pointer;padding:12px 16px;border-radius:16px;border:1px solid transparent;background:none;font-family:inherit;transition:background .22s var(--ease),border-color .22s,box-shadow .22s,transform .25s var(--ease);min-width:110px}
 .cat-item:hover{background:rgba(250,246,240,.95);border-color:rgba(255,255,255,.85);box-shadow:0 6px 20px rgba(14,12,10,.08)}
-.cat-item.active{background:var(--paper);border-color:rgba(255,255,255,.9);box-shadow:0 8px 28px rgba(14,12,10,.1);transform:scale(1.1)}
+.cat-item.active{background:var(--paper);border-color:rgba(255,255,255,.9);box-shadow:0 8px 28px rgba(14,12,10,.1)}
 .cat-item.active .cat-label{color:var(--accent)}
 .cat-model-wrap{width:88px;height:88px;border-radius:12px;overflow:hidden;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .cat-model-wrap model-viewer{width:100%;height:100%;--progress-bar-color:transparent}
@@ -174,6 +173,42 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
 @media(max-width:660px){.wrap{width:calc(100% - 32px)}.product-grid{grid-template-columns:1fr 1fr}.modal-inner{grid-template-columns:1fr}.modal-img-wrap{border-radius:22px 22px 0 0;min-height:220px}.foot-grid{grid-template-columns:1fr 1fr}.foot-bottom{flex-direction:column;align-items:flex-start;gap:10px}}
 @media(max-width:420px){.product-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+/* ── SUBCATEGORY TILES ── */
+.subcat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:24px 0 40px;grid-column:1/-1}
+.subcat-tile{border-radius:20px;overflow:hidden;cursor:pointer;box-shadow:0 8px 28px rgba(14,12,10,.07);transition:transform .22s cubic-bezier(.22,1,.36,1),box-shadow .22s;background:var(--paper,#faf6f0)}
+.subcat-tile:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(14,12,10,.13)}
+.subcat-tile-model{height:185px;position:relative;overflow:hidden}
+.subcat-tile-model model-viewer{width:100%;height:100%;display:block}
+.subcat-tile-emoji{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:58px}
+.subcat-tile-body{padding:13px 15px 15px;border-top:1px solid rgba(14,12,10,.08)}
+.subcat-tile-name{font-size:14px;font-weight:900;letter-spacing:-.02em;margin:0 0 3px;line-height:1.2}
+.subcat-tile-count{font-size:10px;color:var(--muted,#7a7168);margin:0;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+/* ── BREADCRUMB ── */
+.breadcrumb{display:none;align-items:center;gap:7px;margin-bottom:18px;padding:9px 14px;background:rgba(250,246,240,.9);border-radius:10px;border:1px solid rgba(14,12,10,.07);font-size:12px}
+.breadcrumb.visible{display:flex}
+.bc-btn{background:none;border:none;font-family:inherit;font-size:12px;font-weight:700;color:var(--accent,#8b3e10);cursor:pointer;padding:0;text-decoration:underline;text-underline-offset:2px}
+.bc-sep{color:var(--muted,#7a7168)}
+.bc-current{font-weight:800;color:var(--ink,#0e0c0a);letter-spacing:-.01em}
+
+
+/* ── CAROUSEL STAGE + FRECCE ── */
+.cat-carousel-stage{display:flex;align-items:center;gap:12px;width:100%;justify-content:center}
+.cat-arrow{flex-shrink:0;width:40px;height:40px;border-radius:50%;background:var(--paper);border:1px solid rgba(255,255,255,.88);box-shadow:0 4px 14px rgba(14,12,10,.08);cursor:pointer;font-size:22px;font-family:inherit;color:var(--ink);display:grid;place-items:center;transition:background .18s,transform .18s;z-index:3;line-height:1}
+.cat-arrow:hover{background:var(--ink);color:var(--bg);transform:scale(1.08)}
+/* Fade laterale */
+.cat-carousel-inner::before,.cat-carousel-inner::after{content:'';position:absolute;top:0;bottom:0;width:72px;z-index:2;pointer-events:none}
+.cat-carousel-inner::before{left:0;background:linear-gradient(to right,rgba(250,246,240,.98) 30%,transparent)}
+.cat-carousel-inner::after{right:0;background:linear-gradient(to left,rgba(250,246,240,.98) 30%,transparent)}
+/* Items nascosti finché JS non assegna data-pos */
+.cat-item:not([data-pos]){display:none!important}
+.cat-item[data-pos]{transition:transform .38s cubic-bezier(.22,1,.36,1),opacity .38s}
+.cat-item[data-pos="0"]{transform:scale(1.12);opacity:1;z-index:1}
+.cat-item[data-pos="1"],.cat-item[data-pos="-1"]{transform:scale(.84);opacity:.72}
+.cat-item[data-pos="2"],.cat-item[data-pos="-2"]{transform:scale(.68);opacity:.46}
+.cat-item[data-pos="0"] .cat-label{color:var(--accent)}
+.cat-item[data-pos="0"] .cat-all-icon{color:var(--accent)}
+
 </style>
 </head>
 <body>
@@ -249,47 +284,51 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
 </section>
 <div class="cat-carousel-wrap" aria-label="Filtra per categoria">
   <div class="wrap">
-    <div class="cat-carousel-inner" id="catCarousel">
+    <div class="cat-carousel-stage">
+      <button class="cat-arrow" id="catArrowL" aria-label="Precedente">&#x2039;</button>
+      <div class="cat-carousel-inner" id="catCarousel">
       <button class="cat-item active" data-cat="all">
         <div class="cat-model-wrap"><span class="cat-all-icon">✦</span></div>
         <span class="cat-label">Tutto</span>
       </button>
       <button class="cat-item" data-cat="videogiochi">
         <div class="cat-model-wrap">
-          <model-viewer data-src="3d%20per%20interfaccia/psplaystation_logo.glb" auto-rotate rotation-per-second="22deg" reveal="auto" loading="lazy" interaction-prompt="none" orientation="90deg 180deg 90deg" camera-orbit="0deg 90deg 120%" field-of-view="40deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"></model-viewer>
+          <model-viewer data-src="3d%20per%20interfaccia/psplaystation_logo.glb" auto-rotate  rotation-per-second="0deg" reveal="auto" loading="lazy" interaction-prompt="none" orientation="90deg 180deg 90deg" camera-orbit="0deg 90deg 120%" field-of-view="40deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"></model-viewer>
         </div>
         <span class="cat-label">Videogiochi</span>
       </button>
       <button class="cat-item" data-cat="elettronica">
         <div class="cat-model-wrap">
-          <model-viewer data-src="3d%20per%20interfaccia/boombox.glb" auto-rotate rotation-per-second="18deg" reveal="auto" loading="lazy" interaction-prompt="none" camera-orbit="30deg 80deg 130%" field-of-view="38deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"></model-viewer>
+          <model-viewer data-src="3d%20per%20interfaccia/boombox.glb" auto-rotate  rotation-per-second="0deg" reveal="auto" loading="lazy" interaction-prompt="none" camera-orbit="30deg 80deg 130%" field-of-view="38deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"></model-viewer>
         </div>
         <span class="cat-label">Elettronica Vintage</span>
       </button>
       <button class="cat-item" data-cat="musica">
         <div class="cat-model-wrap">
-          <model-viewer data-src="3d%20per%20interfaccia/vinyls_3.glb" auto-rotate rotation-per-second="20deg" reveal="auto" loading="lazy" interaction-prompt="none" camera-orbit="0deg 70deg 130%" field-of-view="38deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"></model-viewer>
+          <model-viewer data-src="3d%20per%20interfaccia/vinyls_3.glb" auto-rotate  rotation-per-second="0deg" reveal="auto" loading="lazy" interaction-prompt="none" camera-orbit="0deg 70deg 130%" field-of-view="38deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"></model-viewer>
         </div>
         <span class="cat-label">Vinili &amp; Musica</span>
       </button>
       <button class="cat-item" data-cat="libri">
         <div class="cat-model-wrap">
-          <model-viewer data-src="3d%20per%20interfaccia/book_stack.glb" auto-rotate rotation-per-second="16deg" reveal="auto" loading="lazy" interaction-prompt="none" camera-orbit="20deg 78deg 130%" field-of-view="36deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"></model-viewer>
+          <model-viewer data-src="3d%20per%20interfaccia/book_stack.glb" auto-rotate  rotation-per-second="0deg" reveal="auto" loading="lazy" interaction-prompt="none" camera-orbit="20deg 78deg 130%" field-of-view="36deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"></model-viewer>
         </div>
         <span class="cat-label">Libri Curiosi</span>
       </button>
       <button class="cat-item" data-cat="oggetti">
         <div class="cat-model-wrap">
-          <model-viewer data-src="3d%20per%20interfaccia/blue_desk_lamp_vintage_90s.glb" auto-rotate rotation-per-second="18deg" reveal="auto" loading="lazy" interaction-prompt="none" camera-orbit="0deg 80deg 130%" field-of-view="38deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"></model-viewer>
+          <model-viewer data-src="3d%20per%20interfaccia/blue_desk_lamp_vintage_90s.glb" auto-rotate  rotation-per-second="0deg" reveal="auto" loading="lazy" interaction-prompt="none" camera-orbit="0deg 80deg 130%" field-of-view="38deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"></model-viewer>
         </div>
         <span class="cat-label">Oggetti Vintage</span>
       </button>
       <button class="cat-item" data-cat="trading">
         <div class="cat-model-wrap">
-          <model-viewer data-src="3d%20per%20interfaccia/trading_card_pack.glb" auto-rotate rotation-per-second="22deg" reveal="auto" loading="lazy" interaction-prompt="none" orientation="90deg 0deg 0deg" camera-orbit="15deg 75deg 130%" field-of-view="36deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"></model-viewer>
+          <model-viewer data-src="3d%20per%20interfaccia/trading_card_pack.glb" auto-rotate  rotation-per-second="0deg" reveal="auto" loading="lazy" interaction-prompt="none" orientation="90deg 0deg 0deg" camera-orbit="15deg 75deg 130%" field-of-view="36deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"></model-viewer>
         </div>
         <span class="cat-label">Trading Cards</span>
       </button>
+      </div>
+      <button class="cat-arrow" id="catArrowR" aria-label="Successivo">&#x203A;</button>
     </div>
   </div>
 </div>
@@ -321,6 +360,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
         <option value="new">Novit&agrave; prima</option>
       </select>
     </div>
+    <div id="breadcrumb" class="breadcrumb"><button class="bc-btn" id="bcCatBtn"></button><span class="bc-sep">&#x203A;</span><span class="bc-current" id="bcSubcat"></span></div>
     <div class="product-grid" id="productGrid"></div>
   </div>
 </div>
@@ -395,12 +435,15 @@ var PRODUCTS=[];
 var CART_KEY='rv_cart_v1';
 function loadCart(){try{return JSON.parse(localStorage.getItem(CART_KEY)||'[]');}catch(e){return[];}}
 function saveCart(c){localStorage.setItem(CART_KEY,JSON.stringify(c));if(window.rvCart)window.rvCart.refresh();}
-var activeCat='all',activeAvail='all',activeSort='default';
+var activeCat='all',activeAvail='all',activeSort='default',activeSubcat=null;
+var SUBCATS_DATA={};
 function catLabel(c){return{videogiochi:'Videogiochi & Console',elettronica:'Elettronica Vintage',musica:'Vinili & Musica',libri:'Libri Curiosi',oggetti:'Oggetti Vintage',trading:'Trading Cards'}[c]||c}
-function getFiltered(){var l=PRODUCTS.slice();if(activeCat!=='all')l=l.filter(function(p){return p.cat===activeCat});if(activeAvail==='available')l=l.filter(function(p){return!p.sold});if(activeSort==='price-asc')l.sort(function(a,b){return a.price-b.price});if(activeSort==='price-desc')l.sort(function(a,b){return b.price-a.price});if(activeSort==='new')l.sort(function(a,b){return(b.isNew?1:0)-(a.isNew?1:0)});return l}
+function getFiltered(){var l=PRODUCTS.slice();if(activeCat!=='all')l=l.filter(function(p){return p.cat===activeCat});if(activeSubcat)l=l.filter(function(p){return p.subcat===activeSubcat});if(activeAvail==='available')l=l.filter(function(p){return!p.sold});if(activeSort==='price-asc')l.sort(function(a,b){return a.price-b.price});if(activeSort==='price-desc')l.sort(function(a,b){return b.price-a.price});if(activeSort==='new')l.sort(function(a,b){return(b.isNew?1:0)-(a.isNew?1:0)});return l}
 function renderGrid(){
+  if(activeCat!=='all'&&!activeSubcat&&SUBCATS_DATA[activeCat]){renderSubcatTiles(activeCat);return;}
   var list=getFiltered(),grid=document.getElementById('productGrid');
-  document.getElementById('gridCount').textContent=list.length+' articol'+(list.length===1?'o':'i');
+  var _sl=activeSubcat?(SUBCATS_DATA[activeCat]||[]).filter(function(s){return s.id===activeSubcat;})[0]:null;
+  document.getElementById('gridCount').textContent=list.length+' articol'+(list.length===1?'o':'i')+(_sl?' · '+_sl.label:'');
   if(list.length===0){grid.innerHTML='<div class="empty-state"><p style="font-size:40px">&#x1F50D;</p><p>Nessun prodotto trovato.</p></div>';return}
   grid.innerHTML=list.map(function(p){
     var imgHtml=p.model
@@ -413,6 +456,42 @@ function renderGrid(){
     var mv=card.querySelector('model-viewer');
     if(mv){card.addEventListener('mouseenter',function(){mv.setAttribute('rotation-per-second','28deg');});card.addEventListener('mouseleave',function(){mv.setAttribute('rotation-per-second','0deg');});}
   });
+}
+function renderSubcatTiles(cat){
+  var grid=document.getElementById('productGrid');
+  var bc=document.getElementById('breadcrumb');if(bc)bc.classList.remove('visible');
+  document.getElementById('gridCount').textContent='Scegli una console';
+  var subcats=SUBCATS_DATA[cat]||[];
+  grid.innerHTML='<div class="subcat-grid">'+subcats.map(function(sc){
+    var count=PRODUCTS.filter(function(p){return p.cat===cat&&p.subcat===sc.id;}).length;
+    if(count===0)return'';
+    var inner=sc.model
+      ?'<model-viewer src="'+sc.model+'" auto-rotate rotation-per-second="0deg" reveal="auto" loading="lazy" camera-orbit="0deg 80deg 120%" field-of-view="35deg" shadow-intensity="0.8" style="width:100%;height:100%;background:'+sc.bg+'"></model-viewer>'
+      :'<div class="subcat-tile-emoji" style="background:'+sc.bg+'">'+sc.emoji+'</div>';
+    return'<div class="subcat-tile" data-subcat="'+sc.id+'" data-cat="'+cat+'">'
+      +'<div class="subcat-tile-model">'+inner+'</div>'
+      +'<div class="subcat-tile-body">'
+      +'<p class="subcat-tile-name">'+sc.label+'</p>'
+      +'<p class="subcat-tile-count">'+count+' articol'+(count===1?'o':'i')+'</p>'
+      +'</div></div>';
+  }).join('')+'</div>';
+  grid.querySelectorAll('.subcat-tile').forEach(function(tile){
+    var mv=tile.querySelector('model-viewer');
+    if(mv){tile.addEventListener('mouseenter',function(){mv.setAttribute('rotation-per-second','28deg');});tile.addEventListener('mouseleave',function(){mv.setAttribute('rotation-per-second','0deg');});}
+    tile.addEventListener('click',function(){selectSubcat(tile.dataset.cat,tile.dataset.subcat);});
+  });
+}
+function selectSubcat(cat,subcat){
+  activeSubcat=subcat;activeCat=cat;
+  var bc=document.getElementById('breadcrumb');
+  if(bc){
+    var found=(SUBCATS_DATA[cat]||[]).filter(function(s){return s.id===subcat;})[0];
+    var catBtn=document.getElementById('bcCatBtn');
+    if(catBtn)catBtn.textContent=catLabel(cat);
+    document.getElementById('bcSubcat').textContent=found?found.label:'';
+    bc.classList.add('visible');
+  }
+  renderGrid();
 }
 function openModal(id){
   var p=PRODUCTS.filter(function(x){return x.id===id})[0];if(!p)return;
@@ -500,20 +579,67 @@ function toggleCart(p){var c=loadCart();var idx=-1;c.forEach(function(x,i){if(x.
 function updateCartUI(){var count=loadCart().length,el=document.getElementById('cartCount');if(el){el.textContent=count;el.classList.toggle('zero',count===0);}}
 window.__rvShopCartUpdated=function(){updateCartUI();};
 
-/* carosello: scagliona i 6 WebGL dopo il primo frame → pagina interattiva subito */
-requestAnimationFrame(function(){
-  var mvs=document.querySelectorAll('#catCarousel model-viewer[data-src]');
-  mvs.forEach(function(mv,i){
-    setTimeout(function(){ mv.setAttribute('src', mv.dataset.src); }, i * 120);
+/* ── CAROUSEL 5-ITEM (2+centro+2) ── */
+(function(){
+  var carousel=document.getElementById('catCarousel');
+  var items=Array.from(carousel.querySelectorAll('.cat-item'));
+  var n=items.length;
+  var idx=1; // parte centrato su Videogiochi
+
+  function renderCarousel(newIdx){
+    idx=((newIdx%n)+n)%n;
+    items.forEach(function(item){
+      delete item.dataset.pos;
+      item.style.order='';
+      item.classList.remove('carousel-center','active');
+      var mv=item.querySelector('model-viewer');
+      if(mv)mv.setAttribute('rotation-per-second','0deg');
+    });
+    for(var off=-2;off<=2;off++){
+      var i=((idx+off)%n+n)%n;
+      var item=items[i];
+      item.dataset.pos=String(off);
+      item.style.order=String(off+2); // 0..4
+      if(off===0){
+        item.classList.add('carousel-center','active');
+        var mv=item.querySelector('model-viewer');
+        if(mv) mv.setAttribute('rotation-per-second','22deg');
+      }
+    }
+  }
+
+  // Frecce
+  document.getElementById('catArrowL').addEventListener('click',function(){renderCarousel(idx-1);});
+  document.getElementById('catArrowR').addEventListener('click',function(){renderCarousel(idx+1);});
+
+  // Click su item non-centro: centra (la selezione categoria avviene via IIFE)
+  carousel.addEventListener('click',function(e){
+    var item=e.target.closest('.cat-item');
+    if(!item)return;
+    var pos=parseInt(item.dataset.pos||'0');
+    if(pos!==0)renderCarousel(idx+pos);
   });
-});
+
+  // Precarica tutti i modelli subito (senza rotazione)
+  items.forEach(function(item){
+    var mv=item.querySelector('model-viewer');
+    if(mv&&!mv.getAttribute('src')&&mv.dataset.src){
+      mv.setAttribute('src',mv.dataset.src);
+    }
+  });
+
+  renderCarousel(idx);
+})();
 fetch('catalogo.json')
   .then(function(r){return r.json();})
   .then(function(data){
-    PRODUCTS=data.prodotti||[];
+    PRODUCTS=data.prodotti||[];SUBCATS_DATA=data.sottocategorie||{};
 (function(){
-  renderGrid();
-  function selectCat(cat,scroll){activeCat=cat;document.querySelectorAll('[data-cat]').forEach(function(b){b.classList.remove('active')});document.querySelectorAll('[data-cat="'+cat+'"]').forEach(function(b){b.classList.add('active')});renderGrid();if(scroll)document.querySelector('.shop-wrap').scrollIntoView({behavior:'smooth',block:'start'})}
+  // Popola contatori, non mostrare ancora prodotti
+  ['all','videogiochi','elettronica','musica','libri','oggetti','trading'].forEach(function(c){var el=document.getElementById('cnt-'+c);if(el)el.textContent=c==='all'?PRODUCTS.length:PRODUCTS.filter(function(p){return p.cat===c}).length});
+  document.getElementById('gridCount').textContent='—';
+  document.getElementById('productGrid').innerHTML='<div class="empty-state" style="grid-column:1/-1"><p style="font-size:44px;margin-bottom:14px">&#x1F4E6;</p><p style="font-size:15px;font-weight:800;letter-spacing:-.02em">Seleziona una categoria</p><p style="font-size:13px;margin-top:8px;opacity:.5">Scegli dal carousel o dal menu laterale per scoprire i prodotti.</p></div>';
+  function selectCat(cat,scroll){activeCat=cat;activeSubcat=null;var _b=document.getElementById('breadcrumb');if(_b)_b.classList.remove('visible');document.querySelectorAll('[data-cat]').forEach(function(b){b.classList.remove('active')});document.querySelectorAll('[data-cat="'+cat+'"]').forEach(function(b){b.classList.add('active')});renderGrid();if(scroll)document.querySelector('.shop-wrap').scrollIntoView({behavior:'smooth',block:'start'})}
   /* legge ?cat= dall'URL e pre-filtra */
   var urlCat=new URLSearchParams(window.location.search).get('cat');
   var validCats=['videogiochi','elettronica','musica','libri','oggetti','trading'];
@@ -522,6 +648,7 @@ fetch('catalogo.json')
   document.getElementById('catCarousel').querySelectorAll('.cat-item').forEach(function(item){item.addEventListener('click',function(){selectCat(item.dataset.cat,true)})});
   document.querySelectorAll('[data-avail]').forEach(function(btn){btn.addEventListener('click',function(){activeAvail=btn.dataset.avail;document.querySelectorAll('[data-avail]').forEach(function(b){b.classList.remove('active')});btn.classList.add('active');renderGrid()})});
   document.getElementById('sortSelect').addEventListener('change',function(e){activeSort=e.target.value;renderGrid()});
+  var _bcBtn=document.getElementById('bcCatBtn');if(_bcBtn)_bcBtn.addEventListener('click',function(){activeSubcat=null;var bc=document.getElementById('breadcrumb');if(bc)bc.classList.remove('visible');renderGrid();});
   document.getElementById('modalClose').addEventListener('click',closeModal);
   document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===document.getElementById('modalOverlay'))closeModal()});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal()});

@@ -7,12 +7,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,800;0,900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 <style>
 :root{
   --bg:#f0ebe3;--paper:#faf6f0;--ink:#0e0c0a;--muted:#7a7168;
   --line:rgba(14,12,10,.11);--accent:#8b3e10;--accent2:#c07030;
-  --green:#2d6a2d;--max:1280px;--ease:cubic-bezier(.22,1,.36,1);
+  --green:#2d6a2d;--red:#a02020;--max:1280px;--ease:cubic-bezier(.22,1,.36,1);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -25,11 +24,20 @@ a{color:inherit;text-decoration:none}
 
 /* HEADER */
 .site-header{background:rgba(250,246,240,.95);border-bottom:1px solid var(--line);padding:20px 0;position:sticky;top:0;z-index:50;backdrop-filter:blur(12px)}
-.header-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
-.header-brand{font-size:18px;font-weight:900;text-transform:uppercase;letter-spacing:-.02em}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.header-brand{font-size:18px;font-weight:900;text-transform:uppercase;letter-spacing:-.02em;margin:0}
 .header-brand em{color:var(--accent);font-style:normal}
+.header-note{font-size:11px;color:var(--muted);margin:2px 0 0}
 .header-badge{background:var(--accent);color:#fff;font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
-.header-note{font-size:11px;color:var(--muted)}
+
+/* DASHBOARD */
+.dashboard{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;padding:28px 0 0}
+.dash-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px 20px}
+.dash-label{font-size:9px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
+.dash-value{font-family:"Cormorant Garamond",Georgia,serif;font-size:28px;font-weight:600;letter-spacing:-.03em;margin:0;line-height:1.1}
+.dash-value.positive{color:var(--green)}
+.dash-value.negative{color:var(--red)}
+.dash-sub{font-size:10px;color:var(--muted);margin:4px 0 0}
 
 /* TABS */
 .tabs-bar{display:flex;gap:6px;padding:28px 0 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
@@ -40,54 +48,53 @@ a{color:inherit;text-decoration:none}
 .tab-btn.active .tab-count{background:rgba(139,62,16,.15);color:var(--accent)}
 
 /* GRID */
-.cat-section{display:none;padding:36px 0 80px}
-.cat-section.visible{display:block}
-.cat-title{font-size:clamp(28px,3.5vw,48px);font-weight:900;letter-spacing:-.05em;text-transform:uppercase;margin:0 0 8px}
-.cat-sub{font-size:13px;color:var(--muted);margin:0 0 32px}
+.cat-section{padding:36px 0 80px}
 .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px}
 
 /* PRODUCT CARD */
 .prod-card{background:var(--paper);border:1px solid rgba(255,255,255,.85);border-radius:20px;overflow:hidden;box-shadow:0 8px 28px rgba(14,12,10,.07);transition:box-shadow .24s var(--ease)}
 .prod-card:hover{box-shadow:0 16px 48px rgba(14,12,10,.11)}
-.prod-model{width:100%;height:200px;background:var(--bg);position:relative;display:block}
-.prod-model model-viewer{width:100%;height:100%;display:block}
-.prod-model-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:60px}
-.prod-status{position:absolute;top:10px;left:10px;font-size:8.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
-.prod-status.vetrina{background:#0070ba;color:#fff}
-.prod-status.disponibile{background:var(--green);color:#fff}
-.prod-status.venduto{background:rgba(14,12,10,.6);color:#fff}
-.prod-status.template{background:var(--accent2);color:#fff}
-.prod-body{padding:18px 18px 14px}
-.prod-cat-label{font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2);margin-bottom:6px}
-.prod-name{font-size:16px;font-weight:900;letter-spacing:-.03em;margin:0 0 8px;line-height:1.2}
-.prod-desc{font-size:12.5px;color:rgba(30,27,23,.62);line-height:1.6;margin:0 0 14px}
-.prod-meta{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
-.prod-price{font-family:"Cormorant Garamond",Georgia,serif;font-size:24px;font-weight:600;letter-spacing:-.03em}
-.prod-condition{font-size:9.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);background:rgba(14,12,10,.06);padding:4px 10px;border-radius:999px}
-.prod-credit{font-size:10px;color:rgba(30,27,23,.4);margin-bottom:14px;line-height:1.5}
-.prod-credit a{color:var(--accent);text-decoration:underline}
-.prod-actions{display:flex;gap:8px;padding-top:12px;border-top:1px solid var(--line)}
-.btn-copy{flex:1;padding:10px 14px;border-radius:10px;border:1.5px solid var(--ink);background:var(--ink);color:var(--bg);font-family:inherit;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .18s}
-.btn-copy:hover{background:var(--accent);border-color:var(--accent)}
-.btn-copy.copied{background:var(--green);border-color:var(--green)}
-.status-select{padding:9px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);font-family:inherit;font-size:10px;font-weight:700;color:var(--ink);cursor:pointer;outline:none}
+.prod-thumb{width:100%;height:160px;display:flex;align-items:center;justify-content:center;font-size:56px;position:relative}
+.prod-status-badge{position:absolute;top:10px;left:10px;font-size:8.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
+.s-vetrina{background:#0070ba;color:#fff}
+.s-disponibile{background:var(--green);color:#fff}
+.s-venduto{background:rgba(14,12,10,.6);color:#fff}
+.prod-body{padding:16px 18px 14px}
+.prod-cat-label{font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2);margin:0 0 4px}
+.prod-name{font-size:15px;font-weight:900;letter-spacing:-.03em;margin:0 0 6px;line-height:1.2}
+.prod-condition{font-size:9.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);background:rgba(14,12,10,.06);padding:3px 8px;border-radius:999px;display:inline-block;margin-bottom:14px}
 
-/* COPY TOAST */
-.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ink);color:var(--bg);padding:12px 24px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;z-index:999;transition:transform .3s var(--ease),opacity .3s;opacity:0;pointer-events:none}
-.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+/* FINANCE BOX */
+.finance-box{background:rgba(240,235,227,.6);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:14px}
+.finance-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;font-size:12px}
+.finance-row:last-child{margin-bottom:0;padding-top:8px;border-top:1px solid var(--line);font-weight:800;font-size:13px}
+.finance-label{color:var(--muted)}
+.finance-val{font-family:"Cormorant Garamond",Georgia,serif;font-size:16px;font-weight:600}
+.finance-val.positive{color:var(--green)}
+.finance-val.neutral{color:var(--muted)}
+.costo-input{width:90px;padding:4px 8px;border-radius:8px;border:1.5px solid var(--line);background:var(--paper);font-family:"Cormorant Garamond",Georgia,serif;font-size:15px;font-weight:600;color:var(--ink);outline:none;text-align:right;transition:border-color .18s}
+.costo-input:focus{border-color:var(--accent2)}
 
-/* NOTES */
-.prod-notes{width:100%;margin-top:8px;padding:8px 12px;border-radius:10px;border:1.5px solid var(--line);background:rgba(240,235,227,.5);font-family:inherit;font-size:12px;color:var(--ink);resize:vertical;min-height:56px;outline:none;transition:border-color .18s}
+/* STATUS + NOTES */
+.prod-actions{display:flex;gap:8px;align-items:center;padding-top:12px;border-top:1px solid var(--line);margin-bottom:10px}
+.status-select{flex:1;padding:8px 10px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);font-family:inherit;font-size:10px;font-weight:700;color:var(--ink);cursor:pointer;outline:none}
+.notes-label{font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
+.prod-notes{width:100%;padding:8px 12px;border-radius:10px;border:1.5px solid var(--line);background:rgba(240,235,227,.5);font-family:inherit;font-size:12px;color:var(--ink);resize:vertical;min-height:52px;outline:none;transition:border-color .18s}
 .prod-notes:focus{border-color:var(--accent2)}
-.notes-label{font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
 
 /* LEGENDA */
-.legend{display:flex;gap:16px;flex-wrap:wrap;margin:20px 0 0;padding:16px 20px;background:rgba(250,246,240,.7);border-radius:14px;border:1px solid var(--line)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin:20px 0 0;padding:14px 18px;background:rgba(250,246,240,.7);border-radius:12px;border:1px solid var(--line)}
 .legend-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted)}
 .legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
 
-/* RESPONSIVE */
-@media(max-width:700px){.products-grid{grid-template-columns:1fr}.header-note{display:none}}
+/* TOAST */
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ink);color:var(--bg);padding:12px 24px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;z-index:999;transition:transform .3s var(--ease),opacity .3s;opacity:0;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+/* EMPTY */
+.empty-state{padding:60px 0;color:var(--muted);text-align:center;font-size:14px}
+
+@media(max-width:700px){.products-grid{grid-template-columns:1fr}.header-note{display:none}.dashboard{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -103,236 +110,274 @@ a{color:inherit;text-decoration:none}
 </header>
 
 <div class="wrap">
-  <div class="tabs-bar" id="tabsBar">
-    <button class="tab-btn active" data-cat="tutti">Tutti <span class="tab-count" id="tc-tutti"></span></button>
-    <button class="tab-btn" data-cat="gaming">Gaming &amp; Console <span class="tab-count" id="tc-gaming"></span></button>
-    <button class="tab-btn" data-cat="musica">Musica &amp; Vinili <span class="tab-count" id="tc-musica"></span></button>
-    <button class="tab-btn" data-cat="oggettistica">Oggettistica <span class="tab-count" id="tc-oggettistica"></span></button>
+
+  <!-- DASHBOARD -->
+  <div class="dashboard" id="dashboard">
+    <div class="dash-card">
+      <p class="dash-label">Prodotti attivi</p>
+      <p class="dash-value" id="d-count">—</p>
+      <p class="dash-sub" id="d-sold">di cui venduti: —</p>
+    </div>
+    <div class="dash-card">
+      <p class="dash-label">Valore inventario</p>
+      <p class="dash-value" id="d-value">—</p>
+      <p class="dash-sub">prezzi di vendita totali</p>
+    </div>
+    <div class="dash-card">
+      <p class="dash-label">Costo totale</p>
+      <p class="dash-value" id="d-cost">—</p>
+      <p class="dash-sub" id="d-cost-sub">prodotti con costo inserito</p>
+    </div>
+    <div class="dash-card">
+      <p class="dash-label">Margine potenziale lordo</p>
+      <p class="dash-value positive" id="d-margin">—</p>
+      <p class="dash-sub" id="d-margin-pct"></p>
+    </div>
   </div>
+
+  <!-- TABS -->
+  <div class="tabs-bar" id="tabsBar"></div>
 
   <div class="legend">
     <span class="legend-item"><span class="legend-dot" style="background:#0070ba"></span> In vetrina sul sito</span>
-    <span class="legend-item"><span class="legend-dot" style="background:#2d6a2d"></span> Disponibile (non ancora pubblicato)</span>
-    <span class="legend-item"><span class="legend-dot" style="background:var(--accent2)"></span> Template (da personalizzare)</span>
+    <span class="legend-item"><span class="legend-dot" style="background:#2d6a2d"></span> Disponibile (non pubblicato)</span>
     <span class="legend-item"><span class="legend-dot" style="background:rgba(14,12,10,.5)"></span> Venduto</span>
   </div>
 
   <div id="catalogContent"></div>
 </div>
 
-<div class="toast" id="toast">Codice copiato!</div>
+<div class="toast" id="toast"></div>
 
 <script>
-var CATALOG = [
-  /* ── GAMING ── */
-  {
-    id:13, cat:'gaming',
-    name:'Sony PlayStation 2 Fat',
-    desc:'PS2 Fat originale Sony, funzionante al 100%. Completa di alimentatore originale, cavo AV, pad DualShock 2 e memory card 8MB. Testata e verificata.',
-    price:85, condition:'Ottime',
-    status:'vetrina',
-    model:'classic_ps2.glb', bg:'linear-gradient(135deg,#d0ccc5,#888480)',
-    modelCredit:'"classic ps2" by jei3323',
-    modelCreditUrl:'https://sketchfab.com/3d-models/classic-ps2-b2110ad2d21d451197590849da379b6e',
-    shopCat:'elettronica', notes:''
-  },
-  {
-    id:14, cat:'gaming',
-    name:'Sony PlayStation 1 Fat',
-    desc:'PlayStation 1 Fat originale Sony, funzionante. Controller e cavi inclusi. Prima console PlayStation, icona del gaming anni '90.',
-    price:60, condition:'Buone',
-    status:'disponibile',
-    model:'playstation_1.glb', bg:'linear-gradient(135deg,#c8c4bc,#7a7870)',
-    modelCredit:'"Playstation 1" by Ceki',
-    modelCreditUrl:'https://sketchfab.com/3d-models/playstation-1-96bed8283f2940d7bb4b1866ab0637a2',
-    shopCat:'elettronica', notes:''
-  },
-  {
-    id:15, cat:'gaming',
-    name:'Sony PS One Slim',
-    desc:'PS One slim originale Sony, versione compatta della PS1. Funzionante, in buono stato. Design iconico, ideale per collezionisti.',
-    price:55, condition:'Buone',
-    status:'disponibile',
-    model:'psone.glb', bg:'linear-gradient(135deg,#e8e4dc,#b0aca4)',
-    modelCredit:'"PS One Low Poly" by Dio Pieretti',
-    modelCreditUrl:'https://sketchfab.com/3d-models/ps-one-low-poly-model-pixel-art-texture-dc3f896c82534426a23e72dc6837abe1',
-    shopCat:'elettronica', notes:''
-  },
-  {
-    id:16, cat:'gaming',
-    name:'Controller DualShock 2 PS2',
-    desc:'DualShock 2 originale PlayStation 2. Funzionante, tutte le levette e tasti operativi. Ottimo per completare il setup PS2.',
-    price:20, condition:'Buone',
-    status:'vetrina',
-    model:'ps2_controller.glb', bg:'linear-gradient(135deg,#2a2a2a,#555)',
-    modelCredit:'"PS2 Controller" by rhcreations',
-    modelCreditUrl:'https://sketchfab.com/3d-models/ps2-controller-9b0db71448a14907a6235c79bdce786a',
-    shopCat:'elettronica', notes:''
-  },
-  {
-    id:17, cat:'gaming',
-    name:'Gioco PS2 — [titolo]',
-    desc:'TEMPLATE: Gioco originale PS2 in custodia originale. Aggiornare titolo, prezzo e descrizione. Questo modello rappresenta qualsiasi gioco PS2.',
-    price:8, condition:'Buone',
-    status:'template',
-    model:'dvdps2wii_case.glb', bg:'linear-gradient(135deg,#1a3050,#0a1828)',
-    modelCredit:'"DVD/PS2/Wii case" by MacDrawz',
-    modelCreditUrl:'https://sketchfab.com/3d-models/dvdps2wii-case-60c2e703f9764cd6885811452802b3aa',
-    shopCat:'elettronica', notes:'Modello template riutilizzabile per ogni gioco PS2/PS1/Wii'
-  },
-  {
-    id:20, cat:'gaming',
-    name:'Console Retro PSX + Controller',
-    desc:'Console retro PSX con controller incluso. Low-poly, per amanti del retrogaming. Valutare al momento della vendita.',
-    price:35, condition:'Discrete',
-    status:'disponibile',
-    model:'psx_xbox.glb', bg:'linear-gradient(135deg,#c8c4c0,#888480)',
-    modelCredit:'"PSX Xbox Console & Controller" by Tomitos',
-    modelCreditUrl:'https://sketchfab.com/3d-models/psx-xbox-console-controller-611c5e5e30664b0bade4d583b21905da',
-    shopCat:'elettronica', notes:''
-  },
-  /* ── MUSICA ── */
-  {
-    id:18, cat:'musica',
-    name:'Vinile 33 giri — [artista]',
-    desc:'TEMPLATE: Vinile 33 giri originale in buono stato. Copertina integra, disco senza graffi profondi. Aggiornare artista e titolo.',
-    price:12, condition:'Buone',
-    status:'template',
-    model:'vinyl_record.glb', bg:'linear-gradient(135deg,#1a1a1a,#444)',
-    modelCredit:'"Vinyl Record" by rosartemisa',
-    modelCreditUrl:'https://sketchfab.com/3d-models/vinyl-record-b9e96ded235d4188ac966fc63a2ea1ce',
-    shopCat:'musica', notes:'Modello template per tutti i vinili'
-  },
-  {
-    id:19, cat:'musica',
-    name:'CD Album — [artista]',
-    desc:'TEMPLATE: CD originale in jewel case integra. Disco senza graffi, artwork incluso. Aggiornare artista e titolo.',
-    price:5, condition:'Ottime',
-    status:'template',
-    model:'album_case.glb', bg:'linear-gradient(135deg,#e8f0f8,#8090a8)',
-    modelCredit:'"Album Case 3D Model" by B1GF3RG',
-    modelCreditUrl:'https://sketchfab.com/3d-models/album-case-3d-model-ca4a9638c62b4c5197eef5253e436e6b',
-    shopCat:'musica', notes:'Modello template per tutti i CD'
-  }
-];
+// ── STATO LOCALE ──────────────────────────────────────────────
+var LOCAL = {};
+try { LOCAL = JSON.parse(localStorage.getItem('rv_interno') || '{}'); } catch(e){}
 
-var SAVED_NOTES = {};
-try { SAVED_NOTES = JSON.parse(localStorage.getItem('rv_notes') || '{}'); } catch(e){}
-
-function catLabel(c){return{elettronica:"Elettronica d'epoca",musica:'Musica & Vinili',oggettistica:'Oggettistica',arredo:'Arredo & Design',libri:'Libri',abbigliamento:'Abbigliamento'}[c]||c}
-
-function generateCode(p){
-  var n = (p.notes||'').replace(/'/g,"\\'");
-  return "{id:"+p.id+",cat:'"+p.shopCat+"',name:""+p.name.replace(/"/g,'\\"')+"","
-    +"desc:""+p.desc.replace(/"/g,'\\"')+"","
-    +"price:"+p.price+",condition:'"+p.condition+"',sold:false,isNew:true,"
-    +"emoji:'\uD83C\uDFAE',"
-    +"bg:'"+p.bg+"',"
-    +"model:'"+p.model+"',"
-    +"modelCredit:'"+p.modelCredit.replace(/'/g,"\\'")+"',"
-    +"modelCreditUrl:'"+p.modelCreditUrl+"',"
-    +"photos:[]}";
+function saveLocal(){
+  try { localStorage.setItem('rv_interno', JSON.stringify(LOCAL)); } catch(e){}
 }
 
-function renderGrid(filter){
-  var list = filter==='tutti' ? CATALOG : CATALOG.filter(function(p){return p.cat===filter});
+function getLocal(id, field, def){
+  return (LOCAL[id] && LOCAL[id][field] !== undefined) ? LOCAL[id][field] : def;
+}
+
+function setLocal(id, field, val){
+  if(!LOCAL[id]) LOCAL[id] = {};
+  LOCAL[id][field] = val;
+  saveLocal();
+}
+
+// ── DATI ──────────────────────────────────────────────────────
+var PRODUCTS = [];
+var CATEGORIE = [];
+var activeFilter = 'tutti';
+
+// ── CAT LABELS ───────────────────────────────────────────────
+var CAT_LABELS = {
+  videogiochi: 'Videogiochi & Console',
+  musica:      'Vinili & Musica',
+  oggetti:     'Oggetti Vintage',
+  elettronica: 'Elettronica Vintage',
+  libri:       'Libri Curiosi',
+  trading:     'Trading Cards'
+};
+
+function catLabel(c){ return CAT_LABELS[c] || c; }
+
+function statusLabel(s){
+  return {vetrina:'In vetrina', disponibile:'Disponibile', venduto:'Venduto'}[s] || s;
+}
+
+// ── DASHBOARD ─────────────────────────────────────────────────
+function updateDashboard(){
+  var active = PRODUCTS.filter(function(p){ return !p.sold; });
+  var sold   = PRODUCTS.filter(function(p){ return p.sold; });
+
+  var totalValue = active.reduce(function(s,p){ return s + p.price; }, 0);
+
+  var withCost = active.filter(function(p){
+    return getLocal(p.id, 'costo', null) !== null && getLocal(p.id, 'costo', '') !== '';
+  });
+  var totalCost = withCost.reduce(function(s,p){
+    return s + (parseFloat(getLocal(p.id, 'costo', 0)) || 0);
+  }, 0);
+  var totalMargin = withCost.reduce(function(s,p){
+    return s + p.price - (parseFloat(getLocal(p.id, 'costo', 0)) || 0);
+  }, 0);
+  var pct = totalCost > 0 ? Math.round((totalMargin / totalCost) * 100) : null;
+
+  document.getElementById('d-count').textContent = active.length;
+  document.getElementById('d-sold').textContent = 'di cui venduti: ' + sold.length;
+  document.getElementById('d-value').textContent = '€ ' + totalValue.toFixed(0);
+  document.getElementById('d-cost').textContent = withCost.length > 0 ? '€ ' + totalCost.toFixed(0) : '—';
+  document.getElementById('d-cost-sub').textContent = withCost.length + ' prodotti con costo inserito';
+  document.getElementById('d-margin').textContent = withCost.length > 0 ? '€ ' + totalMargin.toFixed(0) : '—';
+  document.getElementById('d-margin-pct').textContent = pct !== null ? (pct + '% sul costo') : 'inserisci i costi per calcolare';
+}
+
+// ── TABS ──────────────────────────────────────────────────────
+function buildTabs(){
+  var bar = document.getElementById('tabsBar');
+  bar.innerHTML = '';
+
+  var cats = ['tutti'].concat(CATEGORIE.map(function(c){ return c.id; }));
+  cats.forEach(function(c){
+    var btn = document.createElement('button');
+    btn.className = 'tab-btn' + (c === activeFilter ? ' active' : '');
+    btn.dataset.cat = c;
+
+    var count = c === 'tutti' ? PRODUCTS.length : PRODUCTS.filter(function(p){ return p.cat === c; }).length;
+    var label = c === 'tutti' ? 'Tutti' : CAT_LABELS[c] || c;
+
+    btn.innerHTML = label + ' <span class="tab-count">' + count + '</span>';
+    btn.addEventListener('click', function(){
+      activeFilter = c;
+      document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      renderGrid();
+    });
+    bar.appendChild(btn);
+  });
+}
+
+// ── RENDER ────────────────────────────────────────────────────
+function renderGrid(){
+  var list = activeFilter === 'tutti'
+    ? PRODUCTS
+    : PRODUCTS.filter(function(p){ return p.cat === activeFilter; });
+
   var container = document.getElementById('catalogContent');
 
-  // Tab counts
-  ['tutti','gaming','musica','oggettistica'].forEach(function(c){
-    var el = document.getElementById('tc-'+c);
-    if(el) el.textContent = c==='tutti' ? CATALOG.length : CATALOG.filter(function(p){return p.cat===c}).length;
-  });
-
-  if(list.length===0){
-    container.innerHTML='<p style="padding:48px 0;color:var(--muted);text-align:center">Nessun prodotto in questa categoria.</p>';
+  if(list.length === 0){
+    container.innerHTML = '<p class="empty-state">Nessun prodotto in questa categoria.</p>';
     return;
   }
 
-  container.innerHTML = '<div class="products-grid">'+list.map(function(p){
-    var savedNote = SAVED_NOTES[p.id] || p.notes || '';
-    var modelHtml = p.model
-      ? '<model-viewer src="'+p.model+'" auto-rotate rotation-per-second="20deg" reveal="auto" camera-orbit="0deg 80deg 120%" field-of-view="35deg" shadow-intensity="0.8" style="width:100%;height:100%;background:'+p.bg+'"></model-viewer>'
-      : '<div class="prod-model-placeholder" style="background:'+p.bg+'">'+p.emoji+'</div>';
+  container.innerHTML = '<div class="cat-section"><div class="products-grid">'
+    + list.map(function(p){ return renderCard(p); }).join('')
+    + '</div></div>';
 
-    return '<div class="prod-card" id="card-'+p.id+'">'
-      +'<div class="prod-model" style="background:'+p.bg+'">'+modelHtml
-      +'<span class="prod-status '+p.status+'">'+statusLabel(p.status)+'</span>'
-      +'</div>'
-      +'<div class="prod-body">'
-      +'<p class="prod-cat-label">'+catLabel(p.shopCat)+'</p>'
-      +'<p class="prod-name">'+p.name+'</p>'
-      +'<p class="prod-desc">'+p.desc+'</p>'
-      +'<div class="prod-meta">'
-      +'<span class="prod-price">&euro; '+p.price+'</span>'
-      +'<span class="prod-condition">'+p.condition+'</span>'
-      +'</div>'
-      +'<p class="prod-credit">&#x1F3A8; <a href="'+p.modelCreditUrl+'" target="_blank" rel="noopener">'+p.modelCredit+'</a> &mdash; CC BY 4.0</p>'
-      +'<p class="notes-label">Note interne</p>'
-      +'<textarea class="prod-notes" data-id="'+p.id+'" placeholder="Note, stato fisico, provenienza, priorit&agrave;...">'+savedNote+'</textarea>'
-      +'<div class="prod-actions">'
-      +'<select class="status-select" data-id="'+p.id+'" onchange="changeStatus('+p.id+',this.value)">'
-      +'<option value="vetrina"'+(p.status==='vetrina'?' selected':'')+'>In vetrina</option>'
-      +'<option value="disponibile"'+(p.status==='disponibile'?' selected':'')+'>Disponibile</option>'
-      +'<option value="template"'+(p.status==='template'?' selected':'')+'>Template</option>'
-      +'<option value="venduto"'+(p.status==='venduto'?' selected':'')+'>Venduto</option>'
-      +'</select>'
-      +'<button class="btn-copy" onclick="copyCode('+p.id+')">&#x1F4CB; Copia codice JS</button>'
-      +'</div>'
-      +'</div>'
-      +'</div>';
-  }).join('')+'</div>';
+  // bind events
+  container.querySelectorAll('.costo-input').forEach(function(inp){
+    inp.addEventListener('input', function(){
+      setLocal(inp.dataset.id, 'costo', inp.value);
+      updateMarginRow(inp.dataset.id);
+      updateDashboard();
+    });
+  });
 
-  // Notes autosave
   container.querySelectorAll('.prod-notes').forEach(function(ta){
-    ta.addEventListener('input',function(){
-      SAVED_NOTES[ta.dataset.id] = ta.value;
-      try{ localStorage.setItem('rv_notes', JSON.stringify(SAVED_NOTES)); }catch(e){}
+    ta.addEventListener('input', function(){
+      setLocal(ta.dataset.id, 'note', ta.value);
+    });
+  });
+
+  container.querySelectorAll('.status-select').forEach(function(sel){
+    sel.addEventListener('change', function(){
+      setLocal(sel.dataset.id, 'status', sel.value);
+      var badge = document.getElementById('badge-' + sel.dataset.id);
+      if(badge){
+        badge.className = 'prod-status-badge s-' + sel.value;
+        badge.textContent = statusLabel(sel.value);
+      }
     });
   });
 }
 
-function statusLabel(s){return{vetrina:'In vetrina',disponibile:'Disponibile',template:'Template',venduto:'Venduto'}[s]||s}
+function renderCard(p){
+  var costo    = getLocal(p.id, 'costo', '');
+  var note     = getLocal(p.id, 'note', '');
+  var statusSaved = getLocal(p.id, 'status', p.sold ? 'venduto' : 'vetrina');
 
-function changeStatus(id, val){
-  var p = CATALOG.find(function(x){return x.id===id});
-  if(p){ p.status=val; renderGrid(activeFilter); }
+  var costoNum  = parseFloat(costo) || null;
+  var margine   = costoNum !== null ? (p.price - costoNum) : null;
+  var marginePct = (costoNum && costoNum > 0) ? Math.round(((p.price - costoNum) / costoNum) * 100) : null;
+
+  var thumbBg = p.bg || 'linear-gradient(135deg,#e8e4dc,#b0aca4)';
+
+  return '<div class="prod-card" id="card-' + p.id + '">'
+    + '<div class="prod-thumb" style="background:' + thumbBg + '">'
+    + '<span style="font-size:52px">' + (p.emoji || '📦') + '</span>'
+    + '<span class="prod-status-badge s-' + statusSaved + '" id="badge-' + p.id + '">' + statusLabel(statusSaved) + '</span>'
+    + '</div>'
+    + '<div class="prod-body">'
+    + '<p class="prod-cat-label">' + catLabel(p.cat) + '</p>'
+    + '<p class="prod-name">' + p.name + '</p>'
+    + '<span class="prod-condition">' + (p.condition || '') + '</span>'
+
+    // FINANCE BOX
+    + '<div class="finance-box">'
+    + '<div class="finance-row">'
+    + '<span class="finance-label">Prezzo vendita</span>'
+    + '<span class="finance-val">&euro; ' + p.price.toFixed(2) + '</span>'
+    + '</div>'
+    + '<div class="finance-row">'
+    + '<span class="finance-label">Costo acquisto</span>'
+    + '<span>&euro; <input class="costo-input" type="number" min="0" step="0.5" placeholder="0.00" value="' + costo + '" data-id="' + p.id + '" data-price="' + p.price + '"></span>'
+    + '</div>'
+    + '<div class="finance-row" id="margin-row-' + p.id + '">'
+    + '<span class="finance-label">Margine lordo</span>'
+    + '<span class="finance-val ' + (margine !== null ? (margine >= 0 ? 'positive' : 'negative') : 'neutral') + '" id="margin-val-' + p.id + '">'
+    + (margine !== null ? ('&euro; ' + margine.toFixed(2) + (marginePct !== null ? ' <small style="font-size:11px;font-weight:400;opacity:.7">(' + marginePct + '%)</small>' : '')) : '&mdash;')
+    + '</span>'
+    + '</div>'
+    + '</div>'
+
+    // STATUS + NOTES
+    + '<div class="prod-actions">'
+    + '<select class="status-select" data-id="' + p.id + '">'
+    + '<option value="vetrina"'   + (statusSaved === 'vetrina'    ? ' selected' : '') + '>In vetrina</option>'
+    + '<option value="disponibile"' + (statusSaved === 'disponibile' ? ' selected' : '') + '>Disponibile</option>'
+    + '<option value="venduto"'  + (statusSaved === 'venduto'   ? ' selected' : '') + '>Venduto</option>'
+    + '</select>'
+    + '</div>'
+    + '<p class="notes-label">Note interne</p>'
+    + '<textarea class="prod-notes" data-id="' + p.id + '" placeholder="Provenienza, stato fisico, priorit&agrave;...">' + (note || '') + '</textarea>'
+    + '</div>'
+    + '</div>';
 }
 
-function copyCode(id){
-  var p = CATALOG.find(function(x){return x.id===id});
-  if(!p) return;
-  var code = generateCode(p);
-  if(navigator.clipboard){
-    navigator.clipboard.writeText(code).then(function(){showToast()});
+function updateMarginRow(id){
+  var inp = document.querySelector('.costo-input[data-id="' + id + '"]');
+  if(!inp) return;
+  var price = parseFloat(inp.dataset.price) || 0;
+  var costo = parseFloat(inp.value) || null;
+  var margine = costo !== null ? (price - costo) : null;
+  var pct = (costo && costo > 0) ? Math.round(((price - costo) / costo) * 100) : null;
+  var el = document.getElementById('margin-val-' + id);
+  if(!el) return;
+  if(margine !== null){
+    el.className = 'finance-val ' + (margine >= 0 ? 'positive' : 'negative');
+    el.innerHTML = '&euro; ' + margine.toFixed(2) + (pct !== null ? ' <small style="font-size:11px;font-weight:400;opacity:.7">(' + pct + '%)</small>' : '');
   } else {
-    var ta = document.createElement('textarea');
-    ta.value = code;
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand('copy');
-    document.body.removeChild(ta);
-    showToast();
+    el.className = 'finance-val neutral';
+    el.innerHTML = '&mdash;';
   }
 }
 
-function showToast(){
+function showToast(msg){
   var t = document.getElementById('toast');
+  t.textContent = msg;
   t.classList.add('show');
-  setTimeout(function(){t.classList.remove('show')},2000);
+  setTimeout(function(){ t.classList.remove('show'); }, 2000);
 }
 
-var activeFilter = 'tutti';
-document.querySelectorAll('.tab-btn').forEach(function(btn){
-  btn.addEventListener('click',function(){
-    activeFilter = btn.dataset.cat;
-    document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active')});
-    btn.classList.add('active');
-    renderGrid(activeFilter);
+// ── INIT ──────────────────────────────────────────────────────
+fetch('catalogo.json')
+  .then(function(r){ return r.json(); })
+  .then(function(data){
+    PRODUCTS  = data.prodotti  || [];
+    CATEGORIE = data.categorie || [];
+    buildTabs();
+    renderGrid();
+    updateDashboard();
+  })
+  .catch(function(e){
+    document.getElementById('catalogContent').innerHTML =
+      '<p class="empty-state">&#x26A0;&#xFE0F; Impossibile caricare catalogo.json.<br><small>Apri questo file tramite un server locale o da VS Code Live Server.</small></p>';
+    console.error('[catalogo-interno] Errore:', e);
   });
-});
-
-renderGrid('tutti');
 </script>
 </body>
 </html>

@@ -63,7 +63,9 @@
       "model": "classic_ps2_opt.glb",
       "modelCredit": "\"classic ps2\" by jei3323",
       "modelCreditUrl": "https://skfb.ly/pysvK",
-      "photos": [],
+      "photos": [
+        "photos/product-13.png"
+      ],
       "subcat": "ps2"
     },
     {
@@ -81,7 +83,9 @@
       "model": "playstation_1_opt.glb",
       "modelCredit": "\"Playstation 1\" by Ceki",
       "modelCreditUrl": "https://sketchfab.com/3d-models/playstation-1-96bed8283f2940d7bb4b1866ab0637a2",
-      "photos": [],
+      "photos": [
+        "photos/product-14.png"
+      ],
       "subcat": "ps1"
     },
     {
@@ -99,7 +103,9 @@
       "model": "psone.glb",
       "modelCredit": "\"PS One Low Poly\" by Dio Pieretti",
       "modelCreditUrl": "https://sketchfab.com/3d-models/ps-one-low-poly-model-pixel-art-texture-dc3f896c82534426a23e72dc6837abe1",
-      "photos": [],
+      "photos": [
+        "photos/product-15.png"
+      ],
       "subcat": "ps1"
     },
     {
@@ -117,7 +123,9 @@
       "model": "ps2_controller_opt.glb",
       "modelCredit": "\"PS2 Controller\" by rhcreations",
       "modelCreditUrl": "https://sketchfab.com/3d-models/ps2-controller-9b0db71448a14907a6235c79bdce786a",
-      "photos": [],
+      "photos": [
+        "photos/product-16.png"
+      ],
       "subcat": "ps2"
     },
     {
@@ -135,7 +143,9 @@
       "model": "psx_xbox.glb",
       "modelCredit": "\"PSX Xbox Console & Controller\" by Tomitos",
       "modelCreditUrl": "https://sketchfab.com/3d-models/psx-xbox-console-controller-611c5e5e30664b0bade4d583b21905da",
-      "photos": [],
+      "photos": [
+        "photos/product-20.png"
+      ],
       "subcat": "ps1"
     },
     {
@@ -153,7 +163,9 @@
       "model": null,
       "modelCredit": null,
       "modelCreditUrl": null,
-      "photos": [],
+      "photos": [
+        "photos/product-21.png"
+      ],
       "subcat": "ps4"
     },
     {
@@ -171,7 +183,9 @@
       "model": null,
       "modelCredit": null,
       "modelCreditUrl": null,
-      "photos": [],
+      "photos": [
+        "photos/product-22.png"
+      ],
       "subcat": "ps4"
     },
     {
@@ -189,7 +203,9 @@
       "model": null,
       "modelCredit": null,
       "modelCreditUrl": null,
-      "photos": [],
+      "photos": [
+        "photos/product-23.png"
+      ],
       "subcat": "ps4"
     },
     {
@@ -207,7 +223,9 @@
       "model": null,
       "modelCredit": null,
       "modelCreditUrl": null,
-      "photos": [],
+      "photos": [
+        "photos/product-24.png"
+      ],
       "subcat": "ps3"
     },
     {
@@ -225,7 +243,9 @@
       "model": null,
       "modelCredit": null,
       "modelCreditUrl": null,
-      "photos": [],
+      "photos": [
+        "photos/product-25.png"
+      ],
       "subcat": "ps3"
     },
     {
@@ -243,7 +263,9 @@
       "model": null,
       "modelCredit": null,
       "modelCreditUrl": null,
-      "photos": [],
+      "photos": [
+        "photos/product-26.png"
+      ],
       "subcat": "ps3"
     },
     {
@@ -261,7 +283,9 @@
       "model": null,
       "modelCredit": null,
       "modelCreditUrl": null,
-      "photos": [],
+      "photos": [
+        "photos/product-27.png"
+      ],
       "subcat": "ps2"
     },
     {
@@ -279,7 +303,9 @@
       "model": null,
       "modelCredit": null,
       "modelCreditUrl": null,
-      "photos": [],
+      "photos": [
+        "photos/product-28.png"
+      ],
       "subcat": "ps2"
     },
     {
@@ -297,7 +323,9 @@
       "model": null,
       "modelCredit": null,
       "modelCreditUrl": null,
-      "photos": [],
+      "photos": [
+        "photos/product-29.png"
+      ],
       "subcat": "ps2"
     },
     {
@@ -315,7 +343,9 @@
       "model": null,
       "modelCredit": null,
       "modelCreditUrl": null,
-      "photos": [],
+      "photos": [
+        "photos/product-30.png"
+      ],
       "subcat": "ps2"
     },
     {
@@ -333,7 +363,9 @@
       "model": null,
       "modelCredit": null,
       "modelCreditUrl": null,
-      "photos": [],
+      "photos": [
+        "photos/product-31.png"
+      ],
       "subcat": "ps2"
     },
     {
@@ -351,7 +383,9 @@
       "model": null,
       "modelCredit": null,
       "modelCreditUrl": null,
-      "photos": [],
+      "photos": [
+        "photos/product-32.png"
+      ],
       "subcat": "ps2"
     },
     {
@@ -369,7 +403,9 @@
       "model": null,
       "modelCredit": null,
       "modelCreditUrl": null,
-      "photos": [],
+      "photos": [
+        "photos/product-33.png"
+      ],
       "subcat": "ps2"
     },
     {
@@ -387,7 +423,9 @@
       "model": null,
       "modelCredit": null,
       "modelCreditUrl": null,
-      "photos": [],
+      "photos": [
+        "photos/product-34.png"
+      ],
       "subcat": "xbox360"
     },
     {
@@ -405,7 +443,9 @@
       "model": null,
       "modelCredit": null,
       "modelCreditUrl": null,
-      "photos": [],
+      "photos": [
+        "photos/product-35.png"
+      ],
       "subcat": "xbox360"
     },
     {
@@ -423,7 +463,9 @@
       "model": null,
       "modelCredit": null,
       "modelCreditUrl": null,
-      "photos": [],
+      "photos": [
+        "photos/product-36.png"
+      ],
       "subcat": "xbox360"
     },
     {
@@ -441,7 +483,9 @@
       "model": null,
       "modelCredit": null,
       "modelCreditUrl": null,
-      "photos": [],
+      "photos": [
+        "photos/product-37.png"
+      ],
       "subcat": "xbox360"
     },
     {
@@ -459,7 +503,9 @@
       "model": null,
       "modelCredit": null,
       "modelCreditUrl": null,
-      "photos": [],
+      "photos": [
+        "photos/product-38.png"
+      ],
       "subcat": "xbox360"
     },
     {
@@ -477,7 +523,9 @@
       "model": null,
       "modelCredit": null,
       "modelCreditUrl": null,
-      "photos": [],
+      "photos": [
+        "photos/product-39.png"
+      ],
       "subcat": "psp"
     },
     {
@@ -495,7 +543,9 @@
       "model": null,
       "modelCredit": null,
       "modelCreditUrl": null,
-      "photos": [],
+      "photos": [
+        "photos/product-40.png"
+      ],
       "subcat": "psp"
     },
     {
@@ -513,7 +563,9 @@
       "model": null,
       "modelCredit": null,
       "modelCreditUrl": null,
-      "photos": [],
+      "photos": [
+        "photos/product-41.png"
+      ],
       "subcat": "wii"
     },
     {
@@ -531,7 +583,9 @@
       "model": null,
       "modelCredit": null,
       "modelCreditUrl": null,
-      "photos": [],
+      "photos": [
+        "photos/product-42.png"
+      ],
       "subcat": "nds"
     },
     {
@@ -549,7 +603,9 @@
       "model": null,
       "modelCredit": null,
       "modelCreditUrl": null,
-      "photos": [],
+      "photos": [
+        "photos/product-43.png"
+      ],
       "subcat": "ps3"
     }
   ],

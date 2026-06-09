@@ -140,11 +140,11 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 /* cart drawer removed — handled by cart-widget.js */
 .cat-carousel-wrap{position:relative;z-index:2;padding:20px 0;border-bottom:1px solid var(--line);background:rgba(250,246,240,.6);backdrop-filter:blur(8px)}
 .cat-carousel-inner{display:flex;gap:8px;overflow:hidden;padding:8px 24px;align-items:center;justify-content:center;position:relative;flex:1;min-height:140px}
-.cat-item{display:flex;flex-direction:column;align-items:center;gap:8px;flex-shrink:0;cursor:pointer;padding:12px 16px;border-radius:16px;border:1px solid transparent;background:none;font-family:inherit;transition:background .22s var(--ease),border-color .22s,box-shadow .22s,transform .25s var(--ease);min-width:110px}
+.cat-item{display:flex;flex-direction:column;align-items:center;gap:6px;flex-shrink:0;cursor:pointer;padding:8px 10px;border-radius:12px;border:1px solid transparent;background:none;font-family:inherit;transition:background .22s var(--ease),border-color .22s,box-shadow .22s,transform .25s var(--ease);min-width:80px}
 .cat-item:hover{background:rgba(250,246,240,.95);border-color:rgba(255,255,255,.85);box-shadow:0 6px 20px rgba(14,12,10,.08)}
 .cat-item.active{background:var(--paper);border-color:rgba(255,255,255,.9);box-shadow:0 8px 28px rgba(14,12,10,.1)}
 .cat-item.active .cat-label{color:var(--accent)}
-.cat-model-wrap{width:88px;height:88px;border-radius:12px;overflow:hidden;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cat-model-wrap{width:88px;height:88px;border-radius:12px;background:transparent;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .cat-model-wrap model-viewer{width:100%;height:100%;--progress-bar-color:transparent}
 .cat-all-icon{font-size:30px;color:var(--muted)}
 .cat-item.active .cat-all-icon{color:var(--accent)}
@@ -207,6 +207,8 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
 .cat-item[data-pos="1"],.cat-item[data-pos="-1"]{transform:scale(.84);opacity:.72}
 .cat-item[data-pos="2"],.cat-item[data-pos="-2"]{transform:scale(.68);opacity:.46}
 .cat-item[data-pos="0"] .cat-label{color:var(--accent)}
+/* ── POSTER placeholder ── */
+.mv-poster{width:100%;height:100%;background:transparent}
 .cat-item[data-pos="0"] .cat-all-icon{color:var(--accent)}
 
 </style>
@@ -293,37 +295,37 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
       </button>
       <button class="cat-item" data-cat="videogiochi">
         <div class="cat-model-wrap">
-          <model-viewer data-src="3d%20per%20interfaccia/psplaystation_logo.glb" auto-rotate  rotation-per-second="0deg" reveal="auto" loading="lazy" interaction-prompt="none" orientation="90deg 180deg 90deg" camera-orbit="0deg 90deg 120%" field-of-view="40deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"></model-viewer>
+          <model-viewer data-src="3d%20per%20interfaccia/psplaystation_logo.glb" auto-rotate  rotation-per-second="0deg" reveal="auto" loading="lazy" interaction-prompt="none" orientation="90deg 180deg 90deg" camera-orbit="0deg 90deg 120%" field-of-view="40deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"><div slot="poster" class="mv-poster"></div></model-viewer>
         </div>
         <span class="cat-label">Videogiochi</span>
       </button>
       <button class="cat-item" data-cat="elettronica">
         <div class="cat-model-wrap">
-          <model-viewer data-src="3d%20per%20interfaccia/boombox.glb" auto-rotate  rotation-per-second="0deg" reveal="auto" loading="lazy" interaction-prompt="none" camera-orbit="30deg 80deg 130%" field-of-view="38deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"></model-viewer>
+          <model-viewer data-src="3d%20per%20interfaccia/boombox.glb" auto-rotate  rotation-per-second="0deg" reveal="auto" loading="lazy" interaction-prompt="none" camera-orbit="30deg 80deg 130%" field-of-view="38deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"><div slot="poster" class="mv-poster"></div></model-viewer>
         </div>
         <span class="cat-label">Elettronica Vintage</span>
       </button>
       <button class="cat-item" data-cat="musica">
         <div class="cat-model-wrap">
-          <model-viewer data-src="3d%20per%20interfaccia/vinyls_3.glb" auto-rotate  rotation-per-second="0deg" reveal="auto" loading="lazy" interaction-prompt="none" camera-orbit="0deg 70deg 130%" field-of-view="38deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"></model-viewer>
+          <model-viewer data-src="3d%20per%20interfaccia/vinyls_3_opt.glb" auto-rotate  rotation-per-second="0deg" reveal="auto" loading="lazy" interaction-prompt="none" camera-orbit="0deg 70deg 130%" field-of-view="38deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"><div slot="poster" class="mv-poster"></div></model-viewer>
         </div>
         <span class="cat-label">Vinili &amp; Musica</span>
       </button>
       <button class="cat-item" data-cat="libri">
         <div class="cat-model-wrap">
-          <model-viewer data-src="3d%20per%20interfaccia/book_stack.glb" auto-rotate  rotation-per-second="0deg" reveal="auto" loading="lazy" interaction-prompt="none" camera-orbit="20deg 78deg 130%" field-of-view="36deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"></model-viewer>
+          <model-viewer data-src="3d%20per%20interfaccia/book_stack.glb" auto-rotate  rotation-per-second="0deg" reveal="auto" loading="lazy" interaction-prompt="none" camera-orbit="20deg 78deg 130%" field-of-view="36deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"><div slot="poster" class="mv-poster"></div></model-viewer>
         </div>
         <span class="cat-label">Libri Curiosi</span>
       </button>
       <button class="cat-item" data-cat="oggetti">
         <div class="cat-model-wrap">
-          <model-viewer data-src="3d%20per%20interfaccia/blue_desk_lamp_vintage_90s.glb" auto-rotate  rotation-per-second="0deg" reveal="auto" loading="lazy" interaction-prompt="none" camera-orbit="0deg 80deg 130%" field-of-view="38deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"></model-viewer>
+          <model-viewer data-src="3d%20per%20interfaccia/blue_desk_lamp_vintage_90s.glb" auto-rotate  rotation-per-second="0deg" reveal="auto" loading="lazy" interaction-prompt="none" camera-orbit="0deg 80deg 130%" field-of-view="38deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"><div slot="poster" class="mv-poster"></div></model-viewer>
         </div>
         <span class="cat-label">Oggetti Vintage</span>
       </button>
       <button class="cat-item" data-cat="trading">
         <div class="cat-model-wrap">
-          <model-viewer data-src="3d%20per%20interfaccia/trading_card_pack.glb" auto-rotate  rotation-per-second="0deg" reveal="auto" loading="lazy" interaction-prompt="none" orientation="90deg 0deg 0deg" camera-orbit="15deg 75deg 130%" field-of-view="36deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"></model-viewer>
+          <model-viewer data-src="3d%20per%20interfaccia/trading_card_pack.glb" auto-rotate  rotation-per-second="0deg" reveal="auto" loading="lazy" interaction-prompt="none" orientation="90deg 0deg 0deg" camera-orbit="15deg 75deg 130%" field-of-view="36deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"><div slot="poster" class="mv-poster"></div></model-viewer>
         </div>
         <span class="cat-label">Trading Cards</span>
       </button>
@@ -448,7 +450,9 @@ function renderGrid(){
   grid.innerHTML=list.map(function(p){
     var imgHtml=p.model
       ? '<model-viewer src="'+p.model+'" auto-rotate rotation-per-second="0deg" reveal="auto" loading="eager" style="width:100%;height:100%;background:'+p.bg+'" camera-orbit="0deg 80deg 120%" field-of-view="35deg" min-camera-orbit="auto auto 80%" shadow-intensity="1"><div slot="poster" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:'+p.bg+';font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(14,12,10,.4)">Caricamento 3D&hellip;</div></model-viewer>'
-      : '<div class="product-img-inner" style="background:'+p.bg+'">'+p.emoji+'</div>';
+      : (p.photos&&p.photos.length>0
+          ? '<img src="'+p.photos[0]+'" alt="'+p.name+'" style="width:100%;height:100%;object-fit:cover;border-radius:inherit">'
+          : '<div class="product-img-inner" style="background:'+p.bg+'">'+p.emoji+'</div>');
     return'<div class="product-card'+(p.model?' product-card--3d':'')+'" data-id="'+p.id+'" tabindex="0" role="button"><div class="product-img">'+imgHtml+(p.sold?'<span class="product-sold-badge">Venduto</span>':'')+(p.isNew&&!p.sold?'<span class="product-new-badge">Nuovo</span>':'')+'</div><div class="product-body"><p class="product-cat">'+catLabel(p.cat)+(p.model?' <span style="font-size:8px;opacity:.7;margin-left:4px">&#x2B55; 3D</span>':'')+'</p><p class="product-name">'+p.name+'</p><p class="product-desc">'+p.desc.substring(0,80)+'&hellip;</p><div class="product-footer"><span class="product-price'+(p.sold?' sold':'')+'">&#x20AC; '+p.price+'</span><button class="product-buy-btn">+</button></div></div></div>';
   }).join('');
   ['all','videogiochi','elettronica','musica','libri','oggetti','trading'].forEach(function(c){var el=document.getElementById('cnt-'+c);if(el)el.textContent=c==='all'?PRODUCTS.length:PRODUCTS.filter(function(p){return p.cat===c}).length});
@@ -603,7 +607,10 @@ window.__rvShopCartUpdated=function(){updateCartUI();};
       if(off===0){
         item.classList.add('carousel-center','active');
         var mv=item.querySelector('model-viewer');
-        if(mv) mv.setAttribute('rotation-per-second','22deg');
+        if(mv){
+          if(!mv.getAttribute('src')&&mv.dataset.src) mv.setAttribute('src',mv.dataset.src);
+          mv.setAttribute('rotation-per-second','22deg');
+        }
       }
     }
   }
@@ -620,12 +627,10 @@ window.__rvShopCartUpdated=function(){updateCartUI();};
     if(pos!==0)renderCarousel(idx+pos);
   });
 
-  // Precarica tutti i modelli subito (senza rotazione)
+  // Precarica tutti i modelli subito (ora sono leggeri)
   items.forEach(function(item){
     var mv=item.querySelector('model-viewer');
-    if(mv&&!mv.getAttribute('src')&&mv.dataset.src){
-      mv.setAttribute('src',mv.dataset.src);
-    }
+    if(mv&&!mv.getAttribute('src')&&mv.dataset.src) mv.setAttribute('src',mv.dataset.src);
   });
 
   renderCarousel(idx);
@@ -683,10 +688,4 @@ fetch('catalogo.json')
     var brandEl = document.querySelector('.brand');
     if(brandEl){
       brandEl.addEventListener('mouseenter', function(){ targetScale = 18; brandText.style.filter = 'url(#brand-wave)'; if(!rafId) rafId = requestAnimationFrame(animateBrand); });
-      brandEl.addEventListener('mouseleave', function(){ targetScale = 0; if(!rafId) rafId = requestAnimationFrame(animateBrand); });
-    }
-  })();
-})();
-}).catch(function(e){console.error('[catalogo.json] Errore caricamento:',e);});
-</script>
-<script src="cart-widget.js" defer></script>
+      brandEl.addEventListener('mouseleave', function(){ targetScale = 0; if(!rafId) rafId = requestAnimationFrame(an

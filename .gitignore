@@ -13,3 +13,12 @@ desktop.ini
 # Editor
 .vscode/
 *.swp
+
+# Backup compressione GLB
+*_prev.glb
+*_original.glb
+vinyls_3_opt.glb
+
+# File temporanei progetto
+catalogo_backup.json
+render-carousel.html

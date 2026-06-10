@@ -663,8 +663,7 @@ fetch('catalogo.json')
   if(mobClose)mobClose.addEventListener('click',function(){mob.classList.remove('open')});
   var cB=document.getElementById('cursorBig'),cD=document.getElementById('cursorDot');
   if(cB&&cD)document.addEventListener('mousemove',function(e){var t='translate(calc(-50% + '+e.clientX+'px), calc(-50% + '+e.clientY+'px))';cB.style.transform=t;cD.style.transform=t},{passive:true});
-  var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.12});
-  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+  // (IntersectionObserver moved outside fetch — see below)
   /* ── Liquid wave brand ── */
   (function(){
     var brandText = document.querySelector('.brand-text');
@@ -688,4 +687,19 @@ fetch('catalogo.json')
     var brandEl = document.querySelector('.brand');
     if(brandEl){
       brandEl.addEventListener('mouseenter', function(){ targetScale = 18; brandText.style.filter = 'url(#brand-wave)'; if(!rafId) rafId = requestAnimationFrame(animateBrand); });
-      brandEl.addEventListener('mouseleave', function(){ targetScale = 0; if(!rafId) rafId = requestAnimationFrame(an
+      brandEl.addEventListener('mouseleave', function(){ targetScale = 0; if(!rafId) rafId = requestAnimationFrame(animateBrand); });
+    }
+  })();
+})();
+}).catch(function(e){console.error('[catalogo.json] Errore caricamento:',e);});
+</script>
+<script>
+// ── Reveal animations: run immediately, independent of fetch ──
+(function(){
+  var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+  // Fallback: forza visibilità dopo 1s se l'observer non ha sparato
+  setTimeout(function(){document.querySelectorAll('.reveal:not(.visible)').forEach(function(el){el.classList.add('visible')});},1000);
+})();
+</script>
+<script src="cart-widget.js" defer></script>

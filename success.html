@@ -103,6 +103,12 @@ main{flex:1;display:flex;align-items:center;justify-content:center;
   100%{transform:translateY(110vh) rotate(720deg);opacity:0}
 }
 
+@media(max-width:480px){
+  .success-card{padding:36px 22px}
+  main{padding:100px 0 60px}
+  .wrap{width:calc(100% - 28px)}
+  .success-title{font-size:clamp(26px,7vw,40px)}
+}
 /* Footer */
 footer{background:var(--dark);color:rgba(250,246,240,.75);position:relative;z-index:1}
 .foot-bottom{border-top:1px solid rgba(250,246,240,.08);padding:18px 0;

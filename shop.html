@@ -43,9 +43,9 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 .cart-count{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:var(--accent2);color:#fff;font-size:9px;font-weight:900;line-height:1}
 .cart-count.zero{background:rgba(255,255,255,.2)}
 .menu-btn{display:none;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:9px 16px;font-weight:800;font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;font-family:inherit;cursor:pointer}
-.mobile{display:none;position:fixed;inset:0;z-index:18;background:rgba(240,235,227,.97);padding:120px 32px 48px;flex-direction:column;gap:10px}
+.mobile{display:none;position:fixed;inset:0;z-index:22;background:rgba(240,235,227,.97);padding:120px 32px 48px;flex-direction:column;gap:10px;touch-action:none;overscroll-behavior:none;pointer-events:auto}
 .mobile.open{display:flex}
-.mobile a{font-size:clamp(38px,10vw,80px);font-weight:900;text-transform:uppercase;letter-spacing:-.06em;line-height:.96;color:var(--ink);transition:color .18s}
+.mobile a{display:block;font-size:clamp(38px,10vw,80px);font-weight:900;text-transform:uppercase;letter-spacing:-.06em;line-height:.96;color:var(--ink);transition:color .18s;touch-action:manipulation;padding:4px 0}
 .mobile a:hover{color:var(--accent)}
 .mob-close{position:absolute;top:20px;right:20px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--paper);display:grid;place-items:center;font-size:20px;cursor:pointer;font-family:inherit}
 .page-hero{padding:110px 0 48px;position:relative;z-index:1;border-bottom:1px solid var(--line)}
@@ -174,6 +174,75 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
 @media(max-width:420px){.product-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 
+/* ══════════════════════════════════════════
+   MOBILE RESPONSIVE  (≤ 768px)
+   Solo layout e performance — desktop intatto
+   ══════════════════════════════════════════ */
+@media(max-width:768px){
+  /* NAV: performance mobile */
+  .nav{backdrop-filter:none;-webkit-backdrop-filter:none;padding:8px 12px 8px 14px}
+
+  /* HERO: padding ridotto */
+  .page-hero{padding:90px 0 28px}
+  .page-hero-inner{gap:20px}
+
+  /* CAROUSEL: scroll orizzontale, mostra tutti gli item, no effetti scale */
+  .cat-carousel-wrap{backdrop-filter:none;-webkit-backdrop-filter:none}
+  .cat-carousel-stage{display:block}
+  .cat-arrow{display:none}
+  .cat-carousel-inner{
+    overflow-x:auto;overflow-y:visible;
+    justify-content:flex-start;
+    padding:8px 14px 12px;
+    min-height:106px;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+    position:static;
+    gap:6px
+  }
+  .cat-carousel-inner::-webkit-scrollbar{display:none}
+  /* Fades laterali: off (si vedrebbe male con scroll) */
+  .cat-carousel-inner::before,.cat-carousel-inner::after{display:none}
+  /* Mostra TUTTI gli item nel carousel mobile */
+  .cat-item:not([data-pos]){display:flex!important}
+  /* Azzera trasformazioni scale/opacity del carousel 3D */
+  .cat-item[data-pos]{transform:none!important;opacity:1!important;transition:background .2s,border-color .2s,box-shadow .2s}
+  /* Modelli 3D più piccoli nel carousel */
+  .cat-model-wrap{width:60px;height:60px}
+  .cat-label{font-size:8.5px}
+
+  /* SHOP WRAP */
+  .shop-wrap{padding:16px 0 56px}
+
+  /* SIDEBAR: chip orizzontali scrollabili */
+  .filter-title{display:none}
+  .sidebar{overflow-x:auto!important;flex-wrap:nowrap!important;padding-bottom:4px;scrollbar-width:none;-webkit-overflow-scrolling:touch;-ms-overflow-style:none}
+  .filter-btn{display:inline-flex!important;align-items:center;width:auto!important;white-space:nowrap;flex-shrink:0;padding:8px 14px;font-size:12.5px}
+
+  /* GRID HEADER */
+  .grid-header{flex-direction:column;align-items:flex-start;gap:8px;margin-bottom:12px}
+
+  /* PRODUCT CARDS */
+  .product-body{padding:10px 12px 12px}
+  .product-name{font-size:13px}
+  .product-desc{display:none}
+  .product-price{font-size:18px}
+  .product-grid{gap:10px}
+  .product-buy-btn{width:30px;height:30px;font-size:14px}
+
+  /* MODAL: bottom sheet */
+  .modal-overlay{padding:0;align-items:flex-end;backdrop-filter:none;-webkit-backdrop-filter:none}
+  .modal-box{border-radius:22px 22px 0 0;max-height:92vh}
+  .modal-inner{grid-template-columns:1fr}
+  .modal-img-wrap{border-radius:0;min-height:190px}
+  .modal-content{padding:22px 18px 28px}
+  .modal-price{font-size:30px}
+
+  /* FOOTER */
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .foot-links a{font-size:13px}
+}
+
 /* ── SUBCATEGORY TILES ── */
 .subcat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:24px 0 40px;grid-column:1/-1}
 .subcat-tile{border-radius:20px;overflow:hidden;cursor:pointer;box-shadow:0 8px 28px rgba(14,12,10,.07);transition:transform .22s cubic-bezier(.22,1,.36,1),box-shadow .22s;background:var(--paper,#faf6f0)}
@@ -211,6 +280,25 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
 .mv-poster{width:100%;height:100%;background:transparent}
 .cat-item[data-pos="0"] .cat-all-icon{color:var(--accent)}
 
+@media(max-width:480px){
+  .page-hero h1{font-size:clamp(32px,11vw,52px)!important;line-height:.92!important}
+  .page-hero{padding:86px 0 20px}
+  .hstat{min-width:calc(50% - 6px);flex:0 1 calc(50% - 6px)}
+}
+
+/* ── Overrides post-componenti (devono stare DOPO le definizioni) ── */
+@media(max-width:768px){
+  /* Carousel: scroll orizzontale */
+  .cat-carousel-stage{display:block!important}
+  .cat-arrow{display:none!important}
+  .cat-item:not([data-pos]){display:flex!important}
+  .cat-item[data-pos]{transform:none!important;opacity:1!important;transition:background .2s,border-color .2s!important}
+  /* Subcategory tiles: 2 colonne */
+  .subcat-grid{grid-template-columns:1fr 1fr!important;gap:10px!important;padding:14px 0 28px!important}
+  .subcat-tile-model{height:130px!important}
+  /* Sidebar scrollbar nascosta */
+  .sidebar::-webkit-scrollbar{display:none}
+}
 </style>
 </head>
 <body>
@@ -247,13 +335,13 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
     </ul>
     <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false">Menu</button>
   </div>
-  <div class="mobile" id="mobileMenu" role="dialog" aria-modal="true">
-    <button class="mob-close" id="mobClose" aria-label="Chiudi menu">&#x2715;</button>
-    <a href="shop.html">Shop</a>
-    <a href="mercatini.html">Mercatini</a>
-    <a href="svuotacantine.html">Svuotacantine</a>
-  </div>
 </header>
+<div class="mobile" id="mobileMenu" role="dialog" aria-modal="true">
+  <button class="mob-close" id="mobClose" aria-label="Chiudi menu">&#x2715;</button>
+  <a href="shop.html">Shop</a>
+  <a href="mercatini.html">Mercatini</a>
+  <a href="svuotacantine.html">Svuotacantine</a>
+</div>
 <main>
 <section class="page-hero">
   <div class="wrap">
@@ -644,7 +732,7 @@ fetch('catalogo.json')
   ['all','videogiochi','elettronica','musica','libri','oggetti','trading'].forEach(function(c){var el=document.getElementById('cnt-'+c);if(el)el.textContent=c==='all'?PRODUCTS.length:PRODUCTS.filter(function(p){return p.cat===c}).length});
   document.getElementById('gridCount').textContent='—';
   document.getElementById('productGrid').innerHTML='<div class="empty-state" style="grid-column:1/-1"><p style="font-size:44px;margin-bottom:14px">&#x1F4E6;</p><p style="font-size:15px;font-weight:800;letter-spacing:-.02em">Seleziona una categoria</p><p style="font-size:13px;margin-top:8px;opacity:.5">Scegli dal carousel o dal menu laterale per scoprire i prodotti.</p></div>';
-  function selectCat(cat,scroll){activeCat=cat;activeSubcat=null;var _b=document.getElementById('breadcrumb');if(_b)_b.classList.remove('visible');document.querySelectorAll('[data-cat]').forEach(function(b){b.classList.remove('active')});document.querySelectorAll('[data-cat="'+cat+'"]').forEach(function(b){b.classList.add('active')});renderGrid();if(scroll)document.querySelector('.shop-wrap').scrollIntoView({behavior:'smooth',block:'start'})}
+  function selectCat(cat,scroll){activeCat=cat;activeSubcat=null;var _b=document.getElementById('breadcrumb');if(_b)_b.classList.remove('visible');document.querySelectorAll('[data-cat]').forEach(function(b){b.classList.remove('active')});document.querySelectorAll('[data-cat="'+cat+'"]').forEach(function(b){b.classList.add('active')});renderGrid();if(scroll&&window.innerWidth>768)document.querySelector('.shop-wrap').scrollIntoView({behavior:'smooth',block:'start'})}
   /* legge ?cat= dall'URL e pre-filtra */
   var urlCat=new URLSearchParams(window.location.search).get('cat');
   var validCats=['videogiochi','elettronica','musica','libri','oggetti','trading'];
@@ -700,6 +788,16 @@ fetch('catalogo.json')
   document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
   // Fallback: forza visibilità dopo 1s se l'observer non ha sparato
   setTimeout(function(){document.querySelectorAll('.reveal:not(.visible)').forEach(function(el){el.classList.add('visible')});},1000);
+})();
+</script>
+<script>
+(function(){
+  var menuBtn=document.getElementById('menuBtn'),mob=document.getElementById('mobileMenu'),mobClose=document.getElementById('mobClose');
+  if(!menuBtn||!mob) return;
+  function chiudiMenu(){mob.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  menuBtn.addEventListener('click',function(){mob.classList.add('open');menuBtn.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';});
+  if(mobClose){mobClose.addEventListener('click',chiudiMenu);mobClose.addEventListener('touchstart',chiudiMenu,{passive:true});}
+  mob.querySelectorAll('a').forEach(function(link){link.addEventListener('touchstart',function(){window.location.href=link.href;},{passive:true});});
 })();
 </script>
 <script src="cart-widget.js" defer></script>

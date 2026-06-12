@@ -248,13 +248,10 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
         <div class="agenda-card">
           <div class="agenda-card-top">
             <div class="agenda-day">1<sup style="font-size:.5em;vertical-align:super">a</sup><span>Domenica del mese</span></div>
-            <span class="agenda-badge">3 location</span>
+            <span class="agenda-badge">Marostica</span>
           </div>
-          <div class="agenda-locations">
-            <div class="agenda-loc"><span class="agenda-loc-num">1.</span><div class="agenda-loc-body"><p class="agenda-loc-name">Verona &mdash; San Zeno</p><p class="agenda-loc-place">Piazza San Zeno, Verona</p></div></div>
-            <div class="agenda-loc"><span class="agenda-loc-num">2.</span><div class="agenda-loc-body"><p class="agenda-loc-name">Mestre</p><p class="agenda-loc-place">Mestre, Venezia</p></div></div>
-            <div class="agenda-loc"><span class="agenda-loc-num">3.</span><div class="agenda-loc-body"><p class="agenda-loc-name">Alte Ceccato &mdash; Montecchio Maggiore</p><p class="agenda-loc-place">Piazza San Carlo, Alte Ceccato (VI)</p></div></div>
-          </div>
+          <p class="agenda-single-name">Mercatino Antiquariato</p>
+          <p class="agenda-single-place">&#x1F4CD; Piazza degli Scacchi, Marostica (VI)</p>
         </div>
         <div class="agenda-card">
           <div class="agenda-card-top"><div class="agenda-day">2<sup style="font-size:.5em;vertical-align:super">a</sup><span>Domenica del mese</span></div><span class="agenda-badge">Vicenza</span></div>
@@ -371,17 +368,16 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
 var B='foto mercatini x sito';
 function encPath(p){return p.split('/').map(function(s){return s.replace(/ /g,'%20').replace(/\(/g,'%28').replace(/\)/g,'%29')}).join('/')}
 var LOCATIONS=[
-  {name:"Verona — San Zeno",address:"Piazza San Zeno, Verona",lat:45.4438,lng:10.9853,color:'#8b3e10',schedule:"1ª Domenica del mese",photo:null},
-  {name:"Alte Ceccato — Montecchio Maggiore",address:"Piazza San Carlo, Alte Ceccato (VI)",lat:45.4993,lng:11.3996,color:'#5858a0',schedule:"1ª Domenica del mese",photo:B+'/2026/Montecchio Maggiore gennaio 26/Montecchio Maggiore gennaio 26 (1).jpg'},
+  {name:"Marostica",address:"Piazza degli Scacchi, Marostica (VI)",lat:45.7519,lng:11.6596,color:'#8b3e10',schedule:"1ª Domenica del mese",photo:B+'/2026/Marostica giugno 26/marostica giugno 26.jpeg'},
   {name:"Non ho l'età — Vicenza",address:"Piazza dei Signori, Vicenza",lat:45.5465,lng:11.5469,color:'#8b3e10',schedule:"2ª Domenica del mese",photo:B+'/2026/Vicenza gennaio 26/Vicenza gennaio 26 (1).jpg'},
   {name:"Non ho l'età — Padova",address:"Prato della Valle, Padova",lat:45.3977,lng:11.8762,color:'#4a8a4a',schedule:"3ª Domenica del mese",photo:B+'/2026/Padova aprile 26/Padova aprile 26 (1).jpg'},
   {name:"Mercatino Piazzola sul Brenta",address:"Piazzola sul Brenta (PD)",lat:45.5353,lng:11.8383,color:'#c07030',schedule:"4ª Domenica del mese",photo:null},
-  {name:"Mercatino Mestre",address:"Corso del Popolo, Mestre (VE)",lat:45.4905,lng:12.2350,color:'#c07030',schedule:"2° Sabato del mese",photo:null},
+  {name:"Mercatino Mestre",address:"Corso del Popolo, Mestre (VE)",lat:45.4905,lng:12.2350,color:'#c07030',schedule:"2° Sabato del mese",photo:B+'/2026/Mestre portici maggio 26/mestre portici maggio 26.jpeg'},
   {name:"Sabato Vintage — Vicenza",address:"Piazza Duomo, Vicenza",lat:45.5478,lng:11.5454,color:'#8b3e10',schedule:"2° Sabato del mese",photo:B+'/2026/Vicenza aprile 26 sabato/Vicenza aprile 26 sabato e domenica (1).jpg'}
 ];
 
 (function initMap(){
-  var map=L.map('map',{zoomControl:true,scrollWheelZoom:false}).setView([45.48,11.70],9);
+  var map=L.map('map',{zoomControl:true,scrollWheelZoom:false}).setView([45.50,11.78],9);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',maxZoom:19}).addTo(map);
   var panel=document.getElementById('mapInfoPanel');
   LOCATIONS.forEach(function(loc){
@@ -390,7 +386,7 @@ var LOCATIONS=[
     var tipHtml=loc.photo
       ? '<img class="map-tip-img" src="'+encPath(loc.photo)+'" alt="'+loc.name+'" loading="lazy"><div class="map-tip-label">'+loc.name+'<div class="map-tip-place">'+loc.address+'</div></div>'
       : '<div class="map-tip-label" style="padding:12px">'+loc.name+'<div class="map-tip-place">'+loc.address+'</div></div>';
-    marker.bindTooltip(tipHtml,{className:'map-tip',direction:'top',offset:[0,-10],opacity:1});
+    marker.bindTooltip(tipHtml,{className:'map-tip',direction:'right',offset:[10,0],opacity:1});
     marker.on('click',function(){
       panel.className='map-info-panel visible';
       panel.innerHTML=

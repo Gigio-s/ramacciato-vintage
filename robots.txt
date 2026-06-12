@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Disallow: /checkout.html
+Disallow: /success.html
+Disallow: /catalogo-interno.html
+Disallow: /render-carousel.html
+
+Sitemap: https://ramacciatovintage.it/sitemap.xml

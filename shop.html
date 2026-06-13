@@ -552,7 +552,7 @@ function renderGrid(){
       ? '<model-viewer src="'+p.model+'" auto-rotate rotation-per-second="0deg" reveal="auto" loading="eager" style="width:100%;height:100%;background:'+p.bg+'" camera-orbit="0deg 80deg 120%" field-of-view="35deg" min-camera-orbit="auto auto 80%" shadow-intensity="1"><div slot="poster" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:'+p.bg+';font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(14,12,10,.4)">Caricamento 3D&hellip;</div></model-viewer>'
       : '<div class="product-img-inner" style="background:'+p.bg+'">'+p.emoji+'</div>';
     var condHtml=p.condition?'<span class="product-condition">'+p.condition+'</span>':'';
-    return'<div class="product-card'+(p.model?' product-card--3d':'')+'" data-id="'+p.id+'" tabindex="0" role="button"><div class="product-img">'+imgHtml+(p.sold?'<span class="product-sold-badge">Venduto</span>':'')+(p.isNew&&!p.sold?'<span class="product-new-badge">Nuovo</span>':'')+'</div><div class="product-body"><p class="product-cat">'+catLabel(p.cat)+(p.model?' <span style="font-size:8px;opacity:.7;margin-left:4px">&#x2B55; 3D</span>':'')+'</p><p class="product-name">'+p.name+'</p>'+condHtml+'<p class="product-desc">'+p.desc.substring(0,80)+'&hellip;</p><div class="product-footer"><span class="product-price'+(p.sold?' sold':'')+'">&#x20AC; '+p.price+'</span><button class="product-buy-btn">+</button></div></div></div>';
+    return'<div class="product-card'+(p.model?' product-card--3d':'')+'" data-id="'+p.id+'" tabindex="0" role="button"><div class="product-img">'+imgHtml+(p.sold?'<span class="product-sold-badge">Venduto</span>':'')+(p.isNew&&!p.sold?'<span class="product-new-badge">Nuovo</span>':'')+'</div><div class="product-body"><p class="product-cat">'+catLabel(p.cat)+(p.model?' <span style="font-size:8px;opacity:.7;margin-left:4px">&#x2B55; 3D</span>':'')+'</p><p class="product-name">'+p.name+'</p>'+condHtml+'<p class="product-desc">'+(p.desc?(p.desc.substring(0,80)+'&hellip;'):'')+'</p><div class="product-footer"><span class="product-price'+(p.sold?' sold':'')+'">&#x20AC; '+(p.price!==null&&p.price!==undefined?p.price:'—')+'</span><button class="product-buy-btn">+</button></div></div></div>';
   }).join('');
   ['all','videogiochi','elettronica','musica','libri','oggetti','trading','dvd'].forEach(function(c){var el=document.getElementById('cnt-'+c);if(el)el.textContent=c==='all'?PRODUCTS.length:PRODUCTS.filter(function(p){return p.cat===c}).length});
   grid.querySelectorAll('.product-card').forEach(function(card){var fn=function(){openModal(parseInt(card.dataset.id))};card.addEventListener('click',fn);card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')fn()});
@@ -600,13 +600,13 @@ function openModal(id){
   var p=PRODUCTS.filter(function(x){return x.id===id})[0];if(!p)return;
   document.getElementById('modalCat').textContent=catLabel(p.cat);
   document.getElementById('modalTitle').textContent=p.name;
-  document.getElementById('modalPrice').textContent='€ '+p.price;
+  document.getElementById('modalPrice').textContent=p.price!==null&&p.price!==undefined?'€ '+p.price:'Prezzo da definire';
   document.getElementById('modalCondition').textContent='Condizioni: '+p.condition;
-  document.getElementById('modalDesc').textContent=p.desc;
+  document.getElementById('modalDesc').textContent=p.desc||'';
 
   /* ── Build left panel ── */
   var imgEl=document.getElementById('modalImg');
-  imgEl.style.background=p.bg;
+  imgEl.style.background=p.bg||'#f0ece6';
   imgEl.innerHTML=''; // clear
 
   if(p.model){

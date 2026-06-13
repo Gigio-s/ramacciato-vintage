@@ -89,6 +89,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 .product-card:hover .product-img img{transform:scale(1.06)}
 .product-sold-badge{position:absolute;top:10px;right:10px;background:rgba(14,12,10,.7);color:var(--bg);font-size:8.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
 .product-new-badge{position:absolute;top:10px;left:10px;background:var(--accent2);color:#fff;font-size:8.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
+.product-condition{display:inline-flex;align-items:center;gap:4px;background:rgba(139,62,16,.07);border:1px solid rgba(139,62,16,.18);border-radius:999px;padding:3px 9px;font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
 .product-body{padding:16px 18px 18px}
 .product-cat{font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2);margin-bottom:6px}
 .product-name{font-size:15px;font-weight:800;letter-spacing:-.02em;margin:0 0 6px;line-height:1.3}
@@ -423,6 +424,10 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
         </div>
         <span class="cat-label">Trading Cards</span>
       </button>
+      <button class="cat-item" data-cat="dvd">
+        <div class="cat-model-wrap"><span style="font-size:52px;line-height:1">🎬</span></div>
+        <span class="cat-label">DVD &amp; Film</span>
+      </button>
       </div>
       <button class="cat-arrow" id="catArrowR" aria-label="Successivo">&#x203A;</button>
     </div>
@@ -439,6 +444,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
       <button class="filter-btn" data-cat="libri">Libri Curiosi <span class="cnt" id="cnt-libri"></span></button>
       <button class="filter-btn" data-cat="oggetti">Oggetti Vintage <span class="cnt" id="cnt-oggetti"></span></button>
       <button class="filter-btn" data-cat="trading">Trading Cards <span class="cnt" id="cnt-trading"></span></button>
+      <button class="filter-btn" data-cat="dvd">DVD &amp; Film <span class="cnt" id="cnt-dvd"></span></button>
     </div>
     <div class="filter-group">
       <p class="filter-title">Disponibilit&agrave;</p>
@@ -533,7 +539,7 @@ function loadCart(){try{return JSON.parse(localStorage.getItem(CART_KEY)||'[]');
 function saveCart(c){localStorage.setItem(CART_KEY,JSON.stringify(c));if(window.rvCart)window.rvCart.refresh();}
 var activeCat='all',activeAvail='all',activeSort='default',activeSubcat=null;
 var SUBCATS_DATA={};
-function catLabel(c){return{videogiochi:'Videogiochi & Console',elettronica:'Elettronica Vintage',musica:'Vinili & Musica',libri:'Libri Curiosi',oggetti:'Oggetti Vintage',trading:'Trading Cards'}[c]||c}
+function catLabel(c){return{videogiochi:'Videogiochi & Console',elettronica:'Elettronica Vintage',musica:'Vinili & Musica',libri:'Libri Curiosi',oggetti:'Oggetti Vintage',trading:'Trading Cards',dvd:'DVD & Film'}[c]||c}
 function getFiltered(){var l=PRODUCTS.slice();if(activeCat!=='all')l=l.filter(function(p){return p.cat===activeCat});if(activeSubcat)l=l.filter(function(p){return p.subcat===activeSubcat});if(activeAvail==='available')l=l.filter(function(p){return!p.sold});if(activeSort==='price-asc')l.sort(function(a,b){return a.price-b.price});if(activeSort==='price-desc')l.sort(function(a,b){return b.price-a.price});if(activeSort==='new')l.sort(function(a,b){return(b.isNew?1:0)-(a.isNew?1:0)});return l}
 function renderGrid(){
   if(activeCat!=='all'&&!activeSubcat&&SUBCATS_DATA[activeCat]){renderSubcatTiles(activeCat);return;}
@@ -544,12 +550,11 @@ function renderGrid(){
   grid.innerHTML=list.map(function(p){
     var imgHtml=p.model
       ? '<model-viewer src="'+p.model+'" auto-rotate rotation-per-second="0deg" reveal="auto" loading="eager" style="width:100%;height:100%;background:'+p.bg+'" camera-orbit="0deg 80deg 120%" field-of-view="35deg" min-camera-orbit="auto auto 80%" shadow-intensity="1"><div slot="poster" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:'+p.bg+';font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(14,12,10,.4)">Caricamento 3D&hellip;</div></model-viewer>'
-      : (p.photos&&p.photos.length>0
-          ? '<img src="'+p.photos[0]+'" alt="'+p.name+'" style="width:100%;height:100%;object-fit:cover;border-radius:inherit">'
-          : '<div class="product-img-inner" style="background:'+p.bg+'">'+p.emoji+'</div>');
-    return'<div class="product-card'+(p.model?' product-card--3d':'')+'" data-id="'+p.id+'" tabindex="0" role="button"><div class="product-img">'+imgHtml+(p.sold?'<span class="product-sold-badge">Venduto</span>':'')+(p.isNew&&!p.sold?'<span class="product-new-badge">Nuovo</span>':'')+'</div><div class="product-body"><p class="product-cat">'+catLabel(p.cat)+(p.model?' <span style="font-size:8px;opacity:.7;margin-left:4px">&#x2B55; 3D</span>':'')+'</p><p class="product-name">'+p.name+'</p><p class="product-desc">'+p.desc.substring(0,80)+'&hellip;</p><div class="product-footer"><span class="product-price'+(p.sold?' sold':'')+'">&#x20AC; '+p.price+'</span><button class="product-buy-btn">+</button></div></div></div>';
+      : '<div class="product-img-inner" style="background:'+p.bg+'">'+p.emoji+'</div>';
+    var condHtml=p.condition?'<span class="product-condition">'+p.condition+'</span>':'';
+    return'<div class="product-card'+(p.model?' product-card--3d':'')+'" data-id="'+p.id+'" tabindex="0" role="button"><div class="product-img">'+imgHtml+(p.sold?'<span class="product-sold-badge">Venduto</span>':'')+(p.isNew&&!p.sold?'<span class="product-new-badge">Nuovo</span>':'')+'</div><div class="product-body"><p class="product-cat">'+catLabel(p.cat)+(p.model?' <span style="font-size:8px;opacity:.7;margin-left:4px">&#x2B55; 3D</span>':'')+'</p><p class="product-name">'+p.name+'</p>'+condHtml+'<p class="product-desc">'+p.desc.substring(0,80)+'&hellip;</p><div class="product-footer"><span class="product-price'+(p.sold?' sold':'')+'">&#x20AC; '+p.price+'</span><button class="product-buy-btn">+</button></div></div></div>';
   }).join('');
-  ['all','videogiochi','elettronica','musica','libri','oggetti','trading'].forEach(function(c){var el=document.getElementById('cnt-'+c);if(el)el.textContent=c==='all'?PRODUCTS.length:PRODUCTS.filter(function(p){return p.cat===c}).length});
+  ['all','videogiochi','elettronica','musica','libri','oggetti','trading','dvd'].forEach(function(c){var el=document.getElementById('cnt-'+c);if(el)el.textContent=c==='all'?PRODUCTS.length:PRODUCTS.filter(function(p){return p.cat===c}).length});
   grid.querySelectorAll('.product-card').forEach(function(card){var fn=function(){openModal(parseInt(card.dataset.id))};card.addEventListener('click',fn);card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')fn()});
     var mv=card.querySelector('model-viewer');
     if(mv){card.addEventListener('mouseenter',function(){mv.setAttribute('rotation-per-second','28deg');});card.addEventListener('mouseleave',function(){mv.setAttribute('rotation-per-second','0deg');});}
@@ -735,13 +740,13 @@ fetch('catalogo.json')
     PRODUCTS=data.prodotti||[];SUBCATS_DATA=data.sottocategorie||{};
 (function(){
   // Popola contatori, non mostrare ancora prodotti
-  ['all','videogiochi','elettronica','musica','libri','oggetti','trading'].forEach(function(c){var el=document.getElementById('cnt-'+c);if(el)el.textContent=c==='all'?PRODUCTS.length:PRODUCTS.filter(function(p){return p.cat===c}).length});
+  ['all','videogiochi','elettronica','musica','libri','oggetti','trading','dvd'].forEach(function(c){var el=document.getElementById('cnt-'+c);if(el)el.textContent=c==='all'?PRODUCTS.length:PRODUCTS.filter(function(p){return p.cat===c}).length});
   document.getElementById('gridCount').textContent='—';
   document.getElementById('productGrid').innerHTML='<div class="empty-state" style="grid-column:1/-1"><p style="font-size:44px;margin-bottom:14px">&#x1F4E6;</p><p style="font-size:15px;font-weight:800;letter-spacing:-.02em">Seleziona una categoria</p><p style="font-size:13px;margin-top:8px;opacity:.5">Scegli dal carousel o dal menu laterale per scoprire i prodotti.</p></div>';
   function selectCat(cat,scroll){activeCat=cat;activeSubcat=null;var _b=document.getElementById('breadcrumb');if(_b)_b.classList.remove('visible');document.querySelectorAll('[data-cat]').forEach(function(b){b.classList.remove('active')});document.querySelectorAll('[data-cat="'+cat+'"]').forEach(function(b){b.classList.add('active')});renderGrid();if(scroll&&window.innerWidth>768)document.querySelector('.shop-wrap').scrollIntoView({behavior:'smooth',block:'start'})}
   /* legge ?cat= dall'URL e pre-filtra */
   var urlCat=new URLSearchParams(window.location.search).get('cat');
-  var validCats=['videogiochi','elettronica','musica','libri','oggetti','trading'];
+  var validCats=['videogiochi','elettronica','musica','libri','oggetti','trading','dvd'];
   if(urlCat && validCats.indexOf(urlCat)>=0) selectCat(urlCat, false);
   document.querySelectorAll('.sidebar [data-cat]').forEach(function(btn){btn.addEventListener('click',function(){selectCat(btn.dataset.cat,false)})});
   document.getElementById('catCarousel').querySelectorAll('.cat-item').forEach(function(item){item.addEventListener('click',function(){selectCat(item.dataset.cat,true)})});

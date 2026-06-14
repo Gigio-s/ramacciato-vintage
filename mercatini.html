@@ -2,6 +2,26 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
+<script>
+(function(){
+  var PASS='vicenza26',KEY='rv_gate',EXP=new Date('2026-07-01').getTime();
+  if(Date.now()>=EXP||localStorage.getItem(KEY)==='1')return;
+  var s=document.createElement('style');s.id='rv-hide';s.textContent='body{visibility:hidden!important}';document.head.appendChild(s);
+  document.addEventListener('DOMContentLoaded',function(){
+    var d=document.createElement('div');
+    d.id='rv-gate';
+    d.style.cssText='position:fixed;inset:0;z-index:99999;background:#f0ebe3;display:flex;align-items:center;justify-content:center;';
+    d.innerHTML='<div style="text-align:center;padding:40px 24px;font-family:Archivo,Arial,sans-serif;max-width:360px"><p style="font-size:10px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#8b3e10;margin:0 0 14px">Ramacciato Vintage</p><h2 style="font-size:clamp(28px,7vw,42px);font-weight:900;letter-spacing:-.05em;text-transform:uppercase;color:#0e0c0a;line-height:.92;margin:0 0 16px">Lancio sito<br>1 luglio 2026</h2><p style="font-size:13px;color:#7a7168;margin:0 0 28px;line-height:1.55">Apertura ufficiale il 1° luglio.<br>Inserisci la password per accedere in anteprima.</p><input id="rv-pw" type="password" placeholder="Password" autocomplete="current-password" style="display:block;width:100%;max-width:220px;padding:13px 18px;border:1.5px solid rgba(14,12,10,.18);border-radius:999px;font-size:15px;font-family:inherit;background:#faf6f0;color:#0e0c0a;margin:0 auto 12px;outline:none;text-align:center;box-sizing:border-box"><button id="rv-btn" style="padding:12px 36px;background:#0e0c0a;color:#f0ebe3;border:none;border-radius:999px;font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-family:inherit;cursor:pointer;transition:background .18s">Entra</button><p id="rv-err" style="font-size:12px;color:#8b3e10;margin:10px 0 0;min-height:16px"></p></div>';
+    document.body.prepend(d);
+    document.body.style.overflow='hidden';
+    var hs=document.getElementById('rv-hide');if(hs)hs.remove();
+    document.body.style.visibility='visible';
+    function check(){if(document.getElementById('rv-pw').value===PASS){localStorage.setItem(KEY,'1');d.remove();document.body.style.overflow='';}else{document.getElementById('rv-err').textContent='Password errata.';}}
+    document.getElementById('rv-btn').onclick=check;
+    document.getElementById('rv-pw').onkeydown=function(e){if(e.key==='Enter')check();};
+  });
+})();
+</script>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Calendario mercatini antiquariato e vintage in Veneto — Vicenza, Padova, Verona e dintorni. Scopri date e luoghi dove trovare Ramacciato Vintage di persona.">
 <link rel="canonical" href="https://ramacciatovintage.it/mercatini.html">

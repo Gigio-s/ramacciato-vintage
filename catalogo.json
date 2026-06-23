@@ -8107,7 +8107,7 @@
     },
     {
       "id": 452,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Antonio Lomevolo",
       "desc": null,
       "price": 4,
@@ -8121,11 +8121,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 453,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Lucio Battisti",
       "desc": null,
       "price": 10,
@@ -8139,11 +8139,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 454,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Lucio Battisti – Le Origini Vol. 1",
       "desc": null,
       "price": 5,
@@ -8157,11 +8157,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 455,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Lucio Battisti – Le Origini Vol. 2",
       "desc": null,
       "price": 5,
@@ -8175,11 +8175,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 456,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Umberto Tozzi – Gli Altri Siamo Noi",
       "desc": null,
       "price": 4,
@@ -8193,11 +8193,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 457,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Umberto Tozzi – Gli Altri Siamo Noi Vol. 2",
       "desc": null,
       "price": 4,
@@ -8211,11 +8211,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 458,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Maurizio Vandelli – 29 Settembre '69",
       "desc": null,
       "price": 4,
@@ -8229,11 +8229,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 459,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Rod Stewart – Atlantic Crossing",
       "desc": null,
       "price": 5,
@@ -8247,11 +8247,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 460,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Le Tue Canzoni d'Amore (Gente)",
       "desc": null,
       "price": 3,
@@ -8265,11 +8265,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 461,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Spice Girls – Spice",
       "desc": null,
       "price": 5,
@@ -8283,11 +8283,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 462,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "The Best of Pooh Vol. 1",
       "desc": null,
       "price": 5,
@@ -8301,11 +8301,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 463,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "The Best of Pooh Vol. 2",
       "desc": null,
       "price": 5,
@@ -8319,11 +8319,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 464,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Pooh – La Nostra Storia '85",
       "desc": null,
       "price": 5,
@@ -8337,11 +8337,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 465,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Francesco Guccini",
       "desc": null,
       "price": 4,
@@ -8355,11 +8355,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 466,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "I Nomadi Cantano Guccini",
       "desc": null,
       "price": 4,
@@ -8373,11 +8373,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 467,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "I Camaleonti – I Successi",
       "desc": null,
       "price": 4,
@@ -8391,11 +8391,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 468,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Nek",
       "desc": null,
       "price": 4,
@@ -8409,11 +8409,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 469,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Artisti Vari – Tributo ad Augusto",
       "desc": null,
       "price": 3,
@@ -8427,11 +8427,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 470,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Claudio Baglioni (CBS) [1]",
       "desc": null,
       "price": 5,
@@ -8445,11 +8445,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 471,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Claudio Baglioni (CBS) [2]",
       "desc": null,
       "price": 5,
@@ -8463,11 +8463,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 472,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Claudio Baglioni (CBS) [3]",
       "desc": null,
       "price": 5,
@@ -8481,11 +8481,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 473,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Claudio Baglioni – Io Tu Tutti",
       "desc": null,
       "price": 5,
@@ -8499,11 +8499,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 474,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Ricky Martin",
       "desc": null,
       "price": 5,
@@ -8517,11 +8517,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 475,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Julio Iglesias – Sono un Pirata, Sono un Signore",
       "desc": null,
       "price": 4,
@@ -8535,11 +8535,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 476,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Mariah Carey – Daydream",
       "desc": null,
       "price": 5,
@@ -8553,11 +8553,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 477,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Francesco De Gregori – Canzoni",
       "desc": null,
       "price": 5,
@@ -8571,11 +8571,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 478,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "The Best of Rod Stewart",
       "desc": null,
       "price": 5,
@@ -8589,11 +8589,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 479,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "883 – La Dura Legge del Gol!",
       "desc": null,
       "price": 10,
@@ -8607,11 +8607,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 480,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "883 – Il Sogno di Samantha",
       "desc": null,
       "price": 10,
@@ -8625,11 +8625,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 481,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "883 – Gli Anni",
       "desc": null,
       "price": 10,
@@ -8643,11 +8643,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 482,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "883 – Hanno Ucciso l'Uomo Ragno",
       "desc": null,
       "price": 10,
@@ -8661,11 +8661,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 483,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Genesis – And Then There Were Three",
       "desc": null,
       "price": 5,
@@ -8679,11 +8679,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 484,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Peppino di Capri – Canta Napoli Vol. 7 (Fabbri)",
       "desc": null,
       "price": 3,
@@ -8697,11 +8697,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 485,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Fabbri Editori Vol. 10",
       "desc": null,
       "price": 3,
@@ -8715,11 +8715,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 486,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Una Canzone per Te Vol. 2 (Fabbri)",
       "desc": null,
       "price": 3,
@@ -8733,11 +8733,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 487,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Le Nostre Canzoni Vol. 1 (Fabbri)",
       "desc": null,
       "price": 3,
@@ -8751,11 +8751,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 488,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Carosello Italiano Vol. 1 (Fabbri) [copia 1]",
       "desc": null,
       "price": 3,
@@ -8769,11 +8769,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 489,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Carosello Italiano Vol. 1 (Fabbri) [copia 2]",
       "desc": null,
       "price": 3,
@@ -8787,11 +8787,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 490,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Ligabue",
       "desc": null,
       "price": 5,
@@ -8805,11 +8805,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 491,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Andrea Bocelli – Timeless",
       "desc": null,
       "price": 5,
@@ -8823,11 +8823,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 492,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "La Parola a Guccini Vol. 7",
       "desc": null,
       "price": 4,
@@ -8841,11 +8841,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 493,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Padre Pio – La Vera Voce (Gente Mese)",
       "desc": null,
       "price": 5,
@@ -8859,11 +8859,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 494,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Natale Musicale",
       "desc": null,
       "price": 3,
@@ -8877,11 +8877,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 495,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "I Masters – Le Canzoni più Belle (Nuova Onda)",
       "desc": null,
       "price": 3,
@@ -8895,11 +8895,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 496,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "In Viaggio con Francesco",
       "desc": null,
       "price": 3,
@@ -8913,11 +8913,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 497,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Note d'Autore Vol. 11 [copia 1]",
       "desc": null,
       "price": 3,
@@ -8931,11 +8931,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 498,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Note d'Autore Vol. 11 [copia 2]",
       "desc": null,
       "price": 3,
@@ -8949,11 +8949,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 499,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Noi per Cantare",
       "desc": null,
       "price": 3,
@@ -8967,11 +8967,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 500,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Verdi – Corriere della Sera",
       "desc": null,
       "price": 3,
@@ -8985,11 +8985,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 501,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Ligabue (Mescal)",
       "desc": null,
       "price": 5,
@@ -9003,11 +9003,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 502,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Tutto Sanremo – Le Canzoni Vincitrici (Gente)",
       "desc": null,
       "price": 3,
@@ -9021,11 +9021,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 503,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Gente – Le Canzoni più Belle di Sanremo",
       "desc": null,
       "price": 3,
@@ -9039,11 +9039,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 504,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Coro Stella Alpina",
       "desc": null,
       "price": 3,
@@ -9057,11 +9057,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 505,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Ritratto di Roberto Carlos",
       "desc": null,
       "price": 3,
@@ -9075,11 +9075,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 506,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Toni Braxton – Secrets",
       "desc": null,
       "price": 5,
@@ -9093,11 +9093,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 507,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Eros Ramazzotti – Eros",
       "desc": null,
       "price": 5,
@@ -9111,11 +9111,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 508,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "6 Successi da Ascoltare e Interpretare Vol. 1",
       "desc": null,
       "price": 3,
@@ -9129,11 +9129,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 509,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Battiti – Ci Ritorniamo in Mente",
       "desc": null,
       "price": 3,
@@ -9147,11 +9147,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 510,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Tutto 60 Lato A",
       "desc": null,
       "price": 3,
@@ -9165,11 +9165,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 511,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Tutto 60 Lato B",
       "desc": null,
       "price": 3,
@@ -9183,11 +9183,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 512,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Noi le Cantiamo Così Vol. 8 (Carosello)",
       "desc": null,
       "price": 3,
@@ -9201,11 +9201,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 513,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Demis Roussos – Forever and Ever",
       "desc": null,
       "price": 5,
@@ -9219,11 +9219,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 514,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Bacardi Tropical Music",
       "desc": null,
       "price": 3,
@@ -9237,11 +9237,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 515,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Ridi Pagliaccio – Alessi Vol. 1",
       "desc": null,
       "price": 3,
@@ -9255,11 +9255,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 516,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Il Balletto del Sorriso Vol. 6",
       "desc": null,
       "price": 3,
@@ -9273,11 +9273,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 517,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Le Musiche delle Feste",
       "desc": null,
       "price": 3,
@@ -9291,11 +9291,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 518,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Canti Mariani",
       "desc": null,
       "price": 3,
@@ -9309,11 +9309,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 519,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Oro Puro",
       "desc": null,
       "price": 3,
@@ -9327,11 +9327,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 520,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Per Noi Piccoli",
       "desc": null,
       "price": 3,
@@ -9345,11 +9345,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 521,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Beethoven / Ciaikowsky",
       "desc": null,
       "price": 3,
@@ -9363,11 +9363,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 522,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Bona Furtuna – Peppino di Capri",
       "desc": null,
       "price": 3,
@@ -9381,11 +9381,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 523,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "La Principessa della Csarda Vol. 2",
       "desc": null,
       "price": 3,
@@ -9399,11 +9399,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 524,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Top Inglese Vol. 3 (La Repubblica)",
       "desc": null,
       "price": 3,
@@ -9417,11 +9417,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 525,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Canzoni d'Estate Vol. 2",
       "desc": null,
       "price": 3,
@@ -9435,11 +9435,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 526,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Top English Vol. 5 (L'Espresso)",
       "desc": null,
       "price": 3,
@@ -9453,11 +9453,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 527,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Claudio Villa e I Platters (Gente)",
       "desc": null,
       "price": 3,
@@ -9471,11 +9471,11 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     },
     {
       "id": 528,
-      "cat": "musicassette",
+      "cat": "musica",
       "name": "Rosso Vivo",
       "desc": null,
       "price": 3,
@@ -9489,7 +9489,7 @@
       "modelCredit": null,
       "modelCreditUrl": null,
       "photos": [],
-      "subcat": null
+      "subcat": "musicassette"
     }
   ],
   "sottocategorie": {

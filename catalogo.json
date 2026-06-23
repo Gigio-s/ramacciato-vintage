@@ -9542,49 +9542,57 @@
         "id": "ps3",
         "label": "PlayStation 3",
         "emoji": "🎮",
-        "model": null,
+        "model": "modelli%203d%20x%20sito/sony_playstation_3.glb",
+        "modelCreditUrl": "https://sketchfab.com/3d-models/sony-playstation-3-11306cddea7440a6929f3f2c00c38072",
         "bg": "linear-gradient(135deg,#1a1a2a,#2a2a4a)"
       },
       {
         "id": "ps4",
         "label": "PlayStation 4",
         "emoji": "🎮",
-        "model": null,
+        "model": "modelli%203d%20x%20sito/sony_playstation_4.glb",
+        "modelCreditUrl": "https://sketchfab.com/3d-models/sony-playstation-4-35f5868ea45749b7a6ec865c617742a2",
         "bg": "linear-gradient(135deg,#1a2040,#0d1530)"
       },
       {
         "id": "ps1",
         "label": "PlayStation 1",
         "emoji": "🕹️",
-        "model": null,
+        "model": "playstation_1_opt.glb",
         "bg": "linear-gradient(135deg,#a0a8b4,#606878)"
       },
       {
         "id": "psp",
         "label": "PSP",
         "emoji": "🎮",
-        "model": null,
+        "model": "modelli%203d%20x%20sito/sony_psp.glb",
+        "modelCredit": "Ilya Ostrovsky",
+        "modelCreditUrl": "https://sketchfab.com/3d-models/sony-psp-dca89d10ec304d0cab76837750df7761",
         "bg": "linear-gradient(135deg,#ccc8c0,#908880)"
       },
       {
         "id": "xbox360",
         "label": "Xbox 360",
         "emoji": "🎮",
-        "model": "psx_xbox.glb",
+        "model": "modelli%203d%20x%20sito/xbox_360_black__3d_model_by_rob_bryant_jr.glb",
+        "modelCredit": "Rob Bryant Jr",
+        "modelCreditUrl": "https://sketchfab.com/3d-models/xbox-360-black-3d-model-by-rob-bryant-jr-f65ac4721fd34dd8a8b63adfa712f5b8",
         "bg": "linear-gradient(135deg,#0a2a0a,#1a5a1a)"
       },
       {
         "id": "wii",
         "label": "Nintendo Wii",
         "emoji": "🎮",
-        "model": null,
+        "model": "modelli%203d%20x%20sito/nintendo_wii_rvl-001.glb",
+        "modelCreditUrl": "https://sketchfab.com/3d-models/nintendo-wii-rvl-001-84d7958819f34ab6ad4d30dbbaed11c3",
         "bg": "linear-gradient(135deg,#e0dcd8,#b0aca8)"
       },
       {
         "id": "nds",
         "label": "Nintendo DS",
         "emoji": "🎮",
-        "model": null,
+        "model": "modelli%203d%20x%20sito/nintendo_ds_lite.glb",
+        "modelCreditUrl": "https://sketchfab.com/3d-models/nintendo-ds-lite-ca529eb7208746e89b7a28fd2246659d",
         "bg": "linear-gradient(135deg,#c8102e,#7a0010)"
       },
       {
@@ -9600,7 +9608,7 @@
         "id": "vinili",
         "label": "Vinili",
         "emoji": "🎵",
-        "model": null,
+        "model": "vinyl_record_opt.glb",
         "bg": "linear-gradient(135deg,#1a0a2a,#3a1a5a)"
       },
       {
@@ -9674,7 +9682,9 @@
         "id": "musicassette",
         "label": "Musicassette",
         "emoji": "📼",
-        "model": null,
+        "model": "modelli%203d%20x%20sito/cassette_audio_k7.glb",
+        "modelCredit": "Amigos3D",
+        "modelCreditUrl": "https://sketchfab.com/3d-models/cassette-audio-k7-0d8ac9660be14b1a95dfecbf33ec8675",
         "bg": "linear-gradient(135deg,#1a1a0a,#3a2a0a)"
       },
       {

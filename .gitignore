@@ -22,3 +22,8 @@ vinyls_3_opt.glb
 # File temporanei progetto
 catalogo_backup.json
 render-carousel.html
+
+# File di lavoro locali
+*.csv
+*.py
+foto mercatini x sito/

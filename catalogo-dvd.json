@@ -1694,61 +1694,55 @@
   {
     "id": 576,
     "cat": "dvd",
-    "name": "Dragon Ball Z – La Vendetta Divina",
+    "name": "Dragon Ball Z - La Vendetta Divina",
     "desc": "Episodi della saga Z in italiano. DVD originale Dynit/Mediaset.",
     "price": 4,
     "condition": "good",
     "sold": false,
     "isNew": false,
-    "emoji": "🐉",
+    "emoji": "🐲",
     "bg": "linear-gradient(135deg,#0a1a2a,#103050)",
     "ebay": "",
     "model": null,
     "modelCredit": null,
     "modelCreditUrl": null,
-    "photos": [
-      "https://image.tmdb.org/t/p/w500/8F40mj7ZOV0P0bUlRBIGixrXpLp.jpg"
-    ],
+    "photos": [],
     "subcat": "serie-tv"
   },
   {
     "id": 577,
     "cat": "dvd",
-    "name": "Dragon Ball Z – Il Destino del Saiyan",
+    "name": "Dragon Ball Z - Il Destino del Saiyan",
     "desc": "Avventure dei guerrieri Saiyan. Episodi in italiano. DVD originale.",
     "price": 4,
     "condition": "good",
     "sold": false,
     "isNew": false,
-    "emoji": "🐉",
+    "emoji": "🐲",
     "bg": "linear-gradient(135deg,#0a1a2a,#103050)",
     "ebay": "",
     "model": null,
     "modelCredit": null,
     "modelCreditUrl": null,
-    "photos": [
-      "https://image.tmdb.org/t/p/w500/iiw6RGmLf8DZx4HfSAmOW31SpPs.jpg"
-    ],
+    "photos": [],
     "subcat": "serie-tv"
   },
   {
     "id": 578,
     "cat": "dvd",
-    "name": "Dragon Ball Z – La Minaccia del Demonio Malvagio",
+    "name": "Dragon Ball Z - La Minaccia del Demonio Malvagio",
     "desc": "La minaccia del demonio nella saga Z. DVD originale in italiano.",
     "price": 4,
     "condition": "good",
     "sold": false,
     "isNew": false,
-    "emoji": "🐉",
+    "emoji": "🐲",
     "bg": "linear-gradient(135deg,#0a1a2a,#103050)",
     "ebay": "",
     "model": null,
     "modelCredit": null,
     "modelCreditUrl": null,
-    "photos": [
-      "https://image.tmdb.org/t/p/w500/zdwuZ3NSKilIYNTfW9G17gzBgqF.jpg"
-    ],
+    "photos": [],
     "subcat": "serie-tv"
   },
   {
@@ -1766,9 +1760,7 @@
     "model": null,
     "modelCredit": null,
     "modelCreditUrl": null,
-    "photos": [
-      "https://image.tmdb.org/t/p/w500/eO6h0BAl4wHGw2zTX4fktYUGtJq.jpg"
-    ],
+    "photos": [],
     "subcat": "serie-tv"
   },
   {
@@ -1786,9 +1778,7 @@
     "model": null,
     "modelCredit": null,
     "modelCreditUrl": null,
-    "photos": [
-      "https://image.tmdb.org/t/p/w500/eO6h0BAl4wHGw2zTX4fktYUGtJq.jpg"
-    ],
+    "photos": [],
     "subcat": "serie-tv"
   },
   {
@@ -1806,21 +1796,19 @@
     "model": null,
     "modelCredit": null,
     "modelCreditUrl": null,
-    "photos": [
-      "https://image.tmdb.org/t/p/w500/eO6h0BAl4wHGw2zTX4fktYUGtJq.jpg"
-    ],
+    "photos": [],
     "subcat": "serie-tv"
   },
   {
     "id": 582,
     "cat": "dvd",
-    "name": "Inter Channel – Storia Nerazzurra (Cofanetto 11 DVD)",
-    "desc": "Collezione completa di 11 DVD della storia dell'Inter dall'inizio ad oggi. Raro cofanetto da collezione per i tifosi nerazzurri.",
+    "name": "Inter Channel - Storia Nerazzurra (Cofanetto 11 DVD)",
+    "desc": "Collezione completa di 11 DVD della storia dell Inter. Raro cofanetto da collezione per i tifosi nerazzurri.",
     "price": 20,
     "condition": "good",
     "sold": false,
     "isNew": false,
-    "emoji": "⚫🔵",
+    "emoji": "⚽",
     "bg": "linear-gradient(135deg,#1a1a0a,#3a3a10)",
     "ebay": "",
     "model": null,

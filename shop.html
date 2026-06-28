@@ -201,6 +201,10 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
 .foot-bottom em{font-style:italic;font-family:'Cormorant Garamond',Georgia,serif;font-size:15px}
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .reveal.visible{opacity:1;transform:none}
+.discogs-notice{display:none;align-items:center;gap:10px;background:rgba(14,12,10,.04);border:1px solid var(--line);border-radius:12px;padding:10px 16px;margin-bottom:16px;font-size:11.5px;color:var(--muted);line-height:1.5}
+.discogs-notice.visible{display:flex}
+.discogs-notice svg{flex-shrink:0;opacity:.45}
+.discogs-notice a{color:var(--accent);font-weight:700}
 .cursor{display:none}
 @media(hover:hover) and (pointer:fine){body,body *{cursor:none !important}.cursor{display:block;position:fixed;left:0;top:0;z-index:9999;pointer-events:none;border-radius:50%;transform:translate(-50%,-50%);will-change:transform}.cursor.big{width:88px;height:88px;background:radial-gradient(circle,rgba(192,112,48,.22),transparent 68%);mix-blend-mode:multiply}.cursor.dot{width:5px;height:5px;background:var(--accent)}}
 @media(max-width:1000px){.links,.social{display:none}.menu-btn{display:block}.shop-wrap{grid-template-columns:1fr}.sidebar{position:static;display:flex;gap:8px;flex-wrap:wrap}.filter-group:not(:first-child){display:none}.product-grid{grid-template-columns:1fr 1fr}.foot-grid{grid-template-columns:1fr 1fr 1fr}}
@@ -517,6 +521,10 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
       </select>
     </div>
     <div id="breadcrumb" class="breadcrumb"><button class="bc-btn" id="bcCatBtn"></button><span class="bc-sep">&#x203A;</span><button class="bc-btn" id="bcSubcatBtn" style="display:none"></button><span class="bc-sep" id="bcSep2" style="display:none">&#x203A;</span><span class="bc-current" id="bcSubcat"></span></div>
+    <div class="discogs-notice" id="discogsNotice" role="note">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      Le immagini dei vinili e degli album sono fornite da <a href="https://www.discogs.com" target="_blank" rel="noopener">Discogs</a> a scopo illustrativo. Ramacciato Vintage non è affiliata a Discogs. I prodotti fisici possono differire dall'immagine.
+    </div>
     <div class="product-grid" id="productGrid"></div>
   </div>
 </div>
@@ -835,16 +843,25 @@ window.__rvShopCartUpdated=function(){updateCartUI();};
 
   renderCarousel(idx);
 })();
-fetch('catalogo.json')
-  .then(function(r){return r.json();})
-  .then(function(data){
+/* Carica metadata + tutti i file per categoria in parallelo */
+var CAT_FILES=['musica','dvd','videogiochi','oggetti','elettronica','libri','trading'];
+Promise.all(
+  [fetch('catalogo.json').then(function(r){return r.json();})]
+  .concat(CAT_FILES.map(function(c){
+    return fetch('catalogo-'+c+'.json').then(function(r){return r.json();}).catch(function(){return [];});
+  }))
+)
+  .then(function(results){
+    var meta=results[0];
+    var allProds=[];results.slice(1).forEach(function(arr){if(Array.isArray(arr))allProds=allProds.concat(arr);});
+    var data={prodotti:allProds,sottocategorie:meta.sottocategorie||{}};
     PRODUCTS=data.prodotti||[];SUBCATS_DATA=data.sottocategorie||{};
 (function(){
   // Popola contatori, non mostrare ancora prodotti
   ['all','videogiochi','elettronica','musica','libri','oggetti','trading','dvd'].forEach(function(c){var el=document.getElementById('cnt-'+c);if(el)el.textContent=c==='all'?PRODUCTS.length:PRODUCTS.filter(function(p){return p.cat===c}).length});
   document.getElementById('gridCount').textContent='—';
   document.getElementById('productGrid').innerHTML='<div class="empty-state" style="grid-column:1/-1"><p style="font-size:44px;margin-bottom:14px">&#x1F4E6;</p><p style="font-size:15px;font-weight:800;letter-spacing:-.02em">Seleziona una categoria</p><p style="font-size:13px;margin-top:8px;opacity:.5">Scegli dal carousel o dal menu laterale per scoprire i prodotti.</p></div>';
-  function selectCat(cat,scroll){activeCat=cat;activeSubcat=null;activeSubcat2=null;var _b=document.getElementById('breadcrumb');if(_b)_b.classList.remove('visible');document.querySelectorAll('[data-cat]').forEach(function(b){b.classList.remove('active')});document.querySelectorAll('[data-cat="'+cat+'"]').forEach(function(b){b.classList.add('active')});renderGrid();if(scroll&&window.innerWidth>768)document.querySelector('.shop-wrap').scrollIntoView({behavior:'smooth',block:'start'})}
+  function selectCat(cat,scroll){activeCat=cat;activeSubcat=null;activeSubcat2=null;var _b=document.getElementById('breadcrumb');if(_b)_b.classList.remove('visible');document.querySelectorAll('[data-cat]').forEach(function(b){b.classList.remove('active')});document.querySelectorAll('[data-cat="'+cat+'"]').forEach(function(b){b.classList.add('active')});var _dn=document.getElementById('discogsNotice');if(_dn)_dn.classList.toggle('visible',cat==='musica');renderGrid();if(scroll&&window.innerWidth>768)document.querySelector('.shop-wrap').scrollIntoView({behavior:'smooth',block:'start'})}
   /* legge ?cat= dall'URL e pre-filtra */
   var urlCat=new URLSearchParams(window.location.search).get('cat');
   var validCats=['videogiochi','elettronica','musica','libri','oggetti','trading','dvd'];
@@ -920,7 +937,7 @@ fetch('catalogo.json')
     }
   })();
 })();
-}).catch(function(e){console.error('[catalogo.json] Errore caricamento:',e);});
+}).catch(function(e){console.error('[catalogo] Errore caricamento:',e);});
 </script>
 <script>
 // ── Reveal animations: run immediately, independent of fetch ──
@@ -974,4 +991,5 @@ fetch('catalogo.json')
   </div>
 </div>
 <script>
-(function(){var K='rv_consent';function load(){try{return JSON.parse(localStorage.getItem(K));}catch(e){return null;}}function save(o){try{localStorage.setItem(K,JSON.stringify(o));}catch(e){}}if(load())return;var b=document.getElementById('cookieBanner'),m=document.getElementById('cookieModal');if(!b)return;setTimeout(function(){b.classList.add('visible');},700);function hb(){b.classList.remove('visible');setTimeout(function(){b.style.display='none';},420);}function hm(){m.setAttribute('hidden','');}document.getElementById('cookieAcceptAll').onclick=function(){save({t:1,a:1,mk:1,ts:Date.now()});hb();hm();};document.getElementById('cookieNecessary').onclick=function(){save({t:1,a:0,mk:0,ts:Date.now()});hb();hm();};document.getElementById('cookieCustomize').onclick=function(){m.removeAttribute('hidden');};document.getElementById('cookieModalClose').onclick=hm;document.getElementById('cookieSavePrefs').onclick=function(){var a=document.getElementById('toggleAnalytics').checked,mk=document.getElementById('toggleMa
+(function(){var K='rv_consent';function load(){try{return JSON.parse(localStorage.getItem(K));}catch(e){return null;}}function save(o){try{localStorage.setItem(K,JSON.stringify(o));}catch(e){}}if(load())return;var b=document.getElementById('cookieBanner'),m=document.getElementById('cookieModal');if(!b)return;setTimeout(function(){b.classList.add('visible');},700);function hb(){b.classList.remove('visible');setTimeout(function(){b.style.display='none';},420);}function hm(){m.setAttribute('hidden','');}document.getElementById('cookieAcceptAll').onclick=function(){save({t:1,a:1,mk:1,ts:Date.now()});hb();hm();};document.getElementById('cookieNecessary').onclick=function(){save({t:1,a:0,mk:0,ts:Date.now()});hb();hm();};document.getElementById('cookieCustomize').onclick=function(){m.removeAttribute('hidden');};document.getElementById('cookieModalClose').onclick=hm;document.getElementById('cookieSavePrefs').onclick=function(){var a=document.getElementById('toggleAnalytics').checked,mk=document.getElementById('toggleMarketing').checked;save({t:1,a:a?1:0,mk:mk?1:0,ts:Date.now()});hb();hm();};m.onclick=function(e){if(e.target===m)hm();};})();
+</script>

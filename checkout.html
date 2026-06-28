@@ -941,13 +941,20 @@ function initPayPal(){
     return actions.order.capture().then(function(orderData){
       localStorage.removeItem('rv_cart_v1');
       sessionStorage.setItem('rv_order', JSON.stringify({
-        orderId: orderData.id,
-        payerId: orderData.payer.payer_id,
-        email:   (orderData.payer.email_address || val('ship-email')),
-        nome:    val('ship-nome')+' '+val('ship-cognome'),
-        tot:     getTotal().toFixed(2),
-        fattura: state.wantsInvoice,
-        ts:      Date.now()
+        orderId:  orderData.id,
+        payerId:  orderData.payer.payer_id,
+        email:    (orderData.payer.email_address || val('ship-email')),
+        nome:     val('ship-nome')+' '+val('ship-cognome'),
+        tot:      getTotal().toFixed(2),
+        fattura:  state.wantsInvoice,
+        ts:       Date.now(),
+        zona:     state.zona || 'standard',
+        indirizzo: state.zona === 'pickup'
+          ? '[Punto di ritiro] '+val('pickup-point')
+          : val('ship-indirizzo')+', '+val('ship-cap')+' '+val('ship-citta')+' ('+( val('ship-nazione')||'IT')+')',
+        articoli: state.cart.map(function(item){
+          return { id: item.id||'', name: item.name||'Articolo', price: item.price||0, cat: item.cat||'' };
+        })
       }));
       window.location.href = 'success.html';
     });

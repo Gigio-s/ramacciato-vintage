@@ -75,6 +75,9 @@ main{flex:1;display:flex;align-items:center;justify-content:center;
 .order-row .value{font-weight:800;color:var(--ink)}
 .order-row .order-id{font-size:11px;letter-spacing:.04em;font-family:monospace;
   background:rgba(14,12,10,.06);padding:3px 8px;border-radius:6px}
+.order-items{margin:10px 0 0;padding:10px 0 0;border-top:1px solid var(--line)}
+.order-item{font-size:12px;color:var(--ink);font-weight:700;padding:3px 0;display:flex;justify-content:space-between}
+.order-item .item-price{color:var(--accent);font-weight:800}
 
 .invoice-notice{display:none;background:rgba(139,62,16,.07);border:1px solid rgba(139,62,16,.2);
   border-radius:12px;padding:14px 18px;margin:0 0 32px;text-align:left;font-size:12.5px;
@@ -164,6 +167,7 @@ footer{background:var(--dark);color:rgba(250,246,240,.75);position:relative;z-in
           <span class="label">Totale pagato</span>
           <span class="value" id="order-tot">—</span>
         </div>
+        <div class="order-items" id="order-items" style="display:none"></div>
       </div>
 
       <div class="invoice-notice" id="invoice-notice">
@@ -193,40 +197,108 @@ footer{background:var(--dark);color:rgba(250,246,240,.75);position:relative;z-in
   </div>
 </footer>
 
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
-/* Legge i dati ordine da sessionStorage */
+/* ═══════════════════════════════════════════════════════
+   CONFIGURAZIONE — compila questi valori una volta sola
+   Guida: https://www.emailjs.com/docs/sdk/installation/
+═══════════════════════════════════════════════════════ */
+var EMAILJS_PUBLIC_KEY  = 'SOSTITUISCI_CON_TUA_PUBLIC_KEY';   // Account → API Keys
+var EMAILJS_SERVICE_ID  = 'SOSTITUISCI_CON_TUO_SERVICE_ID';   // Email Services → Service ID
+var EMAILJS_TEMPLATE_ID = 'SOSTITUISCI_CON_TUO_TEMPLATE_ID';  // Email Templates → Template ID
+
+/* Google Apps Script URL — vedi file RV_RegistroVendite.gs */
+var GAS_WEBHOOK_URL = 'SOSTITUISCI_CON_URL_APPS_SCRIPT';
+
+/* ═══════════════════════════════════════════════════════ */
+
 (function(){
   var raw = sessionStorage.getItem('rv_order');
+  var d   = null;
   if(raw){
-    try{
-      var d = JSON.parse(raw);
-      var fmt = function(s){ return s||'—'; };
-      document.getElementById('order-id').textContent    = fmt(d.orderId);
-      document.getElementById('order-nome').textContent  = fmt(d.nome);
-      document.getElementById('order-email').textContent = fmt(d.email);
-      document.getElementById('order-tot').textContent   = d.tot ? '€'+d.tot : '—';
-      if(d.fattura) document.getElementById('invoice-notice').classList.add('visible');
-      if(d.email){
-        document.getElementById('success-sub').innerHTML =
-          'Grazie per il tuo acquisto, <strong>'+fmt(d.nome)+'</strong>.<br>'
-          +'Riceverai una conferma da PayPal a <strong>'+fmt(d.email)+'</strong>.<br>'
-          +'Spediamo nel più breve tempo possibile.';
-      }
-      // Pulizia sicura dopo lettura
-      sessionStorage.removeItem('rv_order');
-    } catch(e){}
+    try{ d = JSON.parse(raw); } catch(e){}
   }
 
-  /* Confetti */
-  var wrap = document.getElementById('confetti');
+  if(d){
+    var fmt = function(s){ return s||'—'; };
+    document.getElementById('order-id').textContent    = fmt(d.orderId);
+    document.getElementById('order-nome').textContent  = fmt(d.nome);
+    document.getElementById('order-email').textContent = fmt(d.email);
+    document.getElementById('order-tot').textContent   = d.tot ? '€'+d.tot : '—';
+    if(d.fattura) document.getElementById('invoice-notice').classList.add('visible');
+    if(d.email){
+      document.getElementById('success-sub').innerHTML =
+        'Grazie per il tuo acquisto, <strong>'+fmt(d.nome)+'</strong>.<br>'
+        +'Riceverai una conferma da PayPal a <strong>'+fmt(d.email)+'</strong>.<br>'
+        +'Spediamo nel più breve tempo possibile.';
+    }
+
+    /* Mostra articoli acquistati */
+    if(d.articoli && d.articoli.length){
+      var itemsEl = document.getElementById('order-items');
+      itemsEl.style.display = 'block';
+      itemsEl.innerHTML = d.articoli.map(function(a){
+        return '<div class="order-item"><span>'+a.name+'</span><span class="item-price">€'+Number(a.price).toFixed(2)+'</span></div>';
+      }).join('');
+    }
+
+    /* Pulizia dopo lettura */
+    sessionStorage.removeItem('rv_order');
+
+    /* ── EmailJS: notifica a Luca ── */
+    if(EMAILJS_PUBLIC_KEY !== 'SOSTITUISCI_CON_TUA_PUBLIC_KEY'){
+      try{
+        emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+        var articoliTesto = d.articoli && d.articoli.length
+          ? d.articoli.map(function(a){ return '• '+a.name+' (€'+Number(a.price).toFixed(2)+')'; }).join('\n')
+          : '—';
+        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+          order_id:    d.orderId || '—',
+          cliente:     d.nome    || '—',
+          email:       d.email   || '—',
+          totale:      '€'+(d.tot||'0'),
+          indirizzo:   d.indirizzo || '—',
+          zona:        d.zona    || '—',
+          articoli:    articoliTesto,
+          fattura:     d.fattura ? 'SÌ' : 'NO',
+          data_ordine: new Date().toLocaleString('it-IT')
+        });
+      } catch(e){ console.warn('[EmailJS] Errore:', e); }
+    }
+
+    /* ── Google Apps Script: registro vendite ── */
+    if(GAS_WEBHOOK_URL !== 'SOSTITUISCI_CON_URL_APPS_SCRIPT'){
+      try{
+        fetch(GAS_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            orderId:   d.orderId   || '',
+            data:      new Date().toISOString(),
+            cliente:   d.nome      || '',
+            email:     d.email     || '',
+            indirizzo: d.indirizzo || '',
+            zona:      d.zona      || '',
+            totale:    d.tot       || '0',
+            fattura:   d.fattura   ? 'SI' : 'NO',
+            articoli:  JSON.stringify(d.articoli || [])
+          })
+        });
+      } catch(e){ console.warn('[GAS] Errore:', e); }
+    }
+  }
+
+  /* ── Confetti ── */
+  var wrap   = document.getElementById('confetti');
   var colors = ['#c07030','#8b3e10','#e8aa60','#d4cdc3','#1e1b17','#f0ebe3'];
   for(var i=0; i<60; i++){
     (function(i){
       setTimeout(function(){
         var el = document.createElement('div');
         el.className = 'cft';
-        var dur  = 1.8 + Math.random()*2.2;
-        var del  = Math.random()*1.2;
+        var dur = 1.8 + Math.random()*2.2;
+        var del = Math.random()*1.2;
         el.style.cssText = [
           'left:'+(Math.random()*100)+'vw',
           'background:'+colors[Math.floor(Math.random()*colors.length)],

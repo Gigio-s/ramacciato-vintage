@@ -281,6 +281,14 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
 </style>
 </head>
 <body>
+<svg style="display:none" aria-hidden="true">
+  <defs>
+    <filter id="brand-wave" x="-12%" y="-60%" width="124%" height="220%">
+      <feTurbulence id="brandTurb" type="turbulence" baseFrequency="0.025 0.018" numOctaves="3" seed="7" result="noise"/>
+      <feDisplacementMap id="brandDisplace" in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
 <div class="ambient" aria-hidden="true"><div class="blob a"></div><div class="blob b"></div><div class="blob c"></div></div>
 <div class="cursor big" id="cursorBig"></div>
 <div class="cursor dot" id="cursorDot"></div>
@@ -970,14 +978,38 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 /* ════════════════════════════════════════════
    BRAND WAVE HOVER
    ════════════════════════════════════════════ */
-const brand = document.querySelector('.brand');
-if (brand) {
-  brand.addEventListener('mouseenter', () => {
-    brand.querySelectorAll('.lw').forEach((l, i) => {
-      setTimeout(() => { l.classList.add('up'); setTimeout(() => l.classList.remove('up'), 280); }, i * 38);
-    });
+(function(){
+  var brandText = document.querySelector('.brand-text');
+  if(!brandText) return;
+  var bTurb = document.getElementById('brandTurb');
+  var bDisplace = document.getElementById('brandDisplace');
+  if(!bTurb || !bDisplace) return;
+  var phase = 0, scale = 0, targetScale = 0, rafId = null;
+  function animateBrand(){
+    scale += (targetScale - scale) * 0.08;
+    if(scale > 0.3){
+      phase += 0.04;
+      var freq = 0.025 + Math.sin(phase * 1.1) * 0.012;
+      bTurb.setAttribute('baseFrequency', freq + ' ' + (0.018 + Math.sin(phase * 0.7) * 0.008));
+      bDisplace.setAttribute('scale', scale);
+    } else {
+      bDisplace.setAttribute('scale', 0);
+      if(targetScale === 0){ cancelAnimationFrame(rafId); rafId = null; brandText.style.filter = ''; return; }
+    }
+    rafId = requestAnimationFrame(animateBrand);
+  }
+  var brandEl = document.querySelector('.brand');
+  if(!brandEl) return;
+  brandEl.addEventListener('mouseenter', function(){
+    targetScale = 18;
+    brandText.style.filter = 'url(#brand-wave)';
+    if(!rafId) rafId = requestAnimationFrame(animateBrand);
   });
-}
+  brandEl.addEventListener('mouseleave', function(){
+    targetScale = 0;
+    if(!rafId) rafId = requestAnimationFrame(animateBrand);
+  });
+})();
 
 /* ════════════════════════════════════════════
    CART COUNT (da cart-widget.js se presente)

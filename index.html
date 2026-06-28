@@ -175,11 +175,31 @@ img{display:block;max-width:100%}
 }
 .hero-inner{
   display:grid;
-  grid-template-columns:1fr 320px;
+  grid-template-columns:1fr 200px 320px;
   gap:36px;align-items:center;
 }
-.hero-explore{display:flex;align-items:center;}
-.btn-explore{
+.hero-center{display:flex;align-items:center;justify-content:center;position:relative;}
+.hero-explore{display:flex;align-items:center;justify-content:center;position:relative;}
+.hero-wm{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-family:'Archivo',Arial,sans-serif;font-weight:900;
+  font-size:clamp(72px,6vw,92px);letter-spacing:-.04em;text-transform:uppercase;
+  line-height:.88;text-align:center;white-space:nowrap;
+  background:linear-gradient(138deg,#4a4540 0%,#fff 22%,#8a8278 38%,#fff 54%,#9e9890 68%,#eae6e0 84%,#524e4a 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  opacity:.35;pointer-events:auto;cursor:default;user-select:none;z-index:0;
+  transition:opacity .45s ease,transform .45s ease;
+}
+.hero-wm:hover{
+  opacity:1;
+  transform:translate(-50%,-50%) scale(1.06);
+  background:transparent;
+  -webkit-background-clip:unset;background-clip:unset;
+  color:#7a7672;
+  -webkit-text-stroke:1.5px rgba(15,10,5,.82);
+  z-index:2;
+}
+.btn-explore{position:relative;z-index:1;
   display:flex;align-items:center;justify-content:space-between;gap:16px;
   width:100%;padding:22px 26px;border-radius:14px;
   background:var(--paper);border:1.5px solid var(--line);
@@ -530,6 +550,7 @@ footer{
   .hero-sub{font-size:clamp(15px,4.5vw,22px)}
   /* Bottone "Esplora categorie" non serve nella hero su mobile */
   .hero-explore{display:none}
+  .hero-center{display:none}
   .cat-grid{grid-template-columns:1fr}
   .market-grid{grid-template-columns:1fr 1fr}
   .hv-stats{grid-template-columns:1fr 1fr}
@@ -849,7 +870,6 @@ footer{
 
 <!-- ── HERO ─────────────────────────────────────────── -->
 <section class="hero">
-  <div class="hero-bg-text" aria-hidden="true">RV</div>
   <div class="wrap hero-inner">
 
     <!-- LEFT: copy -->
@@ -866,12 +886,17 @@ footer{
       </div>
     </div>
 
-    <!-- RIGHT: esplora categorie -->
-    <div class="hero-explore reveal">
+    <!-- CENTER: bottone esplora -->
+    <div class="hero-center reveal">
       <button class="btn-explore" id="openCatExplorer" type="button" aria-label="Esplora le categorie">
         <span class="btn-explore-label">Esplora le categorie</span>
         <span class="btn-explore-arrow">↗</span>
       </button>
+    </div>
+
+    <!-- RIGHT: watermark -->
+    <div class="hero-explore reveal">
+      <span class="hero-wm" aria-hidden="true">Own<br>what<br>you<br>buy</span>
     </div>
 
   </div>
@@ -1187,7 +1212,8 @@ footer{
     {emoji:'🎵',name:'Vinili &amp; Musica',desc:'Vinili 33/45 giri, CD, musicassette, walkman e lettori hi-fi vintage.',tags:'Audio · Collezionismo',href:'shop.html',codice:'RV-MUSIC5'},
     {emoji:'📚',name:'Libri Curiosi',desc:"Romanzi d'epoca, enciclopedie, fumetti anni '70-'90 e collane complete.",tags:'Lettura · Vintage',href:'shop.html',codice:'RV-LIBRI5'},
     {emoji:'🏺',name:'Oggetti Vintage',desc:'Vasi, ceramiche, design italiano, soprammobili e pezzi da collezione.',tags:'Design · Decor',href:'shop.html',codice:'RV-OGG5'},
-    {emoji:'🃏',name:'Trading Cards',desc:'Carte Pokémon, Magic, Dragon Ball e collezioni rare in ottime condizioni.',tags:'Collezionismo · Cards',href:'shop.html',codice:'RV-CARD5'}
+    {emoji:'🃏',name:'Trading Cards',desc:'Carte Pokémon, Magic, Dragon Ball e collezioni rare in ottime condizioni.',tags:'Collezionismo · Cards',href:'shop.html',codice:'RV-CARD5'},
+    {emoji:'🎬',name:'DVD &amp; Film',desc:'DVD originali di film, serie TV, animazione e documentari in ottime condizioni.',tags:'Cinema · Collezionismo',href:'shop.html',codice:'RV-DVD5'}
   ];
 
   var stage=document.getElementById('orbitLp');
@@ -1519,7 +1545,7 @@ footer{
      src:'3d%20per%20interfaccia/boombox.glb',
      orbit:'30deg 80deg 130%',fov:'38deg'},
     {name:'Vinili & Musica',cat:'musica',
-     src:'3d%20per%20interfaccia/vinyls_3_opt.glb',
+     src:'3d%20per%20interfaccia/vinyls_3.glb',
      orbit:'0deg 70deg 130%',fov:'38deg'},
     {name:'Libri Curiosi',cat:'libri',
      src:'3d%20per%20interfaccia/book_stack.glb',
@@ -1529,7 +1555,10 @@ footer{
      orbit:'0deg 80deg 130%',fov:'38deg'},
     {name:'Trading Cards',cat:'trading',
      src:'3d%20per%20interfaccia/trading_card_pack.glb',
-     orientation:'90deg 0deg 0deg',orbit:'15deg 75deg 130%',fov:'36deg'}
+     orientation:'90deg 0deg 0deg',orbit:'15deg 75deg 130%',fov:'36deg'},
+    {name:'DVD & Film',cat:'dvd',
+     src:'modelli%203d%20x%20sito/black_film_slate_or_clapperboard%20-%20film.glb',
+     orbit:'20deg 75deg 130%',fov:'38deg'}
   ];
 
   var cur=0;
@@ -1589,23 +1618,40 @@ footer{
   function open(){overlay.classList.add('open');}
   function close(){overlay.classList.remove('open');}
 
-  /* easter egg: il bottone scappa 3 volte prima di aprirsi */
+  /* easter egg: alla prima visita del giorno il bottone scappa in sequenza automatica */
   var escapeBtn = document.getElementById('openCatExplorer');
-  var escapeStep = 0;
-  var escapeMoves = [
-    'translate(-280px,-110px) rotate(-3deg)',  /* 1° click → alto sinistra */
-    'translate(-260px, 130px) rotate( 2deg)',  /* 2° click → basso sinistra */
-    'translate(0,0)           rotate( 0deg)'  /* 3° click → origine */
+  var ESCAPE_KEY = 'rv_escape_done';
+  /* step: [transform, ms prima del prossimo step] */
+  var ESCAPE_STEPS = [
+    ['translate(0, -90px)      rotate(-2deg)', 550],  /* 1 → sale in alto    */
+    ['translate(0,  0)         rotate( 0deg)', 520],  /* 3 → torna al centro */
+    ['translate(-70px, 90px)   rotate( 2deg)', 380]   /* 2 → basso sinistra  */
   ];
+  function runEscape(){
+    escapeBtn.style.pointerEvents = 'none';
+    var i = 0;
+    function step(){
+      escapeBtn.style.transform = ESCAPE_STEPS[i][0];
+      var wait = ESCAPE_STEPS[i][1];
+      i++;
+      if(i < ESCAPE_STEPS.length){
+        setTimeout(step, wait);
+      } else {
+        setTimeout(function(){
+          escapeBtn.style.pointerEvents = '';
+          open();
+        }, wait);
+      }
+    }
+    step();
+  }
   escapeBtn.addEventListener('click', function(){
-    /* su mobile l'easter egg è disabilitato: apre direttamente */
     if(window.innerWidth <= 768){ open(); return; }
-    if(escapeStep < 3){
-      escapeBtn.style.transform = escapeMoves[escapeStep];
-      escapeStep++;
+    var today = new Date().toDateString();
+    if(localStorage.getItem(ESCAPE_KEY) !== today){
+      localStorage.setItem(ESCAPE_KEY, today);
+      runEscape();
     } else {
-      escapeBtn.style.transform = 'translate(0,0)';
-      escapeStep = 0;
       open();
     }
   });

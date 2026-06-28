@@ -756,13 +756,13 @@ function openModal(id){
         });
       });
     }
-  } else if(p.cover){
-    // Copertina Discogs
+  } else if(p.cover||(p.photos&&p.photos[0])){
+    // Copertina (Discogs o TMDB)
     imgEl.style.background='#111';
     imgEl.style.alignItems='stretch';
     imgEl.style.justifyContent='stretch';
     imgEl.style.fontSize='';
-    imgEl.innerHTML='<img src="'+p.cover+'" alt="'+p.name+'" style="width:100%;height:100%;object-fit:cover;display:block;">';
+    imgEl.innerHTML='<img src="'+(p.cover||(p.photos&&p.photos[0]))+'" alt="'+p.name+'" style="width:100%;height:100%;object-fit:cover;display:block;">';
   } else {
     // Standard: emoji + background
     imgEl.style.background=p.bg;

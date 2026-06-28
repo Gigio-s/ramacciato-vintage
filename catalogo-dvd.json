@@ -286,7 +286,7 @@
     "desc": "Documentario di Sabina Guzzanti sulla libertà di espressione e la satira politica in Italia. DVD.",
     "price": 3,
     "condition": "Usato ottimo",
-    "sold": false,
+    "sold": true,
     "isNew": false,
     "emoji": "🗳️",
     "bg": "linear-gradient(135deg,#1a0a0a,#3a0a0a)",

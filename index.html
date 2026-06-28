@@ -488,6 +488,20 @@ footer{
   .cursor.dot{width:5px;height:5px;background:var(--accent)}
 }
 
+/* ── FVD PREVIEW SECTION ─────────────────────────────── */
+.fvd-preview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.fvd-pcard{border-radius:18px;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;background:rgba(250,246,240,.82);border:1px solid rgba(255,255,255,.78);box-shadow:0 10px 32px rgba(14,12,10,.07);transition:transform .26s var(--ease),box-shadow .26s var(--ease)}
+.fvd-pcard:hover{transform:translateY(-5px);box-shadow:0 24px 60px rgba(14,12,10,.13);border-color:rgba(255,255,255,.95)}
+.fvd-pcard-img{aspect-ratio:16/9;overflow:hidden;position:relative;background:#111}
+.fvd-pcard-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--ease)}
+.fvd-pcard:hover .fvd-pcard-img img{transform:scale(1.05)}
+.fvd-pcard-badge{position:absolute;top:10px;left:10px;padding:4px 10px;border-radius:999px;font-size:8px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:rgba(14,12,10,.58);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.fvd-pcard-body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
+.fvd-pcard-cat{font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2)}
+.fvd-pcard-title{font-size:14px;font-weight:800;letter-spacing:-.02em;line-height:1.28;margin:0;color:var(--ink)}
+.fvd-pcard-more{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-top:auto;padding-top:10px}
+.fvd-preview-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+
 /* ── RESPONSIVE ──────────────────────────────────────── */
 @media(max-width:1100px){
   .hero-inner{grid-template-columns:1fr;max-width:680px}
@@ -525,6 +539,8 @@ footer{
   .foot-bottom{flex-direction:column;align-items:flex-start;gap:10px}
   section{padding:72px 0}
   .manifesto-grid{gap:36px}
+  .fvd-preview-grid{grid-template-columns:1fr}
+  .fvd-preview-head{flex-direction:column;align-items:flex-start;gap:16px}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
@@ -724,6 +740,48 @@ footer{
 /* COOKIE */
 .cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(240,235,227,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid rgba(14,12,10,.1);padding:16px 24px;transform:translateY(120%);transition:transform .4s cubic-bezier(.22,1,.36,1);box-shadow:0 -8px 32px rgba(14,12,10,.08)}.cookie-banner.visible{transform:translateY(0)}.cookie-banner-inner{max-width:1180px;margin:auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap}.cookie-banner-text{font-size:13px;color:rgba(30,27,23,.7);flex:1;min-width:200px;line-height:1.5}.cookie-banner-text strong{color:#0e0c0a}.cookie-banner-text a{color:#8b3e10;text-decoration:underline}.cookie-banner-actions{display:flex;gap:8px;flex-wrap:wrap;flex-shrink:0}.cookie-btn{padding:9px 18px;border-radius:999px;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;font-family:inherit;border:none;transition:all .18s}.cookie-btn-primary{background:#0e0c0a;color:#f0ebe3}.cookie-btn-primary:hover{background:#8b3e10}.cookie-btn-secondary{background:transparent;border:1.5px solid rgba(14,12,10,.2);color:#0e0c0a}.cookie-btn-secondary:hover{background:rgba(14,12,10,.05)}.cookie-btn-ghost{background:transparent;color:rgba(30,27,23,.5);border:none;font-size:10.5px;font-weight:700;text-decoration:underline;padding:9px 10px;cursor:pointer;font-family:inherit;letter-spacing:.06em}.cookie-btn-ghost:hover{color:#0e0c0a}.cookie-modal{position:fixed;inset:0;z-index:10000;background:rgba(14,12,10,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:24px}.cookie-modal[hidden]{display:none}.cookie-modal-box{background:#faf6f0;border-radius:20px;padding:32px;max-width:460px;width:100%;position:relative;box-shadow:0 24px 80px rgba(14,12,10,.18)}.cookie-modal-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:18px;cursor:pointer;color:rgba(30,27,23,.35);padding:4px 8px;transition:color .18s;font-family:inherit}.cookie-modal-close:hover{color:#0e0c0a}.cookie-modal-title{margin:0 0 6px;font-size:19px;font-weight:900;letter-spacing:-.03em;color:#0e0c0a}.cookie-modal-sub{margin:0 0 20px;font-size:12.5px;color:rgba(30,27,23,.55);line-height:1.5}.cookie-toggle-row{display:flex;align-items:center;gap:16px;padding:13px 0;border-bottom:1px solid rgba(14,12,10,.07)}.cookie-toggle-row:last-of-type{border-bottom:none}.cookie-toggle-info{flex:1}.cookie-toggle-info strong{display:block;font-size:13px;font-weight:700;color:#0e0c0a;margin-bottom:2px}.cookie-toggle-info span{font-size:11.5px;color:rgba(30,27,23,.52)}.cookie-switch{position:relative;display:inline-block;width:44px;height:24px;flex-shrink:0;cursor:pointer}.cookie-switch input{opacity:0;width:0;height:0;position:absolute}.cookie-switch-slider{position:absolute;inset:0;background:rgba(14,12,10,.15);border-radius:999px;transition:background .2s}.cookie-switch-slider::before{content:'';position:absolute;width:18px;height:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.18)}.cookie-switch input:checked+.cookie-switch-slider{background:#8b3e10}.cookie-switch input:checked+.cookie-switch-slider::before{transform:translateX(20px)}.cookie-badge-on{display:inline-block;background:#8b3e10;color:#fff;padding:3px 10px;border-radius:999px;font-size:9.5px;font-weight:800;letter-spacing:.1em;flex-shrink:0}
 @media(max-width:600px){.cookie-banner-inner{flex-direction:column;align-items:flex-start}.cookie-banner-actions{width:100%}}
+
+/* ── VINYL MODE (mobile) ─────────────────────────────── */
+.vinyl-fab{display:none}
+.vinyl-close-btn{display:none}
+@media(max-width:768px){
+  .vinyl-fab{
+    display:inline-flex;align-items:center;gap:8px;
+    margin-top:14px;padding:11px 22px;border-radius:999px;
+    border:1.5px solid var(--accent);background:rgba(139,62,16,.07);
+    color:var(--accent);font-family:inherit;
+    font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+    cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;
+    transition:background .18s,transform .12s;
+  }
+  .vinyl-fab:active{background:rgba(139,62,16,.15);transform:scale(.97)}
+  .vinyl-close-btn{
+    position:absolute;top:20px;right:20px;z-index:10;
+    width:48px;height:48px;border-radius:50%;
+    background:rgba(14,12,10,.08);border:1.5px solid rgba(14,12,10,.12);
+    font-size:22px;cursor:pointer;color:var(--ink);
+    font-family:inherit;-webkit-tap-highlight-color:transparent;touch-action:manipulation;
+    align-items:center;justify-content:center;
+    transition:background .18s;
+  }
+  .vinyl-close-btn:active{background:rgba(14,12,10,.16)}
+  body.vinyl-mode .vinyl-close-btn{display:flex}
+  body.vinyl-mode{overflow:hidden}
+  body.vinyl-mode .roulette-right{
+    position:fixed!important;
+    top:0!important;left:0!important;right:0!important;bottom:0!important;
+    width:100%!important;height:100%!important;
+    z-index:1200;background:var(--bg);
+  }
+  body.vinyl-mode .orbit-stage-lp{
+    transform:scale(.85)!important;transform-origin:center!important
+  }
+}
+@media(max-width:390px){
+  body.vinyl-mode .orbit-stage-lp{
+    transform:scale(.72)!important;transform-origin:center!important
+  }
+}
 </style>
 </head>
 <body>
@@ -868,37 +926,61 @@ footer{
   </div>
 </div>
 
-<!-- ── MANIFESTO ─────────────────────────────────────── -->
+<!-- ── FISICO VS DIGITALE PREVIEW ─────────────────────── -->
 <section id="manifesto">
-  <div class="wrap manifesto-grid">
-    <div class="reveal">
-      <p class="sec-label">Il nostro manifesto</p>
-      <h2 class="h2">Il fisico<br>non è nostalgia.</h2>
-      <div class="divider-line"></div>
-      <p class="body-copy">In un mondo dove tutto è veloce, seriale e impersonale, scegliere un oggetto vintage è riportare carattere dentro gli spazi.</p>
-      <p class="body-copy" style="margin-top:14px">Una lampada, un vaso, una sedia, un accessorio: non sono solo cose, sono atmosfera. Selezioniamo ogni pezzo con cura — pochi, ma giusti. Trovi meno di quello che ti aspetti, e più di quello che cerchi.</p>
-    </div>
-    <div class="reveal manifesto-right">
-      <p class="manifesto-quote serif">Ogni oggetto <strong>merita</strong> una seconda storia, non un magazzino.</p>
-      <div class="stat-row">
-        <div class="stat-card">
-          <div class="stat-num caramel">6</div>
-          <div class="stat-label">Macro categorie</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num chrome">60s</div>
-          <div class="stat-label">Pop e modernariato</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num caramel">90s</div>
-          <div class="stat-label">Nostalgia e design</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num chrome">00s</div>
-          <div class="stat-label">Y2K e duemila</div>
-        </div>
+  <div class="wrap">
+
+    <div class="fvd-preview-head reveal">
+      <div>
+        <p class="sec-label">La nostra rubrica</p>
+        <h2 class="h2" style="margin:0">Fisico<br>vs Digitale.</h2>
+      </div>
+      <div style="max-width:400px;padding-bottom:6px">
+        <p style="margin:0 0 20px;font-size:14.5px;color:rgba(30,27,23,.65);line-height:1.72">Quando compri un film digitale, lo <em>possiedi</em> davvero? O stai solo pagando per accedere a qualcosa che può sparire domani? La nostra rubrica sul futuro della proprietà fisica.</p>
+        <a href="fisico-vs-digitale.html" class="btn btn-dark" style="min-height:44px;padding:0 22px;font-size:10px">Scopri tutti gli articoli →</a>
       </div>
     </div>
+
+    <div class="fvd-preview-grid reveal">
+
+      <a class="fvd-pcard" href="fisico-vs-digitale.html">
+        <div class="fvd-pcard-img">
+          <img src="https://gmedia.playstation.com/is/image/SIEPDC/ps-store-listing-thumb-01-en-05nov20" alt="PlayStation rimuove film acquistati" loading="lazy">
+          <span class="fvd-pcard-badge">Approfondimento</span>
+        </div>
+        <div class="fvd-pcard-body">
+          <p class="fvd-pcard-cat">Cinema &amp; Home Video</p>
+          <h3 class="fvd-pcard-title">PlayStation rimuove film acquistati dagli utenti: cosa succede quando scade una licenza</h3>
+          <span class="fvd-pcard-more">Leggi l'articolo →</span>
+        </div>
+      </a>
+
+      <a class="fvd-pcard" href="fisico-vs-digitale.html">
+        <div class="fvd-pcard-img">
+          <img src="https://www.rockstargames.com/VI/_next/static/media/Official_Cover_Art_landscape.12.uu2irr.2_a.jpg" alt="GTA VI confezione fisica senza disco" loading="lazy">
+          <span class="fvd-pcard-badge">Approfondimento</span>
+        </div>
+        <div class="fvd-pcard-body">
+          <p class="fvd-pcard-cat">Videogiochi</p>
+          <h3 class="fvd-pcard-title">GTA VI: la «confezione fisica» senza disco che ha diviso il mercato del collezionismo</h3>
+          <span class="fvd-pcard-more">Leggi l'articolo →</span>
+        </div>
+      </a>
+
+      <a class="fvd-pcard" href="fisico-vs-digitale.html">
+        <div class="fvd-pcard-img">
+          <img src="https://image.api.playstation.com/vulcan/ap/rnd/202605/2215/a69481c5fa50fe19f42896d84fb7cbf37ab8646801a93322.png" alt="Marvel's Wolverine include il disco fisico" loading="lazy">
+          <span class="fvd-pcard-badge">Notizia</span>
+        </div>
+        <div class="fvd-pcard-body">
+          <p class="fvd-pcard-cat">Videogiochi</p>
+          <h3 class="fvd-pcard-title">Marvel's Wolverine includerà il disco fisico: il confronto diretto con GTA VI</h3>
+          <span class="fvd-pcard-more">Leggi l'articolo →</span>
+        </div>
+      </a>
+
+    </div>
+
   </div>
 </section>
 
@@ -917,8 +999,16 @@ footer{
           </svg>
           Ruota il vinile per giocare
         </div>
+        <button class="vinyl-fab" id="vinylFab" aria-label="Attiva modalità vinile">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="7" cy="7" r="2" fill="currentColor"/>
+          </svg>
+          Attiva il vinile
+        </button>
       </div>
       <div class="roulette-right">
+        <button class="vinyl-close-btn" id="vinylCloseBtn" aria-label="Esci dalla modalità vinile">✕</button>
         <!-- ── ORBIT ── -->
         <div class="orbit-stage-wrap reveal">
           <div class="orbit-stage-lp" id="orbitLp">
@@ -1528,6 +1618,57 @@ footer{
     if(e.key==='ArrowRight') go(cur+1);
   });
 })();
+
+  /* ── VINYL MODE — blocca scroll e permette di girare il vinile su mobile ── */
+  (function(){
+    var fab      = document.getElementById('vinylFab');
+    var closeBtn = document.getElementById('vinylCloseBtn');
+    if(!fab) return;
+
+    var active      = false;
+    var savedScroll = 0;
+
+    /* Listener NON-passive: permette e.preventDefault() → blocca lo scroll di pagina */
+    function blockScroll(e){ if(active) e.preventDefault(); }
+
+    function openVinyl(){
+      if(active) return;
+      active = true;
+      savedScroll = window.pageYOffset || document.documentElement.scrollTop;
+      /* blocca body scroll con position:fixed (tecnica stabile su iOS) */
+      document.body.style.position = 'fixed';
+      document.body.style.top      = '-' + savedScroll + 'px';
+      document.body.style.width    = '100%';
+      document.body.classList.add('vinyl-mode');
+      /* aggiunge listener NON-passive sul document per fermare qualsiasi scroll */
+      document.addEventListener('touchmove', blockScroll, {passive: false});
+    }
+
+    function closeVinyl(){
+      if(!active) return;
+      active = false;
+      document.body.classList.remove('vinyl-mode');
+      document.removeEventListener('touchmove', blockScroll);
+      /* ripristina scroll */
+      document.body.style.position = '';
+      document.body.style.top      = '';
+      document.body.style.width    = '';
+      window.scrollTo(0, savedScroll);
+    }
+
+    fab.addEventListener('click', openVinyl);
+    if(closeBtn) closeBtn.addEventListener('click', closeVinyl);
+    /* swipe giù rapido (>60px verso il basso) chiude la modalità */
+    var swipeStartY = 0;
+    document.addEventListener('touchstart', function(e){
+      if(active) swipeStartY = e.touches[0].clientY;
+    }, {passive:true});
+    document.addEventListener('touchend', function(e){
+      if(!active) return;
+      var dy = e.changedTouches[0].clientY - swipeStartY;
+      if(dy > 80) closeVinyl(); /* swipe giù di 80px → chiudi */
+    }, {passive:true});
+  })();
 </script>
 <script src="cart-widget.js" defer></script>
 <!-- COOKIE CONSENT -->

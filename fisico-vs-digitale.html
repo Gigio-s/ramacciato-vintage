@@ -102,11 +102,11 @@ img{display:block;max-width:100%}
 .fvd-hero-intro{max-width:520px;font-size:13px;color:rgba(30,27,23,.52);line-height:1.72;margin-bottom:32px;padding-left:16px;border-left:2px solid var(--accent2)}
 .fvd-hero-cta{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:999px;background:var(--ink);color:var(--bg);font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;transition:background .2s,transform .22s var(--ease)}
 .fvd-hero-cta:hover{background:var(--accent);transform:translateY(-2px)}
-.fvd-hero-visual{display:grid;grid-template-columns:1fr 1fr;gap:10px;flex-shrink:0}
+.fvd-hero-visual{width:420px;flex-shrink:0}
 .fvd-vis-col{display:flex;flex-direction:column;gap:10px}
-.fvd-vis-item{border-radius:16px;padding:18px 16px;display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden}
-.fvd-vis-item.phys{background:rgba(250,246,240,.9);border:1px solid rgba(255,255,255,.85);box-shadow:0 8px 28px rgba(14,12,10,.08)}
-.fvd-vis-item.digi{background:rgba(14,12,10,.06);border:1px solid rgba(14,12,10,.1)}
+.fvd-vis-item{border-radius:14px;padding:16px 14px;display:flex;flex-direction:column;gap:5px;position:relative;overflow:hidden}
+.fvd-vis-item.phys{background:#faf6f0;border:1.5px solid rgba(255,255,255,.95);box-shadow:0 6px 22px rgba(14,12,10,.12),inset 0 1px 0 rgba(255,255,255,.7)}
+.fvd-vis-item.digi{background:rgba(14,12,10,.09);border:1.5px solid rgba(14,12,10,.18);box-shadow:0 4px 12px rgba(14,12,10,.08)}
 .fvd-vis-icon{font-size:28px;line-height:1}
 .fvd-vis-label{font-size:9.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .fvd-vis-value{font-size:12px;font-weight:600;color:var(--ink);line-height:1.4}
@@ -343,7 +343,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
         </div>
       </div>
       <div class="fvd-hero-visual reveal">
-        <div style="position:relative">
+        <div style="position:relative;display:grid;grid-template-columns:1fr 1fr;gap:10px">
           <div class="fvd-vs-badge">vs</div>
           <div class="fvd-vis-col">
             <div class="fvd-vis-item phys">
@@ -534,6 +534,7 @@ const ARTICLES = [
     date: '15 agosto 2023',
     readTime: '7 min',
     emoji: '🎬',
+    image: 'https://gmedia.playstation.com/is/image/SIEPDC/ps-store-listing-thumb-01-en-05nov20',
     coverBg: 'linear-gradient(145deg, #1a0a2e 0%, #2d0050 50%, #0a0010 100%)',
     relatedCats: ['musica'],
     sections: [
@@ -572,6 +573,7 @@ const ARTICLES = [
     date: '12 maggio 2025',
     readTime: '5 min',
     emoji: '🎮',
+    image: 'https://www.rockstargames.com/VI/_next/static/media/Official_Cover_Art_landscape.12.uu2irr.2_a.jpg',
     coverBg: 'linear-gradient(145deg, #0a1a0e 0%, #1a3a2f 50%, #050d07 100%)',
     relatedCats: ['videogiochi'],
     sections: [
@@ -610,6 +612,7 @@ const ARTICLES = [
     date: '28 maggio 2025',
     readTime: '4 min',
     emoji: '🏪',
+    image: 'https://www.rockstargames.com/VI/_next/static/media/Jason_and_Lucia_01_With_Logos_landscape.04a3h9o2l4tmn.jpg',
     coverBg: 'linear-gradient(145deg, #1a0a00 0%, #3a1e00 50%, #0d0500 100%)',
     relatedCats: ['videogiochi'],
     sections: [
@@ -647,6 +650,7 @@ const ARTICLES = [
     date: '10 giugno 2025',
     readTime: '3 min',
     emoji: '🦾',
+    image: 'https://image.api.playstation.com/vulcan/ap/rnd/202605/2215/a69481c5fa50fe19f42896d84fb7cbf37ab8646801a93322.png',
     coverBg: 'linear-gradient(145deg, #1a0000 0%, #3a0d0d 50%, #0d0000 100%)',
     relatedCats: ['videogiochi'],
     sections: [
@@ -684,6 +688,7 @@ const ARTICLES = [
     date: '28 giugno 2026',
     readTime: '12 min',
     emoji: '📦',
+    image: 'https://www.rockstargames.com/VI/_next/static/media/Vice_City_Postcard_landscape.0v2njmlk2n-qm.jpg',
     coverBg: 'linear-gradient(145deg, #0a0a1a 0%, #1a1a2e 50%, #05050d 100%)',
     relatedCats: ['videogiochi', 'musica', 'libri'],
     sections: [
@@ -734,8 +739,10 @@ function renderGrid(filter) {
   count.textContent = filtered.length + (filtered.length === 1 ? ' articolo' : ' articoli');
   grid.innerHTML = filtered.map(a => `
     <article class="fvd-card reveal" tabindex="0" role="button" aria-label="${a.title}" data-id="${a.id}">
-      <div class="fvd-card-img" style="background:${a.coverBg}">
-        <span>${a.emoji}</span>
+      <div class="fvd-card-img" style="background:${a.image ? '#111' : a.coverBg}">
+        ${a.image
+          ? `<img src="${a.image}" alt="${a.title}" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0">`
+          : `<span>${a.emoji}</span>`}
         <div class="fvd-card-badge ${badgeClass(a.badge)}">${a.badge}</div>
       </div>
       <div class="fvd-card-body">
@@ -799,8 +806,14 @@ function openArticle(id) {
   const imgWrap = document.getElementById('fvdModalImg');
   const content = document.getElementById('fvdModalContent');
 
-  imgWrap.style.background = a.coverBg;
-  imgWrap.innerHTML = `
+  imgWrap.style.background = a.image ? '#0e0c0a' : a.coverBg;
+  imgWrap.innerHTML = a.image ? `
+    <img src="${a.image}" alt="${a.title}" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0">
+    <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 24px;background:linear-gradient(transparent,rgba(14,12,10,.8))">
+      <div style="font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:rgba(240,235,227,.65);margin-bottom:6px">${a.category}</div>
+      <span style="display:inline-block;padding:4px 12px;border-radius:999px;background:rgba(240,235,227,.12);border:1px solid rgba(240,235,227,.2);font-size:8.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(240,235,227,.75)">${a.badge}</span>
+    </div>
+  ` : `
     <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:16px;padding:32px">
       <div style="font-size:72px;line-height:1">${a.emoji}</div>
       <div style="font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:rgba(240,235,227,.5);text-align:center">${a.category}</div>

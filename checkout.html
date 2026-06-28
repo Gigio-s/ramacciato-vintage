@@ -227,6 +227,36 @@ footer{background:var(--dark);color:rgba(250,246,240,.75);position:relative;z-in
   .wrap{width:calc(100% - 28px)}
   input,select,textarea{font-size:16px!important}
 }
+
+/* ── Punto di ritiro ─────────────────────────────────── */
+.pickup-section{display:none;margin-top:16px;padding:20px 18px;
+  background:rgba(139,62,16,.04);border:1.5px solid rgba(139,62,16,.18);
+  border-radius:14px;flex-direction:column;gap:16px}
+.pickup-section.visible{display:flex}
+.pickup-section-label{font-size:10px;font-weight:800;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--accent)}
+.pickup-cap-row{display:flex;gap:10px;align-items:flex-end}
+.pickup-cap-row .form-group{max-width:160px}
+.pickup-carriers{display:flex;gap:8px;flex-wrap:wrap}
+.pickup-carrier-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 14px;
+  border-radius:10px;border:1.5px solid var(--line);background:rgba(250,246,240,.8);
+  font-family:inherit;font-size:11.5px;font-weight:700;letter-spacing:.02em;
+  color:var(--ink);cursor:pointer;transition:all .18s;text-decoration:none;white-space:nowrap}
+.pickup-carrier-btn:hover{border-color:var(--accent2);background:rgba(250,246,240,.98);color:var(--accent)}
+.pickup-selected-wrap{display:flex;flex-direction:column;gap:6px}
+.pickup-selected-label{font-size:10px;font-weight:800;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted)}
+.pickup-selected-point{font-family:inherit;font-size:13px;font-weight:600;
+  color:var(--ink);background:rgba(250,246,240,.95);border:1.5px solid rgba(14,12,10,.14);
+  border-radius:10px;padding:10px 14px;outline:none;transition:border-color .18s;
+  width:100%;resize:none;line-height:1.5}
+.pickup-selected-point:focus{border-color:var(--accent2)}
+.pickup-selected-point.error{border-color:#c0392b}
+.pickup-note{font-size:11px;color:var(--muted);line-height:1.6;margin:0}
+
+/* Nasconde i campi indirizzo fisico in modalità punto di ritiro */
+#address-form.pickup-mode .address-only{display:none}
+@media(max-width:500px){.pickup-carriers{flex-direction:column}.pickup-carrier-btn{justify-content:center}}
 </style>
 </head>
 <body>
@@ -297,7 +327,42 @@ footer{background:var(--dark);color:rgba(250,246,240,.75);position:relative;z-in
               </div>
               <div class="ship-price" id="ship-price-europa">€12,90</div>
             </div>
+            <div class="ship-option" data-zone="pickup">
+              <input type="radio" name="spedizione" value="pickup">
+              <div class="ship-radio"></div>
+              <div class="ship-label">
+                <div class="ship-name">Punto di ritiro — BRT · GLS · Posta · InPost</div>
+                <div class="ship-days">Scegli tabaccheria, edicola, locker o ufficio postale vicino a te</div>
+              </div>
+              <div class="ship-price" id="ship-price-pickup">€3,90</div>
+            </div>
           </div>
+
+          <!-- Sezione punto di ritiro (visibile solo se selezionato) -->
+          <div class="pickup-section" id="pickup-section">
+            <div class="pickup-section-label">Trova il tuo punto di ritiro</div>
+            <div class="pickup-cap-row">
+              <div class="form-group">
+                <label>Il tuo CAP</label>
+                <input type="text" id="pickup-cap" placeholder="20100" maxlength="5" inputmode="numeric" pattern="[0-9]{5}" autocomplete="postal-code">
+              </div>
+            </div>
+            <div>
+              <div class="pickup-selected-label" style="margin-bottom:8px">Cerca il punto più vicino</div>
+              <div class="pickup-carriers">
+                <a class="pickup-carrier-btn" id="pickup-brt" href="https://www.fermopoint.it/" target="_blank" rel="noopener noreferrer">🔵 BRT Fermopoint</a>
+                <a class="pickup-carrier-btn" id="pickup-gls" href="https://gls-italy.com/parcelshop/" target="_blank" rel="noopener noreferrer">🟡 GLS Shop</a>
+                <a class="pickup-carrier-btn" id="pickup-posta" href="https://www.poste.it/cerca/index.html#/paccomatpoint" target="_blank" rel="noopener noreferrer">🔴 Poste Paccomatpoint</a>
+                <a class="pickup-carrier-btn" id="pickup-inpost" href="https://www.inpost.it/cerca-locker/" target="_blank" rel="noopener noreferrer">🟠 InPost Locker</a>
+              </div>
+            </div>
+            <div class="pickup-selected-wrap">
+              <div class="pickup-selected-label">Punto selezionato *</div>
+              <textarea class="pickup-selected-point" id="pickup-point" rows="2" placeholder="Es: BRT Fermopoint — Tabaccheria Roma, Via Garibaldi 14, 20100 Milano"></textarea>
+              <p class="pickup-note">Clicca uno dei corrieri qui sopra, trova il punto più vicino a te e copia qui nome e indirizzo completo.</p>
+            </div>
+          </div>
+
           <div class="ship-free hidden" id="ship-free-notice">
             🎉 Spedizione gratuita sopra €<span id="ship-free-threshold">50</span>!
           </div>
@@ -305,7 +370,7 @@ footer{background:var(--dark);color:rgba(250,246,240,.75);position:relative;z-in
 
         <!-- 3. Dati destinatario -->
         <div class="ck-section">
-          <div class="ck-section-title">Indirizzo di consegna</div>
+          <div class="ck-section-title" id="address-section-title">Indirizzo di consegna</div>
           <div class="invoice-form visible" id="address-form">
             <div class="form-row">
               <div class="form-group">
@@ -317,13 +382,13 @@ footer{background:var(--dark);color:rgba(250,246,240,.75);position:relative;z-in
                 <input type="text" id="ship-cognome" placeholder="Rossi" autocomplete="family-name">
               </div>
             </div>
-            <div class="form-row full">
+            <div class="form-row full address-only">
               <div class="form-group">
                 <label>Indirizzo *</label>
                 <input type="text" id="ship-indirizzo" placeholder="Via Roma 12" autocomplete="street-address">
               </div>
             </div>
-            <div class="form-row">
+            <div class="form-row address-only">
               <div class="form-group">
                 <label>CAP *</label>
                 <input type="text" id="ship-cap" placeholder="00100" maxlength="10" autocomplete="postal-code">
@@ -333,7 +398,7 @@ footer{background:var(--dark);color:rgba(250,246,240,.75);position:relative;z-in
                 <input type="text" id="ship-citta" placeholder="Roma" autocomplete="address-level2">
               </div>
             </div>
-            <div class="form-row full">
+            <div class="form-row full address-only">
               <div class="form-group">
                 <label>Nazione *</label>
                 <select id="ship-nazione" autocomplete="country">
@@ -540,8 +605,9 @@ var CONFIG = {
   stripe_enabled: false,                      // ← metti true quando hai Stripe configurato
   stripe_worker_url: '',                      // ← URL del Cloudflare Worker Stripe
   spedizione: {
-    italia:  { costo: 5.90,  label: 'Italia',  giorni: '3–5 gg lavorativi' },
-    europa:  { costo: 12.90, label: 'Europa',  giorni: '7–14 gg lavorativi' }
+    italia:  { costo: 5.90,  label: 'Italia',          giorni: '3–5 gg lavorativi' },
+    europa:  { costo: 12.90, label: 'Europa',           giorni: '7–14 gg lavorativi' },
+    pickup:  { costo: 3.90,  label: 'Punto di ritiro',  giorni: 'Ritiro presso il punto scelto' }
   },
   gratuita_sopra: 50.00,  // spedizione gratuita sopra questa cifra
   paypal_email:   'ramacciatoluca@gmail.com'
@@ -618,8 +684,41 @@ function initShipping(){
       document.querySelectorAll('.ship-option').forEach(function(o){ o.classList.remove('selected'); });
       opt.classList.add('selected');
       updateSummary();
+
+      /* ── Pickup mode toggle ── */
+      var pickupSection = document.getElementById('pickup-section');
+      var addressForm   = document.getElementById('address-form');
+      var sectionTitle  = document.getElementById('address-section-title');
+      if(state.zona === 'pickup'){
+        if(pickupSection) pickupSection.classList.add('visible');
+        if(addressForm)   addressForm.classList.add('pickup-mode');
+        if(sectionTitle)  sectionTitle.textContent = 'Dati personali';
+      } else {
+        if(pickupSection) pickupSection.classList.remove('visible');
+        if(addressForm)   addressForm.classList.remove('pickup-mode');
+        if(sectionTitle)  sectionTitle.textContent = 'Indirizzo di consegna';
+      }
     });
   });
+
+  /* Aggiorna i link dei corrieri con il CAP inserito */
+  var pickupCapInput = document.getElementById('pickup-cap');
+  if(pickupCapInput){
+    pickupCapInput.addEventListener('input', function(){
+      var cap = this.value.replace(/\D/g,'').slice(0,5);
+      this.value = cap;
+      if(cap.length === 5){
+        var brt   = document.getElementById('pickup-brt');
+        var gls   = document.getElementById('pickup-gls');
+        var posta = document.getElementById('pickup-posta');
+        var inp   = document.getElementById('pickup-inpost');
+        if(brt)   brt.href   = 'https://www.fermopoint.it/?q='+cap;
+        if(gls)   gls.href   = 'https://gls-italy.com/parcelshop/?cap='+cap;
+        if(posta) posta.href = 'https://www.poste.it/cerca/index.html#/paccomatpoint/'+cap;
+        if(inp)   inp.href   = 'https://www.inpost.it/cerca-locker/?cap='+cap;
+      }
+    });
+  }
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -678,21 +777,34 @@ function val(id){ return (document.getElementById(id)||{}).value||''; }
 
 function validateForm(){
   var errors = [];
-  var fields = ['ship-nome','ship-cognome','ship-indirizzo','ship-cap','ship-citta','ship-email'];
-  fields.forEach(function(id){
+
+  /* Campi sempre obbligatori */
+  var baseFields = ['ship-nome','ship-cognome','ship-email'];
+  /* Campi solo per consegna a casa */
+  var addressFields = ['ship-indirizzo','ship-cap','ship-citta'];
+
+  var requiredFields = baseFields.concat(state.zona === 'pickup' ? [] : addressFields);
+  requiredFields.forEach(function(id){
     var el = document.getElementById(id);
     if(!el) return;
-    if(!el.value.trim()){
-      el.classList.add('error');
-      errors.push(id);
-    } else {
-      el.classList.remove('error');
-    }
+    if(!el.value.trim()){ el.classList.add('error'); errors.push(id); }
+    else { el.classList.remove('error'); }
   });
+
   if(val('ship-email') && !/\S+@\S+\.\S+/.test(val('ship-email'))){
     document.getElementById('ship-email').classList.add('error');
     errors.push('email-format');
   }
+
+  /* Per punto di ritiro: deve essere specificato il punto */
+  if(state.zona === 'pickup'){
+    var ppEl = document.getElementById('pickup-point');
+    if(ppEl){
+      if(!ppEl.value.trim()){ ppEl.classList.add('error'); errors.push('pickup-point'); }
+      else { ppEl.classList.remove('error'); }
+    }
+  }
+
   if(state.wantsInvoice && state.tipoFattura === 'azienda'){
     ['inv-rs','inv-piva'].forEach(function(id){
       var el = document.getElementById(id);
@@ -707,8 +819,13 @@ function validateForm(){
    DATI FATTURA (da inserire nelle note ordine PayPal)
 ════════════════════════════════════════════════════════ */
 function buildInvoiceNote(){
-  if(!state.wantsInvoice) return '';
-  var note = '[RICHIESTA FATTURA] ';
+  var note = '';
+  /* Aggiunge il punto di ritiro nelle note PayPal se selezionato */
+  if(state.zona === 'pickup'){
+    note += '[PUNTO DI RITIRO] '+val('pickup-point')+' | ';
+  }
+  if(!state.wantsInvoice) return note.replace(/ \| $/, '');
+  note += '[RICHIESTA FATTURA] ';
   if(state.tipoFattura === 'privato'){
     note += 'Privato - CF: '+(val('inv-cf')||'n.d.');
   } else {
@@ -721,6 +838,21 @@ function buildInvoiceNote(){
 }
 
 function buildShippingAddress(){
+  if(state.zona === 'pickup'){
+    /* Per punto di ritiro: la spedizione va al punto, non all'indirizzo del cliente */
+    var pickupPoint = val('pickup-point');
+    /* Estrae CAP e città dal testo del punto se possibile, altrimenti usa il CAP inserito */
+    var capMatch = pickupPoint.match(/\b(\d{5})\b/);
+    var capFromPoint = capMatch ? capMatch[1] : (val('pickup-cap')||'00000');
+    return {
+      name:            val('ship-nome')+' '+val('ship-cognome'),
+      address_line_1:  pickupPoint.split('\n')[0] || pickupPoint,
+      postal_code:     capFromPoint,
+      city:            '',
+      country_code:    'IT',
+      pickup_note:     '[PUNTO DI RITIRO] '+pickupPoint
+    };
+  }
   return {
     name:            val('ship-nome')+' '+val('ship-cognome'),
     address_line_1:  val('ship-indirizzo'),

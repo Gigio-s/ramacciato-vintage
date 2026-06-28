@@ -630,7 +630,7 @@ function fmtPrice(n){ return '€' + n.toFixed(2).replace('.',','); }
 function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
 function getSubtotal(){
-  return state.cart.reduce(function(s,i){ return s + (i.price||0); }, 0);
+  return state.cart.reduce(function(s,i){ return s + (i.price||0)*(i.qty||1); }, 0);
 }
 function getShippingCost(){
   var sub = getSubtotal();
@@ -663,13 +663,15 @@ function renderCartItems(){
     return;
   }
   el.innerHTML = state.cart.map(function(item){
+    var qty=item.qty||1;
+    var lineTotal=(item.price||0)*qty;
     return '<div class="cart-item">'
       +'<div class="cart-item-emoji">'+(item.emoji||'📦')+'</div>'
       +'<div class="cart-item-body">'
-        +'<div class="cart-item-name">'+esc(item.name||'Articolo')+'</div>'
+        +'<div class="cart-item-name">'+esc(item.name||'Articolo')+(qty>1?' <span style="font-size:11px;color:var(--muted);font-weight:600">×'+qty+'</span>':'')+'</div>'
         +'<div class="cart-item-cat">'+(item.cat||'')+'</div>'
       +'</div>'
-      +'<div class="cart-item-price">'+fmtPrice(item.price||0)+'</div>'
+      +'<div class="cart-item-price">'+fmtPrice(lineTotal)+'</div>'
     +'</div>';
   }).join('');
 }
@@ -896,7 +898,7 @@ function initPayPal(){
     var items = state.cart.map(function(item){
       return {
         name: (item.name||'Articolo').substring(0,127),
-        quantity: '1',
+        quantity: String(item.qty||1),
         unit_amount: { currency_code:'EUR', value:(item.price||0).toFixed(2) },
         category: 'PHYSICAL_GOODS'
       };
@@ -953,7 +955,7 @@ function initPayPal(){
           ? '[Punto di ritiro] '+val('pickup-point')
           : val('ship-indirizzo')+', '+val('ship-cap')+' '+val('ship-citta')+' ('+( val('ship-nazione')||'IT')+')',
         articoli: state.cart.map(function(item){
-          return { id: item.id||'', name: item.name||'Articolo', price: item.price||0, cat: item.cat||'' };
+          return { id: item.id||'', name: item.name||'Articolo', price: item.price||0, qty: item.qty||1, cat: item.cat||'' };
         })
       }));
       window.location.href = 'success.html';

@@ -110,6 +110,15 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 .product-card:hover .product-img img{transform:scale(1.06)}
 .product-sold-badge{position:absolute;top:10px;right:10px;background:rgba(14,12,10,.7);color:var(--bg);font-size:8.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
 .product-new-badge{position:absolute;top:10px;left:10px;background:var(--accent2);color:#fff;font-size:8.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
+.product-copies{position:absolute;bottom:10px;left:10px;background:rgba(14,12,10,.65);color:#fff;font-size:8px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:999px}
+.modal-qty-row{display:flex;align-items:center;gap:10px;padding:12px 0;border-top:1px solid var(--line);margin-top:4px}
+.modal-qty-label{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);flex:1}
+.modal-qty-ctrl{display:flex;align-items:center;gap:8px}
+.modal-qty-btn{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--line);background:transparent;font-family:inherit;font-size:16px;font-weight:700;color:var(--ink);cursor:pointer;display:grid;place-items:center;transition:background .18s,border-color .18s;line-height:1;padding:0}
+.modal-qty-btn:hover:not(:disabled){background:rgba(14,12,10,.07);border-color:rgba(14,12,10,.3)}
+.modal-qty-btn:disabled{opacity:.3;cursor:not-allowed}
+.modal-qty-num{font-family:'Cormorant Garamond',Georgia,serif;font-size:22px;font-weight:600;min-width:28px;text-align:center;line-height:1}
+.modal-qty-max{font-size:10px;color:var(--muted);letter-spacing:.04em}
 .product-condition{display:inline-flex;align-items:center;gap:4px;background:rgba(139,62,16,.07);border:1px solid rgba(139,62,16,.18);border-radius:999px;padding:3px 9px;font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
 .product-body{padding:16px 18px 18px}
 .product-cat{font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2);margin-bottom:6px}
@@ -618,7 +627,8 @@ function renderGrid(){
         ? '<div class="product-img-inner" style="background:#111;padding:0;overflow:hidden"><img src="'+(p.cover||(p.photos&&p.photos[0]))+'" alt="'+p.name+'" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .26s var(--ease)"></div>'
         : '<div class="product-img-inner" style="background:'+p.bg+'">'+p.emoji+'</div>';
     var condHtml=p.condition?'<span class="product-condition">'+p.condition+'</span>':'';
-    return'<div class="product-card'+(p.model?' product-card--3d':'')+'" data-id="'+p.id+'" tabindex="0" role="button"><div class="product-img">'+imgHtml+(p.sold?'<span class="product-sold-badge">Venduto</span>':'')+(p.isNew&&!p.sold?'<span class="product-new-badge">Nuovo</span>':'')+'</div><div class="product-body"><p class="product-cat">'+catLabel(p.cat)+(p.model?' <span style="font-size:8px;opacity:.7;margin-left:4px">&#x2B55; 3D</span>':'')+'</p><p class="product-name">'+p.name+'</p>'+condHtml+'<p class="product-desc">'+(p.desc?(p.desc.substring(0,80)+'&hellip;'):'')+'</p><div class="product-footer"><span class="product-price'+(p.sold?' sold':'')+'">&#x20AC; '+(p.price!==null&&p.price!==undefined?p.price:'—')+'</span><button class="product-buy-btn">+</button></div></div></div>';
+    var copieHtml=(p.copie&&p.copie>1&&!p.sold)?'<span class="product-copies">'+p.copie+' copie</span>':'';
+    return'<div class="product-card'+(p.model?' product-card--3d':'')+'" data-id="'+p.id+'" tabindex="0" role="button"><div class="product-img">'+imgHtml+(p.sold?'<span class="product-sold-badge">Venduto</span>':'')+(p.isNew&&!p.sold?'<span class="product-new-badge">Nuovo</span>':'')+copieHtml+'</div><div class="product-body"><p class="product-cat">'+catLabel(p.cat)+(p.model?' <span style="font-size:8px;opacity:.7;margin-left:4px">&#x2B55; 3D</span>':'')+'</p><p class="product-name">'+p.name+'</p>'+condHtml+'<p class="product-desc">'+(p.desc?(p.desc.substring(0,80)+'&hellip;'):'')+'</p><div class="product-footer"><span class="product-price'+(p.sold?' sold':'')+'">&#x20AC; '+(p.price!==null&&p.price!==undefined?p.price:'—')+'</span><button class="product-buy-btn">+</button></div></div></div>';
   }).join('');
   ['all','videogiochi','elettronica','musica','libri','oggetti','trading','dvd'].forEach(function(c){var el=document.getElementById('cnt-'+c);if(el)el.textContent=c==='all'?PRODUCTS.length:PRODUCTS.filter(function(p){return p.cat===c}).length});
   grid.querySelectorAll('.product-card').forEach(function(card){var fn=function(){openModal(parseInt(card.dataset.id))};card.addEventListener('click',fn);card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')fn()});
@@ -703,7 +713,7 @@ function openModal(id){
   document.getElementById('modalPrice').textContent=p.price!==null&&p.price!==undefined?'€ '+p.price:'Prezzo da definire';
   document.getElementById('modalCondition').textContent='Condizioni: '+p.condition;
   var detEl=document.getElementById('modalDetails');
-  if(detEl){var chips=[];if(p.artist)chips.push('<span class="modal-detail-chip">🎤 <strong>'+p.artist+'</strong></span>');if(p.label)chips.push('<span class="modal-detail-chip">🏷️ <strong>'+p.label+'</strong></span>');if(p.year&&p.year!=='0'&&p.year!=='')chips.push('<span class="modal-detail-chip">📅 <strong>'+p.year+'</strong></span>');detEl.innerHTML=chips.join('');}
+  if(detEl){var chips=[];if(p.artist)chips.push('<span class="modal-detail-chip">🎤 <strong>'+p.artist+'</strong></span>');if(p.label)chips.push('<span class="modal-detail-chip">🏷️ <strong>'+p.label+'</strong></span>');if(p.year&&p.year!=='0'&&p.year!=='')chips.push('<span class="modal-detail-chip">📅 <strong>'+p.year+'</strong></span>');if(p.copie&&p.copie>1&&!p.sold)chips.push('<span class="modal-detail-chip">📦 <strong>'+p.copie+' copie disponibili</strong></span>');detEl.innerHTML=chips.join('');}
   document.getElementById('modalDesc').textContent=p.desc||'';
 
   /* ── Build left panel ── */
@@ -778,17 +788,31 @@ function openModal(id){
   if(p.sold){
     actions.innerHTML='<div class="modal-sold-notice">Questo pezzo è già stato venduto &mdash; torna presto per nuovi arrivi</div>'+creditHtmlActions;
   } else {
+    var hasMultiCopie=p.copie&&p.copie>1;
+    var currentQty=1;
+    var qtyRowHtml=hasMultiCopie
+      ?'<div class="modal-qty-row"><span class="modal-qty-label">Quantità</span><div class="modal-qty-ctrl"><button class="modal-qty-btn" id="modalQtyMinus" aria-label="Diminuisci">&#x2212;</button><span class="modal-qty-num" id="modalQtyNum">1</span><button class="modal-qty-btn" id="modalQtyPlus" aria-label="Aumenta">&#x2B;</button><span class="modal-qty-max">max&nbsp;'+p.copie+'</span></div></div>'
+      :'';
     var inCart=loadCart().filter(function(x){return x.id===p.id}).length>0;
-    actions.innerHTML='<button class="modal-btn-paypal" id="modalPaypal">\u{1F4B3} Acquista con PayPal</button><button class="modal-btn-cart'+(inCart?' added':'')+'" id="modalCart">'+(inCart?'✓ Nel carrello':'\u{1F6D2} Aggiungi al carrello')+'</button>'+creditHtmlActions;
-    document.getElementById('modalPaypal').addEventListener('click',function(){paypalBuy(p)});
-    document.getElementById('modalCart').addEventListener('click',function(){toggleCart(p)});
+    actions.innerHTML=qtyRowHtml+'<button class="modal-btn-paypal" id="modalPaypal">\u{1F4B3} Acquista con PayPal</button><button class="modal-btn-cart'+(inCart?' added':'')+'" id="modalCart">'+(inCart?'&#x2713; Nel carrello':'\u{1F6D2} Aggiungi al carrello')+'</button>'+creditHtmlActions;
+    if(hasMultiCopie){
+      var _qMinus=document.getElementById('modalQtyMinus');
+      var _qPlus=document.getElementById('modalQtyPlus');
+      var _qNum=document.getElementById('modalQtyNum');
+      function _updateQty(){_qNum.textContent=currentQty;_qMinus.disabled=currentQty<=1;_qPlus.disabled=currentQty>=p.copie;}
+      _updateQty();
+      _qMinus.addEventListener('click',function(){if(currentQty>1){currentQty--;_updateQty();}});
+      _qPlus.addEventListener('click',function(){if(currentQty<p.copie){currentQty++;_updateQty();}});
+    }
+    document.getElementById('modalPaypal').addEventListener('click',function(){paypalBuy(p,currentQty)});
+    document.getElementById('modalCart').addEventListener('click',function(){toggleCart(p,currentQty)});
   }
   document.getElementById('modalOverlay').classList.add('open');document.body.style.overflow='hidden';
 }
 function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow=''}
-function paypalBuy(p){var c=loadCart();if(!c.find(function(x){return x.id===p.id})){c.push(JSON.parse(JSON.stringify(p)));saveCart(c);}window.location.href='checkout.html';}
-function toggleCart(p){var c=loadCart();var idx=-1;c.forEach(function(x,i){if(x.id===p.id)idx=i});if(idx===-1)c.push(JSON.parse(JSON.stringify(p)));else c.splice(idx,1);saveCart(c);updateCartUI();var btn=document.getElementById('modalCart');if(btn){var inCart=loadCart().filter(function(x){return x.id===p.id}).length>0;btn.textContent=inCart?'✓ Nel carrello':'\u{1F6D2} Aggiungi al carrello';btn.classList.toggle('added',inCart)}}
-function updateCartUI(){var count=loadCart().length,el=document.getElementById('cartCount');if(el){el.textContent=count;el.classList.toggle('zero',count===0);}}
+function paypalBuy(p,qty){var q=qty||1;var c=loadCart();var existing=c.find(function(x){return x.id===p.id});if(!existing){var item=JSON.parse(JSON.stringify(p));item.qty=q;c.push(item);saveCart(c);}window.location.href='checkout.html';}
+function toggleCart(p,qty){var q=qty||1;var c=loadCart();var idx=-1;c.forEach(function(x,i){if(x.id===p.id)idx=i});if(idx===-1){var item=JSON.parse(JSON.stringify(p));item.qty=q;c.push(item);}else{c.splice(idx,1);}saveCart(c);updateCartUI();var btn=document.getElementById('modalCart');if(btn){var inCart=loadCart().filter(function(x){return x.id===p.id}).length>0;btn.innerHTML=inCart?'&#x2713; Nel carrello':'\u{1F6D2} Aggiungi al carrello';btn.classList.toggle('added',inCart);}}
+function updateCartUI(){var cart=loadCart();var count=cart.reduce(function(s,x){return s+(x.qty||1);},0);var el=document.getElementById('cartCount');if(el){el.textContent=count;el.classList.toggle('zero',count===0);}}
 window.__rvShopCartUpdated=function(){updateCartUI();};
 
 /* ── CAROUSEL 5-ITEM (2+centro+2) ── */

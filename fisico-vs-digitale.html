@@ -1,0 +1,1012 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<script>
+(function(){
+  var PASS='vicenza26',KEY='rv_gate',EXP=new Date('2026-07-01').getTime();
+  if(Date.now()>=EXP||localStorage.getItem(KEY)==='1')return;
+  var s=document.createElement('style');s.id='rv-hide';s.textContent='body{visibility:hidden!important}';document.head.appendChild(s);
+  document.addEventListener('DOMContentLoaded',function(){
+    var d=document.createElement('div');d.id='rv-gate';
+    d.style.cssText='position:fixed;inset:0;z-index:99999;background:#f0ebe3;display:flex;align-items:center;justify-content:center;';
+    d.innerHTML='<div style="text-align:center;padding:40px 24px;font-family:Archivo,Arial,sans-serif;max-width:360px"><p style="font-size:10px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#8b3e10;margin:0 0 14px">Ramacciato Vintage</p><h2 style="font-size:clamp(28px,7vw,42px);font-weight:900;letter-spacing:-.05em;text-transform:uppercase;color:#0e0c0a;line-height:.92;margin:0 0 16px">Lancio sito<br>1 luglio 2026</h2><p style="font-size:13px;color:#7a7168;margin:0 0 28px;line-height:1.55">Apertura ufficiale il 1° luglio.<br>Inserisci la password per accedere in anteprima.</p><input id="rv-pw" type="password" placeholder="Password" autocomplete="current-password" autofocus style="display:block;width:100%;max-width:220px;padding:13px 18px;border:1.5px solid rgba(14,12,10,.18);border-radius:999px;font-size:15px;font-family:inherit;background:#faf6f0;color:#0e0c0a;margin:0 auto 12px;outline:none;text-align:center;box-sizing:border-box;cursor:text"><button id="rv-btn" style="padding:12px 36px;background:#0e0c0a;color:#f0ebe3;border:none;border-radius:999px;font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-family:inherit;cursor:pointer;transition:background .18s">Entra</button><p id="rv-err" style="font-size:12px;color:#8b3e10;margin:10px 0 0;min-height:16px"></p></div>';
+    document.body.prepend(d);document.body.style.overflow='hidden';
+    var hs=document.getElementById('rv-hide');if(hs)hs.remove();
+    document.body.style.visibility='visible';
+    function check(){if(document.getElementById('rv-pw').value===PASS){localStorage.setItem(KEY,'1');d.remove();document.body.style.overflow='';}else{document.getElementById('rv-err').textContent='Password errata.';}}
+    document.getElementById('rv-btn').onclick=check;
+    document.getElementById('rv-pw').onkeydown=function(e){if(e.key==='Enter')check();};
+    setTimeout(function(){var pw=document.getElementById('rv-pw');if(pw)pw.focus();},100);
+  });
+})();
+</script>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fisico vs Digitale | Ramacciato Vintage</title>
+<meta name="description" content="Quando acquisti fisico, possiedi. Quando acquisti digitale, ottieni una licenza. Fatti documentati su videogiochi, cinema, musica e libri nell'era delle licenze digitali.">
+<link rel="canonical" href="https://ramacciatovintage.it/fisico-vs-digitale.html">
+<link rel="icon" type="image/png" href="logo no sfondo.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ramacciatovintage.it/fisico-vs-digitale.html">
+<meta property="og:title" content="Fisico vs Digitale — Ramacciato Vintage">
+<meta property="og:description" content="Fatti documentati sulle differenze tra proprietà materiale e licenza d'uso nel mondo dei media.">
+<meta property="og:image" content="https://ramacciatovintage.it/logo%20no%20sfondo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fisico vs Digitale — Ramacciato Vintage">
+<meta name="twitter:description" content="Fatti documentati sulle differenze tra proprietà materiale e licenza d'uso nel mondo dei media.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"Fisico vs Digitale","url":"https://ramacciatovintage.it/fisico-vs-digitale.html","description":"Rubrica editoriale su fatti documentati riguardanti le differenze tra proprietà fisica e licenza digitale.","publisher":{"@type":"Organization","name":"Ramacciato Vintage","url":"https://ramacciatovintage.it"}}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,800;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+/* ── TOKENS ─────────────────────────────────────────── */
+:root{
+  --bg:#f0ebe3;--paper:#faf6f0;--ink:#0e0c0a;--dark:#1e1b17;
+  --muted:#7a7168;--line:rgba(14,12,10,.11);
+  --glass:rgba(250,246,240,.72);
+  --accent:#8b3e10;--accent2:#c07030;--amber:#d4944a;
+  --silver:#c8c2b8;
+  --max:1180px;--ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;overflow-x:hidden;background:var(--bg);color:var(--ink);font-family:'Archivo',Arial,sans-serif;line-height:1.6}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");background-size:180px}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{width:min(var(--max),calc(100% - 48px));margin:auto;position:relative;z-index:2}
+.serif{font-family:'Cormorant Garamond',Georgia,serif}
+.caramel{background:linear-gradient(138deg,var(--accent),var(--accent2) 40%,#e8aa60 65%,var(--accent2) 85%,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ── AMBIENT ─── */
+.ambient{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.blob{position:absolute;border-radius:50%}
+.blob.a{width:600px;height:600px;right:-220px;top:-200px;background:radial-gradient(circle,rgba(192,112,48,.18) 0%,transparent 65%)}
+.blob.b{width:500px;height:500px;left:-200px;bottom:-120px;background:radial-gradient(circle,rgba(212,205,195,.5) 0%,transparent 65%)}
+.blob.c{width:360px;height:360px;left:38%;top:28%;background:radial-gradient(circle,rgba(192,112,48,.07) 0%,transparent 60%)}
+
+/* ── NAV ─── */
+.top{position:fixed;inset:16px 0 auto;z-index:20;pointer-events:none}
+.nav{min-height:62px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:10px 14px 10px 20px;border:1px solid rgba(255,255,255,.75);border-radius:999px;background:rgba(240,235,227,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 14px 44px rgba(14,12,10,.09),0 1px 0 rgba(255,255,255,.6) inset;pointer-events:auto}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;text-transform:uppercase;letter-spacing:.01em;font-size:13.5px}
+.brand img{width:32px;height:32px;object-fit:contain;mix-blend-mode:multiply;filter:contrast(1.1) brightness(.9)}
+.brand-text{display:inline-flex}
+.brand-text .lw{display:inline-block;transition:transform .3s ease,color .2s ease}
+.brand-text .lw.accent{color:var(--accent)}
+.brand-text .lw.up{transform:translateY(-8px);color:var(--accent2)}
+.links,.social{list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:24px}
+.links a{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(30,27,23,.55);transition:color .2s}
+.links a:hover,.links a.active{color:var(--accent)}
+.social a{width:30px;height:30px;display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.3);border:1px solid rgba(255,255,255,.5);font-size:10.5px;font-weight:800;letter-spacing:.06em;color:rgba(30,27,23,.55);transition:background .2s,color .2s}
+.social a:hover{background:rgba(255,255,255,.7);color:var(--ink)}
+.cart-btn{display:flex;align-items:center;gap:6px;min-height:36px;padding:0 14px;border-radius:999px;background:var(--ink);color:var(--bg);border:none;font-family:inherit;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+.cart-btn:hover{background:var(--accent)}
+.cart-count{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:var(--accent2);color:#fff;font-size:9px;font-weight:900;line-height:1}
+.cart-count.zero{background:rgba(255,255,255,.2)}
+.menu-btn{display:none;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:9px 16px;font-weight:800;font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;font-family:inherit;cursor:pointer}
+.mobile{display:none;position:fixed;inset:0;z-index:22;background:rgba(240,235,227,.97);padding:120px 32px 48px;flex-direction:column;gap:10px;touch-action:none;overscroll-behavior:none;pointer-events:auto}
+.mobile.open{display:flex}
+.mobile a{display:block;font-size:clamp(38px,10vw,80px);font-weight:900;text-transform:uppercase;letter-spacing:-.06em;line-height:.96;color:var(--ink);transition:color .18s;touch-action:manipulation;padding:4px 0}
+.mobile a:hover{color:var(--accent)}
+.mob-close{position:absolute;top:20px;right:20px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--paper);display:grid;place-items:center;font-size:20px;cursor:pointer;font-family:inherit}
+
+/* ── HERO FVD ─── */
+.fvd-hero{padding:110px 0 60px;position:relative;z-index:1;border-bottom:1px solid var(--line);overflow:hidden}
+.fvd-hero-inner{display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center}
+.sec-label{display:inline-flex;align-items:center;gap:10px;font-size:10px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.sec-label::before{content:"";width:22px;height:1px;background:var(--accent2)}
+.fvd-hero h1{font-size:clamp(52px,7vw,100px);line-height:.88;letter-spacing:-.07em;text-transform:uppercase;font-weight:900;margin:0 0 20px}
+.fvd-hero-lead{max-width:520px;font-size:14.5px;color:rgba(30,27,23,.68);line-height:1.75;margin-bottom:28px}
+.fvd-hero-intro{max-width:520px;font-size:13px;color:rgba(30,27,23,.52);line-height:1.72;margin-bottom:32px;padding-left:16px;border-left:2px solid var(--accent2)}
+.fvd-hero-cta{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:999px;background:var(--ink);color:var(--bg);font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;transition:background .2s,transform .22s var(--ease)}
+.fvd-hero-cta:hover{background:var(--accent);transform:translateY(-2px)}
+.fvd-hero-visual{display:grid;grid-template-columns:1fr 1fr;gap:10px;flex-shrink:0}
+.fvd-vis-col{display:flex;flex-direction:column;gap:10px}
+.fvd-vis-item{border-radius:16px;padding:18px 16px;display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden}
+.fvd-vis-item.phys{background:rgba(250,246,240,.9);border:1px solid rgba(255,255,255,.85);box-shadow:0 8px 28px rgba(14,12,10,.08)}
+.fvd-vis-item.digi{background:rgba(14,12,10,.06);border:1px solid rgba(14,12,10,.1)}
+.fvd-vis-icon{font-size:28px;line-height:1}
+.fvd-vis-label{font-size:9.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.fvd-vis-value{font-size:12px;font-weight:600;color:var(--ink);line-height:1.4}
+.fvd-vis-tag{display:inline-block;padding:3px 9px;border-radius:999px;font-size:8.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;align-self:flex-start}
+.fvd-vis-tag.ok{background:rgba(80,140,80,.12);color:#2d6e2d;border:1px solid rgba(80,140,80,.2)}
+.fvd-vis-tag.warn{background:rgba(192,112,48,.1);color:var(--accent);border:1px solid rgba(192,112,48,.2)}
+.fvd-vs-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--ink);color:var(--bg);font-size:9px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;padding:6px 10px;border-radius:999px;z-index:5;white-space:nowrap}
+
+/* ── FILTER CHIPS ─── */
+.fvd-filters-wrap{padding:20px 0;border-bottom:1px solid var(--line);background:rgba(250,246,240,.6);backdrop-filter:blur(8px);position:relative;z-index:2}
+.fvd-chips{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.fvd-chip{padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:transparent;font-family:inherit;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(30,27,23,.55);cursor:pointer;transition:all .18s}
+.fvd-chip:hover{background:rgba(255,255,255,.7);color:var(--ink)}
+.fvd-chip.active{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.fvd-chips-right{margin-left:auto}
+.fvd-archive-link{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);padding:8px 16px;border:1px solid rgba(139,62,16,.25);border-radius:999px;transition:all .18s}
+.fvd-archive-link:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* ── ARTICLE GRID ─── */
+.fvd-section{padding:48px 0 100px;position:relative;z-index:1}
+.fvd-grid-header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:32px}
+.fvd-count{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.fvd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+
+/* ── ARTICLE CARD ─── */
+.fvd-card{border-radius:20px;overflow:hidden;cursor:pointer;background:transparent;border:1px solid transparent;box-shadow:none;transition:transform .26s var(--ease),box-shadow .26s var(--ease),border-color .26s,background .26s;contain:content;will-change:transform}
+.fvd-card:hover{transform:translateY(-5px);background:rgba(250,246,240,.88);box-shadow:0 24px 60px rgba(14,12,10,.1);border-color:rgba(255,255,255,.9)}
+.fvd-card-img{width:100%;aspect-ratio:4/3;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;font-size:64px}
+.fvd-card:hover .fvd-card-img span{transform:scale(1.08);transition:transform .4s var(--ease)}
+.fvd-card-img span{display:block;transition:transform .4s var(--ease)}
+.fvd-card-badge{position:absolute;top:10px;left:10px;padding:4px 10px;border-radius:999px;font-size:8.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff}
+.badge-nuovo{background:var(--accent2)}
+.badge-approfondimento{background:var(--accent)}
+.badge-aggiornamento{background:var(--dark)}
+.badge-notizia{background:rgba(14,12,10,.7)}
+.fvd-card-body{padding:16px 18px 18px}
+.fvd-card-cat{font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2);margin-bottom:6px}
+.fvd-card-title{font-size:14.5px;font-weight:800;letter-spacing:-.02em;margin:0 0 8px;line-height:1.3;color:var(--ink)}
+.fvd-card-desc{font-size:12px;color:rgba(30,27,23,.56);line-height:1.55;margin:0 0 14px}
+.fvd-card-footer{display:flex;align-items:center;justify-content:space-between}
+.fvd-card-meta{font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.fvd-read-btn{width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-size:14px;border:none;cursor:pointer;transition:background .2s,transform .2s var(--ease);flex-shrink:0}
+.fvd-card:hover .fvd-read-btn{background:var(--accent);transform:translateX(3px)}
+
+/* ── ARCHIVE CTA STRIP ─── */
+.fvd-archive-strip{margin-top:60px;border-radius:24px;background:var(--ink);padding:48px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;position:relative;overflow:hidden}
+.fvd-archive-strip::before{content:"📂";position:absolute;right:180px;top:-20px;font-size:140px;opacity:.06;pointer-events:none}
+.fvd-archive-strip h2{font-size:clamp(22px,3.5vw,36px);font-weight:900;letter-spacing:-.04em;margin:0 0 8px;color:var(--bg)}
+.fvd-archive-strip p{font-size:13.5px;color:rgba(240,235,227,.58);margin:0;line-height:1.6;max-width:480px}
+.fvd-archive-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:999px;background:var(--bg);color:var(--ink);font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;transition:background .2s,transform .22s var(--ease);flex-shrink:0}
+.fvd-archive-btn:hover{background:var(--accent2);color:#fff;transform:translateY(-2px)}
+
+/* ── MODAL (identico a shop.html) ─── */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(14,12,10,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:24px}
+.modal-overlay.open{display:flex}
+.modal-box{background:var(--paper);border:1px solid rgba(255,255,255,.85);border-radius:24px;max-width:800px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 40px 100px rgba(14,12,10,.2);position:relative;animation:modal-in .28s var(--ease)}
+@keyframes modal-in{from{transform:translateY(20px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+.modal-close{position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:50%;background:rgba(14,12,10,.07);border:none;font-size:18px;cursor:pointer;display:grid;place-items:center;transition:background .18s;z-index:2}
+.modal-close:hover{background:rgba(14,12,10,.14)}
+.modal-inner{display:grid;grid-template-columns:1fr 1.2fr;gap:0}
+.modal-img-wrap{border-radius:22px 0 0 22px;overflow:hidden;min-height:340px;display:flex;flex-direction:column;align-items:stretch;justify-content:center;font-size:80px;position:relative}
+.modal-content{padding:36px 28px 32px 24px;display:flex;flex-direction:column;overflow-y:auto;max-height:90vh}
+.modal-cat{font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--accent2);margin-bottom:8px}
+.modal-title{font-size:clamp(17px,2.5vw,24px);font-weight:900;letter-spacing:-.04em;margin:0 0 10px;line-height:1.15;color:var(--ink)}
+.modal-meta-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.modal-meta-chip{display:inline-flex;align-items:center;gap:4px;background:rgba(14,12,10,.04);border:1px solid var(--line);border-radius:8px;padding:3px 9px;font-size:11px;color:var(--muted)}
+
+/* Article body inside modal */
+.art-section{margin-bottom:18px}
+.art-section-title{font-size:9.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 7px;display:flex;align-items:center;gap:8px}
+.art-section-title::after{content:"";flex:1;height:1px;background:rgba(139,62,16,.15)}
+.art-body{font-size:13px;color:rgba(30,27,23,.72);line-height:1.78}
+.art-body p{margin:0 0 10px}
+.art-body p:last-child{margin:0}
+
+/* Lesson box */
+.art-lesson{margin:22px 0 18px;padding:18px 20px;background:rgba(139,62,16,.06);border:1px solid rgba(139,62,16,.16);border-radius:16px;border-left:3px solid var(--accent)}
+.art-lesson-title{font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+.art-lesson p{font-size:13px;color:rgba(30,27,23,.75);line-height:1.7;margin:0}
+
+/* Sources */
+.art-sources{margin-bottom:18px}
+.art-sources-title{font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+.art-sources ul{margin:0;padding:0 0 0 14px;display:flex;flex-direction:column;gap:4px}
+.art-sources li{font-size:11.5px;color:rgba(30,27,23,.55);line-height:1.5}
+
+/* Share + related */
+.art-actions{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap}
+.art-share-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:999px;border:1.5px solid var(--line);background:transparent;font-family:inherit;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(30,27,23,.55);cursor:pointer;transition:border-color .2s,color .2s}
+.art-share-btn:hover{border-color:var(--accent2);color:var(--accent)}
+
+/* Related products */
+.art-related{border-top:1px solid var(--line);padding-top:18px;margin-top:4px}
+.art-related-title{font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+.art-related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.art-related-card{border-radius:12px;overflow:hidden;border:1px solid var(--line);background:rgba(250,246,240,.7);cursor:pointer;transition:box-shadow .2s,transform .2s}
+.art-related-card:hover{box-shadow:0 8px 24px rgba(14,12,10,.1);transform:translateY(-2px)}
+.art-related-img{height:80px;display:flex;align-items:center;justify-content:center;font-size:32px;background:rgba(14,12,10,.03)}
+.art-related-body{padding:8px 10px}
+.art-related-name{font-size:11px;font-weight:800;letter-spacing:-.01em;margin:0 0 3px;line-height:1.3}
+.art-related-price{font-family:'Cormorant Garamond',Georgia,serif;font-size:16px;font-weight:600;color:var(--accent)}
+.art-related-cat{font-size:8.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:3px}
+
+/* ── FOOTER ─── */
+footer{position:relative;z-index:2;border-top:1px solid var(--line);background:linear-gradient(180deg,transparent,rgba(14,12,10,.02));padding:48px 0 24px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:32px;margin-bottom:24px}
+.foot-brand{font-size:22px;font-weight:900;letter-spacing:-.03em;text-transform:uppercase;margin:0 0 8px}
+.foot-brand em{color:var(--accent);font-style:normal}
+.foot-tagline{font-family:'Cormorant Garamond',Georgia,serif;font-size:20px;font-style:italic;color:var(--muted);margin:0 0 16px}
+.foot-contact{font-size:13.5px;color:rgba(30,27,23,.55)}
+.foot-contact a:hover{color:var(--accent)}
+.foot-piva{font-size:12px;color:rgba(30,27,23,.4);margin:8px 0 0;line-height:1.5}
+.foot-piva strong{font-weight:700;color:rgba(30,27,23,.55)}
+.foot-col-title{font-size:9.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 16px}
+.foot-links{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.foot-links a{font-size:14px;color:rgba(30,27,23,.65);transition:color .18s,transform .18s}
+.foot-links a:hover{color:var(--ink);transform:translateX(3px)}
+.foot-bottom{padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:20px;font-size:12.5px;color:var(--muted)}
+.foot-legal{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.foot-legal a{font-size:11.5px;color:var(--muted);transition:color .18s;text-decoration:underline;text-decoration-color:rgba(122,113,104,.3)}
+.foot-legal a:hover{color:var(--ink)}
+.foot-legal span{color:var(--muted);font-size:10px;opacity:.5}
+.foot-bottom-left{display:flex;flex-direction:column;gap:3px}
+
+/* ── REVEAL ─── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.visible{opacity:1;transform:none}
+
+/* ── CURSOR ─── */
+.cursor{display:none}
+@media(hover:hover) and (pointer:fine){body,body *{cursor:none !important}.cursor{display:block;position:fixed;left:0;top:0;z-index:9999;pointer-events:none;border-radius:50%;transform:translate(-50%,-50%);will-change:transform}.cursor.big{width:88px;height:88px;background:radial-gradient(circle,rgba(192,112,48,.22),transparent 68%);mix-blend-mode:multiply}.cursor.dot{width:5px;height:5px;background:var(--accent)}}
+
+/* ── COOKIE ─── */
+.cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(240,235,227,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid rgba(14,12,10,.1);padding:16px 24px;transform:translateY(120%);transition:transform .4s cubic-bezier(.22,1,.36,1);box-shadow:0 -8px 32px rgba(14,12,10,.08)}.cookie-banner.visible{transform:translateY(0)}.cookie-banner-inner{max-width:1180px;margin:auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap}.cookie-banner-text{font-size:13px;color:rgba(30,27,23,.7);flex:1;min-width:200px;line-height:1.5}.cookie-banner-text strong{color:#0e0c0a}.cookie-banner-text a{color:#8b3e10;text-decoration:underline}.cookie-banner-actions{display:flex;gap:8px;flex-wrap:wrap;flex-shrink:0}.cookie-btn{padding:9px 18px;border-radius:999px;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;font-family:inherit;border:none;transition:all .18s}.cookie-btn-primary{background:#0e0c0a;color:#f0ebe3}.cookie-btn-primary:hover{background:#8b3e10}.cookie-btn-secondary{background:transparent;border:1.5px solid rgba(14,12,10,.2);color:#0e0c0a}.cookie-btn-secondary:hover{background:rgba(14,12,10,.05)}.cookie-btn-ghost{background:transparent;color:rgba(30,27,23,.5);border:none;font-size:10.5px;font-weight:700;text-decoration:underline;padding:9px 10px;cursor:pointer;font-family:inherit;letter-spacing:.06em}.cookie-btn-ghost:hover{color:#0e0c0a}.cookie-modal{position:fixed;inset:0;z-index:10000;background:rgba(14,12,10,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:24px}.cookie-modal[hidden]{display:none}.cookie-modal-box{background:#faf6f0;border-radius:20px;padding:32px;max-width:460px;width:100%;position:relative;box-shadow:0 24px 80px rgba(14,12,10,.18)}.cookie-modal-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:18px;cursor:pointer;color:rgba(30,27,23,.35);padding:4px 8px;transition:color .18s;font-family:inherit}.cookie-modal-close:hover{color:#0e0c0a}.cookie-modal-title{margin:0 0 6px;font-size:19px;font-weight:900;letter-spacing:-.03em;color:#0e0c0a}.cookie-modal-sub{margin:0 0 20px;font-size:12.5px;color:rgba(30,27,23,.55);line-height:1.5}.cookie-toggle-row{display:flex;align-items:center;gap:16px;padding:13px 0;border-bottom:1px solid rgba(14,12,10,.07)}.cookie-toggle-row:last-of-type{border-bottom:none}.cookie-toggle-info{flex:1}.cookie-toggle-info strong{display:block;font-size:13px;font-weight:700;color:#0e0c0a;margin-bottom:2px}.cookie-toggle-info span{font-size:11.5px;color:rgba(30,27,23,.52)}.cookie-switch{position:relative;display:inline-block;width:44px;height:24px;flex-shrink:0;cursor:pointer}.cookie-switch input{opacity:0;width:0;height:0;position:absolute}.cookie-switch-slider{position:absolute;inset:0;background:rgba(14,12,10,.15);border-radius:999px;transition:background .2s}.cookie-switch-slider::before{content:'';position:absolute;width:18px;height:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.18)}.cookie-switch input:checked+.cookie-switch-slider{background:#8b3e10}.cookie-switch input:checked+.cookie-switch-slider::before{transform:translateX(20px)}.cookie-badge-on{display:inline-block;background:#8b3e10;color:#fff;padding:3px 10px;border-radius:999px;font-size:9.5px;font-weight:800;letter-spacing:.1em;flex-shrink:0}
+@media(max-width:600px){.cookie-banner-inner{flex-direction:column;align-items:flex-start}.cookie-banner-actions{width:100%}}
+
+/* ── RESPONSIVE ─── */
+@media(max-width:1000px){
+  .links,.social{display:none}
+  .menu-btn{display:block}
+  .fvd-grid{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr 1fr}
+  .fvd-hero-inner{grid-template-columns:1fr}
+  .fvd-hero-visual{display:none}
+  .fvd-archive-strip{grid-template-columns:1fr;text-align:center}
+  .fvd-archive-strip::before{display:none}
+  .fvd-archive-btn{margin:0 auto}
+}
+@media(max-width:660px){
+  .wrap{width:calc(100% - 32px)}
+  .fvd-grid{grid-template-columns:1fr;gap:14px}
+  .modal-inner{grid-template-columns:1fr}
+  .modal-img-wrap{border-radius:22px 22px 0 0;min-height:200px}
+  .modal-content{padding:22px 18px 28px;max-height:none}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .foot-bottom{flex-direction:column;align-items:flex-start;gap:10px}
+  .fvd-archive-strip{padding:32px 24px}
+}
+@media(max-width:768px){
+  .nav{backdrop-filter:none;-webkit-backdrop-filter:none;padding:8px 12px 8px 14px}
+  .fvd-hero{padding:90px 0 36px}
+  .fvd-hero h1{font-size:clamp(44px,12vw,72px)}
+  .fvd-filters-wrap{backdrop-filter:none}
+  .fvd-chips{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .fvd-chips::-webkit-scrollbar{display:none}
+  .fvd-chip{flex-shrink:0}
+  .fvd-chips-right{display:none}
+  .art-related-grid{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="ambient" aria-hidden="true"><div class="blob a"></div><div class="blob b"></div><div class="blob c"></div></div>
+<div class="cursor big" id="cursorBig"></div>
+<div class="cursor dot" id="cursorDot"></div>
+
+<header class="top">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <img src="logo no sfondo.png" alt="Logo Ramacciato Vintage" width="32" height="32" decoding="async">
+      <span class="brand-text" aria-label="Ramacciato Vintage"><span class="lw">R</span><span class="lw">a</span><span class="lw">m</span><span class="lw">a</span><span class="lw">c</span><span class="lw">c</span><span class="lw">i</span><span class="lw">a</span><span class="lw">t</span><span class="lw">o</span><span class="lw">&nbsp;</span><span class="lw accent">V</span><span class="lw accent">i</span><span class="lw accent">n</span><span class="lw accent">t</span><span class="lw accent">a</span><span class="lw accent">g</span><span class="lw accent">e</span></span>
+    </a>
+    <nav aria-label="Menu principale">
+      <ul class="links">
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="mercatini.html">Mercatini</a></li>
+        <li><a href="svuotacantine.html">Svuotacantine</a></li>
+        <li><a href="fisico-vs-digitale.html" class="active">Fisico vs Digitale</a></li>
+      </ul>
+    </nav>
+    <ul class="social">
+      <li><a href="#" aria-label="Instagram">IG</a></li>
+      <li><a href="#" aria-label="Facebook">FB</a></li>
+      <li><a href="https://www.linkedin.com/in/luca-ramacciato-3292681b1/" target="_blank" rel="noopener" aria-label="LinkedIn">IN</a></li>
+      <li><a href="https://www.youtube.com/@archivioilcustode" target="_blank" rel="noopener" aria-label="YouTube">YT</a></li>
+      <li><button class="cart-btn" id="cartOpenBtn" aria-label="Carrello">&#x1F6D2; <span class="cart-count zero" id="cartCount">0</span></button></li>
+    </ul>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false">Menu</button>
+  </div>
+</header>
+
+<div class="mobile" id="mobileMenu" role="dialog" aria-modal="true">
+  <button class="mob-close" id="mobClose" aria-label="Chiudi menu">&#x2715;</button>
+  <a href="shop.html">Shop</a>
+  <a href="mercatini.html">Mercatini</a>
+  <a href="svuotacantine.html">Svuotacantine</a>
+  <a href="fisico-vs-digitale.html">Fisico vs Digitale</a>
+</div>
+
+<main>
+<!-- ── HERO ── -->
+<section class="fvd-hero">
+  <div class="wrap">
+    <div class="fvd-hero-inner">
+      <div>
+        <p class="sec-label reveal">Rubrica Editoriale</p>
+        <h1 class="reveal">
+          <span class="caramel">Fisico</span><br>
+          <span style="color:var(--ink)">vs</span><br>
+          Digitale
+        </h1>
+        <p class="fvd-hero-lead reveal">
+          Quando acquisti un oggetto fisico, normalmente ne diventi proprietario.<br>
+          Quando acquisti un contenuto digitale, nella maggior parte dei casi stai acquistando soltanto una licenza di utilizzo.
+        </p>
+        <p class="fvd-hero-intro reveal">
+          Questa rubrica raccoglie fatti realmente accaduti — documentati da fonti giornalistiche affidabili — riguardanti videogiochi, cinema, musica, libri, software e tecnologia. Il tono è professionale e imparziale: non una critica al digitale, ma un'analisi delle differenze tra proprietà materiale e licenza d'uso.
+        </p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap" class="reveal">
+          <a class="fvd-hero-cta" href="#articoli">Leggi gli articoli →</a>
+          <a class="fvd-archive-link" href="archivio-licenze.html">Archivio Licenze Perse</a>
+        </div>
+      </div>
+      <div class="fvd-hero-visual reveal">
+        <div style="position:relative">
+          <div class="fvd-vs-badge">vs</div>
+          <div class="fvd-vis-col">
+            <div class="fvd-vis-item phys">
+              <span class="fvd-vis-icon">💿</span>
+              <span class="fvd-vis-label">Disco fisico</span>
+              <span class="fvd-vis-value">Funziona senza internet, per sempre</span>
+              <span class="fvd-vis-tag ok">Proprietà</span>
+            </div>
+            <div class="fvd-vis-item phys">
+              <span class="fvd-vis-icon">📼</span>
+              <span class="fvd-vis-label">VHS / Blu-ray</span>
+              <span class="fvd-vis-value">Rivendibile, prestabile, collezionabile</span>
+              <span class="fvd-vis-tag ok">Proprietà</span>
+            </div>
+            <div class="fvd-vis-item phys">
+              <span class="fvd-vis-icon">🎮</span>
+              <span class="fvd-vis-label">Cartuccia / Disco</span>
+              <span class="fvd-vis-value">Sopravvive alla chiusura degli store</span>
+              <span class="fvd-vis-tag ok">Proprietà</span>
+            </div>
+          </div>
+          <div class="fvd-vis-col">
+            <div class="fvd-vis-item digi">
+              <span class="fvd-vis-icon">☁️</span>
+              <span class="fvd-vis-label">Acquisto digitale</span>
+              <span class="fvd-vis-value">Dipende dal contratto piattaforma-distributore</span>
+              <span class="fvd-vis-tag warn">Licenza</span>
+            </div>
+            <div class="fvd-vis-item digi">
+              <span class="fvd-vis-icon">⬇️</span>
+              <span class="fvd-vis-label">Download / Streaming</span>
+              <span class="fvd-vis-value">Non trasferibile, non rivendibile</span>
+              <span class="fvd-vis-tag warn">Licenza</span>
+            </div>
+            <div class="fvd-vis-item digi">
+              <span class="fvd-vis-icon">🔑</span>
+              <span class="fvd-vis-label">Codice / DRM</span>
+              <span class="fvd-vis-value">Può essere revocata se lo store chiude</span>
+              <span class="fvd-vis-tag warn">Licenza</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FILTRI ── -->
+<div class="fvd-filters-wrap">
+  <div class="wrap">
+    <div class="fvd-chips">
+      <button class="fvd-chip active" data-filter="all">Tutto</button>
+      <button class="fvd-chip" data-filter="Videogiochi">Videogiochi</button>
+      <button class="fvd-chip" data-filter="Cinema">Cinema</button>
+      <button class="fvd-chip" data-filter="Musica">Musica</button>
+      <button class="fvd-chip" data-filter="Libri">Libri</button>
+      <button class="fvd-chip" data-filter="Editoriale">Editoriale</button>
+      <div class="fvd-chips-right">
+        <a class="fvd-archive-link" href="archivio-licenze.html">📂 Archivio Licenze Perse</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ARTICOLI ── -->
+<section class="fvd-section" id="articoli">
+  <div class="wrap">
+    <div class="fvd-grid-header">
+      <span class="fvd-count" id="fvdCount">5 articoli</span>
+    </div>
+    <div class="fvd-grid" id="fvdGrid"></div>
+
+    <!-- ARCHIVE CTA -->
+    <div class="fvd-archive-strip reveal">
+      <div>
+        <h2>Archivio delle Licenze Perse</h2>
+        <p>Una cronologia completa e documentata di tutti i casi in cui utenti hanno perso l'accesso a contenuti acquistati: store chiusi, DRM disattivati, licenze revocate, server spenti. Una risorsa in costante aggiornamento.</p>
+      </div>
+      <a class="fvd-archive-btn" href="archivio-licenze.html">Esplora l'Archivio →</a>
+    </div>
+
+    <!-- LINK INTERNI -->
+    <div style="margin-top:60px;padding-top:40px;border-top:1px solid var(--line)" class="reveal">
+      <p class="fvd-count" style="margin-bottom:20px">Esplora il catalogo</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="shop.html?cat=videogiochi" style="display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:999px;border:1px solid var(--line);font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:rgba(30,27,23,.6);transition:all .18s" onmouseover="this.style.borderColor='var(--accent2)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--line)';this.style.color='rgba(30,27,23,.6)'">🎮 Videogiochi</a>
+        <a href="shop.html?cat=musica" style="display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:999px;border:1px solid var(--line);font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:rgba(30,27,23,.6);transition:all .18s" onmouseover="this.style.borderColor='var(--accent2)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--line)';this.style.color='rgba(30,27,23,.6)'">🎵 Vinili & CD</a>
+        <a href="shop.html?cat=libri" style="display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:999px;border:1px solid var(--line);font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:rgba(30,27,23,.6);transition:all .18s" onmouseover="this.style.borderColor='var(--accent2)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--line)';this.style.color='rgba(30,27,23,.6)'">📚 Libri</a>
+        <a href="shop.html" style="display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:999px;border:1px solid var(--line);font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:rgba(30,27,23,.6);transition:all .18s" onmouseover="this.style.borderColor='var(--accent2)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--line)';this.style.color='rgba(30,27,23,.6)'">✦ Tutto il catalogo</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ── MODAL ARTICOLO (identico alla struttura modal di shop.html) ── -->
+<div class="modal-overlay" id="fvdModal" role="dialog" aria-modal="true" aria-label="Articolo">
+  <div class="modal-box">
+    <button class="modal-close" id="fvdModalClose" aria-label="Chiudi">&#x2715;</button>
+    <div class="modal-inner">
+      <div class="modal-img-wrap" id="fvdModalImg" style="background:var(--dark)"></div>
+      <div class="modal-content" id="fvdModalContent"></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <p class="foot-brand">Ramacciato <em>Vintage</em></p>
+        <p class="foot-tagline serif">&ldquo;Own what you buy.&rdquo;</p>
+        <p class="foot-contact"><a href="mailto:ramacciatoluca@gmail.com">ramacciatoluca@gmail.com</a></p>
+        <p class="foot-piva">Luca Ramacciato · Vicenza<br><strong>P.IVA</strong> IT04400570240</p>
+      </div>
+      <div>
+        <p class="foot-col-title">Esplora</p>
+        <ul class="foot-links">
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="mercatini.html">Mercatini</a></li>
+          <li><a href="fisico-vs-digitale.html">Fisico vs Digitale</a></li>
+          <li><a href="archivio-licenze.html">Archivio Licenze</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-col-title">Contatti</p>
+        <ul class="foot-links">
+          <li><a href="svuotacantine.html">Svuotacantine</a></li>
+          <li><a href="mailto:ramacciatoluca@gmail.com">Email</a></li>
+          <li><a href="#" aria-label="Instagram">Instagram</a></li>
+          <li><a href="https://www.youtube.com/@archivioilcustode" target="_blank" rel="noopener">YouTube</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-col-title">Legale</p>
+        <ul class="foot-links">
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="termini-di-servizio.html">Termini di Servizio</a></li>
+          <li><a href="cookie-policy.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div class="foot-bottom-left"><span>&copy; 2026 Ramacciato Vintage — Luca Ramacciato — P.IVA IT04400570240 — Vicenza</span></div>
+      <div class="foot-legal">
+        <a href="privacy-policy.html">Privacy Policy</a><span>·</span>
+        <a href="termini-di-servizio.html">Termini di Servizio</a><span>·</span>
+        <a href="cookie-policy.html">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div id="cookieBanner" class="cookie-banner" role="alertdialog" aria-label="Informativa cookie">
+  <div class="cookie-banner-inner">
+    <p class="cookie-banner-text"><strong>Utilizziamo cookie</strong> tecnici, analytics e di marketing per migliorare la tua esperienza. <a href="cookie-policy.html">Cookie Policy</a></p>
+    <div class="cookie-banner-actions">
+      <button class="cookie-btn-ghost" id="cookieCustomize">Personalizza</button>
+      <button class="cookie-btn cookie-btn-secondary" id="cookieNecessary">Solo tecnici</button>
+      <button class="cookie-btn cookie-btn-primary" id="cookieAcceptAll">Accetta tutti</button>
+    </div>
+  </div>
+</div>
+<div id="cookieModal" class="cookie-modal" role="dialog" aria-modal="true" aria-label="Preferenze cookie" hidden>
+  <div class="cookie-modal-box">
+    <button class="cookie-modal-close" id="cookieModalClose" aria-label="Chiudi">✕</button>
+    <p class="cookie-modal-title">Preferenze Cookie</p>
+    <p class="cookie-modal-sub">I cookie tecnici sono sempre attivi. Scegli quali altri abilitare.</p>
+    <div class="cookie-toggle-row"><div class="cookie-toggle-info"><strong>Tecnici</strong><span>Necessari per il funzionamento del sito.</span></div><span class="cookie-badge-on">SEMPRE ON</span></div>
+    <div class="cookie-toggle-row"><div class="cookie-toggle-info"><strong>Analytics</strong><span>Statistiche anonime di visita.</span></div><label class="cookie-switch"><input type="checkbox" id="toggleAnalytics"><span class="cookie-switch-slider"></span></label></div>
+    <div class="cookie-toggle-row"><div class="cookie-toggle-info"><strong>Marketing</strong><span>Annunci personalizzati.</span></div><label class="cookie-switch"><input type="checkbox" id="toggleMarketing"><span class="cookie-switch-slider"></span></label></div>
+    <button class="cookie-btn cookie-btn-primary" id="cookieSavePrefs" style="margin-top:24px;width:100%;min-height:44px">Salva preferenze</button>
+  </div>
+</div>
+
+<script>
+/* ════════════════════════════════════════════
+   DATI ARTICOLI
+   ════════════════════════════════════════════ */
+const ARTICLES = [
+  {
+    id: 1,
+    category: 'Cinema & Home Video',
+    filterCat: 'Cinema',
+    badge: 'Approfondimento',
+    title: 'PlayStation rimuove film acquistati dagli utenti: cosa succede quando scade una licenza',
+    desc: 'Nel 2023 Sony ha rimosso dalla libreria PS Store i film acquistati tramite accordi con distributori video. Gli utenti non hanno ricevuto rimborsi.',
+    date: '15 agosto 2023',
+    readTime: '7 min',
+    emoji: '🎬',
+    coverBg: 'linear-gradient(145deg, #1a0a2e 0%, #2d0050 50%, #0a0010 100%)',
+    relatedCats: ['musica'],
+    sections: [
+      {
+        title: 'Cosa è successo',
+        body: '<p>Nel 2023 Sony ha inviato comunicazioni ufficiali a una parte degli utenti PlayStation Store, informandoli che i film precedentemente acquistati tramite accordi di distribuzione con Discovery — incluse produzioni originali e serie documentaristiche — sarebbero stati rimossi dalle loro librerie digitali entro trenta giorni.</p><p>Il motivo dichiarato: la scadenza del contratto di licenza tra Sony e la società distributrice. Gli utenti non hanno ricevuto rimborsi automatici. I file non erano scaricabili su supporto locale. Al termine del periodo di grazia, l\'accesso ai contenuti è stato irrevocabilmente revocato dalla piattaforma.</p>'
+      },
+      {
+        title: 'Perché è successo',
+        body: '<p>Quando si acquista un film su PlayStation Store, non si acquista il file audiovisivo. Si acquista una <em>licenza d\'uso</em> valida fintanto che il contratto tra Sony e il distributore rimane attivo. Quando il contratto scade o non viene rinnovato, la piattaforma può rimuovere quei contenuti dalle librerie degli utenti — inclusi quelli che li avevano regolarmente "comprati".</p><p>Sony ha difeso la pratica citando i propri Termini di Servizio, che specificano chiaramente come gli acquisti digitali siano licenze temporanee e non proprietà permanente del file. Una clausola presente nei ToS di quasi tutte le piattaforme digitali di contenuto.</p>'
+      },
+      {
+        title: 'Cosa cambia per gli utenti',
+        body: '<p>Gli utenti colpiti hanno perso l\'accesso ai titoli acquistati senza possibilità di recupero. Non era previsto rimborso automatico. Chi aveva acquistato più film si è trovato con una libreria ridimensionata senza un preavviso adeguato. Alcuni utenti che hanno contattato il supporto Sony hanno ottenuto crediti store come compensazione parziale, ma solo dopo insistenti richieste e senza una politica uniforme.</p>'
+      },
+      {
+        title: 'Perché riguarda anche il collezionismo',
+        body: '<p>Un Blu-ray acquistato fisicamente è riproducibile finché il lettore funziona e il disco non si deteriora, indipendentemente da qualsiasi accordo commerciale tra aziende terze. Un film acquistato digitalmente esiste come accesso solo fintanto che tutte le parti coinvolte — piattaforma, distributore, studio cinematografico — decidono di mantenerlo disponibile. Il collezionismo fisico garantisce una catena di possesso semplice e verificabile: compri, possiedi, conservi, rivendi.</p>'
+      }
+    ],
+    fonti: [
+      'Ars Technica — "PlayStation is deleting purchased Discovery content from users\' libraries" (2023)',
+      'The Guardian — "Sony PlayStation removes movies from users\' libraries after licensing deal ends"',
+      'Kotaku — "PlayStation Users Lose Access To Purchased Discovery Content"',
+      'Eurogamer — "PlayStation removing purchased content from user libraries"'
+    ],
+    lezione: 'Questo caso documenta con precisione la differenza tra acquistare un contenuto e ottenere una licenza temporanea d\'uso. Nel caso dei supporti fisici, la catena di possesso è semplice: compri, possiedi. Nel caso digitale, la catena è complessa: ottieni una licenza che dipende da un accordo commerciale tra piattaforma e distributore, che può scadere o non essere rinnovato, con conseguente perdita di accesso — senza rimborso garantito.'
+  },
+  {
+    id: 2,
+    category: 'Videogiochi',
+    filterCat: 'Videogiochi',
+    badge: 'Approfondimento',
+    title: 'GTA VI: la "confezione fisica" senza disco che ha diviso il mercato del collezionismo',
+    desc: 'Rockstar conferma che la versione "fisica" di Grand Theft Auto VI non includerà un disco: solo un codice download in una scatola vuota.',
+    date: '12 maggio 2025',
+    readTime: '5 min',
+    emoji: '🎮',
+    coverBg: 'linear-gradient(145deg, #0a1a0e 0%, #1a3a2f 50%, #050d07 100%)',
+    relatedCats: ['videogiochi'],
+    sections: [
+      {
+        title: 'Cosa è successo',
+        body: '<p>Take-Two Interactive e Rockstar Games hanno confermato che Grand Theft Auto VI sarà disponibile in versione "fisica" per PlayStation 5 e Xbox Series X/S — ma senza disco. La confezione, identica nell\'aspetto a quelle tradizionali, conterrà un codice di download al posto del supporto ottico. Il gioco, stimato in oltre 150 GB, dovrà essere scaricato integralmente dalla rete.</p><p>La decisione ha generato immediate reazioni nella community dei giocatori e degli operatori retail, aprendo un dibattito sul significato stesso del termine "edizione fisica".</p>'
+      },
+      {
+        title: 'Perché è successo',
+        body: '<p>La produzione di dischi Blu-ray UHD per videogiochi ha costi produttivi e logistici significativi. Le aziende del settore hanno progressivamente ridotto le tirature fisiche, spingendo verso il digitale per massimizzare i margini. Il "Code in a Box" permette di mantenere la distribuzione attraverso i canali retail tradizionali — scaffali, preordini, lancio fisico — senza i costi legati alla produzione del supporto ottico. Per il publisher è una soluzione economicamente vantaggiosa; per il consumatore, le implicazioni sono diverse.</p>'
+      },
+      {
+        title: 'Cosa cambia per gli utenti',
+        body: '<p>Un "Code in a Box" non è rivendibile come un disco fisico. Non è prestabile. Non è collezionabile nel senso tradizionale del termine. La confezione è vuota dal punto di vista del contenuto: è un contenitore di plastica che racchiude un pezzo di carta. L\'accesso al gioco dipende interamente dalla connessione internet disponibile e dalla continuità operativa dello store digitale di riferimento.</p><p>In caso di chiusura dello store o di problemi all\'account, il codice potrebbe risultare inutilizzabile. Non esiste equivalente digitale del "metti il disco e gioca".</p>'
+      },
+      {
+        title: 'Perché riguarda anche il collezionismo',
+        body: '<p>GTA V è uno dei titoli più scambiati sul mercato dell\'usato da oltre un decennio. Edizioni speciali, confezioni limited edition, copie in perfetto stato conservano un valore di collezionismo riconoscibile e una liquidità reale. GTA VI in versione "Code in a Box" non alimenterà lo stesso mercato secondario. La scatola, senza disco, non trasferisce nulla di tangibile: non esiste usato possibile, non esiste valore di rivendita garantito dalla presenza del supporto fisico.</p>'
+      }
+    ],
+    fonti: [
+      'IGN — "GTA 6 Physical Edition Won\'t Include a Disc" (2025)',
+      'Eurogamer — "Grand Theft Auto 6 physical release confirmed as disc-free"',
+      'GamesIndustry.biz — "GTA VI retail box will contain download code only"',
+      'The Verge — "What GTA VI\'s disc-free box means for game ownership"'
+    ],
+    lezione: 'GTA VI rappresenta un momento di svolta nel dibattito sul significato di "edizione fisica". Quando la confezione non contiene il gioco — ma solo le istruzioni per scaricarlo — il termine "fisico" diventa una questione di marketing più che di sostanza. Per i collezionisti, la distinzione è fondamentale: una scatola senza disco è una scatola vuota.'
+  },
+  {
+    id: 3,
+    category: 'Videogiochi · Retail',
+    filterCat: 'Videogiochi',
+    badge: 'Aggiornamento',
+    title: 'Alcuni rivenditori europei rifiutano di vendere GTA VI in versione "Code in a Box"',
+    desc: 'GAME UK e altri retailer europei annunciano che non stoccheranno la versione fisica di GTA VI priva di disco, citando la mancanza di valore per il cliente.',
+    date: '28 maggio 2025',
+    readTime: '4 min',
+    emoji: '🏪',
+    coverBg: 'linear-gradient(145deg, #1a0a00 0%, #3a1e00 50%, #0d0500 100%)',
+    relatedCats: ['videogiochi'],
+    sections: [
+      {
+        title: 'Cosa è successo',
+        body: '<p>Dopo l\'annuncio della versione "Code in a Box" di GTA VI, alcuni tra i principali rivenditori europei hanno comunicato ufficialmente la loro decisione di non stoccare il prodotto. GAME, la più grande catena britannica specializzata in videogiochi, ha dichiarato pubblicamente di non voler vendere una confezione che non contiene il gioco stesso. Posizioni analoghe sono arrivate da rivenditori australiani e da alcune catene del Nord Europa.</p>'
+      },
+      {
+        title: 'Perché è successo',
+        body: '<p>I rivenditori fisici costruiscono il proprio modello di business sulla vendita e sulla rivendita di prodotti con un valore tangibile. Una confezione con un codice di download non genera traffico qualificato in negozio, non alimenta il mercato dell\'usato — uno dei principali flussi di ricavo per i retailer specializzati — e non offre al consumatore un vantaggio rispetto all\'acquisto diretto dallo store digitale.</p><p>Per GAME e retailer simili, stoccare un "Code in a Box" significa rinunciare ai margini dell\'usato e competere direttamente con PlayStation Store e Xbox Live su un prodotto dove il vantaggio competitivo del negozio fisico è nullo.</p>'
+      },
+      {
+        title: 'Cosa cambia per gli utenti',
+        body: '<p>In alcuni mercati, GTA VI nella sua versione "fisica" non sarà disponibile presso i negozi tradizionali. Chi vuole la confezione dovrà affidarsi ad altri canali di distribuzione. Chi vuole un vero supporto fisico — un disco, non un codice — dovrà attendere una possibile distribuzione alternativa o fare a meno dell\'edizione in scatola.</p>'
+      },
+      {
+        title: 'Perché riguarda anche il collezionismo',
+        body: '<p>Il rifiuto collettivo dei rivenditori è un segnale di mercato insolito e significativo. Rappresenta una presa di posizione economica sul valore del supporto fisico come garanzia di contenuto reale. È, in sostanza, il mercato retail che afferma: una confezione senza contenuto non ha lo stesso valore commerciale di una confezione con un disco. La distinzione non è solo ideologica: è monetaria.</p>'
+      }
+    ],
+    fonti: [
+      'GamesIndustry.biz — "GAME UK won\'t sell GTA VI disc-free physical edition" (2025)',
+      'Eurogamer — "GTA 6 physical release met with retailer resistance"',
+      'IGN — "Major retailers decline to stock GTA VI code-in-box version"'
+    ],
+    lezione: 'La resistenza dei rivenditori dimostra che la distinzione tra "confezione" e "supporto fisico" è economicamente rilevante e riconosciuta dal mercato. Non si tratta solo di un dibattito ideologico tra collezionisti: il mercato retail, nella sua valutazione commerciale, riconosce che un prodotto senza contenuto tangibile ha un diverso valore.'
+  },
+  {
+    id: 4,
+    category: 'Videogiochi',
+    filterCat: 'Videogiochi',
+    badge: 'Notizia',
+    title: "Marvel's Wolverine includerà il disco fisico: il confronto diretto con GTA VI",
+    desc: "Insomniac Games conferma che Marvel's Wolverine per PS5 avrà un disco Blu-ray nella confezione fisica, ribaltando il trend del 'Code in a Box'.",
+    date: '10 giugno 2025',
+    readTime: '3 min',
+    emoji: '🦾',
+    coverBg: 'linear-gradient(145deg, #1a0000 0%, #3a0d0d 50%, #0d0000 100%)',
+    relatedCats: ['videogiochi'],
+    sections: [
+      {
+        title: 'Cosa è successo',
+        body: '<p>Insomniac Games e Sony Interactive Entertainment hanno confermato che Marvel\'s Wolverine, atteso come esclusiva PlayStation 5, includerà un disco Blu-ray nella confezione fisica. L\'annuncio, apparentemente ordinario, ha assunto un significato particolare nel contesto del dibattito aperto da GTA VI: dimostra che la scelta di distribuire su disco fisico è ancora possibile e, per alcuni publisher, ancora preferibile.</p>'
+      },
+      {
+        title: 'Perché è successo',
+        body: '<p>Sony, con il proprio hardware proprietario e i propri studi first-party, ha un interesse diretto nel valorizzare le esclusive PlayStation anche attraverso l\'edizione fisica tradizionale. Insomniac ha la possibilità di garantire edizioni fisiche complete senza dover negoziare con distributori terzi sulle modalità di consegna del contenuto. La conferma del disco fisico è, con ogni probabilità, anche una risposta commerciale alle polemiche createsi intorno alla scelta di Rockstar.</p>'
+      },
+      {
+        title: 'Cosa cambia per gli utenti',
+        body: '<p>Gli acquirenti di Marvel\'s Wolverine in versione fisica otterranno un disco Blu-ray riproducibile senza connessione internet, conservabile indefinitamente, rivendibile sul mercato dell\'usato e prestabile. Il gioco rimarrà accessibile anche se PlayStation Store dovesse chiudere o se il titolo venisse rimosso dalla piattaforma digitale per qualsiasi motivo.</p>'
+      },
+      {
+        title: 'Perché riguarda anche il collezionismo',
+        body: '<p>La conferma del disco per un titolo major come Marvel\'s Wolverine segnala che il mercato del collezionismo e i consumatori orientati al fisico hanno ancora un peso nelle decisioni dei publisher. Un\'edizione fisica completa — con disco nella confezione — mantiene un valore di rivendita e un interesse per i collezionisti che il solo codice digitale non può replicare nel tempo.</p>'
+      }
+    ],
+    fonti: [
+      'PlayStation Blog — "Marvel\'s Wolverine — Physical Edition Confirmed" (2025)',
+      'IGN — "Wolverine PS5 physical edition includes full game disc"',
+      'Eurogamer — "Marvel\'s Wolverine will have a proper disc, unlike GTA VI"'
+    ],
+    lezione: "La presenza del disco in Marvel's Wolverine dimostra che la distribuzione su supporto fisico è ancora tecnicamente e commercialmente praticabile per titoli di primo piano. La scelta di non includere il disco in GTA VI è quindi una decisione aziendale specifica, non una necessità tecnica del mercato. I collezionisti possono ancora aspettarsi edizioni fisiche complete da publisher che scelgono consapevolmente di offrirle."
+  },
+  {
+    id: 5,
+    category: 'Editoriale',
+    filterCat: 'Editoriale',
+    badge: 'Approfondimento',
+    title: "Il futuro del collezionismo nell'era delle licenze digitali",
+    desc: "Un'analisi dei principali casi documentati in cui contenuti digitali acquistati sono diventati inaccessibili, e di cosa questo significa per chi raccoglie oggetti fisici.",
+    date: '28 giugno 2026',
+    readTime: '12 min',
+    emoji: '📦',
+    coverBg: 'linear-gradient(145deg, #0a0a1a 0%, #1a1a2e 50%, #05050d 100%)',
+    relatedCats: ['videogiochi', 'musica', 'libri'],
+    sections: [
+      {
+        title: 'Cosa è successo',
+        body: '<p>Dal 2010 ad oggi, decine di store digitali hanno chiuso i battenti o rimosso contenuti precedentemente acquistati dagli utenti. Il Wii Shop Channel di Nintendo ha cessato le vendite nel 2019 e ha completamente chiuso nel 2023. Il PlayStation Store per PS3 e PSP è stato minacciato di chiusura nel 2021, prima che Sony invertisse la decisione in seguito alle proteste degli utenti.</p><p>L\'Xbox 360 Marketplace ha cessato la vendita di nuovi contenuti nel 2024. Google Stadia — il servizio di cloud gaming di Google — ha chiuso nel gennaio 2023, lasciando gli utenti senza accesso ai giochi per cui avevano pagato (Google ha offerto rimborsi, ma il precedente rimane). Ubisoft Connect ha rimosso dalle librerie di alcuni utenti titoli regolarmente acquistati, tra cui <em>The Crew</em>, citando la scadenza dei diritti di licenza sui contenuti online.</p>'
+      },
+      {
+        title: 'Perché è successo',
+        body: '<p>Ogni store digitale è un servizio commerciale che dipende da accordi di licenza, costi di mantenimento dei server e decisioni strategiche aziendali. Quando un servizio non è più economicamente sostenibile, viene chiuso. I contenuti digitali acquistati attraverso questi store non sono file conservati localmente: sono autorizzazioni a utilizzare file ospitati su server di terze parti, valide fintanto che il servizio rimane attivo.</p><p>Il DRM (Digital Rights Management) — il sistema di protezione anticopia integrato nella maggior parte dei contenuti digitali — è spesso legato ai server della piattaforma: quando il server si spegne, il DRM smette di rispondere e il contenuto diventa inaccessibile, anche se l\'utente possiede il file in locale.</p>'
+      },
+      {
+        title: 'Cosa cambia per gli utenti',
+        body: '<p>Chi ha investito somme significative in librerie digitali si trova in una posizione di vulnerabilità strutturale: non possiede nulla in senso legale e pratico. Può utilizzare quei contenuti solo fintanto che tutte le condizioni necessarie rimangono soddisfatte simultaneamente: connessione internet attiva, account in regola, piattaforma operativa, accordi di licenza in vigore tra tutte le parti coinvolte.</p><p>Il collezionista digitale non ha una proprietà: ha un abbonamento di fatto a tempo indefinito, che può essere interrotto in qualsiasi momento da una qualsiasi delle parti della catena commerciale.</p>'
+      },
+      {
+        title: 'Perché riguarda anche il collezionismo',
+        body: '<p>Il collezionismo fisico è, tra le altre cose, un sistema di conservazione della memoria culturale che prescinde dalle dinamiche aziendali. I vinili, i DVD, i Blu-ray, le cartucce e i dischi per videogiochi: sopravvivono alle aziende che li hanno prodotti. Un Super Mario Bros. su cartuccia NES del 1985 è ancora giocabile oggi. Un titolo acquistato su un servizio digitale chiuso nel 2015 è irrecuperabile senza ricorrere a copie non ufficiali.</p><p>La preservazione del patrimonio culturale è una delle ragioni per cui il supporto fisico continua ad avere un valore che va oltre la semplice funzionalità. Biblioteche, archivi, musei e collezionisti privati svolgono un ruolo di conservazione che i server commerciali non possono garantire nel lungo periodo.</p>'
+      }
+    ],
+    fonti: [
+      'Internet Archive — documentazione sulla chiusura del Wii Shop Channel (2019–2023)',
+      'The Verge — "Google Stadia is shutting down, and users will get refunds" (2022)',
+      'Ars Technica — "Ubisoft is deactivating The Crew, a game people actually bought" (2024)',
+      'Kotaku — "Nintendo\'s Wii Shop Is Closing For Good This Month" (2023)',
+      'Electronic Frontier Foundation (EFF) — report su digital ownership e DRM'
+    ],
+    lezione: "Il dibattito tra fisico e digitale non riguarda solo la qualità dell'immagine o la comodità d'acquisto. Riguarda la natura giuridica ed economica di cosa significa \"possedere\" un contenuto culturale. I supporti fisici offrono proprietà trasferibile, conservabile, rivendibile e indipendente da servizi commerciali. I contenuti digitali offrono una licenza d'uso revocabile, non trasferibile e dipendente dalla continuità di un servizio commerciale. Conoscere la differenza è il primo passo per fare scelte consapevoli."
+  }
+];
+
+/* ════════════════════════════════════════════
+   RENDERING GRIGLIA
+   ════════════════════════════════════════════ */
+let currentFilter = 'all';
+
+function badgeClass(b) {
+  if (b === 'Nuovo') return 'badge-nuovo';
+  if (b === 'Approfondimento') return 'badge-approfondimento';
+  if (b === 'Aggiornamento') return 'badge-aggiornamento';
+  return 'badge-notizia';
+}
+
+function renderGrid(filter) {
+  const grid = document.getElementById('fvdGrid');
+  const count = document.getElementById('fvdCount');
+  const filtered = filter === 'all' ? ARTICLES : ARTICLES.filter(a => a.filterCat === filter);
+  count.textContent = filtered.length + (filtered.length === 1 ? ' articolo' : ' articoli');
+  grid.innerHTML = filtered.map(a => `
+    <article class="fvd-card reveal" tabindex="0" role="button" aria-label="${a.title}" data-id="${a.id}">
+      <div class="fvd-card-img" style="background:${a.coverBg}">
+        <span>${a.emoji}</span>
+        <div class="fvd-card-badge ${badgeClass(a.badge)}">${a.badge}</div>
+      </div>
+      <div class="fvd-card-body">
+        <p class="fvd-card-cat">${a.category}</p>
+        <h2 class="fvd-card-title">${a.title}</h2>
+        <p class="fvd-card-desc">${a.desc}</p>
+        <div class="fvd-card-footer">
+          <span class="fvd-card-meta">${a.date} · ⏱ ${a.readTime}</span>
+          <button class="fvd-read-btn" aria-label="Leggi articolo" tabindex="-1">→</button>
+        </div>
+      </div>
+    </article>
+  `).join('');
+
+  // Click handlers on cards
+  grid.querySelectorAll('.fvd-card').forEach(card => {
+    const open = () => openArticle(parseInt(card.dataset.id));
+    card.addEventListener('click', open);
+    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+  });
+
+  // Reveal animation
+  requestAnimationFrame(() => {
+    document.querySelectorAll('.fvd-grid .reveal').forEach((el, i) => {
+      setTimeout(() => el.classList.add('visible'), i * 80);
+    });
+  });
+}
+
+/* ════════════════════════════════════════════
+   MODAL ARTICOLO
+   ════════════════════════════════════════════ */
+let relatedProducts = [];
+
+async function loadCatalog() {
+  try {
+    const r = await fetch('catalogo.json');
+    if (r.ok) relatedProducts = await r.json();
+  } catch(e) { relatedProducts = []; }
+}
+
+function getRelatedProducts(cats, limit = 2) {
+  if (!relatedProducts.length) return [];
+  const found = [];
+  for (const cat of cats) {
+    for (const p of relatedProducts) {
+      if (p.cat && p.cat.toLowerCase().includes(cat.toLowerCase()) && !p.sold && !found.find(f=>f.id===p.id)) {
+        found.push(p);
+        if (found.length >= limit) break;
+      }
+    }
+    if (found.length >= limit) break;
+  }
+  return found.slice(0, limit);
+}
+
+function openArticle(id) {
+  const a = ARTICLES.find(x => x.id === id);
+  if (!a) return;
+
+  const imgWrap = document.getElementById('fvdModalImg');
+  const content = document.getElementById('fvdModalContent');
+
+  imgWrap.style.background = a.coverBg;
+  imgWrap.innerHTML = `
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:16px;padding:32px">
+      <div style="font-size:72px;line-height:1">${a.emoji}</div>
+      <div style="font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:rgba(240,235,227,.5);text-align:center">${a.category}</div>
+      <div style="padding:4px 12px;border-radius:999px;background:rgba(240,235,227,.12);border:1px solid rgba(240,235,227,.2);font-size:8.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(240,235,227,.7)">${a.badge}</div>
+    </div>
+  `;
+
+  // Build sections HTML
+  const sectionsHTML = a.sections.map(s => `
+    <div class="art-section">
+      <p class="art-section-title">${s.title}</p>
+      <div class="art-body">${s.body}</div>
+    </div>
+  `).join('');
+
+  // Fonti
+  const fontiHTML = `
+    <div class="art-sources">
+      <p class="art-sources-title">Fonti</p>
+      <ul>${a.fonti.map(f => `<li>${f}</li>`).join('')}</ul>
+    </div>
+  `;
+
+  // Related products
+  const related = getRelatedProducts(a.relatedCats);
+  const relatedHTML = related.length ? `
+    <div class="art-related">
+      <p class="art-related-title">Dal catalogo Ramacciato Vintage</p>
+      <div class="art-related-grid">
+        ${related.map(p => `
+          <div class="art-related-card" onclick="window.location.href='shop.html'" tabindex="0">
+            <div class="art-related-img">${p.emoji || '📦'}</div>
+            <div class="art-related-body">
+              <p class="art-related-cat">${p.cat || ''}</p>
+              <p class="art-related-name">${(p.name||'').substring(0,40)}</p>
+              <p class="art-related-price">€ ${p.price ?? '—'}</p>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  ` : `
+    <div class="art-related">
+      <p class="art-related-title">Esplora il catalogo</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <a href="shop.html" style="display:inline-flex;align-items:center;gap:5px;padding:8px 14px;border-radius:999px;border:1px solid var(--line);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);transition:all .18s" onmouseover="this.style.borderColor='var(--accent2)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--line)';this.style.color='var(--muted)'">Tutto il catalogo →</a>
+      </div>
+    </div>
+  `;
+
+  // Share buttons
+  const shareURL = encodeURIComponent(window.location.href);
+  const shareTitle = encodeURIComponent(a.title);
+
+  content.innerHTML = `
+    <p class="modal-cat">${a.category}</p>
+    <div class="modal-meta-row">
+      <span class="modal-meta-chip">📅 ${a.date}</span>
+      <span class="modal-meta-chip">⏱ ${a.readTime} di lettura</span>
+    </div>
+    <h2 class="modal-title">${a.title}</h2>
+    ${sectionsHTML}
+    <div class="art-lesson">
+      <p class="art-lesson-title">Cosa ci insegna questo caso</p>
+      <p>${a.lezione}</p>
+    </div>
+    ${fontiHTML}
+    <div class="art-actions">
+      <button class="art-share-btn" onclick="navigator.share ? navigator.share({title:'${shareTitle}',url:window.location.href}) : window.open('https://twitter.com/intent/tweet?text=${shareTitle}&url=${shareURL}','_blank')">↗ Condividi</button>
+      <button class="art-share-btn" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${shareURL}','_blank')">Facebook</button>
+    </div>
+    ${relatedHTML}
+  `;
+
+  const overlay = document.getElementById('fvdModal');
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  // Reset scroll
+  content.scrollTop = 0;
+  overlay.querySelector('.modal-box').scrollTop = 0;
+}
+
+function closeModal() {
+  document.getElementById('fvdModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* ════════════════════════════════════════════
+   FILTRI
+   ════════════════════════════════════════════ */
+document.querySelectorAll('.fvd-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.fvd-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    currentFilter = chip.dataset.filter;
+    renderGrid(currentFilter);
+  });
+});
+
+/* ════════════════════════════════════════════
+   MODAL CLOSE
+   ════════════════════════════════════════════ */
+document.getElementById('fvdModalClose').addEventListener('click', closeModal);
+document.getElementById('fvdModal').addEventListener('click', e => {
+  if (e.target === document.getElementById('fvdModal')) closeModal();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+/* ════════════════════════════════════════════
+   NAV MOBILE
+   ════════════════════════════════════════════ */
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobClose = document.getElementById('mobClose');
+
+function openMobile() {
+  mobileMenu.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  menuBtn.setAttribute('aria-expanded', 'true');
+}
+function closeMobile() {
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+  menuBtn.setAttribute('aria-expanded', 'false');
+}
+
+menuBtn.addEventListener('click', openMobile);
+mobClose.addEventListener('click', closeMobile);
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('touchstart', function(e) { e.preventDefault(); closeMobile(); window.location.href = this.href; }, { passive: false });
+  a.addEventListener('click', closeMobile);
+});
+
+/* ════════════════════════════════════════════
+   CURSOR PERSONALIZZATO
+   ════════════════════════════════════════════ */
+const cBig = document.getElementById('cursorBig');
+const cDot = document.getElementById('cursorDot');
+if (cBig && cDot && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
+  document.addEventListener('mousemove', e => {
+    cDot.style.transform = `translate(${e.clientX}px,${e.clientY}px) translate(-50%,-50%)`;
+    cBig.style.transform = `translate(${e.clientX}px,${e.clientY}px) translate(-50%,-50%)`;
+  });
+}
+
+/* ════════════════════════════════════════════
+   REVEAL SCROLL
+   ════════════════════════════════════════════ */
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ════════════════════════════════════════════
+   BRAND WAVE HOVER
+   ════════════════════════════════════════════ */
+const brand = document.querySelector('.brand');
+if (brand) {
+  brand.addEventListener('mouseenter', () => {
+    brand.querySelectorAll('.lw').forEach((l, i) => {
+      setTimeout(() => { l.classList.add('up'); setTimeout(() => l.classList.remove('up'), 280); }, i * 38);
+    });
+  });
+}
+
+/* ════════════════════════════════════════════
+   CART COUNT (da cart-widget.js se presente)
+   ════════════════════════════════════════════ */
+(function updateCartCount() {
+  try {
+    const cart = JSON.parse(localStorage.getItem('rv_cart') || '[]');
+    const total = cart.reduce((s, i) => s + (i.qty || 1), 0);
+    const el = document.getElementById('cartCount');
+    if (el) { el.textContent = total; el.classList.toggle('zero', total === 0); }
+  } catch(e) {}
+})();
+
+/* ════════════════════════════════════════════
+   COOKIE
+   ════════════════════════════════════════════ */
+(function(){
+  var K='rv_consent';
+  function load(){try{return JSON.parse(localStorage.getItem(K));}catch(e){return null;}}
+  function save(o){try{localStorage.setItem(K,JSON.stringify(o));}catch(e){}}
+  if(load())return;
+  var b=document.getElementById('cookieBanner'),m=document.getElementById('cookieModal');
+  if(!b)return;
+  setTimeout(function(){b.classList.add('visible');},700);
+  function hb(){b.classList.remove('visible');setTimeout(function(){b.style.display='none';},420);}
+  function hm(){m.setAttribute('hidden','');}
+  document.getElementById('cookieAcceptAll').onclick=function(){save({t:1,a:1,mk:1,ts:Date.now()});hb();hm();};
+  document.getElementById('cookieNecessary').onclick=function(){save({t:1,a:0,mk:0,ts:Date.now()});hb();hm();};
+  document.getElementById('cookieCustomize').onclick=function(){m.removeAttribute('hidden');};
+  document.getElementById('cookieModalClose').onclick=hm;
+  document.getElementById('cookieSavePrefs').onclick=function(){
+    var a=document.getElementById('toggleAnalytics').checked,mk=document.getElementById('toggleMarketing').checked;
+    save({t:1,a:a?1:0,mk:mk?1:0,ts:Date.now()});hb();hm();
+  };
+  m.onclick=function(e){if(e.target===m)hm();};
+})();
+
+/* ════════════════════════════════════════════
+   INIT
+   ════════════════════════════════════════════ */
+loadCatalog().then(() => renderGrid('all'));
+</script>
+<script src="cart-widget.js" defer></script>
+</body>
+</html>

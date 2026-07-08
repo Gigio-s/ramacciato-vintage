@@ -879,7 +879,14 @@ Promise.all(
     var meta=results[0];
     var allProds=[];results.slice(1).forEach(function(arr){if(Array.isArray(arr))allProds=allProds.concat(arr);});
     var data={prodotti:allProds,sottocategorie:meta.sottocategorie||{}};
-    PRODUCTS=data.prodotti||[];SUBCATS_DATA=data.sottocategorie||{};
+    // Visibilità prodotti (gestita anche da admin.html):
+    //  - "nascosto": true  → oscurato manualmente dalla console admin
+    //  - senza immagine (né foto, né cover, né modello 3D) → oscurato automaticamente
+    // In entrambi i casi il prodotto RESTA nei file catalogo-*.json e riappare da solo
+    // appena si toglie il flag o si aggiunge una foto/cover/modello.
+    function rvHasVisual(p){return !!(p.model||p.cover||(p.photos&&p.photos.length&&p.photos[0]));}
+    function rvVisible(p){return !p.nascosto && rvHasVisual(p);}
+    PRODUCTS=(data.prodotti||[]).filter(rvVisible);SUBCATS_DATA=data.sottocategorie||{};
 (function(){
   // Popola contatori, non mostrare ancora prodotti
   ['all','videogiochi','elettronica','musica','libri','oggetti','trading','dvd'].forEach(function(c){var el=document.getElementById('cnt-'+c);if(el)el.textContent=c==='all'?PRODUCTS.length:PRODUCTS.filter(function(p){return p.cat===c}).length});

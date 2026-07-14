@@ -164,8 +164,9 @@ img{display:block;max-width:100%}
 /* ── HERO ─────────────────────────────────────────────── */
 .hero{
   min-height:100svh;display:flex;align-items:center;
-  padding:120px 0 72px;position:relative;overflow:hidden;
+  padding:120px 0 64px;position:relative;overflow:hidden;
 }
+#manifesto{border-top:1px solid var(--line)}
 /* big decorative year in background */
 .hero-bg-text{
   position:absolute;right:-2%;bottom:-4%;
@@ -1010,31 +1011,7 @@ footer{
   </div>
 </div>
 
-<!-- MARQUEE -->
-<div class="marquee-wrap" aria-hidden="true">
-  <div class="marquee-track">
-    <span>Art Decò</span><span class="dot">·</span>
-    <span>Anni 60</span><span class="dot">·</span>
-    <span>Modernariato</span><span class="dot">·</span>
-    <span>Anni 70</span><span class="dot">·</span>
-    <span>Design Italiano</span><span class="dot">·</span>
-    <span>Anni 80</span><span class="dot">·</span>
-    <span>Vintage</span><span class="dot">·</span>
-    <span>Anni 90</span><span class="dot">·</span>
-    <span>Y2K</span><span class="dot">·</span>
-    <span>Anni 2000</span><span class="dot">·</span>
-    <span>Art Decò</span><span class="dot">·</span>
-    <span>Anni 60</span><span class="dot">·</span>
-    <span>Modernariato</span><span class="dot">·</span>
-    <span>Anni 70</span><span class="dot">·</span>
-    <span>Design Italiano</span><span class="dot">·</span>
-    <span>Anni 80</span><span class="dot">·</span>
-    <span>Vintage</span><span class="dot">·</span>
-    <span>Anni 90</span><span class="dot">·</span>
-    <span>Y2K</span><span class="dot">·</span>
-    <span>Anni 2000</span><span class="dot">·</span>
-  </div>
-</div>
+<!-- MARQUEE rimosso -->
 
 <!-- ── FISICO VS DIGITALE PREVIEW ─────────────────────── -->
 <section id="manifesto">
@@ -1731,14 +1708,7 @@ footer{
     step();
   }
   escapeBtn.addEventListener('click', function(){
-    if(window.innerWidth <= 768){ open(); return; }
-    var today = new Date().toDateString();
-    if(localStorage.getItem(ESCAPE_KEY) !== today){
-      localStorage.setItem(ESCAPE_KEY, today);
-      runEscape();
-    } else {
-      open();
-    }
+    open();
   });
   document.getElementById('closeCatExplorer').addEventListener('click',close);
   overlay.addEventListener('click',function(e){if(e.target===overlay)close();});

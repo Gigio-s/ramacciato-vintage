@@ -502,6 +502,21 @@ footer{background:var(--dark);color:rgba(250,246,240,.75);position:relative;z-in
             <span>Spedizione (<span id="sum-zone-label">Italia</span>)</span>
             <span id="sum-shipping">€5,90</span>
           </div>
+
+          <!-- Codice sconto -->
+          <div style="display:flex;gap:8px;margin:12px 0 4px">
+            <input id="coupon-input" type="text" placeholder="Codice sconto" autocomplete="off"
+              style="flex:1;min-width:0;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;font-size:13px;font-family:inherit;text-transform:uppercase;background:#faf6f0;color:var(--ink);outline:none">
+            <button type="button" id="coupon-apply"
+              style="padding:10px 16px;border:none;border-radius:10px;background:var(--ink);color:#f0ebe3;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-family:inherit;cursor:pointer;flex-shrink:0">Applica</button>
+          </div>
+          <div id="coupon-msg" style="font-size:11.5px;min-height:15px;margin:0 0 4px;color:var(--muted)"></div>
+
+          <div class="sum-row" id="sum-discount-row" style="color:#2e7d32;display:none">
+            <span>Sconto <span id="sum-discount-code" style="font-weight:800"></span></span>
+            <span id="sum-discount">−€0,00</span>
+          </div>
+
           <div class="sum-sep"></div>
           <div class="sum-total">
             <span>Totale</span>
@@ -589,19 +604,21 @@ footer{background:var(--dark);color:rgba(250,246,240,.75);position:relative;z-in
 </footer>
 
 <!-- ═══════════════════════════════════════════════════════
-     PayPal JS SDK
-     ISTRUZIONE: sostituisci YOUR_PAYPAL_CLIENT_ID con il
-     Client ID che trovi in developer.paypal.com → Apps
-     Lascia currency=EUR e intent=capture
+     PayPal JS SDK — caricato dinamicamente da CONFIG.paypal_client_id
+     (vedi loadPayPalSDK più sotto). Per i test sandbox basta cambiare
+     CONFIG.paypal_client_id con il Client ID sandbox.
 ════════════════════════════════════════════════════════ -->
-<script src="https://www.paypal.com/sdk/js?client-id=AVi_0k_3cMqXNb36NhKDYRXLsk3WGsG7-Va01H8nSXra1OutsLpJc0svDtMD5PhpAUPdStRfuCFdTn8t&currency=EUR&intent=capture&locale=it_IT&enable-funding=card" data-namespace="paypal_sdk"></script>
 
 <script>
 /* ═══════════════════════════════════════════════════════
    CONFIGURAZIONE — modifica solo questi valori
 ════════════════════════════════════════════════════════ */
 var CONFIG = {
+  // Client ID PayPal per il SDK front-end.
+  // LIVE (attuale) ↓  — per testare in SANDBOX incolla qui il Client ID sandbox.
   paypal_client_id: 'AVi_0k_3cMqXNb36NhKDYRXLsk3WGsG7-Va01H8nSXra1OutsLpJc0svDtMD5PhpAUPdStRfuCFdTn8t',
+  // URL del Cloudflare Worker che valida i codici e crea/incassa gli ordini
+  worker_url: 'https://ramacciato-sconti.ramacciatoluca.workers.dev',
   stripe_enabled: false,                      // ← metti true quando hai Stripe configurato
   stripe_worker_url: '',                      // ← URL del Cloudflare Worker Stripe
   spedizione: {
@@ -620,7 +637,9 @@ var state = {
   cart:        [],
   zona:        'italia',
   wantsInvoice: false,
-  tipoFattura: 'privato'
+  tipoFattura: 'privato',
+  discount:     0,      // sconto in € (validato dal Worker)
+  discountCode: null    // codice applicato
 };
 
 /* ═══════════════════════════════════════════════════════
@@ -638,7 +657,45 @@ function getShippingCost(){
   return CONFIG.spedizione[state.zona].costo;
 }
 function getTotal(){
-  return getSubtotal() + getShippingCost();
+  var t = getSubtotal() + getShippingCost() - (state.discount || 0);
+  return t < 0 ? 0 : t;
+}
+
+/* ═══════════════════════════════════════════════════════
+   CODICE SCONTO — validato dal Worker (prezzi/categoria server-side)
+════════════════════════════════════════════════════════ */
+function cartForWorker(){
+  return state.cart.map(function(i){ return { id: i.id, qty: i.qty || 1 }; });
+}
+function clearCoupon(silent){
+  state.discount = 0; state.discountCode = null;
+  if(!silent){ var m = document.getElementById('coupon-msg'); if(m){ m.style.color = 'var(--muted)'; m.textContent = ''; } }
+  updateSummary();
+}
+function applyCoupon(){
+  var input = document.getElementById('coupon-input');
+  var msg   = document.getElementById('coupon-msg');
+  var code  = (input.value || '').trim().toUpperCase();
+  if(!code){ clearCoupon(); return; }
+  if(!state.cart.length){ msg.style.color = '#b3261e'; msg.textContent = 'Il carrello è vuoto.'; return; }
+  msg.style.color = 'var(--muted)'; msg.textContent = 'Verifica…';
+  fetch(CONFIG.worker_url + '/quote', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ items: cartForWorker(), code: code, zona: state.zona })
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(d){
+    if(d && d.discount && d.discount > 0){
+      state.discount = d.discount; state.discountCode = d.code;
+      msg.style.color = '#2e7d32'; msg.textContent = 'Codice applicato: −' + fmtPrice(d.discount);
+    } else {
+      state.discount = 0; state.discountCode = null;
+      msg.style.color = '#b3261e'; msg.textContent = 'Codice non valido o nessun articolo idoneo nel carrello.';
+    }
+    updateSummary();
+  })
+  .catch(function(){ msg.style.color = '#b3261e'; msg.textContent = 'Errore di verifica. Riprova.'; });
 }
 
 function showToast(msg){
@@ -732,9 +789,23 @@ function updateSummary(){
   var tot = sub + ship;
   var conf = CONFIG.spedizione[state.zona];
 
+  var disc = state.discount || 0;
+  tot = sub + ship - disc;
+  if(tot < 0) tot = 0;
+
   document.getElementById('sum-subtotal').textContent = fmtPrice(sub);
   document.getElementById('sum-zone-label').textContent = conf.label;
   document.getElementById('sum-shipping').textContent = ship === 0 ? 'Gratuita 🎉' : fmtPrice(ship);
+
+  var discRow = document.getElementById('sum-discount-row');
+  if(disc > 0){
+    document.getElementById('sum-discount').textContent = '−' + fmtPrice(disc);
+    document.getElementById('sum-discount-code').textContent = state.discountCode ? '('+state.discountCode+')' : '';
+    if(discRow) discRow.style.display = '';
+  } else if(discRow){
+    discRow.style.display = 'none';
+  }
+
   document.getElementById('sum-total').textContent = fmtPrice(tot);
 
   var freeNotice = document.getElementById('ship-free-notice');
@@ -867,6 +938,22 @@ function buildShippingAddress(){
 /* ═══════════════════════════════════════════════════════
    PAYPAL BUTTONS + CARTA DI CREDITO/DEBITO
 ════════════════════════════════════════════════════════ */
+/* Carica il SDK PayPal usando il Client ID da CONFIG (così basta
+   cambiare un valore per passare live↔sandbox). */
+function loadPayPalSDK(){
+  var container = document.getElementById('paypal-button-container');
+  var s = document.createElement('script');
+  s.src = 'https://www.paypal.com/sdk/js?client-id=' + encodeURIComponent(CONFIG.paypal_client_id)
+        + '&currency=EUR&intent=capture&locale=it_IT&enable-funding=card';
+  s.setAttribute('data-namespace', 'paypal_sdk');
+  s.onload  = function(){ initPayPal(); };
+  s.onerror = function(){
+    if(container){ container.classList.remove('loading');
+      container.innerHTML = '<div style="text-align:center;padding:14px;color:var(--muted);font-size:12px;">Impossibile caricare PayPal. Controlla la connessione.</div>'; }
+  };
+  document.head.appendChild(s);
+}
+
 function initPayPal(){
   var container = document.getElementById('paypal-button-container');
 
@@ -891,63 +978,43 @@ function initPayPal(){
   container.classList.remove('loading');
 
   /* Funzioni condivise ────────────────────────────────── */
+  /* Ordine creato LATO SERVER dal Worker: prezzi/sconto autorevoli,
+     il browser non decide l'importo. */
   function createOrder(data, actions){
-    var sub  = getSubtotal();
-    var ship = getShippingCost();
-    var tot  = sub + ship;
-    var items = state.cart.map(function(item){
-      return {
-        name: (item.name||'Articolo').substring(0,127),
-        quantity: String(item.qty||1),
-        unit_amount: { currency_code:'EUR', value:(item.price||0).toFixed(2) },
-        category: 'PHYSICAL_GOODS'
-      };
-    });
-    var note = buildInvoiceNote();
-    var addr = buildShippingAddress();
-    return actions.order.create({
-      purchase_units: [{
-        description: (note||'Ramacciato Vintage — Ordine').substring(0,127),
-        soft_descriptor: 'Ramacciato Vintage',
-        amount: {
-          currency_code: 'EUR',
-          value: tot.toFixed(2),
-          breakdown: {
-            item_total: { currency_code:'EUR', value:sub.toFixed(2) },
-            shipping:   { currency_code:'EUR', value:ship.toFixed(2) }
-          }
-        },
-        items: items,
-        shipping: {
-          name:    { full_name: addr.name },
-          address: {
-            address_line_1: addr.address_line_1,
-            postal_code:    addr.postal_code,
-            admin_area_2:   addr.city,
-            country_code:   addr.country_code
-          }
-        }
-      }],
-      application_context: {
-        brand_name:          'Ramacciato Vintage',
-        locale:              'it-IT',
-        shipping_preference: 'SET_PROVIDED_ADDRESS',
-        user_action:         'PAY_NOW',
-        return_url:  window.location.origin+'/success.html',
-        cancel_url:  window.location.href
-      }
+    return fetch(CONFIG.worker_url + '/create-order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        items: cartForWorker(),
+        code:  state.discountCode || '',
+        zona:  state.zona
+      })
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if(!d || !d.id) throw new Error(d && d.error ? d.error : 'create-order');
+      return d.id;
     });
   }
 
   function onApprove(data, actions){
-    return actions.order.capture().then(function(orderData){
+    return fetch(CONFIG.worker_url + '/capture-order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ orderID: data.orderID })
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(orderData){
+      var payer = (orderData && orderData.payer) || {};
       localStorage.removeItem('rv_cart_v1');
       sessionStorage.setItem('rv_order', JSON.stringify({
-        orderId:  orderData.id,
-        payerId:  orderData.payer.payer_id,
-        email:    (orderData.payer.email_address || val('ship-email')),
+        orderId:  (orderData && orderData.id) || data.orderID,
+        payerId:  payer.payer_id || '',
+        email:    (payer.email_address || val('ship-email')),
         nome:     val('ship-nome')+' '+val('ship-cognome'),
         tot:      getTotal().toFixed(2),
+        sconto:   (state.discount || 0).toFixed(2),
+        codice:   state.discountCode || '',
         fattura:  state.wantsInvoice,
         ts:       Date.now(),
         zona:     state.zona || 'standard',
@@ -959,7 +1026,8 @@ function initPayPal(){
         })
       }));
       window.location.href = 'success.html';
-    });
+    })
+    .catch(function(err){ console.error('capture error:', err); showToast('Errore nella conferma del pagamento. Contattaci se hai già pagato.'); });
   }
 
   function onClick(data, actions){
@@ -1019,14 +1087,14 @@ document.addEventListener('DOMContentLoaded', function(){
   updateSummary();
   initInvoice();
 
-  // Aspetta il SDK PayPal prima di inizializzare i pulsanti
-  if(typeof paypal_sdk !== 'undefined'){
-    initPayPal();
-  } else {
-    window.addEventListener('load', function(){
-      setTimeout(initPayPal, 500);
-    });
-  }
+  // Codice sconto — bottone Applica + Invio
+  var couponBtn = document.getElementById('coupon-apply');
+  var couponInp = document.getElementById('coupon-input');
+  if(couponBtn) couponBtn.addEventListener('click', applyCoupon);
+  if(couponInp) couponInp.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); applyCoupon(); } });
+
+  // Carica il SDK PayPal (dinamico da CONFIG) e inizializza i pulsanti
+  loadPayPalSDK();
 
   // Rimuovi errore al cambio campo
   document.querySelectorAll('input,select').forEach(function(el){

@@ -416,6 +416,56 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
   </div>
 </div>
 
+<!-- ── ULTIME NOTIZIE (auto da news.json, aggiornato settimanalmente) ── -->
+<section class="fvd-section" id="ultime-notizie">
+  <div class="wrap">
+    <style>
+      #ultime-notizie .news-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+      #ultime-notizie .news-head h2{font-size:clamp(22px,4vw,32px);font-weight:900;letter-spacing:-.03em;margin:0;text-transform:uppercase;color:var(--ink)}
+      #ultime-notizie .news-sub{font-size:11.5px;color:var(--muted);font-weight:700;letter-spacing:.04em}
+      #ultime-notizie .news-list{display:flex;flex-direction:column}
+      #ultime-notizie .news-item{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:17px 4px;border-bottom:1px solid var(--line);text-decoration:none;color:inherit;transition:padding-left .18s,background .18s}
+      #ultime-notizie .news-item:hover{padding-left:12px;background:rgba(139,62,16,.03)}
+      #ultime-notizie .news-item-main{display:flex;align-items:center;gap:14px;min-width:0}
+      #ultime-notizie .news-badge{flex-shrink:0;font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:rgba(14,12,10,.7);padding:4px 9px;border-radius:999px}
+      #ultime-notizie .news-item h3{font-size:15px;font-weight:800;letter-spacing:-.01em;margin:0;line-height:1.35;color:var(--ink)}
+      #ultime-notizie .news-meta{flex-shrink:0;font-size:11px;font-weight:700;color:var(--muted);white-space:nowrap;display:flex;align-items:center;gap:8px}
+      #ultime-notizie .news-arrow{color:var(--accent);font-weight:900}
+      @media(max-width:600px){#ultime-notizie .news-item{flex-direction:column;align-items:flex-start;gap:8px}}
+    </style>
+    <div class="news-head">
+      <h2>Ultime notizie</h2>
+      <span class="news-sub" id="newsUpdated">Aggiornato ogni settimana</span>
+    </div>
+    <div class="news-list" id="newsList">
+      <p style="color:var(--muted);font-size:13px">Caricamento…</p>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var MESI=['gen','feb','mar','apr','mag','giu','lug','ago','set','ott','nov','dic'];
+  function fmt(iso){var p=String(iso||'').split('-');if(p.length<3)return iso;return parseInt(p[2],10)+' '+(MESI[parseInt(p[1],10)-1]||'')+' '+p[0];}
+  function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+  var list=document.getElementById('newsList');
+  fetch('news.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(data){
+    var items=(data&&data.items)||[];
+    items.sort(function(a,b){return String(b.date||'').localeCompare(String(a.date||''));});
+    if(!items.length){list.innerHTML='<p style="color:var(--muted);font-size:13px">Nessuna notizia al momento.</p>';return;}
+    list.innerHTML=items.map(function(n){
+      return '<a class="news-item" href="'+esc(n.url)+'" target="_blank" rel="noopener">'
+        +'<div class="news-item-main"><span class="news-badge">'+esc(n.cat||'Notizia')+'</span>'
+        +'<h3>'+esc(n.title)+'</h3></div>'
+        +'<div class="news-meta">'+esc(n.source||'')+' · '+fmt(n.date)+' <span class="news-arrow">→</span></div>'
+        +'</a>';
+    }).join('');
+    var up=document.getElementById('newsUpdated');
+    if(up&&data.updated)up.textContent='Aggiornato al '+fmt(data.updated);
+  }).catch(function(){list.innerHTML='<p style="color:var(--muted);font-size:13px">Notizie non disponibili al momento.</p>';});
+})();
+</script>
+
 <!-- ── ARTICOLI ── -->
 <section class="fvd-section" id="articoli">
   <div class="wrap">

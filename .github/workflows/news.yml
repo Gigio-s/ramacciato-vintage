@@ -1,0 +1,45 @@
+name: Aggiornamento notizie settimanale
+
+# Gira ogni lunedi alle 08:00 UTC. "workflow_dispatch" = puoi lanciarlo a mano.
+on:
+  schedule:
+    - cron: "0 8 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  news:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Installa dipendenze
+        run: pip install feedparser
+
+      - name: Pesca notizie
+        run: python scripts/fetch_news.py
+
+      - name: Apri Pull Request con le notizie nuove
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "notizie: aggiornamento settimanale automatico"
+          branch: auto/news-update
+          delete-branch: true
+          title: "Notizie della settimana (da approvare)"
+          body: |
+            Aggiornamento automatico di `news.json`.
+
+            Controlla le notizie qui sotto nel file modificato:
+            - se vanno bene, **Merge** -> vanno online.
+            - se qualcuna non ti piace, modificala/rimuovila prima di fare Merge,
+              oppure chiudi la PR senza unire.
+          labels: notizie-auto

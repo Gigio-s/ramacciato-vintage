@@ -1068,6 +1068,31 @@ footer{
 
     </div>
 
+    <div id="idxNews" style="margin-top:44px;padding-top:26px;border-top:1px solid var(--line)"></div>
+    <style>
+      #idxNews .nt{font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+      #idxNews .ni{display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:12px 0;border-bottom:1px solid var(--line);text-decoration:none;color:inherit}
+      #idxNews .ni:last-child{border-bottom:none}
+      #idxNews .ni h4{margin:0;font-size:13.5px;font-weight:800;letter-spacing:-.01em;color:var(--ink);line-height:1.4}
+      #idxNews .ni:hover h4{color:var(--accent)}
+      #idxNews .ni .nm{flex-shrink:0;font-size:10.5px;font-weight:700;color:var(--muted);white-space:nowrap}
+    </style>
+    <script>
+    (function(){
+      var M=['gen','feb','mar','apr','mag','giu','lug','ago','set','ott','nov','dic'];
+      function fmt(iso){var p=String(iso||'').split('-');if(p.length<3)return iso;return parseInt(p[2],10)+' '+(M[parseInt(p[1],10)-1]||'')+' '+p[0];}
+      function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+      var el=document.getElementById('idxNews'); if(!el) return;
+      fetch('news.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(d){
+        var items=((d&&d.items)||[]).slice().sort(function(a,b){return String(b.date||'').localeCompare(String(a.date||''));}).slice(0,3);
+        if(!items.length){el.style.display='none';return;}
+        el.innerHTML='<p class="nt">Ultime notizie</p>'+items.map(function(n){
+          return '<a class="ni" href="'+esc(n.url)+'" target="_blank" rel="noopener"><h4>'+esc(n.title)+'</h4><span class="nm">'+esc(n.source||'')+' · '+fmt(n.date)+'</span></a>';
+        }).join('');
+      }).catch(function(){el.style.display='none';});
+    })();
+    </script>
+
   </div>
 </section>
 

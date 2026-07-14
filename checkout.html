@@ -672,19 +672,23 @@ function clearCoupon(silent){
   if(!silent){ var m = document.getElementById('coupon-msg'); if(m){ m.style.color = 'var(--muted)'; m.textContent = ''; } }
   updateSummary();
 }
+var couponBusy = false;
 function applyCoupon(){
   var input = document.getElementById('coupon-input');
   var msg   = document.getElementById('coupon-msg');
+  var btn   = document.getElementById('coupon-apply');
   var code  = (input.value || '').trim().toUpperCase();
   if(!code){ clearCoupon(); return; }
   if(!state.cart.length){ msg.style.color = '#b3261e'; msg.textContent = 'Il carrello è vuoto.'; return; }
+  if(couponBusy) return;                       // evita doppio invio
+  couponBusy = true; if(btn) btn.disabled = true;
   msg.style.color = 'var(--muted)'; msg.textContent = 'Verifica…';
   fetch(CONFIG.worker_url + '/quote', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ items: cartForWorker(), code: code, zona: state.zona })
   })
-  .then(function(r){ return r.json(); })
+  .then(function(r){ if(!r.ok) throw new Error('http ' + r.status); return r.json(); })
   .then(function(d){
     if(d && d.discount && d.discount > 0){
       state.discount = d.discount; state.discountCode = d.code;
@@ -695,7 +699,8 @@ function applyCoupon(){
     }
     updateSummary();
   })
-  .catch(function(){ msg.style.color = '#b3261e'; msg.textContent = 'Errore di verifica. Riprova.'; });
+  .catch(function(){ msg.style.color = '#b3261e'; msg.textContent = 'Errore di verifica. Riprova.'; })
+  .then(function(){ couponBusy = false; if(btn) btn.disabled = false; });
 }
 
 function showToast(msg){

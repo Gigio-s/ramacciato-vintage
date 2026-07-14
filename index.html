@@ -1078,7 +1078,7 @@ footer{
       <div class="roulette-left reveal">
         <p class="sec-label">Sconto del giorno</p>
         <h2 class="h2">Gira il<br>Vinile</h2>
-        <p class="body-copy">Ruota il vinile e scopri lo <strong>sconto del giorno</strong>: ogni spin rivela una categoria con il <strong>5% di sconto</strong>. Copia il codice e usalo nello shop.</p>
+        <p class="body-copy">Ruota il vinile e scopri lo <strong>sconto di oggi</strong>: ogni giorno una categoria diversa con il <strong>5% di sconto</strong>. Il codice si applica da solo al checkout.</p>
         <div class="spin-hint">
           <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M7 1v5M7 1L4.5 3.5M7 1l2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1278,6 +1278,15 @@ footer{
     {emoji:'🎬',name:'DVD &amp; Film',desc:'DVD originali di film, serie TV, animazione e documentari in ottime condizioni.',tags:'Cinema · Collezionismo',href:'shop.html',codice:'RV-DVD5'}
   ];
 
+  /* Sconto del giorno: una categoria al giorno, in rotazione.
+     L'ordine di CATS combacia con ORDER nel Worker. */
+  var RV_WORKER='https://ramacciato-sconti.ramacciatoluca.workers.dev';
+  function localTodayIdx(){ return Math.floor(Date.now()/86400000) % CATS.length; }
+  var todayIdx = localTodayIdx();
+  fetch(RV_WORKER+'/today').then(function(r){return r.json();}).then(function(d){
+    if(d && typeof d.index==='number' && d.index>=0 && d.index<CATS.length) todayIdx=d.index;
+  }).catch(function(){});
+
   var stage=document.getElementById('orbitLp');
   var disc=document.getElementById('cdDiscLp');
   var panel=document.getElementById('orbitPanel');
@@ -1347,14 +1356,14 @@ footer{
   /* ── mostra overlay roulette ── */
   function showRoulette(){
     if(!rrBox) return;
-    var ci=getTopCat();
-    if(ci<0) ci=0;
+    var ci=todayIdx; if(ci<0||ci>=CATS.length) ci=0;  /* sempre lo sconto di oggi */
     var cat=CATS[ci];
     if(rrEmoji) rrEmoji.textContent=cat.emoji;
     if(rrCat)   rrCat.innerHTML=cat.name;
     if(rrCode)  rrCode.textContent=cat.codice;
     if(rrShop)  rrShop.href=cat.href;
     if(rrCopy)  rrCopy.textContent='📋 Copia';
+    try{ localStorage.setItem('rv_coupon', cat.codice); }catch(e){}  /* auto-applica al checkout */
     rrBox.classList.add('is-vis');
     paused=true;
   }

@@ -1098,6 +1098,15 @@ document.addEventListener('DOMContentLoaded', function(){
   if(couponBtn) couponBtn.addEventListener('click', applyCoupon);
   if(couponInp) couponInp.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); applyCoupon(); } });
 
+  // Auto-applica il codice vinto al "Gira il Vinile" (salvato in localStorage)
+  try{
+    var savedCoupon = localStorage.getItem('rv_coupon');
+    if(savedCoupon && couponInp && state.cart.length){
+      couponInp.value = savedCoupon;
+      applyCoupon();
+    }
+  }catch(e){}
+
   // Carica il SDK PayPal (dinamico da CONFIG) e inizializza i pulsanti
   loadPayPalSDK();
 

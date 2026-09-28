@@ -28,7 +28,7 @@
 <link rel="icon" type="image/png" href="logo no sfondo.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ramacciatovintage.it/archivio-licenze.html">
-<meta property="og:title" content="Archivio delle Licenze Perse — Ramacciato Vintage">
+<meta property="og:title" content="Archivio delle Licenze Perse - Ramacciato Vintage">
 <meta property="og:description" content="Cronologia documentata dei casi in cui contenuti digitali acquistati sono diventati inaccessibili.">
 <meta property="og:image" content="https://ramacciatovintage.it/logo%20no%20sfondo.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -167,6 +167,23 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
 @media(max-width:768px){.nav{backdrop-filter:none;padding:8px 12px 8px 14px}.page-hero{padding:90px 0 36px}}
 @media(max-width:480px){.arch-stats{grid-template-columns:1fr 1fr}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+/* Niente lineette davanti alle etichette dei titoli */
+.hero-kicker::before,.sec-label::before,.legal-kicker::before,.ck-section-title::before,.pay-title::before,.scheda .sez::before{display:none!important;content:none!important}
+
+/* Menu mobile ridisegnato */
+#mobileMenu{z-index:100001!important;background:linear-gradient(180deg,#4a90e0 0%,#3f84d6 100%)!important;padding:96px 24px 90px!important;gap:0!important;justify-content:flex-start!important;overflow-y:auto}
+#mobileMenu::before{content:"Ramacciato Vintage";position:absolute;top:34px;left:24px;font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+#mobileMenu::after{content:"\201COwn what you buy.\201D";position:absolute;left:24px;bottom:34px;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:20px;color:var(--ink);opacity:.8}
+#mobileMenu a{display:flex!important;align-items:center;justify-content:space-between;font-size:26px!important;letter-spacing:-.03em!important;line-height:1.1!important;padding:18px 4px!important;border-bottom:1px solid rgba(11,37,69,.16);color:var(--ink)!important;opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s}
+#mobileMenu a:first-of-type{border-top:1px solid rgba(11,37,69,.16)}
+#mobileMenu a::after{content:"\2192";font-size:20px;font-weight:600;opacity:.45;transition:transform .2s,opacity .2s}
+#mobileMenu a.attivo{color:#fff!important}
+#mobileMenu a.attivo::after{opacity:1}
+#mobileMenu.open a{opacity:1;transform:none}
+#mobileMenu.open a:nth-of-type(2){transition-delay:.04s}#mobileMenu.open a:nth-of-type(3){transition-delay:.08s}#mobileMenu.open a:nth-of-type(4){transition-delay:.12s}#mobileMenu.open a:nth-of-type(5){transition-delay:.16s}
+#mobileMenu .mob-logo{display:block;margin:auto;width:92px;height:auto;padding-bottom:36px;opacity:.9;pointer-events:none}
+#mobClose{position:absolute!important;top:22px!important;right:18px!important;width:48px!important;height:48px!important;border-radius:50%!important;border:0!important;background:#fff!important;color:var(--ink)!important;font-size:18px!important;box-shadow:0 6px 18px rgba(11,37,69,.2);touch-action:manipulation;z-index:2}
 </style>
 </head>
 <body>
@@ -317,7 +334,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
       </div>
     </div>
     <div class="foot-bottom">
-      <div class="foot-bottom-left"><span>&copy; 2026 Ramacciato Vintage — Luca Ramacciato — P.IVA IT04400570240 — Vicenza</span></div>
+      <div class="foot-bottom-left"><span>&copy; 2026 Ramacciato Vintage - Luca Ramacciato - P.IVA IT04400570240 - Vicenza</span></div>
       <div class="foot-legal">
         <a href="privacy-policy.html">Privacy Policy</a><span>·</span>
         <a href="termini-di-servizio.html">Termini di Servizio</a><span>·</span>
@@ -372,7 +389,7 @@ const ARCHIVE = [
   { year: 2023, cat: 'cinema', catLabel: 'Cinema', severity: 'high',
     title: 'PlayStation rimuove film Discovery acquistati dagli utenti',
     date: 'Agosto 2023',
-    desc: 'Sony rimuove dalla libreria PlayStation Store i film acquistati tramite accordo con Discovery. Gli utenti hanno 30 giorni per "scaricarli" — ma il download non è possibile sulla piattaforma. Nessun rimborso automatico.',
+    desc: 'Sony rimuove dalla libreria PlayStation Store i film acquistati tramite accordo con Discovery. Gli utenti hanno 30 giorni per "scaricarli" - ma il download non è possibile sulla piattaforma. Nessun rimborso automatico.',
     fonte: 'Ars Technica, The Guardian (2023)' },
   { year: 2023, cat: 'videogiochi', catLabel: 'Videogiochi', severity: 'high',
     title: 'Nintendo chiude definitivamente il Wii Shop Channel',
@@ -383,7 +400,7 @@ const ARCHIVE = [
     title: 'Google Stadia chiude: rimborsi parziali per i giochi acquistati',
     date: 'Gennaio 2023',
     desc: 'Google chiude il servizio di cloud gaming Stadia. Google offre rimborsi per i giochi acquistati, ma il caso dimostra il rischio strutturale del cloud gaming: se il servizio chiude, i giochi scompaiono.',
-    fonte: 'The Verge, Google (2022–2023)' },
+    fonte: 'The Verge, Google (2022-2023)' },
   { year: 2022, cat: 'cinema', catLabel: 'Cinema', severity: 'medium',
     title: 'Microsoft smette di vendere e noleggiare film e serie TV',
     date: 'Luglio 2022',
@@ -396,7 +413,7 @@ const ARCHIVE = [
     fonte: 'Engadget, TechCrunch (2022)' },
   { year: 2021, cat: 'videogiochi', catLabel: 'Videogiochi', severity: 'high',
     title: 'Sony annuncia la chiusura dello store PS3/PSP/Vita (poi revocata)',
-    date: 'Marzo–Agosto 2021',
+    date: 'Marzo-Agosto 2021',
     desc: 'Sony annuncia la chiusura dello store PlayStation per PS3, PSP e PS Vita. Dopo le proteste degli utenti, revoca la decisione per PS3 e PS Vita. Il caso mostra la vulnerabilità delle librerie digitali su hardware legacy.',
     fonte: 'PlayStation Blog, Kotaku (2021)' },
   { year: 2019, cat: 'videogiochi', catLabel: 'Videogiochi', severity: 'medium',
@@ -431,9 +448,9 @@ const ARCHIVE = [
     fonte: 'The Guardian, TechCrunch (2012)' },
   { year: 2011, cat: 'videogiochi', catLabel: 'Videogiochi', severity: 'medium',
     title: 'Sony disattiva i server di PlayStation Home e numerosi giochi PS3',
-    date: '2011–2015 (graduale)',
-    desc: 'Sony disattiva progressivamente i server multiplayer di decine di titoli PS3. I giochi rimangono giocabili in single player (se fisici), ma il contenuto online — spesso acquistato separatamente — diventa inaccessibile.',
-    fonte: 'Vari, PlayStation Blog (2011–2015)' },
+    date: '2011-2015 (graduale)',
+    desc: 'Sony disattiva progressivamente i server multiplayer di decine di titoli PS3. I giochi rimangono giocabili in single player (se fisici), ma il contenuto online - spesso acquistato separatamente - diventa inaccessibile.',
+    fonte: 'Vari, PlayStation Blog (2011-2015)' },
   { year: 2009, cat: 'libri', catLabel: 'Libri', severity: 'high',
     title: 'Amazon cancella a distanza copie di "1984" da Kindle: il caso che ha definito il problema',
     date: 'Luglio 2009',
@@ -552,5 +569,15 @@ document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
 renderTimeline('all');
 </script>
 <script src="cart-widget.js" defer></script>
+<script>
+/* Menu mobile: chiusura senza "tocco fantasma" sul pulsante Menu */
+(function(){var mob=document.getElementById('mobileMenu'),btn=document.getElementById('menuBtn'),x=document.getElementById('mobClose');if(!mob||!btn||!x)return;
+var chiusoAlle=0;
+function chiudi(e){if(e){e.preventDefault();e.stopPropagation();}mob.classList.remove('open');btn.setAttribute('aria-expanded','false');document.body.style.overflow='';chiusoAlle=Date.now();}
+x.addEventListener('touchend',chiudi,{capture:true,passive:false});x.addEventListener('click',chiudi,true);
+btn.addEventListener('click',function(e){if(Date.now()-chiusoAlle<600){e.preventDefault();e.stopImmediatePropagation();}},true);
+if(!mob.querySelector('.mob-logo')){var lg=new Image();lg.src='logo no sfondo.png';lg.alt='';lg.className='mob-logo';mob.appendChild(lg);}var qui=location.pathname.split('/').pop()||'index.html';mob.querySelectorAll('a').forEach(function(a){if(a.getAttribute('href')===qui)a.classList.add('attivo');});
+})();
+</script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Checkout — Ramacciato Vintage">
+<meta name="description" content="Checkout - Ramacciato Vintage">
 <meta name="robots" content="noindex,nofollow">
 <link rel="icon" type="image/png" href="logo no sfondo.png">
 <title>Checkout | Ramacciato Vintage</title>
@@ -257,6 +257,9 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);position:relative;z-in
 /* Nasconde i campi indirizzo fisico in modalità punto di ritiro */
 #address-form.pickup-mode .address-only{display:none}
 @media(max-width:500px){.pickup-carriers{flex-direction:column}.pickup-carrier-btn{justify-content:center}}
+
+/* Niente lineette davanti alle etichette dei titoli */
+.hero-kicker::before,.sec-label::before,.legal-kicker::before,.ck-section-title::before,.pay-title::before,.scheda .sez::before{display:none!important;content:none!important}
 </style>
 </head>
 <body>
@@ -313,8 +316,8 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);position:relative;z-in
               <input type="radio" name="spedizione" value="italia" checked>
               <div class="ship-radio"></div>
               <div class="ship-label">
-                <div class="ship-name">Italia — Spedizione Standard</div>
-                <div class="ship-days">3–5 giorni lavorativi</div>
+                <div class="ship-name">Italia - Spedizione Standard</div>
+                <div class="ship-days">3-5 giorni lavorativi</div>
               </div>
               <div class="ship-price" id="ship-price-italia">€5,90</div>
             </div>
@@ -322,8 +325,8 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);position:relative;z-in
               <input type="radio" name="spedizione" value="europa">
               <div class="ship-radio"></div>
               <div class="ship-label">
-                <div class="ship-name">Europa — Spedizione Internazionale</div>
-                <div class="ship-days">7–14 giorni lavorativi</div>
+                <div class="ship-name">Europa - Spedizione Internazionale</div>
+                <div class="ship-days">7-14 giorni lavorativi</div>
               </div>
               <div class="ship-price" id="ship-price-europa">€12,90</div>
             </div>
@@ -331,7 +334,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);position:relative;z-in
               <input type="radio" name="spedizione" value="pickup">
               <div class="ship-radio"></div>
               <div class="ship-label">
-                <div class="ship-name">Punto di ritiro — BRT · GLS · Posta · InPost</div>
+                <div class="ship-name">Punto di ritiro - BRT · GLS · Posta · InPost</div>
                 <div class="ship-days">Scegli tabaccheria, edicola, locker o ufficio postale vicino a te</div>
               </div>
               <div class="ship-price" id="ship-price-pickup">€3,90</div>
@@ -358,7 +361,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);position:relative;z-in
             </div>
             <div class="pickup-selected-wrap">
               <div class="pickup-selected-label">Punto selezionato *</div>
-              <textarea class="pickup-selected-point" id="pickup-point" rows="2" placeholder="Es: BRT Fermopoint — Tabaccheria Roma, Via Garibaldi 14, 20100 Milano"></textarea>
+              <textarea class="pickup-selected-point" id="pickup-point" rows="2" placeholder="Es: BRT Fermopoint - Tabaccheria Roma, Via Garibaldi 14, 20100 Milano"></textarea>
               <p class="pickup-note">Clicca uno dei corrieri qui sopra, trova il punto più vicino a te e copia qui nome e indirizzo completo.</p>
             </div>
           </div>
@@ -604,26 +607,26 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);position:relative;z-in
 </footer>
 
 <!-- ═══════════════════════════════════════════════════════
-     PayPal JS SDK — caricato dinamicamente da CONFIG.paypal_client_id
+     PayPal JS SDK - caricato dinamicamente da CONFIG.paypal_client_id
      (vedi loadPayPalSDK più sotto). Per i test sandbox basta cambiare
      CONFIG.paypal_client_id con il Client ID sandbox.
 ════════════════════════════════════════════════════════ -->
 
 <script>
 /* ═══════════════════════════════════════════════════════
-   CONFIGURAZIONE — modifica solo questi valori
+   CONFIGURAZIONE - modifica solo questi valori
 ════════════════════════════════════════════════════════ */
 var CONFIG = {
   // Client ID PayPal per il SDK front-end.
-  // LIVE (attuale) ↓  — per testare in SANDBOX incolla qui il Client ID sandbox.
+  // LIVE (attuale) ↓ - per testare in SANDBOX incolla qui il Client ID sandbox.
   paypal_client_id: 'AVi_0k_3cMqXNb36NhKDYRXLsk3WGsG7-Va01H8nSXra1OutsLpJc0svDtMD5PhpAUPdStRfuCFdTn8t',
   // URL del Cloudflare Worker che valida i codici e crea/incassa gli ordini
   worker_url: 'https://ramacciato-sconti.ramacciatoluca.workers.dev',
   stripe_enabled: false,                      // ← metti true quando hai Stripe configurato
   stripe_worker_url: '',                      // ← URL del Cloudflare Worker Stripe
   spedizione: {
-    italia:  { costo: 5.90,  label: 'Italia',          giorni: '3–5 gg lavorativi' },
-    europa:  { costo: 12.90, label: 'Europa',           giorni: '7–14 gg lavorativi' },
+    italia:  { costo: 5.90,  label: 'Italia',          giorni: '3-5 gg lavorativi' },
+    europa:  { costo: 12.90, label: 'Europa',           giorni: '7-14 gg lavorativi' },
     pickup:  { costo: 3.90,  label: 'Punto di ritiro',  giorni: 'Ritiro presso il punto scelto' }
   },
   gratuita_sopra: 50.00,  // spedizione gratuita sopra questa cifra
@@ -662,7 +665,7 @@ function getTotal(){
 }
 
 /* ═══════════════════════════════════════════════════════
-   CODICE SCONTO — validato dal Worker (prezzi/categoria server-side)
+   CODICE SCONTO - validato dal Worker (prezzi/categoria server-side)
 ════════════════════════════════════════════════════════ */
 function cartForWorker(){
   return state.cart.map(function(i){ return { id: i.id, qty: i.qty || 1 }; });
@@ -710,7 +713,7 @@ function showToast(msg){
 }
 
 /* ═══════════════════════════════════════════════════════
-   CARRELLO — legge da localStorage
+   CARRELLO - legge da localStorage
 ════════════════════════════════════════════════════════ */
 function loadCart(){
   try{ return JSON.parse(localStorage.getItem('rv_cart_v1')||'[]'); }
@@ -721,7 +724,7 @@ function renderCartItems(){
   state.cart = loadCart();
   var el = document.getElementById('cart-items-list');
   if(!state.cart.length){
-    el.innerHTML = '<div class="cart-empty"><p>🛒</p><span>Il carrello è vuoto — <a href="shop.html" style="color:var(--accent)">torna allo shop</a></span></div>';
+    el.innerHTML = '<div class="cart-empty"><p>🛒</p><span>Il carrello è vuoto: <a href="shop.html" style="color:var(--accent)">torna allo shop</a></span></div>';
     return;
   }
   el.innerHTML = state.cart.map(function(item){
@@ -1092,7 +1095,7 @@ document.addEventListener('DOMContentLoaded', function(){
   updateSummary();
   initInvoice();
 
-  // Codice sconto — bottone Applica + Invio
+  // Codice sconto - bottone Applica + Invio
   var couponBtn = document.getElementById('coupon-apply');
   var couponInp = document.getElementById('coupon-input');
   if(couponBtn) couponBtn.addEventListener('click', applyCoupon);

@@ -27,10 +27,10 @@
 <meta name="description" content="Compra usato online: vinili, videogiochi retro PS1 PS2 NDS, DVD, oggetti vintage, libri e trading cards. Selezione curata, spedizione in tutta Italia. Pochi pezzi, ognuno con una storia.">
 <link rel="canonical" href="https://ramacciatovintage.it/shop.html">
 <link rel="icon" type="image/png" href="logo no sfondo.png">
-<title>Compra Usato Online — Vinili, Videogiochi Retro, Vintage | Ramacciato Vintage</title>
+<title>Compra Usato Online - Vinili, Videogiochi Retro, Vintage | Ramacciato Vintage</title>
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ramacciatovintage.it/shop.html">
-<meta property="og:title" content="Compra Usato Online — Vinili, Videogiochi Retro, Vintage | Ramacciato Vintage">
+<meta property="og:title" content="Compra Usato Online - Vinili, Videogiochi Retro, Vintage | Ramacciato Vintage">
 <meta property="og:description" content="Compra usato online: vinili, videogiochi retro PS1 PS2 NDS, DVD, oggetti vintage, libri e trading cards. Selezione curata, spedizione in tutta Italia.">
 <meta property="og:image" content="https://ramacciatovintage.it/logo%20no%20sfondo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -178,7 +178,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 .modal-sold-notice{text-align:center;padding:14px;border-radius:12px;background:rgba(11,37,69,.05);font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
 .modal-ebay-link{display:flex;align-items:center;justify-content:center;gap:6px;min-height:44px;border-radius:999px;border:1.5px solid var(--line);background:transparent;font-family:inherit;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(11,37,69,.85);cursor:pointer;transition:border-color .2s,color .2s;text-decoration:none}
 .modal-ebay-link:hover{border-color:var(--accent2);color:var(--accent)}
-/* cart drawer removed — handled by cart-widget.js */
+/* cart drawer removed - handled by cart-widget.js */
 .cat-carousel-wrap{position:relative;z-index:2;padding:20px 0;border-bottom:1px solid var(--line);background:transparent}
 .cat-carousel-inner{display:flex;gap:8px;overflow:hidden;padding:8px 24px;align-items:center;justify-content:center;position:relative;flex:1;min-height:140px}
 .cat-item{display:flex;flex-direction:column;align-items:center;gap:6px;flex-shrink:0;cursor:pointer;padding:8px 10px;border-radius:12px;border:1px solid transparent;background:none;font-family:inherit;transition:background .22s var(--ease),border-color .22s,box-shadow .22s,transform .25s var(--ease);min-width:80px}
@@ -224,7 +224,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
 
 /* ══════════════════════════════════════════
    MOBILE RESPONSIVE  (≤ 768px)
-   Solo layout e performance — desktop intatto
+   Solo layout e performance - desktop intatto
    ══════════════════════════════════════════ */
 @media(max-width:768px){
   /* NAV: performance mobile */
@@ -401,6 +401,23 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
 @media(max-width:420px){.product-grid.dens-1{grid-template-columns:repeat(2,1fr)!important}.product-grid.dens-2{grid-template-columns:repeat(3,1fr)!important;gap:8px!important}
  .product-grid.dens-2 .product-body{padding:8px 8px 10px}.product-grid.dens-2 .product-name{font-size:11px}.product-grid.dens-2 .product-condition,.product-grid.dens-2 .product-cat{display:none}.product-grid.dens-2 .product-price{font-size:15px}.product-grid.dens-2 .product-buy-btn{width:24px;height:24px;font-size:12px}}
 @media(max-width:768px){.grid-header .libreria-btn{flex:1 1 100%}.dens-lab{display:none}}
+
+/* Niente lineette davanti alle etichette dei titoli */
+.hero-kicker::before,.sec-label::before,.legal-kicker::before,.ck-section-title::before,.pay-title::before,.scheda .sez::before{display:none!important;content:none!important}
+
+/* Menu mobile ridisegnato */
+#mobileMenu{z-index:100001!important;background:linear-gradient(180deg,#4a90e0 0%,#3f84d6 100%)!important;padding:96px 24px 90px!important;gap:0!important;justify-content:flex-start!important;overflow-y:auto}
+#mobileMenu::before{content:"Ramacciato Vintage";position:absolute;top:34px;left:24px;font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+#mobileMenu::after{content:"\201COwn what you buy.\201D";position:absolute;left:24px;bottom:34px;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:20px;color:var(--ink);opacity:.8}
+#mobileMenu a{display:flex!important;align-items:center;justify-content:space-between;font-size:26px!important;letter-spacing:-.03em!important;line-height:1.1!important;padding:18px 4px!important;border-bottom:1px solid rgba(11,37,69,.16);color:var(--ink)!important;opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s}
+#mobileMenu a:first-of-type{border-top:1px solid rgba(11,37,69,.16)}
+#mobileMenu a::after{content:"\2192";font-size:20px;font-weight:600;opacity:.45;transition:transform .2s,opacity .2s}
+#mobileMenu a.attivo{color:#fff!important}
+#mobileMenu a.attivo::after{opacity:1}
+#mobileMenu.open a{opacity:1;transform:none}
+#mobileMenu.open a:nth-of-type(2){transition-delay:.04s}#mobileMenu.open a:nth-of-type(3){transition-delay:.08s}#mobileMenu.open a:nth-of-type(4){transition-delay:.12s}#mobileMenu.open a:nth-of-type(5){transition-delay:.16s}
+#mobileMenu .mob-logo{display:block;margin:auto;width:92px;height:auto;padding-bottom:36px;opacity:.9;pointer-events:none}
+#mobClose{position:absolute!important;top:22px!important;right:18px!important;width:48px!important;height:48px!important;border-radius:50%!important;border:0!important;background:#fff!important;color:var(--ink)!important;font-size:18px!important;box-shadow:0 6px 18px rgba(11,37,69,.2);touch-action:manipulation;z-index:2}
 </style>
 </head>
 <body>
@@ -453,7 +470,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
       <div>
         <p class="sec-label reveal">Selezione curata</p>
         <h1 style="font-size:clamp(44px,6vw,90px);line-height:.9;letter-spacing:-.065em;text-transform:uppercase;font-weight:900;margin:0 0 14px" class="reveal">La<br><span class="caramel">Vetrina</span></h1>
-        <p class="reveal" style="max-width:420px;font-size:14px;color:rgba(11,37,69,.85);line-height:1.72">Oggettistica, design, arredo e collezionismo. Pochi pezzi scelti bene &mdash; ognuno con una storia da raccontare.</p>
+        <p class="reveal" style="max-width:420px;font-size:14px;color:rgba(11,37,69,.85);line-height:1.72">Oggettistica, design, arredo e collezionismo. Pochi pezzi scelti bene: ognuno con una storia da raccontare.</p>
       </div>
       <div class="hero-stats reveal">
         <div class="hstat">
@@ -571,7 +588,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
   </aside>
   <div>
     <div class="grid-header">
-      <p class="grid-count" id="gridCount">&mdash; articoli</p>
+      <p class="grid-count" id="gridCount">- articoli</p>
       <a class="libreria-btn" id="libreriaBtn" href="shop-libreria.html" style="display:none">&#x1F4BF; Vista libreria</a>
       <div class="dens" id="densCtl" role="group" aria-label="Prodotti per riga"><span class="dens-lab">Griglia</span><button type="button" data-d="0" class="active">3</button><button type="button" data-d="1">4</button><button type="button" data-d="2">5</button></div>
       <select class="sort-select" id="sortSelect">
@@ -627,7 +644,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
       </div>
     </div>
     <div class="foot-bottom">
-      <div class="foot-bottom-left"><span>&copy; 2026 Ramacciato Vintage — Luca Ramacciato — P.IVA IT04400570240 — Vicenza</span></div>
+      <div class="foot-bottom-left"><span>&copy; 2026 Ramacciato Vintage - Luca Ramacciato - P.IVA IT04400570240 - Vicenza</span></div>
       <div class="foot-legal">
         <a href="privacy-policy.html">Privacy Policy</a><span>·</span>
         <a href="termini-di-servizio.html">Termini di Servizio</a><span>·</span>
@@ -719,7 +736,7 @@ function renderGrid(){
         : '<div class="product-img-inner" style="background:'+p.bg+'">'+p.emoji+'</div>';
     var condHtml=p.condition?'<span class="product-condition">'+p.condition+'</span>':'';
     var copieHtml=(p.copie&&p.copie>1&&!p.sold)?'<span class="product-copies">'+p.copie+' copie</span>':'';
-    return'<div class="product-card'+(p.model?' product-card--3d':'')+' product-card--'+p.cat+'" data-id="'+p.id+'" tabindex="0" role="button"><div class="product-img">'+imgHtml+(p.sold?'<span class="product-sold-badge">Venduto</span>':'')+(p.isNew&&!p.sold?'<span class="product-new-badge">Nuovo</span>':'')+copieHtml+'</div><div class="product-body"><p class="product-cat">'+catLabel(p.cat)+(p.model?' <span style="font-size:8px;opacity:.7;margin-left:4px">&#x2B55; 3D</span>':'')+'</p><p class="product-name">'+p.name+'</p>'+condHtml+'<p class="product-desc">'+(p.desc?(p.desc.substring(0,80)+'&hellip;'):'')+'</p><div class="product-footer"><span class="product-price'+(p.sold?' sold':'')+'">&#x20AC; '+(p.price!==null&&p.price!==undefined?p.price:'—')+'</span><button class="product-buy-btn">+</button></div></div></div>';
+    return'<div class="product-card'+(p.model?' product-card--3d':'')+' product-card--'+p.cat+'" data-id="'+p.id+'" tabindex="0" role="button"><div class="product-img">'+imgHtml+(p.sold?'<span class="product-sold-badge">Venduto</span>':'')+(p.isNew&&!p.sold?'<span class="product-new-badge">Nuovo</span>':'')+copieHtml+'</div><div class="product-body"><p class="product-cat">'+catLabel(p.cat)+(p.model?' <span style="font-size:8px;opacity:.7;margin-left:4px">&#x2B55; 3D</span>':'')+'</p><p class="product-name">'+p.name+'</p>'+condHtml+'<p class="product-desc">'+(p.desc?(p.desc.substring(0,80)+'&hellip;'):'')+'</p><div class="product-footer"><span class="product-price'+(p.sold?' sold':'')+'">&#x20AC; '+(p.price!==null&&p.price!==undefined?p.price:'-')+'</span><button class="product-buy-btn">+</button></div></div></div>';
   }).join('');
   ['all','videogiochi','elettronica','musica','libri','oggetti','trading','dvd'].forEach(function(c){var el=document.getElementById('cnt-'+c);if(el)el.textContent=c==='all'?PRODUCTS.length:PRODUCTS.filter(function(p){return p.cat===c}).length});
   grid.querySelectorAll('.product-card').forEach(function(card){var fn=function(){openModal(parseInt(card.dataset.id))};card.addEventListener('click',fn);card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')fn()});
@@ -815,7 +832,7 @@ function openModal(id){
   if(p.model){
     // 3D model + optional photo tabs
     var hasPhotos=p.photos&&p.photos.length>0;
-    var creditHtml='<span class="model-credit"><a href="'+p.modelCreditUrl+'" target="_blank" rel="noopener">'+p.modelCredit+'</a> &mdash; CC BY 4.0</span>';
+    var creditHtml='<span class="model-credit"><a href="'+p.modelCreditUrl+'" target="_blank" rel="noopener">'+p.modelCredit+'</a> - CC BY 4.0</span>';
 
     // Model viewer panel
     var mv='<model-viewer class="modal-model-viewer" src="'+p.model+'" camera-controls auto-rotate rotation-per-second="20deg" reveal="auto" loading="eager" shadow-intensity="1.2" exposure="1.2" camera-orbit="45deg 80deg 120%" field-of-view="35deg" min-camera-orbit="auto 10deg 80%" max-camera-orbit="auto 160deg 200%" interpolation-decay="200" style="background:'+p.bg+'"><div slot="poster" style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:'+p.bg+'"><div style="font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(11,37,69,.85)">Caricamento modello 3D&hellip;</div><div style="font-size:11px;color:rgba(11,37,69,.85);font-style:italic">Il file potrebbe impiegare qualche secondo</div></div><div slot="progress-bar" style="position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(74,144,224,.2)"><div style="height:100%;background:var(--accent2);width:var(--progress-bar-width,0%);transition:width .4s"></div></div></model-viewer>';
@@ -874,10 +891,10 @@ function openModal(id){
   }
   var actions=document.getElementById('modalActions');
   var creditHtmlActions=p.model
-    ? '<p style="font-size:10.5px;color:var(--muted);line-height:1.55;margin-top:4px;padding-top:12px;border-top:1px solid var(--line)">&#x1F3A8; Modello 3D: <a href="'+p.modelCreditUrl+'" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">'+p.modelCredit+'</a> — licenza <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">CC BY 4.0</a></p>'
+    ? '<p style="font-size:10.5px;color:var(--muted);line-height:1.55;margin-top:4px;padding-top:12px;border-top:1px solid var(--line)">&#x1F3A8; Modello 3D: <a href="'+p.modelCreditUrl+'" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">'+p.modelCredit+'</a> - licenza <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">CC BY 4.0</a></p>'
     : '';
   if(p.sold){
-    actions.innerHTML='<div class="modal-sold-notice">Questo pezzo è già stato venduto &mdash; torna presto per nuovi arrivi</div>'+creditHtmlActions;
+    actions.innerHTML='<div class="modal-sold-notice">Questo pezzo è già stato venduto - torna presto per nuovi arrivi</div>'+creditHtmlActions;
   } else {
     var hasMultiCopie=p.copie&&p.copie>1;
     var currentQty=1;
@@ -981,7 +998,7 @@ Promise.all(
 (function(){
   // Popola contatori, non mostrare ancora prodotti
   ['all','videogiochi','elettronica','musica','libri','oggetti','trading','dvd'].forEach(function(c){var el=document.getElementById('cnt-'+c);if(el)el.textContent=c==='all'?PRODUCTS.length:PRODUCTS.filter(function(p){return p.cat===c}).length});
-  document.getElementById('gridCount').textContent='—';
+  document.getElementById('gridCount').textContent='-';
   document.getElementById('productGrid').innerHTML='<div class="empty-state" style="grid-column:1/-1"><p style="font-size:44px;margin-bottom:14px">&#x1F4E6;</p><p style="font-size:15px;font-weight:800;letter-spacing:-.02em">Seleziona una categoria</p><p style="font-size:13px;margin-top:8px;opacity:.5">Scegli dal carousel o dal menu laterale per scoprire i prodotti.</p></div>';
   function selectCat(cat,scroll){activeCat=cat;activeSubcat=null;activeSubcat2=null;var _b=document.getElementById('breadcrumb');if(_b)_b.classList.remove('visible');document.querySelectorAll('[data-cat]').forEach(function(b){b.classList.remove('active')});document.querySelectorAll('[data-cat="'+cat+'"]').forEach(function(b){b.classList.add('active')});var _dn=document.getElementById('discogsNotice');if(_dn)_dn.classList.toggle('visible',cat==='musica');var _lb=document.getElementById('libreriaBtn');if(_lb)_lb.style.display=cat==='musica'?'':'none';renderGrid();if(scroll&&window.innerWidth>768)document.querySelector('.shop-wrap').scrollIntoView({behavior:'smooth',block:'start'})}
   /* legge ?cat= dall'URL e pre-filtra */
@@ -1038,7 +1055,7 @@ Promise.all(
   if(mobClose)mobClose.addEventListener('click',function(){mob.classList.remove('open')});
   var cB=document.getElementById('cursorBig'),cD=document.getElementById('cursorDot');
   if(cB&&cD)document.addEventListener('mousemove',function(e){var t='translate(calc(-50% + '+e.clientX+'px), calc(-50% + '+e.clientY+'px))';cB.style.transform=t;cD.style.transform=t},{passive:true});
-  // (IntersectionObserver moved outside fetch — see below)
+  // (IntersectionObserver moved outside fetch - see below)
   /* ── Liquid wave brand ── */
   (function(){
     var brandText = document.querySelector('.brand-text');
@@ -1083,7 +1100,7 @@ Promise.all(
   if(!menuBtn||!mob) return;
   function chiudiMenu(){mob.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');document.body.style.overflow='';}
   menuBtn.addEventListener('click',function(){mob.classList.add('open');menuBtn.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';});
-  if(mobClose){mobClose.addEventListener('click',chiudiMenu);mobClose.addEventListener('touchstart',chiudiMenu,{passive:true});}
+  if(mobClose){mobClose.addEventListener('click',chiudiMenu);}
   mob.querySelectorAll('a').forEach(function(link){link.addEventListener('touchstart',function(){window.location.href=link.href;},{passive:true});});
 })();
 </script>
@@ -1121,4 +1138,14 @@ Promise.all(
 </div>
 <script>
 (function(){var K='rv_consent';function load(){try{return JSON.parse(localStorage.getItem(K));}catch(e){return null;}}function save(o){try{localStorage.setItem(K,JSON.stringify(o));}catch(e){}}if(load())return;var b=document.getElementById('cookieBanner'),m=document.getElementById('cookieModal');if(!b)return;setTimeout(function(){b.classList.add('visible');},700);function hb(){b.classList.remove('visible');setTimeout(function(){b.style.display='none';},420);}function hm(){m.setAttribute('hidden','');}document.getElementById('cookieAcceptAll').onclick=function(){save({t:1,a:1,mk:1,ts:Date.now()});hb();hm();};document.getElementById('cookieNecessary').onclick=function(){save({t:1,a:0,mk:0,ts:Date.now()});hb();hm();};document.getElementById('cookieCustomize').onclick=function(){m.removeAttribute('hidden');};document.getElementById('cookieModalClose').onclick=hm;document.getElementById('cookieSavePrefs').onclick=function(){var a=document.getElementById('toggleAnalytics').checked,mk=document.getElementById('toggleMarketing').checked;save({t:1,a:a?1:0,mk:mk?1:0,ts:Date.now()});hb();hm();};m.onclick=function(e){if(e.target===m)hm();};})();
+</script>
+<script>
+/* Menu mobile: chiusura senza "tocco fantasma" sul pulsante Menu */
+(function(){var mob=document.getElementById('mobileMenu'),btn=document.getElementById('menuBtn'),x=document.getElementById('mobClose');if(!mob||!btn||!x)return;
+var chiusoAlle=0;
+function chiudi(e){if(e){e.preventDefault();e.stopPropagation();}mob.classList.remove('open');btn.setAttribute('aria-expanded','false');document.body.style.overflow='';chiusoAlle=Date.now();}
+x.addEventListener('touchend',chiudi,{capture:true,passive:false});x.addEventListener('click',chiudi,true);
+btn.addEventListener('click',function(e){if(Date.now()-chiusoAlle<600){e.preventDefault();e.stopImmediatePropagation();}},true);
+if(!mob.querySelector('.mob-logo')){var lg=new Image();lg.src='logo no sfondo.png';lg.alt='';lg.className='mob-logo';mob.appendChild(lg);}var qui=location.pathname.split('/').pop()||'index.html';mob.querySelectorAll('a').forEach(function(a){if(a.getAttribute('href')===qui)a.classList.add('attivo');});
+})();
 </script>

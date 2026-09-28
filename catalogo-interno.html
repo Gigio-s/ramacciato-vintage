@@ -103,7 +103,7 @@ a{color:inherit;text-decoration:none}
   <div class="wrap header-inner">
     <div>
       <p class="header-brand">Ramacciato <em>Vintage</em></p>
-      <p class="header-note">Gestione catalogo interno &mdash; non pubblicare questo file</p>
+      <p class="header-note">Gestione catalogo interno - non pubblicare questo file</p>
     </div>
     <span class="header-badge">&#x1F512; Uso interno</span>
   </div>
@@ -115,22 +115,22 @@ a{color:inherit;text-decoration:none}
   <div class="dashboard" id="dashboard">
     <div class="dash-card">
       <p class="dash-label">Prodotti attivi</p>
-      <p class="dash-value" id="d-count">—</p>
-      <p class="dash-sub" id="d-sold">di cui venduti: —</p>
+      <p class="dash-value" id="d-count">-</p>
+      <p class="dash-sub" id="d-sold">di cui venduti: -</p>
     </div>
     <div class="dash-card">
       <p class="dash-label">Valore inventario</p>
-      <p class="dash-value" id="d-value">—</p>
+      <p class="dash-value" id="d-value">-</p>
       <p class="dash-sub">prezzi di vendita totali</p>
     </div>
     <div class="dash-card">
       <p class="dash-label">Costo totale</p>
-      <p class="dash-value" id="d-cost">—</p>
+      <p class="dash-value" id="d-cost">-</p>
       <p class="dash-sub" id="d-cost-sub">prodotti con costo inserito</p>
     </div>
     <div class="dash-card">
       <p class="dash-label">Margine potenziale lordo</p>
-      <p class="dash-value positive" id="d-margin">—</p>
+      <p class="dash-value positive" id="d-margin">-</p>
       <p class="dash-sub" id="d-margin-pct"></p>
     </div>
   </div>
@@ -211,9 +211,9 @@ function updateDashboard(){
   document.getElementById('d-count').textContent = active.length;
   document.getElementById('d-sold').textContent = 'di cui venduti: ' + sold.length;
   document.getElementById('d-value').textContent = '€ ' + totalValue.toFixed(0);
-  document.getElementById('d-cost').textContent = withCost.length > 0 ? '€ ' + totalCost.toFixed(0) : '—';
+  document.getElementById('d-cost').textContent = withCost.length > 0 ? '€ ' + totalCost.toFixed(0) : '-';
   document.getElementById('d-cost-sub').textContent = withCost.length + ' prodotti con costo inserito';
-  document.getElementById('d-margin').textContent = withCost.length > 0 ? '€ ' + totalMargin.toFixed(0) : '—';
+  document.getElementById('d-margin').textContent = withCost.length > 0 ? '€ ' + totalMargin.toFixed(0) : '-';
   document.getElementById('d-margin-pct').textContent = pct !== null ? (pct + '% sul costo') : 'inserisci i costi per calcolare';
 }
 
@@ -320,7 +320,7 @@ function renderCard(p){
     + '<div class="finance-row" id="margin-row-' + p.id + '">'
     + '<span class="finance-label">Margine lordo</span>'
     + '<span class="finance-val ' + (margine !== null ? (margine >= 0 ? 'positive' : 'negative') : 'neutral') + '" id="margin-val-' + p.id + '">'
-    + (margine !== null ? ('&euro; ' + margine.toFixed(2) + (marginePct !== null ? ' <small style="font-size:11px;font-weight:400;opacity:.7">(' + marginePct + '%)</small>' : '')) : '&mdash;')
+    + (margine !== null ? ('&euro; ' + margine.toFixed(2) + (marginePct !== null ? ' <small style="font-size:11px;font-weight:400;opacity:.7">(' + marginePct + '%)</small>' : '')) : '-')
     + '</span>'
     + '</div>'
     + '</div>'
@@ -353,7 +353,7 @@ function updateMarginRow(id){
     el.innerHTML = '&euro; ' + margine.toFixed(2) + (pct !== null ? ' <small style="font-size:11px;font-weight:400;opacity:.7">(' + pct + '%)</small>' : '');
   } else {
     el.className = 'finance-val neutral';
-    el.innerHTML = '&mdash;';
+    el.innerHTML = '-';
   }
 }
 

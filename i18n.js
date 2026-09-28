@@ -1,4 +1,4 @@
-/* i18n.js — layer lingua IT/ES/EN per Ramacciato Vintage
+/* i18n.js - layer lingua IT/ES/EN per Ramacciato Vintage
    Additivo: NON modifica il layout desktop italiano (default).
    - Stato lingua in localStorage 'rv_lang' + supporto parametro ?lang=
    - Traduzioni testo:        data-i18n-es="..."  data-i18n-en="..."   (innerHTML)

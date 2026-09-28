@@ -24,13 +24,13 @@
 })();
 </script>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Ramacciato Vintage — compra usato online: vinili, videogiochi retro, oggetti vintage, DVD e collezionismo selezionato. Spedizione in tutta Italia. Own what you buy.">
+<meta name="description" content="Ramacciato Vintage - compra usato online: vinili, videogiochi retro, oggetti vintage, DVD e collezionismo selezionato. Spedizione in tutta Italia. Own what you buy.">
 <link rel="canonical" href="https://ramacciatovintage.it/">
 <link rel="icon" type="image/png" href="logo no sfondo.png">
-<title>Ramacciato Vintage — Compra Usato Online: Vinili, Videogiochi Retro, Vintage</title>
+<title>Ramacciato Vintage - Compra Usato Online: Vinili, Videogiochi Retro, Vintage</title>
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ramacciatovintage.it/">
-<meta property="og:title" content="Ramacciato Vintage — Vinili, Videogiochi Retro e Oggetti Vintage">
+<meta property="og:title" content="Ramacciato Vintage - Vinili, Videogiochi Retro e Oggetti Vintage">
 <meta property="og:description" content="Vinili usati, videogiochi retro, oggetti vintage e modernariato selezionato. Collezionismo dagli anni Art Decò agli anni 2000.">
 <meta property="og:image" content="https://ramacciatovintage.it/logo%20no%20sfondo.png">
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
@@ -804,6 +804,10 @@ footer{
     transform:scale(.72)!important;transform-origin:center!important
   }
 }
+
+/* Gira il vinile (mobile): meno spazio tra pulsante e vinile */
+@media(max-width:680px){#collezioni .roulette-layout{gap:0!important}#collezioni .roulette-right{height:400px!important;margin-top:-6px}}
+@media(max-width:390px){#collezioni .roulette-right{height:340px!important}}
 </style>
 <script type="application/ld+json">
 {
@@ -966,7 +970,7 @@ footer{
         <em class="chrome" id="titleChrome">Vintage</em>
       </h1>
       <p class="hero-sub reveal serif">"Own what you buy."<br>Il vintage torna oggetto del desiderio.</p>
-      <p class="hero-copy reveal">Vinili usati, videogiochi retro (PS1, PS2, NDS), DVD, libri curiosi, trading cards ed elettronica d'epoca. Acquista online con spedizione in tutta Italia — pochi pezzi scelti, ognuno con una storia da raccontare.</p>
+      <p class="hero-copy reveal">Vinili usati, videogiochi retro (PS1, PS2, NDS), DVD, libri curiosi, trading cards ed elettronica d'epoca. Acquista online con spedizione in tutta Italia: pochi pezzi scelti, ognuno con una storia da raccontare.</p>
       <div class="hero-actions reveal">
         <a class="btn btn-dark" href="shop.html">Entra nello shop</a>
       </div>
@@ -992,7 +996,7 @@ footer{
 <div class="cat-overlay" id="catOverlay" role="dialog" aria-modal="true" aria-label="Esplora categorie">
   <div class="cat-modal">
     <div class="cat-modal-head">
-      <span class="cat-modal-title">— Esplora le categorie</span>
+      <span class="cat-modal-title">Esplora le categorie</span>
       <button class="cat-modal-close" id="closeCatExplorer" aria-label="Chiudi">&#x2715;</button>
     </div>
     <div class="cflow-stage">
@@ -1076,7 +1080,24 @@ footer{
       #idxNews .ni h4{margin:0;font-size:13.5px;font-weight:800;letter-spacing:-.01em;color:var(--ink);line-height:1.4}
       #idxNews .ni:hover h4{color:var(--accent)}
       #idxNews .ni .nm{flex-shrink:0;font-size:10.5px;font-weight:700;color:var(--muted);white-space:nowrap}
-    </style>
+    
+/* Niente lineette davanti alle etichette dei titoli */
+.hero-kicker::before,.sec-label::before,.legal-kicker::before,.ck-section-title::before,.pay-title::before,.scheda .sez::before{display:none!important;content:none!important}
+
+/* Menu mobile ridisegnato */
+#mobileMenu{z-index:100001!important;background:linear-gradient(180deg,#4a90e0 0%,#3f84d6 100%)!important;padding:96px 24px 90px!important;gap:0!important;justify-content:flex-start!important;overflow-y:auto}
+#mobileMenu::before{content:"Ramacciato Vintage";position:absolute;top:34px;left:24px;font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+#mobileMenu::after{content:"\201COwn what you buy.\201D";position:absolute;left:24px;bottom:34px;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:20px;color:var(--ink);opacity:.8}
+#mobileMenu a{display:flex!important;align-items:center;justify-content:space-between;font-size:26px!important;letter-spacing:-.03em!important;line-height:1.1!important;padding:18px 4px!important;border-bottom:1px solid rgba(11,37,69,.16);color:var(--ink)!important;opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s}
+#mobileMenu a:first-of-type{border-top:1px solid rgba(11,37,69,.16)}
+#mobileMenu a::after{content:"\2192";font-size:20px;font-weight:600;opacity:.45;transition:transform .2s,opacity .2s}
+#mobileMenu a.attivo{color:#fff!important}
+#mobileMenu a.attivo::after{opacity:1}
+#mobileMenu.open a{opacity:1;transform:none}
+#mobileMenu.open a:nth-of-type(2){transition-delay:.04s}#mobileMenu.open a:nth-of-type(3){transition-delay:.08s}#mobileMenu.open a:nth-of-type(4){transition-delay:.12s}#mobileMenu.open a:nth-of-type(5){transition-delay:.16s}
+#mobileMenu .mob-logo{display:block;margin:auto;width:92px;height:auto;padding-bottom:36px;opacity:.9;pointer-events:none}
+#mobClose{position:absolute!important;top:22px!important;right:18px!important;width:48px!important;height:48px!important;border-radius:50%!important;border:0!important;background:#fff!important;color:var(--ink)!important;font-size:18px!important;box-shadow:0 6px 18px rgba(11,37,69,.2);touch-action:manipulation;z-index:2}
+</style>
     <script>
     (function(){
       var M=['gen','feb','mar','apr','mag','giu','lug','ago','set','ott','nov','dic'];
@@ -1274,7 +1295,7 @@ footer{
     </div>
     <div class="foot-bottom">
       <div class="foot-bottom-left">
-        <span>© 2026 Ramacciato Vintage — Luca Ramacciato — P.IVA IT04400570240 — Vicenza</span>
+        <span>© 2026 Ramacciato Vintage - Luca Ramacciato - P.IVA IT04400570240 - Vicenza</span>
       </div>
       <div class="foot-legal">
         <a href="privacy-policy.html">Privacy Policy</a>
@@ -1339,7 +1360,7 @@ footer{
     items.forEach(function(item,i){
       var a=(ang + i*(360/N))*Math.PI/180;
       var x=Math.sin(a)*R, y=-Math.cos(a)*R;
-      // Only translate — no rotation, so labels stay perfectly upright
+      // Only translate - no rotation, so labels stay perfectly upright
       item.style.transform='translate(calc(-50% + '+x+'px), calc(-50% + '+y+'px))';
     });
   }
@@ -1552,7 +1573,6 @@ footer{
     menuBtn.addEventListener('click',function(){ mob.classList.add('open'); menuBtn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; });
     if(mobClose){
       mobClose.addEventListener('click', chiudiMenu);
-      mobClose.addEventListener('touchstart', chiudiMenu, {passive:true});
     }
     mob.querySelectorAll('a').forEach(function(link){
       link.addEventListener('touchstart',function(){ window.location.href=link.href; },{passive:true});
@@ -1584,7 +1604,7 @@ footer{
       } else {
         bDisplace.setAttribute('scale', 0);
         if(targetScale === 0){
-          // fully at rest — stop rAF
+          // fully at rest - stop rAF
           cancelAnimationFrame(rafId);
           rafId = null;
           brandText.style.filter = '';
@@ -1620,7 +1640,7 @@ footer{
       /* VINTAGE wave */
       if(turb)  turb.setAttribute('baseFrequency',  '0.01 '  + (0.004 + Math.sin(phase) * 0.003));
       if(disp)  disp.setAttribute('scale',  Math.abs(Math.sin(phase * 0.7)) * 14);
-      /* RAMACCIATO wave — offset phase + slightly different amplitude */
+      /* RAMACCIATO wave - offset phase + slightly different amplitude */
       if(turb2) turb2.setAttribute('baseFrequency', '0.012 ' + (0.007 + Math.sin(phase * 0.85 + 1.2) * 0.004));
       if(disp2) disp2.setAttribute('scale', Math.abs(Math.sin(phase * 0.55 + 0.8)) * 11);
       requestAnimationFrame(waveTitle);
@@ -1753,7 +1773,7 @@ footer{
   });
 })();
 
-  /* ── VINYL MODE — blocca scroll e permette di girare il vinile su mobile ── */
+  /* ── VINYL MODE - blocca scroll e permette di girare il vinile su mobile ── */
   (function(){
     var fab      = document.getElementById('vinylFab');
     var closeBtn = document.getElementById('vinylCloseBtn');
@@ -1838,6 +1858,16 @@ footer{
 </div>
 <script>
 (function(){var K='rv_consent';function load(){try{return JSON.parse(localStorage.getItem(K));}catch(e){return null;}}function save(o){try{localStorage.setItem(K,JSON.stringify(o));}catch(e){}}if(load())return;var b=document.getElementById('cookieBanner'),m=document.getElementById('cookieModal');if(!b)return;setTimeout(function(){b.classList.add('visible');},700);function hb(){b.classList.remove('visible');setTimeout(function(){b.style.display='none';},420);}function hm(){m.setAttribute('hidden','');}document.getElementById('cookieAcceptAll').onclick=function(){save({t:1,a:1,mk:1,ts:Date.now()});hb();hm();};document.getElementById('cookieNecessary').onclick=function(){save({t:1,a:0,mk:0,ts:Date.now()});hb();hm();};document.getElementById('cookieCustomize').onclick=function(){m.removeAttribute('hidden');};document.getElementById('cookieModalClose').onclick=hm;document.getElementById('cookieSavePrefs').onclick=function(){var a=document.getElementById('toggleAnalytics').checked,mk=document.getElementById('toggleMarketing').checked;save({t:1,a:a?1:0,mk:mk?1:0,ts:Date.now()});hb();hm();};m.onclick=function(e){if(e.target===m)hm();};})();
+</script>
+<script>
+/* Menu mobile: chiusura senza "tocco fantasma" sul pulsante Menu */
+(function(){var mob=document.getElementById('mobileMenu'),btn=document.getElementById('menuBtn'),x=document.getElementById('mobClose');if(!mob||!btn||!x)return;
+var chiusoAlle=0;
+function chiudi(e){if(e){e.preventDefault();e.stopPropagation();}mob.classList.remove('open');btn.setAttribute('aria-expanded','false');document.body.style.overflow='';chiusoAlle=Date.now();}
+x.addEventListener('touchend',chiudi,{capture:true,passive:false});x.addEventListener('click',chiudi,true);
+btn.addEventListener('click',function(e){if(Date.now()-chiusoAlle<600){e.preventDefault();e.stopImmediatePropagation();}},true);
+if(!mob.querySelector('.mob-logo')){var lg=new Image();lg.src='logo no sfondo.png';lg.alt='';lg.className='mob-logo';mob.appendChild(lg);}var qui=location.pathname.split('/').pop()||'index.html';mob.querySelectorAll('a').forEach(function(a){if(a.getAttribute('href')===qui)a.classList.add('attivo');});
+})();
 </script>
 </body>
 </html>

@@ -28,11 +28,11 @@
 <link rel="icon" type="image/png" href="logo no sfondo.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ramacciatovintage.it/fisico-vs-digitale.html">
-<meta property="og:title" content="Fisico vs Digitale — Ramacciato Vintage">
+<meta property="og:title" content="Fisico vs Digitale - Ramacciato Vintage">
 <meta property="og:description" content="Fatti documentati sulle differenze tra proprietà materiale e licenza d'uso nel mondo dei media.">
 <meta property="og:image" content="https://ramacciatovintage.it/logo%20no%20sfondo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Fisico vs Digitale — Ramacciato Vintage">
+<meta name="twitter:title" content="Fisico vs Digitale - Ramacciato Vintage">
 <meta name="twitter:description" content="Fatti documentati sulle differenze tra proprietà materiale e licenza d'uso nel mondo dei media.">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebPage","name":"Fisico vs Digitale","url":"https://ramacciatovintage.it/fisico-vs-digitale.html","description":"Rubrica editoriale su fatti documentati riguardanti le differenze tra proprietà fisica e licenza digitale.","publisher":{"@type":"Organization","name":"Ramacciato Vintage","url":"https://ramacciatovintage.it"}}
@@ -278,6 +278,23 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
   .foot-grid{grid-template-columns:1fr 1fr}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+/* Niente lineette davanti alle etichette dei titoli */
+.hero-kicker::before,.sec-label::before,.legal-kicker::before,.ck-section-title::before,.pay-title::before,.scheda .sez::before{display:none!important;content:none!important}
+
+/* Menu mobile ridisegnato */
+#mobileMenu{z-index:100001!important;background:linear-gradient(180deg,#4a90e0 0%,#3f84d6 100%)!important;padding:96px 24px 90px!important;gap:0!important;justify-content:flex-start!important;overflow-y:auto}
+#mobileMenu::before{content:"Ramacciato Vintage";position:absolute;top:34px;left:24px;font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+#mobileMenu::after{content:"\201COwn what you buy.\201D";position:absolute;left:24px;bottom:34px;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:20px;color:var(--ink);opacity:.8}
+#mobileMenu a{display:flex!important;align-items:center;justify-content:space-between;font-size:26px!important;letter-spacing:-.03em!important;line-height:1.1!important;padding:18px 4px!important;border-bottom:1px solid rgba(11,37,69,.16);color:var(--ink)!important;opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s}
+#mobileMenu a:first-of-type{border-top:1px solid rgba(11,37,69,.16)}
+#mobileMenu a::after{content:"\2192";font-size:20px;font-weight:600;opacity:.45;transition:transform .2s,opacity .2s}
+#mobileMenu a.attivo{color:#fff!important}
+#mobileMenu a.attivo::after{opacity:1}
+#mobileMenu.open a{opacity:1;transform:none}
+#mobileMenu.open a:nth-of-type(2){transition-delay:.04s}#mobileMenu.open a:nth-of-type(3){transition-delay:.08s}#mobileMenu.open a:nth-of-type(4){transition-delay:.12s}#mobileMenu.open a:nth-of-type(5){transition-delay:.16s}
+#mobileMenu .mob-logo{display:block;margin:auto;width:92px;height:auto;padding-bottom:36px;opacity:.9;pointer-events:none}
+#mobClose{position:absolute!important;top:22px!important;right:18px!important;width:48px!important;height:48px!important;border-radius:50%!important;border:0!important;background:#fff!important;color:var(--ink)!important;font-size:18px!important;box-shadow:0 6px 18px rgba(11,37,69,.2);touch-action:manipulation;z-index:2}
 </style>
 </head>
 <body>
@@ -343,7 +360,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
           Quando acquisti un contenuto digitale, nella maggior parte dei casi stai acquistando soltanto una licenza di utilizzo.
         </p>
         <p class="fvd-hero-intro reveal">
-          Questa rubrica raccoglie fatti realmente accaduti — documentati da fonti giornalistiche affidabili — riguardanti videogiochi, cinema, musica, libri, software e tecnologia. Il tono è professionale e imparziale: non una critica al digitale, ma un'analisi delle differenze tra proprietà materiale e licenza d'uso.
+          Questa rubrica raccoglie fatti realmente accaduti - documentati da fonti giornalistiche affidabili - riguardanti videogiochi, cinema, musica, libri, software e tecnologia. Il tono è professionale e imparziale: non una critica al digitale, ma un'analisi delle differenze tra proprietà materiale e licenza d'uso.
         </p>
         <div style="display:flex;gap:12px;flex-wrap:wrap" class="reveal">
           <a class="fvd-hero-cta" href="#articoli">Leggi gli articoli →</a>
@@ -545,7 +562,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
       </div>
     </div>
     <div class="foot-bottom">
-      <div class="foot-bottom-left"><span>&copy; 2026 Ramacciato Vintage — Luca Ramacciato — P.IVA IT04400570240 — Vicenza</span></div>
+      <div class="foot-bottom-left"><span>&copy; 2026 Ramacciato Vintage - Luca Ramacciato - P.IVA IT04400570240 - Vicenza</span></div>
       <div class="foot-legal">
         <a href="privacy-policy.html">Privacy Policy</a><span>·</span>
         <a href="termini-di-servizio.html">Termini di Servizio</a><span>·</span>
@@ -598,11 +615,11 @@ const ARTICLES = [
     sections: [
       {
         title: 'Cosa è successo',
-        body: '<p>Nel 2023 Sony ha inviato comunicazioni ufficiali a una parte degli utenti PlayStation Store, informandoli che i film precedentemente acquistati tramite accordi di distribuzione con Discovery — incluse produzioni originali e serie documentaristiche — sarebbero stati rimossi dalle loro librerie digitali entro trenta giorni.</p><p>Il motivo dichiarato: la scadenza del contratto di licenza tra Sony e la società distributrice. Gli utenti non hanno ricevuto rimborsi automatici. I file non erano scaricabili su supporto locale. Al termine del periodo di grazia, l\'accesso ai contenuti è stato irrevocabilmente revocato dalla piattaforma.</p>'
+        body: '<p>Nel 2023 Sony ha inviato comunicazioni ufficiali a una parte degli utenti PlayStation Store, informandoli che i film precedentemente acquistati tramite accordi di distribuzione con Discovery - incluse produzioni originali e serie documentaristiche - sarebbero stati rimossi dalle loro librerie digitali entro trenta giorni.</p><p>Il motivo dichiarato: la scadenza del contratto di licenza tra Sony e la società distributrice. Gli utenti non hanno ricevuto rimborsi automatici. I file non erano scaricabili su supporto locale. Al termine del periodo di grazia, l\'accesso ai contenuti è stato irrevocabilmente revocato dalla piattaforma.</p>'
       },
       {
         title: 'Perché è successo',
-        body: '<p>Quando si acquista un film su PlayStation Store, non si acquista il file audiovisivo. Si acquista una <em>licenza d\'uso</em> valida fintanto che il contratto tra Sony e il distributore rimane attivo. Quando il contratto scade o non viene rinnovato, la piattaforma può rimuovere quei contenuti dalle librerie degli utenti — inclusi quelli che li avevano regolarmente "comprati".</p><p>Sony ha difeso la pratica citando i propri Termini di Servizio, che specificano chiaramente come gli acquisti digitali siano licenze temporanee e non proprietà permanente del file. Una clausola presente nei ToS di quasi tutte le piattaforme digitali di contenuto.</p>'
+        body: '<p>Quando si acquista un film su PlayStation Store, non si acquista il file audiovisivo. Si acquista una <em>licenza d\'uso</em> valida fintanto che il contratto tra Sony e il distributore rimane attivo. Quando il contratto scade o non viene rinnovato, la piattaforma può rimuovere quei contenuti dalle librerie degli utenti - inclusi quelli che li avevano regolarmente "comprati".</p><p>Sony ha difeso la pratica citando i propri Termini di Servizio, che specificano chiaramente come gli acquisti digitali siano licenze temporanee e non proprietà permanente del file. Una clausola presente nei ToS di quasi tutte le piattaforme digitali di contenuto.</p>'
       },
       {
         title: 'Cosa cambia per gli utenti',
@@ -610,16 +627,16 @@ const ARTICLES = [
       },
       {
         title: 'Perché riguarda anche il collezionismo',
-        body: '<p>Un Blu-ray acquistato fisicamente è riproducibile finché il lettore funziona e il disco non si deteriora, indipendentemente da qualsiasi accordo commerciale tra aziende terze. Un film acquistato digitalmente esiste come accesso solo fintanto che tutte le parti coinvolte — piattaforma, distributore, studio cinematografico — decidono di mantenerlo disponibile. Il collezionismo fisico garantisce una catena di possesso semplice e verificabile: compri, possiedi, conservi, rivendi.</p>'
+        body: '<p>Un Blu-ray acquistato fisicamente è riproducibile finché il lettore funziona e il disco non si deteriora, indipendentemente da qualsiasi accordo commerciale tra aziende terze. Un film acquistato digitalmente esiste come accesso solo fintanto che tutte le parti coinvolte - piattaforma, distributore, studio cinematografico - decidono di mantenerlo disponibile. Il collezionismo fisico garantisce una catena di possesso semplice e verificabile: compri, possiedi, conservi, rivendi.</p>'
       }
     ],
     fonti: [
-      'Ars Technica — "PlayStation is deleting purchased Discovery content from users\' libraries" (2023)',
-      'The Guardian — "Sony PlayStation removes movies from users\' libraries after licensing deal ends"',
-      'Kotaku — "PlayStation Users Lose Access To Purchased Discovery Content"',
-      'Eurogamer — "PlayStation removing purchased content from user libraries"'
+      'Ars Technica: "PlayStation is deleting purchased Discovery content from users\' libraries" (2023)',
+      'The Guardian: "Sony PlayStation removes movies from users\' libraries after licensing deal ends"',
+      'Kotaku: "PlayStation Users Lose Access To Purchased Discovery Content"',
+      'Eurogamer: "PlayStation removing purchased content from user libraries"'
     ],
-    lezione: 'Questo caso documenta con precisione la differenza tra acquistare un contenuto e ottenere una licenza temporanea d\'uso. Nel caso dei supporti fisici, la catena di possesso è semplice: compri, possiedi. Nel caso digitale, la catena è complessa: ottieni una licenza che dipende da un accordo commerciale tra piattaforma e distributore, che può scadere o non essere rinnovato, con conseguente perdita di accesso — senza rimborso garantito.'
+    lezione: 'Questo caso documenta con precisione la differenza tra acquistare un contenuto e ottenere una licenza temporanea d\'uso. Nel caso dei supporti fisici, la catena di possesso è semplice: compri, possiedi. Nel caso digitale, la catena è complessa: ottieni una licenza che dipende da un accordo commerciale tra piattaforma e distributore, che può scadere o non essere rinnovato, con conseguente perdita di accesso - senza rimborso garantito.'
   },
   {
     id: 2,
@@ -637,11 +654,11 @@ const ARTICLES = [
     sections: [
       {
         title: 'Cosa è successo',
-        body: '<p>Take-Two Interactive e Rockstar Games hanno confermato che Grand Theft Auto VI sarà disponibile in versione "fisica" per PlayStation 5 e Xbox Series X/S — ma senza disco. La confezione, identica nell\'aspetto a quelle tradizionali, conterrà un codice di download al posto del supporto ottico. Il gioco, stimato in oltre 150 GB, dovrà essere scaricato integralmente dalla rete.</p><p>La decisione ha generato immediate reazioni nella community dei giocatori e degli operatori retail, aprendo un dibattito sul significato stesso del termine "edizione fisica".</p>'
+        body: '<p>Take-Two Interactive e Rockstar Games hanno confermato che Grand Theft Auto VI sarà disponibile in versione "fisica" per PlayStation 5 e Xbox Series X/S - ma senza disco. La confezione, identica nell\'aspetto a quelle tradizionali, conterrà un codice di download al posto del supporto ottico. Il gioco, stimato in oltre 150 GB, dovrà essere scaricato integralmente dalla rete.</p><p>La decisione ha generato immediate reazioni nella community dei giocatori e degli operatori retail, aprendo un dibattito sul significato stesso del termine "edizione fisica".</p>'
       },
       {
         title: 'Perché è successo',
-        body: '<p>La produzione di dischi Blu-ray UHD per videogiochi ha costi produttivi e logistici significativi. Le aziende del settore hanno progressivamente ridotto le tirature fisiche, spingendo verso il digitale per massimizzare i margini. Il "Code in a Box" permette di mantenere la distribuzione attraverso i canali retail tradizionali — scaffali, preordini, lancio fisico — senza i costi legati alla produzione del supporto ottico. Per il publisher è una soluzione economicamente vantaggiosa; per il consumatore, le implicazioni sono diverse.</p>'
+        body: '<p>La produzione di dischi Blu-ray UHD per videogiochi ha costi produttivi e logistici significativi. Le aziende del settore hanno progressivamente ridotto le tirature fisiche, spingendo verso il digitale per massimizzare i margini. Il "Code in a Box" permette di mantenere la distribuzione attraverso i canali retail tradizionali - scaffali, preordini, lancio fisico - senza i costi legati alla produzione del supporto ottico. Per il publisher è una soluzione economicamente vantaggiosa; per il consumatore, le implicazioni sono diverse.</p>'
       },
       {
         title: 'Cosa cambia per gli utenti',
@@ -653,12 +670,12 @@ const ARTICLES = [
       }
     ],
     fonti: [
-      'IGN — "GTA 6 Physical Edition Won\'t Include a Disc" (2026)',
-      'Eurogamer — "Grand Theft Auto 6 physical release confirmed as disc-free"',
-      'GamesIndustry.biz — "GTA VI retail box will contain download code only"',
-      'The Verge — "What GTA VI\'s disc-free box means for game ownership"'
+      'IGN: "GTA 6 Physical Edition Won\'t Include a Disc" (2026)',
+      'Eurogamer: "Grand Theft Auto 6 physical release confirmed as disc-free"',
+      'GamesIndustry.biz: "GTA VI retail box will contain download code only"',
+      'The Verge: "What GTA VI\'s disc-free box means for game ownership"'
     ],
-    lezione: 'GTA VI rappresenta un momento di svolta nel dibattito sul significato di "edizione fisica". Quando la confezione non contiene il gioco — ma solo le istruzioni per scaricarlo — il termine "fisico" diventa una questione di marketing più che di sostanza. Per i collezionisti, la distinzione è fondamentale: una scatola senza disco è una scatola vuota.'
+    lezione: 'GTA VI rappresenta un momento di svolta nel dibattito sul significato di "edizione fisica". Quando la confezione non contiene il gioco - ma solo le istruzioni per scaricarlo - il termine "fisico" diventa una questione di marketing più che di sostanza. Per i collezionisti, la distinzione è fondamentale: una scatola senza disco è una scatola vuota.'
   },
   {
     id: 3,
@@ -680,11 +697,11 @@ const ARTICLES = [
       },
       {
         title: 'Perché è successo',
-        body: '<p>I rivenditori fisici costruiscono il proprio modello di business sulla vendita e sulla rivendita di prodotti con un valore tangibile. Una confezione con un codice di download non genera traffico qualificato in negozio, non alimenta il mercato dell\'usato — uno dei principali flussi di ricavo per i retailer specializzati — e non offre al consumatore un vantaggio rispetto all\'acquisto diretto dallo store digitale.</p><p>Per GAME e retailer simili, stoccare un "Code in a Box" significa rinunciare ai margini dell\'usato e competere direttamente con PlayStation Store e Xbox Live su un prodotto dove il vantaggio competitivo del negozio fisico è nullo.</p>'
+        body: '<p>I rivenditori fisici costruiscono il proprio modello di business sulla vendita e sulla rivendita di prodotti con un valore tangibile. Una confezione con un codice di download non genera traffico qualificato in negozio, non alimenta il mercato dell\'usato - uno dei principali flussi di ricavo per i retailer specializzati - e non offre al consumatore un vantaggio rispetto all\'acquisto diretto dallo store digitale.</p><p>Per GAME e retailer simili, stoccare un "Code in a Box" significa rinunciare ai margini dell\'usato e competere direttamente con PlayStation Store e Xbox Live su un prodotto dove il vantaggio competitivo del negozio fisico è nullo.</p>'
       },
       {
         title: 'Cosa cambia per gli utenti',
-        body: '<p>In alcuni mercati, GTA VI nella sua versione "fisica" non sarà disponibile presso i negozi tradizionali. Chi vuole la confezione dovrà affidarsi ad altri canali di distribuzione. Chi vuole un vero supporto fisico — un disco, non un codice — dovrà attendere una possibile distribuzione alternativa o fare a meno dell\'edizione in scatola.</p>'
+        body: '<p>In alcuni mercati, GTA VI nella sua versione "fisica" non sarà disponibile presso i negozi tradizionali. Chi vuole la confezione dovrà affidarsi ad altri canali di distribuzione. Chi vuole un vero supporto fisico - un disco, non un codice - dovrà attendere una possibile distribuzione alternativa o fare a meno dell\'edizione in scatola.</p>'
       },
       {
         title: 'Perché riguarda anche il collezionismo',
@@ -692,9 +709,9 @@ const ARTICLES = [
       }
     ],
     fonti: [
-      'GamesIndustry.biz — "GAME UK won\'t sell GTA VI disc-free physical edition" (2026)',
-      'Eurogamer — "GTA 6 physical release met with retailer resistance"',
-      'IGN — "Major retailers decline to stock GTA VI code-in-box version"'
+      'GamesIndustry.biz: "GAME UK won\'t sell GTA VI disc-free physical edition" (2026)',
+      'Eurogamer: "GTA 6 physical release met with retailer resistance"',
+      'IGN: "Major retailers decline to stock GTA VI code-in-box version"'
     ],
     lezione: 'La resistenza dei rivenditori dimostra che la distinzione tra "confezione" e "supporto fisico" è economicamente rilevante e riconosciuta dal mercato. Non si tratta solo di un dibattito ideologico tra collezionisti: il mercato retail, nella sua valutazione commerciale, riconosce che un prodotto senza contenuto tangibile ha un diverso valore.'
   },
@@ -726,13 +743,13 @@ const ARTICLES = [
       },
       {
         title: 'Perché riguarda anche il collezionismo',
-        body: '<p>La conferma del disco per un titolo major come Marvel\'s Wolverine segnala che il mercato del collezionismo e i consumatori orientati al fisico hanno ancora un peso nelle decisioni dei publisher. Un\'edizione fisica completa — con disco nella confezione — mantiene un valore di rivendita e un interesse per i collezionisti che il solo codice digitale non può replicare nel tempo.</p>'
+        body: '<p>La conferma del disco per un titolo major come Marvel\'s Wolverine segnala che il mercato del collezionismo e i consumatori orientati al fisico hanno ancora un peso nelle decisioni dei publisher. Un\'edizione fisica completa - con disco nella confezione - mantiene un valore di rivendita e un interesse per i collezionisti che il solo codice digitale non può replicare nel tempo.</p>'
       }
     ],
     fonti: [
-      'PlayStation Blog — "Marvel\'s Wolverine — Physical Edition Confirmed" (2026)',
-      'IGN — "Wolverine PS5 physical edition includes full game disc"',
-      'Eurogamer — "Marvel\'s Wolverine will have a proper disc, unlike GTA VI"'
+      'PlayStation Blog: "Marvel\'s Wolverine - Physical Edition Confirmed" (2026)',
+      'IGN: "Wolverine PS5 physical edition includes full game disc"',
+      'Eurogamer: "Marvel\'s Wolverine will have a proper disc, unlike GTA VI"'
     ],
     lezione: "La presenza del disco in Marvel's Wolverine dimostra che la distribuzione su supporto fisico è ancora tecnicamente e commercialmente praticabile per titoli di primo piano. La scelta di non includere il disco in GTA VI è quindi una decisione aziendale specifica, non una necessità tecnica del mercato. I collezionisti possono ancora aspettarsi edizioni fisiche complete da publisher che scelgono consapevolmente di offrirle."
   },
@@ -752,11 +769,11 @@ const ARTICLES = [
     sections: [
       {
         title: 'Cosa è successo',
-        body: '<p>Dal 2010 ad oggi, decine di store digitali hanno chiuso i battenti o rimosso contenuti precedentemente acquistati dagli utenti. Il Wii Shop Channel di Nintendo ha cessato le vendite nel 2019 e ha completamente chiuso nel 2023. Il PlayStation Store per PS3 e PSP è stato minacciato di chiusura nel 2021, prima che Sony invertisse la decisione in seguito alle proteste degli utenti.</p><p>L\'Xbox 360 Marketplace ha cessato la vendita di nuovi contenuti nel 2024. Google Stadia — il servizio di cloud gaming di Google — ha chiuso nel gennaio 2023, lasciando gli utenti senza accesso ai giochi per cui avevano pagato (Google ha offerto rimborsi, ma il precedente rimane). Ubisoft Connect ha rimosso dalle librerie di alcuni utenti titoli regolarmente acquistati, tra cui <em>The Crew</em>, citando la scadenza dei diritti di licenza sui contenuti online.</p>'
+        body: '<p>Dal 2010 ad oggi, decine di store digitali hanno chiuso i battenti o rimosso contenuti precedentemente acquistati dagli utenti. Il Wii Shop Channel di Nintendo ha cessato le vendite nel 2019 e ha completamente chiuso nel 2023. Il PlayStation Store per PS3 e PSP è stato minacciato di chiusura nel 2021, prima che Sony invertisse la decisione in seguito alle proteste degli utenti.</p><p>L\'Xbox 360 Marketplace ha cessato la vendita di nuovi contenuti nel 2024. Google Stadia - il servizio di cloud gaming di Google - ha chiuso nel gennaio 2023, lasciando gli utenti senza accesso ai giochi per cui avevano pagato (Google ha offerto rimborsi, ma il precedente rimane). Ubisoft Connect ha rimosso dalle librerie di alcuni utenti titoli regolarmente acquistati, tra cui <em>The Crew</em>, citando la scadenza dei diritti di licenza sui contenuti online.</p>'
       },
       {
         title: 'Perché è successo',
-        body: '<p>Ogni store digitale è un servizio commerciale che dipende da accordi di licenza, costi di mantenimento dei server e decisioni strategiche aziendali. Quando un servizio non è più economicamente sostenibile, viene chiuso. I contenuti digitali acquistati attraverso questi store non sono file conservati localmente: sono autorizzazioni a utilizzare file ospitati su server di terze parti, valide fintanto che il servizio rimane attivo.</p><p>Il DRM (Digital Rights Management) — il sistema di protezione anticopia integrato nella maggior parte dei contenuti digitali — è spesso legato ai server della piattaforma: quando il server si spegne, il DRM smette di rispondere e il contenuto diventa inaccessibile, anche se l\'utente possiede il file in locale.</p>'
+        body: '<p>Ogni store digitale è un servizio commerciale che dipende da accordi di licenza, costi di mantenimento dei server e decisioni strategiche aziendali. Quando un servizio non è più economicamente sostenibile, viene chiuso. I contenuti digitali acquistati attraverso questi store non sono file conservati localmente: sono autorizzazioni a utilizzare file ospitati su server di terze parti, valide fintanto che il servizio rimane attivo.</p><p>Il DRM (Digital Rights Management) - il sistema di protezione anticopia integrato nella maggior parte dei contenuti digitali - è spesso legato ai server della piattaforma: quando il server si spegne, il DRM smette di rispondere e il contenuto diventa inaccessibile, anche se l\'utente possiede il file in locale.</p>'
       },
       {
         title: 'Cosa cambia per gli utenti',
@@ -768,11 +785,11 @@ const ARTICLES = [
       }
     ],
     fonti: [
-      'Internet Archive — documentazione sulla chiusura del Wii Shop Channel (2019–2023)',
-      'The Verge — "Google Stadia is shutting down, and users will get refunds" (2022)',
-      'Ars Technica — "Ubisoft is deactivating The Crew, a game people actually bought" (2024)',
-      'Kotaku — "Nintendo\'s Wii Shop Is Closing For Good This Month" (2023)',
-      'Electronic Frontier Foundation (EFF) — report su digital ownership e DRM'
+      'Internet Archive - documentazione sulla chiusura del Wii Shop Channel (2019-2023)',
+      'The Verge: "Google Stadia is shutting down, and users will get refunds" (2022)',
+      'Ars Technica: "Ubisoft is deactivating The Crew, a game people actually bought" (2024)',
+      'Kotaku: "Nintendo\'s Wii Shop Is Closing For Good This Month" (2023)',
+      'Electronic Frontier Foundation (EFF) - report su digital ownership e DRM'
     ],
     lezione: "Il dibattito tra fisico e digitale non riguarda solo la qualità dell'immagine o la comodità d'acquisto. Riguarda la natura giuridica ed economica di cosa significa \"possedere\" un contenuto culturale. I supporti fisici offrono proprietà trasferibile, conservabile, rivendibile e indipendente da servizi commerciali. I contenuti digitali offrono una licenza d'uso revocabile, non trasferibile e dipendente dalla continuità di un servizio commerciale. Conoscere la differenza è il primo passo per fare scelte consapevoli."
   },
@@ -792,7 +809,7 @@ const ARTICLES = [
     sections: [
       {
         title: 'Cosa è successo',
-        body: '<p>Il 1° luglio 2026, tramite il PlayStation Blog ufficiale, Sony Interactive Entertainment ha annunciato che dal gennaio 2028 cesserà la produzione di dischi per tutti i nuovi giochi in uscita sulle console PlayStation. Dopo quella data i nuovi titoli saranno disponibili esclusivamente in formato digitale, sul PlayStation Store e presso i rivenditori. I giochi già usciti — o che usciranno prima del gennaio 2028 — non sono interessati e continueranno a esistere su disco.</p>'
+        body: '<p>Il 1° luglio 2026, tramite il PlayStation Blog ufficiale, Sony Interactive Entertainment ha annunciato che dal gennaio 2028 cesserà la produzione di dischi per tutti i nuovi giochi in uscita sulle console PlayStation. Dopo quella data i nuovi titoli saranno disponibili esclusivamente in formato digitale, sul PlayStation Store e presso i rivenditori. I giochi già usciti - o che usciranno prima del gennaio 2028 - non sono interessati e continueranno a esistere su disco.</p>'
       },
       {
         title: 'Perché è successo',
@@ -800,7 +817,7 @@ const ARTICLES = [
       },
       {
         title: 'Cosa cambia per gli utenti',
-        body: '<p>Dal 2028, chi vorrà un nuovo gioco PlayStation dovrà acquistarlo in digitale. Sony ha dichiarato che continuerà a vendere prodotti al dettaglio anche dopo il 2028, ma non è ancora chiaro in che forma: scatole con un codice all\'interno, oppure schede con codice di riscatto. In entrambi i casi verrebbe meno il disco vero e proprio — e con esso la possibilità di rivendere, prestare e conservare il gioco indipendentemente dallo store.</p>'
+        body: '<p>Dal 2028, chi vorrà un nuovo gioco PlayStation dovrà acquistarlo in digitale. Sony ha dichiarato che continuerà a vendere prodotti al dettaglio anche dopo il 2028, ma non è ancora chiaro in che forma: scatole con un codice all\'interno, oppure schede con codice di riscatto. In entrambi i casi verrebbe meno il disco vero e proprio - e con esso la possibilità di rivendere, prestare e conservare il gioco indipendentemente dallo store.</p>'
       },
       {
         title: 'Perché riguarda anche il collezionismo',
@@ -808,12 +825,12 @@ const ARTICLES = [
       }
     ],
     fonti: [
-      'PlayStation.Blog — "Physical disc production ending in January 2028 for new games" (2026)',
-      'TechCrunch — "Sony to end physical PlayStation game disc production in 2028"',
-      'CNBC — "PlayStation will end physical disc production for new games in 2028"',
-      'Engadget — "Sony will stop making disc-based PlayStation games starting 2028"'
+      'PlayStation.Blog: "Physical disc production ending in January 2028 for new games" (2026)',
+      'TechCrunch: "Sony to end physical PlayStation game disc production in 2028"',
+      'CNBC: "PlayStation will end physical disc production for new games in 2028"',
+      'Engadget: "Sony will stop making disc-based PlayStation games starting 2028"'
     ],
-    lezione: 'La decisione di Sony conferma su scala industriale la tendenza già emersa con GTA VI e il "Code in a Box": il supporto fisico dei videogiochi sta diventando l\'eccezione, non la regola. Per chi tiene alla proprietà reale di ciò che acquista — poter conservare, prestare e rivendere — i dischi prodotti fino al 2027 rappresentano una finestra che si sta chiudendo.'
+    lezione: 'La decisione di Sony conferma su scala industriale la tendenza già emersa con GTA VI e il "Code in a Box": il supporto fisico dei videogiochi sta diventando l\'eccezione, non la regola. Per chi tiene alla proprietà reale di ciò che acquista - poter conservare, prestare e rivendere - i dischi prodotti fino al 2027 rappresentano una finestra che si sta chiudendo.'
   }
 ];
 
@@ -949,7 +966,7 @@ function openArticle(id) {
             <div class="art-related-body">
               <p class="art-related-cat">${p.cat || ''}</p>
               <p class="art-related-name">${(p.name||'').substring(0,40)}</p>
-              <p class="art-related-price">€ ${p.price ?? '—'}</p>
+              <p class="art-related-price">€ ${p.price ?? '-'}</p>
             </div>
           </div>
         `).join('')}
@@ -1145,5 +1162,15 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 loadCatalog().then(() => renderGrid('all'));
 </script>
 <script src="cart-widget.js" defer></script>
+<script>
+/* Menu mobile: chiusura senza "tocco fantasma" sul pulsante Menu */
+(function(){var mob=document.getElementById('mobileMenu'),btn=document.getElementById('menuBtn'),x=document.getElementById('mobClose');if(!mob||!btn||!x)return;
+var chiusoAlle=0;
+function chiudi(e){if(e){e.preventDefault();e.stopPropagation();}mob.classList.remove('open');btn.setAttribute('aria-expanded','false');document.body.style.overflow='';chiusoAlle=Date.now();}
+x.addEventListener('touchend',chiudi,{capture:true,passive:false});x.addEventListener('click',chiudi,true);
+btn.addEventListener('click',function(e){if(Date.now()-chiusoAlle<600){e.preventDefault();e.stopImmediatePropagation();}},true);
+if(!mob.querySelector('.mob-logo')){var lg=new Image();lg.src='logo no sfondo.png';lg.alt='';lg.className='mob-logo';mob.appendChild(lg);}var qui=location.pathname.split('/').pop()||'index.html';mob.querySelectorAll('a').forEach(function(a){if(a.getAttribute('href')===qui)a.classList.add('attivo');});
+})();
+</script>
 </body>
 </html>

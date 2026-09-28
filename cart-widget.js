@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════
-   Ramacciato Vintage — Cart Widget
+   Ramacciato Vintage - Cart Widget
    Floating, draggable, persistent (localStorage)
    Easter egg: scuotimi → shake → fall animation
 ═══════════════════════════════════════════════════════ */
@@ -329,7 +329,7 @@
     el.panel.querySelectorAll('.rv-item').forEach(function(item){
       item.classList.add('rv-fall');
     });
-    /* dust effect on bubble — appears when items "land" */
+    /* dust effect on bubble - appears when items "land" */
     setTimeout(spawnDust, 600);
     setTimeout(function(){
       var body = el.panel && el.panel.querySelector('#rv-body');

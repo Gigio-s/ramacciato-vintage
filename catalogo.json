@@ -3,12 +3,12 @@
     "valuta": "EUR",
     "spedizione": {
       "italia": {
-        "label": "Italia — Spedizione Standard",
+        "label": "Italia - Spedizione Standard",
         "costo": 5.9,
         "giorni": "3-5 giorni lavorativi"
       },
       "europa": {
-        "label": "Europa — Spedizione Internazionale",
+        "label": "Europa - Spedizione Internazionale",
         "costo": 12.9,
         "giorni": "7-14 giorni lavorativi"
       },

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Ordine confermato — Ramacciato Vintage">
+<meta name="description" content="Ordine confermato - Ramacciato Vintage">
 <meta name="robots" content="noindex,nofollow">
 <link rel="icon" type="image/png" href="logo no sfondo.png">
 <title>Ordine Confermato | Ramacciato Vintage</title>
@@ -153,19 +153,19 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);position:relative;z-in
       <div class="order-box" id="order-box">
         <div class="order-row">
           <span class="label">Numero ordine</span>
-          <span class="value order-id" id="order-id">—</span>
+          <span class="value order-id" id="order-id">-</span>
         </div>
         <div class="order-row">
           <span class="label">Intestatario</span>
-          <span class="value" id="order-nome">—</span>
+          <span class="value" id="order-nome">-</span>
         </div>
         <div class="order-row">
           <span class="label">Email</span>
-          <span class="value" id="order-email">—</span>
+          <span class="value" id="order-email">-</span>
         </div>
         <div class="order-row">
           <span class="label">Totale pagato</span>
-          <span class="value" id="order-tot">—</span>
+          <span class="value" id="order-tot">-</span>
         </div>
         <div class="order-items" id="order-items" style="display:none"></div>
       </div>
@@ -201,14 +201,14 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);position:relative;z-in
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
 /* ═══════════════════════════════════════════════════════
-   CONFIGURAZIONE — compila questi valori una volta sola
+   CONFIGURAZIONE - compila questi valori una volta sola
    Guida: https://www.emailjs.com/docs/sdk/installation/
 ═══════════════════════════════════════════════════════ */
 var EMAILJS_PUBLIC_KEY  = 'pvM5w3sxCNUZwejpM';
 var EMAILJS_SERVICE_ID  = 'service_xbam6si';
 var EMAILJS_TEMPLATE_ID = 'template_s8i324l';
 
-/* Google Apps Script URL — vedi file RV_RegistroVendite.gs */
+/* Google Apps Script URL - vedi file RV_RegistroVendite.gs */
 var GAS_WEBHOOK_URL = 'SOSTITUISCI_CON_URL_APPS_SCRIPT';
 
 /* ═══════════════════════════════════════════════════════ */
@@ -221,11 +221,11 @@ var GAS_WEBHOOK_URL = 'SOSTITUISCI_CON_URL_APPS_SCRIPT';
   }
 
   if(d){
-    var fmt = function(s){ return s||'—'; };
+    var fmt = function(s){ return s||'-'; };
     document.getElementById('order-id').textContent    = fmt(d.orderId);
     document.getElementById('order-nome').textContent  = fmt(d.nome);
     document.getElementById('order-email').textContent = fmt(d.email);
-    document.getElementById('order-tot').textContent   = d.tot ? '€'+d.tot : '—';
+    document.getElementById('order-tot').textContent   = d.tot ? '€'+d.tot : '-';
     if(d.fattura) document.getElementById('invoice-notice').classList.add('visible');
     if(d.email){
       document.getElementById('success-sub').innerHTML =
@@ -252,14 +252,14 @@ var GAS_WEBHOOK_URL = 'SOSTITUISCI_CON_URL_APPS_SCRIPT';
         emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
         var articoliTesto = d.articoli && d.articoli.length
           ? d.articoli.map(function(a){ return '• '+a.name+' (€'+Number(a.price).toFixed(2)+')'; }).join('\n')
-          : '—';
+          : '-';
         emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-          order_id:    d.orderId || '—',
-          cliente:     d.nome    || '—',
-          email:       d.email   || '—',
+          order_id:    d.orderId || '-',
+          cliente:     d.nome    || '-',
+          email:       d.email   || '-',
           totale:      '€'+(d.tot||'0'),
-          indirizzo:   d.indirizzo || '—',
-          zona:        d.zona    || '—',
+          indirizzo:   d.indirizzo || '-',
+          zona:        d.zona    || '-',
           articoli:    articoliTesto,
           fattura:     d.fattura ? 'SÌ' : 'NO',
           data_ordine: new Date().toLocaleString('it-IT')

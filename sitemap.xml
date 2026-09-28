@@ -1,46 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <url>
-    <loc>https://ramacciatovintage.it/</loc>
-    <lastmod>2026-07-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-
-  <url>
-    <loc>https://ramacciatovintage.it/shop.html</loc>
-    <lastmod>2026-07-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-
-  <url>
-    <loc>https://ramacciatovintage.it/svuotacantine.html</loc>
-    <lastmod>2026-07-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
-  </url>
-
-  <url>
-    <loc>https://ramacciatovintage.it/mercatini.html</loc>
-    <lastmod>2026-07-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-  </url>
-
-  <url>
-    <loc>https://ramacciatovintage.it/fisico-vs-digitale.html</loc>
-    <lastmod>2026-07-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-
-  <url>
-    <loc>https://ramacciatovintage.it/vendi.html</loc>
-    <lastmod>2026-07-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
-  </url>
-
+  <url><loc>https://ramacciatovintage.it/</loc><lastmod>2026-09-28</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://ramacciatovintage.it/shop.html</loc><lastmod>2026-09-28</lastmod><changefreq>daily</changefreq><priority>0.95</priority></url>
+  <url><loc>https://ramacciatovintage.it/shop-libreria.html</loc><lastmod>2026-09-28</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ramacciatovintage.it/mercatini.html</loc><lastmod>2026-09-28</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://ramacciatovintage.it/svuotacantine.html</loc><lastmod>2026-09-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ramacciatovintage.it/fisico-vs-digitale.html</loc><lastmod>2026-09-28</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://ramacciatovintage.it/archivio-licenze.html</loc><lastmod>2026-09-28</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://ramacciatovintage.it/prodotto/black-sabbath-live-1970-22.html</loc><lastmod>2026-09-28</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ramacciatovintage.it/prodotto/ten-years-after-live-in-new-york-1971-21.html</loc><lastmod>2026-09-28</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ramacciatovintage.it/prodotto/emerson-lake-palmer-live-in-london-1971-20.html</loc><lastmod>2026-09-28</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ramacciatovintage.it/prodotto/stephen-stills-manassas-live-in-amsterdam-1972-19.html</loc><lastmod>2026-09-28</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ramacciatovintage.it/prodotto/jethro-tull-live-in-chicago-1970-17.html</loc><lastmod>2026-09-28</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ramacciatovintage.it/prodotto/faces-live-in-santa-monica-1970-16.html</loc><lastmod>2026-09-28</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ramacciatovintage.it/prodotto/frank-zappa-2-live-in-paris-1970-15.html</loc><lastmod>2026-09-28</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ramacciatovintage.it/prodotto/jefferson-airplane-live-in-san-francisco-1967-14.html</loc><lastmod>2026-09-28</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ramacciatovintage.it/prodotto/punchline-superfly-13.html</loc><lastmod>2026-09-28</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ramacciatovintage.it/prodotto/the-embodied-ravengod-12.html</loc><lastmod>2026-09-28</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ramacciatovintage.it/prodotto/ghost-machinery-evil-undertow-11.html</loc><lastmod>2026-09-28</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ramacciatovintage.it/prodotto/fvzz-popvli-magna-fvzz-10.html</loc><lastmod>2026-09-28</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ramacciatovintage.it/prodotto/luca-sapio-everyday-is-gonna-be-the-day-9.html</loc><lastmod>2026-09-28</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ramacciatovintage.it/prodotto/my-regime-peek-through-the-pines-8.html</loc><lastmod>2026-09-28</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ramacciatovintage.it/prodotto/terrorway-the-second-7.html</loc><lastmod>2026-09-28</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ramacciatovintage.it/prodotto/the-freeks-crazy-world-6.html</loc><lastmod>2026-09-28</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ramacciatovintage.it/prodotto/hot-lunch-5.html</loc><lastmod>2026-09-28</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ramacciatovintage.it/prodotto/dada-circus-lato-del-cerchio-4.html</loc><lastmod>2026-09-28</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ramacciatovintage.it/prodotto/kadabra-ultra-3.html</loc><lastmod>2026-09-28</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ramacciatovintage.it/prodotto/ruinosa-y-las-strippers-de-rahola-dictadura-travesti-2.html</loc><lastmod>2026-09-28</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ramacciatovintage.it/prodotto/no-doubt-rock-steady-1.html</loc><lastmod>2026-09-28</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ramacciatovintage.it/negozio/cd-usati.html</loc><lastmod>2026-09-28</lastmod><changefreq>daily</changefreq><priority>0.85</priority></url>
+  <url><loc>https://ramacciatovintage.it/vintage-usato-vicenza.html</loc><lastmod>2026-09-28</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ramacciatovintage.it/vintage-usato-padova.html</loc><lastmod>2026-09-28</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ramacciatovintage.it/vintage-usato-marostica.html</loc><lastmod>2026-09-28</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ramacciatovintage.it/vintage-usato-mestre-venezia.html</loc><lastmod>2026-09-28</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ramacciatovintage.it/vintage-usato-veneto.html</loc><lastmod>2026-09-28</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
 </urlset>

@@ -51,3 +51,7 @@ lavorazione/
 verifica html/
 inventario/backup_online_*/
 GDPR/ffmpeg-*/
+
+# Script del sito eseguiti da GitHub Actions: vanno versionati
+!scripts/*.py
+scripts/__pycache__/

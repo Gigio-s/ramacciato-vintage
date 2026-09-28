@@ -1,0 +1,62 @@
+name: Pagine SEO (prodotti, categorie, zone, sitemap)
+
+# Rigenera le pagine statiche per Google:
+# - ogni volta che il gestionale pubblica i cataloghi o le copertine
+# - il 1° di ogni mese (aggiorna le date dei mercatini)
+# - a mano dalla scheda Actions ("Run workflow")
+on:
+  push:
+    branches: [main]
+    paths:
+      - "catalogo*.json"
+      - "photos/inventario/**"
+      - "scripts/genera_seo.py"
+      - "seo/**"
+  schedule:
+    - cron: "0 5 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: seo-pages
+  cancel-in-progress: false
+
+jobs:
+  genera:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Genera pagine SEO
+        run: python scripts/genera_seo.py
+
+      - name: Salva le pagine generate
+        id: commit
+        run: |
+          git config user.name "ramacciato-seo-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A prodotto negozio vintage-usato-*.html sitemap.xml mercatini.html
+          if git diff --cached --quiet; then
+            echo "Nessuna modifica"
+            echo "cambiato=no" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "seo: pagine rigenerate automaticamente"
+            git pull --rebase origin main
+            git push
+            echo "cambiato=si" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Pubblica subito su GitHub Pages
+        if: steps.commit.outputs.cambiato == 'si'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Pages si aggiornera' al prossimo push"

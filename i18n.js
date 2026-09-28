@@ -75,7 +75,7 @@
     // z-index 30: sopra i contenuti (1) e l'header (20), ma SOTTO il cursore
     // custom (50) cosi il cursore resta visibile passando sulla pillola.
     wrap.style.cssText='position:fixed;left:14px;bottom:14px;z-index:30;display:flex;gap:2px;'
-      +'background:rgba(14,12,10,.85);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);'
+      +'background:rgba(11,37,69,.85);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);'
       +'border-radius:999px;padding:3px;font-family:Archivo,Arial,sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.28)';
     LANGS.forEach(function(l){
       var b=document.createElement('button');
@@ -84,7 +84,7 @@
       b.style.cssText='border:none;cursor:pointer;border-radius:999px;padding:5px 9px;'
         +'font-size:10px;font-weight:800;letter-spacing:.08em;font-family:inherit;'
         +'transition:background .18s,color .18s;'
-        +(active?'background:#f0ebe3;color:#0e0c0a;':'background:transparent;color:#c9c2b8;');
+        +(active?'background:#4a90e0;color:#0b2545;':'background:transparent;color:#d6e6f7;');
       b.addEventListener('click',function(){ setLang(l); });
       wrap.appendChild(b);
     });

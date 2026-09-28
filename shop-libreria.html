@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>La Libreria dei CD | Ramacciato Vintage</title>
+<meta name="description" content="Sfoglia i CD di Ramacciato Vintage come in un vero negozio: scorri i dorsi, estrai il disco che ti interessa e acquistalo online.">
+<link rel="canonical" href="https://ramacciatovintage.it/shop-libreria.html">
+<link rel="icon" type="image/png" href="logo no sfondo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,800;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#4a90e0;--navy:#0b2545;--cobalt:#0d3b75;--white:#fff;
+  --wood:url('libreria/legno-noce.jpg');--wood-h:url('libreria/legno-noce-h.jpg');
+  --dw:26px;--dh:196px;           /* dorso CD */
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:Archivo,Arial,sans-serif;color:var(--navy);background:#0d1b2c;min-height:100vh;overflow-x:hidden}
+
+/* ── Ambiente ── */
+.ambiente{position:fixed;inset:-30px;z-index:0;background:#23384f url('libreria/sfondo-negozio.jpg') center 35%/cover no-repeat;filter:blur(3px) saturate(1.05)}
+.ambiente::after{content:"";position:absolute;inset:0;background:
+  radial-gradient(ellipse 70% 60% at 50% 55%,rgba(10,20,34,0) 0,rgba(10,20,34,.35) 60%,rgba(6,12,22,.75) 100%),
+  linear-gradient(180deg,rgba(74,144,224,.12),rgba(6,12,22,.25))}
+
+/* ── Barra superiore ── */
+.top{position:relative;z-index:5;display:flex;align-items:center;gap:18px;justify-content:space-between;
+  max-width:1180px;margin:18px auto 0;padding:10px 14px 10px 18px;border-radius:999px;
+  background:rgba(255,255,255,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  box-shadow:0 10px 30px rgba(6,12,22,.25);width:calc(100% - 32px)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--navy);font-weight:900;letter-spacing:.02em;font-size:13px;text-transform:uppercase;white-space:nowrap}
+.brand img{height:26px;width:auto}
+.brand span b{color:var(--cobalt);font-weight:600}
+.top-r{display:flex;align-items:center;gap:10px;flex:1;justify-content:flex-end}
+.cerca{flex:0 1 300px;display:flex;align-items:center;gap:8px;background:#fff;border:1px solid rgba(11,37,69,.14);border-radius:999px;padding:8px 14px}
+.cerca input{border:0;outline:0;font:inherit;font-size:14px;color:var(--navy);width:100%;background:transparent}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border-radius:999px;background:var(--navy);color:#fff;text-decoration:none;font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+
+/* ── Intestazione ── */
+.intro{position:relative;z-index:2;text-align:center;color:#fff;margin:38px auto 26px;padding:0 16px}
+.intro .kicker{font-size:10px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;opacity:.85}
+.intro h1{font-size:clamp(36px,6vw,64px);font-weight:900;letter-spacing:-.04em;text-transform:uppercase;margin:8px 0 6px;line-height:.95;text-shadow:0 4px 24px rgba(0,0,0,.35)}
+.intro p{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:clamp(17px,2.2vw,22px);margin:0;opacity:.92}
+
+/* ── Mobile porta CD ── */
+.sala{position:relative;z-index:2;display:flex;justify-content:center;padding:0 16px 90px}
+.cab{position:relative;width:min(1060px,100%);padding:30px 30px 0;
+  background:linear-gradient(90deg,rgba(0,0,0,.28),rgba(0,0,0,0) 3%,rgba(0,0,0,0) 97%,rgba(0,0,0,.32)),var(--wood) 0 0/500px auto;
+  border-radius:4px 4px 2px 2px;
+  box-shadow:0 60px 80px -30px rgba(0,0,0,.75),0 20px 40px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.12),inset 0 0 0 1px rgba(0,0,0,.35)}
+/* cimasa */
+.cab::before{content:"";position:absolute;left:-10px;right:-10px;top:-16px;height:18px;border-radius:3px 3px 1px 1px;
+  background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,0) 30%,rgba(0,0,0,.35)),var(--wood-h) 0 0/auto 500px;
+  box-shadow:0 6px 10px rgba(0,0,0,.45)}
+.zoccolo{height:40px;margin:0 -30px;border-radius:0 0 2px 2px;
+  background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.25) 20%,rgba(0,0,0,.4)),var(--wood-h) 0 0/auto 500px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+.piedi{display:flex;justify-content:space-between;margin:0 16px}
+.piedi i{display:block;width:46px;height:12px;border-radius:0 0 6px 6px;background:linear-gradient(180deg,#1b120c,#0c0806)}
+
+.ripiano{position:relative}
+.vano{position:relative;display:flex;align-items:flex-end;gap:1px;height:calc(var(--dh) + 26px);padding:0 18px;
+  background:linear-gradient(180deg,rgba(0,0,0,.7),rgba(0,0,0,.45) 35%,rgba(0,0,0,.5)),var(--wood) 0 0/500px auto;
+  box-shadow:inset 0 22px 26px -10px rgba(0,0,0,.85),inset 18px 0 22px -14px rgba(0,0,0,.8),inset -18px 0 22px -14px rgba(0,0,0,.8)}
+.asse{position:relative;height:26px;
+  background:linear-gradient(180deg,rgba(255,255,255,.22) 0,rgba(255,255,255,.05) 8%,rgba(0,0,0,0) 30%,rgba(0,0,0,.45)),var(--wood-h) 0 0/auto 500px;
+  box-shadow:0 7px 10px -3px rgba(0,0,0,.6);z-index:2}
+.asse::before{content:"";position:absolute;left:0;right:0;top:-5px;height:5px;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.35))}
+.targhetta{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);padding:3px 14px 2px;border-radius:2px;
+  font-size:9.5px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:#2b1d08;white-space:nowrap;
+  background:linear-gradient(180deg,#f3dc9a,#caa54f 45%,#9e7a2c 55%,#d9bb6d);
+  box-shadow:0 1px 0 rgba(255,255,255,.35) inset,0 1px 2px rgba(0,0,0,.55);text-shadow:0 1px 0 rgba(255,240,200,.5)}
+.targhetta::before,.targhetta::after{content:"";position:absolute;top:50%;width:4px;height:4px;margin-top:-2px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff6d8,#7a5a1c)}
+.targhetta::before{left:4px}.targhetta::after{right:4px}
+
+/* ── Dorso CD (jewel case) ── */
+.dorso{position:relative;flex:0 0 var(--dw);width:var(--dw);height:var(--dh);padding:0;border:0;cursor:pointer;
+  background:var(--c,#222);color:var(--t,#f4f1ea);
+  transform:translateY(var(--y,0));transition:transform .28s var(--ease),filter .28s,opacity .35s;
+  box-shadow:1px 0 0 rgba(0,0,0,.55),-1px 0 0 rgba(255,255,255,.04),0 3px 6px rgba(0,0,0,.5);filter:brightness(var(--b,1))}
+.dorso::before{content:"";position:absolute;inset:0;pointer-events:none;background:
+  linear-gradient(90deg,rgba(255,255,255,.55) 0,rgba(255,255,255,.12) 1.5px,rgba(255,255,255,0) 4px,rgba(255,255,255,0) calc(100% - 5px),rgba(0,0,0,.3) calc(100% - 2px),rgba(255,255,255,.35) 100%),
+  linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,0) 20%,rgba(0,0,0,0) 80%,rgba(0,0,0,.18))}
+.dorso .cap{position:absolute;left:0;right:0;height:9px;background:linear-gradient(90deg,rgba(30,30,32,.9),rgba(70,72,76,.85) 40%,rgba(22,22,24,.92));pointer-events:none}
+.dorso .cap.t{top:0;box-shadow:inset 0 -1px 0 rgba(255,255,255,.12)}
+.dorso .cap.b{bottom:0;box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+.dorso .txt{position:absolute;left:0;right:0;top:15px;bottom:34px;display:flex;align-items:center;justify-content:flex-start;
+  writing-mode:vertical-rl;font-size:10px;line-height:1;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0}
+.dorso .txt b{font-weight:900;margin-bottom:6px}
+.dorso .txt span{font-weight:600;opacity:.82}
+.dorso .bollino{position:absolute;left:50%;bottom:13px;transform:translateX(-50%);width:20px;height:20px;border-radius:50%;
+  background:#fff;color:#c01919;font-size:7.5px;font-weight:900;display:flex;align-items:center;justify-content:center;letter-spacing:-.02em;
+  box-shadow:0 1px 2px rgba(0,0,0,.4);pointer-events:none}
+.dorso:hover,.dorso:focus-visible{--y:-12px;filter:brightness(calc(var(--b,1) + .12));z-index:3;outline:0;box-shadow:0 14px 18px rgba(0,0,0,.6),1px 0 0 rgba(0,0,0,.5)}
+.dorso:focus-visible{box-shadow:0 0 0 2px #fff,0 14px 18px rgba(0,0,0,.6)}
+.dorso.fuori{opacity:0;--y:-40px;pointer-events:none}
+.dorso.spento{opacity:.28;filter:grayscale(.8) brightness(.7)}
+.dorso.trovato{--y:-16px;box-shadow:0 0 0 2px #ffe08a,0 14px 18px rgba(0,0,0,.6)}
+.dorso.venduto .bollino{background:#c01919;color:#fff;font-size:6px}
+.reggilibri{flex:0 0 12px;height:128px;margin-left:3px;align-self:flex-end;border-radius:1px;
+  background:linear-gradient(90deg,#3c3f44,#9ca3ab 35%,#5b6068 60%,#2a2c30);box-shadow:4px 0 8px rgba(0,0,0,.6)}
+.vuoto-msg{color:rgba(255,255,255,.6);font-size:13px;align-self:center;margin:auto}
+
+/* tooltip */
+.etichetta{position:fixed;z-index:20;pointer-events:none;background:#fff;color:var(--navy);border-radius:10px;padding:8px 12px;
+  box-shadow:0 10px 26px rgba(0,0,0,.35);font-size:12px;line-height:1.3;max-width:260px;opacity:0;transform:translateY(6px);transition:opacity .15s,transform .15s}
+.etichetta.on{opacity:1;transform:none}
+.etichetta b{display:block;font-weight:900;text-transform:uppercase;font-size:11px;letter-spacing:.04em}
+.etichetta em{font-family:'Cormorant Garamond',Georgia,serif;font-size:15px}
+.etichetta s{text-decoration:none;display:block;margin-top:3px;font-weight:800;color:var(--cobalt)}
+
+/* ── CD estratto ── */
+.estratto{position:fixed;inset:0;z-index:100000;overscroll-behavior:contain;display:flex;align-items:center;justify-content:center;gap:56px;padding:24px;
+  background:rgba(6,14,26,.0);backdrop-filter:blur(0);-webkit-backdrop-filter:blur(0);visibility:hidden;
+  transition:background .5s,backdrop-filter .5s,-webkit-backdrop-filter .5s,visibility 0s .5s}
+.estratto.on{visibility:visible;background:rgba(6,14,26,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .5s,backdrop-filter .5s,-webkit-backdrop-filter .5s}
+.palco{perspective:1600px;flex:0 0 auto}
+.case{--W:340px;--H:calc(var(--W) * 125 / 142);--D:calc(var(--W) * 10 / 142);
+  position:relative;width:var(--W);height:var(--H);transform-style:preserve-3d;will-change:transform;cursor:grab;touch-action:none;-webkit-user-select:none;user-select:none}
+.case.drag{cursor:grabbing}
+.faccia{position:absolute;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
+.f-front,.f-back{inset:0}
+.f-front{transform:translateZ(calc(var(--D) / 2));background:#0c0c0e}
+.f-back{transform:rotateY(180deg) translateZ(calc(var(--D) / 2));background:#0c0c0e}
+.f-left{width:var(--D);height:100%;left:calc((var(--W) - var(--D)) / 2);transform:rotateY(-90deg) translateZ(calc(var(--W) / 2));background:var(--c,#222)}
+.f-right{width:var(--D);height:100%;left:calc((var(--W) - var(--D)) / 2);transform:rotateY(90deg) translateZ(calc(var(--W) / 2));
+  background:linear-gradient(90deg,rgba(210,222,235,.55),rgba(160,175,190,.35),rgba(230,238,246,.6))}
+.f-top,.f-bot{width:100%;height:var(--D);top:calc((var(--H) - var(--D)) / 2);background:linear-gradient(180deg,rgba(215,225,236,.6),rgba(150,165,182,.45))}
+.f-top{transform:rotateX(90deg) translateZ(calc(var(--H) / 2))}
+.f-bot{transform:rotateX(-90deg) translateZ(calc(var(--H) / 2))}
+/* fronte: libretto sotto la plastica + cerniera */
+.libretto{position:absolute;top:2%;bottom:2%;right:1.6%;aspect-ratio:1/1;background:#222 center/cover no-repeat;box-shadow:-2px 0 4px rgba(0,0,0,.4)}
+.cerniera{position:absolute;left:0;top:0;bottom:0;width:13.5%;
+  background:linear-gradient(90deg,rgba(40,42,46,.95),rgba(92,96,102,.9) 12%,rgba(30,31,34,.95) 22%,rgba(62,65,70,.92) 40%,rgba(24,25,27,.96) 62%,rgba(52,54,58,.92) 82%,rgba(20,20,22,.97))}
+.cerniera::after{content:"";position:absolute;inset:6% 30%;border-left:1px solid rgba(255,255,255,.12);border-right:1px solid rgba(0,0,0,.4)}
+.plastica{position:absolute;inset:0;pointer-events:none;border:1px solid rgba(255,255,255,.28);
+  background:linear-gradient(118deg,rgba(255,255,255,.28) 0,rgba(255,255,255,.08) 18%,rgba(255,255,255,0) 34%,rgba(255,255,255,0) 58%,rgba(255,255,255,.1) 66%,rgba(255,255,255,0) 76%),
+  linear-gradient(180deg,rgba(255,255,255,.06),rgba(0,0,0,.12))}
+/* retro: inlay generato */
+.inlay{position:absolute;inset:3% 2%;background:var(--c,#222);color:var(--t,#f4f1ea);display:grid;grid-template-columns:7% 1fr 7%}
+.inlay .lato{writing-mode:vertical-rl;font-size:calc(var(--W) * .026);font-weight:800;letter-spacing:.05em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;overflow:hidden;white-space:nowrap;border:0 solid rgba(0,0,0,.25)}
+.inlay .lato:first-child{border-right-width:1px}.inlay .lato:last-child{border-left-width:1px;transform:rotate(180deg)}
+.inlay .corpo{padding:9% 8%;display:flex;flex-direction:column;gap:4%;font-size:calc(var(--W) * .032);overflow:hidden}
+.inlay .corpo h4{margin:0;font-size:1.5em;font-weight:900;text-transform:uppercase;letter-spacing:-.01em;line-height:1}
+.inlay .corpo h5{margin:0;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600;font-size:1.45em;line-height:1.05}
+.inlay .corpo p{margin:0;opacity:.85;line-height:1.35}
+.inlay .piede{margin-top:auto;display:flex;align-items:flex-end;justify-content:space-between;gap:8px}
+.barcode{width:34%;height:calc(var(--W) * .09);background:#fff repeating-linear-gradient(90deg,#000 0 1px,#fff 1px 3px,#000 3px 5px,#fff 5px 6px,#000 6px 7px,#fff 7px 9px);border:3px solid #fff}
+.inlay .firma{font-size:.72em;font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+.retro-foto{position:absolute;inset:3% 2%;background:#222 center/cover no-repeat}
+.f-left .txt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;writing-mode:vertical-rl;color:var(--t,#f4f1ea);
+  font-size:calc(var(--W) * .03);text-transform:uppercase;white-space:nowrap;overflow:hidden;letter-spacing:.04em}
+.f-left .txt b{font-weight:900;margin-bottom:.6em}
+
+/* scheda prodotto */
+.scheda{flex:0 1 380px;background:#fff;border-radius:22px;padding:26px 26px 22px;box-shadow:0 30px 60px rgba(0,0,0,.35);
+  opacity:0;transform:translateX(30px);transition:opacity .45s .35s,transform .6s .35s var(--ease)}
+.estratto.on .scheda{opacity:1;transform:none}
+.estratto.chiude .scheda{opacity:0;transform:translateX(30px);transition:opacity .2s,transform .3s}
+.scheda .sez{font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--cobalt);display:flex;align-items:center;gap:8px}
+.scheda .sez::before{content:"";width:20px;height:1px;background:var(--cobalt)}
+.scheda h2{margin:12px 0 2px;font-size:26px;font-weight:900;letter-spacing:-.03em;text-transform:uppercase;line-height:1}
+.scheda h3{margin:0 0 14px;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600;font-size:24px;line-height:1.1}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.chips span{font-size:11px;padding:5px 10px;border-radius:999px;background:#eef5fd;color:var(--navy);font-weight:600}
+.cond{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:999px;border:1px solid rgba(13,59,117,.25);color:var(--cobalt);margin-bottom:14px}
+.prezzo{font-size:34px;font-weight:900;letter-spacing:-.03em;margin:4px 0 16px}
+.prezzo small{font-size:12px;font-weight:600;color:#1d4470;letter-spacing:0;margin-left:6px}
+.azioni{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.btn{border:0;border-radius:999px;padding:13px 14px;font:inherit;font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .2s,transform .2s}
+.btn:active{transform:scale(.97)}
+.btn-p{background:var(--navy);color:#fff}.btn-p:hover{background:var(--cobalt)}
+.btn-p.added{background:#1f7a3a}
+.btn-s{background:#eef5fd;color:var(--navy)}.btn-s:hover{background:#dcecff}
+.btn-g{grid-column:1/-1;background:transparent;color:var(--cobalt);border:1px solid rgba(13,59,117,.25)}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.btn-riponi{display:none;width:100%;margin-top:14px;background:var(--navy);color:#fff;padding:15px}
+.nota{font-size:10.5px;color:#1d4470;opacity:.75;margin:12px 0 0;line-height:1.4}
+.aiuto{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);color:rgba(255,255,255,.8);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;white-space:nowrap;opacity:0;transition:opacity .4s .8s}
+.estratto.on .aiuto{opacity:1}
+
+@media(max-width:860px){
+  :root{--dw:24px;--dh:170px}
+  .top{margin-top:12px;border-radius:20px;flex-wrap:wrap;gap:10px;padding:10px 12px;width:calc(100% - 24px)}
+  .brand{font-size:12px}
+  .top-r{flex-basis:100%;gap:8px}
+  .cerca{flex:1 1 auto;padding:9px 12px}
+  .cerca input{font-size:16px}
+  .pill{padding:10px 13px;font-size:9.5px}
+  .intro{margin:22px auto 16px}
+  .intro h1{font-size:40px}
+  .intro p{font-size:16px}
+  .sala{padding:0 10px 110px}
+  .cab{padding:18px 10px 0}
+  .cab::before{left:-6px;right:-6px}
+  .zoccolo{margin:0 -10px;height:30px}
+  .vano{padding:0 8px;height:calc(var(--dh) + 20px)}
+  .targhetta{font-size:8.5px;padding:3px 12px 2px}
+  .dorso .txt{font-size:9.5px}
+  .dorso:hover{--y:0px}
+  .estratto{flex-direction:column;justify-content:flex-start;align-items:center;gap:0;padding:28px 14px 28px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .palco{margin:10px 0 26px}
+  .case{--W:min(250px,66vw)}
+  .scheda{flex:0 0 auto;width:100%;max-width:420px;transform:translateY(30px);padding:18px 18px 16px;border-radius:20px}
+  .estratto.chiude .scheda{transform:translateY(30px)}
+  .scheda h2{font-size:22px;margin-top:10px}
+  .scheda h3{font-size:21px;margin-bottom:12px}
+  .chips{margin-bottom:10px}
+  .chips span{font-size:10.5px;padding:4px 9px}
+  .prezzo{font-size:30px;margin:2px 0 14px}
+  .azioni{gap:7px}
+  .btn{padding:12px 10px;font-size:10px}
+  #bChiudi{display:none}
+  .btn-riponi{display:block}
+  body.bloccato{overflow:hidden}
+  .aiuto{display:block;position:static;transform:none;margin:14px 0 0;font-size:10px;text-align:center;white-space:normal;opacity:.75}
+}
+@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="ambiente" aria-hidden="true"></div>
+
+<header class="top">
+  <a class="brand" href="index.html"><img src="logo no sfondo.png" alt=""><span>Ramacciato <b>Vintage</b></span></a>
+  <div class="top-r">
+    <label class="cerca"><span aria-hidden="true">&#x1F50D;</span><input id="cerca" type="search" placeholder="Cerca artista o titolo..." autocomplete="off"></label>
+    <a class="pill" href="shop.html?cat=musica">Vista griglia</a>
+  </div>
+</header>
+
+<section class="intro">
+  <div class="kicker">Musica &middot; CD</div>
+  <h1>La Libreria</h1>
+  <p>Scorri i dorsi, estrai il disco che ti incuriosisce.</p>
+</section>
+
+<main class="sala">
+  <div class="cab" id="cab" aria-label="Mobile porta CD">
+    <div id="ripiani"></div>
+    <div class="zoccolo"></div>
+  </div>
+</main>
+<div class="piedi" aria-hidden="true" style="display:none"></div>
+
+<div class="etichetta" id="etichetta" role="tooltip"></div>
+
+<div class="estratto" id="estratto" role="dialog" aria-modal="true" aria-label="Dettaglio CD">
+  <div class="palco"><div class="case" id="case"></div></div>
+  <div class="scheda" id="scheda"></div>
+  <div class="aiuto" id="aiuto">Trascina il CD per girarlo &middot; Esc per rimetterlo a posto</div>
+</div>
+
+<script>
+(function(){
+'use strict';
+var CART_KEY='rv_cart_v1';
+function loadCart(){try{return JSON.parse(localStorage.getItem(CART_KEY)||'[]');}catch(e){return[];}}
+function saveCart(c){try{localStorage.setItem(CART_KEY,JSON.stringify(c));}catch(e){}if(window.rvCart&&window.rvCart.refresh)window.rvCart.refresh();}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m];});}
+
+var CD=[],SOTTO=[],META={};
+
+/* Adattatore Gestionale -> sottocategorie RV (stesse regole di shop.html, lette da catalogo.json) */
+function adatta(p,mappa,subcats){
+  if(p.artist)p.artist=String(p.artist).replace(/\s*\(\d+\)\s*$/,'').trim();
+  var m=mappa[p.cat];if(!m)return;
+  var ids=[];(subcats[p.cat]||[]).forEach(function(sc){ids.push(sc.id);(sc.children||[]).forEach(function(c){ids.push(c.id);});});
+  if(!p.subcat||ids.indexOf(p.subcat)>=0)return;
+  var formato=String(p.subcat),fl=formato.toLowerCase();p.formato=formato;
+  var gen=(p.genres&&p.genres.length)?p.genres.slice():[];
+  if(!gen.length&&p.desc&&p.desc.indexOf(' · ')>=0)gen=p.desc.split(' · ').slice(1).join(' · ').split(',');
+  var gl=gen.map(function(g){return String(g).trim().toLowerCase();});p._generi=gen.map(function(g){return String(g).trim();});
+  var lab=(p.label||'').toLowerCase();
+  function w(t,k){return new RegExp('(^|[^a-z])'+k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'([^a-z]|$)').test(t);}
+  var sez=m.sezione_default;
+  for(var i=0;i<(m.formati||[]).length;i++){var r=m.formati[i];if(r.contiene.some(function(k){return w(fl,k);})){sez=r.sezione;break;}}
+  var sub=sez;
+  if(sez==='cd'){sub=m.cd_default;
+    for(var j=0;j<(m.cd||[]).length;j++){var c=m.cd[j],ok=false;
+      if(c.etichetta_contiene)ok=c.etichetta_contiene.some(function(k){return lab.indexOf(k)>=0;});
+      if(!ok&&c.formato_contiene)ok=c.formato_contiene.some(function(k){return fl.indexOf(k)>=0;});
+      if(!ok&&c.genere_contiene)ok=gl.some(function(g){return c.genere_contiene.some(function(k){return g.indexOf(k)>=0;});});
+      if(ok&&c.escludi_se&&gl.some(function(g){return c.escludi_se.indexOf(g)>=0;}))ok=false;
+      if(ok){sub=c.sottocategoria;break;}}}
+  p.subcat=sub;
+}
+function artista(p){return p.artist||(p.name.indexOf(' - ')>0?p.name.split(' - ')[0]:'');}
+function titolo(p){
+  var n=p.name||'';var a=artista(p);
+  if(n.indexOf(' - ')>0)return n.split(' - ').slice(1).join(' - ');
+  if(a&&n.toLowerCase().indexOf(a.toLowerCase())===0)return n.slice(a.length).replace(/^[\s\-:]+/,'')||n;
+  return n;
+}
+function foto(p){return p.cover||(p.photos&&p.photos[0])||'';}
+
+/* Colore del dorso ricavato dalla copertina */
+var PALETTE=['#1d1f24','#6b1e1e','#e8e2d4','#123a5c','#2f2f33','#7a5a1c','#34452a','#5a2b4d','#b8b0a0','#8a2a14'];
+function hash(s){var h=0;for(var i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return Math.abs(h);}
+function lum(r,g,b){return(0.2126*r+0.7152*g+0.0722*b)/255;}
+function coloreDa(src,cb){
+  if(!src){cb(null);return;}
+  var img=new Image();if(/^https?:/.test(src))img.crossOrigin='anonymous';
+  img.onload=function(){try{
+    var cv=document.createElement('canvas');cv.width=cv.height=36;var x=cv.getContext('2d');x.drawImage(img,0,0,36,36);
+    var d=x.getImageData(0,0,36,36).data,bk={};
+    for(var i=0;i<d.length;i+=4){var r=d[i],g=d[i+1],b=d[i+2],mx=Math.max(r,g,b),mn=Math.min(r,g,b),sat=mx?(mx-mn)/mx:0;
+      var k=(r>>5)+','+(g>>5)+','+(b>>5);var e=bk[k]||(bk[k]={n:0,r:0,g:0,b:0,s:0});e.n++;e.r+=r;e.g+=g;e.b+=b;e.s+=sat;}
+    var best=null,bs=-1;for(var k2 in bk){var e2=bk[k2],s=e2.n*(0.45+e2.s/e2.n);if(s>bs){bs=s;best=e2;}}
+    cb([Math.round(best.r/best.n),Math.round(best.g/best.n),Math.round(best.b/best.n)]);
+  }catch(err){cb(null);}};
+  img.onerror=function(){cb(null);};img.src=src;
+}
+function applicaColore(el,p,rgb){
+  var hex,l;
+  if(rgb){var f=0.88;var r=Math.round(rgb[0]*f),g=Math.round(rgb[1]*f),b=Math.round(rgb[2]*f);hex='rgb('+r+','+g+','+b+')';l=lum(r,g,b);}
+  else{hex=PALETTE[hash(p.name||'')%PALETTE.length];var n=parseInt(hex.slice(1),16);l=lum(n>>16,(n>>8)&255,n&255);}
+  p._c=hex;p._t=l>0.56?'#141414':'#f4f1ea';
+  el.style.setProperty('--c',p._c);el.style.setProperty('--t',p._t);
+}
+
+/* Rendering scaffali */
+var elRip=document.getElementById('ripiani'),tip=document.getElementById('etichetta');
+function capienza(){
+  var w=Math.min(1060,document.querySelector('.sala').clientWidth-32);var pad=window.innerWidth<=860?28+20:60+36;
+  var dw=window.innerWidth<=860?24:27;return Math.max(6,Math.floor((w-pad-18)/dw));
+}
+function render(){
+  var cap=capienza(),html='';
+  SOTTO.forEach(function(sc){
+    var lista=CD.filter(function(p){return p.subcat===sc.id;}).sort(function(a,b){return artista(a).localeCompare(artista(b),'it');});
+    if(!lista.length)return;
+    for(var i=0;i<lista.length;i+=cap){
+      var pezzo=lista.slice(i,i+cap);
+      html+='<div class="ripiano"><div class="vano">'+pezzo.map(dorsoHtml).join('')+(pezzo.length<cap?'<div class="reggilibri" aria-hidden="true"></div>':'')+'</div>'
+        +'<div class="asse"><span class="targhetta">'+esc(sc.label)+(i>0?' &middot; '+(i/cap+1):'')+'</span></div></div>';
+    }
+  });
+  var cab=document.getElementById('cab'),mx=0;
+  SOTTO.forEach(function(sc){var n=CD.filter(function(p){return p.subcat===sc.id;}).length;mx=Math.max(mx,Math.min(n,cap));});
+  if(window.innerWidth>860){var dw=27,larg=Math.max(560,Math.min(1060,mx*dw+60+36+150));cab.style.width=larg+'px';}else cab.style.width='';
+  if(!html)html='<div class="ripiano"><div class="vano"><p class="vuoto-msg">Nessun CD disponibile al momento.</p></div><div class="asse"></div></div>';
+  elRip.innerHTML=html;
+  elRip.querySelectorAll('.dorso').forEach(function(el){
+    var p=byId(el.dataset.id);
+    if(p._c){el.style.setProperty('--c',p._c);el.style.setProperty('--t',p._t);}
+    else coloreDa(foto(p),function(rgb){applicaColore(el,p,rgb);document.querySelectorAll('.dorso[data-id="'+p.id+'"]').forEach(function(x){x.style.setProperty('--c',p._c);x.style.setProperty('--t',p._t);});});
+  });
+  filtra();
+}
+function dorsoHtml(p){
+  var h=hash(String(p.id)),y=(h%3),b=(0.93+((h>>3)%10)/100).toFixed(2);
+  var prezzo=p.price!=null?(Math.round(p.price)===p.price?p.price:p.price.toFixed(2))+'€':'';
+  return '<button class="dorso'+(p.sold?' venduto':'')+'" data-id="'+esc(p.id)+'" style="--y:-'+y+'px;--b:'+b+'" aria-label="'+esc(artista(p)+' - '+titolo(p))+'">'
+    +'<i class="cap t"></i><span class="txt"><b>'+esc(artista(p))+'</b><span>'+esc(titolo(p))+'</span></span>'
+    +'<i class="bollino">'+(p.sold?'VEND.':esc(prezzo))+'</i><i class="cap b"></i></button>';
+}
+function byId(id){for(var i=0;i<CD.length;i++)if(String(CD[i].id)===String(id))return CD[i];return null;}
+
+/* Tooltip */
+elRip.addEventListener('mousemove',function(e){
+  var d=e.target.closest('.dorso');if(!d){tip.classList.remove('on');return;}
+  var p=byId(d.dataset.id);
+  if(tip.dataset.id!==String(p.id)){tip.dataset.id=p.id;tip.innerHTML='<b>'+esc(artista(p))+'</b><em>'+esc(titolo(p))+'</em><s>'+(p.sold?'Venduto':'€ '+esc(p.price))+'</s>';}
+  var x=Math.min(e.clientX+16,window.innerWidth-tip.offsetWidth-10),y=e.clientY-tip.offsetHeight-14;
+  tip.style.left=x+'px';tip.style.top=Math.max(8,y)+'px';tip.classList.add('on');
+});
+elRip.addEventListener('mouseleave',function(){tip.classList.remove('on');});
+elRip.addEventListener('click',function(e){var d=e.target.closest('.dorso');if(d){tip.classList.remove('on');estrai(d);}});
+
+/* Ricerca */
+var inp=document.getElementById('cerca');
+function filtra(){
+  var q=inp.value.trim().toLowerCase();
+  elRip.querySelectorAll('.dorso').forEach(function(el){
+    var p=byId(el.dataset.id),hit=!q||(artista(p)+' '+titolo(p)+' '+(p.label||'')).toLowerCase().indexOf(q)>=0;
+    el.classList.toggle('spento',!!q&&!hit);el.classList.toggle('trovato',!!q&&hit);
+  });
+}
+inp.addEventListener('input',filtra);
+
+/* ── Estrazione ── */
+var ov=document.getElementById('estratto'),cs=document.getElementById('case'),sch=document.getElementById('scheda');
+var attivo=null,dorsoAttivo=null,rotY=-16,rotX=4,animando=false;
+function caseHtml(p){
+  var f=foto(p),retro=p.photos&&p.photos[1];
+  var info=[p.label,p.year,p.formato].filter(Boolean).map(esc).join(' &middot; ');
+  return '<div class="faccia f-front"><div class="cerniera"></div><div class="libretto" style="background-image:url(\''+esc(f)+'\')"></div><div class="plastica"></div></div>'
+   +'<div class="faccia f-back">'+(retro?'<div class="retro-foto" style="background-image:url(\''+esc(retro)+'\')"></div>'
+     :'<div class="inlay"><div class="lato">'+esc(artista(p))+'</div><div class="corpo"><h4>'+esc(artista(p))+'</h4><h5>'+esc(titolo(p))+'</h5><p>'+info+'</p>'
+      +((p._generi&&p._generi.length)?'<p>'+esc(p._generi.join(', '))+'</p>':'')
+      +'<div class="piede"><span class="firma">Ramacciato Vintage</span><span class="barcode"></span></div></div><div class="lato">'+esc(titolo(p))+'</div></div>')
+   +'<div class="plastica"></div></div>'
+   +'<div class="faccia f-left"><div class="txt"><b>'+esc(artista(p))+'</b><span>'+esc(titolo(p))+'</span></div></div>'
+   +'<div class="faccia f-right"></div><div class="faccia f-top"></div><div class="faccia f-bot"></div>';
+}
+function schedaHtml(p){
+  var sc=SOTTO.filter(function(s){return s.id===p.subcat;})[0];
+  var chips=[];if(p.label)chips.push(p.label);if(p.year&&p.year!=='0')chips.push(p.year);if(p.formato)chips.push(p.formato);
+  if(p._generi&&p._generi.length)chips.push(p._generi.slice(0,3).join(', '));
+  var inCart=loadCart().some(function(x){return x.id===p.id;});
+  return '<div class="sez">CD'+(sc?' &middot; '+esc(sc.label):'')+'</div>'
+   +'<h2>'+esc(artista(p))+'</h2><h3>'+esc(titolo(p))+'</h3>'
+   +'<div class="chips">'+chips.map(function(c){return'<span>'+esc(c)+'</span>';}).join('')+'</div>'
+   +(p.condition?'<div class="cond">Condizioni: '+esc(p.condition)+'</div>':'')
+   +'<div class="prezzo">'+(p.sold?'Venduto':'€ '+esc(p.price))+(p.sold?'':'<small>+ spedizione</small>')+'</div>'
+   +'<div class="azioni"><button class="btn btn-p'+(inCart?' added':'')+'" id="bCarrello"'+(p.sold?' disabled':'')+'>'+(inCart?'&#x2713; Nel carrello':'Aggiungi al carrello')+'</button>'
+   +'<button class="btn btn-s" id="bCompra"'+(p.sold?' disabled':'')+'>Compra ora</button>'
+   +'<button class="btn btn-s" id="bGira">Gira il CD</button><button class="btn btn-s" id="bChiudi">Rimetti a posto</button>'
+   +'<a class="btn btn-g" href="shop.html?product='+esc(p.id)+'" style="text-align:center;text-decoration:none">Apri scheda completa</a></div>'
+   +'<p class="nota">Copertina da Discogs a scopo illustrativo: il prodotto fisico può differire dall\'immagine.</p>'
+   +'<button class="btn btn-riponi" id="bRiponi">Riponi</button>';
+}
+function dims(){var W=cs.getBoundingClientRect();return W;}
+function posaFinale(){return 'translate3d(0,0,0) rotateX('+rotX+'deg) rotateY('+rotY+'deg)';}
+function posaDorso(d){
+  var prev=cs.style.transform;cs.style.transition='none';cs.style.transform='none';
+  var r=d.getBoundingClientRect(),c=cs.getBoundingClientRect();cs.style.transform=prev;
+  var s=r.height/c.height,dx=(r.left+r.width/2)-(c.left+c.width/2),dy=(r.top+r.height/2)-(c.top+c.height/2);
+  return{dentro:'translate3d('+dx+'px,'+dy+'px,0) scale('+s+') rotateY(90deg)',
+         fuori:'translate3d('+dx+'px,'+(dy-r.height*0.42)+'px,80px) scale('+(s*1.12)+') rotateY(84deg)',
+         meta:'translate3d('+(dx*0.45)+'px,'+(dy*0.35-40)+'px,160px) scale('+(0.55+s*0.4)+') rotateY(40deg) rotateX(6deg)'};
+}
+var anim=null;
+function anima(frames,dur,easing,fine){
+  if(anim)anim.cancel();cs.style.transition='none';
+  anim=cs.animate(frames,{duration:dur,easing:easing,fill:'forwards'});
+  anim.onfinish=function(){cs.style.transform=frames[frames.length-1].transform;anim.cancel();anim=null;if(fine)fine();};
+}
+function estrai(d){
+  if(animando)return;var p=byId(d.dataset.id);if(!p)return;
+  attivo=p;dorsoAttivo=d;animando=true;rotY=-16;rotX=4;
+  cs.style.setProperty('--c',p._c||'#222');cs.style.setProperty('--t',p._t||'#f4f1ea');
+  cs.innerHTML=caseHtml(p);sch.innerHTML=schedaHtml(p);legaScheda(p);
+  ov.scrollTop=0;document.body.classList.add('bloccato');
+  ov.classList.remove('chiude');ov.classList.add('on');ov.scrollTop=0;
+  var P=posaDorso(d);cs.style.transform=P.dentro;
+  d.classList.add('fuori');
+  anima([{transform:P.dentro,offset:0,easing:'cubic-bezier(.3,0,.2,1)'},{transform:P.fuori,offset:.28,easing:'cubic-bezier(.4,0,.2,1)'},{transform:P.meta,offset:.62,easing:'cubic-bezier(.2,.6,.2,1)'},{transform:posaFinale(),offset:1}],1500,'linear',function(){animando=false;});
+  try{history.replaceState(null,'','?cd='+encodeURIComponent(p.id));}catch(e){}
+}
+function rimetti(){
+  if(!attivo||animando)return;animando=true;var d=dorsoAttivo;
+  ov.classList.add('chiude');ov.scrollTop=0;
+  var P=posaDorso(d),ora=posaFinale();
+  anima([{transform:ora,offset:0,easing:'cubic-bezier(.5,0,.6,1)'},{transform:P.meta,offset:.4,easing:'cubic-bezier(.4,0,.2,1)'},{transform:P.fuori,offset:.72,easing:'cubic-bezier(.4,0,.3,1)'},{transform:P.dentro,offset:1}],1150,'linear',function(){
+    ov.classList.remove('on');document.body.classList.remove('bloccato');d.classList.remove('fuori');cs.innerHTML='';attivo=null;animando=false;try{d.focus({preventScroll:true});}catch(e){}});
+  try{history.replaceState(null,'',location.pathname);}catch(e){}
+}
+function legaScheda(p){
+  document.getElementById('bChiudi').onclick=rimetti;document.getElementById('bRiponi').onclick=rimetti;
+  document.getElementById('bGira').onclick=function(){rotY+=180;cs.style.transition='transform .9s cubic-bezier(.3,.7,.2,1)';cs.style.transform=posaFinale();};
+  var bc=document.getElementById('bCarrello');
+  bc.onclick=function(){var c=loadCart(),i=-1;c.forEach(function(x,k){if(x.id===p.id)i=k;});
+    if(i<0){var it=JSON.parse(JSON.stringify(p));Object.keys(it).forEach(function(k){if(k.charAt(0)==='_')delete it[k];});it.qty=1;c.push(it);}else c.splice(i,1);
+    saveCart(c);var on=i<0;bc.classList.toggle('added',on);bc.innerHTML=on?'&#x2713; Nel carrello':'Aggiungi al carrello';};
+  document.getElementById('bCompra').onclick=function(){var c=loadCart();if(!c.some(function(x){return x.id===p.id;})){var it=JSON.parse(JSON.stringify(p));Object.keys(it).forEach(function(k){if(k.charAt(0)==='_')delete it[k];});it.qty=1;c.push(it);saveCart(c);}location.href='checkout.html';};
+}
+ov.addEventListener('click',function(e){if(e.target===ov)rimetti();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')rimetti();});
+/* trascina per ruotare */
+(function(){var drag=false,x0=0,y0=0,ry=0,rx=0;
+  cs.addEventListener('pointerdown',function(e){if(animando)return;drag=true;x0=e.clientX;y0=e.clientY;ry=rotY;rx=rotX;try{cs.setPointerCapture(e.pointerId);}catch(err){}cs.classList.add('drag');cs.style.transition='none';e.preventDefault();});
+  cs.addEventListener('pointermove',function(e){if(!drag)return;e.preventDefault();var k=e.pointerType==='touch'?0.7:0.45;rotY=ry+(e.clientX-x0)*k;rotX=Math.max(-35,Math.min(35,rx-(e.clientY-y0)*0.3));cs.style.transform=posaFinale();});
+  function up(){if(!drag)return;drag=false;cs.classList.remove('drag');}
+  cs.addEventListener('pointerup',up);cs.addEventListener('pointercancel',up);
+})();
+
+/* Caricamento dati (formato del Gestionale Inventario Condiviso) */
+Promise.all([fetch('catalogo.json').then(function(r){return r.json();}),fetch('catalogo-musica.json').then(function(r){return r.json();}).catch(function(){return[];})])
+.then(function(res){
+  META=res[0]||{};var sub=(META.sottocategorie||{}).musica||[];
+  var cd=sub.filter(function(s){return s.id==='cd';})[0];SOTTO=cd&&cd.children?cd.children:[];
+  CD=(Array.isArray(res[1])?res[1]:[]).filter(function(p){return !p.nascosto&&(p.model||foto(p));});
+  CD.forEach(function(p){adatta(p,META.mappa_gestionale||{},META.sottocategorie||{});});
+  CD=CD.filter(function(p){return /^cd/.test(p.subcat||'');});
+  render();
+  if(matchMedia('(hover:none)').matches){var a=document.getElementById('aiuto');if(a)a.textContent='Trascina il CD col dito per girarlo';}
+  var q=new URLSearchParams(location.search).get('cd');
+  if(q){var el=elRip.querySelector('.dorso[data-id="'+CSS.escape(q)+'"]');if(el)setTimeout(function(){el.scrollIntoView({block:'center'});estrai(el);},400);}
+}).catch(function(){elRip.innerHTML='<div class="ripiano"><div class="vano"><p class="vuoto-msg">Catalogo non disponibile.</p></div><div class="asse"></div></div>';});
+var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){if(!attivo)render();},200);});
+})();
+</script>
+<script src="cart-widget.js"></script>
+</body>
+</html>

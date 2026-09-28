@@ -96,6 +96,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 .filter-btn span.cnt{float:right;font-size:10px;opacity:.6;font-weight:700;margin-top:2px}
 .grid-header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px}
 .grid-count{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.libreria-btn{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:#fff;background:var(--ink);border-radius:999px;padding:10px 18px;box-shadow:0 6px 18px rgba(11,37,69,.25);transition:background .2s,transform .2s;white-space:nowrap}.libreria-btn:hover{background:var(--accent);transform:translateY(-1px)}
 .sort-select{font-family:inherit;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer;color:var(--ink);outline:none}
 .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .product-card{background:transparent;border:1px solid transparent;border-radius:18px;overflow:hidden;box-shadow:none;cursor:pointer;transition:transform .26s var(--ease),box-shadow .26s var(--ease),border-color .26s,background .26s;contain:content;will-change:transform}
@@ -522,6 +523,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
   <div>
     <div class="grid-header">
       <p class="grid-count" id="gridCount">&mdash; articoli</p>
+      <a class="libreria-btn" id="libreriaBtn" href="shop-libreria.html" style="display:none">&#x1F4BF; Vista libreria</a>
       <select class="sort-select" id="sortSelect">
         <option value="default">Ordine predefinito</option>
         <option value="price-asc">Prezzo &uarr;</option>
@@ -930,7 +932,7 @@ Promise.all(
   ['all','videogiochi','elettronica','musica','libri','oggetti','trading','dvd'].forEach(function(c){var el=document.getElementById('cnt-'+c);if(el)el.textContent=c==='all'?PRODUCTS.length:PRODUCTS.filter(function(p){return p.cat===c}).length});
   document.getElementById('gridCount').textContent='—';
   document.getElementById('productGrid').innerHTML='<div class="empty-state" style="grid-column:1/-1"><p style="font-size:44px;margin-bottom:14px">&#x1F4E6;</p><p style="font-size:15px;font-weight:800;letter-spacing:-.02em">Seleziona una categoria</p><p style="font-size:13px;margin-top:8px;opacity:.5">Scegli dal carousel o dal menu laterale per scoprire i prodotti.</p></div>';
-  function selectCat(cat,scroll){activeCat=cat;activeSubcat=null;activeSubcat2=null;var _b=document.getElementById('breadcrumb');if(_b)_b.classList.remove('visible');document.querySelectorAll('[data-cat]').forEach(function(b){b.classList.remove('active')});document.querySelectorAll('[data-cat="'+cat+'"]').forEach(function(b){b.classList.add('active')});var _dn=document.getElementById('discogsNotice');if(_dn)_dn.classList.toggle('visible',cat==='musica');renderGrid();if(scroll&&window.innerWidth>768)document.querySelector('.shop-wrap').scrollIntoView({behavior:'smooth',block:'start'})}
+  function selectCat(cat,scroll){activeCat=cat;activeSubcat=null;activeSubcat2=null;var _b=document.getElementById('breadcrumb');if(_b)_b.classList.remove('visible');document.querySelectorAll('[data-cat]').forEach(function(b){b.classList.remove('active')});document.querySelectorAll('[data-cat="'+cat+'"]').forEach(function(b){b.classList.add('active')});var _dn=document.getElementById('discogsNotice');if(_dn)_dn.classList.toggle('visible',cat==='musica');var _lb=document.getElementById('libreriaBtn');if(_lb)_lb.style.display=cat==='musica'?'':'none';renderGrid();if(scroll&&window.innerWidth>768)document.querySelector('.shop-wrap').scrollIntoView({behavior:'smooth',block:'start'})}
   /* legge ?cat= dall'URL e pre-filtra */
   var urlParams=new URLSearchParams(window.location.search);
   var urlSource=urlParams.get('source');

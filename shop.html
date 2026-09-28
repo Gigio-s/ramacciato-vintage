@@ -24,14 +24,14 @@
 })();
 </script>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Compra usato online: vinili, videogiochi retro PS1 PS2 NDS, DVD, oggetti vintage, libri e trading cards. Selezione curata, spedizione in tutta Italia. Pochi pezzi, ognuno con una storia.">
+<meta name="description" content="Compra usato online: CD e vinili, DVD, videogiochi retro, oggetti vintage, libri e trading cards. Pezzi unici con condizioni reali, spedizione in tutta Italia o ritiro ai mercatini in Veneto.">
 <link rel="canonical" href="https://ramacciatovintage.it/shop.html">
 <link rel="icon" type="image/png" href="logo no sfondo.png">
-<title>Compra Usato Online - Vinili, Videogiochi Retro, Vintage | Ramacciato Vintage</title>
+<title>Shop Usato Online: CD, Vinili, DVD e Videogiochi Retro | Ramacciato Vintage</title>
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ramacciatovintage.it/shop.html">
-<meta property="og:title" content="Compra Usato Online - Vinili, Videogiochi Retro, Vintage | Ramacciato Vintage">
-<meta property="og:description" content="Compra usato online: vinili, videogiochi retro PS1 PS2 NDS, DVD, oggetti vintage, libri e trading cards. Selezione curata, spedizione in tutta Italia.">
+<meta property="og:title" content="Shop Usato Online: CD, Vinili, DVD e Videogiochi Retro | Ramacciato Vintage">
+<meta property="og:description" content="Compra usato online: CD e vinili, DVD, videogiochi retro, oggetti vintage, libri e trading cards. Pezzi unici con condizioni reali, spedizione in tutta Italia o ritiro ai mercatini in Veneto.">
 <meta property="og:image" content="https://ramacciatovintage.it/logo%20no%20sfondo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -417,6 +417,13 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
 #mobileMenu.open a:nth-of-type(2){transition-delay:.04s}#mobileMenu.open a:nth-of-type(3){transition-delay:.08s}#mobileMenu.open a:nth-of-type(4){transition-delay:.12s}#mobileMenu.open a:nth-of-type(5){transition-delay:.16s}
 #mobileMenu .mob-logo{display:block;margin:auto;width:92px;height:auto;padding-bottom:36px;opacity:.9;pointer-events:none}
 #mobClose{position:absolute!important;top:22px!important;right:18px!important;width:48px!important;height:48px!important;border-radius:50%!important;border:0!important;background:#fff!important;color:var(--ink)!important;font-size:18px!important;box-shadow:0 6px 18px rgba(11,37,69,.2);touch-action:manipulation;z-index:2}
+
+/* Link interni per categorie e zone */
+.seo-hub{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:6px 0 22px;padding-top:18px;border-top:1px solid var(--line,rgba(11,37,69,.12));font-size:13px}.seo-hub div{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline}.seo-hub b{width:100%;font-size:9.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--ink,#0b2545)}.seo-hub a{color:var(--ink,#0b2545);text-decoration:none;opacity:.85}.seo-hub a:hover{opacity:1;text-decoration:underline}@media(max-width:760px){.seo-hub{grid-template-columns:1fr}}
+.modal-btn-pagina{display:flex;align-items:center;justify-content:center;min-height:46px;border-radius:999px;background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px rgba(11,37,69,.3);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:background .2s,color .2s}
+.modal-btn-pagina:hover{background:var(--ink);color:#fff}
+.modal-pagina-top{display:inline-block;margin:-4px 0 10px;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.modal-pagina-top:hover{color:var(--accent)}
 </style>
 </head>
 <body>
@@ -642,7 +649,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
         </ul>
       </div>
     </div>
-    <div class="foot-bottom">
+    <nav class="seo-hub" aria-label="Esplora il negozio"><div><b>Negozio</b><a href="/negozio/cd-usati.html">CD usati</a><a href="/negozio/vinili-usati.html">Vinili usati</a><a href="/negozio/dvd-usati.html">DVD usati</a><a href="/negozio/videogiochi-retro-usati.html">Videogiochi retro</a><a href="/negozio/elettronica-vintage.html">Elettronica vintage</a><a href="/negozio/libri-usati.html">Libri usati</a><a href="/negozio/oggetti-vintage-modernariato.html">Oggetti vintage</a><a href="/negozio/trading-cards.html">Trading cards</a></div><div><b>Dove trovarmi</b><a href="/vintage-usato-vicenza.html">Vicenza</a><a href="/vintage-usato-padova.html">Padova</a><a href="/vintage-usato-marostica.html">Marostica</a><a href="/vintage-usato-mestre-venezia.html">Mestre e Venezia</a><a href="/vintage-usato-veneto.html">Veneto</a></div></nav><div class="foot-bottom">
       <div class="foot-bottom-left"><span>&copy; 2026 Ramacciato Vintage - Luca Ramacciato - P.IVA IT04400570240 - Vicenza</span></div>
       <div class="foot-legal">
         <a href="privacy-policy.html">Privacy Policy</a><span>·</span>
@@ -686,6 +693,7 @@ var SUBCATS_DATA={};
    I file catalogo-*.json NON vengono modificati: la traduzione avviene solo in pagina. */
 function rvPulisciArtista(a){return (a||'').replace(/\s*\(\d+\)\s*$/,'').trim();}
 window.rvAdattaGestionale=function(p,mappa,subcats){
+  if(p.discogsId&&p.photos&&p.photos[0]&&/^https?:\/\/i\.discogs\.com/.test(p.photos[0])){window.RV_COVER_REMOTE=window.RV_COVER_REMOTE||{};var _loc='photos/inventario/discogs-'+p.discogsId+'-cover.jpg';window.RV_COVER_REMOTE[_loc]=p.photos[0];p.photos=[_loc].concat(p.photos.slice(1));}
   if(p.artist)p.artist=rvPulisciArtista(p.artist);
   var m=mappa[p.cat];if(!m)return;
   // se la subcat è già un id RV valido, non tocchiamo nulla
@@ -718,7 +726,7 @@ window.rvAdattaGestionale=function(p,mappa,subcats){
 };
 
 function catLabel(c){return{videogiochi:'Videogiochi & Console',elettronica:'Elettronica Vintage',musica:'Vinili & Musica',libri:'Libri Curiosi',oggetti:'Oggetti Vintage',trading:'Trading Cards',dvd:'DVD & Film'}[c]||c}
-function getFiltered(){var l=PRODUCTS.slice();if(searchQuery){var sq=searchQuery.toLowerCase();l=l.filter(function(p){return p.name.toLowerCase().indexOf(sq)>=0;});}if(activeCat!=='all')l=l.filter(function(p){return p.cat===activeCat});if(activeSubcat){if(activeSubcat2){l=l.filter(function(p){return p.subcat===activeSubcat2;});}else{var _sc=(SUBCATS_DATA[activeCat]||[]).filter(function(s){return s.id===activeSubcat;})[0];var _inc=_sc&&_sc.includes?_sc.includes:[activeSubcat];l=l.filter(function(p){return _inc.indexOf(p.subcat)>=0;});}}if(activeAvail==='available')l=l.filter(function(p){return!p.sold});if(activeSort==='price-asc')l.sort(function(a,b){return(a.price||0)-(b.price||0)});if(activeSort==='price-desc')l.sort(function(a,b){return(b.price||0)-(a.price||0)});if(activeSort==='new')l.sort(function(a,b){return(b.isNew?1:0)-(a.isNew?1:0)});return l}
+function getFiltered(){var l=PRODUCTS.slice();if(searchQuery){var sq=searchQuery.toLowerCase();l=l.filter(function(p){return (p.name+' '+(p.artist||'')+' '+(p.label||'')).toLowerCase().indexOf(sq)>=0;});}if(activeCat!=='all')l=l.filter(function(p){return p.cat===activeCat});if(activeSubcat){if(activeSubcat2){l=l.filter(function(p){return p.subcat===activeSubcat2;});}else{var _sc=(SUBCATS_DATA[activeCat]||[]).filter(function(s){return s.id===activeSubcat;})[0];var _inc=_sc&&_sc.includes?_sc.includes:[activeSubcat];l=l.filter(function(p){return _inc.indexOf(p.subcat)>=0;});}}if(activeAvail==='available')l=l.filter(function(p){return!p.sold});if(activeSort==='price-asc')l.sort(function(a,b){return(a.price||0)-(b.price||0)});if(activeSort==='price-desc')l.sort(function(a,b){return(b.price||0)-(a.price||0)});if(activeSort==='new')l.sort(function(a,b){return(b.isNew?1:0)-(a.isNew?1:0)});return l}
 function renderGrid(){
   var _lbr=document.getElementById('libreriaBtn');if(_lbr)_lbr.style.display=activeCat==='musica'?'':'none';if(window.rvMobSync)rvMobSync();
   if(activeCat!=='all'&&!activeSubcat&&!searchQuery&&SUBCATS_DATA[activeCat]){renderSubcatTiles(activeCat);return;}
@@ -879,7 +887,8 @@ function openModal(id){
     imgEl.style.alignItems='stretch';
     imgEl.style.justifyContent='stretch';
     imgEl.style.fontSize='';
-    imgEl.innerHTML='<img src="'+(p.cover||(p.photos&&p.photos[0]))+'" alt="'+p.name+'" style="width:100%;height:100%;object-fit:cover;display:block;">';
+    var _src=(p.cover||(p.photos&&p.photos[0]));imgEl.style.overflow='hidden';
+    imgEl.innerHTML='<div aria-hidden="true" style="position:absolute;inset:-20px;background:#111 url(\''+_src+'\') center/cover no-repeat;filter:blur(22px) brightness(.55);"></div><img src="'+_src+'" alt="'+p.name+'" style="position:relative;width:100%;height:100%;object-fit:contain;display:block;">';
   } else {
     // Standard: emoji + background
     imgEl.style.background=p.bg;
@@ -1041,6 +1050,7 @@ Promise.all(
         else{_sLabel.classList.remove('visible');}
       }
     });
+    var _qq=new URLSearchParams(location.search).get('q');if(_qq){_sInput.value=_qq;_sInput.dispatchEvent(new Event('input'));}
     _sClear.addEventListener('click',function(){
       _sInput.value='';searchQuery='';
       _sClear.style.display='none';
@@ -1148,3 +1158,23 @@ btn.addEventListener('click',function(e){if(Date.now()-chiusoAlle<600){e.prevent
 if(!mob.querySelector('.mob-logo')){var lg=new Image();lg.src='logo no sfondo.png';lg.alt='';lg.className='mob-logo';mob.appendChild(lg);}var qui=location.pathname.split('/').pop()||'index.html';mob.querySelectorAll('a').forEach(function(a){if(a.getAttribute('href')===qui)a.classList.add('attivo');});
 })();
 </script>
+<script>
+/* Collegamenti alla pagina completa del prodotto (pagine generate da scripts/genera_seo.py) */
+(function(){var IDX=null;fetch('prodotto/indice.json',{cache:'no-cache'}).then(function(r){return r.json()}).then(function(j){IDX=j}).catch(function(){});
+function slug(s,n){s=String(s).normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^\x00-\x7F]/g,'');s=s.replace(/[^a-zA-Z0-9]+/g,'-').replace(/^-+|-+$/g,'').toLowerCase();return s.slice(0,n).replace(/-+$/,'')||'prodotto';}
+function urlDi(p){if(IDX&&IDX[String(p.id)])return IDX[String(p.id)];
+  var a=p.artist||'',n=p.name||'',t=n.indexOf(' - ')>=0?n.split(' - ').slice(1).join(' - '):(a&&n.toLowerCase().indexOf(a.toLowerCase())===0?(n.slice(a.length).replace(/^[ \-:]+/,'')||n):n);
+  var nome=(a&&t&&t.toLowerCase().indexOf(a.toLowerCase())<0)?a+' - '+t:(n||t);return '/prodotto/'+slug(nome,64)+'-'+slug(String(p.id),12)+'.html';}
+if(typeof openModal!=='function')return;var _o=openModal;
+openModal=function(id){_o(id);var p=(window.PRODUCTS||PRODUCTS||[]).filter(function(x){return x.id===id})[0];if(!p)return;var u=urlDi(p);
+  var box=document.getElementById('modalActions');var a=document.getElementById('modalPagina');
+  if(box){if(!a){a=document.createElement('a');a.id='modalPagina';a.className='modal-btn-pagina';a.textContent='Pagina completa del prodotto';}if(a.parentNode!==box)box.appendChild(a);a.href=u;}
+  var cat=document.getElementById('modalCat'),t=document.getElementById('modalPaginaTop');
+  if(cat){if(!t){t=document.createElement('a');t.id='modalPaginaTop';t.className='modal-pagina-top';t.innerHTML='Pagina completa del prodotto &#8250;';}if(t.previousSibling!==cat)cat.parentNode.insertBefore(t,cat.nextSibling);t.href=u;}
+};})();
+</script>
+<script>
+document.addEventListener('error',function(e){var t=e.target;if(!t||t.tagName!=='IMG'||!window.RV_COVER_REMOTE)return;var k=(t.getAttribute('src')||'');if(window.RV_COVER_REMOTE[k]){t.src=window.RV_COVER_REMOTE[k];}},true);
+</script>
+</body>
+</html>

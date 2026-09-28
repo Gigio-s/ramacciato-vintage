@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>La Libreria dei CD | Ramacciato Vintage</title>
-<meta name="description" content="Sfoglia i CD di Ramacciato Vintage come in un vero negozio: scorri i dorsi, estrai il disco che ti interessa e acquistalo online.">
+<title>CD Usati da Sfogliare: la Libreria | Ramacciato Vintage</title>
+<meta name="description" content="Sfoglia i CD usati di Ramacciato Vintage come in un vero negozio di dischi: scorri i dorsi, estrai il disco e acquistalo online o ritiralo ai mercatini in Veneto.">
 <link rel="canonical" href="https://ramacciatovintage.it/shop-libreria.html">
 <link rel="icon" type="image/png" href="logo no sfondo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -228,6 +228,8 @@ body{font-family:Archivo,Arial,sans-serif;color:var(--navy);background:#0d1b2c;m
 
 /* Niente lineette davanti alle etichette dei titoli */
 .hero-kicker::before,.sec-label::before,.legal-kicker::before,.ck-section-title::before,.pay-title::before,.scheda .sez::before{display:none!important;content:none!important}
+
+.lib-foot{position:relative;z-index:2;width:min(1060px,calc(100% - 32px));margin:-50px auto 40px}.lib-foot .seo-hub{display:grid;grid-template-columns:1fr 1fr;gap:18px;font-size:13px;color:#fff;padding:18px 20px;border-radius:18px;background:rgba(6,14,26,.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}.lib-foot .seo-hub div{display:flex;flex-wrap:wrap;gap:6px 14px}.lib-foot .seo-hub b{width:100%;font-size:9.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}.lib-foot .seo-hub a{color:#fff;opacity:.85;text-decoration:none}.lib-foot .seo-hub a:hover{opacity:1;text-decoration:underline}@media(max-width:760px){.lib-foot .seo-hub{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -256,6 +258,7 @@ body{font-family:Archivo,Arial,sans-serif;color:var(--navy);background:#0d1b2c;m
 </main>
 <div class="piedi" aria-hidden="true" style="display:none"></div>
 
+<footer class="lib-foot"><nav class="seo-hub" aria-label="Esplora il negozio"><div><b>Negozio</b><a href="/negozio/cd-usati.html">CD usati</a><a href="/negozio/vinili-usati.html">Vinili usati</a><a href="/negozio/dvd-usati.html">DVD usati</a><a href="/negozio/videogiochi-retro-usati.html">Videogiochi retro</a><a href="/negozio/elettronica-vintage.html">Elettronica vintage</a><a href="/negozio/libri-usati.html">Libri usati</a><a href="/negozio/oggetti-vintage-modernariato.html">Oggetti vintage</a><a href="/negozio/trading-cards.html">Trading cards</a></div><div><b>Dove trovarmi</b><a href="/vintage-usato-vicenza.html">Vicenza</a><a href="/vintage-usato-padova.html">Padova</a><a href="/vintage-usato-marostica.html">Marostica</a><a href="/vintage-usato-mestre-venezia.html">Mestre e Venezia</a><a href="/vintage-usato-veneto.html">Veneto</a></div></nav></footer>
 <div class="etichetta" id="etichetta" role="tooltip"></div>
 
 <div class="estratto" id="estratto" role="dialog" aria-modal="true" aria-label="Dettaglio CD">
@@ -272,10 +275,11 @@ function loadCart(){try{return JSON.parse(localStorage.getItem(CART_KEY)||'[]');
 function saveCart(c){try{localStorage.setItem(CART_KEY,JSON.stringify(c));}catch(e){}if(window.rvCart&&window.rvCart.refresh)window.rvCart.refresh();}
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m];});}
 
-var CD=[],SOTTO=[],META={};
+var CD=[],SOTTO=[],META={};var IDXP={};fetch('prodotto/indice.json').then(function(r){return r.json()}).then(function(j){IDXP=j}).catch(function(){});
 
 /* Adattatore Gestionale -> sottocategorie RV (stesse regole di shop.html, lette da catalogo.json) */
 function adatta(p,mappa,subcats){
+  if(p.discogsId&&p.photos&&p.photos[0]&&/^https?:\/\/i\.discogs\.com/.test(p.photos[0])){p.photos=['photos/inventario/discogs-'+p.discogsId+'-cover.jpg'].concat(p.photos.slice(1));}
   if(p.artist)p.artist=String(p.artist).replace(/\s*\(\d+\)\s*$/,'').trim();
   var m=mappa[p.cat];if(!m)return;
   var ids=[];(subcats[p.cat]||[]).forEach(function(sc){ids.push(sc.id);(sc.children||[]).forEach(function(c){ids.push(c.id);});});
@@ -420,7 +424,7 @@ function schedaHtml(p){
    +'<div class="azioni"><button class="btn btn-p'+(inCart?' added':'')+'" id="bCarrello"'+(p.sold?' disabled':'')+'>'+(inCart?'&#x2713; Nel carrello':'Aggiungi al carrello')+'</button>'
    +'<button class="btn btn-s" id="bCompra"'+(p.sold?' disabled':'')+'>Compra ora</button>'
    +'<button class="btn btn-s" id="bGira">Gira il CD</button><button class="btn btn-s" id="bChiudi">Rimetti a posto</button>'
-   +'<a class="btn btn-g" href="shop.html?product='+esc(p.id)+'" style="text-align:center;text-decoration:none">Apri scheda completa</a></div>'
+   +'<a class="btn btn-g" href="'+esc(IDXP[String(p.id)]||('shop.html?product='+p.id))+'" style="text-align:center;text-decoration:none">Apri scheda completa</a></div>'
    +'<p class="nota">Copertina da Discogs a scopo illustrativo: il prodotto fisico può differire dall\'immagine.</p>'
    +'<button class="btn btn-riponi" id="bRiponi">Riponi</button>';
 }

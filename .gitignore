@@ -45,3 +45,9 @@ Ramacciato Usato&Vintage - chatgpt/
 
 # Foto originali prodotti (il gestionale le copia in photos/inventario alla pubblicazione)
 foto-prodotti/
+
+# Cartelle di lavoro locali
+lavorazione/
+verifica html/
+inventario/backup_online_*/
+GDPR/ffmpeg-*/

@@ -358,6 +358,49 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
   /* Sidebar scrollbar nascosta */
   .sidebar::-webkit-scrollbar{display:none}
 }
+/* Filtri a tendina: solo mobile */
+.mob-filtri{display:none}
+@media(max-width:768px){
+.sidebar{display:none!important}
+.mob-filtri{display:grid;grid-template-columns:1.45fr 1fr;gap:10px;margin:0 0 6px}
+.mf-dd{position:relative;min-width:0}
+.mf-lab{display:block;font-size:9.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);margin:0 0 6px 4px}
+.mf-btn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;border:0;border-radius:999px;background:rgba(255,255,255,.92);color:var(--ink);font-family:inherit;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:11px 14px 11px 16px;cursor:pointer;box-shadow:0 4px 14px rgba(11,37,69,.12);white-space:nowrap}
+.mf-val{overflow:hidden;text-overflow:ellipsis}
+.mf-val small{font-size:9px;opacity:.55;margin-left:4px;letter-spacing:.04em}
+.mf-chev{flex:0 0 8px;width:8px;height:8px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:translateY(-2px) rotate(45deg);transition:transform .2s}
+.mf-dd.open .mf-chev{transform:translateY(2px) rotate(-135deg)}
+.mf-list{position:absolute;left:0;top:calc(100% + 6px);z-index:30;min-width:100%;width:max-content;max-width:calc(100vw - 40px);background:#fff;border-radius:16px;padding:6px;box-shadow:0 14px 34px rgba(11,37,69,.22);opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .16s,transform .16s,visibility 0s .16s}
+#mfAvail .mf-list{left:auto;right:0}
+.mf-dd.open .mf-list{opacity:1;visibility:visible;transform:none;transition:opacity .16s,transform .16s}
+.mf-list button{display:flex;justify-content:space-between;align-items:center;gap:14px;width:100%;border:0;background:transparent;border-radius:10px;padding:10px 12px;font-family:inherit;font-size:13px;font-weight:600;color:rgba(11,37,69,.85);text-align:left;cursor:pointer}
+.mf-list button small{font-size:10px;font-weight:700;opacity:.55}
+.mf-list button.active{background:var(--ink);color:#fff}
+.mf-list button.active small{opacity:.7}
+.grid-header{flex-direction:row!important;flex-wrap:wrap!important;align-items:center!important;gap:10px!important}
+.grid-header .grid-count{flex-basis:100%}
+.grid-header .libreria-btn{flex:1 1 auto;justify-content:center;padding:11px 14px}
+.grid-header .sort-select{flex:1 1 auto}
+}
+/* Copertine musica quadrate + densita griglia */
+.product-card--musica .product-img{aspect-ratio:1/1}
+.dens{display:inline-flex;align-items:center;gap:3px;background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:999px;padding:3px}
+.dens-lab{font-size:9.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);padding:0 6px 0 8px}
+.dens button{border:0;background:transparent;font-family:inherit;font-size:11px;font-weight:800;color:var(--ink);width:28px;height:28px;border-radius:50%;cursor:pointer;transition:background .18s,color .18s}
+.dens button:hover{background:rgba(11,37,69,.08)}
+.dens button.active{background:var(--ink);color:#fff}
+.product-grid.dens-1{grid-template-columns:repeat(4,1fr)}
+.product-grid.dens-2{grid-template-columns:repeat(5,1fr);gap:14px}
+.product-grid.dens-1 .product-body,.product-grid.dens-2 .product-body{padding:12px 13px 14px}
+.product-grid.dens-1 .product-name{font-size:14px}
+.product-grid.dens-2 .product-name{font-size:13px}
+.product-grid.dens-2 .product-desc{display:none}
+.product-grid.dens-2 .product-price{font-size:19px}
+@media(max-width:1000px){.product-grid.dens-1{grid-template-columns:repeat(3,1fr)!important}.product-grid.dens-2{grid-template-columns:repeat(4,1fr)!important}}
+@media(max-width:660px){.product-grid.dens-2{grid-template-columns:repeat(3,1fr)!important}.product-grid.dens-1{grid-template-columns:repeat(2,1fr)!important}}
+@media(max-width:420px){.product-grid.dens-1{grid-template-columns:repeat(2,1fr)!important}.product-grid.dens-2{grid-template-columns:repeat(3,1fr)!important;gap:8px!important}
+ .product-grid.dens-2 .product-body{padding:8px 8px 10px}.product-grid.dens-2 .product-name{font-size:11px}.product-grid.dens-2 .product-condition,.product-grid.dens-2 .product-cat{display:none}.product-grid.dens-2 .product-price{font-size:15px}.product-grid.dens-2 .product-buy-btn{width:24px;height:24px;font-size:12px}}
+@media(max-width:768px){.grid-header .libreria-btn{flex:1 1 100%}.dens-lab{display:none}}
 </style>
 </head>
 <body>
@@ -502,6 +545,12 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
   </div>
 </div>
 <div class="wrap shop-wrap">
+  <div class="mob-filtri">
+    <div class="mf-dd" id="mfCat"><span class="mf-lab">Categoria</span><button type="button" class="mf-btn" aria-haspopup="listbox" aria-expanded="false"><span class="mf-val">Tutto</span><i class="mf-chev" aria-hidden="true"></i></button>
+      <div class="mf-list" role="listbox"><button type="button" data-v="all">Tutto</button><button type="button" data-v="videogiochi">Videogiochi &amp; Console</button><button type="button" data-v="elettronica">Elettronica Vintage</button><button type="button" data-v="musica">Vinili &amp; Musica</button><button type="button" data-v="libri">Libri Curiosi</button><button type="button" data-v="oggetti">Oggetti Vintage</button><button type="button" data-v="trading">Trading Cards</button><button type="button" data-v="dvd">DVD &amp; Film</button></div></div>
+    <div class="mf-dd" id="mfAvail"><span class="mf-lab">Disponibilit&agrave;</span><button type="button" class="mf-btn" aria-haspopup="listbox" aria-expanded="false"><span class="mf-val">Tutti</span><i class="mf-chev" aria-hidden="true"></i></button>
+      <div class="mf-list" role="listbox"><button type="button" data-v="all">Tutti</button><button type="button" data-v="available">Solo disponibili</button></div></div>
+  </div>
   <aside class="sidebar" aria-label="Filtri">
     <div class="filter-group">
       <p class="filter-title">Categoria</p>
@@ -524,6 +573,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
     <div class="grid-header">
       <p class="grid-count" id="gridCount">&mdash; articoli</p>
       <a class="libreria-btn" id="libreriaBtn" href="shop-libreria.html" style="display:none">&#x1F4BF; Vista libreria</a>
+      <div class="dens" id="densCtl" role="group" aria-label="Prodotti per riga"><span class="dens-lab">Griglia</span><button type="button" data-d="0" class="active">3</button><button type="button" data-d="1">4</button><button type="button" data-d="2">5</button></div>
       <select class="sort-select" id="sortSelect">
         <option value="default">Ordine predefinito</option>
         <option value="price-asc">Prezzo &uarr;</option>
@@ -654,6 +704,7 @@ window.rvAdattaGestionale=function(p,mappa,subcats){
 function catLabel(c){return{videogiochi:'Videogiochi & Console',elettronica:'Elettronica Vintage',musica:'Vinili & Musica',libri:'Libri Curiosi',oggetti:'Oggetti Vintage',trading:'Trading Cards',dvd:'DVD & Film'}[c]||c}
 function getFiltered(){var l=PRODUCTS.slice();if(searchQuery){var sq=searchQuery.toLowerCase();l=l.filter(function(p){return p.name.toLowerCase().indexOf(sq)>=0;});}if(activeCat!=='all')l=l.filter(function(p){return p.cat===activeCat});if(activeSubcat){if(activeSubcat2){l=l.filter(function(p){return p.subcat===activeSubcat2;});}else{var _sc=(SUBCATS_DATA[activeCat]||[]).filter(function(s){return s.id===activeSubcat;})[0];var _inc=_sc&&_sc.includes?_sc.includes:[activeSubcat];l=l.filter(function(p){return _inc.indexOf(p.subcat)>=0;});}}if(activeAvail==='available')l=l.filter(function(p){return!p.sold});if(activeSort==='price-asc')l.sort(function(a,b){return(a.price||0)-(b.price||0)});if(activeSort==='price-desc')l.sort(function(a,b){return(b.price||0)-(a.price||0)});if(activeSort==='new')l.sort(function(a,b){return(b.isNew?1:0)-(a.isNew?1:0)});return l}
 function renderGrid(){
+  var _lbr=document.getElementById('libreriaBtn');if(_lbr)_lbr.style.display=activeCat==='musica'?'':'none';if(window.rvMobSync)rvMobSync();
   if(activeCat!=='all'&&!activeSubcat&&!searchQuery&&SUBCATS_DATA[activeCat]){renderSubcatTiles(activeCat);return;}
   if(activeCat!=='all'&&activeSubcat&&!activeSubcat2&&!searchQuery){var _psc=(SUBCATS_DATA[activeCat]||[]).filter(function(s){return s.id===activeSubcat;})[0];if(_psc&&_psc.children&&_psc.children.length){renderSubcatChildren(_psc,activeCat);return;}}
   var list=getFiltered(),grid=document.getElementById('productGrid');
@@ -668,7 +719,7 @@ function renderGrid(){
         : '<div class="product-img-inner" style="background:'+p.bg+'">'+p.emoji+'</div>';
     var condHtml=p.condition?'<span class="product-condition">'+p.condition+'</span>':'';
     var copieHtml=(p.copie&&p.copie>1&&!p.sold)?'<span class="product-copies">'+p.copie+' copie</span>':'';
-    return'<div class="product-card'+(p.model?' product-card--3d':'')+'" data-id="'+p.id+'" tabindex="0" role="button"><div class="product-img">'+imgHtml+(p.sold?'<span class="product-sold-badge">Venduto</span>':'')+(p.isNew&&!p.sold?'<span class="product-new-badge">Nuovo</span>':'')+copieHtml+'</div><div class="product-body"><p class="product-cat">'+catLabel(p.cat)+(p.model?' <span style="font-size:8px;opacity:.7;margin-left:4px">&#x2B55; 3D</span>':'')+'</p><p class="product-name">'+p.name+'</p>'+condHtml+'<p class="product-desc">'+(p.desc?(p.desc.substring(0,80)+'&hellip;'):'')+'</p><div class="product-footer"><span class="product-price'+(p.sold?' sold':'')+'">&#x20AC; '+(p.price!==null&&p.price!==undefined?p.price:'—')+'</span><button class="product-buy-btn">+</button></div></div></div>';
+    return'<div class="product-card'+(p.model?' product-card--3d':'')+' product-card--'+p.cat+'" data-id="'+p.id+'" tabindex="0" role="button"><div class="product-img">'+imgHtml+(p.sold?'<span class="product-sold-badge">Venduto</span>':'')+(p.isNew&&!p.sold?'<span class="product-new-badge">Nuovo</span>':'')+copieHtml+'</div><div class="product-body"><p class="product-cat">'+catLabel(p.cat)+(p.model?' <span style="font-size:8px;opacity:.7;margin-left:4px">&#x2B55; 3D</span>':'')+'</p><p class="product-name">'+p.name+'</p>'+condHtml+'<p class="product-desc">'+(p.desc?(p.desc.substring(0,80)+'&hellip;'):'')+'</p><div class="product-footer"><span class="product-price'+(p.sold?' sold':'')+'">&#x20AC; '+(p.price!==null&&p.price!==undefined?p.price:'—')+'</span><button class="product-buy-btn">+</button></div></div></div>';
   }).join('');
   ['all','videogiochi','elettronica','musica','libri','oggetti','trading','dvd'].forEach(function(c){var el=document.getElementById('cnt-'+c);if(el)el.textContent=c==='all'?PRODUCTS.length:PRODUCTS.filter(function(p){return p.cat===c}).length});
   grid.querySelectorAll('.product-card').forEach(function(card){var fn=function(){openModal(parseInt(card.dataset.id))};card.addEventListener('click',fn);card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')fn()});
@@ -943,6 +994,8 @@ Promise.all(
   var urlProduct=parseInt(urlParams.get('product'),10);
   if(urlProduct && PRODUCTS.some(function(p){return Number(p.id)===urlProduct})) openModal(urlProduct);
   document.querySelectorAll('.sidebar [data-cat]').forEach(function(btn){btn.addEventListener('click',function(){selectCat(btn.dataset.cat,false)})});
+  (function(){var ctl=document.getElementById('densCtl'),g=document.getElementById('productGrid');if(!ctl)return;var dens=0;function base(){var w=window.innerWidth;return w<=420?1:(w<=1000?2:3);}function etichette(){var b=base();ctl.querySelectorAll('button').forEach(function(x){x.textContent=b+parseInt(x.dataset.d,10);x.setAttribute('aria-label',(b+parseInt(x.dataset.d,10))+' per riga');});}ctl.addEventListener('click',function(e){var x=e.target.closest('button');if(!x)return;dens=parseInt(x.dataset.d,10);ctl.querySelectorAll('button').forEach(function(y){y.classList.toggle('active',y===x);});g.classList.remove('dens-1','dens-2');if(dens)g.classList.add('dens-'+dens);});etichette();window.addEventListener('resize',etichette);})();
+  (function(){var dc=document.getElementById('mfCat'),da=document.getElementById('mfAvail');if(!dc)return;function cnt(v){return v==='all'?PRODUCTS.length:PRODUCTS.filter(function(p){return p.cat===v}).length;}dc.querySelectorAll('.mf-list button').forEach(function(b){b.dataset.l=b.textContent;b.innerHTML=b.dataset.l+' <small>'+cnt(b.dataset.v)+'</small>';});da.querySelectorAll('.mf-list button').forEach(function(b){b.dataset.l=b.textContent;});function chiudi(){[dc,da].forEach(function(d){d.classList.remove('open');d.querySelector('.mf-btn').setAttribute('aria-expanded','false');});}[dc,da].forEach(function(d){d.querySelector('.mf-btn').addEventListener('click',function(e){e.stopPropagation();var o=!d.classList.contains('open');chiudi();if(o){d.classList.add('open');this.setAttribute('aria-expanded','true');}});});document.addEventListener('click',chiudi);window.rvMobSync=function(){dc.querySelectorAll('.mf-list button').forEach(function(b){var on=b.dataset.v===activeCat;b.classList.toggle('active',on);if(on)dc.querySelector('.mf-val').innerHTML=b.dataset.l+' <small>'+cnt(b.dataset.v)+'</small>';});da.querySelectorAll('.mf-list button').forEach(function(b){var on=b.dataset.v===activeAvail;b.classList.toggle('active',on);if(on)da.querySelector('.mf-val').textContent=b.dataset.l;});};dc.querySelector('.mf-list').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;chiudi();selectCat(b.dataset.v,false);rvMobSync();});da.querySelector('.mf-list').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;chiudi();var x=document.querySelector('.sidebar [data-avail="'+b.dataset.v+'"]');if(x)x.click();rvMobSync();});rvMobSync();})();
   document.getElementById('catCarousel').querySelectorAll('.cat-item').forEach(function(item){item.addEventListener('click',function(){selectCat(item.dataset.cat,true)})});
   document.querySelectorAll('[data-avail]').forEach(function(btn){btn.addEventListener('click',function(){activeAvail=btn.dataset.avail;document.querySelectorAll('[data-avail]').forEach(function(b){b.classList.remove('active')});btn.classList.add('active');renderGrid()})});
   document.getElementById('sortSelect').addEventListener('change',function(e){activeSort=e.target.value;renderGrid()});

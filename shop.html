@@ -36,8 +36,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,800;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
-<script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
 <style>
 :root{--bg:#4a90e0;--paper:#ffffff;--ink:#0b2545;--dark:#0f2a4a;--muted:#143a63;--line:rgba(11,37,69,.11);--accent:#0d3b75;--accent2:#bfdcfa;--max:1180px;--ease:cubic-bezier(.22,1,.36,1)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
@@ -520,45 +518,37 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
       </button>
       <!-- 3D model: "Playstation 2 Logo" by Yanez Designs (CC BY 4.0) https://sketchfab.com/3d-models/playstation-2-logo-266d26be2a6d47d58880bb723d1faf7a -->
       <button class="cat-item" data-cat="videogiochi">
-        <div class="cat-model-wrap">
-          <model-viewer data-src="modelli%203d%20x%20sito/playstation_2_logo.glb" auto-rotate  rotation-per-second="0deg" reveal="auto" loading="lazy" interaction-prompt="none" camera-orbit="0deg 75deg 120%" field-of-view="38deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"><div slot="poster" class="mv-poster"></div></model-viewer>
+        <div class="cat-model-wrap"><model-viewer data-src="modelli%203d%20x%20sito/playstation_2_logo.glb" auto-rotate  rotation-per-second="0deg" reveal="auto" loading="lazy" interaction-prompt="none" camera-orbit="0deg 75deg 120%" field-of-view="38deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"><div slot="poster" class="mv-poster"></div></model-viewer>
         </div>
         <span class="cat-label">Videogiochi</span>
       </button>
       <button class="cat-item" data-cat="elettronica">
-        <div class="cat-model-wrap">
-          <model-viewer data-src="3d%20per%20interfaccia/boombox.glb" auto-rotate  rotation-per-second="0deg" reveal="auto" loading="lazy" interaction-prompt="none" camera-orbit="30deg 80deg 130%" field-of-view="38deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"><div slot="poster" class="mv-poster"></div></model-viewer>
+        <div class="cat-model-wrap"><div class="o3d-host" data-o3d="radio"></div>
         </div>
         <span class="cat-label">Elettronica Vintage</span>
       </button>
       <button class="cat-item" data-cat="musica">
-        <div class="cat-model-wrap">
-          <model-viewer data-src="3d%20per%20interfaccia/vinyls_3_opt.glb" auto-rotate  rotation-per-second="0deg" reveal="auto" loading="lazy" interaction-prompt="none" camera-orbit="0deg 70deg 130%" field-of-view="38deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"><div slot="poster" class="mv-poster"></div></model-viewer>
+        <div class="cat-model-wrap"><div class="o3d-host" data-o3d="vinile"></div>
         </div>
         <span class="cat-label">Vinili &amp; Musica</span>
       </button>
       <button class="cat-item" data-cat="libri">
-        <div class="cat-model-wrap">
-          <model-viewer data-src="3d%20per%20interfaccia/book_stack.glb" auto-rotate  rotation-per-second="0deg" reveal="auto" loading="lazy" interaction-prompt="none" camera-orbit="20deg 78deg 130%" field-of-view="36deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"><div slot="poster" class="mv-poster"></div></model-viewer>
+        <div class="cat-model-wrap"><div class="o3d-host" data-o3d="libri"></div>
         </div>
         <span class="cat-label">Libri Curiosi</span>
       </button>
       <button class="cat-item" data-cat="oggetti">
-        <div class="cat-model-wrap">
-          <model-viewer data-src="3d%20per%20interfaccia/blue_desk_lamp_vintage_90s.glb" auto-rotate  rotation-per-second="0deg" reveal="auto" loading="lazy" interaction-prompt="none" camera-orbit="0deg 80deg 130%" field-of-view="38deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"><div slot="poster" class="mv-poster"></div></model-viewer>
+        <div class="cat-model-wrap"><div class="o3d-host" data-o3d="fotocamera"></div>
         </div>
         <span class="cat-label">Oggetti Vintage</span>
       </button>
       <button class="cat-item" data-cat="trading">
-        <div class="cat-model-wrap">
-          <model-viewer data-src="3d%20per%20interfaccia/trading_card_pack.glb" auto-rotate  rotation-per-second="0deg" reveal="auto" loading="lazy" interaction-prompt="none" orientation="90deg 0deg 0deg" camera-orbit="15deg 75deg 130%" field-of-view="36deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"><div slot="poster" class="mv-poster"></div></model-viewer>
+        <div class="cat-model-wrap"><model-viewer data-src="3d%20per%20interfaccia/trading_card_pack.glb" auto-rotate  rotation-per-second="0deg" reveal="auto" loading="lazy" interaction-prompt="none" orientation="90deg 0deg 0deg" camera-orbit="15deg 75deg 130%" field-of-view="36deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"><div slot="poster" class="mv-poster"></div></model-viewer>
         </div>
         <span class="cat-label">Trading Cards</span>
       </button>
-      <!-- 3D model: "Black film slate or clapperboard" by Bendar Multimedia (CC BY 4.0) https://sketchfab.com/3d-models/black-film-slate-or-clapperboard-f971698c983d4256a269424e88b17872 -->
       <button class="cat-item" data-cat="dvd">
-        <div class="cat-model-wrap">
-          <model-viewer data-src="modelli%203d%20x%20sito/black_film_slate_or_clapperboard%20-%20film.glb" auto-rotate  rotation-per-second="0deg" reveal="auto" loading="lazy" interaction-prompt="none" camera-orbit="20deg 75deg 130%" field-of-view="38deg" style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent"><div slot="poster" class="mv-poster"></div></model-viewer>
+        <div class="cat-model-wrap"><div class="o3d-host" data-o3d="ciak"></div>
         </div>
         <span class="cat-label">DVD &amp; Film</span>
       </button>
@@ -761,9 +751,9 @@ function renderSubcatTiles(cat){
     var _scInc=sc.includes?sc.includes:[sc.id];
     var count=PRODUCTS.filter(function(p){return p.cat===cat&&_scInc.indexOf(p.subcat)>=0;}).length;
     if(count===0&&sc.id!=='vinili')return'';
-    var inner=sc.model
+    var inner=rvO3D(sc.id,sc.bg,cat,sc.label)||(sc.model
       ?'<model-viewer src="'+sc.model+'" auto-rotate rotation-per-second="0deg" reveal="auto" loading="lazy" camera-orbit="0deg 80deg 120%" field-of-view="35deg" shadow-intensity="0.8" style="width:100%;height:100%;background:'+sc.bg+'"></model-viewer>'
-      :'<div class="subcat-tile-emoji" style="background:'+sc.bg+'">'+sc.emoji+'</div>';
+      :'<div class="subcat-tile-emoji" style="background:'+sc.bg+'">'+sc.emoji+'</div>');
     return'<div class="subcat-tile" data-subcat="'+sc.id+'" data-cat="'+cat+'">'
       +'<div class="subcat-tile-model">'+inner+'</div>'
       +'<div class="subcat-tile-body">'
@@ -771,12 +761,16 @@ function renderSubcatTiles(cat){
       +'<p class="subcat-tile-count">'+count+' articol'+(count===1?'o':'i')+'</p>'
       +'</div></div>';
   }).join('')+'</div>';
+  if(window.RV3D)RV3D.monta(grid);
   grid.querySelectorAll('.subcat-tile').forEach(function(tile){
     var mv=tile.querySelector('model-viewer');
     if(mv){tile.addEventListener('mouseenter',function(){mv.setAttribute('rotation-per-second','28deg');});tile.addEventListener('mouseleave',function(){mv.setAttribute('rotation-per-second','0deg');});}
     tile.addEventListener('click',function(){selectSubcat(tile.dataset.cat,tile.dataset.subcat);});
   });
 }
+var RV_O3D={vinili:['vinile','','viola'],cd:['cd','','blu'],musicassette:['cassetta','',''],'gadget-musica':['cuffie','',''],film:['dvd','Film','rosso'],animazione:['dvd','Animazione','arancio'],documentari:['dvd','Documentari','verde'],'serie-tv':['dvd','Serie TV','blu'],'film-tv':['dvd','Film TV','viola'],ps1:['gioco','PS1','nero'],ps2:['gioco','PS2','blu'],ps3:['gioco','PS3','nero'],ps4:['gioco','PS4','blu'],psp:['gioco','PSP','nero'],xbox360:['gioco','Xbox 360','verde'],wii:['gioco','Wii','teal'],nds:['gioco','DS','rosso'],pc:['gioco','PC','arancio'],'cd-italiano':['cd','Italiano','verde'],'cd-pop-rock':['cd','Pop Rock','rosso'],'cd-metal':['cd','Metal','nero'],'cd-jazz-blues':['cd','Jazz Blues','blu'],'cd-classica':['cd','Classica','oro'],'cd-edicola':['cd','Edicola','arancio'],'cd-compilation':['cd','Compilation','viola'],'cd-sacra':['cd','Sacra World','teal']};
+var RV_O3D_CAT={musica:'cd',dvd:'dvd',videogiochi:'gioco',libri:'libri',oggetti:'fotocamera',elettronica:'radio',trading:'carte'};
+function rvO3D(id,bg,cat,label){var m=RV_O3D[id];if(!m&&cat&&RV_O3D_CAT[cat])m=[RV_O3D_CAT[cat],label||'',''];if(!m||!window.RV3D)return null;return '<div style="width:100%;height:100%;background:'+(bg||'linear-gradient(135deg,#0a1a2a,#1a3a5a)')+'">'+RV3D.host(m[0],m[1],m[2])+'</div>';}
 function renderSubcatChildren(parentSc,cat){
   var grid=document.getElementById('productGrid');
   document.getElementById('gridCount').textContent='Scegli un genere';
@@ -784,10 +778,11 @@ function renderSubcatChildren(parentSc,cat){
     var count=PRODUCTS.filter(function(p){return p.cat===cat&&p.subcat===sc.id;}).length;
     if(count===0)return'';
     return'<div class="subcat-tile" data-subcat2="'+sc.id+'" data-cat="'+cat+'">'
-      +'<div class="subcat-tile-model"><div class="subcat-tile-emoji" style="background:'+(sc.bg||'#eef5fd')+'">'+sc.emoji+'</div></div>'
+      +'<div class="subcat-tile-model">'+(rvO3D(sc.id,sc.bg,cat,sc.label)||'<div class="subcat-tile-emoji" style="background:'+(sc.bg||'#eef5fd')+'">'+sc.emoji+'</div>')+'</div>'
       +'<div class="subcat-tile-body"><p class="subcat-tile-name">'+sc.label+'</p>'
       +'<p class="subcat-tile-count">'+count+' articol'+(count===1?'o':'i')+'</p></div></div>';
   }).join('')+'</div>';
+  if(window.RV3D)RV3D.monta(grid);
   grid.querySelectorAll('.subcat-tile[data-subcat2]').forEach(function(tile){
     tile.addEventListener('click',function(){selectSubcat2(tile.dataset.cat,tile.dataset.subcat2);});
   });
@@ -1175,6 +1170,12 @@ openModal=function(id){_o(id);var p=(window.PRODUCTS||PRODUCTS||[]).filter(funct
 </script>
 <script>
 document.addEventListener('error',function(e){var t=e.target;if(!t||t.tagName!=='IMG'||!window.RV_COVER_REMOTE)return;var k=(t.getAttribute('src')||'');if(window.RV_COVER_REMOTE[k]){t.src=window.RV_COVER_REMOTE[k];}},true);
+</script>
+<script src="oggetti3d.js"></script>
+<script>
+/* model-viewer caricato solo quando nella pagina compare un modello 3D vero */
+(function(){var fatto=false;function carica(){if(fatto)return;fatto=true;var sc=document.createElement('script');sc.type='module';sc.src='https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js';document.head.appendChild(sc);}
+if(document.querySelector('model-viewer'))carica();new MutationObserver(function(){if(!fatto&&document.querySelector('model-viewer'))carica();}).observe(document.documentElement,{childList:true,subtree:true});})();
 </script>
 </body>
 </html>

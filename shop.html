@@ -422,6 +422,9 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
 .modal-btn-pagina:hover{background:var(--ink);color:#fff}
 .modal-pagina-top{display:inline-block;margin:-4px 0 10px;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 .modal-pagina-top:hover{color:var(--accent)}
+/* Scheda prodotto: foto centrata su desktop, X sempre visibile su mobile */
+@media(min-width:769px){.modal-box{overflow:hidden}.modal-inner{max-height:90vh}.modal-content{max-height:90vh;overflow-y:auto}.modal-img-wrap{max-height:90vh;min-height:0;align-items:center!important;justify-content:center!important}.modal-close{background:#fff;box-shadow:0 4px 14px rgba(11,37,69,.18)}}
+@media(max-width:768px){.modal-close{position:sticky!important;top:12px;right:auto;margin:12px 12px -56px auto;width:44px;height:44px;background:#fff;color:var(--ink);font-size:18px;box-shadow:0 6px 18px rgba(0,0,0,.28);z-index:20;touch-action:manipulation}}
 </style>
 </head>
 <body>

@@ -202,7 +202,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
   .wrap{width:calc(100% - 28px)}
   section{padding:32px 0}
 }
-</style>
+.rv-i18n-notice{margin:90px 0 0;background:#8b3e10;color:#f4efe7;text-align:center;padding:12px 20px;font-size:13px;line-height:1.55;font-weight:600;position:relative;z-index:1}.rv-notice-on .page-hero{padding-top:30px}@media(max-width:760px){.rv-i18n-notice{margin-top:84px;font-size:12px;padding:10px 16px}.rv-notice-on .page-hero{padding-top:18px}}</style>
 </head>
 <body>
 <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
@@ -226,9 +226,9 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
     <nav aria-label="Menu principale">
       <ul class="links">
         <li><a href="shop.html">Shop</a></li>
-        <li><a href="mercatini.html">Mercatini</a></li>
-        <li><a href="svuotacantine.html" class="active">Svuotacantine</a></li>
-        <li><a href="fisico-vs-digitale.html">Fisico vs Digitale</a></li>
+        <li><a href="mercatini.html" data-i18n-es="Mercadillos" data-i18n-en="Flea markets">Mercatini</a></li>
+        <li><a href="svuotacantine.html" class="active" data-i18n-es="Vaciado de trasteros" data-i18n-en="Cellar clearance">Svuotacantine</a></li>
+        <li><a href="fisico-vs-digitale.html" data-i18n-es="F&iacute;sico vs Digital" data-i18n-en="Physical vs Digital">Fisico vs Digitale</a></li>
       </ul>
     </nav>
     <ul class="social">
@@ -244,23 +244,29 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
 <div class="mobile" id="mobileMenu" role="dialog" aria-modal="true">
   <button class="mob-close" id="mobClose" aria-label="Chiudi menu">&#x2715;</button>
   <a href="shop.html">Shop</a>
-  <a href="mercatini.html">Mercatini</a>
-  <a href="svuotacantine.html">Svuotacantine</a>
-  <a href="fisico-vs-digitale.html">Fisico vs Digitale</a>
+  <a href="mercatini.html" data-i18n-es="Mercadillos" data-i18n-en="Flea markets">Mercatini</a>
+  <a href="svuotacantine.html" data-i18n-es="Vaciado de trasteros" data-i18n-en="Cellar clearance">Svuotacantine</a>
+  <a href="fisico-vs-digitale.html" data-i18n-es="F&iacute;sico vs Digital" data-i18n-en="Physical vs Digital">Fisico vs Digitale</a>
 </div>
 
 <main>
+
+<!-- BANNER LINGUA: servizio Italia-only, visibile solo in ES/EN -->
+<div class="rv-i18n-notice" data-show-lang="es en" style="display:none"
+  data-i18n-es="Este servicio (vaciado de trasteros, desalojos y mudanzas) solo est&aacute; disponible en Italia. La tienda online s&iacute; env&iacute;a al extranjero."
+  data-i18n-en="This service (cellar &amp; garage clearance, house clearance and removals) is only available in Italy. The online shop does ship abroad.">Questo servizio &egrave; disponibile solo in Italia.</div>
+
 
 <!-- HERO -->
 <section class="page-hero">
   <div class="wrap">
     <div class="hero-content">
-      <p class="sec-label reveal">Sgomberi &amp; Ritiro oggetti</p>
-      <h1 style="font-size:clamp(52px,7.5vw,110px);line-height:.9;letter-spacing:-.065em;text-transform:uppercase;font-weight:900;margin:0 0 16px" class="reveal">Svuota<br><span class="caramel">cantina</span></h1>
-      <p class="reveal" style="max-width:560px;font-size:14.5px;color:rgba(30,27,23,.62);line-height:1.72">Hai una cantina piena, un garage da liberare, un deposito che non usi? Invece di pagare per buttare via, contattami &mdash; valuto il contenuto, ritiro quello che ha valore e, se c&rsquo;&egrave; qualcosa di interessante, te lo pago.</p>
+      <p class="sec-label reveal" data-i18n-es="Desalojos y retirada de objetos" data-i18n-en="Clearances &amp; item collection">Sgomberi &amp; Ritiro oggetti</p>
+      <h1 style="font-size:clamp(52px,7.5vw,110px);line-height:.9;letter-spacing:-.065em;text-transform:uppercase;font-weight:900;margin:0 0 16px" class="reveal" data-i18n-es="Vac&iacute;a<br><span class='caramel'>el trastero</span>" data-i18n-en="Clear your<br><span class='caramel'>cellar</span>">Svuota<br><span class="caramel">cantina</span></h1>
+      <p class="reveal" style="max-width:560px;font-size:14.5px;color:rgba(30,27,23,.62);line-height:1.72" data-i18n-es="&iquest;Tienes un trastero lleno, un garaje que liberar, un almac&eacute;n que no usas? En vez de pagar por tirar, escr&iacute;beme &mdash; valoro el contenido, retiro lo que tiene valor y, si hay algo interesante, te lo pago." data-i18n-en="Got a full cellar, a garage to clear, a storage unit you don&rsquo;t use? Instead of paying to throw it away, get in touch &mdash; I assess the contents, collect what has value and, if there&rsquo;s something interesting, I pay you for it.">Hai una cantina piena, un garage da liberare, un deposito che non usi? Invece di pagare per buttare via, contattami &mdash; valuto il contenuto, ritiro quello che ha valore e, se c&rsquo;&egrave; qualcosa di interessante, te lo pago.</p>
       <div class="hero-actions reveal" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:32px">
-        <a href="#contatto" style="display:inline-flex;align-items:center;gap:8px;min-height:50px;padding:0 26px;border-radius:999px;background:var(--ink);color:var(--bg);font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;transition:background .2s,transform .22s var(--ease);text-decoration:none" onmouseover="this.style.background='var(--accent)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='var(--ink)';this.style.transform=''">Richiedi sopralluogo &rarr;</a>
-        <a href="#zone" style="display:inline-flex;align-items:center;gap:8px;min-height:50px;padding:0 26px;border-radius:999px;background:transparent;color:var(--ink);border:1.5px solid rgba(14,12,10,.2);font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;transition:background .2s;text-decoration:none" onmouseover="this.style.background='rgba(14,12,10,.05)'" onmouseout="this.style.background='transparent'">Zone coperte</a>
+        <a href="#contatto" style="display:inline-flex;align-items:center;gap:8px;min-height:50px;padding:0 26px;border-radius:999px;background:var(--ink);color:var(--bg);font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;transition:background .2s,transform .22s var(--ease);text-decoration:none" onmouseover="this.style.background='var(--accent)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='var(--ink)';this.style.transform=''" data-i18n-es="Solicita una visita &rarr;" data-i18n-en="Request a visit &rarr;">Richiedi sopralluogo &rarr;</a>
+        <a href="#zone" style="display:inline-flex;align-items:center;gap:8px;min-height:50px;padding:0 26px;border-radius:999px;background:transparent;color:var(--ink);border:1.5px solid rgba(14,12,10,.2);font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;transition:background .2s;text-decoration:none" onmouseover="this.style.background='rgba(14,12,10,.05)'" onmouseout="this.style.background='transparent'" data-i18n-es="Zonas cubiertas" data-i18n-en="Areas covered">Zone coperte</a>
       </div>
     </div>
     <div class="hero-logo-wrap reveal">
@@ -283,35 +289,35 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
 <section id="come">
   <div class="wrap">
     <div class="reveal">
-      <p class="sec-label">Il processo</p>
-      <h2 class="h2">Come<br>funziona</h2>
+      <p class="sec-label" data-i18n-es="El proceso" data-i18n-en="The process">Il processo</p>
+      <h2 class="h2" data-i18n-es="C&oacute;mo<br>funciona" data-i18n-en="How it<br>works">Come<br>funziona</h2>
       <div class="divider-line"></div>
-      <p class="body-copy">Quattro passi semplici. Nessuna spesa per te, nessun obbligo. Se c&rsquo;&egrave; qualcosa di valore lo ritiro e lo pago, il resto lo gestisco io.</p>
+      <p class="body-copy" data-i18n-es="Cuatro pasos sencillos. Sin gastos para ti, sin compromiso. Si hay algo de valor lo retiro y te lo pago, del resto me encargo yo." data-i18n-en="Four simple steps. No cost to you, no obligation. If there&rsquo;s something valuable I collect it and pay you, I handle the rest.">Quattro passi semplici. Nessuna spesa per te, nessun obbligo. Se c&rsquo;&egrave; qualcosa di valore lo ritiro e lo pago, il resto lo gestisco io.</p>
     </div>
     <div class="steps-grid reveal">
       <div class="step-card">
         <div class="step-num">01</div>
         <div class="step-icon">📸</div>
-        <h3 class="step-title">Mi contatti</h3>
-        <p class="step-desc">Mi scrivi o mi chiami. Descrivi la situazione: cantina, garage, appartamento. Allega qualche foto se puoi.</p>
+        <h3 class="step-title" data-i18n-es="Me contactas" data-i18n-en="You get in touch">Mi contatti</h3>
+        <p class="step-desc" data-i18n-es="Me escribes o me llamas. Describe la situaci&oacute;n: trastero, garaje, piso. Adjunta alguna foto si puedes." data-i18n-en="You write or call me. Describe the situation: cellar, garage, apartment. Attach a few photos if you can.">Mi scrivi o mi chiami. Descrivi la situazione: cantina, garage, appartamento. Allega qualche foto se puoi.</p>
       </div>
       <div class="step-card">
         <div class="step-num">02</div>
         <div class="step-icon">🔍</div>
-        <h3 class="step-title">Sopralluogo gratuito</h3>
-        <p class="step-desc">Vengo sul posto, valuto il contenuto senza impegno. Nessuna spesa per il sopralluogo.</p>
+        <h3 class="step-title" data-i18n-es="Visita gratuita" data-i18n-en="Free assessment">Sopralluogo gratuito</h3>
+        <p class="step-desc" data-i18n-es="Voy al lugar y valoro el contenido sin compromiso. La visita no tiene coste." data-i18n-en="I come on site and assess the contents with no obligation. The visit is free.">Vengo sul posto, valuto il contenuto senza impegno. Nessuna spesa per il sopralluogo.</p>
       </div>
       <div class="step-card">
         <div class="step-num">03</div>
         <div class="step-icon">🤝</div>
-        <h3 class="step-title">Accordo</h3>
-        <p class="step-desc">Ti faccio una proposta: ritiro quello che ha valore e lo pago, il resto lo sgombero con L2Traslochi.</p>
+        <h3 class="step-title" data-i18n-es="Acuerdo" data-i18n-en="Agreement">Accordo</h3>
+        <p class="step-desc" data-i18n-es="Te hago una propuesta: retiro lo que tiene valor y te lo pago, el resto lo vac&iacute;o con L2Traslochi." data-i18n-en="I make you an offer: I collect what has value and pay for it, the rest I clear out with L2Traslochi.">Ti faccio una proposta: ritiro quello che ha valore e lo pago, il resto lo sgombero con L2Traslochi.</p>
       </div>
       <div class="step-card">
         <div class="step-num">04</div>
         <div class="step-icon">✅</div>
-        <h3 class="step-title">Spazio libero</h3>
-        <p class="step-desc">Cantina svuotata, pagamento effettuato per gli oggetti di valore, senza stress e senza costi nascosti.</p>
+        <h3 class="step-title" data-i18n-es="Espacio libre" data-i18n-en="Free space">Spazio libero</h3>
+        <p class="step-desc" data-i18n-es="Trastero vaciado, pago realizado por los objetos de valor, sin estr&eacute;s y sin costes ocultos." data-i18n-en="Cellar cleared, payment made for valuable items, no stress and no hidden costs.">Cantina svuotata, pagamento effettuato per gli oggetti di valore, senza stress e senza costi nascosti.</p>
       </div>
     </div>
   </div>
@@ -321,35 +327,35 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
 <section id="zone">
   <div class="wrap">
     <div class="reveal">
-      <p class="sec-label">Dove operiamo</p>
-      <h2 class="h2">Quasi tutto<br>il Veneto</h2>
+      <p class="sec-label" data-i18n-es="D&oacute;nde operamos" data-i18n-en="Where we operate">Dove operiamo</p>
+      <h2 class="h2" data-i18n-es="Casi todo<br>el V&eacute;neto" data-i18n-en="Almost all of<br>Veneto">Quasi tutto<br>il Veneto</h2>
       <div class="divider-line"></div>
-      <p class="body-copy">Opero in quasi tutto il Veneto, con focus sulle principali province. Per localit&agrave; fuori zona scrivimi comunque &mdash; valutiamo insieme.</p>
+      <p class="body-copy" data-i18n-es="Opero en casi todo el V&eacute;neto, con foco en las principales provincias. Para localidades fuera de zona escr&iacute;beme igualmente &mdash; lo valoramos juntos." data-i18n-en="I operate across almost all of Veneto, focusing on the main provinces. For locations outside the area write to me anyway &mdash; we&rsquo;ll figure it out together.">Opero in quasi tutto il Veneto, con focus sulle principali province. Per localit&agrave; fuori zona scrivimi comunque &mdash; valutiamo insieme.</p>
     </div>
     <div class="zone-grid reveal">
       <div class="zone-card">
         <div class="zone-icon">🏛️</div>
         <h3 class="zone-city">Vicenza</h3>
-        <p class="zone-prov">e provincia</p>
-        <p class="zone-note">Zona principale di operativit&agrave;. Risposta rapida.</p>
+        <p class="zone-prov" data-i18n-es="y provincia" data-i18n-en="and province">e provincia</p>
+        <p class="zone-note" data-i18n-es="Zona principal de operaci&oacute;n. Respuesta r&aacute;pida." data-i18n-en="Main operating area. Fast response.">Zona principale di operativit&agrave;. Risposta rapida.</p>
       </div>
       <div class="zone-card">
         <div class="zone-icon">🌿</div>
         <h3 class="zone-city">Padova</h3>
-        <p class="zone-prov">e provincia</p>
-        <p class="zone-note">Area coperta regolarmente. Disponibile.</p>
+        <p class="zone-prov" data-i18n-es="y provincia" data-i18n-en="and province">e provincia</p>
+        <p class="zone-note" data-i18n-es="&Aacute;rea cubierta regularmente. Disponible." data-i18n-en="Regularly covered. Available.">Area coperta regolarmente. Disponibile.</p>
       </div>
       <div class="zone-card">
         <div class="zone-icon">🏰</div>
         <h3 class="zone-city">Verona</h3>
-        <p class="zone-prov">e provincia</p>
-        <p class="zone-note">Coperta su richiesta con preavviso.</p>
+        <p class="zone-prov" data-i18n-es="y provincia" data-i18n-en="and province">e provincia</p>
+        <p class="zone-note" data-i18n-es="Cubierta bajo petici&oacute;n con aviso previo." data-i18n-en="Covered on request with notice.">Coperta su richiesta con preavviso.</p>
       </div>
       <div class="zone-card">
         <div class="zone-icon">🚢</div>
         <h3 class="zone-city">Venezia</h3>
-        <p class="zone-prov">e provincia (terra)</p>
-        <p class="zone-note">Mestre e hinterland. Da concordare.</p>
+        <p class="zone-prov" data-i18n-es="y provincia (tierra firme)" data-i18n-en="and province (mainland)">e provincia (terra)</p>
+        <p class="zone-note" data-i18n-es="Mestre y alrededores. A convenir." data-i18n-en="Mestre and surroundings. To be arranged.">Mestre e hinterland. Da concordare.</p>
       </div>
     </div>
   </div>
@@ -360,26 +366,26 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
 <section id="l2">
   <div class="wrap">
     <div class="reveal">
-      <p class="sec-label">In collaborazione con</p>
-      <h2 class="h2">Sgomberi<br>completi</h2>
+      <p class="sec-label" data-i18n-es="En colaboraci&oacute;n con" data-i18n-en="In collaboration with">In collaborazione con</p>
+      <h2 class="h2" data-i18n-es="Vaciados<br>completos" data-i18n-en="Full<br>clearances">Sgomberi<br>completi</h2>
       <div class="divider-line"></div>
-      <p class="body-copy">Questo servizio è gestito direttamente da me attraverso <strong>L2 Traslochi</strong>, la mia azienda di sgomberi e traslochi. Un solo interlocutore, dall&rsquo;inizio alla fine.</p>
+      <p class="body-copy" data-i18n-es="Este servicio lo gestiono directamente yo a trav&eacute;s de <strong>L2 Traslochi</strong>, mi empresa de vaciados y mudanzas. Un solo interlocutor, de principio a fin." data-i18n-en="This service is managed directly by me through <strong>L2 Traslochi</strong>, my clearance and removals company. One single point of contact, from start to finish.">Questo servizio è gestito direttamente da me attraverso <strong>L2 Traslochi</strong>, la mia azienda di sgomberi e traslochi. Un solo interlocutore, dall&rsquo;inizio alla fine.</p>
     </div>
     <div class="l2-card reveal">
       <div>
-        <div class="l2-badge">🏢 La mia azienda</div>
-        <h3 class="l2-title">L2 Traslochi<br>&amp; Sgomberi</h3>
-        <p class="l2-desc">Sgomberi cantine, garage e appartamenti in tutto il Veneto. Sono io che gestisco direttamente ogni intervento: rapidità, serietà, nessuna sorpresa.</p>
-        <a href="https://l2traslochi.it/l2traslochi-it-sgombero-cantina-garage-vicenza/" target="_blank" rel="noopener" class="l2-btn">Richiedi preventivo sgombero &rarr;</a>
+        <div class="l2-badge" data-i18n-es="🏢 Mi empresa" data-i18n-en="🏢 My company">🏢 La mia azienda</div>
+        <h3 class="l2-title" data-i18n-es="L2 Traslochi<br>&amp; Vaciados" data-i18n-en="L2 Traslochi<br>&amp; Clearances">L2 Traslochi<br>&amp; Sgomberi</h3>
+        <p class="l2-desc" data-i18n-es="Vaciado de trasteros, garajes y pisos en todo el V&eacute;neto. Soy yo quien gestiona directamente cada intervenci&oacute;n: rapidez, seriedad, ninguna sorpresa." data-i18n-en="Clearance of cellars, garages and apartments across Veneto. I personally manage every job: fast, reliable, no surprises.">Sgomberi cantine, garage e appartamenti in tutto il Veneto. Sono io che gestisco direttamente ogni intervento: rapidità, serietà, nessuna sorpresa.</p>
+        <a href="https://l2traslochi.it/l2traslochi-it-sgombero-cantina-garage-vicenza/" target="_blank" rel="noopener" class="l2-btn" data-i18n-es="Solicita presupuesto de vaciado &rarr;" data-i18n-en="Request a clearance quote &rarr;">Richiedi preventivo sgombero &rarr;</a>
       </div>
       <div class="l2-visual">
         <div class="l2-stat">
           <div class="l2-stat-num caramel">100%</div>
-          <div class="l2-stat-label">Veneto coperto</div>
+          <div class="l2-stat-label" data-i18n-es="V&eacute;neto cubierto" data-i18n-en="Veneto covered">Veneto coperto</div>
         </div>
         <div class="l2-stat">
           <div class="l2-stat-num" style="color:#fff">1&nbsp;call</div>
-          <div class="l2-stat-label">Per tutto</div>
+          <div class="l2-stat-label" data-i18n-es="Para todo" data-i18n-en="For everything">Per tutto</div>
         </div>
       </div>
     </div>
@@ -390,70 +396,70 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
 <section id="contatto">
   <div class="wrap">
     <div class="reveal">
-      <p class="sec-label">Scrivimi</p>
-      <h2 class="h2">Richiedi un<br>sopralluogo</h2>
+      <p class="sec-label" data-i18n-es="Escr&iacute;beme" data-i18n-en="Write to me">Scrivimi</p>
+      <h2 class="h2" data-i18n-es="Solicita una<br>visita" data-i18n-en="Request an<br>assessment">Richiedi un<br>sopralluogo</h2>
       <div class="divider-line"></div>
     </div>
     <div class="contact-grid reveal">
       <div class="contact-form-wrap">
-        <h3 class="form-title">Raccontami la situazione</h3>
-        <p class="form-sub">Descrivi cosa c&rsquo;&egrave; da sgomberare e dove. Ti rispondo entro 24&ndash;48 ore.</p>
+        <h3 class="form-title" data-i18n-es="Cu&eacute;ntame la situaci&oacute;n" data-i18n-en="Tell me about it">Raccontami la situazione</h3>
+        <p class="form-sub" data-i18n-es="Describe qu&eacute; hay que vaciar y d&oacute;nde. Te respondo en 24&ndash;48 horas." data-i18n-en="Describe what needs clearing and where. I&rsquo;ll reply within 24&ndash;48 hours.">Descrivi cosa c&rsquo;&egrave; da sgomberare e dove. Ti rispondo entro 24&ndash;48 ore.</p>
         <form id="contactForm">
           <div class="form-group">
-            <label class="form-label" for="fname">Nome</label>
-            <input class="form-input" type="text" id="fname" name="Nome" placeholder="Il tuo nome" required>
+            <label class="form-label" for="fname" data-i18n-es="Nombre" data-i18n-en="Name">Nome</label>
+            <input class="form-input" type="text" id="fname" name="Nome" placeholder="Il tuo nome" required data-i18n-ph-es="Tu nombre" data-i18n-ph-en="Your name">
           </div>
           <div class="form-group">
-            <label class="form-label" for="femail">Email o telefono</label>
-            <input class="form-input" type="text" id="femail" name="Contatto" placeholder="Come ti ricontatto" required>
+            <label class="form-label" for="femail" data-i18n-es="Email o tel&eacute;fono" data-i18n-en="Email or phone">Email o telefono</label>
+            <input class="form-input" type="text" id="femail" name="Contatto" placeholder="Come ti ricontatto" required data-i18n-ph-es="C&oacute;mo te contacto" data-i18n-ph-en="How I reach you">
           </div>
           <div class="form-group">
-            <label class="form-label" for="fzone">Zona</label>
+            <label class="form-label" for="fzone" data-i18n-es="Zona" data-i18n-en="Area">Zona</label>
             <select class="form-select" id="fzone" name="Zona">
-              <option value="">Seleziona provincia...</option>
-              <option>Vicenza e provincia</option>
-              <option>Padova e provincia</option>
-              <option>Verona e provincia</option>
-              <option>Venezia e provincia</option>
-              <option>Altra zona</option>
+              <option value="" data-i18n-es="Selecciona provincia..." data-i18n-en="Select province...">Seleziona provincia...</option>
+              <option data-i18n-es="Vicenza y provincia" data-i18n-en="Vicenza and province">Vicenza e provincia</option>
+              <option data-i18n-es="Padova y provincia" data-i18n-en="Padova and province">Padova e provincia</option>
+              <option data-i18n-es="Verona y provincia" data-i18n-en="Verona and province">Verona e provincia</option>
+              <option data-i18n-es="Venezia y provincia" data-i18n-en="Venezia and province">Venezia e provincia</option>
+              <option data-i18n-es="Otra zona" data-i18n-en="Other area">Altra zona</option>
             </select>
           </div>
           <div class="form-group">
-            <label class="form-label" for="fmsg">Cosa c&rsquo;&egrave; da sgomberare?</label>
-            <textarea class="form-textarea" id="fmsg" name="Messaggio" placeholder="Cantina, garage, appartamento... quanti anni di roba ci sono, se sai cos&rsquo;c&rsquo;&egrave; di interessante..." required></textarea>
+            <label class="form-label" for="fmsg" data-i18n-es="&iquest;Qu&eacute; hay que vaciar?" data-i18n-en="What needs clearing?">Cosa c&rsquo;&egrave; da sgomberare?</label>
+            <textarea class="form-textarea" id="fmsg" name="Messaggio" placeholder="Cantina, garage, appartamento... quanti anni di roba ci sono, se sai cos&rsquo;c&rsquo;&egrave; di interessante..." required data-i18n-ph-es="Trastero, garaje, piso... cu&aacute;ntos a&ntilde;os de cosas hay, si sabes qu&eacute; hay de interesante..." data-i18n-ph-en="Cellar, garage, apartment... how many years of stuff, if you know what&rsquo;s interesting..."></textarea>
           </div>
-          <button type="submit" class="form-submit">Invia richiesta &rarr;</button>
+          <button type="submit" class="form-submit" data-i18n-es="Enviar solicitud &rarr;" data-i18n-en="Send request &rarr;">Invia richiesta &rarr;</button>
         </form>
       </div>
       <div>
-        <p class="sec-label" style="margin-bottom:20px">Contatti diretti</p>
+        <p class="sec-label" style="margin-bottom:20px" data-i18n-es="Contactos directos" data-i18n-en="Direct contacts">Contatti diretti</p>
         <div class="contact-info-card">
           <span class="ci-icon">✉️</span>
           <div>
             <p class="ci-label">Email</p>
             <p class="ci-value"><a href="mailto:lltraslochi@gmail.com">lltraslochi@gmail.com</a></p>
-            <p class="ci-note">Risposta entro 24&ndash;48 ore</p>
+            <p class="ci-note" data-i18n-es="Respuesta en 24&ndash;48 horas" data-i18n-en="Reply within 24&ndash;48 hours">Risposta entro 24&ndash;48 ore</p>
           </div>
         </div>
         <div class="contact-info-card">
           <span class="ci-icon">📍</span>
           <div>
-            <p class="ci-label">Zona principale</p>
-            <p class="ci-value">Vicenza e provincia</p>
-            <p class="ci-note">Opero anche a Padova, Verona e Venezia</p>
+            <p class="ci-label" data-i18n-es="Zona principal" data-i18n-en="Main area">Zona principale</p>
+            <p class="ci-value" data-i18n-es="Vicenza y provincia" data-i18n-en="Vicenza and province">Vicenza e provincia</p>
+            <p class="ci-note" data-i18n-es="Tambi&eacute;n opero en Padova, Verona y Venezia" data-i18n-en="I also cover Padova, Verona and Venezia">Opero anche a Padova, Verona e Venezia</p>
           </div>
         </div>
         <div class="contact-info-card">
           <span class="ci-icon">🤝</span>
           <div>
-            <p class="ci-label">Sgomberi completi</p>
+            <p class="ci-label" data-i18n-es="Vaciados completos" data-i18n-en="Full clearances">Sgomberi completi</p>
             <p class="ci-value">L2 Traslochi</p>
-            <p class="ci-note">Un solo contatto per tutto: valutazione + sgombero</p>
+            <p class="ci-note" data-i18n-es="Un solo contacto para todo: valoraci&oacute;n + vaciado" data-i18n-en="One contact for everything: assessment + clearance">Un solo contatto per tutto: valutazione + sgombero</p>
           </div>
         </div>
         <div style="margin-top:24px;background:rgba(192,112,48,.08);border:1px solid rgba(192,112,48,.2);border-radius:16px;padding:18px">
-          <p style="font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 6px">Cosa succede dopo</p>
-          <p style="font-size:13px;color:rgba(30,27,23,.65);line-height:1.68;margin:0">Ricevuta la richiesta, fissiamo un sopralluogo gratuito. Valuto il contenuto e ti faccio una proposta concreta — senza obblighi.</p>
+          <p style="font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 6px" data-i18n-es="Qu&eacute; pasa despu&eacute;s" data-i18n-en="What happens next">Cosa succede dopo</p>
+          <p style="font-size:13px;color:rgba(30,27,23,.65);line-height:1.68;margin:0" data-i18n-es="Recibida la solicitud, fijamos una visita gratuita. Valoro el contenido y te hago una propuesta concreta &mdash; sin compromiso." data-i18n-en="Once I get your request, we set up a free visit. I assess the contents and make you a concrete offer &mdash; no obligation.">Ricevuta la richiesta, fissiamo un sopralluogo gratuito. Valuto il contenuto e ti faccio una proposta concreta — senza obblighi.</p>
         </div>
       </div>
     </div>
@@ -472,28 +478,28 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
         <p class="foot-piva">Luca Ramacciato · Vicenza<br><strong>P.IVA</strong> IT04400570240</p>
       </div>
       <div>
-        <p class="foot-col-title">Esplora</p>
+        <p class="foot-col-title" data-i18n-es="Explora" data-i18n-en="Explore">Esplora</p>
         <ul class="foot-links">
           <li><a href="shop.html">Shop</a></li>
-          <li><a href="mercatini.html">Mercatini</a></li>
-          <li><a href="index.html#collezioni">Categorie</a></li>
-          <li><a href="index.html#acquista">Come acquistare</a></li>
+          <li><a href="mercatini.html" data-i18n-es="Mercadillos" data-i18n-en="Flea markets">Mercatini</a></li>
+          <li data-i18n-es="Categor&iacute;as" data-i18n-en="Categories"><a href="index.html#collezioni">Categorie</a></li>
+          <li data-i18n-es="C&oacute;mo comprar" data-i18n-en="How to buy"><a href="index.html#acquista">Come acquistare</a></li>
         </ul>
       </div>
       <div>
-        <p class="foot-col-title">Contatti</p>
+        <p class="foot-col-title" data-i18n-es="Contactos" data-i18n-en="Contacts">Contatti</p>
         <ul class="foot-links">
-          <li><a href="svuotacantine.html">Svuotacantine</a></li>
+          <li><a href="svuotacantine.html" data-i18n-es="Vaciado de trasteros" data-i18n-en="Cellar clearance">Svuotacantine</a></li>
           <li><a href="mailto:lltraslochi@gmail.com">Email</a></li>
           <li><a href="#" aria-label="Instagram">Instagram</a></li>
           <li><a href="https://www.youtube.com/@archivioilcustode" target="_blank" rel="noopener">YouTube</a></li>
         </ul>
       </div>
       <div>
-        <p class="foot-col-title">Legale</p>
+        <p class="foot-col-title" data-i18n-es="Legal" data-i18n-en="Legal">Legale</p>
         <ul class="foot-links">
           <li><a href="privacy-policy.html">Privacy Policy</a></li>
-          <li><a href="termini-di-servizio.html">Termini di Servizio</a></li>
+          <li><a href="termini-di-servizio.html" data-i18n-es="T&eacute;rminos de Servicio" data-i18n-en="Terms of Service">Termini di Servizio</a></li>
           <li><a href="cookie-policy.html">Cookie Policy</a></li>
         </ul>
       </div>
@@ -585,6 +591,7 @@ document.getElementById('contactForm').addEventListener('submit',function(e){
 <script>
 (function(){var K='rv_consent';function load(){try{return JSON.parse(localStorage.getItem(K));}catch(e){return null;}}function save(o){try{localStorage.setItem(K,JSON.stringify(o));}catch(e){}}if(load())return;var b=document.getElementById('cookieBanner'),m=document.getElementById('cookieModal');if(!b)return;setTimeout(function(){b.classList.add('visible');},700);function hb(){b.classList.remove('visible');setTimeout(function(){b.style.display='none';},420);}function hm(){m.setAttribute('hidden','');}document.getElementById('cookieAcceptAll').onclick=function(){save({t:1,a:1,mk:1,ts:Date.now()});hb();hm();};document.getElementById('cookieNecessary').onclick=function(){save({t:1,a:0,mk:0,ts:Date.now()});hb();hm();};document.getElementById('cookieCustomize').onclick=function(){m.removeAttribute('hidden');};document.getElementById('cookieModalClose').onclick=hm;document.getElementById('cookieSavePrefs').onclick=function(){var a=document.getElementById('toggleAnalytics').checked,mk=document.getElementById('toggleMarketing').checked;save({t:1,a:a?1:0,mk:mk?1:0,ts:Date.now()});hb();hm();};m.onclick=function(e){if(e.target===m)hm();};})();
 </script>
+<script src="i18n.js" defer></script>
 </body>
 </html>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         

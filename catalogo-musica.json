@@ -1,5 +1,237 @@
 [
   {
+    "id": 22,
+    "cat": "musica",
+    "name": "Black Sabbath - Live 1970",
+    "desc": "Cassette Unofficial Release Stereo · Rock, Hard Rock",
+    "price": 5,
+    "condition": "Very Good (VG)",
+    "sold": false,
+    "isNew": false,
+    "emoji": "",
+    "bg": null,
+    "ebay": null,
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/discogs-3742317-cover.jpg"
+    ],
+    "subcat": "CD Unofficial Release Stereo",
+    "artist": "Black Sabbath",
+    "label": "Armando Curcio Editore",
+    "year": "1991",
+    "discogsId": "3742317",
+    "genres": [
+      "Rock",
+      "Hard Rock"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 21,
+    "cat": "musica",
+    "name": "Ten years after - Live In New York 1971",
+    "desc": "CD Unofficial Release Remastered · Rock, Blues Rock",
+    "price": 5,
+    "condition": "Very Good (VG)",
+    "sold": false,
+    "isNew": false,
+    "emoji": "",
+    "bg": null,
+    "ebay": null,
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/discogs-4612715-cover.jpg"
+    ],
+    "subcat": "CD Unofficial Release Remastered",
+    "artist": "Ten Years After",
+    "label": "Armando Curcio Editore",
+    "year": "1992",
+    "discogsId": "4612715",
+    "genres": [
+      "Rock",
+      "Blues Rock"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 20,
+    "cat": "musica",
+    "name": "Emerson Lake & Palmer - Live In London 1971",
+    "desc": "CD Remastered Unofficial Release · Rock, Prog Rock",
+    "price": 5,
+    "condition": "Very Good (VG)",
+    "sold": false,
+    "isNew": false,
+    "emoji": "",
+    "bg": null,
+    "ebay": null,
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/discogs-3689018-cover.jpg"
+    ],
+    "subcat": "CD Remastered Unofficial Release",
+    "artist": "Emerson, Lake & Palmer",
+    "label": "Armando Curcio Editore",
+    "year": "1991",
+    "discogsId": "3689018",
+    "genres": [
+      "Rock",
+      "Prog Rock"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 19,
+    "cat": "musica",
+    "name": "Stephen Stills & Manassas - Live In Amsterdam 1972",
+    "desc": "CD Remastered Unofficial Release · Rock",
+    "price": 5,
+    "condition": "Very Good (VG)",
+    "sold": false,
+    "isNew": false,
+    "emoji": "",
+    "bg": null,
+    "ebay": null,
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/discogs-3688821-cover.jpg"
+    ],
+    "subcat": "CD Remastered Unofficial Release",
+    "artist": "Stephen Stills, Manassas",
+    "label": "Curcio",
+    "year": "1992",
+    "discogsId": "3688821",
+    "genres": [
+      "Rock"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 17,
+    "cat": "musica",
+    "name": "Jethro Tull - Live In Chicago 1970",
+    "desc": "CD Remastered Unofficial Release Stereo · Rock, Art Rock, Prog Rock",
+    "price": 5,
+    "condition": "Very Good (VG)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": null,
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/discogs-7919157-cover.jpg"
+    ],
+    "subcat": "CD Remastered Unofficial Release Stereo",
+    "artist": "Jethro Tull",
+    "label": "Armando Curcio Editore",
+    "year": "1991",
+    "discogsId": "7919157",
+    "genres": [
+      "Rock",
+      "Art Rock",
+      "Prog Rock"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 16,
+    "cat": "musica",
+    "name": "Rod Steward and the faces - Live In Santa Monica 1970",
+    "desc": "CD Unofficial Release Remastered · Rock, Blues Rock",
+    "price": 5,
+    "condition": "Very Good (VG)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": null,
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/discogs-4731114-cover.jpg"
+    ],
+    "subcat": "CD Unofficial Release Remastered",
+    "artist": "Faces (3)",
+    "label": "Curcio",
+    "year": "1992",
+    "discogsId": "4731114",
+    "genres": [
+      "Rock",
+      "Blues Rock"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 15,
+    "cat": "musica",
+    "name": "Frank Zappa 2 Live In Paris 1970",
+    "desc": "CD Remastered Unofficial Release · Rock",
+    "price": 5,
+    "condition": "Very Good (VG)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": null,
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/discogs-3689079-cover.jpg"
+    ],
+    "subcat": "CD Remastered Unofficial Release",
+    "artist": "Frank Zappa",
+    "label": "Armando Curcio Editore",
+    "year": "1992",
+    "discogsId": "3689079",
+    "genres": [
+      "Rock"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 14,
+    "cat": "musica",
+    "name": "Jefferson Airplane - Live In San Francisco 1967",
+    "desc": "CD Remastered Unofficial Release · Rock, Psychedelic Rock, Blues Rock",
+    "price": 5,
+    "condition": "Very Good (VG)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": null,
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/discogs-4639974-cover.jpg"
+    ],
+    "subcat": "CD Remastered Unofficial Release",
+    "artist": "Jefferson Airplane",
+    "label": "Armando Curcio Editore",
+    "year": "1992",
+    "discogsId": "4639974",
+    "genres": [
+      "Rock",
+      "Psychedelic Rock",
+      "Blues Rock"
+    ],
+    "copie": 1
+  },
+  {
     "id": 13,
     "cat": "musica",
     "name": "Superfly",
@@ -7,7 +239,7 @@
     "price": 10,
     "condition": "Nuovo / Sigillato",
     "sold": false,
-    "isNew": false,
+    "isNew": true,
     "emoji": "",
     "bg": null,
     "ebay": null,

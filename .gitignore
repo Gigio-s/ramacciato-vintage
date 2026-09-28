@@ -27,3 +27,21 @@ render-carousel.html
 *.csv
 *.py
 foto mercatini x sito/
+
+# Console admin: solo locale, mai su GitHub
+admin.html
+
+# Gestionale desktop: strumento interno locale (contiene token GitHub)
+gestionale/
+
+# File temporanei del mount FUSE
+.fuse_hidden*
+
+# Documenti di lavoro interni
+social-kit.md
+
+# Copia di lavoro Codex: mai pubblicare
+Ramacciato Usato&Vintage - chatgpt/
+
+# Foto originali prodotti (il gestionale le copia in photos/inventario alla pubblicazione)
+foto-prodotti/

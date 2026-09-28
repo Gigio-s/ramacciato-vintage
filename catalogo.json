@@ -255,5 +255,104 @@
         "bg": "linear-gradient(135deg,#0a1a0a,#1a3a1a)"
       }
     ]
+  },
+  "mappa_gestionale": {
+    "_nota": "Traduce i campi esportati dal Gestionale Inventario Condiviso (subcat = formato Discogs, genres, label, artist) nelle sottocategorie RV. Il gestionale non si modifica: si adattano queste regole. Prima regola che corrisponde vince.",
+    "musica": {
+      "formati": [
+        {
+          "contiene": [
+            "vinyl",
+            "lp",
+            "7\"",
+            "10\"",
+            "12\""
+          ],
+          "sezione": "vinili"
+        },
+        {
+          "contiene": [
+            "cassette",
+            "musicassetta",
+            "mc"
+          ],
+          "sezione": "musicassette"
+        },
+        {
+          "contiene": [
+            "cd"
+          ],
+          "sezione": "cd"
+        }
+      ],
+      "sezione_default": "gadget-musica",
+      "cd": [
+        {
+          "etichetta_contiene": [
+            "curcio",
+            "de agostini",
+            "fabbri",
+            "hachette",
+            "repubblica",
+            "espresso",
+            "corriere",
+            "sorrisi",
+            "panorama"
+          ],
+          "sottocategoria": "cd-edicola"
+        },
+        {
+          "formato_contiene": [
+            "compilation"
+          ],
+          "sottocategoria": "cd-compilation"
+        },
+        {
+          "genere_contiene": [
+            "classical",
+            "classica"
+          ],
+          "sottocategoria": "cd-classica"
+        },
+        {
+          "genere_contiene": [
+            "metal",
+            "thrash",
+            "grindcore",
+            "doom",
+            "hardcore",
+            "death",
+            "black metal"
+          ],
+          "sottocategoria": "cd-metal"
+        },
+        {
+          "genere_contiene": [
+            "jazz",
+            "blues",
+            "funk / soul"
+          ],
+          "escludi_se": [
+            "rock",
+            "pop"
+          ],
+          "sottocategoria": "cd-jazz-blues"
+        },
+        {
+          "genere_contiene": [
+            "religious",
+            "gospel",
+            "folk, world, & country",
+            "world"
+          ],
+          "escludi_se": [
+            "rock",
+            "pop"
+          ],
+          "sottocategoria": "cd-sacra"
+        }
+      ],
+      "cd_default": "cd-pop-rock"
+    }
   }
 }

@@ -611,6 +611,44 @@ function loadCart(){try{return JSON.parse(localStorage.getItem(CART_KEY)||'[]');
 function saveCart(c){localStorage.setItem(CART_KEY,JSON.stringify(c));if(window.rvCart)window.rvCart.refresh();}
 var activeCat='all',activeAvail='all',activeSort='default',activeSubcat=null,activeSubcat2=null,searchQuery='';
 var SUBCATS_DATA={};
+/* ── Adattatore Gestionale Inventario Condiviso → Ramacciato Vintage ──
+   Il gestionale (condiviso con DPA) esporta i prodotti "per singolo prodotto":
+   subcat = formato Discogs ("CD Album", "LP, Album"...), artist, label, genres.
+   Qui li traduciamo nelle sottocategorie RV secondo catalogo.json → mappa_gestionale.
+   I file catalogo-*.json NON vengono modificati: la traduzione avviene solo in pagina. */
+function rvPulisciArtista(a){return (a||'').replace(/\s*\(\d+\)\s*$/,'').trim();}
+window.rvAdattaGestionale=function(p,mappa,subcats){
+  if(p.artist)p.artist=rvPulisciArtista(p.artist);
+  var m=mappa[p.cat];if(!m)return;
+  // se la subcat è già un id RV valido, non tocchiamo nulla
+  var ids=[];(subcats[p.cat]||[]).forEach(function(sc){ids.push(sc.id);(sc.children||[]).forEach(function(c){ids.push(c.id);});});
+  if(!p.subcat||ids.indexOf(p.subcat)>=0)return;
+  var formato=String(p.subcat);var fl=formato.toLowerCase();
+  p.formato=formato;
+  // generi: campo genres, altrimenti dalla descrizione "Formato · Genere, Stile"
+  var gen=(p.genres&&p.genres.length)?p.genres.slice():[];
+  if(!gen.length&&p.desc&&p.desc.indexOf(' · ')>=0)gen=p.desc.split(' · ').slice(1).join(' · ').split(',');
+  var gl=gen.map(function(g){return String(g).trim().toLowerCase();});
+  var lab=(p.label||'').toLowerCase();
+  function hasWord(txt,k){return new RegExp('(^|[^a-z])'+k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'([^a-z]|$)').test(txt);}
+  var sezione=m.sezione_default;
+  for(var i=0;i<(m.formati||[]).length;i++){var r=m.formati[i];if(r.contiene.some(function(k){return hasWord(fl,k);})){sezione=r.sezione;break;}}
+  var sub=sezione;
+  if(sezione==='cd'){
+    sub=m.cd_default;
+    for(var j=0;j<(m.cd||[]).length;j++){var c=m.cd[j],ok=false;
+      if(c.etichetta_contiene)ok=c.etichetta_contiene.some(function(k){return lab.indexOf(k)>=0;});
+      if(!ok&&c.formato_contiene)ok=c.formato_contiene.some(function(k){return fl.indexOf(k)>=0;});
+      if(!ok&&c.genere_contiene)ok=gl.some(function(g){return c.genere_contiene.some(function(k){return g.indexOf(k)>=0;});});
+      if(ok&&c.escludi_se&&gl.some(function(g){return c.escludi_se.indexOf(g)>=0;}))ok=false;
+      if(ok){sub=c.sottocategoria;break;}
+    }
+  }
+  p.subcat=sub;
+  // nome in formato RV: "Artista - Titolo" (se il gestionale ha solo il titolo)
+  if(p.artist&&p.name&&p.name.indexOf(' - ')<0&&p.name.toLowerCase().indexOf(p.artist.toLowerCase())<0)p.name=p.artist+' - '+p.name;
+};
+
 function catLabel(c){return{videogiochi:'Videogiochi & Console',elettronica:'Elettronica Vintage',musica:'Vinili & Musica',libri:'Libri Curiosi',oggetti:'Oggetti Vintage',trading:'Trading Cards',dvd:'DVD & Film'}[c]||c}
 function getFiltered(){var l=PRODUCTS.slice();if(searchQuery){var sq=searchQuery.toLowerCase();l=l.filter(function(p){return p.name.toLowerCase().indexOf(sq)>=0;});}if(activeCat!=='all')l=l.filter(function(p){return p.cat===activeCat});if(activeSubcat){if(activeSubcat2){l=l.filter(function(p){return p.subcat===activeSubcat2;});}else{var _sc=(SUBCATS_DATA[activeCat]||[]).filter(function(s){return s.id===activeSubcat;})[0];var _inc=_sc&&_sc.includes?_sc.includes:[activeSubcat];l=l.filter(function(p){return _inc.indexOf(p.subcat)>=0;});}}if(activeAvail==='available')l=l.filter(function(p){return!p.sold});if(activeSort==='price-asc')l.sort(function(a,b){return(a.price||0)-(b.price||0)});if(activeSort==='price-desc')l.sort(function(a,b){return(b.price||0)-(a.price||0)});if(activeSort==='new')l.sort(function(a,b){return(b.isNew?1:0)-(a.isNew?1:0)});return l}
 function renderGrid(){
@@ -713,7 +751,7 @@ function openModal(id){
   document.getElementById('modalPrice').textContent=p.price!==null&&p.price!==undefined?'€ '+p.price:'Prezzo da definire';
   document.getElementById('modalCondition').textContent='Condizioni: '+p.condition;
   var detEl=document.getElementById('modalDetails');
-  if(detEl){var chips=[];if(p.artist)chips.push('<span class="modal-detail-chip">🎤 <strong>'+p.artist+'</strong></span>');if(p.label)chips.push('<span class="modal-detail-chip">🏷️ <strong>'+p.label+'</strong></span>');if(p.year&&p.year!=='0'&&p.year!=='')chips.push('<span class="modal-detail-chip">📅 <strong>'+p.year+'</strong></span>');if(p.copie&&p.copie>1&&!p.sold)chips.push('<span class="modal-detail-chip">📦 <strong>'+p.copie+' copie disponibili</strong></span>');detEl.innerHTML=chips.join('');}
+  if(detEl){var chips=[];if(p.artist)chips.push('<span class="modal-detail-chip">🎤 <strong>'+p.artist+'</strong></span>');if(p.label)chips.push('<span class="modal-detail-chip">🏷️ <strong>'+p.label+'</strong></span>');if(p.year&&p.year!=='0'&&p.year!=='')chips.push('<span class="modal-detail-chip">📅 <strong>'+p.year+'</strong></span>');if(p.formato)chips.push('<span class="modal-detail-chip">💿 <strong>'+p.formato+'</strong></span>');if(p.genres&&p.genres.length)chips.push('<span class="modal-detail-chip">🎧 <strong>'+p.genres.join(', ')+'</strong></span>');if(p.copie&&p.copie>1&&!p.sold)chips.push('<span class="modal-detail-chip">📦 <strong>'+p.copie+' copie disponibili</strong></span>');detEl.innerHTML=chips.join('');}
   document.getElementById('modalDesc').textContent=p.desc||'';
 
   /* ── Build left panel ── */
@@ -886,7 +924,7 @@ Promise.all(
     // appena si toglie il flag o si aggiunge una foto/cover/modello.
     function rvHasVisual(p){return !!(p.model||p.cover||(p.photos&&p.photos.length&&p.photos[0]));}
     function rvVisible(p){return !p.nascosto && rvHasVisual(p);}
-    PRODUCTS=(data.prodotti||[]).filter(rvVisible);SUBCATS_DATA=data.sottocategorie||{};
+    PRODUCTS=(data.prodotti||[]).filter(rvVisible);SUBCATS_DATA=data.sottocategorie||{};if(window.rvAdattaGestionale)PRODUCTS.forEach(function(p){rvAdattaGestionale(p,meta.mappa_gestionale||{},SUBCATS_DATA);});
 (function(){
   // Popola contatori, non mostrare ancora prodotti
   ['all','videogiochi','elettronica','musica','libri','oggetti','trading','dvd'].forEach(function(c){var el=document.getElementById('cnt-'+c);if(el)el.textContent=c==='all'?PRODUCTS.length:PRODUCTS.filter(function(p){return p.cat===c}).length});
@@ -894,9 +932,14 @@ Promise.all(
   document.getElementById('productGrid').innerHTML='<div class="empty-state" style="grid-column:1/-1"><p style="font-size:44px;margin-bottom:14px">&#x1F4E6;</p><p style="font-size:15px;font-weight:800;letter-spacing:-.02em">Seleziona una categoria</p><p style="font-size:13px;margin-top:8px;opacity:.5">Scegli dal carousel o dal menu laterale per scoprire i prodotti.</p></div>';
   function selectCat(cat,scroll){activeCat=cat;activeSubcat=null;activeSubcat2=null;var _b=document.getElementById('breadcrumb');if(_b)_b.classList.remove('visible');document.querySelectorAll('[data-cat]').forEach(function(b){b.classList.remove('active')});document.querySelectorAll('[data-cat="'+cat+'"]').forEach(function(b){b.classList.add('active')});var _dn=document.getElementById('discogsNotice');if(_dn)_dn.classList.toggle('visible',cat==='musica');renderGrid();if(scroll&&window.innerWidth>768)document.querySelector('.shop-wrap').scrollIntoView({behavior:'smooth',block:'start'})}
   /* legge ?cat= dall'URL e pre-filtra */
+  var urlParams=new URLSearchParams(window.location.search);
+  var urlSource=urlParams.get('source');
+  if(urlSource==='dpa') try{localStorage.setItem('rv_order_source','dpa')}catch(e){}
   var urlCat=new URLSearchParams(window.location.search).get('cat');
   var validCats=['videogiochi','elettronica','musica','libri','oggetti','trading','dvd'];
   if(urlCat && validCats.indexOf(urlCat)>=0) selectCat(urlCat, false);
+  var urlProduct=parseInt(urlParams.get('product'),10);
+  if(urlProduct && PRODUCTS.some(function(p){return Number(p.id)===urlProduct})) openModal(urlProduct);
   document.querySelectorAll('.sidebar [data-cat]').forEach(function(btn){btn.addEventListener('click',function(){selectCat(btn.dataset.cat,false)})});
   document.getElementById('catCarousel').querySelectorAll('.cat-item').forEach(function(item){item.addEventListener('click',function(){selectCat(item.dataset.cat,true)})});
   document.querySelectorAll('[data-avail]').forEach(function(btn){btn.addEventListener('click',function(){activeAvail=btn.dataset.avail;document.querySelectorAll('[data-avail]').forEach(function(b){b.classList.remove('active')});btn.classList.add('active');renderGrid()})});

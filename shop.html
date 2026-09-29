@@ -425,6 +425,31 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
 /* Scheda prodotto: foto centrata su desktop, X sempre visibile su mobile */
 @media(min-width:769px){.modal-box{overflow:hidden}.modal-inner{max-height:90vh}.modal-content{max-height:90vh;overflow-y:auto}.modal-img-wrap{max-height:90vh;min-height:0;align-items:center!important;justify-content:center!important}.modal-close{background:#fff;box-shadow:0 4px 14px rgba(11,37,69,.18)}}
 @media(max-width:768px){.modal-close{position:sticky!important;top:12px;right:auto;margin:12px 12px -56px auto;width:44px;height:44px;background:#fff;color:var(--ink);font-size:18px;box-shadow:0 6px 18px rgba(0,0,0,.28);z-index:20;touch-action:manipulation}}
+/* Barra sopra la griglia: libreria a sinistra, ricerca al centro, griglia e ordine a destra */
+@media(min-width:769px){
+  .grid-header{display:grid!important;grid-template-columns:1fr minmax(240px,360px) 1fr;align-items:center;gap:18px}
+  .grid-header .grid-count{display:none}
+  .gh-sx{justify-self:start}
+  .gh-dx{justify-self:end;display:flex;align-items:center;gap:14px}
+}
+.gh-cerca{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:999px;padding:9px 16px;box-shadow:0 4px 14px rgba(11,37,69,.08);cursor:text;min-width:0}
+.gh-cerca span{font-size:13px;opacity:.8}
+.gh-cerca input{border:0;outline:0;background:transparent;font-family:inherit;font-size:13px;font-weight:600;color:var(--ink);width:100%;min-width:0}
+.gh-cerca input::placeholder{font-weight:500;color:var(--muted);opacity:.8}
+.gh-cerca:focus-within{border-color:var(--ink);box-shadow:0 0 0 3px rgba(11,37,69,.12)}
+@media(max-width:768px){
+  .gh-sx:empty,.gh-sx:has(#libreriaBtn[style*="none"]){display:none}
+  .gh-sx{flex:1 1 100%;display:flex}
+  .gh-sx .libreria-btn{flex:1 1 100%}
+  .gh-cerca{flex:1 1 100%;order:0}
+  .gh-cerca input{font-size:16px}
+  .gh-dx{flex:1 1 100%;display:flex;gap:10px;align-items:center}
+  .gh-dx .sort-select{flex:1 1 auto}
+}
+/* Hero piu vicino al carosello (barra di ricerca in alto rimossa) */
+.page-hero{padding-bottom:22px}
+.cat-carousel-wrap{padding-top:6px}
+@media(max-width:768px){.page-hero{padding-bottom:12px}}
 </style>
 </head>
 <body>
@@ -500,16 +525,6 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
     </div>
   </div>
 </section>
-<div class="search-bar-section">
-  <div class="wrap">
-    <div class="search-bar-wrap">
-      <span class="search-icon">🔍</span>
-      <input type="text" id="searchInput" class="search-input" placeholder="Cerca per titolo… (es. PS2, Ligabue, Beatles)" autocomplete="off">
-      <button class="search-clear" id="searchClear" title="Cancella ricerca">&#x2715;</button>
-    </div>
-    <p class="search-results-label" id="searchResultsLabel"></p>
-  </div>
-</div>
 <div class="cat-carousel-wrap" aria-label="Filtra per categoria">
   <div class="wrap">
     <div class="cat-carousel-stage">
@@ -588,14 +603,17 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
   <div>
     <div class="grid-header">
       <p class="grid-count" id="gridCount">- articoli</p>
-      <a class="libreria-btn" id="libreriaBtn" href="shop-libreria.html" style="display:none">&#x1F4BF; Vista libreria</a>
-      <div class="dens" id="densCtl" role="group" aria-label="Prodotti per riga"><span class="dens-lab">Griglia</span><button type="button" data-d="0" class="active">3</button><button type="button" data-d="1">4</button><button type="button" data-d="2">5</button></div>
+      <div class="gh-sx"><a class="libreria-btn" id="libreriaBtn" href="shop-libreria.html" style="display:none">&#x1F4BF; Vista libreria</a></div>
+      <label class="gh-cerca"><span aria-hidden="true">&#x1F50D;</span><input type="search" id="gridSearch" placeholder="Cerca nello shop..." autocomplete="off" enterkeyhint="search"></label>
+      <div class="gh-dx"><div class="dens" id="densCtl" role="group" aria-label="Prodotti per riga"><span class="dens-lab">Griglia</span><button type="button" data-d="0" class="active">3</button><button type="button" data-d="1">4</button><button type="button" data-d="2">5</button></div>
       <select class="sort-select" id="sortSelect">
         <option value="default">Ordine predefinito</option>
         <option value="price-asc">Prezzo &uarr;</option>
         <option value="price-desc">Prezzo &darr;</option>
         <option value="new">Novit&agrave; prima</option>
-      </select>
+        <option value="az">Alfabetico A-Z</option>
+        <option value="za">Alfabetico Z-A</option>
+      </select></div>
     </div>
     <div id="breadcrumb" class="breadcrumb"><button class="bc-btn" id="bcCatBtn"></button><span class="bc-sep">&#x203A;</span><button class="bc-btn" id="bcSubcatBtn" style="display:none"></button><span class="bc-sep" id="bcSep2" style="display:none">&#x203A;</span><span class="bc-current" id="bcSubcat"></span></div>
     <div class="discogs-notice" id="discogsNotice" role="note">
@@ -718,12 +736,38 @@ window.rvAdattaGestionale=function(p,mappa,subcats){
   if(p.artist&&p.name&&p.name.indexOf(' - ')<0&&p.name.toLowerCase().indexOf(p.artist.toLowerCase())<0)p.name=p.artist+' - '+p.name;
 };
 
+/* Colonne sonore: nel gestionale l'artista finisce con " - colonne sonore film".
+   Il suffisso si toglie dal nome visibile e il pezzo va nella sezione Colonne sonore del suo formato (regole in catalogo.json). */
+function rvColonneSonore(p,m){
+  var c=m&&m.colonne_sonore;if(!c||!p.artist)return false;
+  var al=String(p.artist).toLowerCase(),keys=(c.artista_contiene||[]).slice().sort(function(a,b){return b.length-a.length;});
+  for(var i=0;i<keys.length;i++){var k=keys[i];if(al.indexOf(k)<0)continue;
+    var kr=k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    p.artist=String(p.artist).replace(new RegExp('\\s*[-\u2013:]?\\s*'+kr+'\\s*','i'),' ').replace(/^[\s\-\u2013:]+|[\s\-\u2013:]+$/g,'').trim();
+    if(p.name)p.name=String(p.name).replace(new RegExp('\\s*[-\u2013:]\\s*'+kr+'(?=\\s*([-\u2013:]|$))','i'),'').trim();
+    p._colonnaSonora=true;return true;}
+  return false;
+}
+function rvInstradaCS(p,m){
+  var c=m&&m.colonne_sonore,s=String(p.subcat||''),sez=/^cd/.test(s)?'cd':/^vinili/.test(s)?'vinili':/^musicassette/.test(s)?'musicassette':'';
+  if(c&&c.sottocategorie&&c.sottocategorie[sez])p.subcat=c.sottocategorie[sez];
+}
+/* Codice edizione: mostrato solo per i vinili, tolto dalla descrizione per tutto il resto */
+function rvCodiceEdizione(p){
+  if(!p.desc)return;var m=String(p.desc).match(/^[ \t]*Codice edizione:[ \t]*(.+)$/im);
+  p.desc=String(p.desc).replace(/^[ \t]*Codice edizione:.*(\r?\n|$)/im,'').replace(/\s+$/,'');
+  if(m&&/^vinili/.test(p.subcat||''))p.codiceEdizione=m[1].trim();
+}
+window.rvAdattaGestionale=(function(base){return function(p,mappa,subcats){
+  var m=mappa&&mappa[p.cat],cs=rvColonneSonore(p,m);base(p,mappa,subcats);if(cs)rvInstradaCS(p,m);rvCodiceEdizione(p);};})(window.rvAdattaGestionale);
+
 function catLabel(c){return{videogiochi:'Videogiochi & Console',elettronica:'Elettronica Vintage',musica:'Vinili & Musica',libri:'Libri Curiosi',oggetti:'Oggetti Vintage',trading:'Trading Cards',dvd:'DVD & Film'}[c]||c}
-function getFiltered(){var l=PRODUCTS.slice();if(searchQuery){var sq=searchQuery.toLowerCase();l=l.filter(function(p){return (p.name+' '+(p.artist||'')+' '+(p.label||'')).toLowerCase().indexOf(sq)>=0;});}if(activeCat!=='all')l=l.filter(function(p){return p.cat===activeCat});if(activeSubcat){if(activeSubcat2){l=l.filter(function(p){return p.subcat===activeSubcat2;});}else{var _sc=(SUBCATS_DATA[activeCat]||[]).filter(function(s){return s.id===activeSubcat;})[0];var _inc=_sc&&_sc.includes?_sc.includes:[activeSubcat];l=l.filter(function(p){return _inc.indexOf(p.subcat)>=0;});}}if(activeAvail==='available')l=l.filter(function(p){return!p.sold});if(activeSort==='price-asc')l.sort(function(a,b){return(a.price||0)-(b.price||0)});if(activeSort==='price-desc')l.sort(function(a,b){return(b.price||0)-(a.price||0)});if(activeSort==='new')l.sort(function(a,b){return(b.isNew?1:0)-(a.isNew?1:0)});return l}
+function getFiltered(){var l=PRODUCTS.slice();if(searchQuery){var sq=searchQuery.toLowerCase();l=l.filter(function(p){return (p.name+' '+(p.artist||'')+' '+(p.label||'')).toLowerCase().indexOf(sq)>=0;});}if(activeCat!=='all')l=l.filter(function(p){return p.cat===activeCat});if(activeSubcat){if(activeSubcat2){l=l.filter(function(p){return p.subcat===activeSubcat2;});}else{var _sc=(SUBCATS_DATA[activeCat]||[]).filter(function(s){return s.id===activeSubcat;})[0];var _inc=_sc&&_sc.includes?_sc.includes:[activeSubcat];l=l.filter(function(p){return _inc.indexOf(p.subcat)>=0;});}}if(activeAvail==='available')l=l.filter(function(p){return!p.sold});if(activeSort==='price-asc')l.sort(function(a,b){return(a.price||0)-(b.price||0)});if(activeSort==='price-desc')l.sort(function(a,b){return(b.price||0)-(a.price||0)});if(activeSort==='new')l.sort(function(a,b){return(b.isNew?1:0)-(a.isNew?1:0)});if(activeSort==='az'||activeSort==='za'){var _k=function(p){return String(p.name||'').replace(/^the\s+/i,'');};l.sort(function(a,b){var r=_k(a).localeCompare(_k(b),'it',{sensitivity:'base'});return activeSort==='za'?-r:r;});}return l}
 function renderGrid(){
+  var _gs=document.getElementById('gridSearch');if(_gs){_gs.placeholder=activeCat==='all'?'Cerca nello shop...':'Cerca in '+catLabel(activeCat)+'...';if(document.activeElement!==_gs&&_gs.value!==searchQuery)_gs.value=searchQuery;}
   var _lbr=document.getElementById('libreriaBtn');if(_lbr)_lbr.style.display=activeCat==='musica'?'':'none';if(window.rvMobSync)rvMobSync();
   if(activeCat!=='all'&&!activeSubcat&&!searchQuery&&SUBCATS_DATA[activeCat]){renderSubcatTiles(activeCat);return;}
-  if(activeCat!=='all'&&activeSubcat&&!activeSubcat2&&!searchQuery){var _psc=(SUBCATS_DATA[activeCat]||[]).filter(function(s){return s.id===activeSubcat;})[0];if(_psc&&_psc.children&&_psc.children.length){renderSubcatChildren(_psc,activeCat);return;}}
+  if(activeCat!=='all'&&activeSubcat&&!activeSubcat2&&!searchQuery){var _psc=(SUBCATS_DATA[activeCat]||[]).filter(function(s){return s.id===activeSubcat;})[0];if(_psc&&_psc.children&&_psc.children.filter(function(c){return PRODUCTS.some(function(p){return p.cat===activeCat&&p.subcat===c.id;});}).length>1){renderSubcatChildren(_psc,activeCat);return;}}
   var list=getFiltered(),grid=document.getElementById('productGrid');
   var _sl=activeSubcat2?(function(){var _p=(SUBCATS_DATA[activeCat]||[]).filter(function(s){return s.id===activeSubcat;})[0];return _p&&_p.children?_p.children.filter(function(c){return c.id===activeSubcat2;})[0]:null;})():(activeSubcat?(SUBCATS_DATA[activeCat]||[]).filter(function(s){return s.id===activeSubcat;})[0]:null);
   document.getElementById('gridCount').textContent=list.length+' articol'+(list.length===1?'o':'i')+(_sl?' · '+_sl.label:'');
@@ -771,7 +815,7 @@ function renderSubcatTiles(cat){
     tile.addEventListener('click',function(){selectSubcat(tile.dataset.cat,tile.dataset.subcat);});
   });
 }
-var RV_O3D={vinili:['vinile','','viola'],cd:['cd','','blu'],musicassette:['cassetta','',''],'gadget-musica':['cuffie','',''],film:['dvd','Film','rosso'],animazione:['dvd','Animazione','arancio'],documentari:['dvd','Documentari','verde'],'serie-tv':['dvd','Serie TV','blu'],'film-tv':['dvd','Film TV','viola'],ps1:['gioco','PS1','nero'],ps2:['gioco','PS2','blu'],ps3:['gioco','PS3','nero'],ps4:['gioco','PS4','blu'],psp:['gioco','PSP','nero'],xbox360:['gioco','Xbox 360','verde'],wii:['gioco','Wii','teal'],nds:['gioco','DS','rosso'],pc:['gioco','PC','arancio'],'cd-italiano':['cd','Italiano','verde'],'cd-pop-rock':['cd','Pop Rock','rosso'],'cd-metal':['cd','Metal','nero'],'cd-jazz-blues':['cd','Jazz Blues','blu'],'cd-classica':['cd','Classica','oro'],'cd-edicola':['cd','Edicola','arancio'],'cd-compilation':['cd','Compilation','viola'],'cd-sacra':['cd','Sacra World','teal']};
+var RV_O3D={vinili:['vinile','','viola'],cd:['cd','','blu'],musicassette:['cassetta','',''],'gadget-musica':['cuffie','',''],film:['dvd','Film','rosso'],animazione:['dvd','Animazione','arancio'],documentari:['dvd','Documentari','verde'],'serie-tv':['dvd','Serie TV','blu'],'film-tv':['dvd','Film TV','viola'],ps1:['gioco','PS1','nero'],ps2:['gioco','PS2','blu'],ps3:['gioco','PS3','nero'],ps4:['gioco','PS4','blu'],psp:['gioco','PSP','nero'],xbox360:['gioco','Xbox 360','verde'],wii:['gioco','Wii','teal'],nds:['gioco','DS','rosso'],pc:['gioco','PC','arancio'],'cd-italiano':['cd','Italiano','verde'],'cd-pop-rock':['cd','Pop Rock','rosso'],'cd-metal':['cd','Metal','nero'],'cd-jazz-blues':['cd','Jazz Blues','blu'],'cd-classica':['cd','Classica','oro'],'cd-edicola':['cd','Edicola','arancio'],'cd-compilation':['cd','Compilation','viola'],'cd-sacra':['cd','Sacra World','teal'],'cd-colonne-sonore':['cd','Colonne sonore','oro'],'vinili-colonne-sonore':['vinile','Colonne sonore','oro'],'musicassette-colonne-sonore':['cassetta','Colonne sonore','']};
 var RV_O3D_CAT={musica:'cd',dvd:'dvd',videogiochi:'gioco',libri:'libri',oggetti:'fotocamera',elettronica:'radio',trading:'carte'};
 function rvO3D(id,bg,cat,label){var m=RV_O3D[id];if(!m&&cat&&RV_O3D_CAT[cat])m=[RV_O3D_CAT[cat],label||'',''];if(!m||!window.RV3D)return null;return '<div style="width:100%;height:100%;background:'+(bg||'linear-gradient(135deg,#0a1a2a,#1a3a5a)')+'">'+RV3D.host(m[0],m[1],m[2])+'</div>';}
 function renderSubcatChildren(parentSc,cat){
@@ -826,7 +870,7 @@ function openModal(id){
   document.getElementById('modalPrice').textContent=p.price!==null&&p.price!==undefined?'€ '+p.price:'Prezzo da definire';
   document.getElementById('modalCondition').textContent='Condizioni: '+p.condition;
   var detEl=document.getElementById('modalDetails');
-  if(detEl){var chips=[];if(p.artist)chips.push('<span class="modal-detail-chip">🎤 <strong>'+p.artist+'</strong></span>');if(p.label)chips.push('<span class="modal-detail-chip">🏷️ <strong>'+p.label+'</strong></span>');if(p.year&&p.year!=='0'&&p.year!=='')chips.push('<span class="modal-detail-chip">📅 <strong>'+p.year+'</strong></span>');if(p.formato)chips.push('<span class="modal-detail-chip">💿 <strong>'+p.formato+'</strong></span>');if(p.genres&&p.genres.length)chips.push('<span class="modal-detail-chip">🎧 <strong>'+p.genres.join(', ')+'</strong></span>');if(p.copie&&p.copie>1&&!p.sold)chips.push('<span class="modal-detail-chip">📦 <strong>'+p.copie+' copie disponibili</strong></span>');detEl.innerHTML=chips.join('');}
+  if(detEl){var chips=[];if(p.artist)chips.push('<span class="modal-detail-chip">🎤 <strong>'+p.artist+'</strong></span>');if(p.label)chips.push('<span class="modal-detail-chip">🏷️ <strong>'+p.label+'</strong></span>');if(p.year&&p.year!=='0'&&p.year!=='')chips.push('<span class="modal-detail-chip">📅 <strong>'+p.year+'</strong></span>');if(p.formato)chips.push('<span class="modal-detail-chip">💿 <strong>'+p.formato+'</strong></span>');if(p.codiceEdizione)chips.push('<span class="modal-detail-chip">🔖 Codice edizione: <strong>'+p.codiceEdizione+'</strong></span>');if(p.genres&&p.genres.length)chips.push('<span class="modal-detail-chip">🎧 <strong>'+p.genres.join(', ')+'</strong></span>');if(p.copie&&p.copie>1&&!p.sold)chips.push('<span class="modal-detail-chip">📦 <strong>'+p.copie+' copie disponibili</strong></span>');detEl.innerHTML=chips.join('');}
   document.getElementById('modalDesc').textContent=p.desc||'';
 
   /* ── Build left panel ── */
@@ -846,7 +890,7 @@ function openModal(id){
     // Photos panel (hidden by default)
     var photosWrap='';
     if(hasPhotos){
-      var thumbs=p.photos.map(function(src,i){return'<img class="modal-photo-thumb'+(i===0?' active':'')+'" src="'+src+'" data-idx="'+i+'" alt="Foto '+p.name+'">'}).join('');
+      var thumbs=p.photos.map(function(src,i){return'<img class="modal-photo-thumb'+(i===0?' active':'')+'" src="'+src+'" data-idx="'+i+'" alt="Foto '+p.name+'" onerror="this.remove()">'}).join('');
       photosWrap='<div id="modalPhotosWrap" class="modal-photos-wrap"><div class="modal-photo-main"><img id="modalPhotoMain" src="'+p.photos[0]+'" alt="'+p.name+'"></div><div class="modal-photos-strip">'+thumbs+'</div></div>';
     }
 
@@ -987,7 +1031,7 @@ Promise.all(
   [fetch('catalogo.json').then(function(r){return r.json();})]
   .concat(CAT_FILES.map(function(c){
     return fetch('catalogo-'+c+'.json').then(function(r){return r.json();}).catch(function(){return [];});
-  }))
+  })).concat([fetch('prodotto/novita.json',{cache:'no-cache'}).then(function(r){return r.json();}).catch(function(){return {};})])
 )
   .then(function(results){
     var meta=results[0];
@@ -1000,7 +1044,7 @@ Promise.all(
     // appena si toglie il flag o si aggiunge una foto/cover/modello.
     function rvHasVisual(p){return !!(p.model||p.cover||(p.photos&&p.photos.length&&p.photos[0]));}
     function rvVisible(p){return !p.nascosto && rvHasVisual(p);}
-    PRODUCTS=(data.prodotti||[]).filter(rvVisible);SUBCATS_DATA=data.sottocategorie||{};if(window.rvAdattaGestionale)PRODUCTS.forEach(function(p){rvAdattaGestionale(p,meta.mappa_gestionale||{},SUBCATS_DATA);});
+    PRODUCTS=(data.prodotti||[]).filter(rvVisible);SUBCATS_DATA=data.sottocategorie||{};if(window.rvAdattaGestionale)PRODUCTS.forEach(function(p){rvAdattaGestionale(p,meta.mappa_gestionale||{},SUBCATS_DATA);});/* "Nuovo" scade da solo dopo 7 giorni dalla prima pubblicazione (date in prodotto/novita.json, scritte da scripts/genera_seo.py) */(function(){var nov=results[results.length-1];if(!nov||Array.isArray(nov))return;var oggi=Date.now();PRODUCTS.forEach(function(p){var d=nov[String(p.id)];if(p.isNew&&d&&(oggi-Date.parse(d+'T00:00:00'))>=7*864e5)p.isNew=false;});})();
 (function(){
   // Popola contatori, non mostrare ancora prodotti
   ['all','videogiochi','elettronica','musica','libri','oggetti','trading','dvd'].forEach(function(c){var el=document.getElementById('cnt-'+c);if(el)el.textContent=c==='all'?PRODUCTS.length:PRODUCTS.filter(function(p){return p.cat===c}).length});
@@ -1017,7 +1061,7 @@ Promise.all(
   var urlProduct=parseInt(urlParams.get('product'),10);
   if(urlProduct && PRODUCTS.some(function(p){return Number(p.id)===urlProduct})) openModal(urlProduct);
   document.querySelectorAll('.sidebar [data-cat]').forEach(function(btn){btn.addEventListener('click',function(){selectCat(btn.dataset.cat,false)})});
-  (function(){var ctl=document.getElementById('densCtl'),g=document.getElementById('productGrid');if(!ctl)return;var dens=0;function base(){var w=window.innerWidth;return w<=660?1:(w<=1000?2:3);}function etichette(){var b=base();ctl.querySelectorAll('button').forEach(function(x){x.textContent=b+parseInt(x.dataset.d,10);x.setAttribute('aria-label',(b+parseInt(x.dataset.d,10))+' per riga');});}ctl.addEventListener('click',function(e){var x=e.target.closest('button');if(!x)return;dens=parseInt(x.dataset.d,10);ctl.querySelectorAll('button').forEach(function(y){y.classList.toggle('active',y===x);});g.classList.remove('dens-1','dens-2');if(dens)g.classList.add('dens-'+dens);});etichette();window.addEventListener('resize',etichette);if(window.innerWidth<=660){var d3=ctl.querySelector('[data-d="2"]');if(d3)d3.click();}})();
+  (function(){var ctl=document.getElementById('densCtl'),g=document.getElementById('productGrid');if(!ctl)return;var dens=0;function base(){var w=window.innerWidth;return w<=660?1:(w<=1000?2:3);}function etichette(){var b=base();ctl.querySelectorAll('button').forEach(function(x){x.textContent=b+parseInt(x.dataset.d,10);x.setAttribute('aria-label',(b+parseInt(x.dataset.d,10))+' per riga');});}ctl.addEventListener('click',function(e){var x=e.target.closest('button');if(!x)return;dens=parseInt(x.dataset.d,10);ctl.querySelectorAll('button').forEach(function(y){y.classList.toggle('active',y===x);});g.classList.remove('dens-1','dens-2');if(dens)g.classList.add('dens-'+dens);});etichette();window.addEventListener('resize',etichette);var d0=ctl.querySelector(window.innerWidth<=1000?'[data-d="2"]':'[data-d="1"]');if(d0)d0.click();})();
   (function(){var dc=document.getElementById('mfCat'),da=document.getElementById('mfAvail');if(!dc)return;function cnt(v){return v==='all'?PRODUCTS.length:PRODUCTS.filter(function(p){return p.cat===v}).length;}dc.querySelectorAll('.mf-list button').forEach(function(b){b.dataset.l=b.textContent;b.innerHTML=b.dataset.l+' <small>'+cnt(b.dataset.v)+'</small>';});da.querySelectorAll('.mf-list button').forEach(function(b){b.dataset.l=b.textContent;});function chiudi(){[dc,da].forEach(function(d){d.classList.remove('open');d.querySelector('.mf-btn').setAttribute('aria-expanded','false');});}[dc,da].forEach(function(d){d.querySelector('.mf-btn').addEventListener('click',function(e){e.stopPropagation();var o=!d.classList.contains('open');chiudi();if(o){d.classList.add('open');this.setAttribute('aria-expanded','true');}});});document.addEventListener('click',chiudi);window.rvMobSync=function(){dc.querySelectorAll('.mf-list button').forEach(function(b){var on=b.dataset.v===activeCat;b.classList.toggle('active',on);if(on)dc.querySelector('.mf-val').innerHTML=b.dataset.l+' <small>'+cnt(b.dataset.v)+'</small>';});da.querySelectorAll('.mf-list button').forEach(function(b){var on=b.dataset.v===activeAvail;b.classList.toggle('active',on);if(on)da.querySelector('.mf-val').textContent=b.dataset.l;});};dc.querySelector('.mf-list').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;chiudi();selectCat(b.dataset.v,false);rvMobSync();});da.querySelector('.mf-list').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;chiudi();var x=document.querySelector('.sidebar [data-avail="'+b.dataset.v+'"]');if(x)x.click();rvMobSync();});rvMobSync();})();
   document.getElementById('catCarousel').querySelectorAll('.cat-item').forEach(function(item){item.addEventListener('click',function(){selectCat(item.dataset.cat,true)})});
   document.querySelectorAll('[data-avail]').forEach(function(btn){btn.addEventListener('click',function(){activeAvail=btn.dataset.avail;document.querySelectorAll('[data-avail]').forEach(function(b){b.classList.remove('active')});btn.classList.add('active');renderGrid()})});
@@ -1028,6 +1072,12 @@ Promise.all(
   document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===document.getElementById('modalOverlay'))closeModal()});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal()});
   document.getElementById('cartOpenBtn').addEventListener('click',function(){if(window.rvCart)window.rvCart.open();});
+  /* ── Ricerca nella barra della griglia: cerca dentro la categoria aperta ── */
+  (function(){var gs=document.getElementById('gridSearch');if(!gs)return;
+    gs.addEventListener('input',function(){searchQuery=gs.value.trim();var ti=document.getElementById('searchInput'),tc=document.getElementById('searchClear');
+      if(ti){ti.value=gs.value;if(tc)tc.style.display=searchQuery?'block':'none';}var sl=document.getElementById('searchResultsLabel');if(sl)sl.classList.remove('visible');renderGrid();});
+    var _q0=new URLSearchParams(location.search).get('q');if(_q0){gs.value=_q0;searchQuery=_q0.trim();setTimeout(function(){renderGrid();},0);}
+    gs.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();gs.blur();var g=document.getElementById('productGrid');if(g)g.scrollIntoView({behavior:'smooth',block:'start'});}});})();
   /* ── SEARCH ── */
   var _sInput=document.getElementById('searchInput');
   var _sClear=document.getElementById('searchClear');

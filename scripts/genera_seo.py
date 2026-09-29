@@ -42,7 +42,7 @@ PAGINE_CAT = [
               "Spedisco in tutta Italia oppure puoi ritirarlo di persona ai mercatini in Veneto.",
      "libreria": True},
     {"slug": "vinili-usati", "cat": "musica", "sezione": "vinili", "h1": "Vinili usati 33 e 45 giri",
-     "breve": "Vinile", "title": "Vinili Usati 33 e 45 Giri Online",
+     "breve": "Vinile", "title": "Vinili Usati 33 e 45 Giri Online", "libreria": True,
      "intro": "Dischi in vinile usati e da collezione, controllati uno per uno. "
               "Spedizione protetta in tutta Italia o ritiro ai mercatini di Vicenza, Padova, Marostica e Mestre."},
     {"slug": "musicassette", "cat": "musica", "sezione": "musicassette", "h1": "Musicassette usate",
@@ -229,7 +229,57 @@ def prossime_date(m, quante=3):
 
 
 # ───────────── adattatore gestionale -> sottocategorie RV ─────────────
+def colonne_sonore(p, m):
+    """Artista "... - colonne sonore film" nel gestionale: toglie il suffisso e segna il pezzo."""
+    c = (m or {}).get("colonne_sonore")
+    if not c or not p.get("artist"):
+        return False
+    al = str(p["artist"]).lower()
+    for k in sorted(c.get("artista_contiene", []), key=len, reverse=True):
+        if k not in al:
+            continue
+        kr = re.escape(k)
+        a = re.sub(r"\s*[-\u2013:]?\s*" + kr + r"\s*", " ", str(p["artist"]), count=1, flags=re.I)
+        p["artist"] = re.sub(r"^[\s\-\u2013:]+|[\s\-\u2013:]+$", "", a).strip()
+        if p.get("name"):
+            p["name"] = re.sub(r"\s*[-\u2013:]\s*" + kr + r"(?=\s*([-\u2013:]|$))", "", str(p["name"]), count=1, flags=re.I).strip()
+        p["_colonna_sonora"] = True
+        return True
+    return False
+
+
+def instrada_cs(p, m):
+    c = (m or {}).get("colonne_sonore") or {}
+    s = str(p.get("subcat") or "")
+    sez = "cd" if s.startswith("cd") else "vinili" if s.startswith("vinili") else "musicassette" if s.startswith("musicassette") else ""
+    if sez and c.get("sottocategorie", {}).get(sez):
+        p["subcat"] = c["sottocategorie"][sez]
+
+
 def adatta(p, mappa, subcats):
+    m = mappa.get(p.get("cat"))
+    cs = colonne_sonore(p, m)
+    adatta_base(p, mappa, subcats)
+    if cs:
+        instrada_cs(p, m)
+    codice_edizione(p)
+
+
+def codice_edizione(p):
+    """Codice edizione (riga della descrizione del gestionale): mostrato solo per i vinili, tolto dal testo per tutto il resto."""
+    d = p.get("desc")
+    if not d:
+        return
+    m = re.search(r"^[ \t]*Codice edizione:[ \t]*(.+)$", str(d), flags=re.I | re.M)
+    p["desc"] = re.sub(r"^[ \t]*Codice edizione:.*(\r?\n|$)", "", str(d), count=1, flags=re.I | re.M).rstrip()
+    if m and str(p.get("subcat") or "").startswith("vinili"):
+        p["codiceEdizione"] = m.group(1).strip()
+
+
+def adatta_base(p, mappa, subcats):
+    # il gestionale a volte elenca foto non scaricate: tengo solo quelle che esistono (o remote)
+    if p.get("photos"):
+        p["photos"] = [x for x in p["photos"] if x and (re.match(r"^https?://", str(x)) or os.path.exists(os.path.join(ROOT, str(x))))]
     ph = p.get("photos") or []
     if p.get("discogsId") and ph and re.match(r"^https?://i\.discogs\.com", str(ph[0])):
         loc = "photos/inventario/discogs-%s-cover.jpg" % p["discogsId"]
@@ -287,8 +337,9 @@ def sezione_musica(p):
     s = p.get("subcat") or ""
     if s.startswith("cd"):
         return "cd"
-    if s in ("vinili", "musicassette"):
-        return s
+    for base in ("vinili", "musicassette"):
+        if s.startswith(base):
+            return base
     return "altro"
 
 
@@ -506,7 +557,7 @@ def pagina_prodotto(p, pc, simili):
     frasi.append(f"Condizioni: <b>{e(p.get('condition') or 'come da descrizione')}</b>.")
     frasi.append("Pezzo unico: lo spedisco in tutta Italia oppure puoi prenotarlo e ritirarlo di persona "
                  "a uno dei miei mercatini in Veneto (Vicenza, Padova, Marostica, Mestre).")
-    chips = [x for x in [p.get("_formato"), p.get("label"), (str(p["year"]) if p.get("year") and str(p["year"]) != "0" else None)] if x]
+    chips = [x for x in [p.get("_formato"), ("Codice edizione: " + p["codiceEdizione"]) if p.get("codiceEdizione") else None, p.get("label"), (str(p["year"]) if p.get("year") and str(p["year"]) != "0" else None)] if x]
     sub_mail = "Prenotazione ritiro al mercatino: %s (ID %s)" % (nome, p["id"])
     body_mail = ("Ciao Luca,\n\nvorrei prenotare \"%s\" (ID %s, € %s) e ritirarlo al mercatino di: \n\n"
                  "Nome:\nTelefono:\n\nGrazie!" % (nome, p["id"], prezzo_txt(p)))
@@ -514,7 +565,8 @@ def pagina_prodotto(p, pc, simili):
     pub = {k: v for k, v in p.items() if not k.startswith("_")}
     libreria = ""
     if pc and pc.get("libreria"):
-        libreria = f'<a class="sx-btn sx-btn-l" href="/shop-libreria.html?cd={e(p["id"])}">Guardalo nella Libreria</a>'
+        par = "vinile" if pc.get("sezione") == "vinili" else "cd"
+        libreria = f'<a class="sx-btn sx-btn-l" href="/shop-libreria.html?{par}={e(p["id"])}">Guardalo nella Libreria</a>'
     sim = "".join(card(x) for x in simili)
     nota_discogs = ('<p class="sx-nota">Copertina da Discogs a scopo illustrativo: il prodotto fisico può differire dall\'immagine.</p>' if p.get('discogsId') else '')
     dati_json = json.dumps(pub, ensure_ascii=False).replace('</', '<\\/')
@@ -569,7 +621,8 @@ def pagina_categoria(pc, prodotti, sotto_label):
     h = testa(title, desc, canon, url_img(foto(disp[0])) if disp else "", robots, "website",
               [breadcrumb_ld(voci)] + ([lista_ld] if disp else []))
     h += breadcrumb_html(voci)
-    extra = '<a class="sx-btn sx-btn-l" href="/shop-libreria.html">Sfoglia i CD nella Libreria</a>' if pc.get("libreria") else ""
+    extra = (('<a class="sx-btn sx-btn-l" href="/shop-libreria.html?sala=vinili">Sfoglia i vinili nella Libreria</a>' if pc.get("sezione") == "vinili"
+              else '<a class="sx-btn sx-btn-l" href="/shop-libreria.html">Sfoglia i CD nella Libreria</a>') if pc.get("libreria") else "")
     h += f'<section class="sx-hero"><h1>{e(pc["h1"])}</h1><p>{e(pc["intro"])}</p><div class="sx-hero-az"><a class="sx-btn" href="/shop.html?cat={pc["cat"]}">Apri nello shop</a>{extra}</div></section>'
     if not disp:
         h += '<section class="sx-box"><p>Nuovi arrivi in preparazione: i pezzi di questa categoria saranno online a breve. Intanto guarda lo <a href="/shop.html">shop completo</a> o passa ai <a href="/mercatini.html">mercatini</a>.</p></section>'
@@ -710,6 +763,21 @@ def main():
                 os.remove(os.path.join(cart, fn))
                 rimossi += 1
 
+    cs_lista = [p for p in prodotti if p.get("_colonna_sonora")]
+    if cs_lista:
+        pc_cs = {"slug": "colonne-sonore-film", "cat": "musica", "h1": "Colonne sonore di film: CD, vinili e musicassette",
+                 "title": "Colonne Sonore di Film Usate: CD, Vinili, Musicassette",
+                 "intro": "Colonne sonore originali di film su CD, vinile e musicassetta, usate e da collezione. "
+                          "Ogni pezzo è unico, con condizioni descritte: spedizione in tutta Italia o ritiro ai mercatini in Veneto."}
+        et = {k: v for k, v in sotto_label.items()}
+        et.update({"cd-colonne-sonore": "CD", "vinili-colonne-sonore": "Vinili", "musicassette-colonne-sonore": "Musicassette"})
+        h, indicizza = pagina_categoria(pc_cs, cs_lista, et)
+        cambiati += scrivi("negozio/colonne-sonore-film.html", h)
+        if indicizza:
+            url_sitemap.append(("/negozio/colonne-sonore-film.html", "0.8", "daily"))
+    elif os.path.exists(os.path.join(ROOT, "negozio", "colonne-sonore-film.html")):
+        os.remove(os.path.join(ROOT, "negozio", "colonne-sonore-film.html"))
+
     for pc in PAGINE_CAT:
         lista = [p for p in prodotti if p["_pc"] is pc]
         h, indicizza = pagina_categoria(pc, lista, sotto_label)
@@ -722,6 +790,19 @@ def main():
     for z in ZONE:
         cambiati += scrivi("%s.html" % z["slug"], pagina_zona(z, vetrina))
         url_sitemap.append(("/%s.html" % z["slug"], "0.8", "weekly"))
+
+    # "Nuovo": data di prima pubblicazione dei pezzi segnati nuovi nel gestionale.
+    # Lo shop toglie l'etichetta dopo 7 giorni. Se nel gestionale si toglie "nuovo", la data si cancella.
+    nov_path = os.path.join(ROOT, "prodotto", "novita.json")
+    try:
+        with open(nov_path, encoding="utf-8") as f:
+            novita = json.load(f)
+        if not isinstance(novita, dict):
+            novita = {}
+    except Exception:
+        novita = {}
+    novita = {str(p["id"]): novita.get(str(p["id"]), OGGI.isoformat()) for p in prodotti if p.get("isNew")}
+    cambiati += scrivi("prodotto/novita.json", json.dumps(dict(sorted(novita.items())), ensure_ascii=False, indent=0) + "\n")
 
     indice = {str(p["id"]): p["_url"] for p in prodotti}
     cambiati += scrivi("prodotto/indice.json", json.dumps(indice, ensure_ascii=False, indent=0) + "\n")

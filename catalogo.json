@@ -169,7 +169,25 @@
         "label": "Vinili",
         "emoji": "🎵",
         "model": "vinyl_record_opt.glb",
-        "bg": "linear-gradient(135deg,#1a0a2a,#3a1a5a)"
+        "bg": "linear-gradient(135deg,#1a0a2a,#3a1a5a)",
+        "includes": [
+          "vinili",
+          "vinili-colonne-sonore"
+        ],
+        "children": [
+          {
+            "id": "vinili",
+            "label": "Altri generi",
+            "emoji": "🎵",
+            "bg": "linear-gradient(135deg,#1a0a2a,#3a1a5a)"
+          },
+          {
+            "id": "vinili-colonne-sonore",
+            "label": "Colonne sonore",
+            "emoji": "🎬",
+            "bg": "linear-gradient(135deg,#1a120a,#3a2a12)"
+          }
+        ]
       },
       {
         "id": "cd",
@@ -185,7 +203,8 @@
           "cd-classica",
           "cd-edicola",
           "cd-sacra",
-          "cd-compilation"
+          "cd-compilation",
+          "cd-colonne-sonore"
         ],
         "children": [
           {
@@ -235,6 +254,12 @@
             "label": "Sacra & World",
             "emoji": "🕊️",
             "bg": "linear-gradient(135deg,#1a1a1a,#2a1a3a)"
+          },
+          {
+            "id": "cd-colonne-sonore",
+            "label": "Colonne sonore",
+            "emoji": "🎬",
+            "bg": "linear-gradient(135deg,#1a120a,#3a2a12)"
           }
         ]
       },
@@ -245,7 +270,25 @@
         "model": "modelli%203d%20x%20sito/cassette_audio_k7.glb",
         "modelCredit": "Amigos3D",
         "modelCreditUrl": "https://sketchfab.com/3d-models/cassette-audio-k7-0d8ac9660be14b1a95dfecbf33ec8675",
-        "bg": "linear-gradient(135deg,#1a1a0a,#3a2a0a)"
+        "bg": "linear-gradient(135deg,#1a1a0a,#3a2a0a)",
+        "includes": [
+          "musicassette",
+          "musicassette-colonne-sonore"
+        ],
+        "children": [
+          {
+            "id": "musicassette",
+            "label": "Altri generi",
+            "emoji": "📼",
+            "bg": "linear-gradient(135deg,#1a1a0a,#3a2a0a)"
+          },
+          {
+            "id": "musicassette-colonne-sonore",
+            "label": "Colonne sonore",
+            "emoji": "🎬",
+            "bg": "linear-gradient(135deg,#1a120a,#3a2a12)"
+          }
+        ]
       },
       {
         "id": "gadget-musica",
@@ -263,7 +306,11 @@
         {
           "contiene": [
             "vinyl",
+            "vinile",
+            "vinili",
             "lp",
+            "33 giri",
+            "45 giri",
             "7\"",
             "10\"",
             "12\""
@@ -273,8 +320,11 @@
         {
           "contiene": [
             "cassette",
+            "cassetta",
             "musicassetta",
-            "mc"
+            "musicassette",
+            "mc",
+            "k7"
           ],
           "sezione": "musicassette"
         },
@@ -352,7 +402,21 @@
           "sottocategoria": "cd-sacra"
         }
       ],
-      "cd_default": "cd-pop-rock"
+      "cd_default": "cd-pop-rock",
+      "colonne_sonore": {
+        "_nota": "Se nel gestionale il campo artista contiene ' - colonne sonore film', il pezzo va nella sezione Colonne sonore del suo formato e il suffisso viene tolto dal nome visibile.",
+        "artista_contiene": [
+          "colonne sonore film",
+          "colonna sonora film",
+          "colonne sonore",
+          "colonna sonora"
+        ],
+        "sottocategorie": {
+          "cd": "cd-colonne-sonore",
+          "vinili": "vinili-colonne-sonore",
+          "musicassette": "musicassette-colonne-sonore"
+        }
+      }
     }
   }
 }

@@ -230,6 +230,125 @@ body{font-family:Archivo,Arial,sans-serif;color:var(--navy);background:#0d1b2c;m
 .hero-kicker::before,.sec-label::before,.legal-kicker::before,.ck-section-title::before,.pay-title::before,.scheda .sez::before{display:none!important;content:none!important}
 
 .lib-foot{position:relative;z-index:2;width:min(1060px,calc(100% - 32px));margin:-50px auto 40px}.lib-foot .seo-hub{display:grid;grid-template-columns:1fr 1fr;gap:18px;font-size:13px;color:#fff;padding:18px 20px;border-radius:18px;background:rgba(6,14,26,.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}.lib-foot .seo-hub div{display:flex;flex-wrap:wrap;gap:6px 14px}.lib-foot .seo-hub b{width:100%;font-size:9.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}.lib-foot .seo-hub a{color:#fff;opacity:.85;text-decoration:none}.lib-foot .seo-hub a:hover{opacity:1;text-decoration:underline}@media(max-width:760px){.lib-foot .seo-hub{grid-template-columns:1fr}}
+
+/* ── Sale: CD e Vinili ── */
+.sale-nav{position:relative;z-index:3;display:flex;justify-content:center;gap:4px;width:max-content;margin:-8px auto 22px;padding:4px;border-radius:999px;background:rgba(255,255,255,.88);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.sale-nav button{border:0;background:transparent;font:inherit;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);padding:10px 22px;border-radius:999px;cursor:pointer;transition:background .2s,color .2s}
+.sale-nav button.on{background:var(--navy);color:#fff}
+.salone{position:relative;z-index:2;overflow:hidden;padding-top:20px;margin-top:-20px}
+.binario{display:flex;width:200%;transition:transform .75s var(--ease);align-items:flex-start}
+.binario.v{transform:translateX(-50%)}
+.binario>.sala{flex:0 0 50%;width:50%}
+/* mobile nero laccato */
+.cab.nero{background:linear-gradient(115deg,rgba(255,255,255,.07),rgba(255,255,255,0) 35%),linear-gradient(90deg,rgba(0,0,0,.4),rgba(0,0,0,0) 3%,rgba(0,0,0,0) 97%,rgba(0,0,0,.45)),linear-gradient(rgba(10,10,12,.88),rgba(10,10,12,.88)),var(--wood) 0 0/500px auto}
+.cab.nero::before{background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,0) 30%,rgba(0,0,0,.4)),linear-gradient(rgba(10,10,12,.86),rgba(10,10,12,.86)),var(--wood-h) 0 0/auto 500px}
+.cab.nero .zoccolo{background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.2) 20%,rgba(0,0,0,.45)),linear-gradient(rgba(10,10,12,.88),rgba(10,10,12,.88)),var(--wood-h) 0 0/auto 500px}
+.cab.nero .vano{background:linear-gradient(180deg,rgba(0,0,0,.75),rgba(0,0,0,.5) 35%,rgba(0,0,0,.55)),linear-gradient(rgba(12,12,14,.9),rgba(12,12,14,.9)),var(--wood) 0 0/500px auto}
+.cab.nero .asse{background:linear-gradient(180deg,rgba(255,255,255,.2) 0,rgba(255,255,255,.04) 8%,rgba(0,0,0,0) 30%,rgba(0,0,0,.5)),linear-gradient(rgba(12,12,14,.86),rgba(12,12,14,.86)),var(--wood-h) 0 0/auto 500px}
+.cab.lp{--dw:16px;--dh:250px}
+/* dorso della busta LP */
+.dorso.lp{box-shadow:1px 0 0 rgba(0,0,0,.6),0 3px 6px rgba(0,0,0,.5);background:linear-gradient(90deg,rgba(255,255,255,.18),rgba(255,255,255,0) 30%,rgba(0,0,0,0) 70%,rgba(0,0,0,.25)),var(--c,#222)}
+.dorso.lp::before{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,0) 15%,rgba(0,0,0,0) 85%,rgba(0,0,0,.2))}
+.dorso.lp .cap,.dorso.lp .bollino{display:none}
+.dorso.lp .txt{top:10px;bottom:10px;font-size:8.5px;letter-spacing:.05em}
+.dorso.lp .txt b{margin-bottom:5px}
+/* busta LP in 3D */
+.case.lp{--W:380px;--H:var(--W);--D:calc(var(--W) * 5 / 310)}
+.case.lp .f-front,.case.lp .f-back{background:#111}
+.busta{position:absolute;inset:0;background:#222 center/cover no-repeat}
+.busta::after{content:"";position:absolute;inset:0;background:linear-gradient(125deg,rgba(255,255,255,.14) 0,rgba(255,255,255,0) 30%),radial-gradient(ellipse at 50% 50%,rgba(0,0,0,0) 60%,rgba(0,0,0,.18));box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)}
+.case.lp .f-left{background:var(--c,#222)}
+.case.lp .f-right,.case.lp .f-top,.case.lp .f-bot{background:linear-gradient(90deg,rgba(0,0,0,.25),rgba(0,0,0,.05)),var(--c,#222)}
+.lp-disco{position:absolute;left:3%;top:3%;width:94%;height:94%;border-radius:50%;transform:translateZ(0) translateX(0);transition:transform 1.1s cubic-bezier(.3,.7,.2,1);
+  background:radial-gradient(circle,rgba(0,0,0,0) 0 2.2%,#0c0c0c 2.4% 17%,rgba(0,0,0,0) 17.2%),radial-gradient(circle,var(--c,#8a4fd0) 0 16.8%,rgba(0,0,0,0) 17%),repeating-radial-gradient(circle,#0f0f0f 0 1.3px,#232323 1.3px 2.6px);
+  box-shadow:0 0 0 1px rgba(255,255,255,.06),0 10px 30px rgba(0,0,0,.45)}
+.lp-disco::after{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 20deg,rgba(255,255,255,0) 0 10%,rgba(255,255,255,.16) 14%,rgba(255,255,255,0) 20% 60%,rgba(255,255,255,.12) 64%,rgba(255,255,255,0) 70%)}
+.lp-disco.fuori{transform:translateZ(0) translateX(46%)}
+@media(max-width:860px){
+  .cab.lp{--dw:15px;--dh:200px}
+  .case.lp{--W:min(270px,70vw)}
+  .sale-nav{margin:-4px auto 16px}
+  .sale-nav button{padding:9px 18px}
+  .lp-disco.fuori{transform:translateZ(0) translateX(28%)}
+}
+.estratto.lp .palco{margin-right:170px}
+@media(max-width:860px){.estratto.lp .palco{margin-right:0;transform:translateX(-34px)}}
+/* ── Nel carrello: colonna a sinistra, vista frontale ── */
+.dorso.preso:not(.fuori){pointer-events:none;cursor:default;opacity:.3;filter:grayscale(1) brightness(.55);--y:2px;box-shadow:1px 0 0 rgba(0,0,0,.55)}
+.dorso.preso .bollino{background:#1f7a3a;color:#fff;font-size:0}
+.dorso.preso .bollino::after{content:"\2713";font-size:10px}
+.preso-col{position:fixed;left:18px;top:50%;z-index:50;width:136px;max-height:calc(100vh - 150px);display:flex;flex-direction:column;gap:10px;padding:14px 12px 12px;border-radius:20px;
+  background:rgba(6,14,26,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 20px 40px rgba(0,0,0,.35),inset 0 0 0 1px rgba(255,255,255,.08);
+  opacity:0;visibility:hidden;transform:translate(-24px,-50%);transition:opacity .4s,transform .5s var(--ease),visibility 0s .5s}
+.preso-col.on{opacity:1;visibility:visible;transform:translate(0,-50%);transition:opacity .4s,transform .5s var(--ease)}
+.preso-col h6{margin:0;color:#fff;font-size:9.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;text-align:center;display:flex;align-items:center;justify-content:center;gap:6px}
+.preso-col h6 b{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:#fff;color:var(--navy);font-size:10px;letter-spacing:0}
+.preso-lista{display:flex;flex-direction:column;gap:14px;overflow-y:auto;overflow-x:hidden;padding:6px 4px 4px;margin:0 -4px;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.3) transparent}
+.preso-it{position:relative;flex:0 0 auto;display:block;width:100%;cursor:pointer;color:#fff;outline:0;transition:transform .25s var(--ease)}
+.preso-it:hover,.preso-it:focus-visible{transform:translateY(-3px)}
+.preso-it:focus-visible .fr{box-shadow:0 0 0 2px #fff,0 10px 18px rgba(0,0,0,.5)}
+.preso-it.attesa{visibility:hidden}
+.preso-it .fr{position:relative;width:100%;box-shadow:0 10px 18px rgba(0,0,0,.5);background:#222 center/cover no-repeat}
+.preso-it .fr.cd{aspect-ratio:142/125;background:#0c0c0e}
+.preso-it .fr.lp{width:84%;aspect-ratio:1/1;background:none;box-shadow:none}
+.preso-it .fr.lp .busta{z-index:1;box-shadow:0 10px 18px rgba(0,0,0,.5)}
+.preso-it .fr.gen{aspect-ratio:1/1;border-radius:4px}
+.mini-disco{position:absolute;left:18%;top:3%;width:94%;height:94%;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,0,0,0) 0 2.2%,#0c0c0c 2.4% 17%,rgba(0,0,0,0) 17.2%),radial-gradient(circle,var(--c,#8a4fd0) 0 16.8%,rgba(0,0,0,0) 17%),repeating-radial-gradient(circle,#0f0f0f 0 1px,#232323 1px 2px);box-shadow:0 6px 14px rgba(0,0,0,.5)}
+.preso-it .didas{display:block;margin-top:7px;font-size:10px;line-height:1.25;opacity:.9;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical}
+.preso-it .didas b{font-weight:900;text-transform:uppercase;letter-spacing:.03em;margin-right:4px}
+.preso-it .didas s{text-decoration:none;font-weight:800;color:#9fc8f5;margin-left:4px}
+.preso-x{position:absolute;top:-7px;right:-7px;z-index:3;width:22px;height:22px;border-radius:50%;border:0;padding:0;background:#fff;color:var(--navy);font:inherit;font-size:14px;font-weight:900;line-height:22px;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.45);opacity:0;transition:opacity .2s,background .2s}
+.preso-it:hover .preso-x,.preso-it:focus-within .preso-x{opacity:1}
+.preso-x:hover{background:#c01919;color:#fff}
+.preso-vai{display:block;text-align:center;text-decoration:none;background:#fff;color:var(--navy);border-radius:999px;padding:9px 8px;font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.preso-vai:hover{background:#dcecff}
+@media(hover:none){.preso-x{opacity:1}}
+@media(max-width:860px){
+  .preso-col{left:10px;top:auto;bottom:12px;width:auto;max-width:calc(100% - 104px);max-height:none;flex-direction:row;align-items:center;gap:8px;padding:4px 8px 8px;border-radius:16px;transform:translateY(24px)}
+  .preso-col.on{transform:none}
+  .preso-col h6,.preso-vai{display:none}
+  .preso-lista{flex-direction:row;overflow-x:auto;overflow-y:hidden;gap:14px;padding:11px 10px 2px 2px;margin:0;align-items:flex-end}
+  .preso-it{width:56px}
+  .preso-it .didas{display:none}
+  .preso-x{width:20px;height:20px;line-height:20px;font-size:13px;top:-8px;right:-8px}
+  .sala{padding-bottom:130px}
+}
+/* ── Libreria: larghezza fissa su desktop, scaffali scorrevoli, ordine, ricerca ── */
+@media(min-width:861px){.binario .cab{width:900px;max-width:100%}}
+.vano{padding:0}
+.fila{position:relative;display:flex;align-items:flex-end;gap:1px;height:100%;padding:0 18px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.fila::-webkit-scrollbar{display:none}
+.fila .reggilibri{flex:0 0 12px}
+.freccia{position:absolute;top:50%;z-index:4;width:34px;height:34px;margin-top:-17px;padding:0 0 3px;border:0;border-radius:50%;background:rgba(255,255,255,.92);color:var(--navy);font:900 26px/1 Archivo,Arial,sans-serif;cursor:pointer;
+  box-shadow:0 4px 14px rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:opacity .25s,transform .2s;display:flex;align-items:center;justify-content:center}
+.freccia.sx{left:6px}.freccia.dx{right:6px}
+.vano.puo-sx .freccia.sx,.vano.puo-dx .freccia.dx{opacity:.92;pointer-events:auto}
+.freccia:hover{opacity:1;transform:scale(1.08)}
+.vano::after{content:"";position:absolute;top:0;bottom:0;right:0;width:40px;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,0),rgba(0,0,0,.45));opacity:0;transition:opacity .25s;z-index:3}
+.vano.puo-dx::after{opacity:1}
+.binario{transition:transform .75s var(--ease),opacity .22s}
+.binario.cambio{opacity:0}
+.comandi{position:relative;z-index:3;display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:-8px auto 22px;padding:0 16px}
+.comandi .sale-nav{margin:0}
+.ordina .lbl{align-self:center;padding:0 4px 0 12px;font-size:9.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#1d4470;opacity:.75}
+.ordina button{padding:10px 16px}
+.lente{border:0;background:none;padding:0;margin:0;cursor:pointer;font-size:15px;line-height:1;border-radius:50%;transition:transform .2s}
+.lente:hover{transform:scale(1.15)}
+.cerca-n{flex:0 0 auto;font-size:10.5px;font-weight:800;color:var(--cobalt);white-space:nowrap}
+.cerca-n:empty{display:none}
+.cerca.nessuno{animation:rvNo .45s}
+@keyframes rvNo{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+.dorso.evidenzia{animation:rvTrova 1.3s var(--ease) 2;z-index:3}
+@keyframes rvTrova{0%,100%{transform:translateY(var(--y,0))}35%{transform:translateY(-16px);box-shadow:0 0 0 3px #ffe08a,0 0 24px 6px rgba(255,224,138,.75),0 14px 18px rgba(0,0,0,.6)}}
+@media(max-width:860px){
+  .fila{padding:0 8px}
+  .comandi{margin:-4px auto 16px;gap:8px}
+  .comandi .sale-nav{margin:0}
+  .ordina button{padding:9px 13px}
+  .ordina .lbl{padding:0 2px 0 10px}
+  .freccia{width:30px;height:30px;margin-top:-15px;font-size:22px}
+}
 </style>
 </head>
 <body>
@@ -239,27 +358,37 @@ body{font-family:Archivo,Arial,sans-serif;color:var(--navy);background:#0d1b2c;m
   <a class="brand" href="index.html"><img src="logo no sfondo.png" alt=""><span>Ramacciato <b>Vintage</b></span></a>
   <a class="pill pill-back" href="shop.html"><span aria-hidden="true">&larr;</span> Torna allo shop</a>
   <div class="top-r">
-    <label class="cerca"><span aria-hidden="true">&#x1F50D;</span><input id="cerca" type="search" placeholder="Cerca artista o titolo..." autocomplete="off"></label>
+    <form class="cerca" id="cercaForm" role="search"><button type="submit" class="lente" aria-label="Vai al disco cercato">&#x1F50D;</button><input id="cerca" type="search" enterkeyhint="search" placeholder="Cerca artista o titolo..." autocomplete="off"><span class="cerca-n" id="cercaN" aria-live="polite"></span></form>
     <a class="pill" href="shop.html?cat=musica">Vista griglia</a>
   </div>
 </header>
 
 <section class="intro">
-  <div class="kicker">Musica &middot; CD</div>
+  <div class="kicker" id="kicker">Musica &middot; CD</div>
   <h1>La Libreria</h1>
   <p>Scorri i dorsi, estrai il disco che ti incuriosisce.</p>
 </section>
 
-<main class="sala">
+<div class="comandi"><nav class="sale-nav" id="saleNav" aria-label="Scegli il mobile"><button type="button" data-sala="cd" class="on">CD</button><button type="button" data-sala="vinili">Vinili</button></nav><nav class="sale-nav ordina" id="ordNav" aria-label="Ordina i dischi"><span class="lbl">Ordina</span><button type="button" data-ord="genere">Genere</button><button type="button" data-ord="alfa">A - Z</button></nav></div>
+<div class="salone" id="salone"><div class="binario" id="binario">
+<main class="sala" data-sala="cd">
   <div class="cab" id="cab" aria-label="Mobile porta CD">
     <div id="ripiani"></div>
     <div class="zoccolo"></div>
   </div>
 </main>
+<main class="sala" data-sala="vinili">
+  <div class="cab nero lp" id="cabV" aria-label="Mobile porta vinili">
+    <div id="ripianiV"></div>
+    <div class="zoccolo"></div>
+  </div>
+</main>
+</div></div>
 <div class="piedi" aria-hidden="true" style="display:none"></div>
 
 <footer class="lib-foot"><nav class="seo-hub" aria-label="Esplora il negozio"><div><b>Negozio</b><a href="/negozio/cd-usati.html">CD usati</a><a href="/negozio/vinili-usati.html">Vinili usati</a><a href="/negozio/dvd-usati.html">DVD usati</a><a href="/negozio/videogiochi-retro-usati.html">Videogiochi retro</a><a href="/negozio/elettronica-vintage.html">Elettronica vintage</a><a href="/negozio/libri-usati.html">Libri usati</a><a href="/negozio/oggetti-vintage-modernariato.html">Oggetti vintage</a><a href="/negozio/trading-cards.html">Trading cards</a></div><div><b>Dove trovarmi</b><a href="/vintage-usato-vicenza.html">Vicenza</a><a href="/vintage-usato-padova.html">Padova</a><a href="/vintage-usato-marostica.html">Marostica</a><a href="/vintage-usato-mestre-venezia.html">Mestre e Venezia</a><a href="/vintage-usato-veneto.html">Veneto</a></div></nav></footer>
 <div class="etichetta" id="etichetta" role="tooltip"></div>
+<aside class="preso-col" id="presoCol" aria-label="Dischi nel carrello"><h6>Nel carrello <b id="presoN">0</b></h6><div class="preso-lista" id="presoLista"></div><a class="preso-vai" href="checkout.html">Vai alla cassa</a></aside>
 
 <div class="estratto" id="estratto" role="dialog" aria-modal="true" aria-label="Dettaglio CD">
   <div class="palco"><div class="case" id="case"></div></div>
@@ -275,10 +404,29 @@ function loadCart(){try{return JSON.parse(localStorage.getItem(CART_KEY)||'[]');
 function saveCart(c){try{localStorage.setItem(CART_KEY,JSON.stringify(c));}catch(e){}if(window.rvCart&&window.rvCart.refresh)window.rvCart.refresh();}
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m];});}
 
-var CD=[],SOTTO=[],META={};var IDXP={};fetch('prodotto/indice.json').then(function(r){return r.json()}).then(function(j){IDXP=j}).catch(function(){});
+var CD=[],VIN=[],SOTTO=[],META={},SALA='cd';var IDXP={};fetch('prodotto/indice.json').then(function(r){return r.json()}).then(function(j){IDXP=j}).catch(function(){});
 
 /* Adattatore Gestionale -> sottocategorie RV (stesse regole di shop.html, lette da catalogo.json) */
-function adatta(p,mappa,subcats){
+/* Colonne sonore: artista "... - colonne sonore film" nel gestionale (regole in catalogo.json) */
+function colonneSonore(p,m){
+  var c=m&&m.colonne_sonore;if(!c||!p.artist)return false;
+  var al=String(p.artist).toLowerCase(),keys=(c.artista_contiene||[]).slice().sort(function(a,b){return b.length-a.length;});
+  for(var i=0;i<keys.length;i++){var k=keys[i];if(al.indexOf(k)<0)continue;
+    var kr=k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    p.artist=String(p.artist).replace(new RegExp('\\s*[-\u2013:]?\\s*'+kr+'\\s*','i'),' ').replace(/^[\s\-\u2013:]+|[\s\-\u2013:]+$/g,'').trim();
+    if(p.name)p.name=String(p.name).replace(new RegExp('\\s*[-\u2013:]\\s*'+kr+'(?=\\s*([-\u2013:]|$))','i'),'').trim();
+    p._colonnaSonora=true;return true;}
+  return false;
+}
+function instradaCS(p,m){var c=m&&m.colonne_sonore,s=String(p.subcat||''),sez=/^cd/.test(s)?'cd':/^vinili/.test(s)?'vinili':/^musicassette/.test(s)?'musicassette':'';
+  if(c&&c.sottocategorie&&c.sottocategorie[sez])p.subcat=c.sottocategorie[sez];}
+function codiceEdizione(p){
+  if(!p.desc)return;var m=String(p.desc).match(/^[ \t]*Codice edizione:[ \t]*(.+)$/im);
+  p.desc=String(p.desc).replace(/^[ \t]*Codice edizione:.*(\r?\n|$)/im,'').replace(/\s+$/,'');
+  if(m&&/^vinili/.test(p.subcat||''))p.codiceEdizione=m[1].trim();
+}
+function adatta(p,mappa,subcats){var m=mappa[p.cat],cs=colonneSonore(p,m);adattaBase(p,mappa,subcats);if(cs)instradaCS(p,m);codiceEdizione(p);}
+function adattaBase(p,mappa,subcats){
   if(p.discogsId&&p.photos&&p.photos[0]&&/^https?:\/\/i\.discogs\.com/.test(p.photos[0])){p.photos=['photos/inventario/discogs-'+p.discogsId+'-cover.jpg'].concat(p.photos.slice(1));}
   if(p.artist)p.artist=String(p.artist).replace(/\s*\(\d+\)\s*$/,'').trim();
   var m=mappa[p.cat];if(!m)return;
@@ -338,102 +486,175 @@ function applicaColore(el,p,rgb){
 
 /* Rendering scaffali */
 var elRip=document.getElementById('ripiani'),tip=document.getElementById('etichetta');
-function capienza(){
-  var w=Math.min(1060,document.querySelector('.sala').clientWidth-32);var pad=window.innerWidth<=860?28+20:60+36;
-  var dw=window.innerWidth<=860?24:27;return Math.max(6,Math.floor((w-pad-18)/dw));
+/* Ordine: per genere (default) o alfabetico A-Z a gruppi di lettere */
+var ORD='genere';try{if(localStorage.getItem('rv_lib_ordine')==='alfa')ORD='alfa';}catch(e){}
+function chiave(p){return (artista(p)||'').replace(/^the\s+/i,'').trim()||titolo(p)||'';}
+function perArtista(a,b){return chiave(a).localeCompare(chiave(b),'it',{sensitivity:'base'})||titolo(a).localeCompare(titolo(b),'it',{sensitivity:'base'});}
+var LETTERE=[['A','C'],['D','F'],['G','I'],['J','L'],['M','O'],['P','R'],['S','T'],['U','Z']];
+function gruppoAlfa(p){var c=chiave(p).normalize('NFD').replace(/[̀-ͯ]/g,'').charAt(0).toUpperCase();
+  if(!/[A-Z]/.test(c))return'0 - 9';for(var i=0;i<LETTERE.length;i++)if(c>=LETTERE[i][0]&&c<=LETTERE[i][1])return LETTERE[i][0]+' - '+LETTERE[i][1];return'U - Z';}
+function gruppiAlfa(lista){var g={},o=[];lista.slice().sort(perArtista).forEach(function(p){var k=gruppoAlfa(p);if(!g[k]){g[k]=[];o.push(k);}g[k].push(p);});
+  o.sort(function(a,b){return a==='0 - 9'?-1:b==='0 - 9'?1:a.localeCompare(b);});return o.map(function(k){return{label:k,items:g[k]};});}
+function ripianoHtml(label,items,lp){
+  return '<div class="ripiano"><div class="vano"><div class="fila">'+items.map(function(p){return dorsoHtml(p,lp);}).join('')+'<div class="reggilibri" aria-hidden="true"></div></div>'
+    +'<button class="freccia sx" type="button" aria-label="Scorri a sinistra">&#8249;</button><button class="freccia dx" type="button" aria-label="Scorri a destra">&#8250;</button></div>'
+    +'<div class="asse"><span class="targhetta">'+esc(label)+'</span></div></div>';}
+function vuotoHtml(t){return '<div class="ripiano"><div class="vano"><p class="vuoto-msg">'+t+'</p></div><div class="asse"></div></div>';}
+function render(){renderCD();renderVinili();filtra();sincronizza(true);requestAnimationFrame(function(){aggiornaFrecce();});}
+function renderCD(){
+  var gr=ORD==='alfa'?gruppiAlfa(CD):SOTTO.map(function(sc){return{label:sc.label,items:CD.filter(function(p){return p.subcat===sc.id;}).sort(perArtista)};}).filter(function(x){return x.items.length;});
+  elRip.innerHTML=gr.map(function(x){return ripianoHtml(x.label,x.items,false);}).join('')||vuotoHtml('Nessun CD disponibile al momento.');
+  coloraDorsi(elRip);
 }
-function render(){
-  var cap=capienza(),html='';
-  SOTTO.forEach(function(sc){
-    var lista=CD.filter(function(p){return p.subcat===sc.id;}).sort(function(a,b){return artista(a).localeCompare(artista(b),'it');});
-    if(!lista.length)return;
-    for(var i=0;i<lista.length;i+=cap){
-      var pezzo=lista.slice(i,i+cap);
-      html+='<div class="ripiano"><div class="vano">'+pezzo.map(dorsoHtml).join('')+(pezzo.length<cap?'<div class="reggilibri" aria-hidden="true"></div>':'')+'</div>'
-        +'<div class="asse"><span class="targhetta">'+esc(sc.label)+(i>0?' &middot; '+(i/cap+1):'')+'</span></div></div>';
-    }
-  });
-  var cab=document.getElementById('cab'),mx=0;
-  SOTTO.forEach(function(sc){var n=CD.filter(function(p){return p.subcat===sc.id;}).length;mx=Math.max(mx,Math.min(n,cap));});
-  if(window.innerWidth>860){var dw=27,larg=Math.max(560,Math.min(1060,mx*dw+60+36+150));cab.style.width=larg+'px';}else cab.style.width='';
-  if(!html)html='<div class="ripiano"><div class="vano"><p class="vuoto-msg">Nessun CD disponibile al momento.</p></div><div class="asse"></div></div>';
-  elRip.innerHTML=html;
-  elRip.querySelectorAll('.dorso').forEach(function(el){
+function coloraDorsi(root){
+  root.querySelectorAll('.dorso').forEach(function(el){
     var p=byId(el.dataset.id);
     if(p._c){el.style.setProperty('--c',p._c);el.style.setProperty('--t',p._t);}
     else coloreDa(foto(p),function(rgb){applicaColore(el,p,rgb);document.querySelectorAll('.dorso[data-id="'+p.id+'"]').forEach(function(x){x.style.setProperty('--c',p._c);x.style.setProperty('--t',p._t);});});
   });
-  filtra();
 }
-function dorsoHtml(p){
+var elRipV=document.getElementById('ripianiV');
+function renderVinili(){
+  var gr;
+  if(ORD==='alfa')gr=gruppiAlfa(VIN);
+  else{var g={},o=[];VIN.forEach(function(p){var k=p._colonnaSonora?'Colonne sonore':((p._generi&&p._generi[0])||'Vinili');if(!g[k]){g[k]=[];o.push(k);}g[k].push(p);});
+    o.sort(function(a,b){return a.localeCompare(b,'it');});gr=o.map(function(k){return{label:k,items:g[k].sort(perArtista)};});}
+  elRipV.innerHTML=gr.map(function(x){return ripianoHtml(x.label,x.items,true);}).join('')||vuotoHtml('Nessun vinile disponibile al momento.');
+  coloraDorsi(elRipV);
+}
+function dorsoHtml(p,lp){
   var h=hash(String(p.id)),y=(h%3),b=(0.93+((h>>3)%10)/100).toFixed(2);
   var prezzo=p.price!=null?(Math.round(p.price)===p.price?p.price:p.price.toFixed(2))+'€':'';
-  return '<button class="dorso'+(p.sold?' venduto':'')+'" data-id="'+esc(p.id)+'" style="--y:-'+y+'px;--b:'+b+'" aria-label="'+esc(artista(p)+' - '+titolo(p))+'">'
+  return '<button class="dorso'+(lp?' lp':'')+(p.sold?' venduto':'')+'" data-id="'+esc(p.id)+'" style="--y:-'+y+'px;--b:'+b+'" aria-label="'+esc(artista(p)+' - '+titolo(p))+'">'
     +'<i class="cap t"></i><span class="txt"><b>'+esc(artista(p))+'</b><span>'+esc(titolo(p))+'</span></span>'
     +'<i class="bollino">'+(p.sold?'VEND.':esc(prezzo))+'</i><i class="cap b"></i></button>';
 }
-function byId(id){for(var i=0;i<CD.length;i++)if(String(CD[i].id)===String(id))return CD[i];return null;}
+function byId(id){var t=CD.concat(VIN);for(var i=0;i<t.length;i++)if(String(t[i].id)===String(id))return t[i];return null;}
+function isLP(p){return !!p&&/^vinili/.test(p.subcat||'');}
 
 /* Tooltip */
-elRip.addEventListener('mousemove',function(e){
+[elRip,elRipV].forEach(function(R){
+R.addEventListener('mousemove',function(e){
   var d=e.target.closest('.dorso');if(!d){tip.classList.remove('on');return;}
   var p=byId(d.dataset.id);
   if(tip.dataset.id!==String(p.id)){tip.dataset.id=p.id;tip.innerHTML='<b>'+esc(artista(p))+'</b><em>'+esc(titolo(p))+'</em><s>'+(p.sold?'Venduto':'€ '+esc(p.price))+'</s>';}
   var x=Math.min(e.clientX+16,window.innerWidth-tip.offsetWidth-10),y=e.clientY-tip.offsetHeight-14;
   tip.style.left=x+'px';tip.style.top=Math.max(8,y)+'px';tip.classList.add('on');
 });
-elRip.addEventListener('mouseleave',function(){tip.classList.remove('on');});
-elRip.addEventListener('click',function(e){var d=e.target.closest('.dorso');if(d){tip.classList.remove('on');estrai(d);}});
+R.addEventListener('mouseleave',function(){tip.classList.remove('on');});
+R.addEventListener('click',function(e){var d=e.target.closest('.dorso');if(d){tip.classList.remove('on');estrai(d);}});
+});
+
+/* Scaffali scorrevoli: frecce a destra e sinistra quando i dischi non entrano */
+function statoFila(f){var v=f.parentNode,max=f.scrollWidth-f.clientWidth;v.classList.toggle('puo-sx',f.scrollLeft>4);v.classList.toggle('puo-dx',f.scrollLeft<max-4);}
+function aggiornaFrecce(){document.querySelectorAll('.fila').forEach(statoFila);}
+document.addEventListener('scroll',function(e){var t=e.target;if(t&&t.classList&&t.classList.contains('fila'))statoFila(t);},true);
+function portaInVista(el,liscio){var f=el&&el.closest('.fila');if(!f)return;
+  var x=el.offsetLeft-f.clientWidth/2+el.offsetWidth/2;f.scrollTo({left:Math.max(0,x),behavior:liscio?'smooth':'auto'});if(!liscio)statoFila(f);}
+[elRip,elRipV].forEach(function(R){R.addEventListener('click',function(e){var fr=e.target.closest('.freccia');if(!fr)return;e.stopPropagation();
+  var f=fr.parentNode.querySelector('.fila');f.scrollBy({left:(fr.classList.contains('sx')?-1:1)*Math.max(120,f.clientWidth*0.75),behavior:'smooth'});});});
+
+/* Cambio ordine: genere / A-Z */
+var ordNav=document.getElementById('ordNav');
+function segnaOrdine(){ordNav.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b.dataset.ord===ORD);b.setAttribute('aria-pressed',b.dataset.ord===ORD);});}
+segnaOrdine();
+ordNav.addEventListener('click',function(e){var b=e.target.closest('button');if(!b||b.dataset.ord===ORD||attivo)return;ORD=b.dataset.ord;segnaOrdine();
+  try{localStorage.setItem('rv_lib_ordine',ORD);}catch(err){}
+  var bn=document.getElementById('binario');bn.classList.add('cambio');setTimeout(function(){render();HITQ='';requestAnimationFrame(function(){bn.classList.remove('cambio');});},230);});
 
 /* Ricerca */
 var inp=document.getElementById('cerca');
 function filtra(){
   var q=inp.value.trim().toLowerCase();
-  elRip.querySelectorAll('.dorso').forEach(function(el){
+  document.querySelectorAll('#ripiani .dorso,#ripianiV .dorso').forEach(function(el){
     var p=byId(el.dataset.id),hit=!q||(artista(p)+' '+titolo(p)+' '+(p.label||'')).toLowerCase().indexOf(q)>=0;
     el.classList.toggle('spento',!!q&&!hit);el.classList.toggle('trovato',!!q&&hit);
   });
 }
-inp.addEventListener('input',filtra);
+inp.addEventListener('input',function(){filtra();HITQ='';cnt.textContent='';});
+var HIT=[],HITI=-1,HITQ='',cnt=document.getElementById('cercaN'),frm=document.getElementById('cercaForm');
+function salaDi(el){return el.closest('#ripianiV')?'vinili':'cd';}
+function cercaVai(){
+  var q=inp.value.trim().toLowerCase();if(!q){inp.focus();return;}
+  if(q!==HITQ){HITQ=q;HITI=-1;
+    HIT=[].slice.call(document.querySelectorAll('#ripiani .dorso,#ripianiV .dorso')).filter(function(el){var p=byId(el.dataset.id);return (artista(p)+' '+titolo(p)+' '+(p.label||'')).toLowerCase().indexOf(q)>=0;});
+    HIT.sort(function(a,b){return (salaDi(a)===SALA?0:1)-(salaDi(b)===SALA?0:1);});}
+  if(!HIT.length){frm.classList.remove('nessuno');void frm.offsetWidth;frm.classList.add('nessuno');cnt.textContent='0';return;}
+  HITI=(HITI+1)%HIT.length;cnt.textContent=HIT.length>1?(HITI+1)+'/'+HIT.length:'';
+  vaiA(HIT[HITI]);
+}
+function vaiA(el){
+  var s=salaDi(el),cambio=s!==SALA;if(cambio)vaiSala(s);
+  if(matchMedia('(hover:none)').matches)inp.blur();
+  var r=el.closest('.ripiano').getBoundingClientRect(),y=window.scrollY+r.top+r.height/2-window.innerHeight/2;
+  window.scrollTo({top:Math.max(0,y),behavior:'smooth'});
+  portaInVista(el,true);
+  document.querySelectorAll('.dorso.evidenzia').forEach(function(x){x.classList.remove('evidenzia');});
+  setTimeout(function(){el.classList.add('evidenzia');setTimeout(function(){el.classList.remove('evidenzia');},2600);},cambio?800:550);
+}
+frm.addEventListener('submit',function(e){e.preventDefault();cercaVai();});
 
 /* ── Estrazione ── */
 var ov=document.getElementById('estratto'),cs=document.getElementById('case'),sch=document.getElementById('scheda');
 var attivo=null,dorsoAttivo=null,rotY=-16,rotX=4,animando=false;
+/* Retro: la prima foto dopo la copertina che si carica davvero (il gestionale a volte elenca foto non scaricate) */
+function cercaRetro(p){
+  var el=cs.querySelector('[data-retro]');if(!el)return;var f=foto(p),lista=(p.photos||[]).slice(1).filter(function(x){return x&&x!==f;}),id=p.id;
+  (function prova(i){if(i>=lista.length||!attivo||attivo.id!==id)return;var im=new Image();
+    im.onload=function(){if(!attivo||attivo.id!==id)return;el.style.backgroundImage='url("'+lista[i].replace(/"/g,'%22')+'")';el.style.display='';};
+    im.onerror=function(){prova(i+1);};im.src=lista[i];})(0);
+}
 function caseHtml(p){
-  var f=foto(p),retro=p.photos&&p.photos[1];
+  if(isLP(p))return caseLP(p);
+  var f=foto(p),retro=true;
   var info=[p.label,p.year,p.formato].filter(Boolean).map(esc).join(' &middot; ');
   return '<div class="faccia f-front"><div class="cerniera"></div><div class="libretto" style="background-image:url(\''+esc(f)+'\')"></div><div class="plastica"></div></div>'
-   +'<div class="faccia f-back">'+(retro?'<div class="retro-foto" style="background-image:url(\''+esc(retro)+'\')"></div>'
-     :'<div class="inlay"><div class="lato">'+esc(artista(p))+'</div><div class="corpo"><h4>'+esc(artista(p))+'</h4><h5>'+esc(titolo(p))+'</h5><p>'+info+'</p>'
+   +'<div class="faccia f-back">'+('<div class="inlay"><div class="lato">'+esc(artista(p))+'</div><div class="corpo"><h4>'+esc(artista(p))+'</h4><h5>'+esc(titolo(p))+'</h5><p>'+info+'</p>'
       +((p._generi&&p._generi.length)?'<p>'+esc(p._generi.join(', '))+'</p>':'')
-      +'<div class="piede"><span class="firma">Ramacciato Vintage</span><span class="barcode"></span></div></div><div class="lato">'+esc(titolo(p))+'</div></div>')
+      +'<div class="piede"><span class="firma">Ramacciato Vintage</span><span class="barcode"></span></div></div><div class="lato">'+esc(titolo(p))+'</div></div><div class="retro-foto" data-retro style="display:none"></div>')
    +'<div class="plastica"></div></div>'
+   +'<div class="faccia f-left"><div class="txt"><b>'+esc(artista(p))+'</b><span>'+esc(titolo(p))+'</span></div></div>'
+   +'<div class="faccia f-right"></div><div class="faccia f-top"></div><div class="faccia f-bot"></div>';
+}
+function caseLP(p){
+  var f=foto(p);
+  var info=[p.label,p.year,p.formato].filter(Boolean).map(esc).join(' &middot; ');
+  var dietro='<div class="inlay" style="inset:0"><div class="lato"></div><div class="corpo"><h4>'+esc(artista(p))+'</h4><h5>'+esc(titolo(p))+'</h5><p>'+info+'</p><div class="piede"><span class="firma">Ramacciato Vintage</span><span class="barcode"></span></div></div><div class="lato"></div></div><div class="busta" data-retro style="display:none"></div>';
+  return '<div class="lp-disco" id="lpDisco"></div>'
+   +'<div class="faccia f-front"><div class="busta" style="background-image:url(\''+esc(f)+'\')"></div></div>'
+   +'<div class="faccia f-back">'+dietro+'</div>'
    +'<div class="faccia f-left"><div class="txt"><b>'+esc(artista(p))+'</b><span>'+esc(titolo(p))+'</span></div></div>'
    +'<div class="faccia f-right"></div><div class="faccia f-top"></div><div class="faccia f-bot"></div>';
 }
 function schedaHtml(p){
   var sc=SOTTO.filter(function(s){return s.id===p.subcat;})[0];
-  var chips=[];if(p.label)chips.push(p.label);if(p.year&&p.year!=='0')chips.push(p.year);if(p.formato)chips.push(p.formato);
+  var chips=[];if(p.label)chips.push(p.label);if(p.year&&p.year!=='0')chips.push(p.year);if(p.formato)chips.push(p.formato);if(p.codiceEdizione)chips.push('Cod. '+p.codiceEdizione);
   if(p._generi&&p._generi.length)chips.push(p._generi.slice(0,3).join(', '));
   var inCart=loadCart().some(function(x){return x.id===p.id;});
-  return '<div class="sez">CD'+(sc?' &middot; '+esc(sc.label):'')+'</div>'
+  var lp=isLP(p),gen=p._colonnaSonora?'Colonne sonore':((p._generi&&p._generi[0])||'');
+  return '<div class="sez">'+(lp?'Vinile'+(gen?' &middot; '+esc(gen):''):'CD'+(sc?' &middot; '+esc(sc.label):''))+'</div>'
    +'<h2>'+esc(artista(p))+'</h2><h3>'+esc(titolo(p))+'</h3>'
    +'<div class="chips">'+chips.map(function(c){return'<span>'+esc(c)+'</span>';}).join('')+'</div>'
    +(p.condition?'<div class="cond">Condizioni: '+esc(p.condition)+'</div>':'')
    +'<div class="prezzo">'+(p.sold?'Venduto':'€ '+esc(p.price))+(p.sold?'':'<small>+ spedizione</small>')+'</div>'
    +'<div class="azioni"><button class="btn btn-p'+(inCart?' added':'')+'" id="bCarrello"'+(p.sold?' disabled':'')+'>'+(inCart?'&#x2713; Nel carrello':'Aggiungi al carrello')+'</button>'
    +'<button class="btn btn-s" id="bCompra"'+(p.sold?' disabled':'')+'>Compra ora</button>'
-   +'<button class="btn btn-s" id="bGira">Gira il CD</button><button class="btn btn-s" id="bChiudi">Rimetti a posto</button>'
+   +'<button class="btn btn-s" id="bGira">'+(lp?'Gira il disco':'Gira il CD')+'</button><button class="btn btn-s" id="bChiudi">Rimetti a posto</button>'
    +'<a class="btn btn-g" href="'+esc(IDXP[String(p.id)]||('shop.html?product='+p.id))+'" style="text-align:center;text-decoration:none">Apri scheda completa</a></div>'
    +'<p class="nota">Copertina da Discogs a scopo illustrativo: il prodotto fisico può differire dall\'immagine.</p>'
    +'<button class="btn btn-riponi" id="bRiponi">Riponi</button>';
 }
 function dims(){var W=cs.getBoundingClientRect();return W;}
-function posaFinale(){return 'translate3d(0,0,0) rotateX('+rotX+'deg) rotateY('+rotY+'deg)';}
+function posaFinale(){return 'translate3d(0,0,0) scale(1) rotateX('+rotX+'deg) rotateY('+rotY+'deg)';}
 function posaDorso(d){
   var prev=cs.style.transform;cs.style.transition='none';cs.style.transform='none';
-  var r=d.getBoundingClientRect(),c=cs.getBoundingClientRect();cs.style.transform=prev;
+  var fr=d.classList.contains('preso-it')?d.querySelector('.fr'):null;
+  var r=(fr||d).getBoundingClientRect(),c=cs.getBoundingClientRect();cs.style.transform=prev;
   var s=r.height/c.height,dx=(r.left+r.width/2)-(c.left+c.width/2),dy=(r.top+r.height/2)-(c.top+c.height/2);
+  if(fr){var ry=Math.round(rotY/360)*360;
+    return{dentro:'translate3d('+dx+'px,'+dy+'px,0) scale('+s+') rotateX(0deg) rotateY('+ry+'deg)',
+           fuori:'translate3d('+(dx*0.9)+'px,'+(dy*0.9)+'px,60px) scale('+(s*1.15)+') rotateX(0deg) rotateY('+ry+'deg)',
+           meta:'translate3d('+(dx*0.5)+'px,'+(dy*0.5-30)+'px,140px) scale('+(0.6+s*0.4)+') rotateX(4deg) rotateY('+(ry-12)+'deg)'};}
   return{dentro:'translate3d('+dx+'px,'+dy+'px,0) scale('+s+') rotateY(90deg)',
          fuori:'translate3d('+dx+'px,'+(dy-r.height*0.42)+'px,80px) scale('+(s*1.12)+') rotateY(84deg)',
          meta:'translate3d('+(dx*0.45)+'px,'+(dy*0.35-40)+'px,160px) scale('+(0.55+s*0.4)+') rotateY(40deg) rotateX(6deg)'};
@@ -448,21 +669,30 @@ function estrai(d){
   if(animando)return;var p=byId(d.dataset.id);if(!p)return;
   attivo=p;dorsoAttivo=d;animando=true;rotY=-16;rotX=4;
   cs.style.setProperty('--c',p._c||'#222');cs.style.setProperty('--t',p._t||'#f4f1ea');
-  cs.innerHTML=caseHtml(p);sch.innerHTML=schedaHtml(p);legaScheda(p);
+  cs.classList.toggle('lp',isLP(p));ov.classList.toggle('lp',isLP(p));var aiu=document.getElementById('aiuto');if(aiu){var tt=matchMedia('(hover:none)').matches;aiu.innerHTML=isLP(p)?(tt?'Trascina il disco col dito per girarlo':'Trascina il disco per girarlo &middot; Esc per rimetterlo a posto'):(tt?'Trascina il CD col dito per girarlo':'Trascina il CD per girarlo &middot; Esc per rimetterlo a posto');}cs.innerHTML=caseHtml(p);cercaRetro(p);sch.innerHTML=schedaHtml(p);legaScheda(p);
   ov.scrollTop=0;document.body.classList.add('bloccato');
   ov.classList.remove('chiude');ov.classList.add('on');ov.scrollTop=0;
   var P=posaDorso(d);cs.style.transform=P.dentro;
-  d.classList.add('fuori');
-  anima([{transform:P.dentro,offset:0,easing:'cubic-bezier(.3,0,.2,1)'},{transform:P.fuori,offset:.28,easing:'cubic-bezier(.4,0,.2,1)'},{transform:P.meta,offset:.62,easing:'cubic-bezier(.2,.6,.2,1)'},{transform:posaFinale(),offset:1}],1500,'linear',function(){animando=false;});
-  try{history.replaceState(null,'','?cd='+encodeURIComponent(p.id));}catch(e){}
+  if(d.classList.contains('preso-it'))d.classList.add('attesa');else d.classList.add('fuori');
+  anima([{transform:P.dentro,offset:0,easing:'cubic-bezier(.3,0,.2,1)'},{transform:P.fuori,offset:.28,easing:'cubic-bezier(.4,0,.2,1)'},{transform:P.meta,offset:.62,easing:'cubic-bezier(.2,.6,.2,1)'},{transform:posaFinale(),offset:1}],1500,'linear',function(){animando=false;var dsc=document.getElementById('lpDisco');if(dsc)setTimeout(function(){dsc.classList.add('fuori');},120);});
+  try{history.replaceState(null,'','?'+(isLP(p)?'vinile':'cd')+'='+encodeURIComponent(p.id));}catch(e){}
 }
 function rimetti(){
-  if(!attivo||animando)return;animando=true;var d=dorsoAttivo;
+  if(!attivo||animando)return;var dsc=document.getElementById('lpDisco');
+  if(dsc&&dsc.classList.contains('fuori')){dsc.classList.remove('fuori');animando=true;setTimeout(function(){animando=false;rimetti();},650);return;}
+  animando=true;var id=String(attivo.id),dentroCarrello=inCarrello(id);
+  if(dentroCarrello){var era=col.classList.contains('on');if(!era)col.style.transition='none';disegnaColonna(loadCart());void col.offsetWidth;if(!era)requestAnimationFrame(function(){col.style.transition='';});}
+  var d=dentroCarrello?document.querySelector('#presoLista .preso-it[data-id="'+CSS.escape(id)+'"]'):dorsoScaffale(id);
+  if(!d)d=dorsoAttivo;
+  if(d&&d.classList.contains('dorso'))portaInVista(d,false);
+  var sp=dorsoScaffale(id);if(sp&&!dentroCarrello){sp.classList.remove('preso');sp.classList.add('fuori');}
+  dorsoAttivo=d;
   ov.classList.add('chiude');ov.scrollTop=0;
   var P=posaDorso(d),ora=posaFinale();
   anima([{transform:ora,offset:0,easing:'cubic-bezier(.5,0,.6,1)'},{transform:P.meta,offset:.4,easing:'cubic-bezier(.4,0,.2,1)'},{transform:P.fuori,offset:.72,easing:'cubic-bezier(.4,0,.3,1)'},{transform:P.dentro,offset:1}],1150,'linear',function(){
-    ov.classList.remove('on');document.body.classList.remove('bloccato');d.classList.remove('fuori');cs.innerHTML='';attivo=null;animando=false;try{d.focus({preventScroll:true});}catch(e){}});
-  try{history.replaceState(null,'',location.pathname);}catch(e){}
+    ov.classList.remove('on');document.body.classList.remove('bloccato');var s2=dorsoScaffale(id);if(s2)s2.classList.remove('fuori');cs.innerHTML='';attivo=null;animando=false;sincronizza(true);
+    var dd=dentroCarrello?document.querySelector('#presoLista .preso-it[data-id="'+CSS.escape(id)+'"]'):s2;try{if(dd)dd.focus({preventScroll:true});}catch(e){}});
+  try{history.replaceState(null,'',location.pathname+(SALA==='vinili'?'?sala=vinili':''));}catch(e){}
 }
 function legaScheda(p){
   document.getElementById('bChiudi').onclick=rimetti;document.getElementById('bRiponi').onclick=rimetti;
@@ -470,10 +700,49 @@ function legaScheda(p){
   var bc=document.getElementById('bCarrello');
   bc.onclick=function(){var c=loadCart(),i=-1;c.forEach(function(x,k){if(x.id===p.id)i=k;});
     if(i<0){var it=JSON.parse(JSON.stringify(p));Object.keys(it).forEach(function(k){if(k.charAt(0)==='_')delete it[k];});it.qty=1;c.push(it);}else c.splice(i,1);
-    saveCart(c);var on=i<0;bc.classList.toggle('added',on);bc.innerHTML=on?'&#x2713; Nel carrello':'Aggiungi al carrello';};
+    saveCart(c);var on=i<0;bc.classList.toggle('added',on);bc.innerHTML=on?'&#x2713; Nel carrello':'Aggiungi al carrello';
+    if(on)setTimeout(rimetti,280);};
   document.getElementById('bCompra').onclick=function(){var c=loadCart();if(!c.some(function(x){return x.id===p.id;})){var it=JSON.parse(JSON.stringify(p));Object.keys(it).forEach(function(k){if(k.charAt(0)==='_')delete it[k];});it.qty=1;c.push(it);saveCart(c);}location.href='checkout.html';};
 }
 ov.addEventListener('click',function(e){if(e.target===ov)rimetti();});
+
+/* ── Colonna "Nel carrello": i pezzi presi escono dallo scaffale e restano visibili di fronte ── */
+var col=document.getElementById('presoCol'),colLista=document.getElementById('presoLista'),colN=document.getElementById('presoN'),ULTIMO=null;
+function inCarrello(id){return loadCart().some(function(x){return String(x.id)===String(id);});}
+function dorsoScaffale(id){return document.querySelector('#ripiani .dorso[data-id="'+CSS.escape(String(id))+'"],#ripianiV .dorso[data-id="'+CSS.escape(String(id))+'"]');}
+/* formato della vista frontale: CD, vinile, oppure generico per ogni altra categoria (anche future) */
+function formatoFronte(p){if(isLP(p)||/vinil|vinyl|^lp$/i.test(String(p.subcat||'')))return'lp';if(/^cd/i.test(String(p.subcat||''))||(p.cat==='musica'&&/(^|[^a-z])cd([^a-z]|$)/i.test(String(p.formato||p.subcat||''))))return'cd';return'gen';}
+function fronteHtml(p){var k=formatoFronte(p),f=esc(foto(p));
+  if(k==='cd')return'<div class="fr cd"><div class="cerniera"></div><div class="libretto" style="background-image:url(\''+f+'\')"></div><div class="plastica"></div></div>';
+  if(k==='lp')return'<div class="fr lp"><i class="mini-disco"'+(p._c?' style="--c:'+esc(p._c)+'"':'')+'></i><div class="busta" style="background-image:url(\''+f+'\')"></div></div>';
+  return'<div class="fr gen" style="background-image:url(\''+f+'\')"></div>';}
+function disegnaColonna(c){
+  var vola=attivo?String(attivo.id):'';
+  colLista.innerHTML=c.map(function(x){var p=byId(x.id)||x,pr=p.price!=null?'&euro; '+esc(p.price):'';
+    return'<div class="preso-it'+(String(x.id)===vola?' attesa':'')+'" role="button" tabindex="0" data-id="'+esc(x.id)+'" aria-label="'+esc(artista(p)+' - '+titolo(p))+'">'+fronteHtml(p)
+      +'<span class="didas"><b>'+esc(artista(p))+'</b>'+esc(titolo(p))+'<s>'+pr+'</s></span>'
+      +'<button class="preso-x" type="button" data-rm="'+esc(x.id)+'" aria-label="Togli dal carrello">&times;</button></div>';}).join('');
+  colN.textContent=c.length;col.classList.toggle('on',c.length>0);
+}
+function sincronizza(forza){
+  var raw;try{raw=localStorage.getItem(CART_KEY)||'[]';}catch(e){raw='[]';}
+  if(!forza&&raw===ULTIMO)return;ULTIMO=raw;
+  var c=[];try{c=JSON.parse(raw)||[];}catch(e){}
+  var ids={};c.forEach(function(x){ids[String(x.id)]=1;});
+  document.querySelectorAll('#ripiani .dorso,#ripianiV .dorso').forEach(function(el){var on=!!ids[el.dataset.id];
+    el.classList.toggle('preso',on);el.tabIndex=on?-1:0;if(on)el.setAttribute('aria-disabled','true');else el.removeAttribute('aria-disabled');});
+  disegnaColonna(c);
+}
+function togli(id){var c=loadCart().filter(function(x){return String(x.id)!==String(id);});saveCart(c);sincronizza(true);}
+colLista.addEventListener('click',function(e){
+  var x=e.target.closest('.preso-x');if(x){e.stopPropagation();togli(x.dataset.rm);return;}
+  var it=e.target.closest('.preso-it');if(!it||animando||attivo)return;
+  var id=it.dataset.id;if(byId(id)&&dorsoScaffale(id)){var p=byId(id);if(isLP(p)!==(SALA==='vinili'))vaiSala(isLP(p)?'vinili':'cd');estrai(it);}
+  else location.href=IDXP[String(id)]||('shop.html?product='+encodeURIComponent(id));
+});
+colLista.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&e.target.classList.contains('preso-it')){e.preventDefault();e.target.click();}});
+window.addEventListener('storage',function(e){if(e.key===CART_KEY&&!attivo)sincronizza();});
+setInterval(function(){if(!attivo&&!animando)sincronizza();},900);
 document.addEventListener('keydown',function(e){if(e.key==='Escape')rimetti();});
 /* trascina per ruotare */
 (function(){var drag=false,x0=0,y0=0,ry=0,rx=0;
@@ -490,13 +759,37 @@ Promise.all([fetch('catalogo.json').then(function(r){return r.json();}),fetch('c
   var cd=sub.filter(function(s){return s.id==='cd';})[0];SOTTO=cd&&cd.children?cd.children:[];
   CD=(Array.isArray(res[1])?res[1]:[]).filter(function(p){return !p.nascosto&&(p.model||foto(p));});
   CD.forEach(function(p){adatta(p,META.mappa_gestionale||{},META.sottocategorie||{});});
+  VIN=CD.filter(function(p){return /^vinili/.test(p.subcat||'');});
   CD=CD.filter(function(p){return /^cd/.test(p.subcat||'');});
   render();
+  var qs=new URLSearchParams(location.search);
+  if(qs.get('sala')==='vinili'||qs.get('vinile'))vaiSala('vinili',true);
+  var qv=qs.get('vinile');
+  if(qv){var ev=elRipV.querySelector('.dorso[data-id="'+CSS.escape(qv)+'"]');if(ev)setTimeout(function(){portaInVista(ev,false);ev.scrollIntoView({block:'center'});estrai(ev);},800);}
   if(matchMedia('(hover:none)').matches){var a=document.getElementById('aiuto');if(a)a.textContent='Trascina il CD col dito per girarlo';}
   var q=new URLSearchParams(location.search).get('cd');
-  if(q){var el=elRip.querySelector('.dorso[data-id="'+CSS.escape(q)+'"]');if(el)setTimeout(function(){el.scrollIntoView({block:'center'});estrai(el);},400);}
+  if(q){var el=elRip.querySelector('.dorso[data-id="'+CSS.escape(q)+'"]');if(el)setTimeout(function(){portaInVista(el,false);el.scrollIntoView({block:'center'});estrai(el);},400);}
 }).catch(function(){elRip.innerHTML='<div class="ripiano"><div class="vano"><p class="vuoto-msg">Catalogo non disponibile.</p></div><div class="asse"></div></div>';});
-var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){if(!attivo)render();},200);});
+/* Cambio sala: selettore e trascinamento laterale */
+var bin=document.getElementById('binario'),nav=document.getElementById('saleNav'),kick=document.getElementById('kicker');
+function vaiSala(n,subito){if(n===SALA&&!subito)return;SALA=n;
+  if(subito){bin.style.transition='none';requestAnimationFrame(function(){bin.style.transition='';});}
+  bin.classList.toggle('v',n==='vinili');
+  nav.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b.dataset.sala===n);});
+  kick.innerHTML='Musica &middot; '+(n==='vinili'?'Vinili':'CD');
+  document.getElementById('cab').setAttribute('aria-hidden',n==='vinili');document.getElementById('cabV').setAttribute('aria-hidden',n!=='vinili');
+  if(!subito)try{history.replaceState(null,'',location.pathname+(n==='vinili'?'?sala=vinili':''));}catch(e){}
+}
+nav.addEventListener('click',function(e){var b=e.target.closest('button');if(b)vaiSala(b.dataset.sala);});
+(function(){var x0=null,y0=0;var sal=document.getElementById('salone');
+  var inizio=0,fine=0,fl=null;
+  sal.addEventListener('touchstart',function(e){if(e.touches.length!==1)return;x0=e.touches[0].clientX;y0=e.touches[0].clientY;
+    fl=e.target.closest&&e.target.closest('.fila');if(fl&&fl.scrollWidth>fl.clientWidth+2){inizio=fl.scrollLeft<=2;fine=fl.scrollLeft>=fl.scrollWidth-fl.clientWidth-2;}else fl=null;},{passive:true});
+  sal.addEventListener('touchend',function(e){if(x0===null)return;var t=e.changedTouches[0],dx=t.clientX-x0,dy=t.clientY-y0;x0=null;
+    if(fl&&((dx<0&&!fine)||(dx>0&&!inizio)))return;
+    if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.6){vaiSala(dx<0?'vinili':'cd');}},{passive:true});
+})();
+var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){if(!attivo)render();else aggiornaFrecce();},200);});
 })();
 </script>
 <script src="cart-widget.js"></script>

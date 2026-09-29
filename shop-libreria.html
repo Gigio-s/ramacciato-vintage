@@ -349,6 +349,7 @@ body{font-family:Archivo,Arial,sans-serif;color:var(--navy);background:#0d1b2c;m
   .ordina .lbl{padding:0 2px 0 10px}
   .freccia{width:30px;height:30px;margin-top:-15px;font-size:22px}
 }
+.rvw-libreria{position:relative;z-index:3;width:min(900px,calc(100% - 32px));margin:0 auto 14px}
 </style>
 </head>
 <body>
@@ -369,6 +370,7 @@ body{font-family:Archivo,Arial,sans-serif;color:var(--navy);background:#0d1b2c;m
   <p>Scorri i dorsi, estrai il disco che ti incuriosisce.</p>
 </section>
 
+<div class="rvw-libreria" data-rv-weekend hidden></div>
 <div class="comandi"><nav class="sale-nav" id="saleNav" aria-label="Scegli il mobile"><button type="button" data-sala="cd" class="on">CD</button><button type="button" data-sala="vinili">Vinili</button></nav><nav class="sale-nav ordina" id="ordNav" aria-label="Ordina i dischi"><span class="lbl">Ordina</span><button type="button" data-ord="genere">Genere</button><button type="button" data-ord="alfa">A - Z</button></nav></div>
 <div class="salone" id="salone"><div class="binario" id="binario">
 <main class="sala" data-sala="cd">
@@ -793,5 +795,6 @@ var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeou
 })();
 </script>
 <script src="cart-widget.js"></script>
+<script src="rv-weekend.js"></script>
 </body>
 </html>

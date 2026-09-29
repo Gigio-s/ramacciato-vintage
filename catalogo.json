@@ -2,17 +2,209 @@
   "impostazioni": {
     "valuta": "EUR",
     "spedizione": {
-      "italia": {
-        "label": "Italia - Spedizione Standard",
-        "costo": 5.9,
-        "giorni": "3-5 giorni lavorativi"
+      "_nota": "Tariffe di spedizione lette sia dal checkout sia dal Worker PayPal: cambi un prezzo qui e vale ovunque. Prezzi in euro IVA inclusa per un pacco piccolo (CD, vinili, DVD fino a circa 2 kg). 'prezzo' puo essere un numero (uguale per tutte le zone) o un oggetto per zona (z1, z2, z3). Gratuita Italia: sopra la soglia la spedizione piu economica diventa gratis e le altre costano solo la differenza (metti modo: 'tutte' per rendere gratis ogni corriere). Estero: sopra la soglia si toglie 'sconto' dal prezzo.",
+      "paesi": {
+        "IT": "Italia",
+        "AT": "Austria",
+        "BE": "Belgio",
+        "BG": "Bulgaria",
+        "CY": "Cipro",
+        "HR": "Croazia",
+        "DK": "Danimarca",
+        "EE": "Estonia",
+        "FI": "Finlandia",
+        "FR": "Francia",
+        "DE": "Germania",
+        "GR": "Grecia",
+        "IE": "Irlanda",
+        "LV": "Lettonia",
+        "LT": "Lituania",
+        "LU": "Lussemburgo",
+        "MT": "Malta",
+        "NL": "Paesi Bassi",
+        "PL": "Polonia",
+        "PT": "Portogallo",
+        "CZ": "Repubblica Ceca",
+        "RO": "Romania",
+        "SK": "Slovacchia",
+        "SI": "Slovenia",
+        "ES": "Spagna",
+        "SE": "Svezia",
+        "HU": "Ungheria"
       },
-      "europa": {
-        "label": "Europa - Spedizione Internazionale",
-        "costo": 12.9,
-        "giorni": "7-14 giorni lavorativi"
+      "zone": {
+        "z1": [
+          "AT",
+          "DE",
+          "FR",
+          "SI",
+          "HR",
+          "HU",
+          "NL"
+        ],
+        "z2": [
+          "BE",
+          "BG",
+          "CZ",
+          "ES",
+          "LU",
+          "PL"
+        ],
+        "z3": [
+          "DK",
+          "PT",
+          "GR",
+          "SK",
+          "RO",
+          "FI",
+          "EE",
+          "LV",
+          "LT",
+          "SE",
+          "IE",
+          "CY",
+          "MT"
+        ]
       },
-      "gratuita_sopra": 50.0
+      "metodi": [
+        {
+          "id": "it-inpost",
+          "area": "italia",
+          "corriere": "InPost",
+          "nome": "Locker InPost",
+          "tipo": "punto",
+          "giorni": "1-3 giorni lavorativi",
+          "prezzo": 4.9
+        },
+        {
+          "id": "it-poste-punto",
+          "area": "italia",
+          "corriere": "Poste Italiane",
+          "nome": "Ufficio postale o Punto Poste",
+          "tipo": "punto",
+          "giorni": "2-4 giorni lavorativi",
+          "prezzo": 5.9
+        },
+        {
+          "id": "it-brt-punto",
+          "area": "italia",
+          "corriere": "BRT",
+          "nome": "BRT Fermopoint",
+          "tipo": "punto",
+          "giorni": "1-3 giorni lavorativi",
+          "prezzo": 6.9
+        },
+        {
+          "id": "it-poste-casa",
+          "area": "italia",
+          "corriere": "Poste Italiane",
+          "nome": "Consegna a domicilio",
+          "tipo": "casa",
+          "giorni": "2-4 giorni lavorativi",
+          "prezzo": 6.9
+        },
+        {
+          "id": "it-brt-casa",
+          "area": "italia",
+          "corriere": "BRT",
+          "nome": "Consegna a domicilio",
+          "tipo": "casa",
+          "giorni": "1-3 giorni lavorativi",
+          "prezzo": 7.9
+        },
+        {
+          "id": "eu-inpost",
+          "area": "estero",
+          "corriere": "InPost",
+          "nome": "Locker InPost",
+          "tipo": "punto",
+          "giorni": "4-7 giorni lavorativi",
+          "prezzo": 9.9,
+          "paesi": [
+            "FR",
+            "ES",
+            "PT",
+            "PL",
+            "BE",
+            "NL",
+            "LU"
+          ]
+        },
+        {
+          "id": "eu-gls",
+          "area": "estero",
+          "corriere": "GLS",
+          "nome": "Consegna a domicilio",
+          "tipo": "casa",
+          "giorni": "3-6 giorni lavorativi",
+          "prezzo": {
+            "z1": 12.9,
+            "z2": 13.9,
+            "z3": 15.9
+          }
+        },
+        {
+          "id": "eu-brt",
+          "area": "estero",
+          "corriere": "BRT",
+          "nome": "Consegna a domicilio (rete DPD)",
+          "tipo": "casa",
+          "giorni": "3-6 giorni lavorativi",
+          "prezzo": {
+            "z1": 13.9,
+            "z2": 15.9,
+            "z3": 17.9
+          }
+        },
+        {
+          "id": "eu-ups",
+          "area": "estero",
+          "corriere": "UPS",
+          "nome": "UPS Standard a domicilio",
+          "tipo": "casa",
+          "giorni": "2-5 giorni lavorativi",
+          "prezzo": {
+            "z1": 15.9,
+            "z2": 16.9,
+            "z3": 18.9
+          }
+        },
+        {
+          "id": "eu-poste",
+          "area": "estero",
+          "corriere": "Poste Italiane",
+          "nome": "Poste Delivery International",
+          "tipo": "casa",
+          "giorni": "5-10 giorni lavorativi",
+          "prezzo": 25.9
+        }
+      ],
+      "gratuita": {
+        "italia": {
+          "sopra": 30.0,
+          "modo": "piu_economica"
+        },
+        "estero": {
+          "sopra": 100.0,
+          "sconto": 5.9
+        }
+      }
+    },
+    "accettazione_difetti": {
+      "_nota": "Articoli per cui al checkout serve la spunta di accettazione espressa e separata (art. 130 Codice del Consumo): chi ha la riga 'Dettagli condizioni' nella descrizione del gestionale, o una condizione che contiene una di queste parole.",
+      "righe_descrizione": [
+        "Dettagli condizioni"
+      ],
+      "parole_condizione": [
+        "non testato",
+        "non funzionante",
+        "per ricambi",
+        "per parti",
+        "difettoso",
+        "da riparare",
+        "fair",
+        "poor"
+      ]
     }
   },
   "categorie": [

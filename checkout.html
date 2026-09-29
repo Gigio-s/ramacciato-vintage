@@ -91,6 +91,14 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 
 /* ── Shipping ──────────────────────────────────────────── */
 .ship-options{display:flex;flex-direction:column;gap:10px}
+.ship-paese-row{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.ship-paese-row label{font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.ship-paese-row select{flex:1 1 200px;font-family:inherit;font-size:14px;font-weight:700;color:var(--ink);padding:11px 14px;border-radius:12px;border:1.5px solid var(--line);background:rgba(255,255,255,.9);cursor:pointer}
+.ship-corr{display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:999px;margin-right:6px;vertical-align:1px;color:#fff;background:var(--c,#0b2545)}
+.ship-price s{font-size:14px;color:var(--muted);margin-right:6px}
+.ship-price .gratis{font-family:Archivo,Arial,sans-serif;font-size:12px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#1f7a3a}
+.ship-gruppo{font-size:9.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:6px 2px 0}
+#ship-nazione[disabled]{opacity:.8;cursor:not-allowed}
 .ship-option{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:14px;
   border:1.5px solid var(--line);background:rgba(255,255,255,.6);cursor:pointer;
   transition:border-color .2s,background .2s;user-select:none}
@@ -260,6 +268,20 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);position:relative;z-in
 
 /* Niente lineette davanti alle etichette dei titoli */
 .hero-kicker::before,.sec-label::before,.legal-kicker::before,.ck-section-title::before,.pay-title::before,.scheda .sez::before{display:none!important;content:none!important}
+.ship-faq{margin:10px 2px 0;font-size:11.5px;font-weight:700}.ship-faq a{color:var(--accent);text-decoration:underline;text-decoration-color:rgba(13,59,117,.3)}
+.difetti-sez{border:1.5px solid rgba(192,120,0,.45)!important;background:rgba(255,248,230,.92)!important}
+.difetti-intro{font-size:13px;margin:0 0 10px;color:var(--ink)}
+.difetti-lista{margin:0 0 14px;padding-left:18px;font-size:13px;line-height:1.5}
+.difetti-lista li{margin-bottom:6px}
+.difetti-lista b{font-weight:800}
+.difetti-lista em{font-style:normal;color:#8a4b00;font-weight:700}
+.difetti-ok{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;line-height:1.5;cursor:pointer;padding:12px 14px;border-radius:12px;background:#fff;border:1.5px solid var(--line)}
+.difetti-ok input{width:20px;height:20px;flex:0 0 20px;margin-top:1px;accent-color:#0b2545;cursor:pointer}
+.difetti-ok.error{border-color:#b3261e;box-shadow:0 0 0 3px rgba(179,38,30,.12)}
+.difetti-ok a{color:var(--accent);text-decoration:underline}
+.inv-uguale{display:flex;gap:10px;align-items:center;font-size:13px;font-weight:600;cursor:pointer;margin:4px 0}
+.inv-uguale input{width:18px;height:18px;accent-color:#0b2545}
+.inv-indirizzo{display:flex;flex-direction:column;gap:12px}
 </style>
 </head>
 <body>
@@ -308,42 +330,30 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);position:relative;z-in
           </div>
         </div>
 
+        <!-- 1b. Condizioni da confermare (solo se nel carrello ci sono pezzi con difetti dichiarati) -->
+        <div class="ck-section difetti-sez" id="difetti-sez" style="display:none">
+          <div class="ck-section-title">Condizioni da confermare</div>
+          <p class="difetti-intro">Questi articoli hanno caratteristiche o difetti dichiarati nella scheda. Leggili prima di acquistare:</p>
+          <ul class="difetti-lista" id="difetti-lista"></ul>
+          <label class="difetti-ok" id="difetti-ok-wrap">
+            <input type="checkbox" id="difetti-ok">
+            <span>Ho letto le condizioni e i difetti indicati per gli articoli qui sopra e li <strong>accetto espressamente</strong>. So che queste caratteristiche, già dichiarate, non saranno considerate difetti di conformità (art. 130 del Codice del Consumo). La garanzia legale resta valida per tutto il resto. <a href="termini-di-servizio.html" target="_blank" rel="noopener">Termini di Servizio</a></span>
+          </label>
+        </div>
+
         <!-- 2. Spedizione -->
         <div class="ck-section">
-          <div class="ck-section-title">Destinazione spedizione</div>
-          <div class="ship-options" id="ship-options">
-            <div class="ship-option selected" data-zone="italia">
-              <input type="radio" name="spedizione" value="italia" checked>
-              <div class="ship-radio"></div>
-              <div class="ship-label">
-                <div class="ship-name">Italia - Spedizione Standard</div>
-                <div class="ship-days">3-5 giorni lavorativi</div>
-              </div>
-              <div class="ship-price" id="ship-price-italia">€5,90</div>
-            </div>
-            <div class="ship-option" data-zone="europa">
-              <input type="radio" name="spedizione" value="europa">
-              <div class="ship-radio"></div>
-              <div class="ship-label">
-                <div class="ship-name">Europa - Spedizione Internazionale</div>
-                <div class="ship-days">7-14 giorni lavorativi</div>
-              </div>
-              <div class="ship-price" id="ship-price-europa">€12,90</div>
-            </div>
-            <div class="ship-option" data-zone="pickup">
-              <input type="radio" name="spedizione" value="pickup">
-              <div class="ship-radio"></div>
-              <div class="ship-label">
-                <div class="ship-name">Punto di ritiro - BRT · GLS · Posta · InPost</div>
-                <div class="ship-days">Scegli tabaccheria, edicola, locker o ufficio postale vicino a te</div>
-              </div>
-              <div class="ship-price" id="ship-price-pickup">€3,90</div>
-            </div>
+          <div class="ck-section-title">Spedizione</div>
+          <div class="ship-paese-row">
+            <label for="ship-paese">Paese di destinazione</label>
+            <select id="ship-paese" autocomplete="country"></select>
           </div>
+          <div class="ship-options" id="ship-options"></div>
+          <p class="ship-faq"><a href="faq.html#s1" target="_blank" rel="noopener">Tutte le tariffe e i tempi di spedizione</a></p>
 
           <!-- Sezione punto di ritiro (visibile solo se selezionato) -->
           <div class="pickup-section" id="pickup-section">
-            <div class="pickup-section-label">Trova il tuo punto di ritiro</div>
+            <div class="pickup-section-label" id="pickup-titolo">Trova il tuo punto di ritiro</div>
             <div class="pickup-cap-row">
               <div class="form-group">
                 <label>Il tuo CAP</label>
@@ -353,21 +363,20 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);position:relative;z-in
             <div>
               <div class="pickup-selected-label" style="margin-bottom:8px">Cerca il punto più vicino</div>
               <div class="pickup-carriers">
-                <a class="pickup-carrier-btn" id="pickup-brt" href="https://www.fermopoint.it/" target="_blank" rel="noopener noreferrer">🔵 BRT Fermopoint</a>
-                <a class="pickup-carrier-btn" id="pickup-gls" href="https://gls-italy.com/parcelshop/" target="_blank" rel="noopener noreferrer">🟡 GLS Shop</a>
-                <a class="pickup-carrier-btn" id="pickup-posta" href="https://www.poste.it/cerca/index.html#/paccomatpoint" target="_blank" rel="noopener noreferrer">🔴 Poste Paccomatpoint</a>
-                <a class="pickup-carrier-btn" id="pickup-inpost" href="https://www.inpost.it/cerca-locker/" target="_blank" rel="noopener noreferrer">🟠 InPost Locker</a>
+                <a class="pickup-carrier-btn" id="pickup-brt" data-corriere="BRT" href="https://www.fermopoint.it/" target="_blank" rel="noopener noreferrer">🔵 Cerca BRT Fermopoint</a>
+                <a class="pickup-carrier-btn" id="pickup-posta" data-corriere="Poste Italiane" href="https://www.poste.it/cerca/index.html#/" target="_blank" rel="noopener noreferrer">🔴 Cerca Ufficio postale o Punto Poste</a>
+                <a class="pickup-carrier-btn" id="pickup-inpost" data-corriere="InPost" href="https://inpost.it/trova-un-locker" target="_blank" rel="noopener noreferrer">🟠 Cerca Locker InPost</a>
               </div>
             </div>
             <div class="pickup-selected-wrap">
               <div class="pickup-selected-label">Punto selezionato *</div>
-              <textarea class="pickup-selected-point" id="pickup-point" rows="2" placeholder="Es: BRT Fermopoint - Tabaccheria Roma, Via Garibaldi 14, 20100 Milano"></textarea>
-              <p class="pickup-note">Clicca uno dei corrieri qui sopra, trova il punto più vicino a te e copia qui nome e indirizzo completo.</p>
+              <textarea class="pickup-selected-point" id="pickup-point" rows="2" placeholder="Es: Locker InPost MIL123 - Via Garibaldi 14, 20100 Milano"></textarea>
+              <p class="pickup-note" id="pickup-nota">Apri la mappa del corriere, trova il punto più vicino a te e copia qui nome (o codice) e indirizzo completo.</p>
             </div>
           </div>
 
           <div class="ship-free hidden" id="ship-free-notice">
-            🎉 Spedizione gratuita sopra €<span id="ship-free-threshold">50</span>!
+            🎉 Spedizione gratuita sopra €<span id="ship-free-threshold">30</span>!
           </div>
         </div>
 
@@ -404,25 +413,20 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);position:relative;z-in
             <div class="form-row full address-only">
               <div class="form-group">
                 <label>Nazione *</label>
-                <select id="ship-nazione" autocomplete="country">
-                  <option value="IT" selected>🇮🇹 Italia</option>
-                  <option value="DE">🇩🇪 Germania</option>
-                  <option value="FR">🇫🇷 Francia</option>
-                  <option value="ES">🇪🇸 Spagna</option>
-                  <option value="AT">🇦🇹 Austria</option>
-                  <option value="CH">🇨🇭 Svizzera</option>
-                  <option value="BE">🇧🇪 Belgio</option>
-                  <option value="NL">🇳🇱 Paesi Bassi</option>
-                  <option value="PT">🇵🇹 Portogallo</option>
-                  <option value="PL">🇵🇱 Polonia</option>
-                  <option value="OTHER">Altro paese europeo</option>
-                </select>
+                <select id="ship-nazione" autocomplete="country-name" disabled title="Si cambia dalla sezione Spedizione"></select>
               </div>
             </div>
             <div class="form-row full">
               <div class="form-group">
                 <label>Email (per conferma ordine) *</label>
                 <input type="email" id="ship-email" placeholder="mario@esempio.it" autocomplete="email">
+              </div>
+            </div>
+            <div class="form-row full">
+              <div class="form-group">
+                <label>Telefono *</label>
+                <input type="tel" id="ship-tel" placeholder="+39 333 1234567" autocomplete="tel" inputmode="tel">
+                <p class="form-note">Serve al corriere per avvisarti della consegna o mandarti il codice di ritiro.</p>
               </div>
             </div>
           </div>
@@ -454,9 +458,9 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);position:relative;z-in
             <div id="inv-privato">
               <div class="form-row full">
                 <div class="form-group">
-                  <label>Codice Fiscale</label>
-                  <input type="text" id="inv-cf" placeholder="RSSMRA80A01H501Z" maxlength="16" autocomplete="off">
-                  <p class="form-note">Necessario per la fattura intestata a persona fisica.</p>
+                  <label>Codice Fiscale *</label>
+                  <input type="text" id="inv-cf" placeholder="RSSMRA80A01H501Z" maxlength="16" autocomplete="off" style="text-transform:uppercase">
+                  <p class="form-note">Necessario per la fattura intestata a persona fisica (per i clienti esteri: codice fiscale o numero di identificazione del tuo paese).</p>
                 </div>
               </div>
             </div>
@@ -475,18 +479,41 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);position:relative;z-in
                   <input type="text" id="inv-piva" placeholder="IT12345678901" maxlength="13" autocomplete="off">
                 </div>
                 <div class="form-group">
-                  <label>Codice SDI</label>
+                  <label>Codice SDI <span class="inv-it">*</span></label>
                   <input type="text" id="inv-sdi" placeholder="XXXXXXX" maxlength="7" autocomplete="off">
                 </div>
               </div>
               <div class="form-row full">
                 <div class="form-group">
-                  <label>PEC (alternativa a SDI)</label>
+                  <label>PEC (in alternativa al codice SDI)</label>
                   <input type="email" id="inv-pec" placeholder="fatture@pec.esempio.it" autocomplete="off">
                 </div>
               </div>
-              <p class="form-note">La fattura elettronica verrà emessa entro 12 giorni dalla spedizione.</p>
             </div>
+
+            <!-- Indirizzo di fatturazione (privati e aziende) -->
+            <div class="inv-indirizzo">
+              <label class="inv-uguale" id="inv-uguale-wrap"><input type="checkbox" id="inv-uguale" checked> <span>Indirizzo di fatturazione uguale a quello di consegna</span></label>
+              <div id="inv-addr" style="display:none;flex-direction:column;gap:14px">
+                <div class="form-row full">
+                  <div class="form-group">
+                    <label id="inv-indirizzo-lbl">Indirizzo di fatturazione *</label>
+                    <input type="text" id="inv-indirizzo" placeholder="Via Roma 12" autocomplete="billing street-address">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>CAP *</label>
+                    <input type="text" id="inv-cap" placeholder="36100" maxlength="10" autocomplete="billing postal-code">
+                  </div>
+                  <div class="form-group">
+                    <label>Città e provincia *</label>
+                    <input type="text" id="inv-citta" placeholder="Vicenza (VI)" autocomplete="billing address-level2">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="form-note">La fattura elettronica verrà emessa entro 12 giorni dalla spedizione e inviata all'email indicata sopra.</p>
           </div>
         </div>
 
@@ -526,6 +553,9 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);position:relative;z-in
             <div class="sum-total-amount serif" id="sum-total">€0,00</div>
           </div>
         </div>
+
+        <!-- Avviso ordini del weekend di mercatino -->
+        <div data-rv-weekend hidden></div>
 
         <!-- Pagamento -->
         <div class="ck-payment">
@@ -624,12 +654,11 @@ var CONFIG = {
   worker_url: 'https://ramacciato-sconti.ramacciatoluca.workers.dev',
   stripe_enabled: false,                      // ← metti true quando hai Stripe configurato
   stripe_worker_url: '',                      // ← URL del Cloudflare Worker Stripe
-  spedizione: {
-    italia:  { costo: 5.90,  label: 'Italia',          giorni: '3-5 gg lavorativi' },
-    europa:  { costo: 12.90, label: 'Europa',           giorni: '7-14 gg lavorativi' },
-    pickup:  { costo: 3.90,  label: 'Punto di ritiro',  giorni: 'Ritiro presso il punto scelto' }
-  },
-  gratuita_sopra: 50.00,  // spedizione gratuita sopra questa cifra
+  // Tariffe di spedizione: si leggono da catalogo.json (impostazioni.spedizione).
+  // Questa copia si usa solo se catalogo.json non si carica.
+  spedizione: {"paesi": {"IT": "Italia", "AT": "Austria", "BE": "Belgio", "BG": "Bulgaria", "CY": "Cipro", "HR": "Croazia", "DK": "Danimarca", "EE": "Estonia", "FI": "Finlandia", "FR": "Francia", "DE": "Germania", "GR": "Grecia", "IE": "Irlanda", "LV": "Lettonia", "LT": "Lituania", "LU": "Lussemburgo", "MT": "Malta", "NL": "Paesi Bassi", "PL": "Polonia", "PT": "Portogallo", "CZ": "Repubblica Ceca", "RO": "Romania", "SK": "Slovacchia", "SI": "Slovenia", "ES": "Spagna", "SE": "Svezia", "HU": "Ungheria"}, "zone": {"z1": ["AT", "DE", "FR", "SI", "HR", "HU", "NL"], "z2": ["BE", "BG", "CZ", "ES", "LU", "PL"], "z3": ["DK", "PT", "GR", "SK", "RO", "FI", "EE", "LV", "LT", "SE", "IE", "CY", "MT"]}, "metodi": [{"id": "it-inpost", "area": "italia", "corriere": "InPost", "nome": "Locker InPost", "tipo": "punto", "giorni": "1-3 giorni lavorativi", "prezzo": 4.9}, {"id": "it-poste-punto", "area": "italia", "corriere": "Poste Italiane", "nome": "Ufficio postale o Punto Poste", "tipo": "punto", "giorni": "2-4 giorni lavorativi", "prezzo": 5.9}, {"id": "it-brt-punto", "area": "italia", "corriere": "BRT", "nome": "BRT Fermopoint", "tipo": "punto", "giorni": "1-3 giorni lavorativi", "prezzo": 6.9}, {"id": "it-poste-casa", "area": "italia", "corriere": "Poste Italiane", "nome": "Consegna a domicilio", "tipo": "casa", "giorni": "2-4 giorni lavorativi", "prezzo": 6.9}, {"id": "it-brt-casa", "area": "italia", "corriere": "BRT", "nome": "Consegna a domicilio", "tipo": "casa", "giorni": "1-3 giorni lavorativi", "prezzo": 7.9}, {"id": "eu-inpost", "area": "estero", "corriere": "InPost", "nome": "Locker InPost", "tipo": "punto", "giorni": "4-7 giorni lavorativi", "prezzo": 9.9, "paesi": ["FR", "ES", "PT", "PL", "BE", "NL", "LU"]}, {"id": "eu-gls", "area": "estero", "corriere": "GLS", "nome": "Consegna a domicilio", "tipo": "casa", "giorni": "3-6 giorni lavorativi", "prezzo": {"z1": 12.9, "z2": 13.9, "z3": 15.9}}, {"id": "eu-brt", "area": "estero", "corriere": "BRT", "nome": "Consegna a domicilio (rete DPD)", "tipo": "casa", "giorni": "3-6 giorni lavorativi", "prezzo": {"z1": 13.9, "z2": 15.9, "z3": 17.9}}, {"id": "eu-ups", "area": "estero", "corriere": "UPS", "nome": "UPS Standard a domicilio", "tipo": "casa", "giorni": "2-5 giorni lavorativi", "prezzo": {"z1": 15.9, "z2": 16.9, "z3": 18.9}}, {"id": "eu-poste", "area": "estero", "corriere": "Poste Italiane", "nome": "Poste Delivery International", "tipo": "casa", "giorni": "5-10 giorni lavorativi", "prezzo": 25.9}], "gratuita": {"italia": {"sopra": 30.0, "modo": "piu_economica"}, "estero": {"sopra": 100.0, "sconto": 5.9}}},
+  // Articoli che richiedono l'accettazione separata dei difetti (sovrascritto da catalogo.json)
+  accettazione_difetti: {"righe_descrizione": ["Dettagli condizioni"], "parole_condizione": ["non testato", "non funzionante", "per ricambi", "per parti", "difettoso", "da riparare", "fair", "poor"]},
   paypal_email:   'ramacciatoluca@gmail.com'
 };
 
@@ -638,7 +667,9 @@ var CONFIG = {
 ════════════════════════════════════════════════════════ */
 var state = {
   cart:        [],
-  zona:        'italia',
+  accettaDifetti: false,     // spunta di accettazione separata dei difetti dichiarati
+  zona:        'it-inpost',   // id del metodo di spedizione scelto
+  paese:       'IT',
   wantsInvoice: false,
   tipoFattura: 'privato',
   discount:     0,      // sconto in € (validato dal Worker)
@@ -654,10 +685,42 @@ function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').rep
 function getSubtotal(){
   return state.cart.reduce(function(s,i){ return s + (i.price||0)*(i.qty||1); }, 0);
 }
+/* ── Spedizione: stessa logica del Worker (worker/worker.js -> calcolaSpedizione) ── */
+function round2(n){ return Math.round((n + Number.EPSILON) * 100) / 100; }
+function zonaDi(paese){
+  if(paese === 'IT') return 'it';
+  var z = CONFIG.spedizione.zone || {};
+  for(var k in z) if((z[k]||[]).indexOf(paese) >= 0) return k;
+  return null;
+}
+function metodoById(id){ return (CONFIG.spedizione.metodi||[]).filter(function(m){ return m.id === id; })[0] || null; }
+function metodiPerPaese(paese){
+  var zona = zonaDi(paese); if(!zona) return [];
+  return (CONFIG.spedizione.metodi||[]).filter(function(m){
+    if(m.area === 'italia' ? paese !== 'IT' : paese === 'IT') return false;
+    if(m.paesi && m.paesi.indexOf(paese) < 0) return false;
+    var b = typeof m.prezzo === 'number' ? m.prezzo : (m.prezzo||{})[zona];
+    return b != null;
+  });
+}
+function calcolaSpedizione(metodoId, paese, subtotale){
+  var m = metodoById(metodoId), zona = zonaDi(paese);
+  if(!m || !zona) return null;
+  var base = typeof m.prezzo === 'number' ? m.prezzo : (m.prezzo||{})[zona];
+  if(base == null) return null;
+  var g = CONFIG.spedizione.gratuita || {}, sconto = 0;
+  if(m.area === 'italia' && g.italia && subtotale >= g.italia.sopra){
+    sconto = g.italia.modo === 'tutte' ? base : Math.min.apply(null, CONFIG.spedizione.metodi.filter(function(x){ return x.area === 'italia'; }).map(function(x){ return Number(x.prezzo); }));
+  } else if(m.area === 'estero' && g.estero && subtotale >= g.estero.sopra){
+    sconto = Number(g.estero.sconto) || 0;
+  }
+  sconto = Math.min(base, sconto);
+  return { metodo: m, pieno: round2(base), prezzo: round2(base - sconto) };
+}
+function isPunto(){ var m = metodoById(state.zona); return !!(m && m.tipo === 'punto'); }
 function getShippingCost(){
-  var sub = getSubtotal();
-  if(sub >= CONFIG.gratuita_sopra) return 0;
-  return CONFIG.spedizione[state.zona].costo;
+  var c = calcolaSpedizione(state.zona, state.paese, getSubtotal());
+  return c ? c.prezzo : 0;
 }
 function getTotal(){
   var t = getSubtotal() + getShippingCost() - (state.discount || 0);
@@ -689,7 +752,7 @@ function applyCoupon(){
   fetch(CONFIG.worker_url + '/quote', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ items: cartForWorker(), code: code, zona: state.zona })
+    body: JSON.stringify({ items: cartForWorker(), code: code, zona: state.zona, spedizione: { metodo: state.zona, paese: state.paese } })
   })
   .then(function(r){ if(!r.ok) throw new Error('http ' + r.status); return r.json(); })
   .then(function(d){
@@ -720,8 +783,37 @@ function loadCart(){
   catch(e){ return []; }
 }
 
+/* Difetti dichiarati: righe "Dettagli condizioni" della descrizione e condizioni come "non testato" */
+function difettiDi(item){
+  var r = CONFIG.accettazione_difetti || {}, out = [];
+  var cond = String(item.condition || ''), cl = cond.toLowerCase();
+  if((r.parole_condizione || []).some(function(k){ return cl.indexOf(k) >= 0; })) out.push('Condizioni: ' + cond);
+  String(item.desc || '').split(/\r?\n/).forEach(function(riga){
+    (r.righe_descrizione || []).forEach(function(pre){
+      if(riga.toLowerCase().indexOf(pre.toLowerCase() + ':') === 0){ var t = riga.slice(pre.length + 1).trim(); if(t) out.push(t); }
+    });
+  });
+  return out;
+}
+function articoliConDifetti(){
+  return state.cart.map(function(it){ return { item: it, difetti: difettiDi(it) }; }).filter(function(x){ return x.difetti.length; });
+}
+function renderDifetti(){
+  var box = document.getElementById('difetti-sez'); if(!box) return;
+  var lista = articoliConDifetti();
+  box.style.display = lista.length ? '' : 'none';
+  if(!lista.length){ state.accettaDifetti = false; return; }
+  document.getElementById('difetti-lista').innerHTML = lista.map(function(x){
+    return '<li><b>' + esc(x.item.name || 'Articolo') + '</b>' + (x.item.condition ? ' (' + esc(x.item.condition) + ')' : '') + ': <em>' + x.difetti.map(esc).join('; ') + '</em></li>';
+  }).join('');
+  var firma = lista.map(function(x){ return x.item.id; }).join(',');
+  var cb = document.getElementById('difetti-ok');
+  if(box.dataset.firma !== firma){ box.dataset.firma = firma; cb.checked = false; state.accettaDifetti = false; }
+}
+
 function renderCartItems(){
   state.cart = loadCart();
+  renderDifetti();
   var el = document.getElementById('cart-items-list');
   if(!state.cart.length){
     el.innerHTML = '<div class="cart-empty"><p>🛒</p><span>Il carrello è vuoto: <a href="shop.html" style="color:var(--accent)">torna allo shop</a></span></div>';
@@ -744,28 +836,73 @@ function renderCartItems(){
 /* ═══════════════════════════════════════════════════════
    SPEDIZIONE
 ════════════════════════════════════════════════════════ */
+var COLORI_CORRIERE = { 'InPost':'#e8a100', 'Poste Italiane':'#1a4b9c', 'BRT':'#c8102e', 'GLS':'#061ab1', 'UPS':'#5a3a1a' };
+function nomePaese(c){ return (CONFIG.spedizione.paesi||{})[c] || c; }
+function riempiPaesi(){
+  var paesi = CONFIG.spedizione.paesi || { IT:'Italia' };
+  var codici = Object.keys(paesi).filter(function(c){ return c !== 'IT'; }).sort(function(a,b){ return paesi[a].localeCompare(paesi[b],'it'); });
+  var opts = '<option value="IT">Italia</option>' + codici.map(function(c){ return '<option value="'+c+'">'+esc(paesi[c])+'</option>'; }).join('');
+  document.getElementById('ship-paese').innerHTML = opts;
+  document.getElementById('ship-nazione').innerHTML = opts;
+  document.getElementById('ship-paese').value = state.paese;
+  document.getElementById('ship-nazione').value = state.paese;
+}
+function disegnaMetodi(){
+  var box = document.getElementById('ship-options'), sub = getSubtotal();
+  var lista = metodiPerPaese(state.paese);
+  if(!lista.length){ box.innerHTML = '<p class="form-note">Al momento non spediamo in questo paese.</p>'; return; }
+  if(!lista.some(function(m){ return m.id === state.zona; })) state.zona = lista[0].id;
+  var html = '', gruppo = '';
+  lista.forEach(function(m){
+    var g = m.tipo === 'punto' ? 'Ritiro in un punto vicino a te' : 'Consegna a domicilio';
+    if(g !== gruppo){ gruppo = g; html += '<div class="ship-gruppo">'+g+'</div>'; }
+    var c = calcolaSpedizione(m.id, state.paese, sub);
+    var prezzo = c.prezzo === 0 ? (c.pieno > 0 ? '<s>'+fmtPrice(c.pieno)+'</s><span class="gratis">Gratis</span>' : '<span class="gratis">Gratis</span>')
+               : (c.prezzo < c.pieno ? '<s>'+fmtPrice(c.pieno)+'</s>'+fmtPrice(c.prezzo) : fmtPrice(c.prezzo));
+    html += '<div class="ship-option'+(m.id === state.zona ? ' selected' : '')+'" data-zone="'+m.id+'" role="radio" tabindex="0" aria-checked="'+(m.id === state.zona)+'">'
+      + '<input type="radio" name="spedizione" value="'+m.id+'"'+(m.id === state.zona ? ' checked' : '')+'>'
+      + '<div class="ship-radio"></div>'
+      + '<div class="ship-label"><div class="ship-name"><span class="ship-corr" style="--c:'+(COLORI_CORRIERE[m.corriere]||'#0b2545')+'">'+esc(m.corriere)+'</span>'+esc(m.nome)+'</div>'
+      + '<div class="ship-days">'+esc(m.giorni)+'</div></div>'
+      + '<div class="ship-price">'+prezzo+'</div></div>';
+  });
+  box.innerHTML = html;
+  aggiornaModoRitiro();
+}
+function aggiornaModoRitiro(){
+  var m = metodoById(state.zona), punto = !!(m && m.tipo === 'punto');
+  var pickupSection = document.getElementById('pickup-section');
+  var addressForm   = document.getElementById('address-form');
+  var sectionTitle  = document.getElementById('address-section-title');
+  if(pickupSection) pickupSection.classList.toggle('visible', punto);
+  if(addressForm)   addressForm.classList.toggle('pickup-mode', punto);
+  if(sectionTitle)  sectionTitle.textContent = punto ? 'Dati personali' : 'Indirizzo di consegna';
+  if(window.aggUgualeFattura) aggUgualeFattura();
+  if(!punto || !m) return;
+  /* mostro solo la mappa del corriere scelto */
+  document.querySelectorAll('.pickup-carrier-btn').forEach(function(a){ a.style.display = a.dataset.corriere === m.corriere ? '' : 'none'; });
+  var inp = document.getElementById('pickup-inpost');
+  if(inp) inp.href = state.paese === 'IT' ? 'https://inpost.it/trova-un-locker' : 'https://inpost.eu/';
+  var cap = document.getElementById('pickup-cap');
+  if(cap){ var riga = cap.closest('.pickup-cap-row'); if(riga) riga.style.display = state.paese === 'IT' ? '' : 'none'; }
+  var t = document.getElementById('pickup-titolo'); if(t) t.textContent = 'Trova il tuo ' + m.nome;
+  var pp = document.getElementById('pickup-point'); if(pp) pp.placeholder = state.paese === 'IT' ? 'Es: '+m.nome+' - Via Garibaldi 14, 20100 Milano' : 'Es: '+m.nome+' - codice o nome del punto, indirizzo, CAP e citta';
+}
+function scegliMetodo(id){
+  state.zona = id;
+  document.querySelectorAll('#ship-options .ship-option').forEach(function(o){ var on = o.dataset.zone === id; o.classList.toggle('selected', on); o.setAttribute('aria-checked', on); var r = o.querySelector('input'); if(r) r.checked = on; });
+  aggiornaModoRitiro();
+  if(state.discountCode) applyCoupon(); else updateSummary();
+}
 function initShipping(){
-  document.querySelectorAll('.ship-option').forEach(function(opt){
-    opt.addEventListener('click', function(){
-      state.zona = opt.dataset.zone;
-      document.querySelectorAll('.ship-option').forEach(function(o){ o.classList.remove('selected'); });
-      opt.classList.add('selected');
-      updateSummary();
-
-      /* ── Pickup mode toggle ── */
-      var pickupSection = document.getElementById('pickup-section');
-      var addressForm   = document.getElementById('address-form');
-      var sectionTitle  = document.getElementById('address-section-title');
-      if(state.zona === 'pickup'){
-        if(pickupSection) pickupSection.classList.add('visible');
-        if(addressForm)   addressForm.classList.add('pickup-mode');
-        if(sectionTitle)  sectionTitle.textContent = 'Dati personali';
-      } else {
-        if(pickupSection) pickupSection.classList.remove('visible');
-        if(addressForm)   addressForm.classList.remove('pickup-mode');
-        if(sectionTitle)  sectionTitle.textContent = 'Indirizzo di consegna';
-      }
-    });
+  riempiPaesi();
+  disegnaMetodi();
+  var box = document.getElementById('ship-options');
+  box.addEventListener('click', function(e){ var o = e.target.closest('.ship-option'); if(o) scegliMetodo(o.dataset.zone); });
+  box.addEventListener('keydown', function(e){ if((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('ship-option')){ e.preventDefault(); scegliMetodo(e.target.dataset.zone); } });
+  document.getElementById('ship-paese').addEventListener('change', function(){
+    state.paese = this.value; document.getElementById('ship-nazione').value = state.paese;
+    disegnaMetodi(); if(state.discountCode) applyCoupon(); else updateSummary();
   });
 
   /* Aggiorna i link dei corrieri con il CAP inserito */
@@ -776,13 +913,9 @@ function initShipping(){
       this.value = cap;
       if(cap.length === 5){
         var brt   = document.getElementById('pickup-brt');
-        var gls   = document.getElementById('pickup-gls');
-        var posta = document.getElementById('pickup-posta');
         var inp   = document.getElementById('pickup-inpost');
         if(brt)   brt.href   = 'https://www.fermopoint.it/?q='+cap;
-        if(gls)   gls.href   = 'https://gls-italy.com/parcelshop/?cap='+cap;
-        if(posta) posta.href = 'https://www.poste.it/cerca/index.html#/paccomatpoint/'+cap;
-        if(inp)   inp.href   = 'https://www.inpost.it/cerca-locker/?cap='+cap;
+        if(inp && state.paese === 'IT') inp.href = 'https://inpost.it/trova-un-locker';
       }
     });
   }
@@ -795,14 +928,14 @@ function updateSummary(){
   var sub = getSubtotal();
   var ship = getShippingCost();
   var tot = sub + ship;
-  var conf = CONFIG.spedizione[state.zona];
+  var conf = metodoById(state.zona) || { corriere:'', nome:'' };
 
   var disc = state.discount || 0;
   tot = sub + ship - disc;
   if(tot < 0) tot = 0;
 
   document.getElementById('sum-subtotal').textContent = fmtPrice(sub);
-  document.getElementById('sum-zone-label').textContent = conf.label;
+  document.getElementById('sum-zone-label').textContent = conf.corriere + ' · ' + conf.nome + (state.paese !== 'IT' ? ' (' + nomePaese(state.paese) + ')' : '');
   document.getElementById('sum-shipping').textContent = ship === 0 ? 'Gratuita 🎉' : fmtPrice(ship);
 
   var discRow = document.getElementById('sum-discount-row');
@@ -817,14 +950,22 @@ function updateSummary(){
   document.getElementById('sum-total').textContent = fmtPrice(tot);
 
   var freeNotice = document.getElementById('ship-free-notice');
-  document.getElementById('ship-free-threshold').textContent = CONFIG.gratuita_sopra.toFixed(0);
-  if(sub < CONFIG.gratuita_sopra){
+  var gr = CONFIG.spedizione.gratuita || {};
+  if(state.paese === 'IT' && gr.italia){
+    var minIt = Math.min.apply(null, CONFIG.spedizione.metodi.filter(function(x){ return x.area === 'italia'; }).map(function(x){ return Number(x.prezzo); }));
+    var cheap = CONFIG.spedizione.metodi.filter(function(x){ return x.area === 'italia' && Number(x.prezzo) === minIt; })[0];
+    freeNotice.innerHTML = sub < gr.italia.sopra
+      ? '🛍️ Aggiungi '+fmtPrice(gr.italia.sopra - sub)+' per la spedizione gratuita' + (gr.italia.modo === 'tutte' ? '!' : ' ('+cheap.corriere+' gratis, gli altri corrieri scontati)')
+      : (gr.italia.modo === 'tutte' ? '🎉 Hai la spedizione gratuita!' : '🎉 Spedizione '+cheap.corriere+' gratuita, gli altri corrieri scontati di '+fmtPrice(minIt)+'!');
     freeNotice.classList.remove('hidden');
-    freeNotice.innerHTML = '🛍️ Aggiungi '+fmtPrice(CONFIG.gratuita_sopra - sub)+' per la spedizione gratuita!';
-  } else {
-    freeNotice.innerHTML = '🎉 Hai la spedizione gratuita!';
+  } else if(state.paese !== 'IT' && gr.estero){
+    freeNotice.innerHTML = sub < gr.estero.sopra
+      ? '🛍️ Sopra '+fmtPrice(gr.estero.sopra)+' hai '+fmtPrice(gr.estero.sconto)+' di sconto sulla spedizione (mancano '+fmtPrice(gr.estero.sopra - sub)+')'
+      : '🎉 Hai '+fmtPrice(gr.estero.sconto)+' di sconto sulla spedizione!';
     freeNotice.classList.remove('hidden');
-  }
+  } else freeNotice.classList.add('hidden');
+  /* aggiorna i prezzi mostrati nelle opzioni (la gratuita dipende dal subtotale) */
+  if(document.getElementById('ship-options') && CONFIG._disegnato !== sub + '|' + state.paese){ CONFIG._disegnato = sub + '|' + state.paese; disegnaMetodi(); }
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -838,6 +979,18 @@ function initInvoice(){
     form.classList.toggle('visible', toggle.checked);
   });
 
+  var ug = document.getElementById('inv-uguale');
+  function aggUguale(){
+    var punto = isPunto();
+    document.getElementById('inv-uguale-wrap').style.display = punto ? 'none' : '';
+    if(punto) ug.checked = false;
+    document.getElementById('inv-addr').style.display = ug.checked ? 'none' : 'flex';
+    document.getElementById('inv-indirizzo-lbl').textContent = state.tipoFattura === 'azienda' ? 'Sede legale *' : 'Indirizzo di fatturazione *';
+    document.querySelectorAll('.inv-it').forEach(function(x){ x.style.display = state.paese === 'IT' ? '' : 'none'; });
+  }
+  ug.addEventListener('change', aggUguale);
+  window.aggUgualeFattura = aggUguale;
+  aggUguale();
   document.querySelectorAll('.tipo-tab').forEach(function(btn){
     btn.addEventListener('click', function(){
       state.tipoFattura = btn.dataset.tipo;
@@ -846,6 +999,7 @@ function initInvoice(){
       document.getElementById('inv-privato').style.display = state.tipoFattura === 'privato' ? '' : 'none';
       var az = document.getElementById('inv-azienda');
       az.style.display = state.tipoFattura === 'azienda' ? 'flex' : 'none';
+      if(window.aggUgualeFattura) aggUgualeFattura();
     });
   });
 }
@@ -864,7 +1018,7 @@ function validateForm(){
   /* Campi solo per consegna a casa */
   var addressFields = ['ship-indirizzo','ship-cap','ship-citta'];
 
-  var requiredFields = baseFields.concat(state.zona === 'pickup' ? [] : addressFields);
+  var requiredFields = baseFields.concat(isPunto() ? [] : addressFields);
   requiredFields.forEach(function(id){
     var el = document.getElementById(id);
     if(!el) return;
@@ -878,7 +1032,7 @@ function validateForm(){
   }
 
   /* Per punto di ritiro: deve essere specificato il punto */
-  if(state.zona === 'pickup'){
+  if(isPunto()){
     var ppEl = document.getElementById('pickup-point');
     if(ppEl){
       if(!ppEl.value.trim()){ ppEl.classList.add('error'); errors.push('pickup-point'); }
@@ -886,11 +1040,32 @@ function validateForm(){
     }
   }
 
-  if(state.wantsInvoice && state.tipoFattura === 'azienda'){
-    ['inv-rs','inv-piva'].forEach(function(id){
+  /* Telefono: obbligatorio (corrieri) */
+  var tel = document.getElementById('ship-tel');
+  if(tel){ var tv = tel.value.replace(/[\s.\-\/]/g,''); if(!/^\+?\d{8,15}$/.test(tv)){ tel.classList.add('error'); errors.push('ship-tel'); } else tel.classList.remove('error'); }
+
+  /* Dati fattura */
+  if(state.wantsInvoice){
+    var req = [];
+    if(state.tipoFattura === 'privato'){
+      req.push('inv-cf');
+      var cf = val('inv-cf').trim().toUpperCase();
+      if(cf && state.paese === 'IT' && !/^[A-Z0-9]{16}$/.test(cf) && !/^\d{11}$/.test(cf)){ document.getElementById('inv-cf').classList.add('error'); errors.push('inv-cf-formato'); }
+    } else {
+      req.push('inv-rs','inv-piva');
+      var pi = val('inv-piva').replace(/\s/g,'').toUpperCase();
+      if(pi && state.paese === 'IT' && !/^(IT)?\d{11}$/.test(pi)){ document.getElementById('inv-piva').classList.add('error'); errors.push('inv-piva-formato'); }
+      if(state.paese === 'IT' && !val('inv-sdi').trim() && !val('inv-pec').trim()){ document.getElementById('inv-sdi').classList.add('error'); errors.push('inv-sdi'); }
+    }
+    if(!document.getElementById('inv-uguale').checked) req.push('inv-indirizzo','inv-cap','inv-citta');
+    req.forEach(function(id){
       var el = document.getElementById(id);
       if(el && !el.value.trim()){ el.classList.add('error'); errors.push(id); }
     });
+  }
+  if(articoliConDifetti().length && !state.accettaDifetti){
+    errors.push('difetti');
+    var w = document.getElementById('difetti-ok-wrap'); if(w){ w.classList.add('error'); w.scrollIntoView({ behavior:'smooth', block:'center' }); }
   }
   if(state.cart.length === 0) errors.push('empty-cart');
   return errors;
@@ -902,8 +1077,8 @@ function validateForm(){
 function buildInvoiceNote(){
   var note = '';
   /* Aggiunge il punto di ritiro nelle note PayPal se selezionato */
-  if(state.zona === 'pickup'){
-    note += '[PUNTO DI RITIRO] '+val('pickup-point')+' | ';
+  if(isPunto()){
+    note += '[PUNTO DI RITIRO '+((metodoById(state.zona)||{}).corriere||'')+'] '+val('pickup-point')+' | ';
   }
   if(!state.wantsInvoice) return note.replace(/ \| $/, '');
   note += '[RICHIESTA FATTURA] ';
@@ -918,8 +1093,33 @@ function buildInvoiceNote(){
   return note;
 }
 
+function datiFattura(){
+  if(!state.wantsInvoice) return null;
+  var uguale = document.getElementById('inv-uguale').checked;
+  var d = { tipo: state.tipoFattura };
+  if(state.tipoFattura === 'privato'){
+    d.intestatario = val('ship-nome')+' '+val('ship-cognome');
+    d.codice_fiscale = val('inv-cf').trim().toUpperCase();
+  } else {
+    d.ragione_sociale = val('inv-rs').trim();
+    d.partita_iva = val('inv-piva').replace(/\s/g,'').toUpperCase();
+    d.codice_sdi = val('inv-sdi').trim().toUpperCase();
+    d.pec = val('inv-pec').trim();
+  }
+  d.indirizzo = uguale
+    ? val('ship-indirizzo')+', '+val('ship-cap')+' '+val('ship-citta')
+    : val('inv-indirizzo')+', '+val('inv-cap')+' '+val('inv-citta');
+  d.paese = nomePaese(state.paese);
+  return d;
+}
+function testoFattura(d){
+  if(!d) return '';
+  if(d.tipo === 'privato') return 'Privato: '+d.intestatario+' - CF '+d.codice_fiscale+' - '+d.indirizzo+' ('+d.paese+')';
+  return 'Azienda: '+d.ragione_sociale+' - P.IVA '+d.partita_iva+' - SDI '+(d.codice_sdi||'-')+' - PEC '+(d.pec||'-')+' - '+d.indirizzo+' ('+d.paese+')';
+}
+
 function buildShippingAddress(){
-  if(state.zona === 'pickup'){
+  if(isPunto()){
     /* Per punto di ritiro: la spedizione va al punto, non all'indirizzo del cliente */
     var pickupPoint = val('pickup-point');
     /* Estrae CAP e città dal testo del punto se possibile, altrimenti usa il CAP inserito */
@@ -930,7 +1130,7 @@ function buildShippingAddress(){
       address_line_1:  pickupPoint.split('\n')[0] || pickupPoint,
       postal_code:     capFromPoint,
       city:            '',
-      country_code:    'IT',
+      country_code:    state.paese || 'IT',
       pickup_note:     '[PUNTO DI RITIRO] '+pickupPoint
     };
   }
@@ -939,7 +1139,7 @@ function buildShippingAddress(){
     address_line_1:  val('ship-indirizzo'),
     postal_code:     val('ship-cap'),
     city:            val('ship-citta'),
-    country_code:    val('ship-nazione')||'IT'
+    country_code:    state.paese || 'IT'
   };
 }
 
@@ -995,7 +1195,8 @@ function initPayPal(){
       body: JSON.stringify({
         items: cartForWorker(),
         code:  state.discountCode || '',
-        zona:  state.zona
+        zona:  state.zona,
+        spedizione: { metodo: state.zona, paese: state.paese }
       })
     })
     .then(function(r){ return r.json(); })
@@ -1024,9 +1225,14 @@ function initPayPal(){
         sconto:   (state.discount || 0).toFixed(2),
         codice:   state.discountCode || '',
         fattura:  state.wantsInvoice,
+        da_confermare: (function(){ var f = window.rvWeekend && rvWeekend.finestra(); return f ? f.lunedi + ' ' + f.orario : ''; })(),
+        fattura_dati: testoFattura(datiFattura()),
+        telefono: val('ship-tel'),
+        difetti_accettati: articoliConDifetti().map(function(x){ return { id: x.item.id, name: x.item.name, difetti: x.difetti }; }),
         ts:       Date.now(),
         zona:     state.zona || 'standard',
-        indirizzo: state.zona === 'pickup'
+        spedizione: (function(){ var m = metodoById(state.zona) || {}; return (m.corriere||'')+' - '+(m.nome||'')+' ('+nomePaese(state.paese)+')'; })(),
+        indirizzo: isPunto()
           ? '[Punto di ritiro] '+val('pickup-point')
           : val('ship-indirizzo')+', '+val('ship-cap')+' '+val('ship-citta')+' ('+( val('ship-nazione')||'IT')+')',
         articoli: state.cart.map(function(item){
@@ -1042,6 +1248,10 @@ function initPayPal(){
     var errors = validateForm();
     if(errors.length){
       if(errors.includes('empty-cart')) showToast('Il carrello è vuoto!');
+      else if(errors.includes('difetti') && errors.length === 1) showToast('Conferma di aver letto le condizioni degli articoli segnalati');
+      else if(errors.includes('ship-tel') && errors.length === 1) showToast('Inserisci un numero di telefono valido');
+      else if(errors.includes('inv-sdi')) showToast('Per la fattura inserisci il codice SDI oppure la PEC');
+      else if(errors.includes('inv-cf-formato') || errors.includes('inv-piva-formato')) showToast('Controlla il codice fiscale o la partita IVA');
       else showToast('Compila tutti i campi obbligatori prima di procedere');
       return actions.reject();
     }
@@ -1091,8 +1301,19 @@ function initPayPal(){
 ════════════════════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', function(){
   renderCartItems();
+  var _dcb = document.getElementById('difetti-ok');
+  if(_dcb) _dcb.addEventListener('change', function(){ state.accettaDifetti = _dcb.checked; var w = document.getElementById('difetti-ok-wrap'); if(w) w.classList.remove('error'); });
   initShipping();
   updateSummary();
+  /* Tariffe aggiornate da catalogo.json (le stesse che usa il Worker) */
+  fetch('catalogo.json', { cache: 'no-cache' }).then(function(r){ return r.json(); }).then(function(j){
+    var sp = j && j.impostazioni && j.impostazioni.spedizione;
+    if(!sp || !Array.isArray(sp.metodi)) return;
+    if(j.impostazioni.accettazione_difetti) { CONFIG.accettazione_difetti = j.impostazioni.accettazione_difetti; renderDifetti(); }
+    CONFIG.spedizione = sp; CONFIG._disegnato = null;
+    riempiPaesi(); disegnaMetodi();
+    if(state.discountCode) applyCoupon(); else updateSummary();
+  }).catch(function(){});
   initInvoice();
 
   // Codice sconto - bottone Applica + Invio
@@ -1120,5 +1341,6 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 </script>
 
+<script src="rv-weekend.js"></script>
 </body>
 </html>

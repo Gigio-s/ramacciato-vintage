@@ -633,6 +633,50 @@
     "copie": 1
   },
   {
+    "id": 43,
+    "cat": "musica",
+    "name": "Post Orgasmic Chill",
+    "desc": "CD Album Enhanced Reissue · Rock, Alternative Rock\nCodice edizione: CDV 2881, CDV2881, 7243 8 47104 0 8\nNazione di provenienza: Europe",
+    "price": 5,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": null,
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/discogs-17114388-cover-67a6b99cb6b82ddb.jpg",
+      "photos/inventario/discogs-17114388-cover-bdee63db4d711951.jpg",
+      "photos/inventario/discogs-17114388-cover-4d08440e107b73dc.jpg",
+      "photos/inventario/discogs-17114388-cover-cce9bbc4c4b744cb.jpg",
+      "photos/inventario/discogs-17114388-cover-64802ce20e8ca0aa.jpg",
+      "photos/inventario/discogs-17114388-cover-8b09b912752db8f2.jpg",
+      "photos/inventario/discogs-17114388-cover-d6a1797f3e3cca44.jpg",
+      "photos/inventario/discogs-17114388-cover-9aeeb024b7218783.jpg",
+      "photos/inventario/discogs-17114388-cover-df9632ffb47a018d.jpg",
+      "photos/inventario/discogs-17114388-cover-355d649de00f8ccf.jpg",
+      "photos/inventario/discogs-17114388-cover-b9e7eb10ffcb0f39.jpg",
+      "photos/inventario/discogs-17114388-cover-16681a7eebab8214.jpg",
+      "photos/inventario/discogs-17114388-cover-b47c5941445ba353.jpg",
+      "photos/inventario/discogs-17114388-cover-954ede23f7c4cc67.jpg",
+      "photos/inventario/discogs-17114388-cover-238e58d2ada03c00.jpg",
+      "photos/inventario/discogs-17114388-cover-291e6e6c46498e81.jpg"
+    ],
+    "subcat": "CD Album Enhanced Reissue",
+    "artist": "Skunk Anansie",
+    "label": "Virgin, Virgin, Virgin",
+    "year": "1999",
+    "discogsId": "17114388",
+    "genres": [
+      "Rock",
+      "Alternative Rock"
+    ],
+    "copie": 1
+  },
+  {
     "id": 42,
     "cat": "musica",
     "name": "Live In New York City",
@@ -648,7 +692,7 @@
     "modelCredit": null,
     "modelCreditUrl": null,
     "photos": [
-      "https://i.discogs.com/LnZ0I-c031ezWv70X0tGKr8noB8xee4RAcMTI4Vlizs/rs:fit/g:sm/q:90/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEwODc4/NDc4LTE1MDU4MjIx/ODYtNTgyOC5qcGVn.jpeg"
+      "photos/inventario/discogs-10878478-cover-c81196bd4113461c.jpg"
     ],
     "subcat": "2 CD Album",
     "artist": "Bruce Springsteen & The E-Street Band",
@@ -702,12 +746,12 @@
     "copie": 1
   },
   {
-    "id": 43,
+    "id": 40,
     "cat": "musica",
-    "name": "Post Orgasmic Chill",
-    "desc": "CD Album Enhanced Reissue · Rock, Alternative Rock\nCodice edizione: CDV 2881, CDV2881, 7243 8 47104 0 8\nNazione di provenienza: Europe",
-    "price": 5,
-    "condition": "Very Good Plus (VG+)",
+    "name": "Greatest Hits II",
+    "desc": "CD Compilation · Rock, Pop, Pop Rock, Arena Rock\nDettagli condizioni: CD molto graffiato\nCodice edizione: CDP 79 7971 2, CDPMTV 2, 7 97971 2\nNazione di provenienza: Italy",
+    "price": 4.5,
+    "condition": "Good Plus (G+)",
     "sold": false,
     "isNew": true,
     "emoji": "",
@@ -717,31 +761,43 @@
     "modelCredit": null,
     "modelCreditUrl": null,
     "photos": [
-      "photos/inventario/discogs-17114388-cover-67a6b99cb6b82ddb.jpg",
-      "photos/inventario/discogs-17114388-cover-bdee63db4d711951.jpg",
-      "photos/inventario/discogs-17114388-cover-4d08440e107b73dc.jpg",
-      "photos/inventario/discogs-17114388-cover-cce9bbc4c4b744cb.jpg",
-      "photos/inventario/discogs-17114388-cover-64802ce20e8ca0aa.jpg",
-      "photos/inventario/discogs-17114388-cover-8b09b912752db8f2.jpg",
-      "photos/inventario/discogs-17114388-cover-d6a1797f3e3cca44.jpg",
-      "photos/inventario/discogs-17114388-cover-9aeeb024b7218783.jpg",
-      "photos/inventario/discogs-17114388-cover-df9632ffb47a018d.jpg",
-      "photos/inventario/discogs-17114388-cover-355d649de00f8ccf.jpg",
-      "photos/inventario/discogs-17114388-cover-b9e7eb10ffcb0f39.jpg",
-      "photos/inventario/discogs-17114388-cover-16681a7eebab8214.jpg",
-      "photos/inventario/discogs-17114388-cover-b47c5941445ba353.jpg",
-      "photos/inventario/discogs-17114388-cover-954ede23f7c4cc67.jpg",
-      "photos/inventario/discogs-17114388-cover-238e58d2ada03c00.jpg",
-      "photos/inventario/discogs-17114388-cover-291e6e6c46498e81.jpg"
+      "photos/inventario/discogs-1958044-cover-eb43e2268348c3cd.jpg",
+      "photos/inventario/discogs-1958044-cover-46f5b003606baf6d.jpg",
+      "photos/inventario/discogs-1958044-cover-eb2adb93c9546258.jpg",
+      "photos/inventario/discogs-1958044-cover-34dbb7d7b9b1a247.jpg",
+      "photos/inventario/discogs-1958044-cover-84b8c1dea508b5ca.jpg",
+      "photos/inventario/discogs-1958044-cover-e4f867e52955cb3e.jpg",
+      "photos/inventario/discogs-1958044-cover-6d224dd0fb56525e.jpg",
+      "photos/inventario/discogs-1958044-cover-85d5cf9d773445c0.jpg",
+      "photos/inventario/discogs-1958044-cover-c5cde571900ee156.jpg",
+      "photos/inventario/discogs-1958044-cover-4239d93d3a33f7db.jpg",
+      "photos/inventario/discogs-1958044-cover-e673224c473bee17.jpg",
+      "photos/inventario/discogs-1958044-cover-110dd8189d4efffb.jpg",
+      "photos/inventario/discogs-1958044-cover-e362fd475279300a.jpg",
+      "photos/inventario/discogs-1958044-cover-0fc89e47392e64fc.jpg",
+      "photos/inventario/discogs-1958044-cover-c311fe8fa7b28c67.jpg",
+      "photos/inventario/discogs-1958044-cover-13ec3c79086a7d91.jpg",
+      "photos/inventario/discogs-1958044-cover-19a6e3dfdc9a07c3.jpg",
+      "photos/inventario/discogs-1958044-cover-056ae0179ea054a7.jpg",
+      "photos/inventario/discogs-1958044-cover-f214fb83c551d37d.jpg",
+      "photos/inventario/discogs-1958044-cover-f2ac3015d0400ab9.jpg",
+      "photos/inventario/discogs-1958044-cover-4e95428dcf5e4872.jpg",
+      "photos/inventario/discogs-1958044-cover-34da96db6ab4560f.jpg",
+      "photos/inventario/discogs-1958044-cover-796ad61932e8d763.jpg",
+      "photos/inventario/discogs-1958044-cover-918bcb05bba278c9.jpg",
+      "photos/inventario/discogs-1958044-cover-23ff461515de8818.jpg",
+      "photos/inventario/discogs-1958044-cover-799c3ccdea00542c.jpg"
     ],
-    "subcat": "CD Album Enhanced Reissue",
-    "artist": "Skunk Anansie",
-    "label": "Virgin, Virgin, Virgin",
-    "year": "1999",
-    "discogsId": "17114388",
+    "subcat": "CD Compilation",
+    "artist": "Queen",
+    "label": "Parlophone, Parlophone, Parlophone",
+    "year": "1991",
+    "discogsId": "1958044",
     "genres": [
       "Rock",
-      "Alternative Rock"
+      "Pop",
+      "Pop Rock",
+      "Arena Rock"
     ],
     "copie": 1
   },
@@ -842,97 +898,6 @@
     "copie": 1
   },
   {
-    "id": 40,
-    "cat": "musica",
-    "name": "Greatest Hits II",
-    "desc": "CD Compilation · Rock, Pop, Pop Rock, Arena Rock\nDettagli condizioni: CD molto graffiato\nCodice edizione: CDP 79 7971 2, CDPMTV 2, 7 97971 2\nNazione di provenienza: Italy",
-    "price": 4.5,
-    "condition": "Good Plus (G+)",
-    "sold": false,
-    "isNew": true,
-    "emoji": "",
-    "bg": null,
-    "ebay": null,
-    "model": null,
-    "modelCredit": null,
-    "modelCreditUrl": null,
-    "photos": [
-      "photos/inventario/discogs-1958044-cover-eb43e2268348c3cd.jpg",
-      "photos/inventario/discogs-1958044-cover-46f5b003606baf6d.jpg",
-      "photos/inventario/discogs-1958044-cover-eb2adb93c9546258.jpg",
-      "photos/inventario/discogs-1958044-cover-34dbb7d7b9b1a247.jpg",
-      "photos/inventario/discogs-1958044-cover-84b8c1dea508b5ca.jpg",
-      "photos/inventario/discogs-1958044-cover-e4f867e52955cb3e.jpg",
-      "photos/inventario/discogs-1958044-cover-6d224dd0fb56525e.jpg",
-      "photos/inventario/discogs-1958044-cover-85d5cf9d773445c0.jpg",
-      "photos/inventario/discogs-1958044-cover-c5cde571900ee156.jpg",
-      "photos/inventario/discogs-1958044-cover-4239d93d3a33f7db.jpg",
-      "photos/inventario/discogs-1958044-cover-e673224c473bee17.jpg",
-      "photos/inventario/discogs-1958044-cover-110dd8189d4efffb.jpg",
-      "photos/inventario/discogs-1958044-cover-e362fd475279300a.jpg",
-      "photos/inventario/discogs-1958044-cover-0fc89e47392e64fc.jpg",
-      "photos/inventario/discogs-1958044-cover-c311fe8fa7b28c67.jpg",
-      "photos/inventario/discogs-1958044-cover-13ec3c79086a7d91.jpg",
-      "photos/inventario/discogs-1958044-cover-19a6e3dfdc9a07c3.jpg",
-      "photos/inventario/discogs-1958044-cover-056ae0179ea054a7.jpg",
-      "photos/inventario/discogs-1958044-cover-f214fb83c551d37d.jpg",
-      "photos/inventario/discogs-1958044-cover-f2ac3015d0400ab9.jpg",
-      "photos/inventario/discogs-1958044-cover-4e95428dcf5e4872.jpg",
-      "photos/inventario/discogs-1958044-cover-34da96db6ab4560f.jpg",
-      "photos/inventario/discogs-1958044-cover-796ad61932e8d763.jpg",
-      "photos/inventario/discogs-1958044-cover-918bcb05bba278c9.jpg",
-      "photos/inventario/discogs-1958044-cover-23ff461515de8818.jpg",
-      "photos/inventario/discogs-1958044-cover-799c3ccdea00542c.jpg"
-    ],
-    "subcat": "CD Compilation",
-    "artist": "Queen",
-    "label": "Parlophone, Parlophone, Parlophone",
-    "year": "1991",
-    "discogsId": "1958044",
-    "genres": [
-      "Rock",
-      "Pop",
-      "Pop Rock",
-      "Arena Rock"
-    ],
-    "copie": 1
-  },
-  {
-    "id": 34,
-    "cat": "musica",
-    "name": "Greatest Hits (1980-1994)",
-    "desc": "CD Compilation Unofficial Release · Funk / Soul, Pop, Soul, Disco\nCodice edizione: 74321 16202 2\nNazione di provenienza: Europe",
-    "price": 5,
-    "condition": "Very Good Plus (VG+)",
-    "sold": false,
-    "isNew": true,
-    "emoji": "",
-    "bg": null,
-    "ebay": null,
-    "model": null,
-    "modelCredit": null,
-    "modelCreditUrl": null,
-    "photos": [
-      "photos/inventario/discogs-10171671-cover-1ae650bd2bea89ac.jpg",
-      "photos/inventario/discogs-10171671-cover-cd47d7869db73c44.jpg",
-      "photos/inventario/discogs-10171671-cover-b2b7b2b0d13e9d8f.jpg",
-      "photos/inventario/discogs-10171671-cover-23036e68a972a996.jpg",
-      "photos/inventario/discogs-10171671-cover-873c6a0607edd2c1.jpg"
-    ],
-    "subcat": "CD Compilation Unofficial Release",
-    "artist": "Aretha Franklin",
-    "label": "Arista (2)",
-    "year": "1997",
-    "discogsId": "10171671",
-    "genres": [
-      "Funk / Soul",
-      "Pop",
-      "Soul",
-      "Disco"
-    ],
-    "copie": 1
-  },
-  {
     "id": 36,
     "cat": "musica",
     "name": "The Big Picture",
@@ -1005,6 +970,41 @@
     "copie": 1
   },
   {
+    "id": 34,
+    "cat": "musica",
+    "name": "Greatest Hits (1980-1994)",
+    "desc": "CD Compilation Unofficial Release · Funk / Soul, Pop, Soul, Disco\nCodice edizione: 74321 16202 2\nNazione di provenienza: Europe",
+    "price": 5,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": null,
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/discogs-10171671-cover-1ae650bd2bea89ac.jpg",
+      "photos/inventario/discogs-10171671-cover-cd47d7869db73c44.jpg",
+      "photos/inventario/discogs-10171671-cover-b2b7b2b0d13e9d8f.jpg",
+      "photos/inventario/discogs-10171671-cover-23036e68a972a996.jpg",
+      "photos/inventario/discogs-10171671-cover-873c6a0607edd2c1.jpg"
+    ],
+    "subcat": "CD Compilation Unofficial Release",
+    "artist": "Aretha Franklin",
+    "label": "Arista (2)",
+    "year": "1997",
+    "discogsId": "10171671",
+    "genres": [
+      "Funk / Soul",
+      "Pop",
+      "Soul",
+      "Disco"
+    ],
+    "copie": 1
+  },
+  {
     "id": 33,
     "cat": "musica",
     "name": "Dangerous",
@@ -1038,6 +1038,70 @@
       "Soul",
       "Ballad",
       "New Jack Swing"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 32,
+    "cat": "musica",
+    "name": "The One",
+    "desc": "CD Album · Rock, Pop, Pop Rock\nCodice edizione: 512 360-2, 512360-2\nNazione di provenienza: Europe",
+    "price": 6,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": null,
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/discogs-9205871-cover-350988dd3e8b0260.jpg",
+      "photos/inventario/discogs-9205871-cover-21fce272368276c6.jpg",
+      "photos/inventario/discogs-9205871-cover-a8e107c195804dfd.jpg"
+    ],
+    "subcat": "CD Album",
+    "artist": "Elton John",
+    "label": "The Rocket Record Company, Phonogram, The Rocket Record Company, Phonogram",
+    "year": "1992",
+    "discogsId": "9205871",
+    "genres": [
+      "Rock",
+      "Pop",
+      "Pop Rock"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 31,
+    "cat": "musica",
+    "name": "Live / The Way We Walk (Volume One: The Shorts)",
+    "desc": "CD Album · Rock, Prog Rock\nCodice edizione: GEN CD 4, 0777 7 86565 24, 263 233\nNazione di provenienza: Europe",
+    "price": 5,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": null,
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/discogs-16008019-cover-b6c3aa216032e6fd.jpg",
+      "photos/inventario/discogs-16008019-cover-27214c64536f35e7.jpg",
+      "photos/inventario/discogs-16008019-cover-59f1b0f9c62230f3.jpg",
+      "photos/inventario/discogs-16008019-cover-1dafbf4814bceec1.jpg"
+    ],
+    "subcat": "CD Album",
+    "artist": "Genesis",
+    "label": "Virgin, Virgin, Virgin",
+    "year": "1992",
+    "discogsId": "16008019",
+    "genres": [
+      "Rock",
+      "Prog Rock"
     ],
     "copie": 1
   },
@@ -1111,70 +1175,6 @@
       "Stage & Screen",
       "Soundtrack",
       "Musical"
-    ],
-    "copie": 1
-  },
-  {
-    "id": 32,
-    "cat": "musica",
-    "name": "The One",
-    "desc": "CD Album · Rock, Pop, Pop Rock\nCodice edizione: 512 360-2, 512360-2\nNazione di provenienza: Europe",
-    "price": 6,
-    "condition": "Very Good Plus (VG+)",
-    "sold": false,
-    "isNew": true,
-    "emoji": "",
-    "bg": null,
-    "ebay": null,
-    "model": null,
-    "modelCredit": null,
-    "modelCreditUrl": null,
-    "photos": [
-      "photos/inventario/discogs-9205871-cover-350988dd3e8b0260.jpg",
-      "photos/inventario/discogs-9205871-cover-21fce272368276c6.jpg",
-      "photos/inventario/discogs-9205871-cover-a8e107c195804dfd.jpg"
-    ],
-    "subcat": "CD Album",
-    "artist": "Elton John",
-    "label": "The Rocket Record Company, Phonogram, The Rocket Record Company, Phonogram",
-    "year": "1992",
-    "discogsId": "9205871",
-    "genres": [
-      "Rock",
-      "Pop",
-      "Pop Rock"
-    ],
-    "copie": 1
-  },
-  {
-    "id": 31,
-    "cat": "musica",
-    "name": "Live / The Way We Walk (Volume One: The Shorts)",
-    "desc": "CD Album · Rock, Prog Rock\nCodice edizione: GEN CD 4, 0777 7 86565 24, 263 233\nNazione di provenienza: Europe",
-    "price": 5,
-    "condition": "Very Good Plus (VG+)",
-    "sold": false,
-    "isNew": true,
-    "emoji": "",
-    "bg": null,
-    "ebay": null,
-    "model": null,
-    "modelCredit": null,
-    "modelCreditUrl": null,
-    "photos": [
-      "photos/inventario/discogs-16008019-cover-b6c3aa216032e6fd.jpg",
-      "photos/inventario/discogs-16008019-cover-27214c64536f35e7.jpg",
-      "photos/inventario/discogs-16008019-cover-59f1b0f9c62230f3.jpg",
-      "photos/inventario/discogs-16008019-cover-1dafbf4814bceec1.jpg"
-    ],
-    "subcat": "CD Album",
-    "artist": "Genesis",
-    "label": "Virgin, Virgin, Virgin",
-    "year": "1992",
-    "discogsId": "16008019",
-    "genres": [
-      "Rock",
-      "Prog Rock"
     ],
     "copie": 1
   },
@@ -1880,7 +1880,9 @@
     "label": "Heavy Psych Sounds",
     "year": "2022",
     "discogsId": "21825361",
-    "genres": [],
+    "genres": [
+      "Rock"
+    ],
     "copie": 1
   },
   {
@@ -1906,7 +1908,9 @@
     "label": "Goodfellas",
     "year": "2015",
     "discogsId": "8340257",
-    "genres": [],
+    "genres": [
+      "Rock"
+    ],
     "copie": 1
   },
   {
@@ -1934,7 +1938,10 @@
     "label": "Heavy Psych Sounds",
     "year": "2021",
     "discogsId": "20262889",
-    "genres": [],
+    "genres": [
+      "Rock",
+      "Metal"
+    ],
     "copie": 1
   },
   {
@@ -1960,7 +1967,10 @@
     "label": "Rebel Sound Music",
     "year": "2024",
     "discogsId": "35873032",
-    "genres": [],
+    "genres": [
+      "Rock",
+      "Punk Rock"
+    ],
     "copie": 1
   },
   {
@@ -1988,7 +1998,9 @@
     "label": "Interscope Records",
     "year": "2001",
     "discogsId": "527533",
-    "genres": [],
+    "genres": [
+      "rock"
+    ],
     "copie": 1
   }
 ]

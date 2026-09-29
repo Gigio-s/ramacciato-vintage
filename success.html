@@ -170,6 +170,10 @@ footer{background:var(--dark);color:rgba(255,255,255,.75);position:relative;z-in
         <div class="order-items" id="order-items" style="display:none"></div>
       </div>
 
+      <div class="invoice-notice" id="weekend-notice">
+        <strong>📅 Ordine da confermare</strong>
+        <span id="weekend-testo"></span>
+      </div>
       <div class="invoice-notice" id="invoice-notice">
         <strong>🧾 Fattura richiesta</strong>
         La fattura verrà emessa entro 12 giorni lavorativi dalla spedizione e inviata via email.
@@ -227,6 +231,11 @@ var GAS_WEBHOOK_URL = 'SOSTITUISCI_CON_URL_APPS_SCRIPT';
     document.getElementById('order-email').textContent = fmt(d.email);
     document.getElementById('order-tot').textContent   = d.tot ? '€'+d.tot : '-';
     if(d.fattura) document.getElementById('invoice-notice').classList.add('visible');
+    if(d.da_confermare){
+      document.getElementById('weekend-testo').innerHTML = 'Hai ordinato durante un weekend di mercatino: confermo la disponibilità degli articoli <strong style="display:inline;margin:0;font-size:inherit;letter-spacing:0;text-transform:none;color:inherit">'+d.da_confermare+'</strong>. '
+        + 'Se un pezzo è stato venduto al mercatino ti rimborso subito il suo importo (tutto l\'ordine, spedizione compresa, se non resta niente); i tempi di accredito dipendono da PayPal o dalla tua banca.';
+      document.getElementById('weekend-notice').classList.add('visible');
+    }
     if(d.email){
       document.getElementById('success-sub').innerHTML =
         'Grazie per il tuo acquisto, <strong>'+fmt(d.nome)+'</strong>.<br>'
@@ -253,13 +262,20 @@ var GAS_WEBHOOK_URL = 'SOSTITUISCI_CON_URL_APPS_SCRIPT';
         var articoliTesto = d.articoli && d.articoli.length
           ? d.articoli.map(function(a){ return '• '+a.name+' (€'+Number(a.price).toFixed(2)+')'; }).join('\n')
           : '-';
+        if(d.da_confermare) articoliTesto = '*** ORDINE DEL WEEKEND DI MERCATINO: DA CONFERMARE ' + d.da_confermare.toUpperCase() + ' ***\n\n' + articoliTesto;
+        if(d.telefono) articoliTesto += '\n\nTelefono: ' + d.telefono;
+        if(d.fattura_dati) articoliTesto += '\n\nDATI FATTURA: ' + d.fattura_dati;
+        if(d.difetti_accettati && d.difetti_accettati.length){
+          articoliTesto += '\n\nDIFETTI DICHIARATI E ACCETTATI DAL CLIENTE (spunta separata al checkout, art. 130 Cod. Consumo):\n'
+            + d.difetti_accettati.map(function(x){ return '- '+x.name+': '+x.difetti.join('; '); }).join('\n');
+        }
         emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
           order_id:    d.orderId || '-',
           cliente:     d.nome    || '-',
           email:       d.email   || '-',
           totale:      '€'+(d.tot||'0'),
           indirizzo:   d.indirizzo || '-',
-          zona:        d.zona    || '-',
+          zona:        d.spedizione || d.zona || '-',
           articoli:    articoliTesto,
           fattura:     d.fattura ? 'SÌ' : 'NO',
           data_ordine: new Date().toLocaleString('it-IT')
@@ -279,7 +295,11 @@ var GAS_WEBHOOK_URL = 'SOSTITUISCI_CON_URL_APPS_SCRIPT';
             cliente:   d.nome      || '',
             email:     d.email     || '',
             indirizzo: d.indirizzo || '',
-            zona:      d.zona      || '',
+            zona:      d.spedizione || d.zona || '',
+            difetti_accettati: JSON.stringify(d.difetti_accettati || []),
+            telefono:  d.telefono || '',
+            fattura_dati: d.fattura_dati || '',
+            da_confermare: d.da_confermare || '',
             totale:    d.tot       || '0',
             fattura:   d.fattura   ? 'SI' : 'NO',
             articoli:  JSON.stringify(d.articoli || [])

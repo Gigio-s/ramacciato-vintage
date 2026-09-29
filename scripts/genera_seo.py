@@ -427,9 +427,10 @@ def piede():
 {hub_link()}
 <footer class="sx-foot">
   <p><b>Ramacciato Vintage</b> di Luca Ramacciato - Vicenza (VI) - P.IVA {PIVA} - <a href="mailto:{EMAIL}">{EMAIL}</a></p>
-  <p><a href="/privacy-policy.html">Privacy</a> · <a href="/cookie-policy.html">Cookie</a> · <a href="/termini-di-servizio.html">Termini</a></p>
+  <p><a href="/privacy-policy.html">Privacy</a> · <a href="/cookie-policy.html">Cookie</a> · <a href="/termini-di-servizio.html">Termini</a> · <a href="/faq.html">FAQ e spedizioni</a></p>
 </footer>
 <script src="/cart-widget.js" defer></script>
+<script src="/rv-weekend.js" defer></script>
 </body>
 </html>
 """
@@ -581,6 +582,7 @@ def pagina_prodotto(p, pc, simili):
     <div class="sx-chips">{''.join('<span>' + e(c) + '</span>' for c in chips)}</div>
     <p class="sx-cond">{'Venduto' if venduto else 'Condizioni: ' + e(p.get('condition') or '-')}</p>
     <p class="sx-price">{'Venduto' if venduto else '€ ' + prezzo_txt(p)}{'' if venduto else ' <small>+ spedizione, oppure ritiro gratuito al mercatino</small>'}</p>
+    <div data-rv-weekend="compatto" hidden></div>
     <div class="sx-azioni">
       <button class="sx-btn" id="sxCart" {'disabled' if venduto else ''}>Aggiungi al carrello</button>
       <button class="sx-btn sx-btn-s" id="sxBuy" {'disabled' if venduto else ''}>Compra ora</button>
@@ -687,7 +689,8 @@ def aggiorna_mercatini_html():
 def sitemap(url_extra):
     statiche = [("/", "1.0", "weekly"), ("/shop.html", "0.95", "daily"), ("/shop-libreria.html", "0.8", "daily"),
                 ("/mercatini.html", "0.85", "weekly"), ("/svuotacantine.html", "0.8", "monthly"),
-                ("/fisico-vs-digitale.html", "0.6", "weekly"), ("/archivio-licenze.html", "0.5", "monthly")]
+                ("/fisico-vs-digitale.html", "0.6", "weekly"), ("/archivio-licenze.html", "0.5", "monthly"),
+                ("/faq.html", "0.7", "monthly")]
     righe = []
     for u, pr, fq in statiche:
         righe.append((u, pr, fq))

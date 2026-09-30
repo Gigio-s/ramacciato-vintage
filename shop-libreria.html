@@ -350,6 +350,7 @@ body{font-family:Archivo,Arial,sans-serif;color:var(--navy);background:#0d1b2c;m
   .freccia{width:30px;height:30px;margin-top:-15px;font-size:22px}
 }
 .rvw-libreria{position:relative;z-index:3;width:min(900px,calc(100% - 32px));margin:0 auto 14px}
+.difetti{margin:-8px 0 14px;padding:9px 12px;border-radius:12px;background:#fff3d6;border:1.5px solid rgba(192,120,0,.45);color:#7a3d00;font-size:13px;font-weight:800;line-height:1.4}
 </style>
 </head>
 <body>
@@ -429,7 +430,13 @@ function codiceEdizione(p){
   p.desc=String(p.desc).replace(/^[ \t]*Codice edizione:.*(\r?\n|$)/im,'').replace(/\s+$/,'');
   if(m&&/^vinili/.test(p.subcat||''))p.codiceEdizione=m[1].trim();
 }
-function adatta(p,mappa,subcats){var m=mappa[p.cat],cs=colonneSonore(p,m);adattaBase(p,mappa,subcats);if(cs)instradaCS(p,m);codiceEdizione(p);}
+/* Dettagli condizioni (riga "Dettagli condizioni:" del gestionale): mostrati in evidenza sotto il prezzo, tolti dalla descrizione */
+function dettagliCondizioni(p){
+  if(!p.desc)return;var m=String(p.desc).match(/^[ \t]*Dettagli condizioni:[ \t]*(.+)$/im);
+  if(!m)return;p.dettagliCondizioni=m[1].trim();
+  p.desc=String(p.desc).replace(/^[ \t]*Dettagli condizioni:.*(\r?\n|$)/im,'').replace(/\s+$/,'');
+}
+function adatta(p,mappa,subcats){var m=mappa[p.cat],cs=colonneSonore(p,m);adattaBase(p,mappa,subcats);if(cs)instradaCS(p,m);codiceEdizione(p);dettagliCondizioni(p);}
 function adattaBase(p,mappa,subcats){
   if(p.discogsId&&p.photos&&p.photos[0]&&/^https?:\/\/i\.discogs\.com/.test(p.photos[0])){p.photos=['photos/inventario/discogs-'+p.discogsId+'-cover.jpg'].concat(p.photos.slice(1));}
   if(p.artist)p.artist=String(p.artist).replace(/\s*\(\d+\)\s*$/,'').trim();
@@ -641,6 +648,7 @@ function schedaHtml(p){
    +'<div class="chips">'+chips.map(function(c){return'<span>'+esc(c)+'</span>';}).join('')+'</div>'
    +(p.condition?'<div class="cond">Condizioni: '+esc(p.condition)+'</div>':'')
    +'<div class="prezzo">'+(p.sold?'Venduto':'€ '+esc(p.price))+(p.sold?'':'<small>+ spedizione</small>')+'</div>'
+   +(p.dettagliCondizioni?'<div class="difetti">&#x26A0; '+esc(p.dettagliCondizioni)+'</div>':'')
    +'<div class="azioni"><button class="btn btn-p'+(inCart?' added':'')+'" id="bCarrello"'+(p.sold?' disabled':'')+'>'+(inCart?'&#x2713; Nel carrello':'Aggiungi al carrello')+'</button>'
    +'<button class="btn btn-s" id="bCompra"'+(p.sold?' disabled':'')+'>Compra ora</button>'
    +'<button class="btn btn-s" id="bGira">'+(lp?'Gira il disco':'Gira il CD')+'</button><button class="btn btn-s" id="bChiudi">Rimetti a posto</button>'

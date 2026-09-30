@@ -788,12 +788,13 @@ function difettiDi(item){
   var r = CONFIG.accettazione_difetti || {}, out = [];
   var cond = String(item.condition || ''), cl = cond.toLowerCase();
   if((r.parole_condizione || []).some(function(k){ return cl.indexOf(k) >= 0; })) out.push('Condizioni: ' + cond);
+  if(item.dettagliCondizioni) out.push(String(item.dettagliCondizioni));
   String(item.desc || '').split(/\r?\n/).forEach(function(riga){
     (r.righe_descrizione || []).forEach(function(pre){
       if(riga.toLowerCase().indexOf(pre.toLowerCase() + ':') === 0){ var t = riga.slice(pre.length + 1).trim(); if(t) out.push(t); }
     });
   });
-  return out;
+  return out.filter(function(x, i){ return out.indexOf(x) === i; });
 }
 function articoliConDifetti(){
   return state.cart.map(function(it){ return { item: it, difetti: difettiDi(it) }; }).filter(function(x){ return x.difetti.length; });

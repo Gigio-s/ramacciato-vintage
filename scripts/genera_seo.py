@@ -268,6 +268,19 @@ def adatta(p, mappa, subcats):
     if cs:
         instrada_cs(p, m)
     codice_edizione(p)
+    dettagli_condizioni(p)
+
+
+def dettagli_condizioni(p):
+    """Riga "Dettagli condizioni:" del gestionale: va in evidenza sotto il prezzo e si toglie dalla descrizione."""
+    d = p.get("desc")
+    if not d:
+        return
+    m = re.search(r"^[ \t]*Dettagli condizioni:[ \t]*(.+)$", str(d), flags=re.I | re.M)
+    if not m:
+        return
+    p["dettagliCondizioni"] = m.group(1).strip()
+    p["desc"] = re.sub(r"^[ \t]*Dettagli condizioni:.*(\r?\n|$)", "", str(d), count=1, flags=re.I | re.M).rstrip()
 
 
 def codice_edizione(p):
@@ -587,6 +600,7 @@ def pagina_prodotto(p, pc, simili):
     <div class="sx-chips">{''.join('<span>' + e(c) + '</span>' for c in chips)}</div>
     <p class="sx-cond">{'Venduto' if venduto else 'Condizioni: ' + e(p.get('condition') or '-')}</p>
     <p class="sx-price">{'Venduto' if venduto else '€ ' + prezzo_txt(p)}{'' if venduto else ' <small>+ spedizione, oppure ritiro gratuito al mercatino</small>'}</p>
+    {('<p class="sx-difetti" style="margin:-4px 0 16px;padding:10px 14px;border-radius:12px;background:#fff3d6;border:1.5px solid rgba(192,120,0,.45);color:#7a3d00;font-weight:800;line-height:1.4">&#x26A0; ' + e(p['dettagliCondizioni']) + '</p>') if p.get('dettagliCondizioni') else ''}
     <div data-rv-weekend="compatto" hidden></div>
     <div class="sx-azioni">
       <button class="sx-btn" id="sxCart" {'disabled' if venduto else ''}>Aggiungi al carrello</button>

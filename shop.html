@@ -450,6 +450,11 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
 .page-hero{padding-bottom:22px}
 .cat-carousel-wrap{padding-top:6px}
 @media(max-width:768px){.page-hero{padding-bottom:12px}}
+/* Difetti dichiarati sotto il prezzo */
+.product-difetti{margin:8px 0 0;padding:6px 10px;border-radius:8px;background:#fff3d6;border:1px solid rgba(192,120,0,.4);color:#7a3d00;font-size:11.5px;font-weight:800;line-height:1.35}
+.modal-difetti{margin:-4px 0 14px;padding:10px 14px;border-radius:12px;background:#fff3d6;border:1.5px solid rgba(192,120,0,.45);color:#7a3d00;font-size:14px;font-weight:800;line-height:1.4}
+.modal-difetti[hidden]{display:none}
+.product-grid.dens-2 .product-difetti{font-size:10px;padding:4px 7px}
 </style>
 </head>
 <body>
@@ -680,6 +685,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
         <p class="modal-cat" id="modalCat"></p>
         <h2 class="modal-title" id="modalTitle"></h2>
         <p class="modal-price" id="modalPrice"></p>
+        <p class="modal-difetti" id="modalDifetti" hidden></p>
         <span class="modal-condition" id="modalCondition"></span>
         <div class="modal-details" id="modalDetails"></div>
         <p class="modal-desc" id="modalDesc"></p>
@@ -756,13 +762,19 @@ function rvInstradaCS(p,m){
   if(c&&c.sottocategorie&&c.sottocategorie[sez])p.subcat=c.sottocategorie[sez];
 }
 /* Codice edizione: mostrato solo per i vinili, tolto dalla descrizione per tutto il resto */
+/* Dettagli condizioni (riga "Dettagli condizioni:" del gestionale): mostrati in evidenza sotto il prezzo, tolti dalla descrizione */
+function rvDettagliCondizioni(p){
+  if(!p.desc)return;var m=String(p.desc).match(/^[ \t]*Dettagli condizioni:[ \t]*(.+)$/im);
+  if(!m)return;p.dettagliCondizioni=m[1].trim();
+  p.desc=String(p.desc).replace(/^[ \t]*Dettagli condizioni:.*(\r?\n|$)/im,'').replace(/\s+$/,'');
+}
 function rvCodiceEdizione(p){
   if(!p.desc)return;var m=String(p.desc).match(/^[ \t]*Codice edizione:[ \t]*(.+)$/im);
   p.desc=String(p.desc).replace(/^[ \t]*Codice edizione:.*(\r?\n|$)/im,'').replace(/\s+$/,'');
   if(m&&/^vinili/.test(p.subcat||''))p.codiceEdizione=m[1].trim();
 }
 window.rvAdattaGestionale=(function(base){return function(p,mappa,subcats){
-  var m=mappa&&mappa[p.cat],cs=rvColonneSonore(p,m);base(p,mappa,subcats);if(cs)rvInstradaCS(p,m);rvCodiceEdizione(p);};})(window.rvAdattaGestionale);
+  var m=mappa&&mappa[p.cat],cs=rvColonneSonore(p,m);base(p,mappa,subcats);if(cs)rvInstradaCS(p,m);rvCodiceEdizione(p);rvDettagliCondizioni(p);};})(window.rvAdattaGestionale);
 
 function catLabel(c){return{videogiochi:'Videogiochi & Console',elettronica:'Elettronica Vintage',musica:'Vinili & Musica',libri:'Libri Curiosi',oggetti:'Oggetti Vintage',trading:'Trading Cards',dvd:'DVD & Film'}[c]||c}
 function getFiltered(){var l=PRODUCTS.slice();if(searchQuery){var sq=searchQuery.toLowerCase();l=l.filter(function(p){return (p.name+' '+(p.artist||'')+' '+(p.label||'')).toLowerCase().indexOf(sq)>=0;});}if(activeCat!=='all')l=l.filter(function(p){return p.cat===activeCat});if(activeSubcat){if(activeSubcat2){l=l.filter(function(p){return p.subcat===activeSubcat2;});}else{var _sc=(SUBCATS_DATA[activeCat]||[]).filter(function(s){return s.id===activeSubcat;})[0];var _inc=_sc&&_sc.includes?_sc.includes:[activeSubcat];l=l.filter(function(p){return _inc.indexOf(p.subcat)>=0;});}}if(activeAvail==='available')l=l.filter(function(p){return!p.sold});if(activeSort==='price-asc')l.sort(function(a,b){return(a.price||0)-(b.price||0)});if(activeSort==='price-desc')l.sort(function(a,b){return(b.price||0)-(a.price||0)});if(activeSort==='new')l.sort(function(a,b){return(b.isNew?1:0)-(a.isNew?1:0)});if(activeSort==='az'||activeSort==='za'){var _k=function(p){return String(p.name||'').replace(/^the\s+/i,'');};l.sort(function(a,b){var r=_k(a).localeCompare(_k(b),'it',{sensitivity:'base'});return activeSort==='za'?-r:r;});}return l}
@@ -783,7 +795,7 @@ function renderGrid(){
         : '<div class="product-img-inner" style="background:'+p.bg+'">'+p.emoji+'</div>';
     var condHtml=p.condition?'<span class="product-condition">'+p.condition+'</span>':'';
     var copieHtml=(p.copie&&p.copie>1&&!p.sold)?'<span class="product-copies">'+p.copie+' copie</span>':'';
-    return'<div class="product-card'+(p.model?' product-card--3d':'')+' product-card--'+p.cat+'" data-id="'+p.id+'" tabindex="0" role="button"><div class="product-img">'+imgHtml+(p.sold?'<span class="product-sold-badge">Venduto</span>':'')+(p.isNew&&!p.sold?'<span class="product-new-badge">Nuovo</span>':'')+copieHtml+'</div><div class="product-body"><p class="product-cat">'+catLabel(p.cat)+(p.model?' <span style="font-size:8px;opacity:.7;margin-left:4px">&#x2B55; 3D</span>':'')+'</p><p class="product-name">'+p.name+'</p>'+condHtml+'<p class="product-desc">'+(p.desc?(p.desc.substring(0,80)+'&hellip;'):'')+'</p><div class="product-footer"><span class="product-price'+(p.sold?' sold':'')+'">&#x20AC; '+(p.price!==null&&p.price!==undefined?p.price:'-')+'</span><button class="product-buy-btn">+</button></div></div></div>';
+    return'<div class="product-card'+(p.model?' product-card--3d':'')+' product-card--'+p.cat+'" data-id="'+p.id+'" tabindex="0" role="button"><div class="product-img">'+imgHtml+(p.sold?'<span class="product-sold-badge">Venduto</span>':'')+(p.isNew&&!p.sold?'<span class="product-new-badge">Nuovo</span>':'')+copieHtml+'</div><div class="product-body"><p class="product-cat">'+catLabel(p.cat)+(p.model?' <span style="font-size:8px;opacity:.7;margin-left:4px">&#x2B55; 3D</span>':'')+'</p><p class="product-name">'+p.name+'</p>'+condHtml+'<p class="product-desc">'+(p.desc?(p.desc.substring(0,80)+'&hellip;'):'')+'</p><div class="product-footer"><span class="product-price'+(p.sold?' sold':'')+'">&#x20AC; '+(p.price!==null&&p.price!==undefined?p.price:'-')+'</span><button class="product-buy-btn">+</button></div>'+(p.dettagliCondizioni?'<p class="product-difetti">&#x26A0; '+String(p.dettagliCondizioni).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];})+'</p>':'')+'</div></div>';
   }).join('');
   ['all','videogiochi','elettronica','musica','libri','oggetti','trading','dvd'].forEach(function(c){var el=document.getElementById('cnt-'+c);if(el)el.textContent=c==='all'?PRODUCTS.length:PRODUCTS.filter(function(p){return p.cat===c}).length});
   grid.querySelectorAll('.product-card').forEach(function(card){var fn=function(){openModal(parseInt(card.dataset.id))};card.addEventListener('click',fn);card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')fn()});
@@ -871,6 +883,7 @@ function openModal(id){
   document.getElementById('modalCat').textContent=catLabel(p.cat);
   document.getElementById('modalTitle').textContent=p.name;
   document.getElementById('modalPrice').textContent=p.price!==null&&p.price!==undefined?'€ '+p.price:'Prezzo da definire';
+  var _md=document.getElementById('modalDifetti');if(_md){_md.hidden=!p.dettagliCondizioni;_md.textContent=p.dettagliCondizioni?'\u26A0 '+p.dettagliCondizioni:'';}
   document.getElementById('modalCondition').textContent='Condizioni: '+p.condition;
   var detEl=document.getElementById('modalDetails');
   if(detEl){var chips=[];if(p.artist)chips.push('<span class="modal-detail-chip">🎤 <strong>'+p.artist+'</strong></span>');if(p.label)chips.push('<span class="modal-detail-chip">🏷️ <strong>'+p.label+'</strong></span>');if(p.year&&p.year!=='0'&&p.year!=='')chips.push('<span class="modal-detail-chip">📅 <strong>'+p.year+'</strong></span>');if(p.formato)chips.push('<span class="modal-detail-chip">💿 <strong>'+p.formato+'</strong></span>');if(p.codiceEdizione)chips.push('<span class="modal-detail-chip">🔖 Codice edizione: <strong>'+p.codiceEdizione+'</strong></span>');if(p.genres&&p.genres.length)chips.push('<span class="modal-detail-chip">🎧 <strong>'+p.genres.join(', ')+'</strong></span>');if(p.copie&&p.copie>1&&!p.sold)chips.push('<span class="modal-detail-chip">📦 <strong>'+p.copie+' copie disponibili</strong></span>');detEl.innerHTML=chips.join('');}

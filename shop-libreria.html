@@ -411,13 +411,15 @@ var CD=[],VIN=[],SOTTO=[],META={},SALA='cd';var IDXP={};fetch('prodotto/indice.j
 /* Adattatore Gestionale -> sottocategorie RV (stesse regole di shop.html, lette da catalogo.json) */
 /* Colonne sonore: artista "... - colonne sonore film" nel gestionale (regole in catalogo.json) */
 function colonneSonore(p,m){
-  var c=m&&m.colonne_sonore;if(!c||!p.artist)return false;
-  var al=String(p.artist).toLowerCase(),keys=(c.artista_contiene||[]).slice().sort(function(a,b){return b.length-a.length;});
+  var c=m&&m.colonne_sonore;if(!c)return false;
+  var al=String(p.artist||'').toLowerCase(),keys=(c.artista_contiene||[]).slice().sort(function(a,b){return b.length-a.length;});
   for(var i=0;i<keys.length;i++){var k=keys[i];if(al.indexOf(k)<0)continue;
     var kr=k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
     p.artist=String(p.artist).replace(new RegExp('\\s*[-\u2013:]?\\s*'+kr+'\\s*','i'),' ').replace(/^[\s\-\u2013:]+|[\s\-\u2013:]+$/g,'').trim();
     if(p.name)p.name=String(p.name).replace(new RegExp('\\s*[-\u2013:]\\s*'+kr+'(?=\\s*([-\u2013:]|$))','i'),'').trim();
     p._colonnaSonora=true;return true;}
+  var gl=(p.genres||[]).map(function(g){return String(g).toLowerCase();});
+  if((c.genere_contiene||[]).some(function(k){return gl.some(function(g){return g.indexOf(k)>=0;});})){p._colonnaSonora=true;return true;}
   return false;
 }
 function instradaCS(p,m){var c=m&&m.colonne_sonore,s=String(p.subcat||''),sez=/^cd/.test(s)?'cd':/^vinili/.test(s)?'vinili':/^musicassette/.test(s)?'musicassette':'';

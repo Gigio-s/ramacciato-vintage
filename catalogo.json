@@ -596,7 +596,7 @@
       ],
       "cd_default": "cd-pop-rock",
       "colonne_sonore": {
-        "_nota": "Se nel gestionale il campo artista contiene ' - colonne sonore film', il pezzo va nella sezione Colonne sonore del suo formato e il suffisso viene tolto dal nome visibile.",
+        "_nota": "Un pezzo va nella sezione Colonne sonore del suo formato se nel gestionale l'artista contiene ' - colonne sonore film' (il suffisso viene tolto dal nome visibile) oppure se tra i generi c'e Soundtrack, Stage & Screen o Colonne Sonore.",
         "artista_contiene": [
           "colonne sonore film",
           "colonna sonora film",
@@ -607,7 +607,13 @@
           "cd": "cd-colonne-sonore",
           "vinili": "vinili-colonne-sonore",
           "musicassette": "musicassette-colonne-sonore"
-        }
+        },
+        "genere_contiene": [
+          "soundtrack",
+          "stage & screen",
+          "colonne sonore",
+          "colonna sonora"
+        ]
       }
     }
   }

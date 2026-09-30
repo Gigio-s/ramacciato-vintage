@@ -232,9 +232,9 @@ def prossime_date(m, quante=3):
 def colonne_sonore(p, m):
     """Artista "... - colonne sonore film" nel gestionale: toglie il suffisso e segna il pezzo."""
     c = (m or {}).get("colonne_sonore")
-    if not c or not p.get("artist"):
+    if not c:
         return False
-    al = str(p["artist"]).lower()
+    al = str(p.get("artist") or "").lower()
     for k in sorted(c.get("artista_contiene", []), key=len, reverse=True):
         if k not in al:
             continue
@@ -243,6 +243,11 @@ def colonne_sonore(p, m):
         p["artist"] = re.sub(r"^[\s\-\u2013:]+|[\s\-\u2013:]+$", "", a).strip()
         if p.get("name"):
             p["name"] = re.sub(r"\s*[-\u2013:]\s*" + kr + r"(?=\s*([-\u2013:]|$))", "", str(p["name"]), count=1, flags=re.I).strip()
+        p["_colonna_sonora"] = True
+        return True
+    # oppure genere Discogs/gestionale da colonna sonora (Soundtrack, Stage & Screen, Colonne Sonore)
+    gl = [str(g).lower() for g in (p.get("genres") or [])]
+    if any(k in g for k in c.get("genere_contiene", []) for g in gl):
         p["_colonna_sonora"] = True
         return True
     return False

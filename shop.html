@@ -695,6 +695,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
   </div>
 </div>
 <!-- cart drawer replaced by cart-widget.js -->
+<script src="market-stock.js"></script>
 <script>
 // ── Prodotti caricati da catalogo.json ──
 // Per aggiungere/modificare prodotti: edita catalogo.json, NON questo file.
@@ -985,7 +986,7 @@ function openModal(id){
 }
 function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow=''}
 function paypalBuy(p,qty){var q=qty||1;var c=loadCart();var existing=c.find(function(x){return x.id===p.id});if(!existing){var item=JSON.parse(JSON.stringify(p));item.qty=q;c.push(item);saveCart(c);}window.location.href='checkout.html';}
-function toggleCart(p,qty){var q=qty||1;var c=loadCart();var idx=-1;c.forEach(function(x,i){if(x.id===p.id)idx=i});if(idx===-1){var item=JSON.parse(JSON.stringify(p));item.qty=q;c.push(item);}else{c.splice(idx,1);}saveCart(c);updateCartUI();var btn=document.getElementById('modalCart');if(btn){var inCart=loadCart().filter(function(x){return x.id===p.id}).length>0;btn.innerHTML=inCart?'&#x2713; Nel carrello':'\u{1F6D2} Aggiungi al carrello';btn.classList.toggle('added',inCart);}}
+function toggleCart(p,qty){if(window.RV_MARKET_STOCK_ENABLED&&(p.sold||p._stockUnavailable||Number(p.copie)<(qty||1))){alert('Articolo esaurito o disponibilità non verificabile.');return;}var q=qty||1;var c=loadCart();var idx=-1;c.forEach(function(x,i){if(x.id===p.id)idx=i});if(idx===-1){var item=JSON.parse(JSON.stringify(p));item.qty=q;c.push(item);}else{c.splice(idx,1);}saveCart(c);updateCartUI();var btn=document.getElementById('modalCart');if(btn){var inCart=loadCart().filter(function(x){return x.id===p.id}).length>0;btn.innerHTML=inCart?'&#x2713; Nel carrello':'\u{1F6D2} Aggiungi al carrello';btn.classList.toggle('added',inCart);}}
 function updateCartUI(){var cart=loadCart();var count=cart.reduce(function(s,x){return s+(x.qty||1);},0);var el=document.getElementById('cartCount');if(el){el.textContent=count;el.classList.toggle('zero',count===0);}}
 window.__rvShopCartUpdated=function(){updateCartUI();};
 
@@ -1049,7 +1050,7 @@ Promise.all(
     return fetch('catalogo-'+c+'.json').then(function(r){return r.json();}).catch(function(){return [];});
   })).concat([fetch('prodotto/novita.json',{cache:'no-cache'}).then(function(r){return r.json();}).catch(function(){return {};})])
 )
-  .then(function(results){
+  .then(async function(results){
     var meta=results[0];
     var allProds=[];results.slice(1).forEach(function(arr){if(Array.isArray(arr))allProds=allProds.concat(arr);});
     var data={prodotti:allProds,sottocategorie:meta.sottocategorie||{}};
@@ -1058,6 +1059,7 @@ Promise.all(
     //  - senza immagine (né foto, né cover, né modello 3D) → oscurato automaticamente
     // In entrambi i casi il prodotto RESTA nei file catalogo-*.json e riappare da solo
     // appena si toglie il flag o si aggiunge una foto/cover/modello.
+    await window.rvMarketStock(allProds);
     function rvHasVisual(p){return !!(p.model||p.cover||(p.photos&&p.photos.length&&p.photos[0]));}
     function rvVisible(p){return !p.nascosto && rvHasVisual(p);}
     PRODUCTS=(data.prodotti||[]).filter(rvVisible);SUBCATS_DATA=data.sottocategorie||{};if(window.rvAdattaGestionale)PRODUCTS.forEach(function(p){rvAdattaGestionale(p,meta.mappa_gestionale||{},SUBCATS_DATA);});/* "Nuovo" scade da solo dopo 7 giorni dalla prima pubblicazione (date in prodotto/novita.json, scritte da scripts/genera_seo.py) */(function(){var nov=results[results.length-1];if(!nov||Array.isArray(nov))return;var oggi=Date.now();PRODUCTS.forEach(function(p){var d=nov[String(p.id)];if(p.isNew&&d&&(oggi-Date.parse(d+'T00:00:00'))>=7*864e5)p.isNew=false;});})();
@@ -1247,5 +1249,11 @@ document.addEventListener('error',function(e){var t=e.target;if(!t||t.tagName!==
 (function(){var fatto=false;function carica(){if(fatto)return;fatto=true;var sc=document.createElement('script');sc.type='module';sc.src='https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js';document.head.appendChild(sc);}
 if(document.querySelector('model-viewer'))carica();new MutationObserver(function(){if(!fatto&&document.querySelector('model-viewer'))carica();}).observe(document.documentElement,{childList:true,subtree:true});})();
 </script>
+
+<script>
+// Recheck open shop pages; checkout always checks central stock server-side.
+setInterval(async function(){if(!window.RV_MARKET_STOCK_ENABLED||typeof PRODUCTS==='undefined')return;await window.rvMarketStock(PRODUCTS);renderGrid();var b=document.getElementById('modalCart');if(b&&document.getElementById('modal')?.classList.contains('open')){b.disabled=true;b.textContent='Riapri la scheda per verificare la disponibilità';}},30000);
+</script>
+
 </body>
 </html>

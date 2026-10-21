@@ -271,7 +271,7 @@ def url_img(src):
         return ""
     if re.match(r"^https?://", src):
         return src
-    return BASE + "/" + urllib.parse.quote(src.lstrip("/"))
+    return BASE + "/" + urllib.parse.quote(urllib.parse.unquote(src.lstrip("/")))
 
 
 def src_img(src):
@@ -279,7 +279,7 @@ def src_img(src):
         return ""
     if re.match(r"^https?://", src):
         return src
-    return "/" + urllib.parse.quote(src.lstrip("/"))
+    return "/" + urllib.parse.quote(urllib.parse.unquote(src.lstrip("/")))
 
 
 def data_it(d):
@@ -378,7 +378,7 @@ def codice_edizione(p):
 def adatta_base(p, mappa, subcats):
     # il gestionale a volte elenca foto non scaricate: tengo solo quelle che esistono (o remote)
     if p.get("photos"):
-        p["photos"] = [x for x in p["photos"] if x and (re.match(r"^https?://", str(x)) or os.path.exists(os.path.join(ROOT, str(x))))]
+        p["photos"] = [x for x in p["photos"] if x and (re.match(r"^https?://", str(x)) or os.path.exists(os.path.join(ROOT, urllib.parse.unquote(str(x)))))]
     ph = p.get("photos") or []
     if p.get("discogsId") and ph and re.match(r"^https?://i\.discogs\.com", str(ph[0])):
         loc = "photos/inventario/discogs-%s-cover.jpg" % p["discogsId"]

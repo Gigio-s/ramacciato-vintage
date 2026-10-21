@@ -155,8 +155,6 @@ MERCATINI = [
      "prov": "VI", "cap": "36100", "lat": 45.5475, "lng": 11.5467, "n": 2, "wd": 6, "quando": "2ª domenica del mese"},
     {"id": "padova-prato", "nome": "Non ho l'età - Padova", "luogo": "Prato della Valle", "citta": "Padova",
      "prov": "PD", "cap": "35123", "lat": 45.3984, "lng": 11.8763, "n": 3, "wd": 6, "quando": "3ª domenica del mese"},
-    {"id": "piazzola", "nome": "Mercatino di Piazzola sul Brenta", "luogo": "Centro storico", "citta": "Piazzola sul Brenta",
-     "prov": "PD", "cap": "35016", "lat": 45.5395, "lng": 11.7847, "n": 4, "wd": 6, "quando": "4ª domenica del mese"},
     {"id": "mestre", "nome": "Mercatino di Mestre", "luogo": "Corso del Popolo", "citta": "Mestre (Venezia)",
      "prov": "VE", "cap": "30172", "lat": 45.4903, "lng": 12.2446, "n": 2, "wd": 5, "quando": "2° sabato del mese",
      "alterna": True},
@@ -165,11 +163,89 @@ MERCATINI = [
      "alterna": True},
 ]
 
+# Altri mercatini ricorrenti del Veneto (calendario pubblico nella pagina Mercatini).
+# Fonte: agendaonline.it (mercatini Veneto e Verona), ottobre 2026. Date teoriche: verificare con gli organizzatori.
+# n = settimana del mese (-1 = ultima), wd = 5 sabato / 6 domenica, no = mesi in cui non si tiene
+ALTRI_MERCATINI = [
+    {"prov": "VI", "citta": "Marostica", "nome": "Mercatino dell'antiquariato", "luogo": "Piazza Castello e portici", "n": 1, "wd": 6, "rv": "marostica"},
+    {"prov": "VI", "citta": "Vicenza", "nome": "Antiquariato, collezionismo e vintage", "luogo": "Centro storico", "n": 2, "wd": 6, "no": [7, 8], "rv": "vicenza-signori"},
+    {"prov": "VI", "citta": "Bassano del Grappa", "nome": "Antiquariato, collezionismo e vintage", "luogo": "Piazza Terraglio", "n": 3, "wd": 6},
+    {"prov": "PD", "citta": "Piazzola sul Brenta", "nome": "Mercatino dell'antiquariato e modernariato", "luogo": "Piazza Camerini", "n": -1, "wd": 6},
+    {"prov": "PD", "citta": "Padova", "nome": "Mercatino dell'antiquariato", "luogo": "Prato della Valle", "n": 3, "wd": 6, "rv": "padova-prato"},
+    {"prov": "PD", "citta": "Arquà Petrarca", "nome": "Usato e antiquariato", "luogo": "Centro storico", "n": 2, "wd": 6, "no": [12, 1, 2, 3]},
+    {"prov": "PD", "citta": "Cittadella", "nome": "Mercatino delle pulci", "luogo": "Centro", "n": 3, "wd": 6, "no": [8]},
+    {"prov": "PD", "citta": "Conselve", "nome": "Mercatino delle cose d'altri tempi", "luogo": "Piazze XX Settembre e Cesare Battisti", "n": -1, "wd": 6},
+    {"prov": "TV", "citta": "Treviso", "nome": "Mercatino dell'antiquariato", "luogo": "Borgo Cavour", "n": 4, "wd": 6},
+    {"prov": "TV", "citta": "Montebelluna", "nome": "Mercatino dell'antiquariato", "luogo": "Piazza D'Annunzio", "n": 3, "wd": 6, "no": [12]},
+    {"prov": "TV", "citta": "Portobuffolè", "nome": "Mercatino dell'antiquariato", "luogo": "Centro storico", "n": 2, "wd": 6},
+    {"prov": "TV", "citta": "Monastier di Treviso", "nome": "Mercatino dell'antiquariato", "luogo": "Centro", "n": 1, "wd": 6, "no": [1, 7, 8, 12]},
+    {"prov": "VE", "citta": "Mestre (Venezia)", "nome": "Mercatino di Mestre", "luogo": "Corso del Popolo", "n": 2, "wd": 5, "rv": "mestre"},
+    {"prov": "VE", "citta": "Noale", "nome": "Mercatino dell'antiquariato", "luogo": "Piazza Castello", "n": 2, "wd": 6, "no": [4, 6]},
+    {"prov": "VE", "citta": "Portogruaro", "nome": "Mercatino dell'antiquariato", "luogo": "Centro storico", "n": 2, "wd": 6, "no": [7, 8]},
+    {"prov": "VE", "citta": "Mirano", "nome": "Oggetti dei nonni", "luogo": "Piazza Martiri", "n": 3, "wd": 6, "no": [7, 8]},
+    {"prov": "VR", "citta": "Verona", "nome": "Mercatino dell'antiquariato di San Zeno", "luogo": "Piazza San Zeno", "n": 1, "wd": 6, "no": [8]},
+    {"prov": "VR", "citta": "Villafranca di Verona", "nome": "Mercatino dell'antiquariato", "luogo": "Corso Vittorio Emanuele II", "n": 2, "wd": 6, "no": [7, 8]},
+    {"prov": "VR", "citta": "Soave", "nome": "Mercatino dell'antiquariato", "luogo": "Via Roma e piazza Marogna", "n": 3, "wd": 6},
+    {"prov": "VR", "citta": "Valeggio sul Mincio", "nome": "Mercatino dell'antiquariato", "luogo": "Piazza Carlo Alberto", "n": 4, "wd": 6},
+    {"prov": "BL", "citta": "Feltre", "nome": "Fiera dell'Oggetto Ritrovato", "luogo": "Piazza Vittorio Emanuele", "n": 2, "wd": 6, "no": [1, 2, 3]},
+    {"prov": "BL", "citta": "Belluno", "nome": "Cose di vecchie case", "luogo": "Centro storico", "n": 4, "wd": 6, "no": [1, 2, 3, 4, 5, 10, 11, 12]},
+    {"prov": "RO", "citta": "Lendinara", "nome": "Antiquariato e hobbistica", "luogo": "Centro", "n": 1, "wd": 6},
+    {"prov": "RO", "citta": "Polesella", "nome": "Mercatino dell'antiquariato", "luogo": "Piazza", "n": 3, "wd": 6},
+]
+PROVINCE = [("VI", "Vicenza"), ("PD", "Padova"), ("TV", "Treviso"), ("VE", "Venezia"), ("VR", "Verona"), ("BL", "Belluno"), ("RO", "Rovigo")]
+
+
+def regola_txt(m):
+    g = "domenica" if m["wd"] == 6 else "sabato"
+    if m["n"] == -1:
+        t = "Ultima %s del mese" % g
+    else:
+        t = "%d%s %s del mese" % (m["n"], "ª" if m["wd"] == 6 else "°", g)
+    no = m.get("no") or []
+    if no:
+        t += " (non a " + ", ".join(MESI[x - 1] for x in sorted(no)) + ")"
+    return t
+
+
+def calendario_veneto_html():
+    """Blocco "Calendario mercatini antiquariato in Veneto" per mercatini.html (static per Google + aggiornamento live in pagina)."""
+    righe = []
+    for sig, nome_p in PROVINCE:
+        lista = [m for m in ALTRI_MERCATINI if m["prov"] == sig]
+        if not lista:
+            continue
+        carte = []
+        for m in lista:
+            date = ", ".join(data_it(d) for d in prossime_date(m, 2))
+            maps = "https://www.google.com/maps/search/?api=1&query=%s" % urllib.parse.quote("%s, %s" % (m["luogo"], m["citta"].split(" (")[0]))
+            rv = ('<span class="cv-rv">C\'è anche Ramacciato Vintage</span>' if m.get("rv") else "")
+            carte.append(f'<li class="cv-item{" cv-mio" if m.get("rv") else ""}"><b>{e(m["citta"])}</b><span class="cv-nome">{e(m["nome"])}</span>'
+                         f'<span class="cv-luogo">&#x1F4CD; {e(m["luogo"])}</span><span class="cv-regola">{e(regola_txt(m))}</span>'
+                         f'<span class="cv-date">Prossime date: {e(date)}</span>{rv}<a href="{maps}" target="_blank" rel="noopener">Apri in Maps</a></li>')
+        righe.append(f'<h3 class="cv-prov">Provincia di {e(nome_p)}</h3><ul class="cv-lista">{"".join(carte)}</ul>')
+    dati = json.dumps([{k: m.get(k) for k in ("citta", "nome", "luogo", "n", "wd", "no", "rv")} for m in ALTRI_MERCATINI], ensure_ascii=False).replace("</", "<\\/")
+    return ("<!-- CAL-VENETO:START (generato da scripts/genera_seo.py, non modificare a mano) -->\n"
+            '<section id="calendario-veneto" class="cv"><div class="wrap">'
+            '<p class="sec-label">Calendario antiquariato e vintage</p>'
+            '<h2 class="h2">Mercatini dell\'antiquariato in Veneto: date e luoghi</h2>'
+            '<div class="divider-line"></div>'
+            '<p class="body-copy">I principali mercatini ricorrenti di antiquariato, modernariato, usato e vintage in Veneto, provincia per provincia, '
+            'con le prossime date. Quelli segnati sono i mercatini dove trovi anche il banco di Ramacciato Vintage.</p>'
+            '<div class="cv-weekend" id="cvWeekend"><h3>Questo weekend in Veneto</h3><ul id="cvWeekendLista"></ul></div>'
+            + "".join(righe)
+            + '<p class="cv-nota">Date teoriche ricavate dai calendari pubblici dei mercatini (ottobre 2026): meteo, festività ed eventi possono cambiarle. '
+              'Prima di partire verifica sempre con gli organizzatori o con il Comune.</p>'
+            f'<script type="application/json" id="cvDati">{dati}</script>'
+            "</div></section>\n<!-- CAL-VENETO:END -->")
+
+
 ZONE = [
     {"slug": "vintage-usato-vicenza", "zona": "Vicenza", "mercatini": ["vicenza-signori", "vicenza-duomo", "marostica"],
-     "title": "Vintage e Usato a Vicenza: Mercatini e Negozio Online",
-     "h1": "Vintage e usato a Vicenza",
+     "title": "Negozio Vintage a Vicenza: Dischi, Videogiochi e Usato",
+     "h1": "Negozio vintage a Vicenza",
      "testo": [
+         "Cerchi un negozio vintage a Vicenza? Ramacciato Vintage è il negozio di vintage e usato nato a Vicenza: "
+         "non ho una vetrina fissa, il negozio è online e dal vivo lo trovi ai mercatini del centro e della provincia.",
          "Ramacciato Vintage nasce a Vicenza. Qui trovi il mio banco nei mercatini del centro: "
          "la seconda domenica del mese in Piazza dei Signori con Non ho l'età e, alcuni mesi, "
          "il secondo sabato in Piazza Duomo con il Sabato Vintage.",
@@ -177,12 +253,11 @@ ZONE = [
          "Tutto quello che vedi nel negozio online lo puoi prenotare e ritirare di persona al mercatino, senza spese di spedizione.",
          "A Vicenza e provincia mi occupo anche di svuotacantine: valuto gli oggetti, ritiro quelli che hanno valore "
          "e per lo sgombero completo collaboro con L2 Traslochi."]},
-    {"slug": "vintage-usato-padova", "zona": "Padova", "mercatini": ["padova-prato", "piazzola"],
-     "title": "Vintage e Usato a Padova: Prato della Valle e Piazzola",
+    {"slug": "vintage-usato-padova", "zona": "Padova", "mercatini": ["padova-prato"],
+     "title": "Vintage e Usato a Padova: Prato della Valle",
      "h1": "Vintage e usato a Padova",
      "testo": [
-         "A Padova mi trovi la terza domenica del mese in Prato della Valle, al mercatino Non ho l'età, "
-         "e la quarta domenica al grande mercatino di Piazzola sul Brenta.",
+         "A Padova mi trovi la terza domenica del mese in Prato della Valle, al mercatino Non ho l'età.",
          "Sul banco porto una selezione di dischi, film, videogiochi e oggetti d'epoca. Se hai visto qualcosa nel "
          "negozio online, prenotalo: te lo tengo da parte e lo ritiri direttamente al mercatino.",
          "Anche a Padova e provincia svolgo servizio di svuotacantine con valutazione gratuita degli oggetti."]},
@@ -204,12 +279,12 @@ ZONE = [
          "Porto dischi, CD, DVD, videogiochi e oggetti vintage. Prenota online quello che ti interessa e ritiralo "
          "al banco senza spese di spedizione.",
          "Per Venezia e la terraferma mi occupo anche di svuotacantine e ritiro di oggetti su richiesta."]},
-    {"slug": "vintage-usato-veneto", "zona": "Veneto", "mercatini": ["marostica", "vicenza-signori", "padova-prato", "piazzola", "mestre", "vicenza-duomo"],
+    {"slug": "vintage-usato-veneto", "zona": "Veneto", "mercatini": ["marostica", "vicenza-signori", "padova-prato", "mestre", "vicenza-duomo"],
      "title": "Vintage e Usato in Veneto: Mercatini e Negozio Online",
      "h1": "Vintage e usato in Veneto",
      "testo": [
          "Ramacciato Vintage è un negozio dell'usato e del collezionismo con base a Vicenza: vendo online in tutta Italia "
-         "e ogni mese porto il banco nei mercatini del Veneto, tra Vicenza, Padova, Marostica, Piazzola sul Brenta e Mestre.",
+         "e ogni mese porto il banco nei mercatini del Veneto, tra Vicenza, Padova, Marostica e Mestre.",
          "Da Verona a Treviso, da Rovigo a Belluno spedisco in pochi giorni. Se preferisci vedere il pezzo dal vivo, "
          "prenotalo online e ritiralo al primo mercatino utile.",
          "In tutto il Veneto svolgo anche servizio di svuotacantine: valutazione gratuita e ritiro degli oggetti di valore."]},
@@ -287,8 +362,13 @@ def data_it(d):
 
 
 def nth_weekday(anno, mese, n, wd):
+    """n-esimo giorno della settimana del mese (n = -1: l'ultimo)."""
     d = dt.date(anno, mese, 1)
     d += dt.timedelta(days=(wd - d.weekday()) % 7)
+    if n == -1:
+        while (d + dt.timedelta(weeks=1)).month == mese:
+            d += dt.timedelta(weeks=1)
+        return d
     return d + dt.timedelta(weeks=n - 1)
 
 
@@ -296,7 +376,7 @@ def prossime_date(m, quante=3):
     out, a, me = [], OGGI.year, OGGI.month
     while len(out) < quante:
         d = nth_weekday(a, me, m["n"], m["wd"])
-        if d >= OGGI:
+        if d >= OGGI and me not in m.get("no", []):
             out.append(d)
         me += 1
         if me > 12:
@@ -528,8 +608,8 @@ def testa(title, desc, canon, og_img="", robots="index,follow", og_type="website
 
 def hub_link():
     cats = "".join('<a href="/negozio/%s.html">%s</a>' % (c["slug"], e(c["h1"].split(":")[0])) for c in PAGINE_CAT)
-    zone = "".join('<a href="/%s.html">%s</a>' % (z["slug"], e(z["zona"])) for z in ZONE)
-    return f'<nav class="sx-hub" aria-label="Esplora"><div><b>Negozio</b>{cats}</div><div><b>Dove trovarmi</b>{zone}<a href="/mercatini.html">Calendario mercatini</a></div></nav>'
+    zone = "".join('<a href="/%s.html">%s</a>' % (z["slug"], e("Negozio vintage Vicenza" if z["zona"] == "Vicenza" else z["zona"])) for z in ZONE)
+    return f'<nav class="sx-hub" aria-label="Esplora"><div><b>Negozio</b>{cats}</div><div><b>Dove trovarmi</b>{zone}<a href="/mercatini.html#calendario-veneto">Calendario mercatini Veneto</a></div></nav>'
 
 
 def piede():
@@ -848,6 +928,9 @@ def aggiorna_mercatini_html():
         nuovo = re.sub(r"<!-- SEO-EVENTI:START.*?<!-- SEO-EVENTI:END -->", lambda m: blocco, s, flags=re.S)
     else:
         nuovo = s.replace("</head>", blocco + "\n</head>", 1)
+    if "<!-- CAL-VENETO:START" in nuovo:
+        cal = calendario_veneto_html()
+        nuovo = re.sub(r"<!-- CAL-VENETO:START.*?<!-- CAL-VENETO:END -->", lambda m: cal, nuovo, flags=re.S)
     if nuovo != s:
         with open(p, "wb") as f:
             f.write(nuovo.encode("utf-8", "surrogateescape"))

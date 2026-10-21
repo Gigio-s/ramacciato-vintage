@@ -1,5 +1,781 @@
 [
   {
+    "id": 127,
+    "cat": "musica",
+    "name": "All-4-One",
+    "desc": "CD Album Repress · Hip Hop, Funk / Soul, Pop, Vocal, Contemporary R&B\nCodice edizione: 7567-82588-2\nNazione di provenienza: Europe",
+    "price": 4.5,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/All-4-One%20--%20127/discogs-24738326-cover-604c84995ec4078d.webp",
+      "photos/inventario/All-4-One%20--%20127/discogs-24738326-cover-28e903d6436c2299.webp",
+      "photos/inventario/All-4-One%20--%20127/discogs-24738326-cover-d1423f5cf7b53ab9.webp"
+    ],
+    "subcat": "CD Album Repress",
+    "artist": "All-4-One",
+    "label": "Atlantic",
+    "year": "1994",
+    "discogsId": "24738326",
+    "genres": [
+      "Hip Hop",
+      "Funk / Soul",
+      "Pop",
+      "Vocal",
+      "Contemporary R&B"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 126,
+    "cat": "musica",
+    "name": "Forgiven, Not Forgotten",
+    "desc": "CD Album · Rock, Folk Rock\nCodice edizione: 7567926122\nNazione di provenienza: Europe",
+    "price": 4.5,
+    "condition": "Very Good (VG)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Forgiven-%20Not%20Forgotten%20--%20126/discogs-9518153-cover-74bd4cb5ff2f5b42.webp",
+      "photos/inventario/Forgiven-%20Not%20Forgotten%20--%20126/discogs-9518153-cover-aaa0df9a8a0a3107.webp",
+      "photos/inventario/Forgiven-%20Not%20Forgotten%20--%20126/discogs-9518153-cover-64331d1af53f7abe.webp"
+    ],
+    "subcat": "CD Album",
+    "artist": "The Corrs",
+    "label": "143 Records, Lava, Atlantic",
+    "year": "1995",
+    "discogsId": "9518153",
+    "genres": [
+      "Rock",
+      "Folk Rock"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 125,
+    "cat": "musica",
+    "name": "Back To Titanic (Music From The Motion Picture)",
+    "desc": "CD Album · Stage & Screen, Soundtrack, Score\nCodice edizione: SK 60691\nNazione di provenienza: Europe",
+    "price": 5,
+    "condition": "Very Good (VG)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Back%20To%20Titanic%20%28Music%20From%20The%20Motion%20Picture%29%20--%20125/discogs-15160802-cover-023a32959bb4e0b1.webp",
+      "photos/inventario/Back%20To%20Titanic%20%28Music%20From%20The%20Motion%20Picture%29%20--%20125/discogs-15160802-cover-6fdaa3f1dbf6ee59.webp",
+      "photos/inventario/Back%20To%20Titanic%20%28Music%20From%20The%20Motion%20Picture%29%20--%20125/discogs-15160802-cover-86b524b46eeb9a6d.webp"
+    ],
+    "subcat": "cd-colonne-sonore",
+    "artist": "James Horner",
+    "label": "Sony Classical, Sony Music Soundtrax",
+    "year": "1998",
+    "discogsId": "15160802",
+    "genres": [
+      "Stage & Screen",
+      "Score",
+      "Colonna sonora"
+    ],
+    "colonnaSonora": true,
+    "copie": 1
+  },
+  {
+    "id": 124,
+    "cat": "musica",
+    "name": "Diamanti",
+    "desc": "3 CD Compilation · Pop\nCodice edizione: 88697033162\nNazione di provenienza: Italy",
+    "price": 15,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Diamanti%20--%20124/discogs-5394574-cover-16f6d6e07c1174a7.webp",
+      "photos/inventario/Diamanti%20--%20124/discogs-5394574-cover-731c6e99244f4c4c.webp",
+      "photos/inventario/Diamanti%20--%20124/discogs-5394574-cover-5533cb7b02812146.webp"
+    ],
+    "subcat": "3 CD Compilation",
+    "artist": "Antonello Venditti",
+    "label": "RCA, Heinz Music",
+    "year": "2006",
+    "discogsId": "5394574",
+    "genres": [
+      "Pop"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 123,
+    "cat": "musica",
+    "name": "No Need To Argue",
+    "desc": "CD Album Reissue Unofficial Release · Rock, Alternative Rock, Pop Rock\nCodice edizione: 314-524 050-2\nNazione di provenienza: Europe",
+    "price": 6,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/No%20Need%20To%20Argue%20--%20123/discogs-28326925-cover-779bc9653e3596ab.webp",
+      "photos/inventario/No%20Need%20To%20Argue%20--%20123/discogs-28326925-cover-f77c36799189fc2d.webp",
+      "photos/inventario/No%20Need%20To%20Argue%20--%20123/discogs-28326925-cover-7f5533973b86d807.webp"
+    ],
+    "subcat": "CD Album Reissue Unofficial Release",
+    "artist": "The Cranberries",
+    "label": "Island Records (2)",
+    "year": "2023",
+    "discogsId": "28326925",
+    "genres": [
+      "Rock",
+      "Alternative Rock",
+      "Pop Rock"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 122,
+    "cat": "musica",
+    "name": "How To Dismantle An Atomic Bomb",
+    "desc": "CD Album · Rock\nCodice edizione: 9867829, 986 782-9\nNazione di provenienza: Europe",
+    "price": 6,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/How%20To%20Dismantle%20An%20Atomic%20Bomb%20--%20122/discogs-9787914-cover-eda5908ba9d2e553.webp",
+      "photos/inventario/How%20To%20Dismantle%20An%20Atomic%20Bomb%20--%20122/discogs-9787914-cover-dd9bfbf2db2b31a1.webp",
+      "photos/inventario/How%20To%20Dismantle%20An%20Atomic%20Bomb%20--%20122/discogs-9787914-cover-06e2f594238b702f.webp"
+    ],
+    "subcat": "CD Album",
+    "artist": "U2",
+    "label": "Island Records, Helicon Records",
+    "year": "2004",
+    "discogsId": "9787914",
+    "genres": [
+      "Rock"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 121,
+    "cat": "musica",
+    "name": "To The Faithful Departed",
+    "desc": "CD Album Stereo · Rock, Alternative Rock\nCodice edizione: 524 246-2\nNazione di provenienza: Europe",
+    "price": 5.5,
+    "condition": "Very Good (VG)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/To%20The%20Faithful%20Departed%20--%20121/discogs-16108744-cover-1a096061a7b02e9c.webp",
+      "photos/inventario/To%20The%20Faithful%20Departed%20--%20121/discogs-16108744-cover-51a43bf8c810a4d5.webp",
+      "photos/inventario/To%20The%20Faithful%20Departed%20--%20121/discogs-16108744-cover-28c9e588127388c8.webp"
+    ],
+    "subcat": "CD Album Stereo",
+    "artist": "The Cranberries",
+    "label": "Island Records",
+    "year": "1996",
+    "discogsId": "16108744",
+    "genres": [
+      "Rock",
+      "Alternative Rock"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 120,
+    "cat": "musica",
+    "name": "In Time: The Best Of R.E.M. 1988-2003",
+    "desc": "CD Compilation · Rock, Alternative Rock, Pop Rock\nCodice edizione: 9362-48381-2\nNazione di provenienza: Europe",
+    "price": 6.5,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/In%20Time-%20The%20Best%20Of%20R.E.M.%201988-2003%20--%20120/discogs-14226708-cover-1e4ce47b4e84f4c7.webp",
+      "photos/inventario/In%20Time-%20The%20Best%20Of%20R.E.M.%201988-2003%20--%20120/discogs-14226708-cover-22eefc43d2421673.webp",
+      "photos/inventario/In%20Time-%20The%20Best%20Of%20R.E.M.%201988-2003%20--%20120/discogs-14226708-cover-705d49a7883440a5.webp"
+    ],
+    "subcat": "CD Compilation",
+    "artist": "R.E.M.",
+    "label": "Warner Bros. Records",
+    "year": "2003",
+    "discogsId": "14226708",
+    "genres": [
+      "Rock",
+      "Alternative Rock",
+      "Pop Rock"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 119,
+    "cat": "musica",
+    "name": "Out Of Time",
+    "desc": "CD Album Stereo · Rock, Alternative Rock\nCodice edizione: 7599-26496-2, 9 26496-2\nNazione di provenienza: Europe",
+    "price": 6,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Out%20Of%20Time%20--%20119/discogs-10074597-cover-fe38597a2891313a.webp",
+      "photos/inventario/Out%20Of%20Time%20--%20119/discogs-10074597-cover-55a3e99dc30ae00e.webp",
+      "photos/inventario/Out%20Of%20Time%20--%20119/discogs-10074597-cover-6c49865a376433ec.webp"
+    ],
+    "subcat": "CD Album Stereo",
+    "artist": "R.E.M.",
+    "label": "Warner Bros. Records, Warner Bros. Records",
+    "year": "1991",
+    "discogsId": "10074597",
+    "genres": [
+      "Rock",
+      "Alternative Rock"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 118,
+    "cat": "musica",
+    "name": "Automatic For The People",
+    "desc": "CD Album Club Edition · Rock, Pop, Alternative Rock, Soft Rock, Pop Rock\nCodice edizione: 78 877 8, 9362-45055-2\nNazione di provenienza: Europe",
+    "price": 6,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Automatic%20For%20The%20People%20--%20118/discogs-8506189-cover-c1076fdcd981f58c.webp",
+      "photos/inventario/Automatic%20For%20The%20People%20--%20118/discogs-8506189-cover-272d13f12a52e005.webp",
+      "photos/inventario/Automatic%20For%20The%20People%20--%20118/discogs-8506189-cover-5c1a4ab410b60a6e.webp"
+    ],
+    "subcat": "CD Album Club Edition",
+    "artist": "R.E.M.",
+    "label": "Warner Bros. Records, Warner Bros. Records",
+    "year": "1992",
+    "discogsId": "8506189",
+    "genres": [
+      "Rock",
+      "Pop",
+      "Alternative Rock",
+      "Soft Rock",
+      "Pop Rock"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 117,
+    "cat": "musica",
+    "name": "Lucky Town",
+    "desc": "CD Album Reissue Stereo · Rock, Pop Rock, Classic Rock\nCodice edizione: 88697354002\nNazione di provenienza: Spain",
+    "price": 10,
+    "condition": "Nuovo / Sigillato",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Lucky%20Town%20--%20117/discogs-26972624-cover-ab8cbf6b997f5b14.webp",
+      "photos/inventario/Lucky%20Town%20--%20117/discogs-26972624-cover-ceb73cd02c2ef940.webp",
+      "photos/inventario/Lucky%20Town%20--%20117/discogs-26972624-cover-553391a22b0d1bec.webp"
+    ],
+    "subcat": "CD Album Reissue Stereo",
+    "artist": "Bruce Springsteen",
+    "label": "Columbia",
+    "year": "2008",
+    "discogsId": "26972624",
+    "genres": [
+      "Rock",
+      "Pop Rock",
+      "Classic Rock"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 116,
+    "cat": "musica",
+    "name": "Antropop",
+    "desc": "CD Album · Electronic, Pop, Synth-pop\nCodice edizione: 7243 5 26281 2 4\nNazione di provenienza: Spain",
+    "price": 5,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Antropop%20--%20116/discogs-1230210-cover-77c88d05f7c43158.webp",
+      "photos/inventario/Antropop%20--%20116/discogs-1230210-cover-e7c8b8cd5396a2a1.webp",
+      "photos/inventario/Antropop%20--%20116/discogs-1230210-cover-3969794e3d99a918.webp"
+    ],
+    "subcat": "CD Album",
+    "artist": "OBK",
+    "label": "Hispavox",
+    "year": "2000",
+    "discogsId": "1230210",
+    "genres": [
+      "Electronic",
+      "Pop",
+      "Synth-pop"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 115,
+    "cat": "musica",
+    "name": "Crazy Atorrante",
+    "desc": "CD Album · Hip Hop, Latin, Pop Rap\nCodice edizione: 8573848822\nNazione di provenienza: Spain",
+    "price": 5,
+    "condition": "Very Good (VG)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Crazy%20Atorrante%20--%204aad484c74cf/discogs-2361000-cover-e20a2745ff6c10e9.webp",
+      "photos/inventario/Crazy%20Atorrante%20--%204aad484c74cf/discogs-2361000-cover-ffe7810619acf92d.webp",
+      "photos/inventario/Crazy%20Atorrante%20--%204aad484c74cf/discogs-2361000-cover-5afaf0197a41141f.webp"
+    ],
+    "subcat": "CD Album",
+    "artist": "DJ Kun",
+    "label": "Gasa",
+    "year": "2000",
+    "discogsId": "2361000",
+    "genres": [
+      "Hip Hop",
+      "Latin",
+      "Pop Rap"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 114,
+    "cat": "musica",
+    "name": "Suspiria",
+    "desc": "2 CD Album · Electronic, Stage & Screen, Experimental, Score\nCodice edizione: XL936CD\nNazione di provenienza: Europe",
+    "price": 15,
+    "condition": "Very Good (VG)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Suspiria%20--%20eb73228b34ca/discogs-12808986-cover-53142089776fbfc2.webp",
+      "photos/inventario/Suspiria%20--%20eb73228b34ca/discogs-12808986-cover-bf71defd54ef0191.webp",
+      "photos/inventario/Suspiria%20--%20eb73228b34ca/discogs-12808986-cover-112d74b036ad5924.webp"
+    ],
+    "subcat": "2 CD Album",
+    "artist": "Thom Yorke",
+    "label": "XL Recordings",
+    "year": "2018",
+    "discogsId": "12808986",
+    "genres": [
+      "Electronic",
+      "Stage & Screen",
+      "Experimental",
+      "Score"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 113,
+    "cat": "musica",
+    "name": "Harry Potter And The Philosopher's Stone (Music From And Inspired By The Motion Picture)",
+    "desc": "CD Album, CD CD-ROM Special Edition · Classical, Stage & Screen, Soundtrack, Score, Contemporary\nCodice edizione: 930862 7\nNazione di provenienza: Europe",
+    "price": 6,
+    "condition": "Very Good (VG)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Harry%20Potter%20And%20The%20Philosopher%27s%20Stone%20%28Music%20From%20And%20Inspired%20By%20T%20--%202a8f3ec766cb/discogs-16215896-cover-3745288cb6ab1ab1.webp",
+      "photos/inventario/Harry%20Potter%20And%20The%20Philosopher%27s%20Stone%20%28Music%20From%20And%20Inspired%20By%20T%20--%202a8f3ec766cb/discogs-16215896-cover-0cda1ed4f57520b0.webp"
+    ],
+    "subcat": "CD Album, CD CD-ROM Special Edition",
+    "artist": "John Williams (4)",
+    "label": "Warner Sunset Records, Nonesuch, Atlantic",
+    "year": "2001",
+    "discogsId": "16215896",
+    "genres": [
+      "Classical",
+      "Stage & Screen",
+      "Score",
+      "Contemporary"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 112,
+    "cat": "musica",
+    "name": "Vuelve",
+    "desc": "CD Album Unofficial Release · Electronic, Latin, Pop, Latin Pop, House\nCodice edizione: COL 488789 9, 488789 9, 488 789 9\nNazione di provenienza: Europe",
+    "price": 4.5,
+    "condition": "Good Plus (G+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Vuelve%20--%2033fd33bc98be/discogs-34908941-cover-234a1eb4e5833c18.webp",
+      "photos/inventario/Vuelve%20--%2033fd33bc98be/discogs-34908941-cover-8739d1ac30300f73.webp",
+      "photos/inventario/Vuelve%20--%2033fd33bc98be/discogs-34908941-cover-a8c26b87271f3c08.webp"
+    ],
+    "subcat": "CD Album Unofficial Release",
+    "artist": "Ricky Martin",
+    "label": "Columbia (2), Columbia (2), Columbia (2)",
+    "year": "1998",
+    "discogsId": "34908941",
+    "genres": [
+      "Electronic",
+      "Latin",
+      "Pop",
+      "Latin Pop",
+      "House"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 111,
+    "cat": "musica",
+    "name": "Room On Fire",
+    "desc": "CD Album Copy Protected Repress · Rock, Indie Rock\nCodice edizione: RCA 82876 56969 2, 82876 56969 2\nNazione di provenienza: Europe",
+    "price": 5,
+    "condition": "Very Good (VG)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Room%20On%20Fire%20--%2048f78518674f/discogs-6986989-cover-2c8992b9083fcbe0.webp",
+      "photos/inventario/Room%20On%20Fire%20--%2048f78518674f/discogs-6986989-cover-e304e015705add8d.webp",
+      "photos/inventario/Room%20On%20Fire%20--%2048f78518674f/discogs-6986989-cover-5306f1419a37d3b0.webp"
+    ],
+    "subcat": "CD Album Copy Protected Repress",
+    "artist": "The Strokes",
+    "label": "RCA, RCA",
+    "year": "2003",
+    "discogsId": "6986989",
+    "genres": [
+      "Rock",
+      "Indie Rock"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 110,
+    "cat": "musica",
+    "name": "Lenny",
+    "desc": "CD Album Promo · Rock, Pop Rock\nCodice edizione: 7243 8 11233 2 4\nNazione di provenienza: Europe",
+    "price": 4.5,
+    "condition": "Good Plus (G+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Lenny%20--%20e115d867ba7a/discogs-21029665-cover-ed4abe78bf79fd09.webp",
+      "photos/inventario/Lenny%20--%20e115d867ba7a/discogs-21029665-cover-032fc6db17b1894c.webp",
+      "photos/inventario/Lenny%20--%20e115d867ba7a/discogs-21029665-cover-861d7c0760fd833b.webp"
+    ],
+    "subcat": "CD Album Promo",
+    "artist": "Lenny Kravitz",
+    "label": "Virgin",
+    "year": "2001",
+    "discogsId": "21029665",
+    "genres": [
+      "Rock",
+      "Pop Rock"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 109,
+    "cat": "musica",
+    "name": "Stripped",
+    "desc": "CD Album Unofficial Release · Hip Hop, Rock, RnB/Swing, Pop Rap\nCodice edizione: 74321 96125 2\nNazione di provenienza: Europe",
+    "price": 5,
+    "condition": "Very Good (VG)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Stripped%20--%2034e15eef56e0/discogs-26877950-cover-ea0833f0fcb48725.webp",
+      "photos/inventario/Stripped%20--%2034e15eef56e0/discogs-26877950-cover-b15c4e0ed5bccd2b.webp",
+      "photos/inventario/Stripped%20--%2034e15eef56e0/discogs-26877950-cover-d7ef51dc96d70e9f.webp"
+    ],
+    "subcat": "CD Album Unofficial Release",
+    "artist": "Christina Aguilera",
+    "label": "RCA (2), BMG (2)",
+    "year": "2003",
+    "discogsId": "26877950",
+    "genres": [
+      "Hip Hop",
+      "Rock",
+      "RnB/Swing",
+      "Pop Rap"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 108,
+    "cat": "musica",
+    "name": "Let Go",
+    "desc": "CD Album Enhanced Unofficial Release · Rock, Alternative Rock, Pop Rock, Pop Punk\nCodice edizione: 74321962052, 74321949312\nNazione di provenienza: Europe",
+    "price": 6,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Let%20Go%20--%2006f178901520/discogs-9733662-cover-63d78d5cca89e7a9.webp",
+      "photos/inventario/Let%20Go%20--%2006f178901520/discogs-9733662-cover-ff249664d82d541b.webp",
+      "photos/inventario/Let%20Go%20--%2006f178901520/discogs-9733662-cover-483eeff37be6ba02.webp"
+    ],
+    "subcat": "CD Album Enhanced Unofficial Release",
+    "artist": "Avril Lavigne",
+    "label": "Arista (2), BMG (2), Arista (2), BMG (2)",
+    "year": "2002",
+    "discogsId": "9733662",
+    "genres": [
+      "Rock",
+      "Alternative Rock",
+      "Pop Rock",
+      "Pop Punk"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 107,
+    "cat": "musica",
+    "name": "Greatest Hits",
+    "desc": "2 CD Compilation Stereo · Hip Hop, Funk / Soul, Pop, Ballad, Contemporary R&B, Soul, Pop Rock\nCodice edizione: COL 505461 2, 2 505461, 5054612000\nNazione di provenienza: Europe",
+    "price": 8,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Greatest%20Hits%20--%2022347193289c/discogs-1303652-cover-31ddbfa77154269b.webp",
+      "photos/inventario/Greatest%20Hits%20--%2022347193289c/discogs-1303652-cover-842f496cd1a81b7f.webp",
+      "photos/inventario/Greatest%20Hits%20--%2022347193289c/discogs-1303652-cover-676bc02022006512.webp"
+    ],
+    "subcat": "2 CD Compilation Stereo",
+    "artist": "Mariah Carey",
+    "label": "Columbia, Columbia, Columbia",
+    "year": "2001",
+    "discogsId": "1303652",
+    "genres": [
+      "Hip Hop",
+      "Funk / Soul",
+      "Pop",
+      "Ballad",
+      "Contemporary R&B",
+      "Soul",
+      "Pop Rock"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 106,
+    "cat": "musica",
+    "name": "Something To Remember",
+    "desc": "CD Compilation Unofficial Release · Electronic, Pop, Downtempo, Ballad\nCodice edizione: 9 46100-2\nNazione di provenienza: Europe",
+    "price": 5,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Something%20To%20Remember%20--%20170024f3009a/discogs-6379493-cover-55182040e773bb87.webp",
+      "photos/inventario/Something%20To%20Remember%20--%20170024f3009a/discogs-6379493-cover-c56f9866d67dda2d.webp",
+      "photos/inventario/Something%20To%20Remember%20--%20170024f3009a/discogs-6379493-cover-b8e88e9e77b72d7b.webp"
+    ],
+    "subcat": "CD Compilation Unofficial Release",
+    "artist": "Madonna",
+    "label": "Maverick (2), Warner Bros. Records Inc. (2)",
+    "year": "1996",
+    "discogsId": "6379493",
+    "genres": [
+      "Electronic",
+      "Pop",
+      "Downtempo",
+      "Ballad"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 105,
+    "cat": "musica",
+    "name": "American Life",
+    "desc": "CD Album Enhanced · Electronic, Pop, Synth-pop\nCodice edizione: 48476-2\nNazione di provenienza: Europe",
+    "price": 5,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/American%20Life%20--%20d0b82799fb99/discogs-2726624-cover-824edd8a74e3c077.webp",
+      "photos/inventario/American%20Life%20--%20d0b82799fb99/discogs-2726624-cover-6c403c215837dcfe.webp",
+      "photos/inventario/American%20Life%20--%20d0b82799fb99/discogs-2726624-cover-3fc0f764fe97a7d6.webp"
+    ],
+    "subcat": "CD Album Enhanced",
+    "artist": "Madonna",
+    "label": "Maverick, Warner Bros. Records",
+    "year": "2003",
+    "discogsId": "2726624",
+    "genres": [
+      "Electronic",
+      "Pop",
+      "Synth-pop"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 104,
+    "cat": "musica",
+    "name": "Ray Of Light",
+    "desc": "CD Album Reissue · Electronic, Pop, Electro, Downtempo, Vocal\nCodice edizione: 46847-2, 093624684725\nNazione di provenienza: Europe",
+    "price": 5,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Ray%20Of%20Light%20--%2061a2791c980a/discogs-24360881-cover-db4b7d4d5382fbbc.webp",
+      "photos/inventario/Ray%20Of%20Light%20--%2061a2791c980a/discogs-24360881-cover-1b2444cc5369ddac.webp",
+      "photos/inventario/Ray%20Of%20Light%20--%2061a2791c980a/discogs-24360881-cover-0fba9e063d90bed7.webp"
+    ],
+    "subcat": "CD Album Reissue",
+    "artist": "Madonna",
+    "label": "Warner Records, Maverick",
+    "year": "2020",
+    "discogsId": "24360881",
+    "genres": [
+      "Electronic",
+      "Pop",
+      "Electro",
+      "Downtempo",
+      "Vocal"
+    ],
+    "copie": 1
+  },
+  {
     "id": 102,
     "cat": "musica",
     "name": "All Day Every Day",
@@ -776,7 +1552,7 @@
     "desc": "CD Album · Jazz, Funk / Soul, Blues, Pop, Soul-Jazz, Acoustic, Piano Blues, Neo Soul\nDettagli condizioni: CD molto graffiato\n\nCodice edizione: XLCD 520\nNazione di provenienza: Europe",
     "price": 3.5,
     "condition": "Very Good (VG)",
-    "sold": false,
+    "sold": true,
     "isNew": true,
     "emoji": "",
     "bg": null,
@@ -804,7 +1580,7 @@
       "Piano Blues",
       "Neo Soul"
     ],
-    "copie": 1
+    "copie": 0
   },
   {
     "id": 77,
@@ -1330,7 +2106,7 @@
     "desc": "CD Compilation · Electronic, Jazz, Rock, Classical, Stage & Screen, Alternative Rock, Smooth Jazz, Ambient, Soundtrack\nDettagli condizioni: CD con qualche graffio\nCodice edizione: 74321 89823 2\nNazione di provenienza: Europe",
     "price": 5,
     "condition": "Very Good Plus (VG+)",
-    "sold": false,
+    "sold": true,
     "isNew": true,
     "emoji": "",
     "bg": null,
@@ -1343,7 +2119,7 @@
       "photos/inventario/David%20Lynch%27s%20Mulholland%20Dr%20--%20c2027f0b878f/discogs-548000-cover-3c51c2602e37af79.jpg",
       "photos/inventario/David%20Lynch%27s%20Mulholland%20Dr%20--%20c2027f0b878f/discogs-548000-cover-4ae1b161f7bc8853.jpg"
     ],
-    "subcat": "CD Compilation",
+    "subcat": "cd-colonne-sonore",
     "artist": "Various",
     "label": "Milan",
     "year": "2001",
@@ -1357,9 +2133,11 @@
       "Alternative Rock",
       "Smooth Jazz",
       "Ambient",
-      "Soundtrack"
+      "Soundtrack",
+      "Colonna sonora"
     ],
-    "copie": 1
+    "colonnaSonora": true,
+    "copie": 0
   },
   {
     "id": 60,
@@ -1368,7 +2146,7 @@
     "desc": "CD Album Enhanced · Blues, Stage & Screen, Folk Rock, Country Rock, Blues Rock, Movie Effects, Soundtrack\nCodice edizione: 9362-48570-2\nNazione di provenienza: Europe",
     "price": 5,
     "condition": "Very Good Plus (VG+)",
-    "sold": false,
+    "sold": true,
     "isNew": true,
     "emoji": "",
     "bg": null,
@@ -1381,15 +2159,17 @@
       "photos/inventario/Kill%20Bill%20Vol.%201%20%28Original%20Soundtrack%29%20--%2017dda68cce76/discogs-16655562-cover-d051ba824f921b1a.jpg",
       "photos/inventario/Kill%20Bill%20Vol.%201%20%28Original%20Soundtrack%29%20--%2017dda68cce76/discogs-16655562-cover-07dc6bd7b226fad0.jpg"
     ],
-    "subcat": "CD Album Enhanced",
+    "subcat": "cd-colonne-sonore",
     "artist": "Various",
     "label": "Maverick",
     "year": "2003",
     "discogsId": "16655562",
     "genres": [
-      "Colonne Sonore"
+      "Colonne Sonore",
+      "Colonna sonora"
     ],
-    "copie": 1
+    "colonnaSonora": true,
+    "copie": 0
   },
   {
     "id": 59,
@@ -1398,7 +2178,7 @@
     "desc": "CD HDCD Album · Rock, Hard Rock, Heavy Metal\nDettagli condizioni: CD con qualche graffio\nCodice edizione: 7243 8 38262 2 3\nNazione di provenienza: Europe",
     "price": 5.5,
     "condition": "Very Good Plus (VG+)",
-    "sold": false,
+    "sold": true,
     "isNew": true,
     "emoji": "",
     "bg": null,
@@ -1407,32 +2187,32 @@
     "modelCredit": null,
     "modelCreditUrl": null,
     "photos": [
-      "photos/inventario/discogs-398641-cover-acc1f452396dd4c0.jpg",
-      "photos/inventario/discogs-398641-cover-dbeef49846af79af.jpg",
-      "photos/inventario/discogs-398641-cover-ec7d72234e45bf27.jpg",
-      "photos/inventario/discogs-398641-cover-fd79da5e7976a376.jpg",
-      "photos/inventario/discogs-398641-cover-6278f8b9110c1f41.jpg",
-      "photos/inventario/discogs-398641-cover-1cea5fd115273dd9.jpg",
-      "photos/inventario/discogs-398641-cover-2f809fbe06040236.jpg",
-      "photos/inventario/discogs-398641-cover-000b027cb22f977b.jpg",
-      "photos/inventario/discogs-398641-cover-f68e5f700433fac8.jpg",
-      "photos/inventario/discogs-398641-cover-89c1e4f8f8318288.jpg",
-      "photos/inventario/discogs-398641-cover-ebf3169ee37524ff.jpg",
-      "photos/inventario/discogs-398641-cover-4a3547fefd7bc1c4.jpg",
-      "photos/inventario/discogs-398641-cover-aed33a4f6c78ecf5.jpg",
-      "photos/inventario/discogs-398641-cover-c3c0622c1c14808b.jpg",
-      "photos/inventario/discogs-398641-cover-acdbb7950ab449de.jpg",
-      "photos/inventario/discogs-398641-cover-8a3f1fe3474b861c.jpg",
-      "photos/inventario/discogs-398641-cover-ab8d5f702aedd4aa.jpg",
-      "photos/inventario/discogs-398641-cover-bf94139279ddea92.jpg",
-      "photos/inventario/discogs-398641-cover-6716940459f71559.jpg",
-      "photos/inventario/discogs-398641-cover-cd8853a02ad0421b.jpg",
-      "photos/inventario/discogs-398641-cover-85deb33f6afb42e6.jpg",
-      "photos/inventario/discogs-398641-cover-88bf994d59625650.jpg",
-      "photos/inventario/discogs-398641-cover-5625a4c0d87fc817.jpg",
-      "photos/inventario/discogs-398641-cover-4cc5c2b882825b34.jpg",
-      "photos/inventario/discogs-398641-cover-019ac0f53351b33b.jpg",
-      "photos/inventario/discogs-398641-cover-d5f006be02df6333.jpg"
+      "photos/inventario/Cryptic%20Writings%20--%20da3731eef029/discogs-398641-cover-acc1f452396dd4c0.jpg",
+      "photos/inventario/Cryptic%20Writings%20--%20da3731eef029/discogs-398641-cover-dbeef49846af79af.jpg",
+      "photos/inventario/Cryptic%20Writings%20--%20da3731eef029/discogs-398641-cover-ec7d72234e45bf27.jpg",
+      "photos/inventario/Cryptic%20Writings%20--%20da3731eef029/discogs-398641-cover-fd79da5e7976a376.jpg",
+      "photos/inventario/Cryptic%20Writings%20--%20da3731eef029/discogs-398641-cover-6278f8b9110c1f41.jpg",
+      "photos/inventario/Cryptic%20Writings%20--%20da3731eef029/discogs-398641-cover-1cea5fd115273dd9.jpg",
+      "photos/inventario/Cryptic%20Writings%20--%20da3731eef029/discogs-398641-cover-2f809fbe06040236.jpg",
+      "photos/inventario/Cryptic%20Writings%20--%20da3731eef029/discogs-398641-cover-000b027cb22f977b.jpg",
+      "photos/inventario/Cryptic%20Writings%20--%20da3731eef029/discogs-398641-cover-f68e5f700433fac8.jpg",
+      "photos/inventario/Cryptic%20Writings%20--%20da3731eef029/discogs-398641-cover-89c1e4f8f8318288.jpg",
+      "photos/inventario/Cryptic%20Writings%20--%20da3731eef029/discogs-398641-cover-ebf3169ee37524ff.jpg",
+      "photos/inventario/Cryptic%20Writings%20--%20da3731eef029/discogs-398641-cover-4a3547fefd7bc1c4.jpg",
+      "photos/inventario/Cryptic%20Writings%20--%20da3731eef029/discogs-398641-cover-aed33a4f6c78ecf5.jpg",
+      "photos/inventario/Cryptic%20Writings%20--%20da3731eef029/discogs-398641-cover-c3c0622c1c14808b.jpg",
+      "photos/inventario/Cryptic%20Writings%20--%20da3731eef029/discogs-398641-cover-acdbb7950ab449de.jpg",
+      "photos/inventario/Cryptic%20Writings%20--%20da3731eef029/discogs-398641-cover-8a3f1fe3474b861c.jpg",
+      "photos/inventario/Cryptic%20Writings%20--%20da3731eef029/discogs-398641-cover-ab8d5f702aedd4aa.jpg",
+      "photos/inventario/Cryptic%20Writings%20--%20da3731eef029/discogs-398641-cover-bf94139279ddea92.jpg",
+      "photos/inventario/Cryptic%20Writings%20--%20da3731eef029/discogs-398641-cover-6716940459f71559.jpg",
+      "photos/inventario/Cryptic%20Writings%20--%20da3731eef029/discogs-398641-cover-cd8853a02ad0421b.jpg",
+      "photos/inventario/Cryptic%20Writings%20--%20da3731eef029/discogs-398641-cover-85deb33f6afb42e6.jpg",
+      "photos/inventario/Cryptic%20Writings%20--%20da3731eef029/discogs-398641-cover-88bf994d59625650.jpg",
+      "photos/inventario/Cryptic%20Writings%20--%20da3731eef029/discogs-398641-cover-5625a4c0d87fc817.jpg",
+      "photos/inventario/Cryptic%20Writings%20--%20da3731eef029/discogs-398641-cover-4cc5c2b882825b34.jpg",
+      "photos/inventario/Cryptic%20Writings%20--%20da3731eef029/discogs-398641-cover-019ac0f53351b33b.jpg",
+      "photos/inventario/Cryptic%20Writings%20--%20da3731eef029/discogs-398641-cover-d5f006be02df6333.jpg"
     ],
     "subcat": "CD HDCD Album",
     "artist": "Megadeth",
@@ -1444,7 +2224,7 @@
       "Hard Rock",
       "Heavy Metal"
     ],
-    "copie": 1
+    "copie": 0
   },
   {
     "id": 58,
@@ -1625,7 +2405,7 @@
     "desc": "CD Compilation · Rock, Pop Rock\nCodice edizione: 540 428 2, 540 428-2\nNazione di provenienza: Europe",
     "price": 5,
     "condition": "Very Good Plus (VG+)",
-    "sold": false,
+    "sold": true,
     "isNew": true,
     "emoji": "",
     "bg": null,
@@ -1634,8 +2414,8 @@
     "modelCredit": null,
     "modelCreditUrl": null,
     "photos": [
-      "photos/inventario/discogs-16599960-cover-48739d85f7503d89.jpg",
-      "photos/inventario/discogs-16599960-cover-c545179f82831379.jpg"
+      "photos/inventario/The%20Very%20Best%20Of%20Sting%20%26%20The%20Police%20--%20ddaaf1b09d33/discogs-16599960-cover-48739d85f7503d89.jpg",
+      "photos/inventario/The%20Very%20Best%20Of%20Sting%20%26%20The%20Police%20--%20ddaaf1b09d33/discogs-16599960-cover-c545179f82831379.jpg"
     ],
     "subcat": "CD Compilation",
     "artist": "Sting, The Police",
@@ -1646,7 +2426,7 @@
       "Rock",
       "Pop Rock"
     ],
-    "copie": 1
+    "copie": 0
   },
   {
     "id": 53,
@@ -1729,7 +2509,7 @@
     "desc": "CD Album Stereo · Rock, Pop, Alternative Rock, Hard Rock, Pop Rock\nDettagli condizioni: CD molto graffiato\nCodice edizione: 7243 8 55832 2 3, CDEST 2295\nNazione di provenienza: Europe",
     "price": 4,
     "condition": "Good Plus (G+)",
-    "sold": false,
+    "sold": true,
     "isNew": true,
     "emoji": "",
     "bg": null,
@@ -1738,22 +2518,22 @@
     "modelCredit": null,
     "modelCreditUrl": null,
     "photos": [
-      "photos/inventario/discogs-2739379-cover-2ecfc3e104b51028.jpg",
-      "photos/inventario/discogs-2739379-cover-64d3cfa437eecbb0.jpg",
-      "photos/inventario/discogs-2739379-cover-497f1184e016f689.jpg",
-      "photos/inventario/discogs-2739379-cover-b00b87aa1a1d5e6c.jpg",
-      "photos/inventario/discogs-2739379-cover-7d303e60b75745ad.jpg",
-      "photos/inventario/discogs-2739379-cover-5547b8b4700fe0e6.jpg",
-      "photos/inventario/discogs-2739379-cover-bfa9c362308b9dc2.jpg",
-      "photos/inventario/discogs-2739379-cover-bbec9faf9f812cc4.jpg",
-      "photos/inventario/discogs-2739379-cover-cce3bfeee3208f19.jpg",
-      "photos/inventario/discogs-2739379-cover-f46cb3405b59502b.jpg",
-      "photos/inventario/discogs-2739379-cover-846c2a58f5cb41b3.jpg",
-      "photos/inventario/discogs-2739379-cover-fa20d69b859112c8.jpg",
-      "photos/inventario/discogs-2739379-cover-56009ed9f904853b.jpg",
-      "photos/inventario/discogs-2739379-cover-7b71b8f01552326f.jpg",
-      "photos/inventario/discogs-2739379-cover-1fe9e0344b0bd781.jpg",
-      "photos/inventario/discogs-2739379-cover-9971ea309ad03069.jpg"
+      "photos/inventario/The%20Colour%20And%20The%20Shape%20--%20105fc45bc3e8/discogs-2739379-cover-2ecfc3e104b51028.jpg",
+      "photos/inventario/The%20Colour%20And%20The%20Shape%20--%20105fc45bc3e8/discogs-2739379-cover-64d3cfa437eecbb0.jpg",
+      "photos/inventario/The%20Colour%20And%20The%20Shape%20--%20105fc45bc3e8/discogs-2739379-cover-497f1184e016f689.jpg",
+      "photos/inventario/The%20Colour%20And%20The%20Shape%20--%20105fc45bc3e8/discogs-2739379-cover-b00b87aa1a1d5e6c.jpg",
+      "photos/inventario/The%20Colour%20And%20The%20Shape%20--%20105fc45bc3e8/discogs-2739379-cover-7d303e60b75745ad.jpg",
+      "photos/inventario/The%20Colour%20And%20The%20Shape%20--%20105fc45bc3e8/discogs-2739379-cover-5547b8b4700fe0e6.jpg",
+      "photos/inventario/The%20Colour%20And%20The%20Shape%20--%20105fc45bc3e8/discogs-2739379-cover-bfa9c362308b9dc2.jpg",
+      "photos/inventario/The%20Colour%20And%20The%20Shape%20--%20105fc45bc3e8/discogs-2739379-cover-bbec9faf9f812cc4.jpg",
+      "photos/inventario/The%20Colour%20And%20The%20Shape%20--%20105fc45bc3e8/discogs-2739379-cover-cce3bfeee3208f19.jpg",
+      "photos/inventario/The%20Colour%20And%20The%20Shape%20--%20105fc45bc3e8/discogs-2739379-cover-f46cb3405b59502b.jpg",
+      "photos/inventario/The%20Colour%20And%20The%20Shape%20--%20105fc45bc3e8/discogs-2739379-cover-846c2a58f5cb41b3.jpg",
+      "photos/inventario/The%20Colour%20And%20The%20Shape%20--%20105fc45bc3e8/discogs-2739379-cover-fa20d69b859112c8.jpg",
+      "photos/inventario/The%20Colour%20And%20The%20Shape%20--%20105fc45bc3e8/discogs-2739379-cover-56009ed9f904853b.jpg",
+      "photos/inventario/The%20Colour%20And%20The%20Shape%20--%20105fc45bc3e8/discogs-2739379-cover-7b71b8f01552326f.jpg",
+      "photos/inventario/The%20Colour%20And%20The%20Shape%20--%20105fc45bc3e8/discogs-2739379-cover-1fe9e0344b0bd781.jpg",
+      "photos/inventario/The%20Colour%20And%20The%20Shape%20--%20105fc45bc3e8/discogs-2739379-cover-9971ea309ad03069.jpg"
     ],
     "subcat": "CD Album Stereo",
     "artist": "Foo Fighters",
@@ -1767,7 +2547,7 @@
       "Hard Rock",
       "Pop Rock"
     ],
-    "copie": 1
+    "copie": 0
   },
   {
     "id": 50,
@@ -1885,7 +2665,7 @@
     "desc": "CD Compilation · Rock, Classic Rock\nCodice edizione: 7243 8 21954 2 9\nNazione di provenienza: US",
     "price": 6,
     "condition": "Very Good Plus (VG+)",
-    "sold": false,
+    "sold": true,
     "isNew": true,
     "emoji": "",
     "bg": null,
@@ -1894,11 +2674,11 @@
     "modelCredit": null,
     "modelCreditUrl": null,
     "photos": [
-      "photos/inventario/discogs-2451997-cover-d25ede197f75522c.jpg",
-      "photos/inventario/discogs-2451997-cover-8e0ab3ed100476c3.jpg",
-      "photos/inventario/discogs-2451997-cover-8ff9087d3a7b760f.jpg",
-      "photos/inventario/discogs-2451997-cover-ccf5af854c15b3ea.jpg",
-      "photos/inventario/discogs-2451997-cover-ed0e1c4b62528371.jpg"
+      "photos/inventario/Lennon%20Legend%20%28The%20Very%20Best%20Of%20John%20Lennon%29%20--%2016a4c07dc98d/discogs-2451997-cover-d25ede197f75522c.jpg",
+      "photos/inventario/Lennon%20Legend%20%28The%20Very%20Best%20Of%20John%20Lennon%29%20--%2016a4c07dc98d/discogs-2451997-cover-8e0ab3ed100476c3.jpg",
+      "photos/inventario/Lennon%20Legend%20%28The%20Very%20Best%20Of%20John%20Lennon%29%20--%2016a4c07dc98d/discogs-2451997-cover-8ff9087d3a7b760f.jpg",
+      "photos/inventario/Lennon%20Legend%20%28The%20Very%20Best%20Of%20John%20Lennon%29%20--%2016a4c07dc98d/discogs-2451997-cover-ccf5af854c15b3ea.jpg",
+      "photos/inventario/Lennon%20Legend%20%28The%20Very%20Best%20Of%20John%20Lennon%29%20--%2016a4c07dc98d/discogs-2451997-cover-ed0e1c4b62528371.jpg"
     ],
     "subcat": "CD Compilation",
     "artist": "John Lennon",
@@ -1909,7 +2689,7 @@
       "Rock",
       "Classic Rock"
     ],
-    "copie": 1
+    "copie": 0
   },
   {
     "id": 46,
@@ -1989,7 +2769,7 @@
     "desc": "CD Compilation · Electronic, Hip Hop, Rock, Funk / Soul, Pop, Soft Rock, Pop Rap, Synth-pop, Disco, Contemporary R&B\nCodice edizione: 081227427221, R2 74272\nNazione di provenienza: Europe",
     "price": 6,
     "condition": "Very Good Plus (VG+)",
-    "sold": false,
+    "sold": true,
     "isNew": true,
     "emoji": "",
     "bg": null,
@@ -1998,12 +2778,12 @@
     "modelCredit": null,
     "modelCreditUrl": null,
     "photos": [
-      "photos/inventario/discogs-31615327-cover-550bd7d0a3aebc6b.jpg",
-      "photos/inventario/discogs-31615327-cover-fefc5381175ec89d.jpg",
-      "photos/inventario/discogs-31615327-cover-3534c53e33734c46.jpg",
-      "photos/inventario/discogs-31615327-cover-7dbf53327cf5dc47.jpg",
-      "photos/inventario/discogs-31615327-cover-c4dbb1e076187e6c.jpg",
-      "photos/inventario/discogs-31615327-cover-f3d7799b24a10af7.jpg"
+      "photos/inventario/The%20Very%20Best%20Of%20Prince%20--%20b34f1d0a6761/discogs-31615327-cover-550bd7d0a3aebc6b.webp",
+      "photos/inventario/The%20Very%20Best%20Of%20Prince%20--%20b34f1d0a6761/discogs-31615327-cover-fefc5381175ec89d.webp",
+      "photos/inventario/The%20Very%20Best%20Of%20Prince%20--%20b34f1d0a6761/discogs-31615327-cover-3534c53e33734c46.webp",
+      "photos/inventario/The%20Very%20Best%20Of%20Prince%20--%20b34f1d0a6761/discogs-31615327-cover-7dbf53327cf5dc47.webp",
+      "photos/inventario/The%20Very%20Best%20Of%20Prince%20--%20b34f1d0a6761/discogs-31615327-cover-c4dbb1e076187e6c.webp",
+      "photos/inventario/The%20Very%20Best%20Of%20Prince%20--%20b34f1d0a6761/discogs-31615327-cover-f3d7799b24a10af7.webp"
     ],
     "subcat": "CD Compilation",
     "artist": "Prince",
@@ -2022,7 +2802,7 @@
       "Disco",
       "Contemporary R&B"
     ],
-    "copie": 1
+    "copie": 0
   },
   {
     "id": 43,
@@ -2104,7 +2884,7 @@
     "desc": "CD Compilation Remastered, CD Album, All Media Reissue · Electronic, Hip Hop, Rock, Funk / Soul, Pop, Pop Rock, Hip Hop, Disco, Contemporary R&B\nDettagli condizioni: Manca secondo libretto\nCodice edizione: EPC 474709 2",
     "price": 10,
     "condition": "Very Good Plus (VG+)",
-    "sold": false,
+    "sold": true,
     "isNew": true,
     "emoji": "",
     "bg": null,
@@ -2113,11 +2893,11 @@
     "modelCredit": null,
     "modelCreditUrl": null,
     "photos": [
-      "photos/inventario/discogs-13119755-cover-1648d6646da225fa.jpg",
-      "photos/inventario/discogs-13119755-cover-592f91c4b4fa3dd8.jpg",
-      "photos/inventario/discogs-13119755-cover-1e129b7050b0ea1c.jpg",
-      "photos/inventario/discogs-13119755-cover-b456650d3e46660f.jpg",
-      "photos/inventario/discogs-13119755-cover-8da31afd6ee4919c.jpg"
+      "photos/inventario/HIStory%20-%20Past-%20Present%20And%20Future%20-%20Book%20I%20--%200237bfaf3139/discogs-13119755-cover-1648d6646da225fa.jpg",
+      "photos/inventario/HIStory%20-%20Past-%20Present%20And%20Future%20-%20Book%20I%20--%200237bfaf3139/discogs-13119755-cover-592f91c4b4fa3dd8.jpg",
+      "photos/inventario/HIStory%20-%20Past-%20Present%20And%20Future%20-%20Book%20I%20--%200237bfaf3139/discogs-13119755-cover-1e129b7050b0ea1c.jpg",
+      "photos/inventario/HIStory%20-%20Past-%20Present%20And%20Future%20-%20Book%20I%20--%200237bfaf3139/discogs-13119755-cover-b456650d3e46660f.jpg",
+      "photos/inventario/HIStory%20-%20Past-%20Present%20And%20Future%20-%20Book%20I%20--%200237bfaf3139/discogs-13119755-cover-8da31afd6ee4919c.jpg"
     ],
     "subcat": "CD Compilation Remastered, CD Album, All Media Reissue",
     "artist": "Michael Jackson",
@@ -2135,7 +2915,7 @@
       "Disco",
       "Contemporary R&B"
     ],
-    "copie": 1
+    "copie": 0
   },
   {
     "id": 40,
@@ -2403,7 +3183,7 @@
     "desc": "CD Album Repress · Electronic, Funk / Soul, Pop, Soul, Ballad, New Jack Swing\nCodice edizione: EPC 465802 2, 465802 2, CL 78181 5\nNazione di provenienza: Europe",
     "price": 6,
     "condition": "Very Good Plus (VG+)",
-    "sold": false,
+    "sold": true,
     "isNew": true,
     "emoji": "",
     "bg": null,
@@ -2412,11 +3192,11 @@
     "modelCredit": null,
     "modelCreditUrl": null,
     "photos": [
-      "photos/inventario/discogs-13691996-cover-f28f46d2116bb9ea.jpg",
-      "photos/inventario/discogs-13691996-cover-4cb63d4fec439ba9.jpg",
-      "photos/inventario/discogs-13691996-cover-e6245fd98d7fac78.jpg",
-      "photos/inventario/discogs-13691996-cover-ee48dad1abcd6bfe.jpg",
-      "photos/inventario/discogs-13691996-cover-4a4e18ac2e7e9d39.jpg"
+      "photos/inventario/Dangerous%20--%20a4bb63349689/discogs-13691996-cover-f28f46d2116bb9ea.jpg",
+      "photos/inventario/Dangerous%20--%20a4bb63349689/discogs-13691996-cover-4cb63d4fec439ba9.jpg",
+      "photos/inventario/Dangerous%20--%20a4bb63349689/discogs-13691996-cover-e6245fd98d7fac78.jpg",
+      "photos/inventario/Dangerous%20--%20a4bb63349689/discogs-13691996-cover-ee48dad1abcd6bfe.jpg",
+      "photos/inventario/Dangerous%20--%20a4bb63349689/discogs-13691996-cover-4a4e18ac2e7e9d39.jpg"
     ],
     "subcat": "CD Album Repress",
     "artist": "Michael Jackson",
@@ -2431,7 +3211,7 @@
       "Ballad",
       "New Jack Swing"
     ],
-    "copie": 1
+    "copie": 0
   },
   {
     "id": 32,
@@ -2472,7 +3252,7 @@
     "desc": "CD Album · Rock, Prog Rock\nCodice edizione: GEN CD 4, 0777 7 86565 24, 263 233\nNazione di provenienza: Europe",
     "price": 5,
     "condition": "Very Good Plus (VG+)",
-    "sold": false,
+    "sold": true,
     "isNew": true,
     "emoji": "",
     "bg": null,
@@ -2481,10 +3261,10 @@
     "modelCredit": null,
     "modelCreditUrl": null,
     "photos": [
-      "photos/inventario/discogs-16008019-cover-b6c3aa216032e6fd.jpg",
-      "photos/inventario/discogs-16008019-cover-27214c64536f35e7.jpg",
-      "photos/inventario/discogs-16008019-cover-59f1b0f9c62230f3.jpg",
-      "photos/inventario/discogs-16008019-cover-1dafbf4814bceec1.jpg"
+      "photos/inventario/Live%20-%20The%20Way%20We%20Walk%20%28Volume%20One-%20The%20Shorts%29%20--%20878445e00640/discogs-16008019-cover-b6c3aa216032e6fd.jpg",
+      "photos/inventario/Live%20-%20The%20Way%20We%20Walk%20%28Volume%20One-%20The%20Shorts%29%20--%20878445e00640/discogs-16008019-cover-27214c64536f35e7.jpg",
+      "photos/inventario/Live%20-%20The%20Way%20We%20Walk%20%28Volume%20One-%20The%20Shorts%29%20--%20878445e00640/discogs-16008019-cover-59f1b0f9c62230f3.jpg",
+      "photos/inventario/Live%20-%20The%20Way%20We%20Walk%20%28Volume%20One-%20The%20Shorts%29%20--%20878445e00640/discogs-16008019-cover-1dafbf4814bceec1.jpg"
     ],
     "subcat": "CD Album",
     "artist": "Genesis",
@@ -2495,7 +3275,7 @@
       "Rock",
       "Prog Rock"
     ],
-    "copie": 1
+    "copie": 0
   },
   {
     "id": 30,
@@ -2752,7 +3532,7 @@
     "desc": "CD Compilation · Rock, Alternative Rock, Pop Rock\nDettagli condizioni: CD con qualche graffio\nCodice edizione: 4838128\nNazione di provenienza: Mexico",
     "price": 5,
     "condition": "Good Plus (G+)",
-    "sold": false,
+    "sold": true,
     "isNew": true,
     "emoji": "",
     "bg": null,
@@ -2761,10 +3541,10 @@
     "modelCredit": null,
     "modelCreditUrl": null,
     "photos": [
-      "photos/inventario/discogs-3517675-cover-5385a7e9517bbeb7.jpg",
-      "photos/inventario/discogs-3517675-cover-b02cb67895b80979.jpg",
-      "photos/inventario/discogs-3517675-cover-8cb261b74bdeeb03.jpg",
-      "photos/inventario/discogs-3517675-cover-0f6c10e9a02ec408.jpg"
+      "photos/inventario/In%20Time-%20The%20Best%20Of%20R.E.M.%201988-2003%20--%206a9bd39fd7c4/discogs-3517675-cover-5385a7e9517bbeb7.jpg",
+      "photos/inventario/In%20Time-%20The%20Best%20Of%20R.E.M.%201988-2003%20--%206a9bd39fd7c4/discogs-3517675-cover-b02cb67895b80979.jpg",
+      "photos/inventario/In%20Time-%20The%20Best%20Of%20R.E.M.%201988-2003%20--%206a9bd39fd7c4/discogs-3517675-cover-8cb261b74bdeeb03.jpg",
+      "photos/inventario/In%20Time-%20The%20Best%20Of%20R.E.M.%201988-2003%20--%206a9bd39fd7c4/discogs-3517675-cover-0f6c10e9a02ec408.jpg"
     ],
     "subcat": "CD Compilation",
     "artist": "R.E.M.",
@@ -2776,7 +3556,7 @@
       "Alternative Rock",
       "Pop Rock"
     ],
-    "copie": 1
+    "copie": 0
   },
   {
     "id": 22,

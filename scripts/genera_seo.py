@@ -70,6 +70,82 @@ PAGINE_CAT = [
      "intro": "Carte collezionabili singole e lotti, descritte con condizioni reali."},
 ]
 
+# ───────────── videogiochi (dati IGDB dal gestionale) ─────────────
+# Il gestionale manda subcat/platform = nome console IGDB (es. "PlayStation 2").
+# Qui diventa la sottocategoria del sito. Le console nuove hanno etichetta e pagina SEO propria.
+# (chiavi in minuscolo, confronto esatto sul nome; "sigla" = nome breve per pagine e titoli)
+PIATTAFORME = [
+    {"id": "ps1", "nomi": ["playstation", "playstation 1", "ps1", "psx", "psone"], "label": "PlayStation 1", "sigla": "PS1"},
+    {"id": "ps2", "nomi": ["playstation 2", "ps2"], "label": "PlayStation 2", "sigla": "PS2"},
+    {"id": "ps3", "nomi": ["playstation 3", "ps3"], "label": "PlayStation 3", "sigla": "PS3"},
+    {"id": "ps4", "nomi": ["playstation 4", "ps4"], "label": "PlayStation 4", "sigla": "PS4"},
+    {"id": "ps5", "nomi": ["playstation 5", "ps5"], "label": "PlayStation 5", "sigla": "PS5"},
+    {"id": "psp", "nomi": ["playstation portable", "psp"], "label": "PSP", "sigla": "PSP"},
+    {"id": "psvita", "nomi": ["playstation vita", "ps vita", "psvita"], "label": "PS Vita", "sigla": "PS Vita"},
+    {"id": "xbox", "nomi": ["xbox"], "label": "Xbox", "sigla": "Xbox"},
+    {"id": "xbox360", "nomi": ["xbox 360"], "label": "Xbox 360", "sigla": "Xbox 360"},
+    {"id": "xboxone", "nomi": ["xbox one"], "label": "Xbox One", "sigla": "Xbox One"},
+    {"id": "wii", "nomi": ["wii", "nintendo wii"], "label": "Nintendo Wii", "sigla": "Wii"},
+    {"id": "wiiu", "nomi": ["wii u", "nintendo wii u"], "label": "Wii U", "sigla": "Wii U"},
+    {"id": "switch", "nomi": ["nintendo switch", "switch"], "label": "Nintendo Switch", "sigla": "Switch"},
+    {"id": "gamecube", "nomi": ["nintendo gamecube", "gamecube"], "label": "GameCube", "sigla": "GameCube"},
+    {"id": "n64", "nomi": ["nintendo 64", "n64"], "label": "Nintendo 64", "sigla": "N64"},
+    {"id": "nds", "nomi": ["nintendo ds", "ds"], "label": "Nintendo DS", "sigla": "DS"},
+    {"id": "3ds", "nomi": ["nintendo 3ds", "3ds", "new nintendo 3ds"], "label": "Nintendo 3DS", "sigla": "3DS"},
+    {"id": "gb", "nomi": ["game boy"], "label": "Game Boy", "sigla": "Game Boy"},
+    {"id": "gbc", "nomi": ["game boy color"], "label": "Game Boy Color", "sigla": "Game Boy Color"},
+    {"id": "gba", "nomi": ["game boy advance"], "label": "Game Boy Advance", "sigla": "GBA"},
+    {"id": "snes", "nomi": ["super nintendo entertainment system", "super nintendo", "snes"], "label": "Super Nintendo", "sigla": "SNES"},
+    {"id": "nes", "nomi": ["nintendo entertainment system", "nes"], "label": "NES", "sigla": "NES"},
+    {"id": "megadrive", "nomi": ["sega mega drive/genesis", "sega mega drive", "mega drive", "genesis"], "label": "Sega Mega Drive", "sigla": "Mega Drive"},
+    {"id": "mastersystem", "nomi": ["sega master system/mark iii", "sega master system", "master system"], "label": "Sega Master System", "sigla": "Master System"},
+    {"id": "saturn", "nomi": ["sega saturn", "saturn"], "label": "Sega Saturn", "sigla": "Saturn"},
+    {"id": "dreamcast", "nomi": ["dreamcast", "sega dreamcast"], "label": "Dreamcast", "sigla": "Dreamcast"},
+    {"id": "pc", "nomi": ["pc (microsoft windows)", "pc", "windows", "dos"], "label": "PC", "sigla": "PC"},
+]
+# generi IGDB (inglese) -> italiano; EN/ES li traduce il dizionario del sito
+GENERI_IGDB = {
+    "point-and-click": "Punta e clicca", "fighting": "Picchiaduro", "shooter": "Sparatutto", "music": "Musicale",
+    "platform": "Piattaforme", "puzzle": "Rompicapo", "racing": "Corse", "real time strategy (rts)": "Strategia in tempo reale",
+    "role-playing (rpg)": "Gioco di ruolo", "simulator": "Simulazione", "sport": "Sport", "strategy": "Strategia",
+    "turn-based strategy (tbs)": "Strategia a turni", "tactical": "Tattico", "hack and slash/beat 'em up": "Picchiaduro a scorrimento",
+    "quiz/trivia": "Quiz", "pinball": "Flipper", "adventure": "Avventura", "indie": "Indie", "arcade": "Arcade",
+    "visual novel": "Visual novel", "card & board game": "Carte e giochi da tavolo", "moba": "MOBA",
+}
+
+
+def piattaforma(p):
+    """Console del gioco -> voce di PIATTAFORME (o None se sconosciuta)."""
+    for k in (p.get("platform"), p.get("subcat")):
+        n = str(k or "").strip().lower()
+        if not n:
+            continue
+        for pf in PIATTAFORME:
+            if n == pf["id"] or n in pf["nomi"]:
+                return pf
+    return None
+
+
+def adatta_gioco(p):
+    """Videogiochi dal gestionale (contratto IGDB): subcat = id console del sito, generi in italiano."""
+    pf = piattaforma(p)
+    if pf:
+        p["subcat"] = pf["id"]
+        p["_pf"] = pf
+    elif p.get("platform") or p.get("subcat"):
+        p["_pf"] = {"id": "", "label": str(p.get("platform") or p.get("subcat")), "sigla": str(p.get("platform") or p.get("subcat"))}
+    p["_generi"] = [GENERI_IGDB.get(str(g).strip().lower(), str(g).strip()) for g in (p.get("genres") or []) if str(g).strip()]
+
+
+def slug_console(pf):
+    return "giochi-%s-usati" % slugify(pf["sigla"], 30)
+
+
+def e_cover_illustrativa(src):
+    """Copertina scaricata da IGDB (nome file igdb-<id>-cover-...): non e' la foto della copia in vendita."""
+    return bool(re.search(r"(^|/)igdb-\d+-cover", str(src or "")))
+
+
 # Calendario tipico dei mercatini (stesso contenuto della pagina mercatini.html)
 # n = settimana del mese (1..4), wd = giorno (5 sabato, 6 domenica)
 MERCATINI = [
@@ -262,6 +338,11 @@ def instrada_cs(p, m):
 
 
 def adatta(p, mappa, subcats):
+    if p.get("cat") == "videogiochi":
+        adatta_base(p, mappa, subcats)     # foto e pulizie comuni (per i giochi non c'e' mappa: si ferma li')
+        adatta_gioco(p)
+        dettagli_condizioni(p)
+        return
     m = mappa.get(p.get("cat"))
     cs = colonne_sonore(p, m)
     adatta_base(p, mappa, subcats)
@@ -362,6 +443,8 @@ def sezione_musica(p):
 
 
 def artista(p):
+    if p.get("cat") == "videogiochi":
+        return ""
     if p.get("artist"):
         return p["artist"]
     n = p.get("name") or ""
@@ -384,6 +467,8 @@ def nome_completo(p):
 
 
 def e_nuovo(p):
+    if str(p.get("completeness") or "").lower().startswith("nuovo"):
+        return True
     c = (p.get("condition") or "").lower()
     return "nuovo" in c or "sigillato" in c or "mint (m)" in c
 
@@ -480,8 +565,11 @@ def breadcrumb_html(voci):
 def card(p):
     img = src_img(foto(p))
     stato = "Nuovo" if e_nuovo(p) else (p.get("condition") or "")
-    return (f'<a class="sx-card" href="{p["_url"]}"><span class="sx-card-img{" q" if p.get("cat") == "musica" else ""}">'
-            f'<img src="{e(img)}" alt="{e(nome_completo(p))}" width="400" height="{"400" if p.get("cat") == "musica" else "300"}" loading="lazy" decoding="async"></span>'
+    if p.get("cat") == "videogiochi" and (p.get("_pf") or {}).get("sigla"):
+        stato = p["_pf"]["sigla"] + (" · " + p["region"] if p.get("region") else "") + " · " + stato
+    q = " q" if p.get("cat") == "musica" else (" q g" if p.get("cat") == "videogiochi" else "")
+    return (f'<a class="sx-card" href="{p["_url"]}"><span class="sx-card-img{q}">'
+            f'<img src="{e(img)}" alt="{e(nome_completo(p))}" width="400" height="{"300" if not q else "400"}" loading="lazy" decoding="async"></span>'
             f'<span class="sx-card-b"><span class="sx-card-n">{e(nome_completo(p))}</span>'
             f'<span class="sx-card-c">{e(stato)}</span><span class="sx-card-p">€ {prezzo_txt(p)}</span></span></a>')
 
@@ -534,8 +622,14 @@ def pagina_prodotto(p, pc, simili):
     nuovo = e_nuovo(p)
     formato = pc["breve"] if pc else "Articolo"
     stato_txt = "nuovo sigillato" if nuovo and p.get("cat") == "musica" else ("nuovo" if nuovo else "usato")
+    gioco = p.get("cat") == "videogiochi"
+    pf = p.get("_pf") or {}
+    if gioco and pf.get("sigla"):
+        formato = "Gioco " + pf["sigla"]
     title = f"{nome} | {formato} {stato_txt} | Ramacciato Vintage"
     parti = [f"{nome}"]
+    if gioco:
+        parti += [x for x in [pf.get("label"), p.get("region"), p.get("completeness"), p.get("publisher")] if x]
     if p.get("_formato"):
         parti.append(p["_formato"])
     if p.get("label"):
@@ -549,6 +643,8 @@ def pagina_prodotto(p, pc, simili):
     voci = [("Home", BASE + "/"), ("Shop", BASE + "/shop.html")]
     if pc:
         voci.append((pc["h1"].split(":")[0], BASE + "/negozio/%s.html" % pc["slug"]))
+    if gioco and pf.get("id"):
+        voci.append(("Giochi %s usati" % pf["sigla"], BASE + "/negozio/%s.html" % slug_console(pf)))
     voci.append((nome, canon))
     prodotto_ld = {
         "@context": "https://schema.org", "@type": "Product", "name": nome,
@@ -565,6 +661,15 @@ def pagina_prodotto(p, pc, simili):
     }
     if a:
         prodotto_ld["brand"] = {"@type": "Brand", "name": a}
+    if gioco:
+        prodotto_ld["@type"] = ["Product", "VideoGame"]
+        if pf.get("label"):
+            prodotto_ld["gamePlatform"] = pf["label"]
+        if p.get("publisher"):
+            prodotto_ld["brand"] = {"@type": "Brand", "name": p["publisher"]}
+            prodotto_ld["publisher"] = {"@type": "Organization", "name": p["publisher"]}
+        if p.get("_generi"):
+            prodotto_ld["genre"] = p["_generi"]
     if prezzo_schema(p) is None:
         prodotto_ld.pop("offers")
     # testo descrittivo
@@ -578,12 +683,25 @@ def pagina_prodotto(p, pc, simili):
         frasi.append(f + ".")
         if p.get("_generi"):
             frasi.append("Generi e stili: " + e(", ".join(p["_generi"])) + ".")
+    elif gioco:
+        f = f"Videogioco per <b>{e(pf.get('label') or 'console')}</b>, «{e(nome)}»"
+        if p.get("publisher"):
+            f += f", pubblicato da {e(p['publisher'])}"
+        if p.get("year") and str(p["year"]) != "0":
+            f += f" nel {e(p['year'])}"
+        frasi.append(f + ".")
+        if p.get("developer"):
+            frasi.append(f"Sviluppato da {e(p['developer'])}.")
+        if p.get("desc"):
+            frasi.append(e(p["desc"]))
     elif p.get("desc"):
         frasi.append(e(p["desc"]))
     frasi.append(f"Condizioni: <b>{e(p.get('condition') or 'come da descrizione')}</b>.")
     frasi.append("Pezzo unico: lo spedisco in tutta Italia oppure puoi prenotarlo e ritirarlo di persona "
                  "a uno dei miei mercatini in Veneto (Vicenza, Padova, Marostica, Mestre).")
-    chips = [x for x in [p.get("_formato"), ("Codice edizione: " + p["codiceEdizione"]) if p.get("codiceEdizione") else None, p.get("label"), (str(p["year"]) if p.get("year") and str(p["year"]) != "0" else None)] if x]
+    chips = [x for x in [p.get("region"), p.get("completeness"), (str(p["year"]) if p.get("year") and str(p["year"]) != "0" else None),
+                         p.get("publisher"), ("Codice: " + p["codiceEdizione"]) if p.get("codiceEdizione") else None] + list(p.get("_generi") or []) if x] if gioco else \
+            [x for x in [p.get("_formato"), ("Codice edizione: " + p["codiceEdizione"]) if p.get("codiceEdizione") else None, p.get("label"), (str(p["year"]) if p.get("year") and str(p["year"]) != "0" else None)] if x]
     sub_mail = "Prenotazione ritiro al mercatino: %s (ID %s)" % (nome, p["id"])
     body_mail = ("Ciao Luca,\n\nvorrei prenotare \"%s\" (ID %s, € %s) e ritirarlo al mercatino di: \n\n"
                  "Nome:\nTelefono:\n\nGrazie!" % (nome, p["id"], prezzo_txt(p)))
@@ -593,24 +711,38 @@ def pagina_prodotto(p, pc, simili):
     if pc and pc.get("libreria"):
         par = "vinile" if pc.get("sezione") == "vinili" else "cd"
         libreria = f'<a class="sx-btn sx-btn-l" href="/shop-libreria.html?{par}={e(p["id"])}">Guardalo nella Libreria</a>'
+    if gioco:
+        libreria = f'<a class="sx-btn sx-btn-l" href="/shop-libreria-giochi.html?gioco={e(p["id"])}">Guardalo nella Libreria</a>'
     sim = "".join(card(x) for x in simili)
     # banner concerti Dead People Activity (solo musica, no colonne sonore): montato da /dpa-live.js
     dpa = (f'<div data-dpa-artist="{e(a)}" style="margin:0 -12px 6px"></div><script src="/dpa-live.js" defer></script>'
            if p.get("cat") == "musica" and a and not p.get("_colonna_sonora")
            and re.match(r"(cd|vinil|musicassett)", str(p.get("subcat") or "cd"), re.I) else "")
     nota_discogs = ('<p class="sx-nota">Copertina da Discogs a scopo illustrativo: il prodotto fisico può differire dall\'immagine.</p>' if p.get('discogsId') else '')
+    if gioco and e_cover_illustrativa(img):
+        nota_discogs = ('<p class="sx-nota">Copertina a scopo illustrativo: edizione e regione della copia in vendita possono differire'
+                        + (', le foto reali sono nelle immagini successive.' if len(p.get("photos") or []) > 1 else '.') + '</p>')
     dati_json = json.dumps(pub, ensure_ascii=False).replace('</', '<\\/')
+    # videogiochi: miniature delle foto (copertina + foto reali della copia)
+    galleria = ""
+    fotos = [x for x in (p.get("photos") or []) if x]
+    if gioco and len(fotos) > 1:
+        galleria = ('<div class="sx-thumbs">' + "".join(
+            f'<button type="button" class="sx-thumb{" on" if i == 0 else ""}" data-src="{e(src_img(x))}" aria-label="Foto {i + 1}">'
+            f'<img src="{e(src_img(x))}" alt="" width="72" height="72" loading="lazy"></button>' for i, x in enumerate(fotos[:8]))
+            + '</div><script>document.querySelectorAll(".sx-thumb").forEach(function(b){b.onclick=function(){document.getElementById("sxMain").src=b.dataset.src;'
+              'document.querySelectorAll(".sx-thumb").forEach(function(x){x.classList.toggle("on",x===b)});};});</script>')
     h = testa(title, desc, canon, url_img(img), "index,follow", "product", [prodotto_ld, breadcrumb_ld(voci)])
     h += breadcrumb_html(voci)
     h += f"""<article class="sx-prod">
-  <div class="sx-prod-img{' q' if p.get('cat') == 'musica' else ''}"><img src="{e(src_img(img))}" alt="{e(nome)}" width="600" height="600"></div>
+  {('<div class="sx-prod-col">' if gioco else '')}<div class="sx-prod-img{' q' if p.get('cat') == 'musica' else (' g' if gioco else '')}"><img {('id="sxMain" ' if gioco else '')}src="{e(src_img(img))}" alt="{e(nome)}" width="600" height="600"></div>{(galleria + '</div>') if gioco else ''}
   <div class="sx-prod-info">
     <p class="sx-kick">{e(pc['h1'].split(':')[0] if pc else 'Shop')}</p>
     <h1>{e(a) if a else e(nome)}</h1>
-    {'<p class="sx-sub">' + e(t) + '</p>' if a else ''}
+    {'<p class="sx-sub">' + e(t) + '</p>' if a else ('<p class="sx-sub">' + e(pf.get("label")) + '</p>' if gioco and pf.get("label") else '')}
     <div class="sx-chips">{''.join('<span>' + e(c) + '</span>' for c in chips)}</div>
-    <p class="sx-cond">{'Venduto' if venduto else 'Condizioni: ' + e(p.get('condition') or '-')}</p>
-    <p class="sx-price">{'Venduto' if venduto else '€ ' + prezzo_txt(p)}{'' if venduto else ' <small>+ spedizione, oppure ritiro gratuito al mercatino</small>'}</p>
+    <p class="sx-cond">Condizioni: {e(p.get('condition') or '-')}</p>
+    <p class="sx-price">{'<span class="rv-venduto rv-venduto-l">Venduto</span>' if venduto else '€ ' + prezzo_txt(p)}{'' if venduto else ' <small>+ spedizione, oppure ritiro gratuito al mercatino</small>'}</p>
     {('<p class="sx-difetti" style="margin:-4px 0 16px;padding:10px 14px;border-radius:12px;background:#fff3d6;border:1.5px solid rgba(192,120,0,.45);color:#7a3d00;font-weight:800;line-height:1.4">&#x26A0; ' + e(p['dettagliCondizioni']) + '</p>') if p.get('dettagliCondizioni') else ''}
     <div data-rv-weekend="compatto" hidden></div>
     <div class="sx-azioni">
@@ -627,6 +759,7 @@ def pagina_prodotto(p, pc, simili):
 {mercatini_box([m['id'] for m in MERCATINI], 'Ritiralo di persona ai mercatini')}
 {('<section class="sx-box"><h2>Potrebbero interessarti</h2><div class="sx-grid">' + sim + '</div></section>') if sim else ''}
 <script type="application/json" id="sxData">{dati_json}</script>
+<script src="/rv-stock-live.js"></script>
 <script>
 (function(){{var K='rv_cart_v1',p=JSON.parse(document.getElementById('sxData').textContent);
 function L(){{try{{return JSON.parse(localStorage.getItem(K)||'[]')}}catch(e){{return[]}}}}
@@ -634,6 +767,8 @@ function S(c){{try{{localStorage.setItem(K,JSON.stringify(c))}}catch(e){{}}if(wi
 var b=document.getElementById('sxCart');function st(){{var on=L().some(function(x){{return x.id===p.id}});b.textContent=on?'Nel carrello':'Aggiungi al carrello';b.classList.toggle('on',on);}}
 if(!b.disabled){{st();b.onclick=function(){{var c=L(),i=-1;c.forEach(function(x,k){{if(x.id===p.id)i=k}});if(i<0){{var it=JSON.parse(JSON.stringify(p));it.qty=1;c.push(it)}}else c.splice(i,1);S(c);st();}};
 document.getElementById('sxBuy').onclick=function(){{var c=L();if(!c.some(function(x){{return x.id===p.id}})){{var it=JSON.parse(JSON.stringify(p));it.qty=1;c.push(it);S(c)}}location.href='/checkout.html';}};}}
+/* disponibilita in diretta: venduto dal gestionale -> VENDUTO subito, senza aspettare la rigenerazione della pagina */
+if(window.rvStockLive)rvStockLive(function(m){{var k=String(p.id),c=m.has(k)?m.get(k):0;if(c>0)return;var pr=document.querySelector('.sx-price');if(pr&&!pr.querySelector('.rv-venduto'))pr.innerHTML='<span class="rv-venduto rv-venduto-l">Venduto</span>';['sxCart','sxBuy'].forEach(function(i){{var x=document.getElementById(i);if(x)x.disabled=true;}});}});
 }})();
 </script>
 """
@@ -655,7 +790,8 @@ def pagina_categoria(pc, prodotti, sotto_label):
               [breadcrumb_ld(voci)] + ([lista_ld] if disp else []))
     h += breadcrumb_html(voci)
     extra = (('<a class="sx-btn sx-btn-l" href="/shop-libreria.html?sala=vinili">Sfoglia i vinili nella Libreria</a>' if pc.get("sezione") == "vinili"
-              else '<a class="sx-btn sx-btn-l" href="/shop-libreria.html">Sfoglia i CD nella Libreria</a>') if pc.get("libreria") else "")
+              else '<a class="sx-btn sx-btn-l" href="/shop-libreria.html">Sfoglia i CD nella Libreria</a>') if pc.get("libreria") else
+             ('<a class="sx-btn sx-btn-l" href="/shop-libreria-giochi.html">Sfoglia i giochi nella Libreria</a>' if pc.get("cat") == "videogiochi" else ""))
     h += f'<section class="sx-hero"><h1>{e(pc["h1"])}</h1><p>{e(pc["intro"])}</p><div class="sx-hero-az"><a class="sx-btn" href="/shop.html?cat={pc["cat"]}">Apri nello shop</a>{extra}</div></section>'
     if not disp:
         h += '<section class="sx-box"><p>Nuovi arrivi in preparazione: i pezzi di questa categoria saranno online a breve. Intanto guarda lo <a href="/shop.html">shop completo</a> o passa ai <a href="/mercatini.html">mercatini</a>.</p></section>'
@@ -664,7 +800,9 @@ def pagina_categoria(pc, prodotti, sotto_label):
         for p in disp:
             gruppi.setdefault(sotto_label.get(p.get("subcat"), ""), []).append(p)
         for g in sorted(gruppi, key=lambda x: (x == "", x)):
-            h += '<section class="sx-box">' + (f'<h2>{e(g)}</h2>' if g and len(gruppi) > 1 else '') + '<div class="sx-grid">'
+            pfg = next((x for x in PIATTAFORME if x["label"] == g), None) if pc.get("cat") == "videogiochi" else None
+            tit = (f'<a href="/negozio/{slug_console(pfg)}.html">{e(g)}</a>' if pfg else e(g))
+            h += '<section class="sx-box">' + (f'<h2>{tit}</h2>' if g and len(gruppi) > 1 else '') + '<div class="sx-grid">'
             h += "".join(card(p) for p in sorted(gruppi[g], key=lambda x: (artista(x) or x.get("name") or "").lower()))
             h += "</div></section>"
     h += mercatini_box([m["id"] for m in MERCATINI], "Vedi i pezzi dal vivo")
@@ -718,7 +856,7 @@ def aggiorna_mercatini_html():
 
 
 def sitemap(url_extra):
-    statiche = [("/", "1.0", "weekly"), ("/shop.html", "0.95", "daily"), ("/shop-libreria.html", "0.8", "daily"),
+    statiche = [("/", "1.0", "weekly"), ("/shop.html", "0.95", "daily"), ("/shop-libreria.html", "0.8", "daily"), ("/shop-libreria-giochi.html", "0.75", "daily"),
                 ("/mercatini.html", "0.85", "weekly"), ("/svuotacantine.html", "0.8", "monthly"),
                 ("/fisico-vs-digitale.html", "0.6", "weekly"), ("/archivio-licenze.html", "0.5", "monthly"),
                 ("/faq.html", "0.7", "monthly")]
@@ -745,6 +883,9 @@ def main():
             sotto_label[sc["id"]] = sc["label"]
             for c in sc.get("children", []):
                 sotto_label[c["id"]] = c["label"]
+
+    for pf in PIATTAFORME:
+        sotto_label.setdefault(pf["id"], pf["label"])
 
     prodotti = []
     for c in CATEGORIE_FILE:
@@ -812,6 +953,28 @@ def main():
             url_sitemap.append(("/negozio/colonne-sonore-film.html", "0.8", "daily"))
     elif os.path.exists(os.path.join(ROOT, "negozio", "colonne-sonore-film.html")):
         os.remove(os.path.join(ROOT, "negozio", "colonne-sonore-film.html"))
+
+    # pagine per console (videogiochi): solo per le console con almeno un gioco
+    giochi = [p for p in prodotti if p.get("cat") == "videogiochi" and (p.get("_pf") or {}).get("id")]
+    console_fatte = set()
+    for pf in PIATTAFORME:
+        lista = [p for p in giochi if p["_pf"]["id"] == pf["id"]]
+        if not lista:
+            continue
+        pcc = {"slug": slug_console(pf), "cat": "videogiochi", "h1": "Giochi %s usati" % pf["sigla"],
+               "title": "Giochi %s Usati Originali" % pf["sigla"],
+               "intro": "Videogiochi originali per %s, usati e da collezione. Per ogni gioco trovi regione (PAL/NTSC), "
+                        "completezza (custodia, manuale) e condizioni reali. Spedizione in tutta Italia o ritiro ai mercatini in Veneto." % pf["label"]}
+        h, indicizza = pagina_categoria(pcc, lista, sotto_label)
+        cambiati += scrivi("negozio/%s.html" % pcc["slug"], h)
+        console_fatte.add("%s.html" % pcc["slug"])
+        if indicizza:
+            url_sitemap.append(("/negozio/%s.html" % pcc["slug"], "0.8", "daily"))
+    cart_neg = os.path.join(ROOT, "negozio")
+    if os.path.isdir(cart_neg):
+        for fn in os.listdir(cart_neg):
+            if re.match(r"^giochi-.+-usati\.html$", fn) and fn not in console_fatte:
+                os.remove(os.path.join(cart_neg, fn))
 
     for pc in PAGINE_CAT:
         lista = [p for p in prodotti if p["_pc"] is pc]

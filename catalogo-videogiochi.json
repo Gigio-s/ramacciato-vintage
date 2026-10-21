@@ -1,1 +1,102 @@
-[]
+[
+  {
+    "id": 130,
+    "cat": "videogiochi",
+    "name": "Assassin's Creed III",
+    "price": 5,
+    "condition": "Very Good (VG)",
+    "sold": false,
+    "isNew": true,
+    "photos": [
+      "photos/inventario/Assassin%27s%20Creed%20III%20--%20igdb-1266/igdb-1266-cover-7dbdb6c6186c.webp"
+    ],
+    "subcat": "Xbox 360",
+    "platform": "Xbox 360",
+    "copie": 1,
+    "year": "2012",
+    "publisher": "Ubisoft Entertainment",
+    "developer": "Ubisoft Montreal",
+    "region": "PAL",
+    "completeness": "Completo (custodia e manuale)",
+    "igdbId": 1266,
+    "genres": [
+      "Adventure"
+    ]
+  },
+  {
+    "id": 129,
+    "cat": "videogiochi",
+    "name": "Assassin's Creed Brotherhood",
+    "price": 5,
+    "condition": "Very Good (VG)",
+    "sold": false,
+    "isNew": true,
+    "photos": [
+      "photos/inventario/Assassin%27s%20Creed%20Brotherhood%20--%20igdb-113/igdb-113-cover-b8fc8c64380a.webp"
+    ],
+    "subcat": "Xbox 360",
+    "platform": "Xbox 360",
+    "copie": 1,
+    "year": "2010",
+    "publisher": "Ubisoft Entertainment",
+    "developer": "Ubisoft Montreal",
+    "region": "PAL",
+    "completeness": "Completo (custodia e manuale)",
+    "igdbId": 113,
+    "genres": [
+      "Puzzle",
+      "Adventure"
+    ]
+  },
+  {
+    "id": 128,
+    "cat": "videogiochi",
+    "name": "Assassin's Creed II",
+    "price": 5,
+    "condition": "Very Good (VG)",
+    "sold": false,
+    "isNew": true,
+    "photos": [
+      "photos/inventario/Assassin%27s%20Creed%20II%20--%20igdb-127/igdb-127-cover-405defdc83c5.webp"
+    ],
+    "subcat": "Xbox 360",
+    "platform": "Xbox 360",
+    "copie": 1,
+    "year": "2009",
+    "publisher": "Ubisoft Entertainment",
+    "developer": "Ubisoft Montreal",
+    "region": "PAL",
+    "completeness": "Completo (custodia e manuale)",
+    "igdbId": 127,
+    "genres": [
+      "Platform",
+      "Adventure"
+    ]
+  },
+  {
+    "id": 103,
+    "cat": "videogiochi",
+    "name": "Grand Theft Auto: Vice City Stories",
+    "price": 20,
+    "condition": "Very Good (VG)",
+    "sold": false,
+    "isNew": true,
+    "photos": [
+      "photos/inventario/Grand%20Theft%20Auto-%20Vice%20City%20Stories%20--%20igdb-3262/igdb-3262-cover-1635cc5e9afd.webp"
+    ],
+    "subcat": "PlayStation Portable",
+    "platform": "PlayStation Portable",
+    "copie": 1,
+    "year": "2006",
+    "publisher": "Take-Two Interactive, Rockstar Games",
+    "developer": "Rockstar Leeds, Rockstar North",
+    "region": "PAL",
+    "completeness": "Completo (custodia e manuale)",
+    "codiceEdizione": "Edizione Spagnola",
+    "igdbId": 3262,
+    "genres": [
+      "Racing",
+      "Adventure"
+    ]
+  }
+]

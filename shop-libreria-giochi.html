@@ -1,0 +1,865 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script src="i18n.js"></script>
+<script src="rv-stock-live.js"></script>
+<title>Videogiochi Usati da Sfogliare: la Libreria dei Giochi | Ramacciato Vintage</title>
+<meta name="description" content="Sfoglia i videogiochi usati di Ramacciato Vintage come sugli scaffali di un negozio anni 2000: scorri le custodie per console, estrai il gioco e acquistalo online o ritiralo ai mercatini in Veneto.">
+<link rel="canonical" href="https://ramacciatovintage.it/shop-libreria-giochi.html">
+<link rel="alternate" hreflang="it" href="https://ramacciatovintage.it/shop-libreria-giochi.html">
+<link rel="alternate" hreflang="en" href="https://ramacciatovintage.it/shop-libreria-giochi.html?lang=en">
+<link rel="alternate" hreflang="es" href="https://ramacciatovintage.it/shop-libreria-giochi.html?lang=es">
+<link rel="alternate" hreflang="x-default" href="https://ramacciatovintage.it/shop-libreria-giochi.html">
+<meta property="og:title" content="La Libreria dei Giochi | Ramacciato Vintage">
+<meta property="og:image" content="https://ramacciatovintage.it/og-image.jpg">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="fonts/exo-2-latin-900-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/nunito-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{
+  --blue:#4a90e0;--navy:#0b2545;--cobalt:#0d3b75;--white:#fff;
+  --wood:url('libreria/legno-noce.jpg');--wood-h:url('libreria/legno-noce-h.jpg');
+  --dw:26px;--dh:196px;           /* dorso CD */
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:Archivo,Arial,sans-serif;color:var(--navy);background:#0d1b2c;min-height:100vh;overflow-x:hidden}
+
+/* ── Ambiente ── */
+.ambiente{position:fixed;inset:-30px;z-index:0;background:#23384f url('libreria/sfondo-negozio.jpg') center 35%/cover no-repeat;filter:blur(3px) saturate(1.05)}
+.ambiente::after{content:"";position:absolute;inset:0;background:
+  radial-gradient(ellipse 70% 60% at 50% 55%,rgba(10,20,34,0) 0,rgba(10,20,34,.35) 60%,rgba(6,12,22,.75) 100%),
+  linear-gradient(180deg,rgba(74,144,224,.12),rgba(6,12,22,.25))}
+
+/* ── Barra superiore ── */
+.top{position:relative;z-index:5;display:flex;align-items:center;gap:18px;justify-content:space-between;
+  max-width:1180px;margin:18px auto 0;padding:10px 14px 10px 18px;border-radius:999px;
+  background:rgba(255,255,255,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  box-shadow:0 10px 30px rgba(6,12,22,.25);width:calc(100% - 32px)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--navy);font-weight:900;letter-spacing:.02em;font-size:13px;text-transform:uppercase;white-space:nowrap}
+.brand img{height:26px;width:auto}
+.brand span b{color:var(--cobalt);font-weight:600}
+.top-r{display:flex;align-items:center;gap:10px;flex:1;justify-content:flex-end}
+.cerca{flex:0 1 300px;display:flex;align-items:center;gap:8px;background:#fff;border:1px solid rgba(11,37,69,.14);border-radius:999px;padding:8px 14px}
+.cerca input{border:0;outline:0;font:inherit;font-size:14px;color:var(--navy);width:100%;background:transparent}
+.pill.pill-back{background:transparent;color:var(--navy);box-shadow:inset 0 0 0 1.5px rgba(11,37,69,.35);margin-right:auto;margin-left:4px}
+.pill.pill-back:hover{background:var(--navy);color:#fff}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border-radius:999px;background:var(--navy);color:#fff;text-decoration:none;font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+
+/* ── Intestazione ── */
+.intro{position:relative;z-index:2;text-align:center;color:#fff;margin:38px auto 26px;padding:0 16px}
+.intro .kicker{font-size:10px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;opacity:.85}
+.intro h1{font-size:clamp(36px,6vw,64px);font-weight:900;letter-spacing:-.04em;text-transform:uppercase;margin:8px 0 6px;line-height:.95;text-shadow:0 4px 24px rgba(0,0,0,.35)}
+.intro p{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:clamp(17px,2.2vw,22px);margin:0;opacity:.92}
+
+/* ── Mobile porta CD ── */
+.sala{position:relative;z-index:2;display:flex;justify-content:center;padding:0 16px 90px}
+.cab{position:relative;width:min(1060px,100%);padding:30px 30px 0;
+  background:linear-gradient(90deg,rgba(0,0,0,.28),rgba(0,0,0,0) 3%,rgba(0,0,0,0) 97%,rgba(0,0,0,.32)),var(--wood) 0 0/500px auto;
+  border-radius:4px 4px 2px 2px;
+  box-shadow:0 60px 80px -30px rgba(0,0,0,.75),0 20px 40px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.12),inset 0 0 0 1px rgba(0,0,0,.35)}
+/* cimasa */
+.cab::before{content:"";position:absolute;left:-10px;right:-10px;top:-16px;height:18px;border-radius:3px 3px 1px 1px;
+  background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,0) 30%,rgba(0,0,0,.35)),var(--wood-h) 0 0/auto 500px;
+  box-shadow:0 6px 10px rgba(0,0,0,.45)}
+.zoccolo{height:40px;margin:0 -30px;border-radius:0 0 2px 2px;
+  background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.25) 20%,rgba(0,0,0,.4)),var(--wood-h) 0 0/auto 500px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+.piedi{display:flex;justify-content:space-between;margin:0 16px}
+.piedi i{display:block;width:46px;height:12px;border-radius:0 0 6px 6px;background:linear-gradient(180deg,#1b120c,#0c0806)}
+
+.ripiano{position:relative}
+.vano{position:relative;display:flex;align-items:flex-end;gap:1px;height:calc(var(--dh) + 26px);padding:0 18px;
+  background:linear-gradient(180deg,rgba(0,0,0,.7),rgba(0,0,0,.45) 35%,rgba(0,0,0,.5)),var(--wood) 0 0/500px auto;
+  box-shadow:inset 0 22px 26px -10px rgba(0,0,0,.85),inset 18px 0 22px -14px rgba(0,0,0,.8),inset -18px 0 22px -14px rgba(0,0,0,.8)}
+.asse{position:relative;height:26px;
+  background:linear-gradient(180deg,rgba(255,255,255,.22) 0,rgba(255,255,255,.05) 8%,rgba(0,0,0,0) 30%,rgba(0,0,0,.45)),var(--wood-h) 0 0/auto 500px;
+  box-shadow:0 7px 10px -3px rgba(0,0,0,.6);z-index:2}
+.asse::before{content:"";position:absolute;left:0;right:0;top:-5px;height:5px;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.35))}
+.targhetta{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);padding:3px 14px 2px;border-radius:2px;
+  font-size:9.5px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:#2b1d08;white-space:nowrap;
+  background:linear-gradient(180deg,#f3dc9a,#caa54f 45%,#9e7a2c 55%,#d9bb6d);
+  box-shadow:0 1px 0 rgba(255,255,255,.35) inset,0 1px 2px rgba(0,0,0,.55);text-shadow:0 1px 0 rgba(255,240,200,.5)}
+.targhetta::before,.targhetta::after{content:"";position:absolute;top:50%;width:4px;height:4px;margin-top:-2px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff6d8,#7a5a1c)}
+.targhetta::before{left:4px}.targhetta::after{right:4px}
+
+/* ── Dorso CD (jewel case) ── */
+.dorso{position:relative;flex:0 0 var(--dw);width:var(--dw);height:var(--dh);padding:0;border:0;cursor:pointer;
+  background:var(--c,#222);color:var(--t,#f4f1ea);
+  transform:translateY(var(--y,0));transition:transform .28s var(--ease),filter .28s,opacity .35s;
+  box-shadow:1px 0 0 rgba(0,0,0,.55),-1px 0 0 rgba(255,255,255,.04),0 3px 6px rgba(0,0,0,.5);filter:brightness(var(--b,1))}
+.dorso::before{content:"";position:absolute;inset:0;pointer-events:none;background:
+  linear-gradient(90deg,rgba(255,255,255,.55) 0,rgba(255,255,255,.12) 1.5px,rgba(255,255,255,0) 4px,rgba(255,255,255,0) calc(100% - 5px),rgba(0,0,0,.3) calc(100% - 2px),rgba(255,255,255,.35) 100%),
+  linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,0) 20%,rgba(0,0,0,0) 80%,rgba(0,0,0,.18))}
+.dorso .cap{position:absolute;left:0;right:0;height:9px;background:linear-gradient(90deg,rgba(30,30,32,.9),rgba(70,72,76,.85) 40%,rgba(22,22,24,.92));pointer-events:none}
+.dorso .cap.t{top:0;box-shadow:inset 0 -1px 0 rgba(255,255,255,.12)}
+.dorso .cap.b{bottom:0;box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+.dorso .txt{position:absolute;left:0;right:0;top:15px;bottom:34px;display:flex;align-items:center;justify-content:flex-start;
+  writing-mode:vertical-rl;font-size:10px;line-height:1;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0}
+.dorso .txt b{font-weight:900;margin-bottom:6px}
+.dorso .txt span{font-weight:600;opacity:.82}
+.dorso .bollino{position:absolute;left:50%;bottom:13px;transform:translateX(-50%);width:20px;height:20px;border-radius:50%;
+  background:#fff;color:#c01919;font-size:7.5px;font-weight:900;display:flex;align-items:center;justify-content:center;letter-spacing:-.02em;
+  box-shadow:0 1px 2px rgba(0,0,0,.4);pointer-events:none}
+.dorso:hover,.dorso:focus-visible{--y:-12px;filter:brightness(calc(var(--b,1) + .12));z-index:3;outline:0;box-shadow:0 14px 18px rgba(0,0,0,.6),1px 0 0 rgba(0,0,0,.5)}
+.dorso:focus-visible{box-shadow:0 0 0 2px #fff,0 14px 18px rgba(0,0,0,.6)}
+.dorso.fuori{opacity:0;--y:-40px;pointer-events:none}
+.dorso.spento{opacity:.28;filter:grayscale(.8) brightness(.7)}
+.dorso.trovato{--y:-16px;box-shadow:0 0 0 2px #ffe08a,0 14px 18px rgba(0,0,0,.6)}
+.dorso.venduto .bollino{background:#c01919;color:#fff;font-size:6px}
+.reggilibri{flex:0 0 12px;height:128px;margin-left:3px;align-self:flex-end;border-radius:1px;
+  background:linear-gradient(90deg,#3c3f44,#9ca3ab 35%,#5b6068 60%,#2a2c30);box-shadow:4px 0 8px rgba(0,0,0,.6)}
+.vuoto-msg{color:rgba(255,255,255,.6);font-size:13px;align-self:center;margin:auto}
+
+/* tooltip */
+.etichetta{position:fixed;z-index:20;pointer-events:none;background:#fff;color:var(--navy);border-radius:10px;padding:8px 12px;
+  box-shadow:0 10px 26px rgba(0,0,0,.35);font-size:12px;line-height:1.3;max-width:260px;opacity:0;transform:translateY(6px);transition:opacity .15s,transform .15s}
+.etichetta.on{opacity:1;transform:none}
+.etichetta b{display:block;font-weight:900;text-transform:uppercase;font-size:11px;letter-spacing:.04em}
+.etichetta em{font-family:'Cormorant Garamond',Georgia,serif;font-size:15px}
+.etichetta s{text-decoration:none;display:block;margin-top:3px;font-weight:800;color:var(--cobalt)}
+
+/* ── CD estratto ── */
+.estratto{position:fixed;inset:0;z-index:100000;overscroll-behavior:contain;display:flex;align-items:center;justify-content:center;gap:56px;padding:24px;
+  background:rgba(6,14,26,.0);backdrop-filter:blur(0);-webkit-backdrop-filter:blur(0);visibility:hidden;
+  transition:background .5s,backdrop-filter .5s,-webkit-backdrop-filter .5s,visibility 0s .5s}
+.estratto.on{visibility:visible;background:rgba(6,14,26,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .5s,backdrop-filter .5s,-webkit-backdrop-filter .5s}
+.palco{perspective:1600px;flex:0 0 auto}
+.case{--W:340px;--H:calc(var(--W) * 125 / 142);--D:calc(var(--W) * 10 / 142);
+  position:relative;width:var(--W);height:var(--H);transform-style:preserve-3d;will-change:transform;cursor:grab;touch-action:none;-webkit-user-select:none;user-select:none}
+.case.drag{cursor:grabbing}
+.faccia{position:absolute;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
+.f-front,.f-back{inset:0}
+.f-front{transform:translateZ(calc(var(--D) / 2));background:#0c0c0e}
+.f-back{transform:rotateY(180deg) translateZ(calc(var(--D) / 2));background:#0c0c0e}
+.f-left{width:var(--D);height:100%;left:calc((var(--W) - var(--D)) / 2);transform:rotateY(-90deg) translateZ(calc(var(--W) / 2));background:var(--c,#222)}
+.f-right{width:var(--D);height:100%;left:calc((var(--W) - var(--D)) / 2);transform:rotateY(90deg) translateZ(calc(var(--W) / 2));
+  background:linear-gradient(90deg,rgba(210,222,235,.55),rgba(160,175,190,.35),rgba(230,238,246,.6))}
+.f-top,.f-bot{width:100%;height:var(--D);top:calc((var(--H) - var(--D)) / 2);background:linear-gradient(180deg,rgba(215,225,236,.6),rgba(150,165,182,.45))}
+.f-top{transform:rotateX(90deg) translateZ(calc(var(--H) / 2))}
+.f-bot{transform:rotateX(-90deg) translateZ(calc(var(--H) / 2))}
+/* fronte: libretto sotto la plastica + cerniera */
+.libretto{position:absolute;top:2%;bottom:2%;right:1.6%;aspect-ratio:1/1;background:#222 center/cover no-repeat;box-shadow:-2px 0 4px rgba(0,0,0,.4)}
+.cerniera{position:absolute;left:0;top:0;bottom:0;width:13.5%;
+  background:linear-gradient(90deg,rgba(40,42,46,.95),rgba(92,96,102,.9) 12%,rgba(30,31,34,.95) 22%,rgba(62,65,70,.92) 40%,rgba(24,25,27,.96) 62%,rgba(52,54,58,.92) 82%,rgba(20,20,22,.97))}
+.cerniera::after{content:"";position:absolute;inset:6% 30%;border-left:1px solid rgba(255,255,255,.12);border-right:1px solid rgba(0,0,0,.4)}
+.plastica{position:absolute;inset:0;pointer-events:none;border:1px solid rgba(255,255,255,.28);
+  background:linear-gradient(118deg,rgba(255,255,255,.28) 0,rgba(255,255,255,.08) 18%,rgba(255,255,255,0) 34%,rgba(255,255,255,0) 58%,rgba(255,255,255,.1) 66%,rgba(255,255,255,0) 76%),
+  linear-gradient(180deg,rgba(255,255,255,.06),rgba(0,0,0,.12))}
+/* retro: inlay generato */
+.inlay{position:absolute;inset:3% 2%;background:var(--c,#222);color:var(--t,#f4f1ea);display:grid;grid-template-columns:7% 1fr 7%}
+.inlay .lato{writing-mode:vertical-rl;font-size:calc(var(--W) * .026);font-weight:800;letter-spacing:.05em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;overflow:hidden;white-space:nowrap;border:0 solid rgba(0,0,0,.25)}
+.inlay .lato:first-child{border-right-width:1px}.inlay .lato:last-child{border-left-width:1px;transform:rotate(180deg)}
+.inlay .corpo{padding:9% 8%;display:flex;flex-direction:column;gap:4%;font-size:calc(var(--W) * .032);overflow:hidden}
+.inlay .corpo h4{margin:0;font-size:1.5em;font-weight:900;text-transform:uppercase;letter-spacing:-.01em;line-height:1}
+.inlay .corpo h5{margin:0;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600;font-size:1.45em;line-height:1.05}
+.inlay .corpo p{margin:0;opacity:.85;line-height:1.35}
+.inlay .piede{margin-top:auto;display:flex;align-items:flex-end;justify-content:space-between;gap:8px}
+.barcode{width:34%;height:calc(var(--W) * .09);background:#fff repeating-linear-gradient(90deg,#000 0 1px,#fff 1px 3px,#000 3px 5px,#fff 5px 6px,#000 6px 7px,#fff 7px 9px);border:3px solid #fff}
+.inlay .firma{font-size:.72em;font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+.retro-foto{position:absolute;inset:3% 2%;background:#222 center/cover no-repeat}
+.f-left .txt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;writing-mode:vertical-rl;color:var(--t,#f4f1ea);
+  font-size:calc(var(--W) * .03);text-transform:uppercase;white-space:nowrap;overflow:hidden;letter-spacing:.04em}
+.f-left .txt b{font-weight:900;margin-bottom:.6em}
+
+/* scheda prodotto */
+.scheda{flex:0 1 380px;background:#fff;border-radius:22px;padding:26px 26px 22px;box-shadow:0 30px 60px rgba(0,0,0,.35);
+  opacity:0;transform:translateX(30px);transition:opacity .45s .35s,transform .6s .35s var(--ease)}
+.estratto.on .scheda{opacity:1;transform:none}
+.estratto.chiude .scheda{opacity:0;transform:translateX(30px);transition:opacity .2s,transform .3s}
+.scheda .sez{font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--cobalt);display:flex;align-items:center;gap:8px}
+.scheda .sez::before{content:"";width:20px;height:1px;background:var(--cobalt)}
+.scheda h2{margin:12px 0 2px;font-size:26px;font-weight:900;letter-spacing:-.03em;text-transform:uppercase;line-height:1}
+.scheda h3{margin:0 0 14px;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600;font-size:24px;line-height:1.1}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.chips span{font-size:11px;padding:5px 10px;border-radius:999px;background:#eef5fd;color:var(--navy);font-weight:600}
+.cond{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:999px;border:1px solid rgba(13,59,117,.25);color:var(--cobalt);margin-bottom:14px}
+.prezzo{font-size:34px;font-weight:900;letter-spacing:-.03em;margin:4px 0 16px}
+/* pezzo venduto: timbro rosso al posto del prezzo */
+.rv-venduto{display:inline-block;padding:4px 12px;border:2px solid #c62828;border-radius:8px;background:#fdecea;color:#c62828;font-family:'Archivo',Arial,sans-serif;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;line-height:1.25;white-space:nowrap;vertical-align:middle}.rv-venduto-l{font-size:15px;padding:6px 16px;border-radius:10px}
+.prezzo small{font-size:12px;font-weight:600;color:#1d4470;letter-spacing:0;margin-left:6px}
+.azioni{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.btn{border:0;border-radius:999px;padding:13px 14px;font:inherit;font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .2s,transform .2s}
+.btn:active{transform:scale(.97)}
+.btn-p{background:var(--navy);color:#fff}.btn-p:hover{background:var(--cobalt)}
+.btn-p.added{background:#1f7a3a}
+.btn-s{background:#eef5fd;color:var(--navy)}.btn-s:hover{background:#dcecff}
+.btn-g{grid-column:1/-1;background:transparent;color:var(--cobalt);border:1px solid rgba(13,59,117,.25)}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.btn-riponi{display:none;width:100%;margin-top:14px;background:var(--navy);color:#fff;padding:15px}
+.nota{font-size:10.5px;color:#1d4470;opacity:.75;margin:12px 0 0;line-height:1.4}
+.aiuto{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);color:rgba(255,255,255,.8);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;white-space:nowrap;opacity:0;transition:opacity .4s .8s}
+.estratto.on .aiuto{opacity:1}
+
+@media(max-width:860px){
+  :root{--dw:24px;--dh:170px}
+  .top{margin-top:12px;border-radius:20px;flex-wrap:wrap;gap:10px;padding:10px 12px;width:calc(100% - 24px)}
+  .brand{font-size:12px}
+  .top-r{flex-basis:100%;gap:8px}
+  .brand{flex:1 1 auto;min-width:0}
+  .pill.pill-back{margin:0;padding:9px 12px}
+  .cerca{flex:1 1 auto;padding:9px 12px}
+  .cerca input{font-size:16px}
+  .pill{padding:10px 13px;font-size:9.5px}
+  .intro{margin:22px auto 16px}
+  .intro h1{font-size:40px}
+  .intro p{font-size:16px}
+  .sala{padding:0 10px 110px}
+  .cab{padding:18px 10px 0}
+  .cab::before{left:-6px;right:-6px}
+  .zoccolo{margin:0 -10px;height:30px}
+  .vano{padding:0 8px;height:calc(var(--dh) + 20px)}
+  .targhetta{font-size:8.5px;padding:3px 12px 2px}
+  .dorso .txt{font-size:9.5px}
+  .dorso:hover{--y:0px}
+  .estratto{flex-direction:column;justify-content:flex-start;align-items:center;gap:0;padding:28px 14px 28px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .palco{margin:10px 0 26px}
+  .case{--W:min(250px,66vw)}
+  .scheda{flex:0 0 auto;width:100%;max-width:420px;transform:translateY(30px);padding:18px 18px 16px;border-radius:20px}
+  .estratto.chiude .scheda{transform:translateY(30px)}
+  .scheda h2{font-size:22px;margin-top:10px}
+  .scheda h3{font-size:21px;margin-bottom:12px}
+  .chips{margin-bottom:10px}
+  .chips span{font-size:10.5px;padding:4px 9px}
+  .prezzo{font-size:30px;margin:2px 0 14px}
+  .azioni{gap:7px}
+  .btn{padding:12px 10px;font-size:10px}
+  #bChiudi{display:none}
+  #bGira{grid-column:1/-1}
+  .btn-riponi{display:block}
+  body.bloccato{overflow:hidden}
+  .aiuto{display:block;position:static;transform:none;margin:14px 0 0;font-size:10px;text-align:center;white-space:normal;opacity:.75}
+}
+@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms!important}}
+
+/* Niente lineette davanti alle etichette dei titoli */
+.hero-kicker::before,.sec-label::before,.legal-kicker::before,.ck-section-title::before,.pay-title::before,.scheda .sez::before{display:none!important;content:none!important}
+
+.lib-foot{position:relative;z-index:2;width:min(1060px,calc(100% - 32px));margin:-50px auto 40px}.lib-foot .seo-hub{display:grid;grid-template-columns:1fr 1fr;gap:18px;font-size:13px;color:#fff;padding:18px 20px;border-radius:18px;background:rgba(6,14,26,.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}.lib-foot .seo-hub div{display:flex;flex-wrap:wrap;gap:6px 14px}.lib-foot .seo-hub b{width:100%;font-size:9.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}.lib-foot .seo-hub a{color:#fff;opacity:.85;text-decoration:none}.lib-foot .seo-hub a:hover{opacity:1;text-decoration:underline}@media(max-width:760px){.lib-foot .seo-hub{grid-template-columns:1fr}}
+
+/* ── Sale: CD e Vinili ── */
+.sale-nav{position:relative;z-index:3;display:flex;justify-content:center;gap:4px;width:max-content;margin:-8px auto 22px;padding:4px;border-radius:999px;background:rgba(255,255,255,.88);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.sale-nav button{border:0;background:transparent;font:inherit;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);padding:10px 22px;border-radius:999px;cursor:pointer;transition:background .2s,color .2s}
+.sale-nav button.on{background:var(--navy);color:#fff}
+.salone{position:relative;z-index:2;overflow:hidden;padding-top:20px;margin-top:-20px}
+.binario{display:flex;width:200%;transition:transform .75s var(--ease);align-items:flex-start}
+.binario.v{transform:translateX(-50%)}
+.binario>.sala{flex:0 0 50%;width:50%}
+/* mobile nero laccato */
+.cab.nero{background:linear-gradient(115deg,rgba(255,255,255,.07),rgba(255,255,255,0) 35%),linear-gradient(90deg,rgba(0,0,0,.4),rgba(0,0,0,0) 3%,rgba(0,0,0,0) 97%,rgba(0,0,0,.45)),linear-gradient(rgba(10,10,12,.88),rgba(10,10,12,.88)),var(--wood) 0 0/500px auto}
+.cab.nero::before{background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,0) 30%,rgba(0,0,0,.4)),linear-gradient(rgba(10,10,12,.86),rgba(10,10,12,.86)),var(--wood-h) 0 0/auto 500px}
+.cab.nero .zoccolo{background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.2) 20%,rgba(0,0,0,.45)),linear-gradient(rgba(10,10,12,.88),rgba(10,10,12,.88)),var(--wood-h) 0 0/auto 500px}
+.cab.nero .vano{background:linear-gradient(180deg,rgba(0,0,0,.75),rgba(0,0,0,.5) 35%,rgba(0,0,0,.55)),linear-gradient(rgba(12,12,14,.9),rgba(12,12,14,.9)),var(--wood) 0 0/500px auto}
+.cab.nero .asse{background:linear-gradient(180deg,rgba(255,255,255,.2) 0,rgba(255,255,255,.04) 8%,rgba(0,0,0,0) 30%,rgba(0,0,0,.5)),linear-gradient(rgba(12,12,14,.86),rgba(12,12,14,.86)),var(--wood-h) 0 0/auto 500px}
+.cab.lp{--dw:16px;--dh:250px}
+/* dorso della busta LP */
+.dorso.lp{box-shadow:1px 0 0 rgba(0,0,0,.6),0 3px 6px rgba(0,0,0,.5);background:linear-gradient(90deg,rgba(255,255,255,.18),rgba(255,255,255,0) 30%,rgba(0,0,0,0) 70%,rgba(0,0,0,.25)),var(--c,#222)}
+.dorso.lp::before{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,0) 15%,rgba(0,0,0,0) 85%,rgba(0,0,0,.2))}
+.dorso.lp .cap,.dorso.lp .bollino{display:none}
+.dorso.lp .txt{top:10px;bottom:10px;font-size:8.5px;letter-spacing:.05em}
+.dorso.lp .txt b{margin-bottom:5px}
+/* busta LP in 3D */
+.case.lp{--W:380px;--H:var(--W);--D:calc(var(--W) * 5 / 310)}
+.case.lp .f-front,.case.lp .f-back{background:#111}
+.busta{position:absolute;inset:0;background:#222 center/cover no-repeat}
+.busta::after{content:"";position:absolute;inset:0;background:linear-gradient(125deg,rgba(255,255,255,.14) 0,rgba(255,255,255,0) 30%),radial-gradient(ellipse at 50% 50%,rgba(0,0,0,0) 60%,rgba(0,0,0,.18));box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)}
+.case.lp .f-left{background:var(--c,#222)}
+.case.lp .f-right,.case.lp .f-top,.case.lp .f-bot{background:linear-gradient(90deg,rgba(0,0,0,.25),rgba(0,0,0,.05)),var(--c,#222)}
+.lp-disco{position:absolute;left:3%;top:3%;width:94%;height:94%;border-radius:50%;transform:translateZ(0) translateX(0);transition:transform 1.1s cubic-bezier(.3,.7,.2,1);
+  background:radial-gradient(circle,rgba(0,0,0,0) 0 2.2%,#0c0c0c 2.4% 17%,rgba(0,0,0,0) 17.2%),radial-gradient(circle,var(--c,#8a4fd0) 0 16.8%,rgba(0,0,0,0) 17%),repeating-radial-gradient(circle,#0f0f0f 0 1.3px,#232323 1.3px 2.6px);
+  box-shadow:0 0 0 1px rgba(255,255,255,.06),0 10px 30px rgba(0,0,0,.45)}
+.lp-disco::after{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 20deg,rgba(255,255,255,0) 0 10%,rgba(255,255,255,.16) 14%,rgba(255,255,255,0) 20% 60%,rgba(255,255,255,.12) 64%,rgba(255,255,255,0) 70%)}
+.lp-disco.fuori{transform:translateZ(0) translateX(46%)}
+@media(max-width:860px){
+  .cab.lp{--dw:15px;--dh:200px}
+  .case.lp{--W:min(270px,70vw)}
+  .sale-nav{margin:-4px auto 16px}
+  .sale-nav button{padding:9px 18px}
+  .lp-disco.fuori{transform:translateZ(0) translateX(28%)}
+}
+.estratto.lp .palco{margin-right:170px}
+@media(max-width:860px){.estratto.lp .palco{margin-right:0;transform:translateX(-34px)}}
+/* ── Nel carrello: colonna a sinistra, vista frontale ── */
+.dorso.preso:not(.fuori){pointer-events:none;cursor:default;opacity:.3;filter:grayscale(1) brightness(.55);--y:2px;box-shadow:1px 0 0 rgba(0,0,0,.55)}
+.dorso.preso .bollino{background:#1f7a3a;color:#fff;font-size:0}
+.dorso.preso .bollino::after{content:"\2713";font-size:10px}
+.preso-col{position:fixed;left:18px;top:50%;z-index:50;width:136px;max-height:calc(100vh - 150px);display:flex;flex-direction:column;gap:10px;padding:14px 12px 12px;border-radius:20px;
+  background:rgba(6,14,26,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 20px 40px rgba(0,0,0,.35),inset 0 0 0 1px rgba(255,255,255,.08);
+  opacity:0;visibility:hidden;transform:translate(-24px,-50%);transition:opacity .4s,transform .5s var(--ease),visibility 0s .5s}
+.preso-col.on{opacity:1;visibility:visible;transform:translate(0,-50%);transition:opacity .4s,transform .5s var(--ease)}
+.preso-col h6{margin:0;color:#fff;font-size:9.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;text-align:center;display:flex;align-items:center;justify-content:center;gap:6px}
+.preso-col h6 b{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:#fff;color:var(--navy);font-size:10px;letter-spacing:0}
+.preso-lista{display:flex;flex-direction:column;gap:14px;overflow-y:auto;overflow-x:hidden;padding:6px 4px 4px;margin:0 -4px;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.3) transparent}
+.preso-it{position:relative;flex:0 0 auto;display:block;width:100%;cursor:pointer;color:#fff;outline:0;transition:transform .25s var(--ease)}
+.preso-it:hover,.preso-it:focus-visible{transform:translateY(-3px)}
+.preso-it:focus-visible .fr{box-shadow:0 0 0 2px #fff,0 10px 18px rgba(0,0,0,.5)}
+.preso-it.attesa{visibility:hidden}
+.preso-it .fr{position:relative;width:100%;box-shadow:0 10px 18px rgba(0,0,0,.5);background:#222 center/cover no-repeat}
+.preso-it .fr.cd{aspect-ratio:142/125;background:#0c0c0e}
+.preso-it .fr.lp{width:84%;aspect-ratio:1/1;background:none;box-shadow:none}
+.preso-it .fr.lp .busta{z-index:1;box-shadow:0 10px 18px rgba(0,0,0,.5)}
+.preso-it .fr.gen{aspect-ratio:1/1;border-radius:4px}
+.mini-disco{position:absolute;left:18%;top:3%;width:94%;height:94%;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,0,0,0) 0 2.2%,#0c0c0c 2.4% 17%,rgba(0,0,0,0) 17.2%),radial-gradient(circle,var(--c,#8a4fd0) 0 16.8%,rgba(0,0,0,0) 17%),repeating-radial-gradient(circle,#0f0f0f 0 1px,#232323 1px 2px);box-shadow:0 6px 14px rgba(0,0,0,.5)}
+.preso-it .didas{display:block;margin-top:7px;font-size:10px;line-height:1.25;opacity:.9;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical}
+.preso-it .didas b{font-weight:900;text-transform:uppercase;letter-spacing:.03em;margin-right:4px}
+.preso-it .didas s{text-decoration:none;font-weight:800;color:#9fc8f5;margin-left:4px}
+.preso-x{position:absolute;top:-7px;right:-7px;z-index:3;width:22px;height:22px;border-radius:50%;border:0;padding:0;background:#fff;color:var(--navy);font:inherit;font-size:14px;font-weight:900;line-height:22px;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.45);opacity:0;transition:opacity .2s,background .2s}
+.preso-it:hover .preso-x,.preso-it:focus-within .preso-x{opacity:1}
+.preso-x:hover{background:#c01919;color:#fff}
+.preso-vai{display:block;text-align:center;text-decoration:none;background:#fff;color:var(--navy);border-radius:999px;padding:9px 8px;font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.preso-vai:hover{background:#dcecff}
+@media(hover:none){.preso-x{opacity:1}}
+@media(max-width:860px){
+  .preso-col{left:10px;top:auto;bottom:12px;width:auto;max-width:calc(100% - 104px);max-height:none;flex-direction:row;align-items:center;gap:8px;padding:4px 8px 8px;border-radius:16px;transform:translateY(24px)}
+  .preso-col.on{transform:none}
+  .preso-col h6,.preso-vai{display:none}
+  .preso-lista{flex-direction:row;overflow-x:auto;overflow-y:hidden;gap:14px;padding:11px 10px 2px 2px;margin:0;align-items:flex-end}
+  .preso-it{width:56px}
+  .preso-it .didas{display:none}
+  .preso-x{width:20px;height:20px;line-height:20px;font-size:13px;top:-8px;right:-8px}
+  .sala{padding-bottom:130px}
+}
+/* ── Libreria: larghezza fissa su desktop, scaffali scorrevoli, ordine, ricerca ── */
+@media(min-width:861px){.binario .cab{width:900px;max-width:100%}}
+.vano{padding:0}
+.fila{position:relative;display:flex;align-items:flex-end;gap:1px;height:100%;padding:0 18px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.fila::-webkit-scrollbar{display:none}
+.fila .reggilibri{flex:0 0 12px}
+.freccia{position:absolute;top:50%;z-index:4;width:34px;height:34px;margin-top:-17px;padding:0 0 3px;border:0;border-radius:50%;background:rgba(255,255,255,.92);color:var(--navy);font:900 26px/1 Archivo,Arial,sans-serif;cursor:pointer;
+  box-shadow:0 4px 14px rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:opacity .25s,transform .2s;display:flex;align-items:center;justify-content:center}
+.freccia.sx{left:6px}.freccia.dx{right:6px}
+.vano.puo-sx .freccia.sx,.vano.puo-dx .freccia.dx{opacity:.92;pointer-events:auto}
+.freccia:hover{opacity:1;transform:scale(1.08)}
+.vano::after{content:"";position:absolute;top:0;bottom:0;right:0;width:40px;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,0),rgba(0,0,0,.45));opacity:0;transition:opacity .25s;z-index:3}
+.vano.puo-dx::after{opacity:1}
+.binario{transition:transform .75s var(--ease),opacity .22s}
+.binario.cambio{opacity:0}
+.comandi{position:relative;z-index:3;display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:-8px auto 22px;padding:0 16px}
+.comandi .sale-nav{margin:0}
+.ordina .lbl{align-self:center;padding:0 4px 0 12px;font-size:9.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#1d4470;opacity:.75}
+.ordina button{padding:10px 16px}
+.lente{border:0;background:none;padding:0;margin:0;cursor:pointer;font-size:15px;line-height:1;border-radius:50%;transition:transform .2s}
+.lente:hover{transform:scale(1.15)}
+.cerca-n{flex:0 0 auto;font-size:10.5px;font-weight:800;color:var(--cobalt);white-space:nowrap}
+.cerca-n:empty{display:none}
+.cerca.nessuno{animation:rvNo .45s}
+@keyframes rvNo{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+.dorso.evidenzia{animation:rvTrova 1.3s var(--ease) 2;z-index:3}
+@keyframes rvTrova{0%,100%{transform:translateY(var(--y,0))}35%{transform:translateY(-16px);box-shadow:0 0 0 3px #ffe08a,0 0 24px 6px rgba(255,224,138,.75),0 14px 18px rgba(0,0,0,.6)}}
+@media(max-width:860px){
+  .fila{padding:0 8px}
+  .comandi{margin:-4px auto 16px;gap:8px}
+  .comandi .sale-nav{margin:0}
+  .ordina button{padding:9px 13px}
+  .ordina .lbl{padding:0 2px 0 10px}
+  .freccia{width:30px;height:30px;margin-top:-15px;font-size:22px}
+}
+.rvw-libreria{position:relative;z-index:3;width:min(900px,calc(100% - 32px));margin:0 auto 14px}
+.difetti{margin:-8px 0 14px;padding:9px 12px;border-radius:12px;background:#fff3d6;border:1.5px solid rgba(192,120,0,.45);color:#7a3d00;font-size:13px;font-weight:800;line-height:1.4}
+
+/* una sola sala */
+.binario{width:100%}.binario>.sala{flex:0 0 100%;width:100%}
+/* ═════════ Libreria VIDEOGIOCHI: tema Y2K / Frutiger Aero ═════════ */
+@font-face{font-family:'Exo 2';font-style:italic;font-weight:800;font-display:swap;src:url(fonts/exo-2-latin-800-italic.woff2) format('woff2')}
+@font-face{font-family:'Exo 2';font-style:italic;font-weight:900;font-display:swap;src:url(fonts/exo-2-latin-900-italic.woff2) format('woff2')}
+@font-face{font-family:'Exo 2';font-style:normal;font-weight:800;font-display:swap;src:url(fonts/exo-2-latin-800-normal.woff2) format('woff2')}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/nunito-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/nunito-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:800;font-display:swap;src:url(fonts/nunito-latin-800-normal.woff2) format('woff2')}
+:root{--aqua:#19b6ec;--aqua2:#0a7fd0;--sky:#dff5ff;--deep:#063b6e;--y2k:'Exo 2',Archivo,Arial,sans-serif;--soft:Nunito,Archivo,Arial,sans-serif}
+body{font-family:var(--soft);background:#bfe7ff;color:var(--deep)}
+.ambiente{background:#8fd3ff url('libreria/sfondo-giochi.jpg') center 40%/cover no-repeat;filter:blur(2px) saturate(1.1)}
+.ambiente::after{background:
+  radial-gradient(ellipse 80% 60% at 50% 40%,rgba(255,255,255,.18) 0,rgba(255,255,255,0) 60%),
+  linear-gradient(180deg,rgba(255,255,255,.10),rgba(120,200,245,.18) 55%,rgba(4,50,100,.30))}
+/* bolle che salgono */
+.bolle{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.bolle i{position:absolute;bottom:-60px;border-radius:50%;
+  background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.95) 0 8%,rgba(255,255,255,.25) 18%,rgba(160,225,255,.10) 55%,rgba(255,255,255,.45) 72%,rgba(255,255,255,0) 74%);
+  box-shadow:inset 0 0 6px rgba(255,255,255,.6);animation:sali linear infinite;opacity:.8}
+@keyframes sali{to{transform:translateY(-120vh) translateX(var(--dx,20px))}}
+@media(prefers-reduced-motion:reduce){.bolle{display:none}}
+/* barra e pulsanti lucidi */
+.top{background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(225,245,255,.86));box-shadow:0 10px 30px rgba(4,60,120,.22),inset 0 1px 0 #fff;border:1px solid rgba(255,255,255,.9)}
+.brand,.pill.pill-back{color:var(--deep)}
+.pill{font-family:var(--soft);font-weight:800;background:linear-gradient(180deg,#5fd2ff 0,#19a6ec 48%,#0a7fd0 52%,#2ab2f0 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.75),0 4px 12px rgba(10,127,208,.35);text-shadow:0 1px 1px rgba(0,60,120,.45)}
+.pill.pill-back{background:rgba(255,255,255,.6);text-shadow:none;box-shadow:inset 0 0 0 1.5px rgba(6,59,110,.3)}
+.pill.pill-back:hover{background:var(--deep);color:#fff}
+.cerca{border-color:rgba(10,127,208,.25);box-shadow:inset 0 2px 4px rgba(4,60,120,.08)}
+.cerca input{font-family:var(--soft)}
+/* intestazione */
+.intro{color:var(--deep)}
+.intro .kicker{font-family:var(--soft);color:var(--deep);opacity:.85;text-shadow:0 1px 0 rgba(255,255,255,.8)}
+.intro h1{font-family:var(--y2k);font-style:italic;font-weight:900;text-transform:none;letter-spacing:-.02em;line-height:1;
+  background:linear-gradient(180deg,#ffffff 0,#e9f9ff 38%,#7fdcff 52%,#1aa7e8 78%,#0b6fc0 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  -webkit-text-stroke:1.5px rgba(6,59,110,.55);filter:drop-shadow(0 3px 0 rgba(255,255,255,.7)) drop-shadow(0 8px 18px rgba(4,60,120,.35));text-shadow:none;padding:0 .08em}
+.intro p{font-family:var(--soft);font-style:normal;font-weight:700;color:var(--deep);text-shadow:0 1px 0 rgba(255,255,255,.8)}
+/* mobile in vetro acqua */
+.cab{background:linear-gradient(180deg,rgba(255,255,255,.78),rgba(205,240,255,.62) 40%,rgba(160,222,250,.58));
+  border:1px solid rgba(255,255,255,.95);border-radius:28px 28px 18px 18px;padding:34px 28px 0;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  box-shadow:0 40px 70px -30px rgba(4,50,100,.6),0 16px 40px rgba(4,60,120,.25),inset 0 2px 0 #fff,inset 0 -10px 30px rgba(25,182,236,.18)}
+.cab::before{left:24px;right:24px;top:10px;height:12px;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(255,255,255,.2));box-shadow:none}
+.zoccolo{margin:0 -28px;height:34px;border-radius:0 0 18px 18px;background:linear-gradient(180deg,rgba(255,255,255,.6),rgba(120,205,245,.55) 55%,rgba(10,127,208,.55));box-shadow:inset 0 1px 0 #fff}
+.vano{background:linear-gradient(180deg,rgba(6,59,110,.62),rgba(10,100,170,.42) 45%,rgba(25,150,220,.35));border-radius:14px 14px 0 0;
+  box-shadow:inset 0 18px 24px -10px rgba(2,30,60,.75),inset 14px 0 20px -14px rgba(2,30,60,.6),inset -14px 0 20px -14px rgba(2,30,60,.6)}
+.asse{height:22px;border-radius:0 0 10px 10px;background:linear-gradient(180deg,#ffffff 0,#e8f9ff 30%,#9edcf7 55%,#6cc7f0 70%,#d6f4ff 100%);box-shadow:0 8px 14px -4px rgba(4,50,100,.45),inset 0 1px 0 #fff}
+.asse::before{display:none}
+.targhetta{font-family:var(--y2k);font-style:italic;font-weight:800;font-size:11px;letter-spacing:.06em;text-transform:none;color:#fff;padding:3px 16px 3px;border-radius:999px;
+  background:linear-gradient(180deg,#7fe0ff 0,#22b0f0 46%,#0a7fd0 54%,#38c0f5 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.85),0 2px 6px rgba(4,60,120,.4);text-shadow:0 1px 1px rgba(0,50,110,.5)}
+.targhetta::before,.targhetta::after{display:none}
+.reggilibri{border-radius:6px;background:linear-gradient(90deg,#d8f5ff,#ffffff 30%,#8fd8f8 60%,#3fb2ea);box-shadow:4px 0 10px rgba(2,30,60,.45)}
+.vuoto-msg{color:#fff;font-family:var(--soft);font-weight:700}
+.freccia{font-family:var(--y2k)}
+/* comandi */
+.sale-nav{background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(220,244,255,.9));box-shadow:0 8px 24px rgba(4,60,120,.25),inset 0 1px 0 #fff}
+.sale-nav button{font-family:var(--soft);color:var(--deep)}
+.sale-nav button.on{background:linear-gradient(180deg,#5fd2ff 0,#19a6ec 48%,#0a7fd0 52%,#2ab2f0 100%);color:#fff;text-shadow:0 1px 1px rgba(0,60,120,.45);box-shadow:inset 0 1px 0 rgba(255,255,255,.7)}
+.ordina .lbl{color:var(--deep)}
+/* ── Dorsi delle custodie dei giochi ── */
+.dorso.g{background:var(--c,#222);box-shadow:1px 0 0 rgba(0,0,0,.5),-1px 0 0 rgba(255,255,255,.05),0 3px 6px rgba(2,30,60,.45);border-radius:2px 2px 1px 1px}
+.dorso.g .cap{display:none}
+.dorso.g.jewel .cap{display:block}
+.dorso.g::before{background:
+  linear-gradient(90deg,rgba(255,255,255,.55) 0,rgba(255,255,255,.14) 1.5px,rgba(255,255,255,0) 5px,rgba(255,255,255,0) calc(100% - 5px),rgba(0,0,0,.28) calc(100% - 2px),rgba(255,255,255,.3) 100%),
+  linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,0) 18%,rgba(0,0,0,0) 82%,rgba(0,0,0,.2))}
+.dorso.g .banda{position:absolute;left:0;right:0;top:0;height:var(--bh,18%);background:var(--pb,#111);color:var(--pt,#fff);display:flex;align-items:center;justify-content:center;
+  writing-mode:vertical-rl;font-family:var(--y2k);font-style:italic;font-weight:900;font-size:9.5px;letter-spacing:.02em;white-space:nowrap;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.18)}
+.dorso.g.jewel .banda{top:9px}
+.dorso.g .txt{padding-top:4px}
+.dorso.g .txt{top:calc(var(--bh,18%) + 6px);bottom:32px;font-family:var(--soft);font-size:10px;font-weight:800;text-transform:none;letter-spacing:.01em}
+.dorso.g .txt b{font-weight:800;margin:0}
+.dorso.g .bollino{font-family:var(--soft);font-weight:800}
+/* custodia 3D */
+.case.g{--W:300px;--H:calc(var(--W) * var(--ph) / var(--pw));--D:calc(var(--W) * var(--pd) / var(--pw))}
+.case.g .f-front,.case.g .f-back{background:var(--pl,#111);border-radius:6px}
+.case.g .f-left{background:var(--c,#222)}
+.case.g .f-right,.case.g .f-top,.case.g .f-bot{background:linear-gradient(90deg,rgba(255,255,255,.14),rgba(0,0,0,.18)),var(--pl,#111)}
+.copertina{position:absolute;inset:2.4% 3% 2.4% 4%;background:#111 center/cover no-repeat;border-radius:2px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)}
+.case.g.jewel .copertina{left:14%;inset-block:2%;right:1.6%}
+.case.g .plastica{border-radius:6px}
+.case.g .f-left .banda{position:absolute;left:0;right:0;top:0;height:var(--bh,18%);background:var(--pb,#111);color:var(--pt,#fff);display:flex;align-items:center;justify-content:center;writing-mode:vertical-rl;font-family:var(--y2k);font-style:italic;font-weight:900;font-size:calc(var(--W) * .034);white-space:nowrap}
+.case.g .f-left .txt{top:var(--bh,18%);font-family:var(--soft);font-weight:800;text-transform:none}
+.inlay.g{inset:2.4% 3%;grid-template-columns:1fr;grid-template-rows:auto 1fr}
+.inlay.g .testa{background:var(--pb,#111);color:var(--pt,#fff);font-family:var(--y2k);font-style:italic;font-weight:900;font-size:calc(var(--W) * .05);padding:3% 6%}
+.inlay.g .corpo h4{font-family:var(--y2k);font-style:italic;font-weight:900;text-transform:none;font-size:1.45em}
+.inlay.g .corpo h5{font-family:var(--soft);font-style:normal;font-weight:700;font-size:1.05em}
+.case.g .retro-foto{inset:2.4% 3%;background-size:contain;background-color:#0b1d33}
+/* scheda */
+.scheda{font-family:var(--soft);border-radius:26px;background:linear-gradient(180deg,#ffffff,#f1fbff);box-shadow:0 30px 60px rgba(2,30,60,.35),inset 0 1px 0 #fff,0 0 0 1px rgba(25,182,236,.18)}
+.scheda .sez{color:var(--aqua2);font-family:var(--soft)}
+.scheda h2{font-family:var(--y2k);font-style:italic;font-weight:900;text-transform:none;letter-spacing:-.01em;font-size:28px;color:var(--deep)}
+.scheda h3{font-family:var(--soft);font-style:normal;font-weight:700;font-size:17px;color:#3a6a95}
+.chips span{background:#e2f6ff;color:var(--deep);font-weight:700}
+.cond{color:var(--aqua2);border-color:rgba(10,127,208,.3)}
+.prezzo{font-family:var(--y2k);font-style:italic;color:var(--deep)}
+.prezzo small{font-family:var(--soft);font-style:normal}
+.btn{font-family:var(--soft)}
+.btn-p{background:linear-gradient(180deg,#5fd2ff 0,#19a6ec 48%,#0a7fd0 52%,#2ab2f0 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.75),0 4px 12px rgba(10,127,208,.35);text-shadow:0 1px 1px rgba(0,60,120,.45)}
+.btn-p:hover{background:linear-gradient(180deg,#7fdcff 0,#2ab2f0 48%,#0b8be0 52%,#3fc0f5 100%)}
+.btn-p.added{background:linear-gradient(180deg,#8ee08e 0,#3cb54a 48%,#23913a 52%,#4fc35e 100%)}
+.btn-s{background:#e2f6ff;color:var(--deep)}.btn-s:hover{background:#cdeeff}
+.btn-g{color:var(--aqua2);border-color:rgba(10,127,208,.3)}
+.btn-riponi{background:var(--deep)}
+.nota{color:#3a6a95}
+.estratto.on{background:rgba(4,40,80,.45)}
+/* colonna "Nel carrello" */
+.preso-col{background:rgba(4,50,100,.45);box-shadow:0 20px 40px rgba(2,30,60,.35),inset 0 0 0 1px rgba(255,255,255,.35)}
+.preso-col h6{font-family:var(--soft)}
+.preso-it .fr.gioco{background:#111 center/cover no-repeat;border-radius:4px;box-shadow:0 10px 18px rgba(0,0,0,.45),inset 0 0 0 3px var(--pl,#111)}
+.preso-it .didas b{text-transform:none;font-family:var(--soft)}
+.preso-vai{font-family:var(--soft)}
+.etichetta{font-family:var(--soft)}
+.etichetta b{text-transform:none;font-family:var(--y2k);font-style:italic;font-size:13px}
+.etichetta em{font-family:var(--soft);font-style:normal;font-size:12px;color:#3a6a95}
+.lib-foot .seo-hub{background:rgba(4,50,100,.45)}
+@media(max-width:860px){
+  .cab{padding:22px 10px 0;border-radius:22px 22px 14px 14px}
+  .cab::before{left:16px;right:16px;top:6px;height:9px}
+  .zoccolo{margin:0 -10px;height:26px}
+  .case.g{--W:min(230px,60vw)}
+  .scheda h2{font-size:23px}
+  .dorso.g .txt{font-size:9.5px}
+}
+</style>
+</head>
+<body>
+<div class="ambiente" aria-hidden="true"></div>
+<div class="bolle" id="bolle" aria-hidden="true"></div>
+
+<header class="top">
+  <a class="brand" href="index.html"><img src="logo.png" alt=""><span>Ramacciato <b>Vintage</b></span></a>
+  <a class="pill pill-back" href="shop.html?cat=videogiochi"><span aria-hidden="true">&larr;</span> Torna allo shop</a>
+  <div class="top-r">
+    <form class="cerca" id="cercaForm" role="search"><button type="submit" class="lente" aria-label="Vai al gioco cercato">&#x1F50D;</button><input id="cerca" type="search" enterkeyhint="search" placeholder="Cerca gioco, console o editore..." autocomplete="off"><span class="cerca-n" id="cercaN" aria-live="polite"></span></form>
+    <a class="pill" href="shop.html?cat=videogiochi">Vista griglia</a>
+  </div>
+</header>
+
+<section class="intro">
+  <div class="kicker" id="kicker">Videogiochi &middot; Libreria</div>
+  <h1>La Libreria dei Giochi</h1>
+  <p>Scorri le custodie, estrai il gioco che ti riporta indietro nel tempo.</p>
+</section>
+
+<div class="rvw-libreria" data-rv-weekend hidden></div>
+<div class="comandi"><nav class="sale-nav ordina" id="ordNav" aria-label="Ordina i giochi"><span class="lbl">Ordina</span><button type="button" data-ord="console">Console</button><button type="button" data-ord="alfa">A - Z</button></nav></div>
+<div class="salone" id="salone"><div class="binario" id="binario">
+<main class="sala">
+  <div class="cab" id="cab" aria-label="Scaffale dei videogiochi">
+    <div id="ripiani"></div>
+    <div class="zoccolo"></div>
+  </div>
+</main>
+</div></div>
+
+<footer class="lib-foot"><nav class="seo-hub" aria-label="Esplora il negozio"><div><b>Negozio</b><a href="/negozio/cd-usati.html">CD usati</a><a href="/negozio/vinili-usati.html">Vinili usati</a><a href="/negozio/dvd-usati.html">DVD usati</a><a href="/negozio/videogiochi-retro-usati.html">Videogiochi retro</a><a href="/negozio/elettronica-vintage.html">Elettronica vintage</a><a href="/negozio/libri-usati.html">Libri usati</a><a href="/negozio/oggetti-vintage-modernariato.html">Oggetti vintage</a><a href="/negozio/trading-cards.html">Trading cards</a></div><div><b>Dove trovarmi</b><a href="/vintage-usato-vicenza.html">Vicenza</a><a href="/vintage-usato-padova.html">Padova</a><a href="/vintage-usato-marostica.html">Marostica</a><a href="/vintage-usato-mestre-venezia.html">Mestre e Venezia</a><a href="/vintage-usato-veneto.html">Veneto</a></div></nav></footer>
+<div class="etichetta" id="etichetta" role="tooltip"></div>
+<aside class="preso-col" id="presoCol" aria-label="Giochi nel carrello"><h6>Nel carrello <b id="presoN">0</b></h6><div class="preso-lista" id="presoLista"></div><a class="preso-vai" href="checkout.html">Vai alla cassa</a></aside>
+
+<div class="estratto" id="estratto" role="dialog" aria-modal="true" aria-label="Dettaglio videogioco">
+  <div class="palco"><div class="case g" id="case"></div></div>
+  <div class="scheda" id="scheda"></div>
+  <div class="aiuto" id="aiuto">Trascina la custodia per girarla &middot; Esc per rimetterla a posto</div>
+</div>
+
+<script>
+(function(){
+'use strict';
+var CART_KEY='rv_cart_v1';
+function loadCart(){try{return JSON.parse(localStorage.getItem(CART_KEY)||'[]');}catch(e){return[];}}
+function saveCart(c){try{localStorage.setItem(CART_KEY,JSON.stringify(c));}catch(e){}if(window.rvCart&&window.rvCart.refresh)window.rvCart.refresh();}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m];});}
+
+var GIOCHI=[];var IDXP={};fetch('prodotto/indice.json').then(function(r){return r.json()}).then(function(j){IDXP=j}).catch(function(){});
+
+/* Console -> sottocategoria e generi in italiano (stessa tabella di shop.html e scripts/genera_seo.py) */
+var RV_PIATTAFORME=[{"id":"ps1","nomi":["playstation","playstation 1","ps1","psx","psone"],"label":"PlayStation 1","sigla":"PS1"},{"id":"ps2","nomi":["playstation 2","ps2"],"label":"PlayStation 2","sigla":"PS2"},{"id":"ps3","nomi":["playstation 3","ps3"],"label":"PlayStation 3","sigla":"PS3"},{"id":"ps4","nomi":["playstation 4","ps4"],"label":"PlayStation 4","sigla":"PS4"},{"id":"ps5","nomi":["playstation 5","ps5"],"label":"PlayStation 5","sigla":"PS5"},{"id":"psp","nomi":["playstation portable","psp"],"label":"PSP","sigla":"PSP"},{"id":"psvita","nomi":["playstation vita","ps vita","psvita"],"label":"PS Vita","sigla":"PS Vita"},{"id":"xbox","nomi":["xbox"],"label":"Xbox","sigla":"Xbox"},{"id":"xbox360","nomi":["xbox 360"],"label":"Xbox 360","sigla":"Xbox 360"},{"id":"xboxone","nomi":["xbox one"],"label":"Xbox One","sigla":"Xbox One"},{"id":"wii","nomi":["wii","nintendo wii"],"label":"Nintendo Wii","sigla":"Wii"},{"id":"wiiu","nomi":["wii u","nintendo wii u"],"label":"Wii U","sigla":"Wii U"},{"id":"switch","nomi":["nintendo switch","switch"],"label":"Nintendo Switch","sigla":"Switch"},{"id":"gamecube","nomi":["nintendo gamecube","gamecube"],"label":"GameCube","sigla":"GameCube"},{"id":"n64","nomi":["nintendo 64","n64"],"label":"Nintendo 64","sigla":"N64"},{"id":"nds","nomi":["nintendo ds","ds"],"label":"Nintendo DS","sigla":"DS"},{"id":"3ds","nomi":["nintendo 3ds","3ds","new nintendo 3ds"],"label":"Nintendo 3DS","sigla":"3DS"},{"id":"gb","nomi":["game boy"],"label":"Game Boy","sigla":"Game Boy"},{"id":"gbc","nomi":["game boy color"],"label":"Game Boy Color","sigla":"Game Boy Color"},{"id":"gba","nomi":["game boy advance"],"label":"Game Boy Advance","sigla":"GBA"},{"id":"snes","nomi":["super nintendo entertainment system","super nintendo","snes"],"label":"Super Nintendo","sigla":"SNES"},{"id":"nes","nomi":["nintendo entertainment system","nes"],"label":"NES","sigla":"NES"},{"id":"megadrive","nomi":["sega mega drive/genesis","sega mega drive","mega drive","genesis"],"label":"Sega Mega Drive","sigla":"Mega Drive"},{"id":"mastersystem","nomi":["sega master system/mark iii","sega master system","master system"],"label":"Sega Master System","sigla":"Master System"},{"id":"saturn","nomi":["sega saturn","saturn"],"label":"Sega Saturn","sigla":"Saturn"},{"id":"dreamcast","nomi":["dreamcast","sega dreamcast"],"label":"Dreamcast","sigla":"Dreamcast"},{"id":"pc","nomi":["pc (microsoft windows)","pc","windows","dos"],"label":"PC","sigla":"PC"}];
+var RV_GENERI_IGDB={"point-and-click":"Punta e clicca","fighting":"Picchiaduro","shooter":"Sparatutto","music":"Musicale","platform":"Piattaforme","puzzle":"Rompicapo","racing":"Corse","real time strategy (rts)":"Strategia in tempo reale","role-playing (rpg)":"Gioco di ruolo","simulator":"Simulazione","sport":"Sport","strategy":"Strategia","turn-based strategy (tbs)":"Strategia a turni","tactical":"Tattico","hack and slash/beat 'em up":"Picchiaduro a scorrimento","quiz/trivia":"Quiz","pinball":"Flipper","adventure":"Avventura","indie":"Indie","arcade":"Arcade","visual novel":"Visual novel","card & board game":"Carte e giochi da tavolo","moba":"MOBA"};
+function piattaforma(p){var ks=[p.platform,p.subcat];for(var i=0;i<ks.length;i++){var n=String(ks[i]||'').trim().toLowerCase();if(!n)continue;for(var j=0;j<RV_PIATTAFORME.length;j++){var f=RV_PIATTAFORME[j];if(n===f.id||f.nomi.indexOf(n)>=0)return f;}}return null;}
+function adatta(p){
+  var f=piattaforma(p);if(f){p.subcat=f.id;p._pf=f;}else{var l=String(p.platform||p.subcat||'Altro');p._pf={id:'',label:l,sigla:l};}
+  p._generi=(p.genres||[]).map(function(g){g=String(g).trim();return RV_GENERI_IGDB[g.toLowerCase()]||g;}).filter(Boolean);
+  p._illustrativa=/(^|\/)igdb-\d+-cover/.test(String((p.photos&&p.photos[0])||''));
+  if(p.desc&&!p.dettagliCondizioni){var m=String(p.desc).match(/^[ \t]*Dettagli condizioni:[ \t]*(.+)$/im);if(m)p.dettagliCondizioni=m[1].trim();}
+}
+/* Custodia di ogni console: misure reali in mm (w x h x spessore), plastica, banda del dorso */
+var DVD={w:135,h:190,d:14},JEWEL={w:142,h:125,d:10,jewel:1},DS={w:125,h:137,d:14},UMD={w:104,h:175,d:14},SW={w:105,h:170,d:11},BOX={w:130,h:180,d:30},GBX={w:100,h:125,d:22},MD={w:150,h:210,d:26};
+function P(f,pl,pb,pt){return{w:f.w,h:f.h,d:f.d,jewel:f.jewel,pl:pl,pb:pb,pt:pt};}
+var PROF={
+  ps1:P(JEWEL,'#121212','#000','#fff'),ps2:P(DVD,'#0f1013','#0a0b0e','#fff'),ps3:P(DVD,'#9fc0e6','#111','#fff'),ps4:P(DVD,'#1d4fa8','#003791','#fff'),
+  ps5:P(DVD,'#f4f5f7','#ffffff','#111'),psp:P(UMD,'#dfe6ee','#111','#fff'),psvita:P(UMD,'#2b5fb8','#1d4fa8','#fff'),
+  xbox:P(DVD,'#1b1b1b','#2f9e2f','#fff'),xbox360:P(DVD,'#7fbf4d','#5dc21e','#fff'),xboxone:P(DVD,'#2a8a2a','#107c10','#fff'),
+  wii:P(DVD,'#f2f2f2','#ffffff','#2a9fd8'),wiiu:P(DVD,'#2a8fd6','#1e7fc9','#fff'),switch:P(SW,'#e60012','#e60012','#fff'),
+  gamecube:P(DVD,'#1b1b1b','#5b4fb3','#fff'),n64:P(BOX,'#1f1f1f','#e2001a','#fff'),nds:P(DS,'#efefef','#ffffff','#333'),'3ds':P(DS,'#efefef','#ffffff','#d4001a'),
+  gb:P(GBX,'#e9e6dd','#7a7a7a','#fff'),gbc:P(GBX,'#e9e6dd','#5b2c8f','#fff'),gba:P(GBX,'#e9e6dd','#3f2a8c','#fff'),
+  snes:P(BOX,'#d8d8d8','#6b5b95','#fff'),nes:P(BOX,'#d8d8d8','#c4161c','#fff'),megadrive:P(MD,'#111','#1a1a1a','#e9312a'),mastersystem:P(MD,'#111','#c00','#fff'),
+  saturn:P(JEWEL,'#121212','#1a1a6e','#fff'),dreamcast:P(JEWEL,'#f2f2f2','#1e5bb8','#fff'),pc:P(DVD,'#1d1f24','#333','#fff')
+};
+var DEF=P(DVD,'#222','#444','#fff');
+function prof(p){return PROF[p._pf&&p._pf.id]||DEF;}
+function titolo(p){return p.name||'';}
+function foto(p){return p.cover||(p.photos&&p.photos[0])||'';}
+
+/* Colore dell'etichetta del dorso ricavato dalla copertina (come per i CD) */
+var PALETTE=['#1d1f24','#6b1e1e','#123a5c','#2f2f33','#34452a','#5a2b4d','#8a2a14'];
+function hash(s){var h=0;for(var i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return Math.abs(h);}
+function lum(r,g,b){return(0.2126*r+0.7152*g+0.0722*b)/255;}
+function coloreDa(src,cb){
+  if(!src){cb(null);return;}
+  var img=new Image();if(/^https?:/.test(src))img.crossOrigin='anonymous';
+  img.onload=function(){try{
+    var cv=document.createElement('canvas');cv.width=cv.height=36;var x=cv.getContext('2d');x.drawImage(img,0,0,36,36);
+    var d=x.getImageData(0,0,36,36).data,bk={};
+    for(var i=0;i<d.length;i+=4){var r=d[i],g=d[i+1],b=d[i+2],mx=Math.max(r,g,b),mn=Math.min(r,g,b),sat=mx?(mx-mn)/mx:0;
+      var k=(r>>5)+','+(g>>5)+','+(b>>5);var e=bk[k]||(bk[k]={n:0,r:0,g:0,b:0,s:0});e.n++;e.r+=r;e.g+=g;e.b+=b;e.s+=sat;}
+    var best=null,bs=-1;for(var k2 in bk){var e2=bk[k2],s=e2.n*(0.45+e2.s/e2.n);if(s>bs){bs=s;best=e2;}}
+    cb([Math.round(best.r/best.n),Math.round(best.g/best.n),Math.round(best.b/best.n)]);
+  }catch(err){cb(null);}};
+  img.onerror=function(){cb(null);};img.src=src;
+}
+function applicaColore(p,rgb){
+  var hex,l;
+  if(rgb){var f=0.88;var r=Math.round(rgb[0]*f),g=Math.round(rgb[1]*f),b=Math.round(rgb[2]*f);hex='rgb('+r+','+g+','+b+')';l=lum(r,g,b);}
+  else{hex=PALETTE[hash(p.name||'')%PALETTE.length];var n=parseInt(hex.slice(1),16);l=lum(n>>16,(n>>8)&255,n&255);}
+  p._c=hex;p._t=l>0.56?'#141414':'#f4f1ea';
+}
+
+/* Misure dei dorsi in px (altezza reale in scala, spessore leggermente maggiorato per leggere il titolo) */
+function scala(){return matchMedia('(max-width:860px)').matches?170/190:196/190;}
+function misure(p){var q=prof(p),k=scala();return{h:Math.round(q.h*k),w:Math.max(22,Math.min(44,Math.round(q.d*k*1.9)))};}
+
+/* Rendering scaffali */
+var elRip=document.getElementById('ripiani'),tip=document.getElementById('etichetta');
+var ORD='console';try{if(localStorage.getItem('rv_libg_ordine')==='alfa')ORD='alfa';}catch(e){}
+function chiave(p){return titolo(p).replace(/^(the|il|lo|la|i|gli|le)\s+/i,'').trim();}
+function perTitolo(a,b){return chiave(a).localeCompare(chiave(b),'it',{sensitivity:'base'});}
+var LETTERE=[['A','C'],['D','F'],['G','I'],['J','L'],['M','O'],['P','R'],['S','T'],['U','Z']];
+function gruppoAlfa(p){var c=chiave(p).normalize('NFD').replace(/[̀-ͯ]/g,'').charAt(0).toUpperCase();
+  if(!/[A-Z]/.test(c))return'0 - 9';for(var i=0;i<LETTERE.length;i++)if(c>=LETTERE[i][0]&&c<=LETTERE[i][1])return LETTERE[i][0]+' - '+LETTERE[i][1];return'U - Z';}
+function gruppi(){
+  if(ORD==='alfa'){var g={},o=[];GIOCHI.slice().sort(perTitolo).forEach(function(p){var k=gruppoAlfa(p);if(!g[k]){g[k]=[];o.push(k);}g[k].push(p);});
+    o.sort(function(a,b){return a==='0 - 9'?-1:b==='0 - 9'?1:a.localeCompare(b);});return o.map(function(k){return{label:k,items:g[k]};});}
+  var out=[];RV_PIATTAFORME.forEach(function(f){var it=GIOCHI.filter(function(p){return p._pf.id===f.id;}).sort(perTitolo);if(it.length)out.push({label:f.label,items:it});});
+  var altri=GIOCHI.filter(function(p){return !p._pf.id;}).sort(perTitolo);if(altri.length)out.push({label:'Altre console',items:altri});
+  return out;
+}
+function ripianoHtml(label,items){
+  var hMax=items.reduce(function(m,p){return Math.max(m,misure(p).h);},0);
+  return '<div class="ripiano"><div class="vano" style="height:'+(hMax+24)+'px"><div class="fila">'+items.map(dorsoHtml).join('')+'<div class="reggilibri" aria-hidden="true" style="height:'+Math.round(hMax*0.62)+'px"></div></div>'
+    +'<button class="freccia sx" type="button" aria-label="Scorri a sinistra">&#8249;</button><button class="freccia dx" type="button" aria-label="Scorri a destra">&#8250;</button></div>'
+    +'<div class="asse"><span class="targhetta" translate="no">'+esc(label)+'</span></div></div>';}
+function vuotoHtml(t){return '<div class="ripiano"><div class="vano" style="height:220px"><p class="vuoto-msg">'+t+'</p></div><div class="asse"></div></div>';}
+function stileDorso(p){var q=prof(p),m=misure(p);return'--dw:'+m.w+'px;--dh:'+m.h+'px;--pl:'+q.pl+';--pb:'+q.pb+';--pt:'+q.pt+(p._c?';--c:'+p._c+';--t:'+p._t:'');}
+function dorsoHtml(p){
+  var h=hash(String(p.id)),y=(h%3),b=(0.94+((h>>3)%8)/100).toFixed(2),q=prof(p);
+  var prezzo=p.price!=null?(Math.round(p.price)===p.price?p.price:Number(p.price).toFixed(2))+'€':'';
+  return '<button class="dorso g'+(q.jewel?' jewel':'')+(p.sold?' venduto':'')+'" data-id="'+esc(p.id)+'" style="'+stileDorso(p)+';--y:-'+y+'px;--b:'+b+'" aria-label="'+esc(titolo(p)+' - '+p._pf.label)+'">'
+    +'<i class="cap t"></i><span class="banda" translate="no">'+esc(p._pf.sigla)+'</span><span class="txt"><b>'+esc(titolo(p))+'</b></span>'
+    +'<i class="bollino">'+(p.sold?'VEND.':esc(prezzo))+'</i><i class="cap b"></i></button>';
+}
+function render(){
+  var gr=gruppi();
+  elRip.innerHTML=gr.map(function(x){return ripianoHtml(x.label,x.items);}).join('')||vuotoHtml('Nessun videogioco disponibile al momento.');
+  coloraDorsi();filtra();sincronizza(true);requestAnimationFrame(aggiornaFrecce);
+}
+function coloraDorsi(){
+  elRip.querySelectorAll('.dorso').forEach(function(el){
+    var p=byId(el.dataset.id);if(p._c){el.style.setProperty('--c',p._c);el.style.setProperty('--t',p._t);return;}
+    coloreDa(foto(p),function(rgb){applicaColore(p,rgb);document.querySelectorAll('.dorso[data-id="'+CSS.escape(String(p.id))+'"]').forEach(function(x){x.style.setProperty('--c',p._c);x.style.setProperty('--t',p._t);});});
+  });
+}
+function byId(id){for(var i=0;i<GIOCHI.length;i++)if(String(GIOCHI[i].id)===String(id))return GIOCHI[i];return null;}
+
+/* Tooltip */
+elRip.addEventListener('mousemove',function(e){
+  var d=e.target.closest('.dorso');if(!d){tip.classList.remove('on');return;}
+  var p=byId(d.dataset.id);
+  if(tip.dataset.id!==String(p.id)){tip.dataset.id=p.id;tip.innerHTML='<b>'+esc(titolo(p))+'</b><em translate="no">'+esc(p._pf.label)+(p.region?' &middot; '+esc(p.region):'')+'</em>'+(p.sold?'<s style="color:#ff5a5a;font-weight:800;letter-spacing:.12em;text-decoration:none;text-transform:uppercase">Venduto</s>':'<s>€ '+esc(p.price)+'</s>');}
+  var x=Math.min(e.clientX+16,window.innerWidth-tip.offsetWidth-10),y=e.clientY-tip.offsetHeight-14;
+  tip.style.left=x+'px';tip.style.top=Math.max(8,y)+'px';tip.classList.add('on');
+});
+elRip.addEventListener('mouseleave',function(){tip.classList.remove('on');});
+elRip.addEventListener('click',function(e){var fr=e.target.closest('.freccia');if(fr){e.stopPropagation();var f=fr.parentNode.querySelector('.fila');f.scrollBy({left:(fr.classList.contains('sx')?-1:1)*Math.max(120,f.clientWidth*0.75),behavior:'smooth'});return;}
+  var d=e.target.closest('.dorso');if(d){tip.classList.remove('on');estrai(d);}});
+
+/* Scaffali scorrevoli */
+function statoFila(f){var v=f.parentNode,max=f.scrollWidth-f.clientWidth;v.classList.toggle('puo-sx',f.scrollLeft>4);v.classList.toggle('puo-dx',f.scrollLeft<max-4);}
+function aggiornaFrecce(){document.querySelectorAll('.fila').forEach(statoFila);}
+document.addEventListener('scroll',function(e){var t=e.target;if(t&&t.classList&&t.classList.contains('fila'))statoFila(t);},true);
+function portaInVista(el,liscio){var f=el&&el.closest('.fila');if(!f)return;var x=el.offsetLeft-f.clientWidth/2+el.offsetWidth/2;f.scrollTo({left:Math.max(0,x),behavior:liscio?'smooth':'auto'});if(!liscio)statoFila(f);}
+
+/* Ordine: per console / A-Z */
+var ordNav=document.getElementById('ordNav');
+function segnaOrdine(){ordNav.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b.dataset.ord===ORD);b.setAttribute('aria-pressed',b.dataset.ord===ORD);});}
+segnaOrdine();
+ordNav.addEventListener('click',function(e){var b=e.target.closest('button');if(!b||b.dataset.ord===ORD||attivo)return;ORD=b.dataset.ord;segnaOrdine();
+  try{localStorage.setItem('rv_libg_ordine',ORD);}catch(err){}
+  var bn=document.getElementById('binario');bn.classList.add('cambio');setTimeout(function(){render();HITQ='';requestAnimationFrame(function(){bn.classList.remove('cambio');});},230);});
+
+/* Ricerca (titolo, console, editore) */
+var inp=document.getElementById('cerca');
+function testoRicerca(p){return(titolo(p)+' '+p._pf.label+' '+p._pf.sigla+' '+(p.publisher||'')+' '+(p.developer||'')).toLowerCase();}
+function filtra(){var q=inp.value.trim().toLowerCase();
+  elRip.querySelectorAll('.dorso').forEach(function(el){var hit=!q||testoRicerca(byId(el.dataset.id)).indexOf(q)>=0;el.classList.toggle('spento',!!q&&!hit);el.classList.toggle('trovato',!!q&&hit);});}
+inp.addEventListener('input',function(){filtra();HITQ='';cnt.textContent='';});
+var HIT=[],HITI=-1,HITQ='',cnt=document.getElementById('cercaN'),frm=document.getElementById('cercaForm');
+function cercaVai(){
+  var q=inp.value.trim().toLowerCase();if(!q){inp.focus();return;}
+  if(q!==HITQ){HITQ=q;HITI=-1;HIT=[].slice.call(elRip.querySelectorAll('.dorso')).filter(function(el){return testoRicerca(byId(el.dataset.id)).indexOf(q)>=0;});}
+  if(!HIT.length){frm.classList.remove('nessuno');void frm.offsetWidth;frm.classList.add('nessuno');cnt.textContent='0';return;}
+  HITI=(HITI+1)%HIT.length;cnt.textContent=HIT.length>1?(HITI+1)+'/'+HIT.length:'';vaiA(HIT[HITI]);
+}
+function vaiA(el){
+  if(matchMedia('(hover:none)').matches)inp.blur();
+  var r=el.closest('.ripiano').getBoundingClientRect(),y=window.scrollY+r.top+r.height/2-window.innerHeight/2;
+  window.scrollTo({top:Math.max(0,y),behavior:'smooth'});portaInVista(el,true);
+  document.querySelectorAll('.dorso.evidenzia').forEach(function(x){x.classList.remove('evidenzia');});
+  setTimeout(function(){el.classList.add('evidenzia');setTimeout(function(){el.classList.remove('evidenzia');},2600);},550);
+}
+frm.addEventListener('submit',function(e){e.preventDefault();cercaVai();});
+
+/* ── Estrazione della custodia ── */
+var ov=document.getElementById('estratto'),cs=document.getElementById('case'),sch=document.getElementById('scheda');
+var attivo=null,dorsoAttivo=null,rotY=-16,rotX=4,animando=false;
+function cercaRetro(p){
+  var el=cs.querySelector('[data-retro]');if(!el)return;var f=foto(p),lista=(p.photos||[]).slice(1).filter(function(x){return x&&x!==f;}),id=p.id;
+  (function prova(i){if(i>=lista.length||!attivo||attivo.id!==id)return;var im=new Image();
+    im.onload=function(){if(!attivo||attivo.id!==id)return;el.style.backgroundImage='url("'+lista[i].replace(/"/g,'%22')+'")';el.style.display='';};
+    im.onerror=function(){prova(i+1);};im.src=lista[i];})(0);
+}
+function caseHtml(p){
+  var f=foto(p);
+  var info=[p._pf.label,p.region,p.year].filter(Boolean).map(esc).join(' &middot; ');
+  return '<div class="faccia f-front"><div class="copertina" style="background-image:url(\''+esc(f)+'\')"></div>'+(prof(p).jewel?'<div class="cerniera"></div>':'')+'<div class="plastica"></div></div>'
+   +'<div class="faccia f-back"><div class="inlay g"><div class="testa" translate="no">'+esc(p._pf.sigla)+'</div><div class="corpo"><h4>'+esc(titolo(p))+'</h4>'
+     +(p.publisher?'<h5>'+esc(p.publisher)+'</h5>':'')+'<p>'+info+'</p>'
+     +((p._generi&&p._generi.length)?'<p>'+esc(p._generi.join(', '))+'</p>':'')
+     +'<div class="piede"><span class="firma">Ramacciato Vintage</span><span class="barcode"></span></div></div></div>'
+     +'<div class="retro-foto" data-retro style="display:none"></div><div class="plastica"></div></div>'
+   +'<div class="faccia f-left"><div class="banda" translate="no">'+esc(p._pf.sigla)+'</div><div class="txt"><b>'+esc(titolo(p))+'</b></div></div>'
+   +'<div class="faccia f-right"></div><div class="faccia f-top"></div><div class="faccia f-bot"></div>';
+}
+function schedaHtml(p){
+  var chips=[];if(p.completeness)chips.push(p.completeness);if(p.year&&p.year!=='0')chips.push(p.year);if(p.developer)chips.push(p.developer);if(p.codiceEdizione)chips.push('Codice: '+p.codiceEdizione);
+  (p._generi||[]).slice(0,3).forEach(function(g){chips.push(g);});
+  var inCart=loadCart().some(function(x){return x.id===p.id;});
+  return '<div class="sez" translate="no">'+esc(p._pf.label)+(p.region?' &middot; '+esc(p.region):'')+'</div>'
+   +'<h2>'+esc(titolo(p))+'</h2>'+(p.publisher?'<h3>'+esc(p.publisher)+'</h3>':'<h3></h3>')
+   +'<div class="chips">'+chips.map(function(c){return'<span>'+esc(c)+'</span>';}).join('')+'</div>'
+   +(p.condition?'<div class="cond">Condizioni: '+esc(p.condition)+'</div>':'')
+   +'<div class="prezzo">'+(p.sold?'<span class="rv-venduto rv-venduto-l">Venduto</span>':'€ '+esc(p.price))+(p.sold?'':'<small>+ spedizione</small>')+'</div>'
+   +(p.dettagliCondizioni?'<div class="difetti">&#x26A0; '+esc(p.dettagliCondizioni)+'</div>':'')
+   +'<div class="azioni"><button class="btn btn-p'+(inCart?' added':'')+'" id="bCarrello"'+(p.sold?' disabled':'')+'>'+(inCart?'&#x2713; Nel carrello':'Aggiungi al carrello')+'</button>'
+   +'<button class="btn btn-s" id="bCompra"'+(p.sold?' disabled':'')+'>Compra ora</button>'
+   +'<button class="btn btn-s" id="bGira">Gira la custodia</button><button class="btn btn-s" id="bChiudi">Rimetti a posto</button>'
+   +'<a class="btn btn-g" href="'+esc(IDXP[String(p.id)]||('shop.html?product='+p.id))+'" style="text-align:center;text-decoration:none">Apri scheda completa</a></div>'
+   +(p._illustrativa?'<p class="nota">'+((p.photos||[]).length>1?'Copertina a scopo illustrativo: edizione e regione della copia in vendita possono differire, le foto reali sono nelle immagini successive.':'Copertina a scopo illustrativo: edizione e regione della copia in vendita possono differire.')+'</p>':'')
+   +'<button class="btn btn-riponi" id="bRiponi">Riponi</button>';
+}
+function posaFinale(){return 'translate3d(0,0,0) scale(1) rotateX('+rotX+'deg) rotateY('+rotY+'deg)';}
+function posaDorso(d){
+  var prev=cs.style.transform;cs.style.transition='none';cs.style.transform='none';
+  var fr=d.classList.contains('preso-it')?d.querySelector('.fr'):null;
+  var r=(fr||d).getBoundingClientRect(),c=cs.getBoundingClientRect();cs.style.transform=prev;
+  var s=r.height/c.height,dx=(r.left+r.width/2)-(c.left+c.width/2),dy=(r.top+r.height/2)-(c.top+c.height/2);
+  if(fr){var ry=Math.round(rotY/360)*360;
+    return{dentro:'translate3d('+dx+'px,'+dy+'px,0) scale('+s+') rotateX(0deg) rotateY('+ry+'deg)',
+           fuori:'translate3d('+(dx*0.9)+'px,'+(dy*0.9)+'px,60px) scale('+(s*1.15)+') rotateX(0deg) rotateY('+ry+'deg)',
+           meta:'translate3d('+(dx*0.5)+'px,'+(dy*0.5-30)+'px,140px) scale('+(0.6+s*0.4)+') rotateX(4deg) rotateY('+(ry-12)+'deg)'};}
+  return{dentro:'translate3d('+dx+'px,'+dy+'px,0) scale('+s+') rotateY(90deg)',
+         fuori:'translate3d('+dx+'px,'+(dy-r.height*0.42)+'px,80px) scale('+(s*1.12)+') rotateY(84deg)',
+         meta:'translate3d('+(dx*0.45)+'px,'+(dy*0.35-40)+'px,160px) scale('+(0.55+s*0.4)+') rotateY(40deg) rotateX(6deg)'};
+}
+var anim=null;
+function anima(frames,dur,easing,fine){
+  if(anim)anim.cancel();cs.style.transition='none';
+  anim=cs.animate(frames,{duration:dur,easing:easing,fill:'forwards'});
+  anim.onfinish=function(){cs.style.transform=frames[frames.length-1].transform;anim.cancel();anim=null;if(fine)fine();};
+}
+function impostaCase(p){var q=prof(p);
+  ['--pw','--ph','--pd'].forEach(function(k,i){cs.style.setProperty(k,[q.w,q.h,q.d][i]);});
+  cs.style.setProperty('--pl',q.pl);cs.style.setProperty('--pb',q.pb);cs.style.setProperty('--pt',q.pt);
+  cs.style.setProperty('--c',p._c||'#222');cs.style.setProperty('--t',p._t||'#f4f1ea');cs.classList.toggle('jewel',!!q.jewel);}
+function estrai(d){
+  if(animando)return;var p=byId(d.dataset.id);if(!p)return;
+  attivo=p;dorsoAttivo=d;animando=true;rotY=-16;rotX=4;
+  impostaCase(p);
+  var aiu=document.getElementById('aiuto');if(aiu)aiu.innerHTML=matchMedia('(hover:none)').matches?'Trascina la custodia col dito per girarla':'Trascina la custodia per girarla &middot; Esc per rimetterla a posto';
+  cs.innerHTML=caseHtml(p);cercaRetro(p);sch.dataset.id=p.id;sch.innerHTML=schedaHtml(p);legaScheda(p);
+  document.body.classList.add('bloccato');ov.classList.remove('chiude');ov.classList.add('on');ov.scrollTop=0;
+  var P=posaDorso(d);cs.style.transform=P.dentro;
+  if(d.classList.contains('preso-it'))d.classList.add('attesa');else d.classList.add('fuori');
+  anima([{transform:P.dentro,offset:0,easing:'cubic-bezier(.3,0,.2,1)'},{transform:P.fuori,offset:.28,easing:'cubic-bezier(.4,0,.2,1)'},{transform:P.meta,offset:.62,easing:'cubic-bezier(.2,.6,.2,1)'},{transform:posaFinale(),offset:1}],1500,'linear',function(){animando=false;});
+  try{history.replaceState(null,'','?gioco='+encodeURIComponent(p.id));}catch(e){}
+}
+function rimetti(){
+  if(!attivo||animando)return;
+  animando=true;var id=String(attivo.id),dentroCarrello=inCarrello(id);
+  if(dentroCarrello){var era=col.classList.contains('on');if(!era)col.style.transition='none';disegnaColonna(loadCart());void col.offsetWidth;if(!era)requestAnimationFrame(function(){col.style.transition='';});}
+  var d=dentroCarrello?document.querySelector('#presoLista .preso-it[data-id="'+CSS.escape(id)+'"]'):dorsoScaffale(id);
+  if(!d)d=dorsoAttivo;
+  if(d&&d.classList.contains('dorso'))portaInVista(d,false);
+  var sp=dorsoScaffale(id);if(sp&&!dentroCarrello){sp.classList.remove('preso');sp.classList.add('fuori');}
+  dorsoAttivo=d;ov.classList.add('chiude');ov.scrollTop=0;
+  var P=posaDorso(d),ora=posaFinale();
+  anima([{transform:ora,offset:0,easing:'cubic-bezier(.5,0,.6,1)'},{transform:P.meta,offset:.4,easing:'cubic-bezier(.4,0,.2,1)'},{transform:P.fuori,offset:.72,easing:'cubic-bezier(.4,0,.3,1)'},{transform:P.dentro,offset:1}],1150,'linear',function(){
+    ov.classList.remove('on');document.body.classList.remove('bloccato');var s2=dorsoScaffale(id);if(s2)s2.classList.remove('fuori');cs.innerHTML='';attivo=null;animando=false;sincronizza(true);
+    var dd=dentroCarrello?document.querySelector('#presoLista .preso-it[data-id="'+CSS.escape(id)+'"]'):s2;try{if(dd)dd.focus({preventScroll:true});}catch(e){}});
+  try{history.replaceState(null,'',location.pathname);}catch(e){}
+}
+function pulito(p){var it=JSON.parse(JSON.stringify(p));Object.keys(it).forEach(function(k){if(k.charAt(0)==='_')delete it[k];});it.qty=1;return it;}
+function legaScheda(p){
+  document.getElementById('bChiudi').onclick=rimetti;document.getElementById('bRiponi').onclick=rimetti;
+  document.getElementById('bGira').onclick=function(){rotY+=180;cs.style.transition='transform .9s cubic-bezier(.3,.7,.2,1)';cs.style.transform=posaFinale();};
+  var bc=document.getElementById('bCarrello');
+  bc.onclick=function(){var c=loadCart(),i=-1;c.forEach(function(x,k){if(x.id===p.id)i=k;});
+    if(i<0)c.push(pulito(p));else c.splice(i,1);
+    saveCart(c);var on=i<0;bc.classList.toggle('added',on);bc.innerHTML=on?'&#x2713; Nel carrello':'Aggiungi al carrello';
+    if(on)setTimeout(rimetti,280);};
+  document.getElementById('bCompra').onclick=function(){var c=loadCart();if(!c.some(function(x){return x.id===p.id;})){c.push(pulito(p));saveCart(c);}location.href='checkout.html';};
+}
+ov.addEventListener('click',function(e){if(e.target===ov)rimetti();});
+
+/* ── Colonna "Nel carrello": i giochi presi escono dallo scaffale e restano visibili di fronte ── */
+var col=document.getElementById('presoCol'),colLista=document.getElementById('presoLista'),colN=document.getElementById('presoN'),ULTIMO=null;
+function inCarrello(id){return loadCart().some(function(x){return String(x.id)===String(id);});}
+function dorsoScaffale(id){return elRip.querySelector('.dorso[data-id="'+CSS.escape(String(id))+'"]');}
+function fronteHtml(p){var f=esc(foto(p));
+  if(p.cat==='videogiochi'&&p._pf){var q=prof(p);return'<div class="fr gioco" style="aspect-ratio:'+q.w+'/'+q.h+';--pl:'+q.pl+';background-image:url(\''+f+'\')"></div>';}
+  return'<div class="fr gen" style="background-image:url(\''+f+'\')"></div>';}
+function nomeCarrello(x){var p=byId(x.id);if(p)return{n:titolo(p),s:p._pf.sigla};var n=x.name||'';if(x.artist&&n.indexOf(x.artist)<0)n=x.artist+' - '+n;return{n:n,s:''};}
+function disegnaColonna(c){
+  var vola=attivo?String(attivo.id):'';
+  colLista.innerHTML=c.map(function(x){var p=byId(x.id),q=p||x,nm=nomeCarrello(x),pr=q.price!=null?'&euro; '+esc(q.price):'';
+    if(!p&&x.cat==='videogiochi'){adatta(q);}
+    return'<div class="preso-it'+(String(x.id)===vola?' attesa':'')+'" role="button" tabindex="0" data-id="'+esc(x.id)+'" aria-label="'+esc(nm.n)+'">'+fronteHtml(q)
+      +'<span class="didas"><b>'+esc(nm.n)+'</b>'+esc(nm.s)+'<s>'+pr+'</s></span>'
+      +'<button class="preso-x" type="button" data-rm="'+esc(x.id)+'" aria-label="Togli dal carrello">&times;</button></div>';}).join('');
+  colN.textContent=c.length;col.classList.toggle('on',c.length>0);
+}
+function sincronizza(forza){
+  var raw;try{raw=localStorage.getItem(CART_KEY)||'[]';}catch(e){raw='[]';}
+  if(!forza&&raw===ULTIMO)return;ULTIMO=raw;
+  var c=[];try{c=JSON.parse(raw)||[];}catch(e){}
+  var ids={};c.forEach(function(x){ids[String(x.id)]=1;});
+  elRip.querySelectorAll('.dorso').forEach(function(el){var on=!!ids[el.dataset.id];
+    el.classList.toggle('preso',on);el.tabIndex=on?-1:0;if(on)el.setAttribute('aria-disabled','true');else el.removeAttribute('aria-disabled');});
+  disegnaColonna(c);
+}
+function togli(id){var c=loadCart().filter(function(x){return String(x.id)!==String(id);});saveCart(c);sincronizza(true);}
+colLista.addEventListener('click',function(e){
+  var x=e.target.closest('.preso-x');if(x){e.stopPropagation();togli(x.dataset.rm);return;}
+  var it=e.target.closest('.preso-it');if(!it||animando||attivo)return;
+  var id=it.dataset.id;if(byId(id)&&dorsoScaffale(id))estrai(it);
+  else location.href=IDXP[String(id)]||('shop.html?product='+encodeURIComponent(id));
+});
+colLista.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&e.target.classList.contains('preso-it')){e.preventDefault();e.target.click();}});
+window.addEventListener('storage',function(e){if(e.key===CART_KEY&&!attivo)sincronizza();});
+setInterval(function(){if(!attivo&&!animando)sincronizza();},900);
+document.addEventListener('keydown',function(e){if(e.key==='Escape')rimetti();});
+/* trascina per ruotare */
+(function(){var drag=false,x0=0,y0=0,ry=0,rx=0;
+  cs.addEventListener('pointerdown',function(e){if(animando)return;drag=true;x0=e.clientX;y0=e.clientY;ry=rotY;rx=rotX;try{cs.setPointerCapture(e.pointerId);}catch(err){}cs.classList.add('drag');cs.style.transition='none';e.preventDefault();});
+  cs.addEventListener('pointermove',function(e){if(!drag)return;e.preventDefault();var k=e.pointerType==='touch'?0.7:0.45;rotY=ry+(e.clientX-x0)*k;rotX=Math.max(-35,Math.min(35,rx-(e.clientY-y0)*0.3));cs.style.transform=posaFinale();});
+  function up(){if(!drag)return;drag=false;cs.classList.remove('drag');}
+  cs.addEventListener('pointerup',up);cs.addEventListener('pointercancel',up);
+})();
+
+/* bolle decorative */
+(function(){var b=document.getElementById('bolle');if(!b||matchMedia('(prefers-reduced-motion:reduce)').matches)return;var n=matchMedia('(max-width:860px)').matches?7:14,h='';
+  for(var i=0;i<n;i++){var s=14+Math.random()*46;h+='<i style="left:'+(Math.random()*100).toFixed(1)+'%;width:'+s.toFixed(0)+'px;height:'+s.toFixed(0)+'px;animation-duration:'+(14+Math.random()*16).toFixed(1)+'s;animation-delay:-'+(Math.random()*20).toFixed(1)+'s;--dx:'+(Math.random()*80-40).toFixed(0)+'px"></i>';}
+  b.innerHTML=h;})();
+
+/* Caricamento dati (catalogo videogiochi del Gestionale Inventario Condiviso) */
+fetch('catalogo-videogiochi.json').then(function(r){return r.json();}).catch(function(){return[];})
+.then(function(arr){
+  GIOCHI=(Array.isArray(arr)?arr:[]).filter(function(p){return p&&!p.nascosto&&foto(p);});
+  GIOCHI.forEach(adatta);
+  render();
+  if(window.rvStockLive)rvStockLive(function(m){
+    GIOCHI.forEach(function(p){
+      var k=String(p.id),c=m.has(k)?m.get(k):0;
+      if(c>0||p.sold)return;
+      p.sold=true;p.copie=0;
+      document.querySelectorAll('.dorso[data-id="'+CSS.escape(k)+'"]').forEach(function(d){d.classList.add('venduto');var b=d.querySelector('.bollino');if(b)b.textContent='VEND.';});
+      if(sch&&sch.dataset.id===k){var pz=sch.querySelector('.prezzo');if(pz)pz.innerHTML='<span class="rv-venduto rv-venduto-l">Venduto</span>';['bCarrello','bCompra'].forEach(function(i){var x=document.getElementById(i);if(x)x.disabled=true;});}
+    });
+  });
+  var q=new URLSearchParams(location.search).get('gioco');
+  if(q){var el=dorsoScaffale(q);if(el)setTimeout(function(){portaInVista(el,false);el.scrollIntoView({block:'center'});estrai(el);},400);}
+});
+var rt,lastW=window.innerWidth;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){var w=window.innerWidth;if(!attivo&&(w>860)!==(lastW>860))render();else aggiornaFrecce();lastW=w;},200);});
+})();
+</script>
+<script src="cart-widget.js"></script>
+<script src="rv-weekend.js"></script>
+</body>
+</html>

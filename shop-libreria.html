@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <script src="i18n.js"></script>
+<script src="rv-stock-live.js"></script>
 <title>CD Usati da Sfogliare: la Libreria | Ramacciato Vintage</title>
 <meta name="description" content="Sfoglia i CD usati di Ramacciato Vintage come in un vero negozio di dischi: scorri i dorsi, estrai il disco e acquistalo online o ritiralo ai mercatini in Veneto.">
 <link rel="canonical" href="https://ramacciatovintage.it/shop-libreria.html">
@@ -178,6 +179,8 @@ body{font-family:Archivo,Arial,sans-serif;color:var(--navy);background:#0d1b2c;m
 .chips span{font-size:11px;padding:5px 10px;border-radius:999px;background:#eef5fd;color:var(--navy);font-weight:600}
 .cond{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:999px;border:1px solid rgba(13,59,117,.25);color:var(--cobalt);margin-bottom:14px}
 .prezzo{font-size:34px;font-weight:900;letter-spacing:-.03em;margin:4px 0 16px}
+/* pezzo venduto: timbro rosso al posto del prezzo */
+.rv-venduto{display:inline-block;padding:4px 12px;border:2px solid #c62828;border-radius:8px;background:#fdecea;color:#c62828;font-family:'Archivo',Arial,sans-serif;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;line-height:1.25;white-space:nowrap;vertical-align:middle}.rv-venduto-l{font-size:15px;padding:6px 16px;border-radius:10px}
 .prezzo small{font-size:12px;font-weight:600;color:#1d4470;letter-spacing:0;margin-left:6px}
 .azioni{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .btn{border:0;border-radius:999px;padding:13px 14px;font:inherit;font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .2s,transform .2s}
@@ -555,7 +558,7 @@ function isLP(p){return !!p&&/^vinili/.test(p.subcat||'');}
 R.addEventListener('mousemove',function(e){
   var d=e.target.closest('.dorso');if(!d){tip.classList.remove('on');return;}
   var p=byId(d.dataset.id);
-  if(tip.dataset.id!==String(p.id)){tip.dataset.id=p.id;tip.innerHTML='<b>'+esc(artista(p))+'</b><em>'+esc(titolo(p))+'</em><s>'+(p.sold?'Venduto':'€ '+esc(p.price))+'</s>';}
+  if(tip.dataset.id!==String(p.id)){tip.dataset.id=p.id;tip.innerHTML='<b>'+esc(artista(p))+'</b><em>'+esc(titolo(p))+'</em>'+(p.sold?'<s style="color:#ff5a5a;font-weight:800;letter-spacing:.12em;text-decoration:none;text-transform:uppercase">Venduto</s>':'<s>€ '+esc(p.price)+'</s>');}
   var x=Math.min(e.clientX+16,window.innerWidth-tip.offsetWidth-10),y=e.clientY-tip.offsetHeight-14;
   tip.style.left=x+'px';tip.style.top=Math.max(8,y)+'px';tip.classList.add('on');
 });
@@ -654,7 +657,7 @@ function schedaHtml(p){
    +'<h2>'+esc(artista(p))+'</h2><h3>'+esc(titolo(p))+'</h3>'
    +'<div class="chips">'+chips.map(function(c){return'<span>'+esc(c)+'</span>';}).join('')+'</div>'
    +(p.condition?'<div class="cond">Condizioni: '+esc(p.condition)+'</div>':'')
-   +'<div class="prezzo">'+(p.sold?'Venduto':'€ '+esc(p.price))+(p.sold?'':'<small>+ spedizione</small>')+'</div>'
+   +'<div class="prezzo">'+(p.sold?'<span class="rv-venduto rv-venduto-l">Venduto</span>':'€ '+esc(p.price))+(p.sold?'':'<small>+ spedizione</small>')+'</div>'
    +(p.dettagliCondizioni?'<div class="difetti">&#x26A0; '+esc(p.dettagliCondizioni)+'</div>':'')
    +'<div class="azioni"><button class="btn btn-p'+(inCart?' added':'')+'" id="bCarrello"'+(p.sold?' disabled':'')+'>'+(inCart?'&#x2713; Nel carrello':'Aggiungi al carrello')+'</button>'
    +'<button class="btn btn-s" id="bCompra"'+(p.sold?' disabled':'')+'>Compra ora</button>'
@@ -688,7 +691,7 @@ function estrai(d){
   if(animando)return;var p=byId(d.dataset.id);if(!p)return;
   attivo=p;dorsoAttivo=d;animando=true;rotY=-16;rotX=4;
   cs.style.setProperty('--c',p._c||'#222');cs.style.setProperty('--t',p._t||'#f4f1ea');
-  cs.classList.toggle('lp',isLP(p));ov.classList.toggle('lp',isLP(p));var aiu=document.getElementById('aiuto');if(aiu){var tt=matchMedia('(hover:none)').matches;aiu.innerHTML=isLP(p)?(tt?'Trascina il disco col dito per girarlo':'Trascina il disco per girarlo &middot; Esc per rimetterlo a posto'):(tt?'Trascina il CD col dito per girarlo':'Trascina il CD per girarlo &middot; Esc per rimetterlo a posto');}cs.innerHTML=caseHtml(p);cercaRetro(p);sch.innerHTML=schedaHtml(p);legaScheda(p);if(window.rvDpa)rvDpa.mount(sch.querySelector('.nota'),p,'before');
+  cs.classList.toggle('lp',isLP(p));ov.classList.toggle('lp',isLP(p));var aiu=document.getElementById('aiuto');if(aiu){var tt=matchMedia('(hover:none)').matches;aiu.innerHTML=isLP(p)?(tt?'Trascina il disco col dito per girarlo':'Trascina il disco per girarlo &middot; Esc per rimetterlo a posto'):(tt?'Trascina il CD col dito per girarlo':'Trascina il CD per girarlo &middot; Esc per rimetterlo a posto');}cs.innerHTML=caseHtml(p);cercaRetro(p);sch.dataset.id=p.id;sch.innerHTML=schedaHtml(p);legaScheda(p);if(window.rvDpa)rvDpa.mount(sch.querySelector('.nota'),p,'before');
   ov.scrollTop=0;document.body.classList.add('bloccato');
   ov.classList.remove('chiude');ov.classList.add('on');ov.scrollTop=0;
   var P=posaDorso(d);cs.style.transform=P.dentro;
@@ -781,6 +784,16 @@ Promise.all([fetch('catalogo.json').then(function(r){return r.json();}),fetch('c
   VIN=CD.filter(function(p){return /^vinili/.test(p.subcat||'');});
   CD=CD.filter(function(p){return /^cd/.test(p.subcat||'');});
   render();
+  /* disponibilita in diretta: se un pezzo viene venduto dal gestionale compare VENDUTO senza ricaricare */
+  if(window.rvStockLive)rvStockLive(function(m){
+    [CD,VIN].forEach(function(L){L.forEach(function(p){
+      var k=String(p.id),c=m.has(k)?m.get(k):0;
+      if(c>0||p.sold)return;
+      p.sold=true;p.copie=0;
+      document.querySelectorAll('.dorso[data-id="'+CSS.escape(k)+'"]').forEach(function(d){d.classList.add('venduto');var b=d.querySelector('.bollino');if(b)b.textContent='VEND.';});
+      if(sch&&sch.dataset.id===k){var pz=sch.querySelector('.prezzo');if(pz)pz.innerHTML='<span class="rv-venduto rv-venduto-l">Venduto</span>';['bCarrello','bCompra'].forEach(function(i){var x=document.getElementById(i);if(x)x.disabled=true;});}
+    });});
+  });
   var qs=new URLSearchParams(location.search);
   if(qs.get('sala')==='vinili'||qs.get('vinile'))vaiSala('vinili',true);
   var qv=qs.get('vinile');

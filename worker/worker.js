@@ -1,5 +1,6 @@
+import * as inventory from './inventory.js';
 // Ramacciato Vintage - Worker codici sconto + PayPal (server-side)
-// Sconto del giorno: ogni giorno e' valida UNA sola categoria (rotazione).
+// Sconto del giorno: ogni giorno e' valida UNA sola categoria (rotazione tra quelle con almeno 10 articoli disponibili).
 
 const SITE_BASE = 'https://ramacciatovintage.it';
 const CAT_FILES = ['musica','dvd','videogiochi','oggetti','elettronica','libri','trading'];
@@ -68,8 +69,34 @@ const ORDER = ['videogiochi','elettronica','musica','libri','oggetti','trading',
 const CAT_CODE = {};
 for (const k in CODES) CAT_CODE[CODES[k].cat] = k;
 
-function todayIndex(){ return Math.floor(Date.now() / 86400000) % ORDER.length; }
-function todayCat(){ return ORDER[todayIndex()]; }
+// Un codice e' attivo solo se la sua categoria ha almeno MIN_DISPONIBILI articoli disponibili.
+// La rotazione giornaliera gira solo tra le categorie attive (nell'ordine di ORDER).
+const MIN_DISPONIBILI = 10;
+let ATTIVE_CACHE = null, ATTIVE_TS = 0;
+async function categorieAttive(env){
+  const now = Date.now();
+  if (ATTIVE_CACHE && (now - ATTIVE_TS) < 60000) return ATTIVE_CACHE;
+  let counts = {};
+  if (inventory.enabled(env)) {
+    counts = await inventory.categoryCounts(env);
+  } else {
+    const catalog = await loadCatalog();
+    for (const id in catalog) {
+      const p = catalog[id];
+      if (!p || p.sold || p.nascosto) continue;
+      counts[p.cat] = (counts[p.cat] || 0) + 1;
+    }
+  }
+  const attive = ORDER.filter(c => (counts[c] || 0) >= MIN_DISPONIBILI);
+  ATTIVE_CACHE = { attive, counts }; ATTIVE_TS = now;
+  return ATTIVE_CACHE;
+}
+// Categoria in sconto oggi, oppure null se nessuna categoria raggiunge la soglia
+async function todayCat(env){
+  const { attive } = await categorieAttive(env);
+  if (!attive.length) return null;
+  return attive[Math.floor(Date.now() / 86400000) % attive.length];
+}
 
 const ALLOWED_ORIGINS = [
   'https://ramacciatovintage.it',
@@ -116,7 +143,7 @@ async function loadCatalog(){
   return map;
 }
 
-async function computeTotals(body){
+async function computeTotals(body, env){
   const items = Array.isArray(body.items) ? body.items : [];
   const shipCfg = await loadShipping();
   let metodo = body.spedizione && body.spedizione.metodo, paese = body.spedizione && body.spedizione.paese;
@@ -124,15 +151,16 @@ async function computeTotals(body){
   if (!metodo) { metodo = 'it-poste-casa'; paese = 'IT'; }
   paese = String(paese || 'IT').toUpperCase();
   const codeRaw = (body.code || '').trim().toUpperCase();
-  const catalog = await loadCatalog();
+  const catalog = inventory.enabled(env) ? null : await loadCatalog();
 
   let subtotal = 0;
   const lines = [];
   for (const it of items) {
-    const p = catalog[String(it.id)];
+    const p = inventory.enabled(env) ? await inventory.product(env,it.id) : catalog[String(it.id)];
     if (!p) continue;
-    if (p.sold) continue;
+    if (p.sold) { if(inventory.enabled(env)) throw new Error('Articolo esaurito'); continue; }
     const qty = Math.max(1, parseInt(it.qty, 10) || 1);
+    if(inventory.enabled(env) && qty>p.copie) throw new Error('Quantità non disponibile');
     const price = Number(p.price) || 0;
     const lineTotal = round2(price * qty);
     subtotal = round2(subtotal + lineTotal);
@@ -143,7 +171,7 @@ async function computeTotals(body){
   let discount = 0, categoria = null, codeValid = false, reason = null;
   if (codeRaw && CODES[codeRaw]) {
     const rule = CODES[codeRaw];
-    if (rule.cat !== todayCat()) {
+    if (rule.cat !== await todayCat(env)) {
       reason = 'not-today';                 // codice esistente ma non e' lo sconto di oggi
     } else {
       categoria = rule.cat;
@@ -221,7 +249,7 @@ async function captureOrder(env, orderID){
   const token = await ppToken(env);
   const r = await fetch(ppBase(env) + '/v2/checkout/orders/' + encodeURIComponent(orderID) + '/capture', {
     method: 'POST',
-    headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' }
+    headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json', 'PayPal-Request-Id': 'rv-capture-' + orderID }
   });
   return await r.json();
 }
@@ -236,8 +264,16 @@ export default {
 
     // Sconto del giorno (GET) - per la ruota in home
     if (url.pathname === '/today') {
-      const cat = todayCat();
-      return json({ index: todayIndex(), cat: cat, code: CAT_CODE[cat] }, 200, origin);
+      let cat = null;
+      try { cat = await todayCat(env); } catch (e) { cat = null; }
+      // index = posizione in ORDER (compatibilita' con pagine home in cache), -1 se nessuno sconto
+      return json({ index: cat ? ORDER.indexOf(cat) : -1, cat: cat, code: cat ? CAT_CODE[cat] : null,
+                    soglia: MIN_DISPONIBILI }, 200, origin);
+    }
+
+    if (request.method === 'GET' && url.pathname === '/products' && inventory.enabled(env)) {
+      try { return json({products:await inventory.publicProducts(env)},200,origin); }
+      catch (_) { return json({error:'Disponibilità non verificabile'},503,origin); }
     }
 
     if (request.method !== 'POST')
@@ -248,21 +284,27 @@ export default {
 
     try {
       if (url.pathname === '/quote') {
-        const t = await computeTotals(body);
+        const t = await computeTotals(body, env);
         return json({ subtotal: t.subtotal, discount: t.discount, shipping: t.shipping, spedizione: t.spedizione,
                       total: t.total, code: t.code, categoria: t.categoria, reason: t.reason }, 200, origin);
       }
       if (url.pathname === '/create-order') {
         if (!env.PAYPAL_CLIENT_ID || !env.PAYPAL_SECRET)
           return json({ error: 'PayPal non configurato' }, 500, origin);
-        const t = await computeTotals(body);
+        const t = await computeTotals(body, env);
         if (!t.lines.length) return json({ error: 'carrello vuoto' }, 400, origin);
         const id = await createOrder(env, t);
+        if(inventory.enabled(env)) await inventory.reserve(env,id,t);
         return json({ id: id, total: t.total, discount: t.discount }, 200, origin);
       }
       if (url.pathname === '/capture-order') {
         if (!body.orderID) return json({ error: 'orderID mancante' }, 400, origin);
+        if(inventory.enabled(env)) {
+          const saved=await inventory.beforeCapture(env,String(body.orderID));
+          if(saved) return json(saved,200,origin);
+        }
         const d = await captureOrder(env, body.orderID);
+        if(inventory.enabled(env)) await inventory.complete(env,String(body.orderID),d);
         return json(d, 200, origin);
       }
       return json({ error: 'not found' }, 404, origin);

@@ -18,7 +18,7 @@ var CSS=[
 '@keyframes o3d-sway{0%{transform:rotateX(-10deg) rotateY(-32deg)}50%{transform:rotateX(-14deg) rotateY(32deg)}100%{transform:rotateX(-10deg) rotateY(-32deg)}}',
 '@keyframes o3d-spin{from{transform:rotateX(-12deg) rotateY(0deg)}to{transform:rotateX(-12deg) rotateY(360deg)}}',
 '.cat-item:hover .o3d-rot,.cat-item.active .o3d-rot,.subcat-tile:hover .o3d-rot,.o3d-host.gira .o3d-rot{animation:o3d-spin 5s linear infinite}',
-'.o3d-t{position:absolute;left:0;right:0;text-align:center;font-family:Archivo,Arial,sans-serif;font-weight:900;text-transform:uppercase;letter-spacing:.06em;line-height:1;white-space:nowrap;overflow:hidden}',
+'.o3d-t{position:absolute;left:0;right:0;text-align:center;font-family:Archivo,Arial,sans-serif;font-weight:900;text-transform:uppercase;letter-spacing:.06em;line-height:1.1;white-space:normal;overflow:hidden;padding:0 6%;box-sizing:border-box}',
 '@media(prefers-reduced-motion:reduce){.o3d-rot{animation:none!important;transform:rotateX(-12deg) rotateY(-24deg)}}'
 ].join('\n');
 

@@ -394,25 +394,30 @@ def foto(p):
 
 
 # ───────────────────────── layout comune ─────────────────────────
-FONT = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
-        '<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,800;0,900;1,400'
-        '&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">')
+FONT = ('<link rel="preload" href="/fonts/archivo-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>'
+        '<link rel="preload" href="/fonts/archivo-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>'
+        '<link rel="stylesheet" href="/fonts/fonts.css">')
 
 
 def testa(title, desc, canon, og_img="", robots="index,follow", og_type="website", jsonld=None):
     j = ""
     for blk in (jsonld or []):
         j += '<script type="application/ld+json">%s</script>\n' % json.dumps(blk, ensure_ascii=False)
-    img = og_img or BASE + "/logo%20no%20sfondo.png"
+    img = og_img or BASE + "/og-image.jpg"
     return f"""<!doctype html>
 <html lang="it">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<script src="/i18n.js"></script>
 <title>{e(title)}</title>
 <meta name="description" content="{e(desc)}">
 <meta name="robots" content="{robots}">
 <link rel="canonical" href="{canon}">
+<link rel="alternate" hreflang="it" href="{canon}">
+<link rel="alternate" hreflang="en" href="{canon}?lang=en">
+<link rel="alternate" hreflang="es" href="{canon}?lang=es">
+<link rel="alternate" hreflang="x-default" href="{canon}">
 <meta property="og:type" content="{og_type}">
 <meta property="og:site_name" content="Ramacciato Vintage">
 <meta property="og:locale" content="it_IT">
@@ -421,13 +426,15 @@ def testa(title, desc, canon, og_img="", robots="index,follow", og_type="website
 <meta property="og:url" content="{canon}">
 <meta property="og:image" content="{e(img)}">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/png" href="/logo%20no%20sfondo.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/logo.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 {FONT}
 <link rel="stylesheet" href="/seo/seo.css">
 {j}</head>
 <body>
 <header class="sx-top">
-  <a class="sx-brand" href="/"><img src="/logo%20no%20sfondo.png" alt="" width="26" height="26"><span>Ramacciato <b>Vintage</b></span></a>
+  <a class="sx-brand" href="/"><img src="/logo.png" alt="" width="26" height="26"><span>Ramacciato <b>Vintage</b></span></a>
   <nav class="sx-nav" aria-label="Menu"><a href="/shop.html">Shop</a><a href="/negozio/cd-usati.html">CD</a><a href="/mercatini.html">Mercatini</a><a href="/svuotacantine.html">Svuotacantine</a></nav>
 </header>
 <main class="sx-main">
@@ -474,7 +481,7 @@ def card(p):
     img = src_img(foto(p))
     stato = "Nuovo" if e_nuovo(p) else (p.get("condition") or "")
     return (f'<a class="sx-card" href="{p["_url"]}"><span class="sx-card-img{" q" if p.get("cat") == "musica" else ""}">'
-            f'<img src="{e(img)}" alt="{e(nome_completo(p))}" loading="lazy"></span>'
+            f'<img src="{e(img)}" alt="{e(nome_completo(p))}" width="400" height="{"400" if p.get("cat") == "musica" else "300"}" loading="lazy" decoding="async"></span>'
             f'<span class="sx-card-b"><span class="sx-card-n">{e(nome_completo(p))}</span>'
             f'<span class="sx-card-c">{e(stato)}</span><span class="sx-card-p">€ {prezzo_txt(p)}</span></span></a>')
 
@@ -504,7 +511,7 @@ def eventi_ld(ids, quante=2):
                 "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
                 "description": "Mercatino dell'usato, del vintage e dell'antiquariato. Ramacciato Vintage partecipa "
                                "con il suo banco di dischi, film, videogiochi e oggetti d'epoca secondo calendario.",
-                "image": [BASE + "/logo%20no%20sfondo.png"],
+                "image": [BASE + "/og-image.jpg"],
                 "location": {"@type": "Place", "name": m["luogo"] + ", " + m["citta"],
                              "address": {"@type": "PostalAddress", "streetAddress": m["luogo"],
                                          "addressLocality": m["citta"].split(" (")[0], "postalCode": m["cap"],
@@ -587,6 +594,10 @@ def pagina_prodotto(p, pc, simili):
         par = "vinile" if pc.get("sezione") == "vinili" else "cd"
         libreria = f'<a class="sx-btn sx-btn-l" href="/shop-libreria.html?{par}={e(p["id"])}">Guardalo nella Libreria</a>'
     sim = "".join(card(x) for x in simili)
+    # banner concerti Dead People Activity (solo musica, no colonne sonore): montato da /dpa-live.js
+    dpa = (f'<div data-dpa-artist="{e(a)}" style="margin:0 -12px 6px"></div><script src="/dpa-live.js" defer></script>'
+           if p.get("cat") == "musica" and a and not p.get("_colonna_sonora")
+           and re.match(r"(cd|vinil|musicassett)", str(p.get("subcat") or "cd"), re.I) else "")
     nota_discogs = ('<p class="sx-nota">Copertina da Discogs a scopo illustrativo: il prodotto fisico può differire dall\'immagine.</p>' if p.get('discogsId') else '')
     dati_json = json.dumps(pub, ensure_ascii=False).replace('</', '<\\/')
     h = testa(title, desc, canon, url_img(img), "index,follow", "product", [prodotto_ld, breadcrumb_ld(voci)])
@@ -608,7 +619,8 @@ def pagina_prodotto(p, pc, simili):
       <a class="sx-btn sx-btn-s sx-full" href="{e(mailto)}">Prenota e ritira al mercatino</a>
       {libreria}
     </div>
-    <div class="sx-desc"><p>{' '.join(frasi)}</p></div>
+    {dpa}
+    <div class="sx-desc"><p>{' '.join('<span>%s</span>' % x for x in frasi)}</p></div>
     {nota_discogs}
   </div>
 </article>
@@ -714,9 +726,10 @@ def sitemap(url_extra):
     for u, pr, fq in statiche:
         righe.append((u, pr, fq))
     righe += url_extra
-    out = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    out = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
     for u, pr, fq in righe:
-        out.append(f"  <url><loc>{BASE}{u}</loc><lastmod>{OGGI.isoformat()}</lastmod><changefreq>{fq}</changefreq><priority>{pr}</priority></url>")
+        alt = "".join(f'<xhtml:link rel="alternate" hreflang="{h}" href="{BASE}{u}{q}"/>' for h, q in (("it", ""), ("en", "?lang=en"), ("es", "?lang=es"), ("x-default", "")))
+        out.append(f"  <url><loc>{BASE}{u}</loc>{alt}<lastmod>{OGGI.isoformat()}</lastmod><changefreq>{fq}</changefreq><priority>{pr}</priority></url>")
     out.append("</urlset>\n")
     return "\n".join(out)
 

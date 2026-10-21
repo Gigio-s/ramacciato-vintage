@@ -1,0 +1,35 @@
+{
+  "_nota": "Banner concerti Dead People Activity. 'storici' = band sciolte o artisti scomparsi: il banner cerca tribute e cover band invece dei concerti. 'alias' = nome come arriva dal gestionale -> nome da cercare sulla mappa. 'escludi' = artisti per cui non mostrare il banner. Tutto case-insensitive.",
+  "storici": [
+    "Aretha Franklin",
+    "Black Sabbath",
+    "Emerson Lake & Palmer",
+    "Faces",
+    "Frank Zappa",
+    "Fugees",
+    "Gabinete Caligari",
+    "Genesis",
+    "George Michael",
+    "INXS",
+    "Jefferson Airplane",
+    "Jimi Hendrix",
+    "John Lennon",
+    "Mano Negra",
+    "Michael Jackson",
+    "Prince",
+    "Queen",
+    "R.E.M.",
+    "The Police",
+    "Tina Turner"
+  ],
+  "alias": {
+    "Emerson, Lake & Palmer": "Emerson Lake & Palmer",
+    "Bruce Springsteen & The E-Street Band": "Bruce Springsteen",
+    "Sting, The Police": "Sting",
+    "Stephen Stills, Manassas": "Stephen Stills"
+  },
+  "escludi": [
+    "Various",
+    "Final Fantasy"
+  ]
+}

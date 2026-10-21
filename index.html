@@ -2,41 +2,36 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
-<script>
-(function(){
-  var PASS='vicenza26',KEY='rv_gate',EXP=new Date('2026-09-01').getTime();
-  if(Date.now()>=EXP||localStorage.getItem(KEY)==='1')return;
-  var s=document.createElement('style');s.id='rv-hide';s.textContent='body{visibility:hidden!important}';document.head.appendChild(s);
-  document.addEventListener('DOMContentLoaded',function(){
-    var d=document.createElement('div');
-    d.id='rv-gate';
-    d.style.cssText='position:fixed;inset:0;z-index:99999;background:#4a90e0;display:flex;align-items:center;justify-content:center;';
-    d.innerHTML='<div style="text-align:center;padding:40px 24px;font-family:Archivo,Arial,sans-serif;max-width:360px"><p style="font-size:10px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#0d3b75;margin:0 0 14px">Ramacciato Vintage</p><h2 style="font-size:clamp(28px,7vw,42px);font-weight:900;letter-spacing:-.05em;text-transform:uppercase;color:#0b2545;line-height:.92;margin:0 0 16px">Lancio sito<br>settembre 2026</h2><p style="font-size:13px;color:#143a63;margin:0 0 28px;line-height:1.55">Apertura ufficiale a settembre 2026.<br>Inserisci la password per accedere in anteprima.</p><input id="rv-pw" type="password" placeholder="Password" autocomplete="current-password" autofocus style="display:block;width:100%;max-width:220px;padding:13px 18px;border:1.5px solid rgba(11,37,69,.18);border-radius:999px;font-size:15px;font-family:inherit;background:#ffffff;color:#0b2545;margin:0 auto 12px;outline:none;text-align:center;box-sizing:border-box;cursor:text"><button id="rv-btn" style="padding:12px 36px;background:#0b2545;color:#ffffff;border:none;border-radius:999px;font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-family:inherit;cursor:pointer;transition:background .18s">Entra</button><p id="rv-err" style="font-size:12px;color:#0d3b75;margin:10px 0 0;min-height:16px"></p></div>';
-    document.body.prepend(d);
-    document.body.style.overflow='hidden';
-    var hs=document.getElementById('rv-hide');if(hs)hs.remove();
-    document.body.style.visibility='visible';
-    function check(){if(document.getElementById('rv-pw').value===PASS){localStorage.setItem(KEY,'1');d.remove();document.body.style.overflow='';}else{document.getElementById('rv-err').textContent='Password errata.';}}
-    document.getElementById('rv-btn').onclick=check;
-    document.getElementById('rv-pw').onkeydown=function(e){if(e.key==='Enter')check();};
-    setTimeout(function(){var pw=document.getElementById('rv-pw');if(pw)pw.focus();},100);
-  });
-})();
-</script>
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<script src="i18n.js"></script>
 <meta name="description" content="Negozio online di CD, vinili, DVD, videogiochi retro e oggetti vintage usati. Spedizione in tutta Italia e ritiro ai mercatini di Vicenza, Padova, Marostica e Mestre.">
 <link rel="canonical" href="https://ramacciatovintage.it/">
-<link rel="icon" type="image/png" href="logo no sfondo.png">
+<link rel="alternate" hreflang="it" href="https://ramacciatovintage.it/">
+<link rel="alternate" hreflang="en" href="https://ramacciatovintage.it/?lang=en">
+<link rel="alternate" hreflang="es" href="https://ramacciatovintage.it/?lang=es">
+<link rel="alternate" hreflang="x-default" href="https://ramacciatovintage.it/">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>Negozio Vintage e Usato Online a Vicenza | Ramacciato Vintage</title>
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ramacciatovintage.it/">
 <meta property="og:title" content="Negozio Vintage e Usato Online a Vicenza | Ramacciato Vintage">
 <meta property="og:description" content="Negozio online di CD, vinili, DVD, videogiochi retro e oggetti vintage usati. Spedizione in tutta Italia e ritiro ai mercatini di Vicenza, Padova, Marostica e Mestre.">
-<meta property="og:image" content="https://ramacciatovintage.it/logo%20no%20sfondo.png">
-<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,800;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<meta property="og:image" content="https://ramacciatovintage.it/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script>
+/* Libreria 3D (model-viewer) ospitata sul sito e caricata solo quando serve:
+   quando si apre "Esplora le categorie" (o ci si passa sopra col mouse). */
+self.ModelViewerElement={dracoDecoderLocation:'vendor/draco/'};
+window.rvLoadModelViewer=(function(){var done=false;return function(){if(done)return;done=true;
+var sc=document.createElement('script');sc.type='module';sc.src='vendor/model-viewer/model-viewer.min.js';document.head.appendChild(sc);};})();
+</script>
+<link rel="preload" href="fonts/archivo-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/archivo-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/fonts.css">
 <style>
 /* ── TOKENS ─────────────────────────────────────────── */
 :root{
@@ -745,11 +740,6 @@ footer{
 @keyframes hint-pulse{0%,100%{opacity:1;transform:translateX(0)}50%{opacity:.75;transform:translateX(3px)}}
 .spin-hint svg{width:14px;height:14px;flex-shrink:0}
 /* bottone reset test */
-.rr-reset{margin-top:12px;background:none;border:1px dashed rgba(255,255,255,.25);
-  border-radius:8px;padding:6px 14px;font-family:inherit;font-size:10px;font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);cursor:pointer;
-  transition:color .18s,border-color .18s}
-.rr-reset:hover{color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.5)}
 @media(max-width:960px){.roulette-layout{grid-template-columns:1fr}.roulette-right{width:100%;height:540px}}
 
 /* FOOTER STANDARD */
@@ -759,9 +749,8 @@ footer{
 .foot-legal a{font-size:12px;color:var(--muted);transition:color .18s;text-decoration:underline;text-decoration-color:rgba(122,113,104,.3)}
 .foot-legal a:hover{color:var(--ink)}
 .foot-legal span{color:var(--muted);font-size:11px}
-/* COOKIE */
-.cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(74,144,224,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid rgba(11,37,69,.1);padding:16px 24px;transform:translateY(120%);transition:transform .4s cubic-bezier(.22,1,.36,1);box-shadow:0 -8px 32px rgba(11,37,69,.08)}.cookie-banner.visible{transform:translateY(0)}.cookie-banner-inner{max-width:1180px;margin:auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap}.cookie-banner-text{font-size:13px;color:rgba(11,37,69,.85);flex:1;min-width:200px;line-height:1.5}.cookie-banner-text strong{color:#0b2545}.cookie-banner-text a{color:#0d3b75;text-decoration:underline}.cookie-banner-actions{display:flex;gap:8px;flex-wrap:wrap;flex-shrink:0}.cookie-btn{padding:9px 18px;border-radius:999px;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;font-family:inherit;border:none;transition:all .18s}.cookie-btn-primary{background:#0b2545;color:#ffffff}.cookie-btn-primary:hover{background:#0d3b75}.cookie-btn-secondary{background:transparent;border:1.5px solid rgba(11,37,69,.2);color:#0b2545}.cookie-btn-secondary:hover{background:rgba(11,37,69,.05)}.cookie-btn-ghost{background:transparent;color:rgba(11,37,69,.85);border:none;font-size:10.5px;font-weight:700;text-decoration:underline;padding:9px 10px;cursor:pointer;font-family:inherit;letter-spacing:.06em}.cookie-btn-ghost:hover{color:#0b2545}.cookie-modal{position:fixed;inset:0;z-index:10000;background:rgba(11,37,69,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:24px}.cookie-modal[hidden]{display:none}.cookie-modal-box{background:#ffffff;border-radius:20px;padding:32px;max-width:460px;width:100%;position:relative;box-shadow:0 24px 80px rgba(11,37,69,.18)}.cookie-modal-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:18px;cursor:pointer;color:rgba(11,37,69,.85);padding:4px 8px;transition:color .18s;font-family:inherit}.cookie-modal-close:hover{color:#0b2545}.cookie-modal-title{margin:0 0 6px;font-size:19px;font-weight:900;letter-spacing:-.03em;color:#0b2545}.cookie-modal-sub{margin:0 0 20px;font-size:12.5px;color:rgba(11,37,69,.85);line-height:1.5}.cookie-toggle-row{display:flex;align-items:center;gap:16px;padding:13px 0;border-bottom:1px solid rgba(11,37,69,.07)}.cookie-toggle-row:last-of-type{border-bottom:none}.cookie-toggle-info{flex:1}.cookie-toggle-info strong{display:block;font-size:13px;font-weight:700;color:#0b2545;margin-bottom:2px}.cookie-toggle-info span{font-size:11.5px;color:rgba(11,37,69,.85)}.cookie-switch{position:relative;display:inline-block;width:44px;height:24px;flex-shrink:0;cursor:pointer}.cookie-switch input{opacity:0;width:0;height:0;position:absolute}.cookie-switch-slider{position:absolute;inset:0;background:rgba(11,37,69,.15);border-radius:999px;transition:background .2s}.cookie-switch-slider::before{content:'';position:absolute;width:18px;height:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.18)}.cookie-switch input:checked+.cookie-switch-slider{background:#0d3b75}.cookie-switch input:checked+.cookie-switch-slider::before{transform:translateX(20px)}.cookie-badge-on{display:inline-block;background:#0d3b75;color:#fff;padding:3px 10px;border-radius:999px;font-size:9.5px;font-weight:800;letter-spacing:.1em;flex-shrink:0}
-@media(max-width:600px){.cookie-banner-inner{flex-direction:column;align-items:flex-start}.cookie-banner-actions{width:100%}}
+
+
 
 /* ── VINYL MODE (mobile) ─────────────────────────────── */
 .vinyl-fab{display:none}
@@ -821,10 +810,16 @@ footer{
       "@id": "https://ramacciatovintage.it/#store",
       "name": "Ramacciato Vintage",
       "url": "https://ramacciatovintage.it/",
-      "logo": "https://ramacciatovintage.it/logo%20no%20sfondo.png",
-      "image": "https://ramacciatovintage.it/logo%20no%20sfondo.png",
+      "logo": "https://ramacciatovintage.it/logo.png",
+      "image": "https://ramacciatovintage.it/og-image.jpg",
       "description": "Negozio online di CD, vinili, DVD, videogiochi retro e oggetti vintage usati, con base a Vicenza e presente ai mercatini del Veneto. Spedizione in tutta Italia.",
       "email": "ramacciatoluca@gmail.com",
+      "sameAs": [
+        "https://www.instagram.com/ramacciatovintage/",
+        "https://www.tiktok.com/@ramacciato.vintage",
+        "https://www.facebook.com/profile.php?id=61595227785751",
+        "https://www.youtube.com/@RamacciatoVintage"
+      ],
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Vicenza",
@@ -958,7 +953,7 @@ footer{
 <header class="top">
   <div class="wrap nav">
     <a class="brand" href="index.html">
-      <img src="logo no sfondo.png" alt="Logo Ramacciato Vintage" width="32" height="32" decoding="async">
+      <img src="logo.png" alt="Logo Ramacciato Vintage" width="32" height="32" decoding="async">
       <span class="brand-text" aria-label="Ramacciato Vintage"><span class="lw">R</span><span class="lw">a</span><span class="lw">m</span><span class="lw">a</span><span class="lw">c</span><span class="lw">c</span><span class="lw">i</span><span class="lw">a</span><span class="lw">t</span><span class="lw">o</span><span class="lw">&nbsp;</span><span class="lw accent">V</span><span class="lw accent">i</span><span class="lw accent">n</span><span class="lw accent">t</span><span class="lw accent">a</span><span class="lw accent">g</span><span class="lw accent">e</span></span>
     </a>
     <nav aria-label="Menu principale">
@@ -970,10 +965,10 @@ footer{
       </ul>
     </nav>
     <ul class="social">
-      <li><a href="#" aria-label="Instagram">IG</a></li>
-      <li><a href="#" aria-label="Facebook">FB</a></li>
-      <li><a href="https://www.linkedin.com/in/luca-ramacciato-3292681b1/" target="_blank" rel="noopener" aria-label="LinkedIn">IN</a></li>
-      <li><a href="https://www.youtube.com/@archivioilcustode" target="_blank" rel="noopener" aria-label="YouTube">YT</a></li>
+      <li><a href="https://www.instagram.com/ramacciatovintage/" target="_blank" rel="noopener" aria-label="Instagram">IG</a></li>
+      <li><a href="https://www.tiktok.com/@ramacciato.vintage" target="_blank" rel="noopener" aria-label="TikTok">TT</a></li>
+      <li><a href="https://www.facebook.com/profile.php?id=61595227785751" target="_blank" rel="noopener" aria-label="Facebook">FB</a></li>
+      <li><a href="https://www.youtube.com/@RamacciatoVintage" target="_blank" rel="noopener" aria-label="YouTube">YT</a></li>
       <li><button class="cart-btn" id="cartOpenBtn" onclick="if(window.rvCart)rvCart.open()" aria-label="Carrello">&#x1F6D2; <span class="cart-count zero" id="cartCount">0</span></button></li>
     </ul>
     <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
@@ -1155,7 +1150,7 @@ footer{
       <div class="roulette-left reveal">
         <p class="sec-label">Sconto del giorno</p>
         <h2 class="h2">Gira il<br>Vinile</h2>
-        <p class="body-copy">Ruota il vinile e scopri lo <strong>sconto di oggi</strong>: ogni giorno una categoria diversa con il <strong>5% di sconto</strong>. Il codice si applica da solo al checkout.</p>
+        <p class="body-copy">Ruota il vinile e scopri lo <strong>sconto di oggi</strong>: una categoria selezionata con il <strong>5% di sconto</strong>. Il codice si applica da solo al checkout.</p>
         <div class="spin-hint">
           <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M7 1v5M7 1L4.5 3.5M7 1l2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1222,7 +1217,6 @@ footer{
             </div>
             <div class="rr-actions">
               <a class="rr-shop" id="rrShop" href="shop.html">Vai allo shop &rarr;</a>
-              <button class="rr-reset" id="rrReset">⚙ Togli codice (test)</button>
             </div>
           </div>
         </div>
@@ -1311,8 +1305,10 @@ footer{
         <ul class="foot-links">
           <li><a href="svuotacantine.html">Svuotacantine</a></li>
           <li><a href="mailto:ramacciatoluca@gmail.com">Email</a></li>
-          <li><a href="#" aria-label="Instagram">Instagram</a></li>
-          <li><a href="https://www.youtube.com/@archivioilcustode" target="_blank" rel="noopener">YouTube</a></li>
+          <li><a href="https://www.instagram.com/ramacciatovintage/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.tiktok.com/@ramacciato.vintage" target="_blank" rel="noopener">TikTok</a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=61595227785751" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.youtube.com/@RamacciatoVintage" target="_blank" rel="noopener">YouTube</a></li>
         </ul>
       </div>
       <div>
@@ -1345,23 +1341,24 @@ footer{
 ══════════════════════════════════════════════════════ */
 (function(){
   var CATS=[
-    {emoji:'🎮',name:'Videogiochi &amp; Console',desc:'Retroconsole, giochi cartuccia, Game Boy, PlayStation, SEGA e accessori originali.',tags:'Retrogaming · Vintage',href:'shop.html',codice:'RV-GAME5'},
-    {emoji:'📻',name:'Elettronica Vintage',desc:"Radio, televisori, fotocamere, hi-fi e gadget d'epoca. Tecnologia con anima.",tags:'Tech · Vintage',href:'shop.html',codice:'RV-TECH5'},
-    {emoji:'🎵',name:'Vinili &amp; Musica',desc:'Vinili 33/45 giri, CD, musicassette, walkman e lettori hi-fi vintage.',tags:'Audio · Collezionismo',href:'shop.html',codice:'RV-MUSIC5'},
-    {emoji:'📚',name:'Libri Curiosi',desc:"Romanzi d'epoca, enciclopedie, fumetti anni '70-'90 e collane complete.",tags:'Lettura · Vintage',href:'shop.html',codice:'RV-LIBRI5'},
-    {emoji:'🏺',name:'Oggetti Vintage',desc:'Vasi, ceramiche, design italiano, soprammobili e pezzi da collezione.',tags:'Design · Decor',href:'shop.html',codice:'RV-OGG5'},
-    {emoji:'🃏',name:'Trading Cards',desc:'Carte Pokémon, Magic, Dragon Ball e collezioni rare in ottime condizioni.',tags:'Collezionismo · Cards',href:'shop.html',codice:'RV-CARD5'},
-    {emoji:'🎬',name:'DVD &amp; Film',desc:'DVD originali di film, serie TV, animazione e documentari in ottime condizioni.',tags:'Cinema · Collezionismo',href:'shop.html',codice:'RV-DVD5'}
+    {emoji:'🎮',name:'Videogiochi &amp; Console',desc:'Retroconsole, giochi cartuccia, Game Boy, PlayStation, SEGA e accessori originali.',tags:'Retrogaming · Vintage',href:'shop.html',codice:'RV-GAME5',key:'videogiochi'},
+    {emoji:'📻',name:'Elettronica Vintage',desc:"Radio, televisori, fotocamere, hi-fi e gadget d'epoca. Tecnologia con anima.",tags:'Tech · Vintage',href:'shop.html',codice:'RV-TECH5',key:'elettronica'},
+    {emoji:'🎵',name:'Vinili &amp; Musica',desc:'Vinili 33/45 giri, CD, musicassette, walkman e lettori hi-fi vintage.',tags:'Audio · Collezionismo',href:'shop.html',codice:'RV-MUSIC5',key:'musica'},
+    {emoji:'📚',name:'Libri Curiosi',desc:"Romanzi d'epoca, enciclopedie, fumetti anni '70-'90 e collane complete.",tags:'Lettura · Vintage',href:'shop.html',codice:'RV-LIBRI5',key:'libri'},
+    {emoji:'🏺',name:'Oggetti Vintage',desc:'Vasi, ceramiche, design italiano, soprammobili e pezzi da collezione.',tags:'Design · Decor',href:'shop.html',codice:'RV-OGG5',key:'oggetti'},
+    {emoji:'🃏',name:'Trading Cards',desc:'Carte Pokémon, Magic, Dragon Ball e collezioni rare in ottime condizioni.',tags:'Collezionismo · Cards',href:'shop.html',codice:'RV-CARD5',key:'trading'},
+    {emoji:'🎬',name:'DVD &amp; Film',desc:'DVD originali di film, serie TV, animazione e documentari in ottime condizioni.',tags:'Cinema · Collezionismo',href:'shop.html',codice:'RV-DVD5',key:'dvd'}
   ];
 
-  /* Sconto del giorno: una categoria al giorno, in rotazione.
-     L'ordine di CATS combacia con ORDER nel Worker. */
+  /* Sconto del giorno: lo decide il Worker (solo categorie con almeno 10 articoli
+     disponibili). La categoria si riconosce per nome (d.cat), non per posizione.
+     Se il Worker non risponde o non c'e' sconto attivo: nessun codice. */
   var RV_WORKER='https://ramacciato-sconti.ramacciatoluca.workers.dev';
-  function localTodayIdx(){ return Math.floor(Date.now()/86400000) % CATS.length; }
-  var todayIdx = localTodayIdx();
-  fetch(RV_WORKER+'/today').then(function(r){return r.json();}).then(function(d){
-    if(d && typeof d.index==='number' && d.index>=0 && d.index<CATS.length) todayIdx=d.index;
-  }).catch(function(){});
+  var todayP = fetch(RV_WORKER+'/today',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
+    if(!d || !d.cat) return null;
+    for(var i=0;i<CATS.length;i++){ if(CATS[i].key===d.cat) return CATS[i]; }
+    return null;
+  }).catch(function(){ return null; });
 
   var stage=document.getElementById('orbitLp');
   var disc=document.getElementById('cdDiscLp');
@@ -1432,16 +1429,30 @@ footer{
   /* ── mostra overlay roulette ── */
   function showRoulette(){
     if(!rrBox) return;
-    var ci=todayIdx; if(ci<0||ci>=CATS.length) ci=0;  /* sempre lo sconto di oggi */
-    var cat=CATS[ci];
-    if(rrEmoji) rrEmoji.textContent=cat.emoji;
-    if(rrCat)   rrCat.innerHTML=cat.name;
-    if(rrCode)  rrCode.textContent=cat.codice;
-    if(rrShop)  rrShop.href=cat.href;
-    if(rrCopy)  rrCopy.textContent='📋 Copia';
-    try{ localStorage.setItem('rv_coupon', cat.codice); }catch(e){}  /* auto-applica al checkout */
-    rrBox.classList.add('is-vis');
-    paused=true;
+    todayP.then(function(cat){
+      var codeWrap=rrBox.querySelector('.rr-code-wrap');
+      var rrLabel=rrBox.querySelector('.rr-label');
+      if(cat){
+        if(rrEmoji) rrEmoji.textContent=cat.emoji;
+        if(rrLabel) rrLabel.textContent='Sconto del giorno · 5%';
+        if(rrCat)   rrCat.innerHTML=cat.name;
+        if(rrCode)  rrCode.textContent=cat.codice;
+        if(codeWrap) codeWrap.style.display='';
+        if(rrShop)  rrShop.href=cat.href;
+        if(rrCopy)  rrCopy.textContent='📋 Copia';
+        try{ localStorage.setItem('rv_coupon', cat.codice); }catch(e){}  /* auto-applica al checkout */
+      } else {
+        /* nessuna categoria con abbastanza articoli, o Worker non raggiungibile */
+        if(rrEmoji) rrEmoji.textContent='💿';
+        if(rrLabel) rrLabel.textContent='Sconto del giorno';
+        if(rrCat)   rrCat.textContent='Nessuno sconto attivo oggi: torna a trovarci presto!';
+        if(codeWrap) codeWrap.style.display='none';
+        if(rrShop)  rrShop.href='shop.html';
+        try{ localStorage.removeItem('rv_coupon'); }catch(e){}
+      }
+      rrBox.classList.add('is-vis');
+      paused=true;
+    });
   }
 
   function hideRoulette(){
@@ -1530,10 +1541,8 @@ footer{
     }
   },{passive:true});
 
-  /* bottone × e bottone reset (test) chiudono overlay */
+  /* bottone × chiude overlay */
   if(rrClose) rrClose.addEventListener('click', hideRoulette);
-  var rrReset=document.getElementById('rrReset');
-  if(rrReset) rrReset.addEventListener('click', hideRoulette);
 
   /* bottone copia codice */
   if(rrCopy) rrCopy.addEventListener('click', function(){
@@ -1721,7 +1730,7 @@ footer{
     card.dataset.i=i;
     var ori=cat.orientation?'orientation="'+cat.orientation+'"':'';
     card.innerHTML=
-      '<model-viewer class="cflow-model" src="'+cat.src+'" '+ori
+      '<model-viewer class="cflow-model" data-src="'+cat.src+'" '+ori
       +' auto-rotate rotation-per-second="18deg" reveal="auto" loading="lazy"'
       +' interaction-prompt="none" disable-zoom camera-orbit="'+cat.orbit+'"'
       +' field-of-view="'+cat.fov+'" style="flex:1;width:100%;background:transparent;--progress-bar-color:transparent"></model-viewer>'
@@ -1761,7 +1770,14 @@ footer{
   document.getElementById('cflowNext').addEventListener('click',function(){go(cur+1);});
 
   /* open/close */
-  function open(){overlay.classList.add('open');}
+  /* i modelli 3D si scaricano solo all'apertura dell'esploratore */
+  var modelliCaricati=false;
+  function caricaModelli(){
+    if(modelliCaricati) return; modelliCaricati=true;
+    window.rvLoadModelViewer();
+    track.querySelectorAll('model-viewer[data-src]').forEach(function(m){ m.setAttribute('src', m.getAttribute('data-src')); });
+  }
+  function open(){caricaModelli();overlay.classList.add('open');}
   function close(){overlay.classList.remove('open');}
 
   /* easter egg: alla prima visita del giorno il bottone scappa in sequenza automatica */
@@ -1794,6 +1810,8 @@ footer{
   escapeBtn.addEventListener('click', function(){
     open();
   });
+  /* anticipa il download della sola libreria quando ci si avvicina al bottone */
+  ['pointerenter','touchstart','focus'].forEach(function(ev){ escapeBtn.addEventListener(ev, window.rvLoadModelViewer, {once:true, passive:true}); });
   document.getElementById('closeCatExplorer').addEventListener('click',close);
   overlay.addEventListener('click',function(e){if(e.target===overlay)close();});
   document.addEventListener('keydown',function(e){
@@ -1856,40 +1874,6 @@ footer{
   })();
 </script>
 <script src="cart-widget.js" defer></script>
-<!-- COOKIE CONSENT -->
-<div id="cookieBanner" class="cookie-banner" role="alertdialog" aria-label="Informativa cookie">
-  <div class="cookie-banner-inner">
-    <p class="cookie-banner-text"><strong>Utilizziamo cookie</strong> tecnici, analytics e di marketing per migliorare la tua esperienza. <a href="cookie-policy.html">Cookie Policy</a></p>
-    <div class="cookie-banner-actions">
-      <button class="cookie-btn-ghost" id="cookieCustomize">Personalizza</button>
-      <button class="cookie-btn cookie-btn-secondary" id="cookieNecessary">Solo tecnici</button>
-      <button class="cookie-btn cookie-btn-primary" id="cookieAcceptAll">Accetta tutti</button>
-    </div>
-  </div>
-</div>
-<div id="cookieModal" class="cookie-modal" role="dialog" aria-modal="true" aria-label="Preferenze cookie" hidden>
-  <div class="cookie-modal-box">
-    <button class="cookie-modal-close" id="cookieModalClose" aria-label="Chiudi">✕</button>
-    <p class="cookie-modal-title">Preferenze Cookie</p>
-    <p class="cookie-modal-sub">I cookie tecnici sono sempre attivi. Scegli quali altri abilitare.</p>
-    <div class="cookie-toggle-row">
-      <div class="cookie-toggle-info"><strong>Tecnici</strong><span>Necessari per il funzionamento del sito.</span></div>
-      <span class="cookie-badge-on">SEMPRE ON</span>
-    </div>
-    <div class="cookie-toggle-row">
-      <div class="cookie-toggle-info"><strong>Analytics</strong><span>Statistiche anonime di visita (es. Google Analytics).</span></div>
-      <label class="cookie-switch"><input type="checkbox" id="toggleAnalytics"><span class="cookie-switch-slider"></span></label>
-    </div>
-    <div class="cookie-toggle-row">
-      <div class="cookie-toggle-info"><strong>Marketing</strong><span>Annunci personalizzati (Facebook Pixel, Google Ads).</span></div>
-      <label class="cookie-switch"><input type="checkbox" id="toggleMarketing"><span class="cookie-switch-slider"></span></label>
-    </div>
-    <button class="cookie-btn cookie-btn-primary" id="cookieSavePrefs" style="margin-top:24px;width:100%;min-height:44px">Salva preferenze</button>
-  </div>
-</div>
-<script>
-(function(){var K='rv_consent';function load(){try{return JSON.parse(localStorage.getItem(K));}catch(e){return null;}}function save(o){try{localStorage.setItem(K,JSON.stringify(o));}catch(e){}}if(load())return;var b=document.getElementById('cookieBanner'),m=document.getElementById('cookieModal');if(!b)return;setTimeout(function(){b.classList.add('visible');},700);function hb(){b.classList.remove('visible');setTimeout(function(){b.style.display='none';},420);}function hm(){m.setAttribute('hidden','');}document.getElementById('cookieAcceptAll').onclick=function(){save({t:1,a:1,mk:1,ts:Date.now()});hb();hm();};document.getElementById('cookieNecessary').onclick=function(){save({t:1,a:0,mk:0,ts:Date.now()});hb();hm();};document.getElementById('cookieCustomize').onclick=function(){m.removeAttribute('hidden');};document.getElementById('cookieModalClose').onclick=hm;document.getElementById('cookieSavePrefs').onclick=function(){var a=document.getElementById('toggleAnalytics').checked,mk=document.getElementById('toggleMarketing').checked;save({t:1,a:a?1:0,mk:mk?1:0,ts:Date.now()});hb();hm();};m.onclick=function(e){if(e.target===m)hm();};})();
-</script>
 <script>
 /* Menu mobile: chiusura senza "tocco fantasma" sul pulsante Menu */
 (function(){var mob=document.getElementById('mobileMenu'),btn=document.getElementById('menuBtn'),x=document.getElementById('mobClose');if(!mob||!btn||!x)return;
@@ -1897,7 +1881,7 @@ var chiusoAlle=0;
 function chiudi(e){if(e){e.preventDefault();e.stopPropagation();}mob.classList.remove('open');btn.setAttribute('aria-expanded','false');document.body.style.overflow='';chiusoAlle=Date.now();}
 x.addEventListener('touchend',chiudi,{capture:true,passive:false});x.addEventListener('click',chiudi,true);
 btn.addEventListener('click',function(e){if(Date.now()-chiusoAlle<600){e.preventDefault();e.stopImmediatePropagation();}},true);
-if(!mob.querySelector('.mob-logo')){var lg=new Image();lg.src='logo no sfondo.png';lg.alt='';lg.className='mob-logo';mob.appendChild(lg);}var qui=location.pathname.split('/').pop()||'index.html';mob.querySelectorAll('a').forEach(function(a){if(a.getAttribute('href')===qui)a.classList.add('attivo');});
+if(!mob.querySelector('.mob-logo')){var lg=new Image();lg.src='logo.png';lg.alt='';lg.className='mob-logo';mob.appendChild(lg);}var qui=location.pathname.split('/').pop()||'index.html';mob.querySelectorAll('a').forEach(function(a){if(a.getAttribute('href')===qui)a.classList.add('attivo');});
 })();
 </script>
 </body>

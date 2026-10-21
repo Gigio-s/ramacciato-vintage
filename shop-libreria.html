@@ -3,13 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<script src="i18n.js"></script>
 <title>CD Usati da Sfogliare: la Libreria | Ramacciato Vintage</title>
 <meta name="description" content="Sfoglia i CD usati di Ramacciato Vintage come in un vero negozio di dischi: scorri i dorsi, estrai il disco e acquistalo online o ritiralo ai mercatini in Veneto.">
 <link rel="canonical" href="https://ramacciatovintage.it/shop-libreria.html">
-<link rel="icon" type="image/png" href="logo no sfondo.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,800;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<link rel="alternate" hreflang="it" href="https://ramacciatovintage.it/shop-libreria.html">
+<link rel="alternate" hreflang="en" href="https://ramacciatovintage.it/shop-libreria.html?lang=en">
+<link rel="alternate" hreflang="es" href="https://ramacciatovintage.it/shop-libreria.html?lang=es">
+<link rel="alternate" hreflang="x-default" href="https://ramacciatovintage.it/shop-libreria.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="fonts/archivo-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/archivo-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/fonts.css">
 <style>
 :root{
   --blue:#4a90e0;--navy:#0b2545;--cobalt:#0d3b75;--white:#fff;
@@ -357,7 +364,7 @@ body{font-family:Archivo,Arial,sans-serif;color:var(--navy);background:#0d1b2c;m
 <div class="ambiente" aria-hidden="true"></div>
 
 <header class="top">
-  <a class="brand" href="index.html"><img src="logo no sfondo.png" alt=""><span>Ramacciato <b>Vintage</b></span></a>
+  <a class="brand" href="index.html"><img src="logo.png" alt=""><span>Ramacciato <b>Vintage</b></span></a>
   <a class="pill pill-back" href="shop.html"><span aria-hidden="true">&larr;</span> Torna allo shop</a>
   <div class="top-r">
     <form class="cerca" id="cercaForm" role="search"><button type="submit" class="lente" aria-label="Vai al disco cercato">&#x1F50D;</button><input id="cerca" type="search" enterkeyhint="search" placeholder="Cerca artista o titolo..." autocomplete="off"><span class="cerca-n" id="cercaN" aria-live="polite"></span></form>
@@ -681,7 +688,7 @@ function estrai(d){
   if(animando)return;var p=byId(d.dataset.id);if(!p)return;
   attivo=p;dorsoAttivo=d;animando=true;rotY=-16;rotX=4;
   cs.style.setProperty('--c',p._c||'#222');cs.style.setProperty('--t',p._t||'#f4f1ea');
-  cs.classList.toggle('lp',isLP(p));ov.classList.toggle('lp',isLP(p));var aiu=document.getElementById('aiuto');if(aiu){var tt=matchMedia('(hover:none)').matches;aiu.innerHTML=isLP(p)?(tt?'Trascina il disco col dito per girarlo':'Trascina il disco per girarlo &middot; Esc per rimetterlo a posto'):(tt?'Trascina il CD col dito per girarlo':'Trascina il CD per girarlo &middot; Esc per rimetterlo a posto');}cs.innerHTML=caseHtml(p);cercaRetro(p);sch.innerHTML=schedaHtml(p);legaScheda(p);
+  cs.classList.toggle('lp',isLP(p));ov.classList.toggle('lp',isLP(p));var aiu=document.getElementById('aiuto');if(aiu){var tt=matchMedia('(hover:none)').matches;aiu.innerHTML=isLP(p)?(tt?'Trascina il disco col dito per girarlo':'Trascina il disco per girarlo &middot; Esc per rimetterlo a posto'):(tt?'Trascina il CD col dito per girarlo':'Trascina il CD per girarlo &middot; Esc per rimetterlo a posto');}cs.innerHTML=caseHtml(p);cercaRetro(p);sch.innerHTML=schedaHtml(p);legaScheda(p);if(window.rvDpa)rvDpa.mount(sch.querySelector('.nota'),p,'before');
   ov.scrollTop=0;document.body.classList.add('bloccato');
   ov.classList.remove('chiude');ov.classList.add('on');ov.scrollTop=0;
   var P=posaDorso(d);cs.style.transform=P.dentro;
@@ -806,5 +813,6 @@ var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeou
 </script>
 <script src="cart-widget.js"></script>
 <script src="rv-weekend.js"></script>
+<script src="dpa-live.js" defer></script>
 </body>
 </html>

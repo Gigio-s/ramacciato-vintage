@@ -3,13 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<script src="i18n.js"></script>
 <meta name="robots" content="noindex,nofollow">
 <meta name="description" content="Cookie Policy di Ramacciato Vintage - Luca Ramacciato, Vicenza.">
-<link rel="icon" type="image/png" href="logo no sfondo.png">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>Cookie Policy - Ramacciato Vintage</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,800;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/archivo-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/archivo-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/fonts.css">
 <style>
 :root{--bg:#4a90e0;--paper:#ffffff;--ink:#0b2545;--dark:#0f2a4a;--muted:#143a63;--line:rgba(11,37,69,.11);--accent:#0d3b75;--accent2:#bfdcfa;--max:1180px;--ease:cubic-bezier(.22,1,.36,1)}
 *{box-sizing:border-box}
@@ -49,6 +52,8 @@ img{display:block;max-width:100%}
 .legal-body a{color:var(--accent);text-decoration:underline;text-decoration-color:rgba(13,59,117,.3)}
 .legal-body a:hover{text-decoration-color:var(--accent)}
 .legal-body strong{color:var(--ink);font-weight:700}
+.info-box{background:rgba(255,255,255,.9);border:1px solid rgba(255,255,255,.8);border-left:3px solid var(--accent2);border-radius:0 12px 12px 0;padding:16px 20px;margin-bottom:28px}
+.info-box p{margin:0;font-size:13.5px}
 /* Cookie table */
 .cookie-table{width:100%;border-collapse:collapse;margin:16px 0 24px;font-size:13px}
 .cookie-table th{text-align:left;font-size:9.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:8px 12px;border-bottom:2px solid var(--line)}
@@ -79,7 +84,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
 .foot-legal a{font-size:11.5px;color:var(--muted);text-decoration:underline;text-decoration-color:rgba(122,113,104,.3);transition:color .18s}
 .foot-legal a:hover{color:var(--ink)}
 .foot-legal span{opacity:.5;font-size:10px}
-.cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(74,144,224,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid rgba(11,37,69,.1);padding:16px 24px;transform:translateY(120%);transition:transform .4s cubic-bezier(.22,1,.36,1);box-shadow:0 -8px 32px rgba(11,37,69,.08)}.cookie-banner.visible{transform:translateY(0)}.cookie-banner-inner{max-width:1180px;margin:auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap}.cookie-banner-text{font-size:13px;color:rgba(11,37,69,.85);flex:1;min-width:200px;line-height:1.5}.cookie-banner-text strong{color:#0b2545}.cookie-banner-text a{color:#0d3b75;text-decoration:underline}.cookie-banner-actions{display:flex;gap:8px;flex-wrap:wrap;flex-shrink:0}.cookie-btn{padding:9px 18px;border-radius:999px;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;font-family:inherit;border:none;transition:all .18s}.cookie-btn-primary{background:#0b2545;color:#ffffff}.cookie-btn-primary:hover{background:#0d3b75}.cookie-btn-secondary{background:transparent;border:1.5px solid rgba(11,37,69,.2);color:#0b2545}.cookie-btn-secondary:hover{background:rgba(11,37,69,.05)}.cookie-btn-ghost{background:transparent;color:rgba(11,37,69,.85);border:none;font-size:10.5px;font-weight:700;text-decoration:underline;padding:9px 10px;cursor:pointer;font-family:inherit;letter-spacing:.06em}.cookie-btn-ghost:hover{color:#0b2545}.cookie-modal{position:fixed;inset:0;z-index:10000;background:rgba(11,37,69,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:24px}.cookie-modal[hidden]{display:none}.cookie-modal-box{background:#ffffff;border-radius:20px;padding:32px;max-width:460px;width:100%;position:relative;box-shadow:0 24px 80px rgba(11,37,69,.18)}.cookie-modal-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:18px;cursor:pointer;color:rgba(11,37,69,.85);padding:4px 8px;transition:color .18s;font-family:inherit}.cookie-modal-close:hover{color:#0b2545}.cookie-modal-title{margin:0 0 6px;font-size:19px;font-weight:900;letter-spacing:-.03em;color:#0b2545}.cookie-modal-sub{margin:0 0 20px;font-size:12.5px;color:rgba(11,37,69,.85);line-height:1.5}.cookie-toggle-row{display:flex;align-items:center;gap:16px;padding:13px 0;border-bottom:1px solid rgba(11,37,69,.07)}.cookie-toggle-row:last-of-type{border-bottom:none}.cookie-toggle-info{flex:1}.cookie-toggle-info strong{display:block;font-size:13px;font-weight:700;color:#0b2545;margin-bottom:2px}.cookie-toggle-info span{font-size:11.5px;color:rgba(11,37,69,.85)}.cookie-switch{position:relative;display:inline-block;width:44px;height:24px;flex-shrink:0;cursor:pointer}.cookie-switch input{opacity:0;width:0;height:0;position:absolute}.cookie-switch-slider{position:absolute;inset:0;background:rgba(11,37,69,.15);border-radius:999px;transition:background .2s}.cookie-switch-slider::before{content:'';position:absolute;width:18px;height:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.18)}.cookie-switch input:checked+.cookie-switch-slider{background:#0d3b75}.cookie-switch input:checked+.cookie-switch-slider::before{transform:translateX(20px)}.cookie-badge-on{display:inline-block;background:#0d3b75;color:#fff;padding:3px 10px;border-radius:999px;font-size:9.5px;font-weight:800;letter-spacing:.1em;flex-shrink:0}@media(max-width:600px){.cookie-banner-inner{flex-direction:column;align-items:flex-start}.cookie-banner-actions{width:100%}}
+
 @media(max-width:900px){.foot-grid{grid-template-columns:1fr 1fr 1fr}.cookie-table{font-size:12px}}
 @media(max-width:580px){.foot-grid{grid-template-columns:1fr 1fr}.foot-bottom{flex-direction:column;align-items:flex-start;gap:10px}}
 
@@ -107,7 +112,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
   <div class="top">
     <div class="wrap nav-inner">
       <a class="brand" href="index.html">
-        <img src="logo no sfondo.png" alt="Logo Ramacciato Vintage" width="28" height="28" decoding="async">
+        <img src="logo.png" alt="Logo Ramacciato Vintage" width="28" height="28" decoding="async">
         <span>Ramacciato <em>Vintage</em></span>
       </a>
       <nav aria-label="Menu principale">
@@ -134,17 +139,21 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
     <div class="legal-header">
       <p class="legal-kicker">Documenti legali</p>
       <h1>Cookie<br>Policy</h1>
-      <p class="legal-date">Ultima revisione: giugno 2026</p>
+      <p class="legal-date">Ultima revisione: ottobre 2026</p>
     </div>
 
     <div class="legal-body">
       <div class="legal-wrap">
 
-        <h2>1. Cosa sono i cookie</h2>
-        <p>I cookie sono piccoli file di testo che i siti web salvano nel browser dell'utente. Vengono utilizzati per ricordare preferenze, migliorare l'esperienza di navigazione e, con il consenso dell'utente, raccogliere dati statistici o pubblicitari.</p>
+        <div class="info-box">
+          <p><strong>In breve:</strong> questo sito usa solo strumenti tecnici, necessari per farlo funzionare (carrello, codice sconto, pagamento). Non usiamo cookie di profilazione, statistiche o pubblicità: per questo non ti chiediamo il consenso con un banner.</p>
+        </div>
 
-        <h2>2. Tipologie di cookie utilizzati</h2>
-        <p>Il sito Ramacciato Vintage utilizza tre categorie di cookie:</p>
+        <h2>1. Cosa sono i cookie e le tecnologie simili</h2>
+        <p>I cookie sono piccoli file di testo che un sito salva nel browser dell'utente. Funzionano in modo simile anche altre tecnologie, come la memoria locale del browser (<em>localStorage</em> e <em>sessionStorage</em>), che il sito usa per ricordare informazioni tra una pagina e l'altra. In questa informativa le trattiamo tutte allo stesso modo.</p>
+
+        <h2>2. Strumenti utilizzati da questo sito</h2>
+        <p>Il sito utilizza esclusivamente strumenti <strong>tecnici</strong>, necessari a fornire il servizio richiesto dall'utente. Ai sensi dell'art. 122 del Codice Privacy e delle Linee guida del Garante del 10 giugno 2021, per questi strumenti non è richiesto il consenso.</p>
 
         <table class="cookie-table">
           <thead>
@@ -157,58 +166,70 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
           </thead>
           <tbody>
             <tr>
-              <td><strong>rv_consent</strong><br>Ramacciato Vintage</td>
+              <td><strong>rv_cart_v1</strong><br>Ramacciato Vintage (memoria del browser)</td>
               <td><span class="badge badge-tech">Tecnico</span></td>
-              <td>Salva le preferenze cookie dell'utente per non mostrare il banner ad ogni visita.</td>
-              <td>12 mesi</td>
+              <td>Contenuto del carrello.</td>
+              <td>Fino all'acquisto o alla cancellazione dei dati del browser</td>
             </tr>
             <tr>
-              <td><strong>_ga, _ga_*</strong><br>Google Analytics</td>
-              <td><span class="badge badge-analytics">Analytics</span></td>
-              <td>Statistiche anonime di visita: pagine viste, durata sessione, provenienza del traffico.</td>
-              <td>2 anni</td>
+              <td><strong>rv_coupon</strong><br>Ramacciato Vintage (memoria del browser)</td>
+              <td><span class="badge badge-tech">Tecnico</span></td>
+              <td>Codice sconto del giorno, applicato automaticamente al checkout.</td>
+              <td>Fino all'acquisto o alla cancellazione dei dati del browser</td>
             </tr>
             <tr>
-              <td><strong>_gcl_au</strong><br>Google Ads</td>
-              <td><span class="badge badge-marketing">Marketing</span></td>
-              <td>Tracciamento conversioni per campagne pubblicitarie Google.</td>
-              <td>90 giorni</td>
+              <td><strong>rv_order</strong><br>Ramacciato Vintage (memoria di sessione)</td>
+              <td><span class="badge badge-tech">Tecnico</span></td>
+              <td>Riepilogo dell'ordine appena concluso, mostrato nella pagina di conferma.</td>
+              <td>Fino alla chiusura della scheda</td>
             </tr>
             <tr>
-              <td><strong>_fbp, _fbc</strong><br>Meta (Facebook Pixel)</td>
-              <td><span class="badge badge-marketing">Marketing</span></td>
-              <td>Tracciamento visite per ottimizzazione inserzioni pubblicitarie su Facebook/Instagram.</td>
-              <td>90 giorni</td>
+              <td><strong>rv_order_source</strong><br>Ramacciato Vintage (memoria del browser)</td>
+              <td><span class="badge badge-tech">Tecnico</span></td>
+              <td>Ricorda se si è arrivati allo shop dal sito partner Dead People Activity, per gestire correttamente l'ordine.</td>
+              <td>Fino alla cancellazione dei dati del browser</td>
+            </tr>
+            <tr>
+              <td><strong>rv_lang</strong><br>Ramacciato Vintage (memoria del browser)</td>
+              <td><span class="badge badge-tech">Tecnico</span></td>
+              <td>Lingua scelta dall'utente.</td>
+              <td>Fino alla cancellazione dei dati del browser</td>
+            </tr>
+            <tr>
+              <td><strong>rv_lib_ordine, rv_escape_done</strong><br>Ramacciato Vintage (memoria del browser)</td>
+              <td><span class="badge badge-tech">Tecnico</span></td>
+              <td>Preferenze di visualizzazione (ordinamento della vista Libreria, animazioni già mostrate).</td>
+              <td>Fino alla cancellazione dei dati del browser</td>
+            </tr>
+            <tr>
+              <td><strong>Cookie PayPal</strong><br>PayPal (Europe) S.à r.l. et Cie, S.C.A.</td>
+              <td><span class="badge badge-tech">Tecnico</span></td>
+              <td>Solo nella pagina di checkout, quando si sceglie di pagare: sicurezza e funzionamento del pagamento.</td>
+              <td>Secondo la policy di PayPal</td>
             </tr>
           </tbody>
         </table>
 
-        <h2>3. Cookie tecnici (sempre attivi)</h2>
-        <p>I cookie tecnici sono strettamente necessari per il funzionamento del sito e non richiedono il consenso dell'utente. Includono il cookie <strong>rv_consent</strong> che memorizza le tue scelte in materia di privacy.</p>
-
-        <h2>4. Cookie analytics (previo consenso)</h2>
-        <p>Con il tuo consenso, utilizziamo <strong>Google Analytics 4</strong> per raccogliere dati aggregati e anonimi sull'utilizzo del sito. I dati non sono usati per identificare singoli individui. Per maggiori informazioni: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy Google</a>. Puoi disattivare il tracciamento di Google Analytics tramite il <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">componente aggiuntivo per il browser</a>.</p>
-
-        <h2>5. Cookie di marketing (previo consenso)</h2>
-        <p>Con il tuo consenso, utilizziamo strumenti di tracciamento pubblicitario per mostrare annunci pertinenti su altre piattaforme:</p>
+        <h2>3. Servizi esterni che ricevono dati tecnici</h2>
+        <p>Per funzionare, alcune pagine caricano risorse da fornitori esterni. Caratteri tipografici e librerie del sito sono ospitati direttamente su ramacciatovintage.it. Questi servizi non installano cookie di profilazione tramite il sito, ma ricevono i dati tecnici della connessione (come l'indirizzo IP), necessari per consegnare la risorsa:</p>
         <ul>
-          <li><strong>Google Ads</strong>: tracciamento conversioni e remarketing. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a></li>
-          <li><strong>Meta Pixel (Facebook/Instagram)</strong>: ottimizzazione inserzioni. <a href="https://www.facebook.com/policy.php" target="_blank" rel="noopener">Privacy Policy Meta</a>. Puoi gestire le preferenze pubblicitarie di Meta su <a href="https://www.facebook.com/settings?tab=ads" target="_blank" rel="noopener">facebook.com/settings</a>.</li>
+          <li><strong>GitHub Pages</strong> (GitHub Inc.): hosting del sito. <a href="https://docs.github.com/it/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">Privacy Policy GitHub</a></li>
+          <li><strong>Cloudflare</strong> (Cloudflare Inc.): verifica disponibilità dei prodotti, codici sconto e gestione degli ordini. <a href="https://www.cloudflare.com/it-it/privacypolicy/" target="_blank" rel="noopener">Privacy Policy Cloudflare</a></li>
+          <li><strong>Fonti delle notizie</strong>: le immagini della rubrica "Fisico vs Digitale" sono caricate direttamente dai siti delle testate citate in ciascuna notizia.</li>
+          <li><strong>PayPal</strong>: solo nella pagina di checkout. <a href="https://www.paypal.com/it/webapps/mpp/ua/privacy-full" target="_blank" rel="noopener">Privacy Policy PayPal</a></li>
         </ul>
 
-        <h2>6. Come gestire le preferenze</h2>
-        <p>Puoi modificare le tue preferenze cookie in qualsiasi momento:</p>
-        <ul>
-          <li><strong>Tramite il banner del sito</strong>: clicca sul pulsante qui sotto per riaprire le impostazioni.</li>
-          <li><strong>Tramite le impostazioni del browser</strong>: ogni browser permette di bloccare o eliminare i cookie. Consulta la guida del tuo browser per istruzioni dettagliate.</li>
-        </ul>
-        <button class="reset-pref-btn" id="reopenCookiePrefs">&#9881; Modifica preferenze cookie</button>
+        <h2>4. Link ai social network</h2>
+        <p>Il sito contiene semplici collegamenti ai nostri profili Instagram, TikTok, Facebook e YouTube. Non sono presenti pulsanti o contenuti incorporati di queste piattaforme: nessun dato viene inviato ai social finché non clicchi un link. Una volta sul social, si applica l'informativa della piattaforma.</p>
 
-        <h2>7. Trasferimento dati extra-UE</h2>
-        <p>Google e Meta operano negli Stati Uniti. Il trasferimento dei dati avviene sulla base delle Clausole Contrattuali Standard approvate dalla Commissione Europea o del quadro EU-US Data Privacy Framework.</p>
+        <h2>5. Come gestire questi strumenti</h2>
+        <p>Puoi cancellare o bloccare cookie e memoria del sito in qualsiasi momento dalle impostazioni del tuo browser. Tieni presente che, cancellandoli, il carrello e il codice sconto salvati andranno persi, e bloccandoli alcune funzioni (carrello, checkout) potrebbero non funzionare.</p>
 
-        <h2>8. Aggiornamenti</h2>
-        <p>La presente Cookie Policy può essere aggiornata per riflettere modifiche tecniche o normative. La versione aggiornata sarà sempre pubblicata su questa pagina.</p>
+        <h2>6. Trasferimento dati extra-UE</h2>
+        <p>Alcuni dei fornitori indicati (GitHub, Cloudflare) hanno sede negli Stati Uniti. Il trasferimento avviene sulla base dell'EU-US Data Privacy Framework o delle Clausole Contrattuali Standard approvate dalla Commissione Europea.</p>
+
+        <h2>7. Aggiornamenti</h2>
+        <p>Se in futuro il sito introdurrà strumenti di statistica o di marketing che richiedono il consenso, questa informativa verrà aggiornata e il consenso ti verrà chiesto prima di attivarli.</p>
         <p>Per qualsiasi domanda: <a href="mailto:ramacciatoluca@gmail.com">ramacciatoluca@gmail.com</a></p>
 
       </div>
@@ -239,8 +260,10 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
         <ul class="foot-links">
           <li><a href="svuotacantine.html">Svuotacantine</a></li>
           <li><a href="mailto:ramacciatoluca@gmail.com">Email</a></li>
-          <li><a href="#" aria-label="Instagram">Instagram</a></li>
-          <li><a href="https://www.youtube.com/@archivioilcustode" target="_blank" rel="noopener">YouTube</a></li>
+          <li><a href="https://www.instagram.com/ramacciatovintage/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.tiktok.com/@ramacciato.vintage" target="_blank" rel="noopener">TikTok</a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=61595227785751" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.youtube.com/@RamacciatoVintage" target="_blank" rel="noopener">YouTube</a></li>
         </ul>
       </div>
       <div>
@@ -266,73 +289,9 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);background:l
     </div>
   </div>
 </footer>
-
-<!-- COOKIE CONSENT -->
-<div id="cookieBanner" class="cookie-banner" role="alertdialog" aria-label="Informativa cookie">
-  <div class="cookie-banner-inner">
-    <p class="cookie-banner-text"><strong>Utilizziamo cookie</strong> tecnici, analytics e di marketing per migliorare la tua esperienza. <a href="cookie-policy.html">Cookie Policy</a></p>
-    <div class="cookie-banner-actions">
-      <button class="cookie-btn-ghost" id="cookieCustomize">Personalizza</button>
-      <button class="cookie-btn cookie-btn-secondary" id="cookieNecessary">Solo tecnici</button>
-      <button class="cookie-btn cookie-btn-primary" id="cookieAcceptAll">Accetta tutti</button>
-    </div>
-  </div>
-</div>
-<div id="cookieModal" class="cookie-modal" role="dialog" aria-modal="true" aria-label="Preferenze cookie" hidden>
-  <div class="cookie-modal-box">
-    <button class="cookie-modal-close" id="cookieModalClose" aria-label="Chiudi">✕</button>
-    <p class="cookie-modal-title">Preferenze Cookie</p>
-    <p class="cookie-modal-sub">I cookie tecnici sono sempre attivi. Scegli quali altri abilitare.</p>
-    <div class="cookie-toggle-row">
-      <div class="cookie-toggle-info"><strong>Tecnici</strong><span>Necessari per il funzionamento del sito.</span></div>
-      <span class="cookie-badge-on">SEMPRE ON</span>
-    </div>
-    <div class="cookie-toggle-row">
-      <div class="cookie-toggle-info"><strong>Analytics</strong><span>Statistiche anonime di visita (es. Google Analytics).</span></div>
-      <label class="cookie-switch"><input type="checkbox" id="toggleAnalytics"><span class="cookie-switch-slider"></span></label>
-    </div>
-    <div class="cookie-toggle-row">
-      <div class="cookie-toggle-info"><strong>Marketing</strong><span>Annunci personalizzati (Facebook Pixel, Google Ads).</span></div>
-      <label class="cookie-switch"><input type="checkbox" id="toggleMarketing"><span class="cookie-switch-slider"></span></label>
-    </div>
-    <button class="cookie-btn cookie-btn-primary" id="cookieSavePrefs" style="margin-top:24px;width:100%;min-height:44px">Salva preferenze</button>
-  </div>
-</div>
 <script>
 var menuBtn=document.getElementById('menuBtn'),mob=document.getElementById('mobileMenu'),mobClose=document.getElementById('mobClose');
 if(menuBtn&&mob){function chiudiMenu(){mob.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');document.body.style.overflow='';}menuBtn.addEventListener('click',function(){mob.classList.add('open');menuBtn.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';});if(mobClose){mobClose.addEventListener('click',chiudiMenu);}mob.querySelectorAll('a').forEach(function(link){link.addEventListener('touchstart',function(){window.location.href=link.href;},{passive:true});});}
-</script>
-<script>
-(function(){
-  var K='rv_consent';
-  function load(){try{return JSON.parse(localStorage.getItem(K));}catch(e){return null;}}
-  function save(o){try{localStorage.setItem(K,JSON.stringify(o));}catch(e){}}
-  var b=document.getElementById('cookieBanner'),m=document.getElementById('cookieModal');
-  if(!b)return;
-  function hb(){b.classList.remove('visible');setTimeout(function(){b.style.display='none';},420);}
-  function hm(){m.setAttribute('hidden','');}
-  function showBanner(){b.classList.add('visible');}
-  function showModal(){m.removeAttribute('hidden');}
-  if(!load()) setTimeout(showBanner,700);
-  document.getElementById('cookieAcceptAll').onclick=function(){save({t:1,a:1,mk:1,ts:Date.now()});hb();hm();};
-  document.getElementById('cookieNecessary').onclick=function(){save({t:1,a:0,mk:0,ts:Date.now()});hb();hm();};
-  document.getElementById('cookieCustomize').onclick=showModal;
-  document.getElementById('cookieModalClose').onclick=hm;
-  document.getElementById('cookieSavePrefs').onclick=function(){
-    var a=document.getElementById('toggleAnalytics').checked,mk=document.getElementById('toggleMarketing').checked;
-    save({t:1,a:a?1:0,mk:mk?1:0,ts:Date.now()});hb();hm();
-  };
-  m.onclick=function(e){if(e.target===m)hm();};
-  // Pulsante "Modifica preferenze" nella pagina
-  var rp=document.getElementById('reopenCookiePrefs');
-  if(rp) rp.onclick=function(){
-    var c=load();
-    if(c){document.getElementById('toggleAnalytics').checked=!!c.a;document.getElementById('toggleMarketing').checked=!!c.mk;}
-    localStorage.removeItem(K);
-    b.style.display='';
-    showBanner();showModal();
-  };
-})();
 </script>
 
 <script>
@@ -342,7 +301,7 @@ var chiusoAlle=0;
 function chiudi(e){if(e){e.preventDefault();e.stopPropagation();}mob.classList.remove('open');btn.setAttribute('aria-expanded','false');document.body.style.overflow='';chiusoAlle=Date.now();}
 x.addEventListener('touchend',chiudi,{capture:true,passive:false});x.addEventListener('click',chiudi,true);
 btn.addEventListener('click',function(e){if(Date.now()-chiusoAlle<600){e.preventDefault();e.stopImmediatePropagation();}},true);
-if(!mob.querySelector('.mob-logo')){var lg=new Image();lg.src='logo no sfondo.png';lg.alt='';lg.className='mob-logo';mob.appendChild(lg);}var qui=location.pathname.split('/').pop()||'index.html';mob.querySelectorAll('a').forEach(function(a){if(a.getAttribute('href')===qui)a.classList.add('attivo');});
+if(!mob.querySelector('.mob-logo')){var lg=new Image();lg.src='logo.png';lg.alt='';lg.className='mob-logo';mob.appendChild(lg);}var qui=location.pathname.split('/').pop()||'index.html';mob.querySelectorAll('a').forEach(function(a){if(a.getAttribute('href')===qui)a.classList.add('attivo');});
 })();
 </script>
 </body>

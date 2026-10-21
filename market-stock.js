@@ -15,8 +15,10 @@ window.rvMarketStock = async function(products) {
     products.forEach(p=>{p.copie=stock.get(String(p.id))||0;p.sold=p.copie===0;p._stockUnavailable=false});
     notice.hidden=true;
   } catch(_) {
-    products.forEach(p=>{p.copie=0;p.sold=true;p._stockUnavailable=true});
-    notice.textContent='Disponibilità momentaneamente non verificabile. Riprova tra poco.';
+    /* Scorte non verificabili: NON segnare tutto come venduto (prezzi barrati).
+       Si mantiene l'ultimo stato noto e si blocca solo l'aggiunta al carrello. */
+    products.forEach(p=>{p._stockUnavailable=true});
+    notice.textContent='Stiamo verificando la disponibilità: gli acquisti si riattivano tra pochi secondi.';
     notice.hidden=false;
   }
 };

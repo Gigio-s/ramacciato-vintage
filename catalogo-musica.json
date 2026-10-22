@@ -1,5 +1,159 @@
 [
   {
+    "id": 139,
+    "cat": "musica",
+    "name": "Get A Grip",
+    "desc": "CD Album · Rock, Hard Rock\nCodice edizione: GED24444\nNazione di provenienza: Europe",
+    "price": 5,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Get%20A%20Grip%20--%2047432999935e/discogs-31981688-cover-22f49294f7830bc1.webp",
+      "photos/inventario/Get%20A%20Grip%20--%2047432999935e/discogs-31981688-cover-9f1794962659189b.webp",
+      "photos/inventario/Get%20A%20Grip%20--%2047432999935e/discogs-31981688-cover-c4b078df2ec0780c.webp"
+    ],
+    "subcat": "CD Album",
+    "artist": "Aerosmith",
+    "label": "Geffen Records",
+    "year": "1993",
+    "discogsId": "31981688",
+    "genres": [
+      "Rock",
+      "Hard Rock"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 138,
+    "cat": "musica",
+    "name": "Condenados A Costas",
+    "desc": "CD Album · Rock, Hard Rock\nCodice edizione: 1036CD\nNazione di provenienza: Spain",
+    "price": 15,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Condenados%20A%20Costas%20--%201c9cbd0dd297/discogs-9307979-cover-d461faa2f4c6ddba.webp",
+      "photos/inventario/Condenados%20A%20Costas%20--%201c9cbd0dd297/discogs-9307979-cover-d3de8cf4f1b851c7.webp",
+      "photos/inventario/Condenados%20A%20Costas%20--%201c9cbd0dd297/discogs-9307979-cover-8d1bce08a05654ab.webp"
+    ],
+    "subcat": "CD Album",
+    "artist": "Miguel Costas",
+    "label": "G. Domani Records S.L.",
+    "year": "2008",
+    "discogsId": "9307979",
+    "genres": [
+      "Rock",
+      "Hard Rock"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 136,
+    "cat": "musica",
+    "name": "Joe Cocker Live",
+    "desc": "CD Album Repress · Rock, Blues Rock, Pop Rock\nCodice edizione: CDP 7 93416 2, CDP 7934162, CDESTSP 25\nNazione di provenienza: Europe",
+    "price": 5,
+    "condition": "Very Good (VG)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Joe%20Cocker%20Live%20--%202a805b91864f/discogs-36838591-cover-3263cdff6442f03d.webp",
+      "photos/inventario/Joe%20Cocker%20Live%20--%202a805b91864f/discogs-36838591-cover-3f086752f0bb1c64.webp"
+    ],
+    "subcat": "CD Album Repress",
+    "artist": "Joe Cocker",
+    "label": "Capitol Records, Capitol Records, Capitol Records",
+    "year": "1990",
+    "discogsId": "36838591",
+    "genres": [
+      "Rock",
+      "Blues Rock",
+      "Pop Rock"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 135,
+    "cat": "musica",
+    "name": "Kindergarten's Flight",
+    "desc": "CD Album · Rock, Rock & Roll, Alternative Rock\nCodice edizione: PSM-31239-CD\nNazione di provenienza: Spain",
+    "price": 10,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Kindergarten%27s%20Flight%20--%20ce8fde7d1297/discogs-7394891-cover-65b1e4d53d20ce52.webp"
+    ],
+    "subcat": "CD Album",
+    "artist": "Peachy Joke",
+    "label": "PSM Music",
+    "year": "2010",
+    "discogsId": "7394891",
+    "genres": [
+      "Rock",
+      "Rock & Roll",
+      "Alternative Rock"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 134,
+    "cat": "musica",
+    "name": "The Story Goes...",
+    "desc": "CD Album · Funk / Soul, Contemporary R&B\nCodice edizione: 25646 2523 2\nNazione di provenienza: Europe",
+    "price": 3.5,
+    "condition": "Good Plus (G+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/The%20Story%20Goes%20--%20da1e5d7199d8/discogs-1158749-cover-b585dad7283e2b98.webp",
+      "photos/inventario/The%20Story%20Goes%20--%20da1e5d7199d8/discogs-1158749-cover-c00f7747499824dc.webp",
+      "photos/inventario/The%20Story%20Goes%20--%20da1e5d7199d8/discogs-1158749-cover-e0dd945147b27258.webp"
+    ],
+    "subcat": "CD Album",
+    "artist": "Craig David",
+    "label": "Warner Bros. Records",
+    "year": "2005",
+    "discogsId": "1158749",
+    "genres": [
+      "Funk / Soul",
+      "Contemporary R&B"
+    ],
+    "copie": 1
+  },
+  {
     "id": 127,
     "cat": "musica",
     "name": "All-4-One",

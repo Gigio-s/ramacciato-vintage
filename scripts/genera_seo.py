@@ -13,6 +13,7 @@ Google puo leggere senza JavaScript:
   prodotto/indice.json        mappa id -> indirizzo pagina (usata da shop e Libreria)
   sitemap.xml                 sitemap completa
   mercatini.html              aggiorna solo il blocco dati "eventi" tra i marcatori
+  feed/meta-catalogo.csv      catalogo per Instagram/Facebook (foto JPG in feed/img/)
 
 Non modifica i cataloghi e non tocca il gestionale.
 Uso:  python scripts/genera_seo.py      (dalla cartella del sito)
@@ -956,6 +957,130 @@ def sitemap(url_extra):
 
 
 # ───────────────────────── main ─────────────────────────
+# ───────────── feed catalogo Meta (Instagram / Facebook) ─────────────
+# feed/meta-catalogo.csv: letto ogni giorno da Commerce Manager (feed programmato).
+# Meta accetta solo JPG/PNG da almeno 500x500: le foto (spesso webp, copertine IGDB piccole)
+# vengono convertite in feed/img/ come JPG quadrati 1080x1080 su fondo bianco.
+# I venduti restano nel feed come "out of stock", cosi' i tag nei post vecchi non si rompono.
+FEED_CAT_GOOGLE = {
+    "musica": "Media > Music & Sound Recordings",
+    "dvd": "Media > DVDs & Videos",
+    "videogiochi": "Software > Video Game Software",
+    "libri": "Media > Books",
+    "elettronica": "Electronics",
+    "trading": "Arts & Entertainment > Hobbies & Creative Arts > Collectibles",
+    "oggetti": "Arts & Entertainment > Hobbies & Creative Arts > Collectibles",
+}
+FEED_COLONNE = ["id", "title", "description", "availability", "condition", "price", "link", "image_link",
+                "additional_image_link", "brand", "google_product_category", "product_type",
+                "custom_label_0", "custom_label_1", "custom_label_2"]
+
+
+def feed_jpg(src, nome_base, usati):
+    """Converte una foto del sito in JPG quadrato per Meta. Ritorna l'URL pubblico o ''."""
+    try:
+        from PIL import Image
+    except ImportError:
+        return url_img(src) if re.search(r"\.(jpe?g|png)(\?|$)", src or "", re.I) else ""
+    if not src or re.match(r"^https?://", src):
+        return ""          # solo foto pubblicate sul sito (link esterni possono scadere o essere bloccati)
+    loc = os.path.join(ROOT, urllib.parse.unquote(src.lstrip("/")))
+    if not os.path.exists(loc):
+        return ""
+    import hashlib
+    firma = hashlib.md5((src + str(os.path.getsize(loc))).encode()).hexdigest()[:8]
+    rel = "feed/img/%s-%s.jpg" % (nome_base, firma)
+    usati.add(os.path.basename(rel))
+    dest = os.path.join(ROOT, rel)
+    if not os.path.exists(dest):
+        try:
+            im = Image.open(loc)
+            im = im.convert("RGBA") if im.mode in ("P", "LA", "RGBA") else im.convert("RGB")
+            L, M = 1080, 1000
+            r = min(M / im.width, M / im.height)
+            im = im.resize((max(1, round(im.width * r)), max(1, round(im.height * r))), Image.LANCZOS)
+            tela = Image.new("RGB", (L, L), (255, 255, 255))
+            tela.paste(im, ((L - im.width) // 2, (L - im.height) // 2), im if im.mode == "RGBA" else None)
+            os.makedirs(os.path.dirname(dest), exist_ok=True)
+            tela.save(dest, "JPEG", quality=84, optimize=True, progressive=True)
+        except Exception as ex:
+            print("feed: foto non convertita", src, ex)
+            return ""
+    return BASE + "/" + rel
+
+
+def feed_testo(s):
+    return re.sub(r"\s+", " ", str(s or "")).strip()
+
+
+def feed_meta(prodotti, sotto_label):
+    import csv
+    import io
+    righe, usati = [], set()
+    for p in prodotti:
+        if p.get("price") is None:
+            continue
+        ph = [x for x in ([foto(p)] + list(p.get("photos") or [])) if x]
+        ph = list(dict.fromkeys(ph))[:4]
+        base = "%s" % slugify(str(p["id"]), 12)
+        imgs = [u for u in (feed_jpg(x, "%s-%d" % (base, i), usati) for i, x in enumerate(ph)) if u]
+        if not imgs:
+            continue
+        pc = p.get("_pc") or {}
+        gioco = p.get("cat") == "videogiochi"
+        pf = p.get("_pf") or {}
+        formato = ("Gioco " + pf["sigla"]) if gioco and pf.get("sigla") else (pc.get("breve") or "")
+        nome = nome_completo(p)
+        titolo_f = feed_testo(nome + (" (%s)" % formato if formato else ""))[:150]
+        parti = []
+        if gioco:
+            parti += [x for x in [pf.get("label"), p.get("region"), p.get("completeness"), p.get("publisher")] if x]
+        parti += [x for x in [p.get("_formato"), p.get("label")] if x]
+        if p.get("year") and str(p["year"]) != "0":
+            parti.append(str(p["year"]))
+        cond = p.get("condition") or "come da descrizione"
+        if p.get("dettagliCondizioni"):
+            cond += " (" + p["dettagliCondizioni"] + ")"
+        extra = feed_testo(re.sub(r"^[ \t]*Codice edizione:.*$", "", str(p.get("desc") or ""), flags=re.M))
+        desc = feed_testo("%s. %s Condizioni: %s. %s Pezzo unico, spedizione in tutta Italia o ritiro ai mercatini in Veneto."
+                          % (nome, (" · ".join(parti) + ".") if parti else "", cond, (extra + ".") if extra and not extra.endswith(".") else extra))
+        disponibile = not p.get("sold") and (p.get("copie") is None or (int(p.get("copie") or 0) > 0))
+        marca = artista(p) or p.get("publisher") or p.get("label") or "Ramacciato Vintage"
+        righe.append({
+            "id": str(p["id"]),
+            "title": titolo_f,
+            "description": desc[:4900],
+            "availability": "in stock" if disponibile else "out of stock",
+            "condition": "new" if e_nuovo(p) else "used",
+            "price": "%.2f EUR" % float(p["price"]),
+            "link": BASE + p["_url"],
+            "image_link": imgs[0],
+            "additional_image_link": ",".join(imgs[1:]),
+            "brand": feed_testo(marca)[:100],
+            "google_product_category": FEED_CAT_GOOGLE.get(p.get("cat"), FEED_CAT_GOOGLE["oggetti"]),
+            "product_type": feed_testo(" > ".join(x for x in [pc.get("h1", "").split(":")[0], sotto_label.get(p.get("subcat"), p.get("subcat") or "")] if x)),
+            "custom_label_0": p.get("cat") or "",
+            "custom_label_1": feed_testo(pf.get("sigla") or sotto_label.get(p.get("subcat"), p.get("subcat") or ""))[:100],
+            "custom_label_2": "nuovo arrivo" if p.get("isNew") else "",
+        })
+    buf = io.StringIO()
+    w = csv.DictWriter(buf, fieldnames=FEED_COLONNE, lineterminator="\n")
+    w.writeheader()
+    w.writerows(righe)
+    n = scrivi("feed/meta-catalogo.csv", buf.getvalue())
+    cart = os.path.join(ROOT, "feed", "img")
+    try:
+        from PIL import Image  # noqa: F401  (pulizia solo se le foto sono state rigenerate qui)
+        if os.path.isdir(cart):
+            for fn in os.listdir(cart):
+                if fn.endswith(".jpg") and fn not in usati:
+                    os.remove(os.path.join(cart, fn))
+    except ImportError:
+        pass
+    print("Feed Meta: %d prodotti (%d disponibili)" % (len(righe), sum(r["availability"] == "in stock" for r in righe)))
+    return n
+
+
 def main():
     meta = leggi_json("catalogo.json", {})
     mappa = meta.get("mappa_gestionale", {})
@@ -1088,6 +1213,7 @@ def main():
     indice = {str(p["id"]): p["_url"] for p in prodotti}
     cambiati += scrivi("prodotto/indice.json", json.dumps(indice, ensure_ascii=False, indent=0) + "\n")
     cambiati += scrivi("sitemap.xml", sitemap(url_sitemap))
+    cambiati += feed_meta(prodotti, sotto_label)
     cambiati += aggiorna_mercatini_html()
     print("Prodotti: %d | pagine aggiornate: %d | pagine prodotto rimosse: %d | URL in sitemap: %d"
           % (len(prodotti), cambiati, rimossi, len(url_sitemap) + 7))

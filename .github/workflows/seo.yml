@@ -1,4 +1,4 @@
-name: Pagine SEO (prodotti, categorie, zone, sitemap)
+name: Pagine SEO (prodotti, categorie, zone, sitemap, feed Instagram)
 
 # Rigenera le pagine statiche per Google:
 # - ogni volta che il gestionale pubblica i cataloghi o le copertine
@@ -36,6 +36,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Pillow (foto JPG per il feed Instagram)
+        run: pip install --quiet pillow
+
       - name: Genera pagine SEO
         run: python scripts/genera_seo.py
 
@@ -44,7 +47,7 @@ jobs:
         run: |
           git config user.name "ramacciato-seo-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add -A prodotto negozio vintage-usato-*.html sitemap.xml mercatini.html
+          git add -A prodotto negozio vintage-usato-*.html sitemap.xml mercatini.html feed
           if git diff --cached --quiet; then
             echo "Nessuna modifica"
             echo "cambiato=no" >> "$GITHUB_OUTPUT"

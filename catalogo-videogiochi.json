@@ -1,5 +1,30 @@
 [
   {
+    "id": 132,
+    "cat": "videogiochi",
+    "name": "Battlefield 3",
+    "price": 5,
+    "condition": "Very Good (VG)",
+    "sold": false,
+    "isNew": true,
+    "photos": [
+      "photos/inventario/Battlefield%203%20--%20igdb-343-9/igdb-343-cover-a741f2b62d8c.webp"
+    ],
+    "subcat": "PlayStation 3",
+    "platform": "PlayStation 3",
+    "copie": 1,
+    "year": "2011",
+    "publisher": "Electronic Arts",
+    "developer": "EA Digital Illusions CE",
+    "language": "it",
+    "region": "PAL",
+    "completeness": "Completo (custodia e manuale)",
+    "igdbId": 343,
+    "genres": [
+      "Shooter"
+    ]
+  },
+  {
     "id": 131,
     "cat": "videogiochi",
     "name": "Gears of War 2",

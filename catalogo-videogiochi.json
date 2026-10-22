@@ -1,5 +1,30 @@
 [
   {
+    "id": 131,
+    "cat": "videogiochi",
+    "name": "Gears of War 2",
+    "price": 8,
+    "condition": "Very Good (VG)",
+    "sold": false,
+    "isNew": true,
+    "photos": [
+      "photos/inventario/Gears%20of%20War%202%20--%20igdb-548/igdb-548-cover-2f372ec097cd.webp"
+    ],
+    "subcat": "Xbox 360",
+    "platform": "Xbox 360",
+    "copie": 1,
+    "year": "2008",
+    "publisher": "Microsoft Game Studios",
+    "developer": "Epic Games",
+    "region": "PAL",
+    "completeness": "Completo (custodia e manuale)",
+    "dettagliCondizioni": "Versione spagnola",
+    "igdbId": 548,
+    "genres": [
+      "Shooter"
+    ]
+  },
+  {
     "id": 130,
     "cat": "videogiochi",
     "name": "Assassin's Creed III",

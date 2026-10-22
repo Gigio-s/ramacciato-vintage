@@ -25,6 +25,7 @@ render-carousel.html
 
 # File di lavoro locali
 *.csv
+!feed/*.csv
 *.py
 foto mercatini x sito/
 

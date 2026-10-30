@@ -1,5 +1,138 @@
 [
   {
+    "id": 176,
+    "cat": "musica",
+    "name": "La Vida... Es Un Ratico",
+    "desc": "CD Album · Rock, Latin, Pop Rock, Latin Pop\nCodice edizione: 0602517473928\nNazione di provenienza: Europe",
+    "price": 6,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/La%20Vida...%20Es%20Un%20Ratico%20--%20aad913e40024/discogs-2379329-cover-45fd0867d3c40cb6.webp",
+      "photos/inventario/La%20Vida...%20Es%20Un%20Ratico%20--%20aad913e40024/discogs-2379329-cover-21b0341e45845a0b.webp",
+      "photos/inventario/La%20Vida...%20Es%20Un%20Ratico%20--%20aad913e40024/discogs-2379329-cover-7d3d910949d9b0b1.webp"
+    ],
+    "subcat": "CD Album",
+    "artist": "Juanes",
+    "label": "Universal Music Latino",
+    "year": "2007",
+    "discogsId": "2379329",
+    "genres": [
+      "Rock",
+      "Latin",
+      "Pop Rock",
+      "Latin Pop"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 175,
+    "cat": "musica",
+    "name": "Reload",
+    "desc": "CD Album · Electronic, Rock, Pop Rock, Synth-pop\nCodice edizione: VVR1009302\nNazione di provenienza: Europe",
+    "price": 5,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Reload%20--%208dbe8d76f68f/discogs-14137732-cover-c7e3366091116406.webp",
+      "photos/inventario/Reload%20--%208dbe8d76f68f/discogs-14137732-cover-7b12bdb26c83b3c4.webp",
+      "photos/inventario/Reload%20--%208dbe8d76f68f/discogs-14137732-cover-19f1cf6e3fc980ae.webp"
+    ],
+    "subcat": "CD Album",
+    "artist": "Tom Jones",
+    "label": "Gut Records, V2",
+    "year": "1999",
+    "discogsId": "14137732",
+    "genres": [
+      "Electronic",
+      "Rock",
+      "Pop Rock",
+      "Synth-pop"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 174,
+    "cat": "musica",
+    "name": "Gold - Greatest Hits",
+    "desc": "CD Compilation · Rock, Funk / Soul, Pop, Vocal, Ballad\nCodice edizione: 0731454151528\nNazione di provenienza: Spain",
+    "price": 5,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Gold%20-%20Greatest%20Hits%20--%2058a919be8820/discogs-6309273-cover-cba12df5ed2e1673.webp",
+      "photos/inventario/Gold%20-%20Greatest%20Hits%20--%2058a919be8820/discogs-6309273-cover-4576af3180b392bd.webp",
+      "photos/inventario/Gold%20-%20Greatest%20Hits%20--%2058a919be8820/discogs-6309273-cover-31f2d7917054eaf4.webp"
+    ],
+    "subcat": "CD Compilation",
+    "artist": "Tom Jones",
+    "label": "Universal, Deram",
+    "year": "2000",
+    "discogsId": "6309273",
+    "genres": [
+      "Rock",
+      "Funk / Soul",
+      "Pop",
+      "Vocal",
+      "Ballad"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 173,
+    "cat": "musica",
+    "name": "Mi Reflejo",
+    "desc": "CD Album Enhanced · Electronic, Pop, Latin, Ballad\nCodice edizione: 74321793532\nNazione di provenienza: Spain",
+    "price": 6,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Mi%20Reflejo%20--%2088c4d4944c83/discogs-4249904-cover-4ab73704e5d28ec0.webp",
+      "photos/inventario/Mi%20Reflejo%20--%2088c4d4944c83/discogs-4249904-cover-dffcb1ba282f97d5.webp",
+      "photos/inventario/Mi%20Reflejo%20--%2088c4d4944c83/discogs-4249904-cover-4c4a6070e08576c3.webp"
+    ],
+    "subcat": "CD Album Enhanced",
+    "artist": "Christina Aguilera",
+    "label": "RCA, BMG España",
+    "year": "2000",
+    "discogsId": "4249904",
+    "genres": [
+      "Electronic",
+      "Pop",
+      "Latin",
+      "Ballad"
+    ],
+    "copie": 1
+  },
+  {
     "id": 172,
     "cat": "musica",
     "name": "Greatest Hits 1981-1995",

@@ -1,5 +1,345 @@
 [
   {
+    "id": 199,
+    "cat": "musica",
+    "name": "Ride Like The Wind",
+    "desc": "Vinyl 12\" 33 ⅓ RPM · Electronic, House, Italo House, Italodance\nCodice edizione: MX 285\nNazione di provenienza: Spain",
+    "price": 5,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Ride%20Like%20The%20Wind%20--%20ec01eab3f6c0/discogs-41892-cover-858b212171ac32a8.webp",
+      "photos/inventario/Ride%20Like%20The%20Wind%20--%20ec01eab3f6c0/discogs-41892-cover-e41716574dadd45d.webp"
+    ],
+    "subcat": "Vinyl 12\" 33 ⅓ RPM",
+    "artist": "East Side Beat",
+    "label": "Blanco Y Negro (2)",
+    "year": "1991",
+    "discogsId": "41892",
+    "genres": [
+      "Electronic",
+      "House",
+      "Italo House",
+      "Italodance"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 198,
+    "cat": "musica",
+    "name": "Rock Your Baby",
+    "desc": "Vinyl 12\" 45 RPM · Funk / Soul, Pop, Europop, Disco\nCodice edizione: 650312 8\nNazione di provenienza: UK & Europe",
+    "price": 10,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Rock%20Your%20Baby%20--%20685833ae5bdb/discogs-575278-cover-ab506efe13bdf447.webp",
+      "photos/inventario/Rock%20Your%20Baby%20--%20685833ae5bdb/discogs-575278-cover-52d31a3e946d6f4a.webp",
+      "photos/inventario/Rock%20Your%20Baby%20--%20685833ae5bdb/discogs-575278-cover-1df8144d2500b1cd.webp"
+    ],
+    "subcat": "Vinyl 12\" 45 RPM",
+    "artist": "George McCrae",
+    "label": "Portrait",
+    "year": "1986",
+    "discogsId": "575278",
+    "genres": [
+      "Funk / Soul",
+      "Pop",
+      "Europop",
+      "Disco"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 197,
+    "cat": "musica",
+    "name": "Written In The Stars",
+    "desc": "Vinyl 12\" 45 RPM Maxi-Single Promo · Pop, Ballad\nCodice edizione: AIDA1-1\nNazione di provenienza: Spain",
+    "price": 10,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Written%20In%20The%20Stars%20--%20e23b81ac4717/discogs-4789917-cover-2381e7db3ada2aca.webp",
+      "photos/inventario/Written%20In%20The%20Stars%20--%20e23b81ac4717/discogs-4789917-cover-dbe8a8683b0863e7.webp",
+      "photos/inventario/Written%20In%20The%20Stars%20--%20e23b81ac4717/discogs-4789917-cover-42f7b807051283b5.webp"
+    ],
+    "subcat": "Vinyl 12\" 45 RPM Maxi-Single Promo",
+    "artist": "Elton John, LeAnn Rimes",
+    "label": "The Rocket Record Company, Mercury, Universal Music, Curb Records",
+    "year": "1999",
+    "discogsId": "4789917",
+    "genres": [
+      "Pop",
+      "Ballad"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 196,
+    "cat": "musica",
+    "name": "Lost In Tokyo",
+    "desc": "Vinyl 12\" 45 RPM Maxi-Single · Electronic, Euro-Disco\nCodice edizione: 601 933-213\nNazione di provenienza: Germany",
+    "price": 5,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Lost%20In%20Tokyo%20--%20844789ecfd74/discogs-1341765-cover-71c885fdef3a9e74.webp",
+      "photos/inventario/Lost%20In%20Tokyo%20--%20844789ecfd74/discogs-1341765-cover-870766bf276ca8ba.webp",
+      "photos/inventario/Lost%20In%20Tokyo%20--%20844789ecfd74/discogs-1341765-cover-842230a3306fa3d1.webp"
+    ],
+    "subcat": "Vinyl 12\" 45 RPM Maxi-Single",
+    "artist": "Peter Randell",
+    "label": "Global Records And Tapes",
+    "year": "1985",
+    "discogsId": "1341765",
+    "genres": [
+      "Electronic",
+      "Euro-Disco"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 195,
+    "cat": "musica",
+    "name": "Where Are You? (Remix) (We Know The Way)",
+    "desc": "Vinyl 12\" 45 RPM Maxi-Single Stereo · Electronic, Synth-pop, New Beat\nCodice edizione: 608 763, 608 763-213\nNazione di provenienza: Europe",
+    "price": 5,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Where%20Are%20You-%20%28Remix%29%20%28We%20Know%20The%20Way%29%20--%20dffd185e1733/discogs-177953-cover-a020b03b91eb2841.webp",
+      "photos/inventario/Where%20Are%20You-%20%28Remix%29%20%28We%20Know%20The%20Way%29%20--%20dffd185e1733/discogs-177953-cover-e94105fd10d149cf.webp",
+      "photos/inventario/Where%20Are%20You-%20%28Remix%29%20%28We%20Know%20The%20Way%29%20--%20dffd185e1733/discogs-177953-cover-312c269da288cd3a.webp"
+    ],
+    "subcat": "Vinyl 12\" 45 RPM Maxi-Single Stereo",
+    "artist": "16 Bit",
+    "label": "Ariola, Ariola",
+    "year": "1986",
+    "discogsId": "177953",
+    "genres": [
+      "Electronic",
+      "Synth-pop",
+      "New Beat"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 194,
+    "cat": "musica",
+    "name": "The Third Man / Vienna",
+    "desc": "Vinyl 12\" 45 RPM Maxi-Single Stereo · Electronic, Synth-pop\nCodice edizione: 608 279-213, 608 279\nNazione di provenienza: Germany",
+    "price": 5,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/The%20Third%20Man%20-%20Vienna%20--%20817d07b9f8b1/discogs-2735300-cover-555f0fd8f6af5f0d.webp",
+      "photos/inventario/The%20Third%20Man%20-%20Vienna%20--%20817d07b9f8b1/discogs-2735300-cover-d6b0a4e1d1510da2.webp",
+      "photos/inventario/The%20Third%20Man%20-%20Vienna%20--%20817d07b9f8b1/discogs-2735300-cover-c96de2fef873e40e.webp"
+    ],
+    "subcat": "Vinyl 12\" 45 RPM Maxi-Single Stereo",
+    "artist": "Harry Lime's Gang",
+    "label": "Hansa, Hansa",
+    "year": "1986",
+    "discogsId": "2735300",
+    "genres": [
+      "Electronic",
+      "Synth-pop"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 193,
+    "cat": "musica",
+    "name": "Teens & Jeans & Rock 'n' Roll",
+    "desc": "Vinyl LP Album · Rock, Pop, Pop Rock\nCodice edizione: I-200845\nNazione di provenienza: Spain",
+    "price": 6,
+    "condition": "Very Good (VG)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Teens%20%26%20Jeans%20%26%20Rock%20%27n%27%20Roll%20--%206e1011a12a27/discogs-6007443-cover-eeb651cdf59c7147.webp"
+    ],
+    "subcat": "Vinyl LP Album",
+    "artist": "The Teens",
+    "label": "Ariola Eurodisc S.A.",
+    "year": "1980",
+    "discogsId": "6007443",
+    "genres": [
+      "Rock",
+      "Pop",
+      "Pop Rock"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 192,
+    "cat": "musica",
+    "name": "She Loves You (And You Know That Can't Be Bad)",
+    "desc": "Vinyl 12\" · Rock, Indie Rock\nCodice edizione: UGH12T, 248 705-0\nNazione di provenienza: UK",
+    "price": 5,
+    "condition": "Very Good (VG)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/She%20Loves%20You%20%28And%20You%20Know%20That%20Can%27t%20Be%20Bad%29%20--%209792e5f42818/discogs-1741432-cover-bd9e88c2c963dec4.webp"
+    ],
+    "subcat": "Vinyl 12\"",
+    "artist": "Ted Chippington, Top Entertainment",
+    "label": "Vindaloo Records, Vindaloo Records",
+    "year": "1986",
+    "discogsId": "1741432",
+    "genres": [
+      "Rock",
+      "Indie Rock"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 191,
+    "cat": "musica",
+    "name": "Black Betty",
+    "desc": "Vinyl 12\" 45 RPM Maxi-Single Stereo · Electronic, Synth-pop\nCodice edizione: BT 0015, SPV 50-3514\nNazione di provenienza: Germany",
+    "price": 5,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Black%20Betty%20--%20c92df8db72fa/discogs-1039343-cover-6d37934aaab096ea.webp",
+      "photos/inventario/Black%20Betty%20--%20c92df8db72fa/discogs-1039343-cover-b09b9c184a6d89e6.webp",
+      "photos/inventario/Black%20Betty%20--%20c92df8db72fa/discogs-1039343-cover-ebed51d146db896c.webp"
+    ],
+    "subcat": "Vinyl 12\" 45 RPM Maxi-Single Stereo",
+    "artist": "Stag",
+    "label": "Blue Turtle Records, Blue Turtle Records",
+    "year": "1987",
+    "discogsId": "1039343",
+    "genres": [
+      "Electronic",
+      "Synth-pop"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 190,
+    "cat": "musica",
+    "name": "Baby Me",
+    "desc": "Vinyl 12\" 45 RPM · Electronic, Disco\nCodice edizione: SIDE 8506\nNazione di provenienza: Belgium",
+    "price": 5,
+    "condition": "Very Good Plus (VG+)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/Baby%20Me%20--%20e52ff74a2c0f/discogs-390208-cover-997ba91cc4d5e37b.webp"
+    ],
+    "subcat": "Vinyl 12\" 45 RPM",
+    "artist": "Cathleen",
+    "label": "Another Side",
+    "year": "1986",
+    "discogsId": "390208",
+    "genres": [
+      "Electronic",
+      "Disco"
+    ],
+    "copie": 1
+  },
+  {
+    "id": 189,
+    "cat": "musica",
+    "name": "C'mon! C'mon!",
+    "desc": "Vinyl 12\" 45 RPM Single Special Cut · Electronic, Synth-pop\nCodice edizione: BITEX 7, 886 041-1\nNazione di provenienza: UK",
+    "price": 5,
+    "condition": "Very Good (VG)",
+    "sold": false,
+    "isNew": true,
+    "emoji": "",
+    "bg": null,
+    "ebay": "",
+    "model": null,
+    "modelCredit": null,
+    "modelCreditUrl": null,
+    "photos": [
+      "photos/inventario/C%27mon%21%20C%27mon%21%20--%20c78ce341d515/discogs-491584-cover-5ec87421c5835ed1.webp",
+      "photos/inventario/C%27mon%21%20C%27mon%21%20--%20c78ce341d515/discogs-491584-cover-e575776c847e2a26.webp",
+      "photos/inventario/C%27mon%21%20C%27mon%21%20--%20c78ce341d515/discogs-491584-cover-135fa1e86d04fae2.webp"
+    ],
+    "subcat": "Vinyl 12\" 45 RPM Single Special Cut",
+    "artist": "Bronski Beat",
+    "label": "Forbidden Fruit, Forbidden Fruit",
+    "year": "1986",
+    "discogsId": "491584",
+    "genres": [
+      "Electronic",
+      "Synth-pop"
+    ],
+    "copie": 1
+  },
+  {
     "id": 188,
     "cat": "musica",
     "name": "Street Fighting Years",

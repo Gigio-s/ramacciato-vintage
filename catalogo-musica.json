@@ -1,38 +1,5 @@
 [
   {
-    "id": 176,
-    "cat": "musica",
-    "name": "La Vida... Es Un Ratico",
-    "desc": "CD Album · Rock, Latin, Pop Rock, Latin Pop\nCodice edizione: 0602517473928\nNazione di provenienza: Europe",
-    "price": 6,
-    "condition": "Very Good Plus (VG+)",
-    "sold": false,
-    "isNew": true,
-    "emoji": "",
-    "bg": null,
-    "ebay": "",
-    "model": null,
-    "modelCredit": null,
-    "modelCreditUrl": null,
-    "photos": [
-      "photos/inventario/La%20Vida...%20Es%20Un%20Ratico%20--%20aad913e40024/discogs-2379329-cover-45fd0867d3c40cb6.webp",
-      "photos/inventario/La%20Vida...%20Es%20Un%20Ratico%20--%20aad913e40024/discogs-2379329-cover-21b0341e45845a0b.webp",
-      "photos/inventario/La%20Vida...%20Es%20Un%20Ratico%20--%20aad913e40024/discogs-2379329-cover-7d3d910949d9b0b1.webp"
-    ],
-    "subcat": "CD Album",
-    "artist": "Juanes",
-    "label": "Universal Music Latino",
-    "year": "2007",
-    "discogsId": "2379329",
-    "genres": [
-      "Rock",
-      "Latin",
-      "Pop Rock",
-      "Latin Pop"
-    ],
-    "copie": 1
-  },
-  {
     "id": 175,
     "cat": "musica",
     "name": "Reload",

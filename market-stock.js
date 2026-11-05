@@ -12,7 +12,7 @@ window.rvMarketStock = async function(products) {
     const data=await response.json();
     if(!Array.isArray(data.products)) throw new Error('Inventario non valido');
     const stock=new Map(data.products.map(p=>[String(p.id),Math.max(0,Number(p.copie)||0)]));
-    products.forEach(p=>{p.copie=stock.get(String(p.id))||0;p.sold=p.copie===0;p._stockUnavailable=false});
+    products.forEach(p=>{p._inInv=stock.has(String(p.id));p.copie=stock.get(String(p.id))||0;p.sold=p.copie===0;p._stockUnavailable=false});
     notice.hidden=true;
   } catch(_) {
     /* Scorte non verificabili: NON segnare tutto come venduto (prezzi barrati).

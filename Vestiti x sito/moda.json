@@ -1,0 +1,130 @@
+[
+  {
+    "id": "moda-oneill-smanicato-90",
+    "cat": "moda",
+    "name": "Giubbino smanicato O'Neill anni '90",
+    "price": 80,
+    "condition": "Buone condizioni",
+    "taglia": "L (vestibilità O'Neill: torace 103-107 cm)",
+    "misure": "petto in piano ~60 cm, lunghezza dal collo ~70 cm (indicative)",
+    "materiale": "esterno e fodera 65% poliestere 35% cotone, imbottitura 100% piumino d'anatra",
+    "epoca": "anni '90",
+    "desc": "Smanicato imbottito O'Neill anni '90 a fasce azzurro, rosa, verde e rosso. Collo e abbottonatura neri, cerniera con tiretto O'Neill e bottoni a pressione, due tasche con zip, toppa ricamata O'Neill sul petto. Interno nero con etichetta originale \"Snow is only frozen water\".",
+    "bg": "#ffffff",
+    "cutout": "Giubbino smanicato O'Neil/3d/fronte-cutout.webp",
+    "model": "Giubbino smanicato O'Neil/3d/giubbino-oneill.glb",
+    "photos": [
+      "Giubbino smanicato O'Neil/web/foto-1.webp",
+      "Giubbino smanicato O'Neil/web/foto-2.webp",
+      "Giubbino smanicato O'Neil/web/foto-3.webp",
+      "Giubbino smanicato O'Neil/web/foto-4.webp",
+      "Giubbino smanicato O'Neil/web/foto-5.webp",
+      "Giubbino smanicato O'Neil/web/foto-6.webp"
+    ],
+    "apribile": true,
+    "dettagli": [
+      {
+        "id": "zip",
+        "label": "Zip e tiretto O'Neill",
+        "pos": [
+          0.0,
+          0.78,
+          0.205
+        ],
+        "normal": [
+          0,
+          0,
+          1
+        ],
+        "lato": "fuori",
+        "foto": "Giubbino smanicato O'Neil/dettagli/zip.webp"
+      },
+      {
+        "id": "bottoni",
+        "label": "Bottoni a pressione",
+        "pos": [
+          0.01,
+          0.3,
+          0.285
+        ],
+        "normal": [
+          0,
+          0,
+          1
+        ],
+        "lato": "fuori",
+        "foto": "Giubbino smanicato O'Neil/dettagli/bottoni.webp"
+      },
+      {
+        "id": "toppa",
+        "label": "Toppa ricamata",
+        "pos": [
+          0.31,
+          0.21,
+          0.25
+        ],
+        "normal": [
+          0,
+          0,
+          1
+        ],
+        "lato": "fuori",
+        "foto": "Giubbino smanicato O'Neil/dettagli/toppa.webp"
+      },
+      {
+        "id": "tasca",
+        "label": "Tasca con zip",
+        "pos": [
+          -0.3,
+          -0.33,
+          0.27
+        ],
+        "normal": [
+          0,
+          0,
+          1
+        ],
+        "lato": "fuori",
+        "foto": "Giubbino smanicato O'Neil/dettagli/tasca.webp"
+      },
+      {
+        "id": "etichetta",
+        "label": "Etichetta interna",
+        "pos": [
+          0.0,
+          0.42,
+          -0.3
+        ],
+        "normal": [
+          0,
+          0,
+          1
+        ],
+        "lato": "dentro",
+        "foto": "Giubbino smanicato O'Neil/dettagli/etichetta-interna.webp"
+      },
+      {
+        "id": "composizione",
+        "label": "Composizione e lavaggio",
+        "pos": [
+          -0.4,
+          -0.45,
+          -0.18
+        ],
+        "normal": [
+          0,
+          0,
+          1
+        ],
+        "lato": "dentro",
+        "foto": "Giubbino smanicato O'Neil/dettagli/composizione.webp"
+      }
+    ],
+    "tema": "neve",
+    "sfondo": {
+      "img": "temi/neve/sfondo.webp",
+      "video": "temi/neve/sfondo.mp4"
+    },
+    "storia": "O'Neill nasce nel 1952 a San Francisco, quando Jack O'Neill apre uno dei primi surf shop della California; qualche anno dopo il marchio si sposta a Santa Cruz. Il suo nome è legato alla muta da surf in neoprene e alla cultura degli sport da tavola. Tra anni '80 e '90 O'Neill porta lo stesso spirito sulla neve con le linee da snowboard del Team O'Neill: come dice l'etichetta cucita dentro questo giubbino, \"Snow is only frozen water\"."
+  }
+]

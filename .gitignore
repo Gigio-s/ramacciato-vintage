@@ -56,3 +56,6 @@ GDPR/ffmpeg-*/
 # Script del sito eseguiti da GitHub Actions: vanno versionati
 !scripts/*.py
 scripts/__pycache__/
+
+# Moda archiviata (20/11/2026): solo copia locale, non va online
+archivio-moda/

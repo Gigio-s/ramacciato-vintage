@@ -802,6 +802,43 @@ body.vinyl-mode #collezioni .roulette-right{height:100%!important;margin-top:0!i
 
 /* Link interni per categorie e zone */
 .seo-hub{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:6px 0 22px;padding-top:18px;border-top:1px solid var(--line,rgba(11,37,69,.12));font-size:13px}.seo-hub div{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline}.seo-hub b{width:100%;font-size:9.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--ink,#0b2545)}.seo-hub a{color:var(--ink,#0b2545);text-decoration:none;opacity:.85}.seo-hub a:hover{opacity:1;text-decoration:underline}@media(max-width:760px){.seo-hub{grid-template-columns:1fr}}
+
+/* ===== SOCIAL ===== */
+#social{border-top:1px solid var(--line)}
+.soc-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center}
+.soc-sub{margin:0;max-width:420px;font-size:14.5px;line-height:1.72;color:rgba(11,37,69,.85)}
+.soc-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.soc-card{position:relative;display:flex;flex-direction:column;gap:6px;padding:26px 24px 22px;border-radius:22px;min-height:250px;overflow:hidden;color:var(--ink);background:rgba(255,255,255,.92);border:1px solid rgba(255,255,255,.85);box-shadow:0 18px 44px rgba(11,37,69,.12);transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+.soc-card:hover{transform:translateY(-6px) rotate(-1deg);box-shadow:0 26px 60px rgba(11,37,69,.2)}
+.soc-tt:hover{transform:translateY(-6px) rotate(1deg)}
+.soc-card::after{content:"";position:absolute;right:-60px;bottom:-60px;width:180px;height:180px;border-radius:50%;opacity:.16;pointer-events:none}
+.soc-ig::after{background:radial-gradient(circle,#f58529,#dd2a7b 45%,#8134af 75%,transparent 76%)}
+.soc-tt{background:var(--ink);color:#fff;border-color:var(--ink)}
+.soc-tt::after{background:radial-gradient(circle,#25f4ee,#fe2c55 60%,transparent 61%)}
+.soc-ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;margin-bottom:auto}
+.soc-ic svg{width:26px;height:26px}
+.soc-ig .soc-ic{color:#fff;background:linear-gradient(135deg,#f58529,#dd2a7b 55%,#8134af)}
+.soc-tt .soc-ic{color:var(--ink);background:#fff}
+.soc-net{margin-top:28px;font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;opacity:.7}
+.soc-handle{font-size:clamp(16px,1.5vw,20px);font-weight:900;letter-spacing:-.03em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.soc-what{font-size:12.5px;line-height:1.5;opacity:.8;min-height:3em}
+.soc-cta{margin-top:10px;font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+.soc-feed{margin-top:44px}
+.soc-feed-gate{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:18px 22px;border-radius:18px;background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.7)}
+.soc-feed-gate p{margin:0;font-size:13px;color:var(--muted)}
+.soc-posts{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;align-items:start}
+.soc-posts:empty{display:none}
+.soc-posts blockquote{margin:0!important;min-width:0!important;max-width:100%!important}
+@media(max-width:900px){.soc-grid{grid-template-columns:1fr;gap:28px}}
+@media(max-width:560px){.soc-cards{gap:12px}.soc-card{min-height:210px;padding:20px 16px 18px;border-radius:18px}.soc-ic{width:40px;height:40px;border-radius:12px}.soc-ic svg{width:22px;height:22px}.soc-handle{font-size:13px;letter-spacing:-.02em}.soc-what{font-size:11.5px;min-height:4.5em}.soc-net{margin-top:18px}.soc-posts{grid-template-columns:1fr}}
+
+/* Spazi tra sezioni ridotti (20/11/2026) */
+.hero{min-height:0;padding:118px 0 40px}
+section{padding:44px 0}
+#collezioni{padding-top:36px;padding-bottom:24px}
+@media(max-width:768px){.hero{padding:96px 0 28px}section{padding:32px 0}#collezioni{padding-top:28px;padding-bottom:18px}}
+
+@media(max-width:768px){.roulette-right{overflow:hidden}}
 </style>
 <script type="application/ld+json">
 {
@@ -1006,10 +1043,10 @@ body.vinyl-mode #collezioni .roulette-right{height:100%!important;margin-top:0!i
 
     <!-- CENTER: bottone esplora -->
     <div class="hero-center reveal">
-      <button class="btn-explore" id="openCatExplorer" type="button" aria-label="Esplora le categorie">
+      <a class="btn-explore" id="openCatExplorer" href="shop.html" aria-label="Esplora le categorie nello shop">
         <span class="btn-explore-label">Esplora le categorie</span>
         <span class="btn-explore-arrow">↗</span>
-      </button>
+      </a>
     </div>
 
     <!-- RIGHT: watermark -->
@@ -1044,6 +1081,42 @@ body.vinyl-mode #collezioni .roulette-right{height:100%!important;margin-top:0!i
 </div>
 
 <!-- MARQUEE rimosso -->
+
+<!-- ── SOCIAL: Instagram e TikTok ─────────────────────── -->
+<section id="social">
+  <div class="wrap">
+    <div class="soc-grid">
+      <div class="soc-txt reveal">
+        <p class="sec-label">Seguici sui social</p>
+        <h2 class="h2" style="margin:0 0 16px">Dietro<br>al banco.</h2>
+        <p class="soc-sub">Nuovi arrivi prima che finiscano online, i pezzi più strani trovati negli sgomberi e le giornate ai mercatini. Seguici per vederli per primo.</p>
+      </div>
+      <div class="soc-cards reveal">
+        <a class="soc-card soc-ig" href="https://www.instagram.com/ramacciatovintage/" target="_blank" rel="noopener">
+          <span class="soc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></span>
+          <span class="soc-net">Instagram</span>
+          <span class="soc-handle">@ramacciatovintage</span>
+          <span class="soc-what">Foto dei pezzi, nuovi arrivi e storie dai mercatini</span>
+          <span class="soc-cta">Segui &rarr;</span>
+        </a>
+        <a class="soc-card soc-tt" href="https://www.tiktok.com/@ramacciato.vintage" target="_blank" rel="noopener">
+          <span class="soc-ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 3c.4 2.2 1.8 3.7 4 3.9v3.2c-1.5.1-2.9-.3-4-1v6.4c0 3.6-2.9 6.5-6.5 6.5S3.6 19.1 3.6 15.5c0-3.7 3.2-6.6 6.9-6.4v3.3c-.2 0-.4-.1-.6-.1-1.8 0-3.2 1.4-3.2 3.2s1.4 3.2 3.2 3.2 3.3-1.4 3.3-3.2V3h3.4z"/></svg></span>
+          <span class="soc-net">TikTok</span>
+          <span class="soc-handle">@ramacciato.vintage</span>
+          <span class="soc-what">Video brevi: sgomberi, unboxing e scoperte</span>
+          <span class="soc-cta">Segui &rarr;</span>
+        </a>
+      </div>
+    </div>
+    <div class="soc-feed reveal" id="socFeed" hidden>
+      <div class="soc-feed-gate" id="socGate">
+        <p>Gli ultimi post arrivano da Instagram e TikTok, che possono usare i loro cookie.</p>
+        <button type="button" class="btn btn-dark" id="socLoad" style="min-height:44px;padding:0 22px;font-size:10px">Mostra gli ultimi post</button>
+      </div>
+      <div class="soc-posts" id="socPosts"></div>
+    </div>
+  </div>
+</section>
 
 <!-- ── FISICO VS DIGITALE PREVIEW ─────────────────────── -->
 <section id="manifesto">
@@ -1803,17 +1876,12 @@ body.vinyl-mode #collezioni .roulette-right{height:100%!important;margin-top:0!i
       } else {
         setTimeout(function(){
           escapeBtn.style.pointerEvents = '';
-          open();
         }, wait);
       }
     }
     step();
   }
-  escapeBtn.addEventListener('click', function(){
-    open();
-  });
-  /* anticipa il download della sola libreria quando ci si avvicina al bottone */
-  ['pointerenter','touchstart','focus'].forEach(function(ev){ escapeBtn.addEventListener(ev, window.rvLoadModelViewer, {once:true, passive:true}); });
+  /* "Esplora le categorie" ora porta direttamente allo shop (link normale) */
   document.getElementById('closeCatExplorer').addEventListener('click',close);
   overlay.addEventListener('click',function(e){if(e.target===overlay)close();});
   document.addEventListener('keydown',function(e){
@@ -1888,6 +1956,17 @@ x.addEventListener('touchend',chiudi,{capture:true,passive:false});x.addEventLis
 btn.addEventListener('click',function(e){if(Date.now()-chiusoAlle<600){e.preventDefault();e.stopImmediatePropagation();}},true);
 if(!mob.querySelector('.mob-soc')){var SO=[['Instagram','https://www.instagram.com/ramacciatovintage/','<rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.3" fill="currentColor"/>'],['TikTok','https://www.tiktok.com/@ramacciato.vintage','<path fill="currentColor" d="M16.6 3c.3 2.2 1.7 3.7 3.9 3.9v3.2c-1.5 0-2.8-.4-3.9-1.1v6.3c0 3.1-2.5 5.7-5.7 5.7s-5.7-2.6-5.7-5.7 2.5-5.6 5.7-5.6c.3 0 .6 0 .9.1v3.3a2.4 2.4 0 1 0 1.6 2.2V3h3.2z"/>'],['Facebook','https://www.facebook.com/profile.php?id=61595227785751','<path fill="currentColor" d="M13.6 21v-7.4h2.6l.4-3.1h-3V8.6c0-.9.3-1.5 1.6-1.5h1.6V4.3c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.3H8v3.1h2.6V21h3z"/>'],['YouTube','https://www.youtube.com/@RamacciatoVintage','<rect x="2" y="5" width="20" height="14" rx="4" fill="currentColor"/><path d="M10 9v6l5.2-3z" fill="#fff"/>']];var st=document.createElement('style');st.textContent='.mobile .mob-soc{display:flex;gap:14px;margin:26px 0 0;padding:0;list-style:none}.mobile .mob-soc a{display:flex!important;align-items:center!important;justify-content:center!important;flex:0 0 52px;width:52px;height:52px;padding:0!important;margin:0!important;border-top:1px solid var(--line,rgba(11,37,69,.12))!important;border-radius:50%;background:var(--paper,#fff);border:1px solid var(--line,rgba(11,37,69,.12));color:var(--ink,#0b2545);font-size:0;letter-spacing:0;line-height:0;box-shadow:0 4px 14px rgba(11,37,69,.12)}.mobile .mob-soc a:active{transform:scale(.94)}.mobile .mob-soc svg{width:24px;height:24px}.mobile .mob-soc a::before,.mobile .mob-soc a::after{content:none!important;display:none!important}';document.head.appendChild(st);var ul=document.createElement('div');ul.className='mob-soc';SO.forEach(function(s){var a=document.createElement('a');a.href=s[1];a.target='_blank';a.rel='noopener';a.setAttribute('aria-label',s[0]);a.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true">'+s[2]+'</svg>';ul.appendChild(a);});mob.insertBefore(ul,mob.querySelector('.mob-logo'));}if(!mob.querySelector('.mob-logo')){var lg=new Image();lg.src='logo.png';lg.alt='';lg.className='mob-logo';mob.appendChild(lg);}var qui=location.pathname.split('/').pop()||'index.html';mob.querySelectorAll('a').forEach(function(a){if(a.getAttribute('href')===qui)a.classList.add('attivo');});
 })();
+</script>
+<script>
+/* SOCIAL: incolla qui i link dei post da mostrare (Instagram post/reel o video TikTok), il piu recente per primo.
+   Esempi: 'https://www.instagram.com/p/XXXX/'  'https://www.tiktok.com/@ramacciato.vintage/video/123...'
+   Se la lista e' vuota si vedono solo le due schede profilo. I post si caricano solo dopo il click del visitatore (cookie di terze parti). */
+var RV_SOCIAL_POST=[];
+(function(){var list=RV_SOCIAL_POST.filter(Boolean).slice(0,6);if(!list.length)return;var feed=document.getElementById('socFeed');feed.hidden=false;
+document.getElementById('socLoad').addEventListener('click',function(){document.getElementById('socGate').remove();var box=document.getElementById('socPosts'),ig=false,tt=false;
+list.forEach(function(u){var q=document.createElement('blockquote');if(/tiktok\.com/.test(u)){var id=(u.match(/video\/(\d+)/)||[])[1];if(!id)return;q.className='tiktok-embed';q.setAttribute('cite',u);q.setAttribute('data-video-id',id);q.innerHTML='<section></section>';tt=true;}
+else{q.className='instagram-media';q.setAttribute('data-instgrm-permalink',u);q.setAttribute('data-instgrm-version','14');ig=true;}box.appendChild(q);});
+function add(src){var sc=document.createElement('script');sc.async=true;sc.src=src;document.body.appendChild(sc);}if(ig)add('https://www.instagram.com/embed.js');if(tt)add('https://www.tiktok.com/embed.js');});})();
 </script>
 </body>
 </html>

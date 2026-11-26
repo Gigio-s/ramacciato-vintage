@@ -409,6 +409,7 @@ body{font-family:Archivo,Arial,sans-serif;color:var(--navy);background:#0d1b2c;m
   <div class="aiuto" id="aiuto">Trascina il CD per girarlo &middot; Esc per rimetterlo a posto</div>
 </div>
 
+<script src="music-genres.js"></script>
 <script>
 (function(){
 'use strict';
@@ -446,7 +447,7 @@ function dettagliCondizioni(p){
   if(!m)return;p.dettagliCondizioni=m[1].trim();
   p.desc=String(p.desc).replace(/^[ \t]*Dettagli condizioni:.*(\r?\n|$)/im,'').replace(/\s+$/,'');
 }
-function adatta(p,mappa,subcats){var m=mappa[p.cat],cs=colonneSonore(p,m);adattaBase(p,mappa,subcats);if(cs)instradaCS(p,m);codiceEdizione(p);dettagliCondizioni(p);}
+function adatta(p,mappa,subcats){var m=mappa[p.cat],cs=colonneSonore(p,m);adattaBase(p,mappa,subcats);if(cs)instradaCS(p,m);codiceEdizione(p);dettagliCondizioni(p);rvApplyMusicGenre(p);}
 function adattaBase(p,mappa,subcats){
   if(p.discogsId&&p.photos&&p.photos[0]&&/^https?:\/\/i\.discogs\.com/.test(p.photos[0])){p.photos=['photos/inventario/discogs-'+p.discogsId+'-cover.jpg'].concat(p.photos.slice(1));}
   if(p.artist)p.artist=String(p.artist).replace(/\s*\(\d+\)\s*$/,'').trim();
@@ -524,6 +525,7 @@ function vuotoHtml(t){return '<div class="ripiano"><div class="vano"><p class="v
 function render(){renderCD();renderVinili();filtra();sincronizza(true);requestAnimationFrame(function(){aggiornaFrecce();});}
 function renderCD(){
   var gr=ORD==='alfa'?gruppiAlfa(CD):SOTTO.map(function(sc){return{label:sc.label,items:CD.filter(function(p){return p.subcat===sc.id;}).sort(perArtista)};}).filter(function(x){return x.items.length;});
+  if(ORD!=='alfa'){var pending=CD.filter(function(p){return !SOTTO.some(function(sc){return p.subcat===sc.id;});});if(pending.length)gr.push({label:'Genere da confermare',items:pending.sort(perArtista)});}
   elRip.innerHTML=gr.map(function(x){return ripianoHtml(x.label,x.items,false);}).join('')||vuotoHtml('Nessun CD disponibile al momento.');
   coloraDorsi(elRip);
 }

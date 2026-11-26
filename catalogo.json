@@ -364,20 +364,105 @@
         "bg": "linear-gradient(135deg,#1a0a2a,#3a1a5a)",
         "includes": [
           "vinili",
+          "vinili-rock",
+          "vinili-metal",
+          "vinili-punk",
+          "vinili-pop",
+          "vinili-italiano",
+          "vinili-spagnolo",
+          "vinili-indie",
+          "vinili-elettronica",
+          "vinili-techno",
+          "vinili-hip-hop-usa",
+          "vinili-rap-europeo",
+          "vinili-rap-italiano",
+          "vinili-jazz",
           "vinili-colonne-sonore"
         ],
         "children": [
           {
-            "id": "vinili",
-            "label": "Altri generi",
+            "id": "vinili-rock",
+            "label": "Rock",
+            "emoji": "🎵",
+            "bg": "linear-gradient(135deg,#1a0a2a,#3a1a5a)"
+          },
+          {
+            "id": "vinili-metal",
+            "label": "Metal",
+            "emoji": "🎵",
+            "bg": "linear-gradient(135deg,#1a0a2a,#3a1a5a)"
+          },
+          {
+            "id": "vinili-punk",
+            "label": "Punk",
+            "emoji": "🎵",
+            "bg": "linear-gradient(135deg,#1a0a2a,#3a1a5a)"
+          },
+          {
+            "id": "vinili-pop",
+            "label": "Pop",
+            "emoji": "🎵",
+            "bg": "linear-gradient(135deg,#1a0a2a,#3a1a5a)"
+          },
+          {
+            "id": "vinili-italiano",
+            "label": "Italiano",
+            "emoji": "🎵",
+            "bg": "linear-gradient(135deg,#1a0a2a,#3a1a5a)"
+          },
+          {
+            "id": "vinili-spagnolo",
+            "label": "Spagnolo",
+            "emoji": "🎵",
+            "bg": "linear-gradient(135deg,#1a0a2a,#3a1a5a)"
+          },
+          {
+            "id": "vinili-indie",
+            "label": "Indie",
+            "emoji": "🎵",
+            "bg": "linear-gradient(135deg,#1a0a2a,#3a1a5a)"
+          },
+          {
+            "id": "vinili-elettronica",
+            "label": "Elettronica",
+            "emoji": "🎵",
+            "bg": "linear-gradient(135deg,#1a0a2a,#3a1a5a)"
+          },
+          {
+            "id": "vinili-techno",
+            "label": "Techno",
+            "emoji": "🎵",
+            "bg": "linear-gradient(135deg,#1a0a2a,#3a1a5a)"
+          },
+          {
+            "id": "vinili-hip-hop-usa",
+            "label": "Hip hop usa",
+            "emoji": "🎵",
+            "bg": "linear-gradient(135deg,#1a0a2a,#3a1a5a)"
+          },
+          {
+            "id": "vinili-rap-europeo",
+            "label": "Rap europeo",
+            "emoji": "🎵",
+            "bg": "linear-gradient(135deg,#1a0a2a,#3a1a5a)"
+          },
+          {
+            "id": "vinili-rap-italiano",
+            "label": "Rap italiano",
+            "emoji": "🎵",
+            "bg": "linear-gradient(135deg,#1a0a2a,#3a1a5a)"
+          },
+          {
+            "id": "vinili-jazz",
+            "label": "Jazz",
             "emoji": "🎵",
             "bg": "linear-gradient(135deg,#1a0a2a,#3a1a5a)"
           },
           {
             "id": "vinili-colonne-sonore",
             "label": "Colonne sonore",
-            "emoji": "🎬",
-            "bg": "linear-gradient(135deg,#1a120a,#3a2a12)"
+            "emoji": "🎵",
+            "bg": "linear-gradient(135deg,#1a0a2a,#3a1a5a)"
           }
         ]
       },
@@ -388,70 +473,106 @@
         "model": null,
         "bg": "linear-gradient(135deg,#0a1a2a,#1a3a5a)",
         "includes": [
-          "cd-italiano",
-          "cd-pop-rock",
+          "cd",
+          "cd-rock",
           "cd-metal",
-          "cd-jazz-blues",
-          "cd-classica",
-          "cd-edicola",
-          "cd-sacra",
-          "cd-compilation",
+          "cd-punk",
+          "cd-pop",
+          "cd-italiano",
+          "cd-spagnolo",
+          "cd-indie",
+          "cd-elettronica",
+          "cd-techno",
+          "cd-hip-hop-usa",
+          "cd-rap-europeo",
+          "cd-rap-italiano",
+          "cd-jazz",
           "cd-colonne-sonore"
         ],
         "children": [
           {
-            "id": "cd-italiano",
-            "label": "Italiano",
-            "emoji": "🇮🇹",
-            "bg": "linear-gradient(135deg,#1a0a0a,#3a1a1a)"
-          },
-          {
-            "id": "cd-pop-rock",
-            "label": "Pop & Rock",
-            "emoji": "🎸",
-            "bg": "linear-gradient(135deg,#0a0a1a,#1a1a3a)"
+            "id": "cd-rock",
+            "label": "Rock",
+            "emoji": "💿",
+            "bg": "linear-gradient(135deg,#0a1a2a,#1a3a5a)"
           },
           {
             "id": "cd-metal",
             "label": "Metal",
-            "emoji": "🤘",
-            "bg": "linear-gradient(135deg,#0a0a0a,#2a1a1a)"
+            "emoji": "💿",
+            "bg": "linear-gradient(135deg,#0a1a2a,#1a3a5a)"
           },
           {
-            "id": "cd-jazz-blues",
-            "label": "Jazz & Blues",
-            "emoji": "🎷",
-            "bg": "linear-gradient(135deg,#0a1a0a,#1a3a1a)"
+            "id": "cd-punk",
+            "label": "Punk",
+            "emoji": "💿",
+            "bg": "linear-gradient(135deg,#0a1a2a,#1a3a5a)"
           },
           {
-            "id": "cd-classica",
-            "label": "Classica",
-            "emoji": "🎻",
-            "bg": "linear-gradient(135deg,#1a1a0a,#3a2a0a)"
+            "id": "cd-pop",
+            "label": "Pop",
+            "emoji": "💿",
+            "bg": "linear-gradient(135deg,#0a1a2a,#1a3a5a)"
           },
           {
-            "id": "cd-edicola",
-            "label": "Edicola",
-            "emoji": "📰",
-            "bg": "linear-gradient(135deg,#0a1a1a,#1a3a2a)"
+            "id": "cd-italiano",
+            "label": "Italiano",
+            "emoji": "💿",
+            "bg": "linear-gradient(135deg,#0a1a2a,#1a3a5a)"
           },
           {
-            "id": "cd-compilation",
-            "label": "Compilation",
-            "emoji": "📀",
-            "bg": "linear-gradient(135deg,#1a0a1a,#3a0a3a)"
+            "id": "cd-spagnolo",
+            "label": "Spagnolo",
+            "emoji": "💿",
+            "bg": "linear-gradient(135deg,#0a1a2a,#1a3a5a)"
           },
           {
-            "id": "cd-sacra",
-            "label": "Sacra & World",
-            "emoji": "🕊️",
-            "bg": "linear-gradient(135deg,#1a1a1a,#2a1a3a)"
+            "id": "cd-indie",
+            "label": "Indie",
+            "emoji": "💿",
+            "bg": "linear-gradient(135deg,#0a1a2a,#1a3a5a)"
+          },
+          {
+            "id": "cd-elettronica",
+            "label": "Elettronica",
+            "emoji": "💿",
+            "bg": "linear-gradient(135deg,#0a1a2a,#1a3a5a)"
+          },
+          {
+            "id": "cd-techno",
+            "label": "Techno",
+            "emoji": "💿",
+            "bg": "linear-gradient(135deg,#0a1a2a,#1a3a5a)"
+          },
+          {
+            "id": "cd-hip-hop-usa",
+            "label": "Hip hop usa",
+            "emoji": "💿",
+            "bg": "linear-gradient(135deg,#0a1a2a,#1a3a5a)"
+          },
+          {
+            "id": "cd-rap-europeo",
+            "label": "Rap europeo",
+            "emoji": "💿",
+            "bg": "linear-gradient(135deg,#0a1a2a,#1a3a5a)"
+          },
+          {
+            "id": "cd-rap-italiano",
+            "label": "Rap italiano",
+            "emoji": "💿",
+            "bg": "linear-gradient(135deg,#0a1a2a,#1a3a5a)"
+          },
+          {
+            "id": "cd-jazz",
+            "label": "Jazz",
+            "emoji": "💿",
+            "bg": "linear-gradient(135deg,#0a1a2a,#1a3a5a)"
           },
           {
             "id": "cd-colonne-sonore",
             "label": "Colonne sonore",
-            "emoji": "🎬",
-            "bg": "linear-gradient(135deg,#1a120a,#3a2a12)"
+            "emoji": "💿",
+            "bg": "linear-gradient(135deg,#0a1a2a,#1a3a5a)"
           }
         ]
       },
@@ -465,20 +586,105 @@
         "bg": "linear-gradient(135deg,#1a1a0a,#3a2a0a)",
         "includes": [
           "musicassette",
+          "musicassette-rock",
+          "musicassette-metal",
+          "musicassette-punk",
+          "musicassette-pop",
+          "musicassette-italiano",
+          "musicassette-spagnolo",
+          "musicassette-indie",
+          "musicassette-elettronica",
+          "musicassette-techno",
+          "musicassette-hip-hop-usa",
+          "musicassette-rap-europeo",
+          "musicassette-rap-italiano",
+          "musicassette-jazz",
           "musicassette-colonne-sonore"
         ],
         "children": [
           {
-            "id": "musicassette",
-            "label": "Altri generi",
+            "id": "musicassette-rock",
+            "label": "Rock",
+            "emoji": "📼",
+            "bg": "linear-gradient(135deg,#1a1a0a,#3a2a0a)"
+          },
+          {
+            "id": "musicassette-metal",
+            "label": "Metal",
+            "emoji": "📼",
+            "bg": "linear-gradient(135deg,#1a1a0a,#3a2a0a)"
+          },
+          {
+            "id": "musicassette-punk",
+            "label": "Punk",
+            "emoji": "📼",
+            "bg": "linear-gradient(135deg,#1a1a0a,#3a2a0a)"
+          },
+          {
+            "id": "musicassette-pop",
+            "label": "Pop",
+            "emoji": "📼",
+            "bg": "linear-gradient(135deg,#1a1a0a,#3a2a0a)"
+          },
+          {
+            "id": "musicassette-italiano",
+            "label": "Italiano",
+            "emoji": "📼",
+            "bg": "linear-gradient(135deg,#1a1a0a,#3a2a0a)"
+          },
+          {
+            "id": "musicassette-spagnolo",
+            "label": "Spagnolo",
+            "emoji": "📼",
+            "bg": "linear-gradient(135deg,#1a1a0a,#3a2a0a)"
+          },
+          {
+            "id": "musicassette-indie",
+            "label": "Indie",
+            "emoji": "📼",
+            "bg": "linear-gradient(135deg,#1a1a0a,#3a2a0a)"
+          },
+          {
+            "id": "musicassette-elettronica",
+            "label": "Elettronica",
+            "emoji": "📼",
+            "bg": "linear-gradient(135deg,#1a1a0a,#3a2a0a)"
+          },
+          {
+            "id": "musicassette-techno",
+            "label": "Techno",
+            "emoji": "📼",
+            "bg": "linear-gradient(135deg,#1a1a0a,#3a2a0a)"
+          },
+          {
+            "id": "musicassette-hip-hop-usa",
+            "label": "Hip hop usa",
+            "emoji": "📼",
+            "bg": "linear-gradient(135deg,#1a1a0a,#3a2a0a)"
+          },
+          {
+            "id": "musicassette-rap-europeo",
+            "label": "Rap europeo",
+            "emoji": "📼",
+            "bg": "linear-gradient(135deg,#1a1a0a,#3a2a0a)"
+          },
+          {
+            "id": "musicassette-rap-italiano",
+            "label": "Rap italiano",
+            "emoji": "📼",
+            "bg": "linear-gradient(135deg,#1a1a0a,#3a2a0a)"
+          },
+          {
+            "id": "musicassette-jazz",
+            "label": "Jazz",
             "emoji": "📼",
             "bg": "linear-gradient(135deg,#1a1a0a,#3a2a0a)"
           },
           {
             "id": "musicassette-colonne-sonore",
             "label": "Colonne sonore",
-            "emoji": "🎬",
-            "bg": "linear-gradient(135deg,#1a120a,#3a2a12)"
+            "emoji": "📼",
+            "bg": "linear-gradient(135deg,#1a1a0a,#3a2a0a)"
           }
         ]
       },
